@@ -1,0 +1,7 @@
+{
+  "tags": ["docs", "started"],
+  "layout": "docs",
+  "permalink": "/{{ page.fileSlug }}/",
+  "order": 10,
+  "hasToc": true
+}

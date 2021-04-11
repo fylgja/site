@@ -1,0 +1,38 @@
+$page-header-height: 71px;
+
+.docs-sidebar::-webkit-scrollbar-track {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+@media (any-pointer: fine) {
+    .docs-sidebar:not(:hover):not(:focus-within)::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .docs-layout {
+        width: calc(100% - 230px);
+        padding-inline-end: 1.5rem;
+    }
+
+    .docs-sidebar {
+        position: sticky;
+        top: $page-header-height;
+        flex: 0 0 auto;
+        width: 230px;
+        height: calc(100vh - #{$page-header-height});
+    }
+}
+
+@media (min-width: 1024px) {
+    .docs-layout {
+        width: calc(100% - 280px);
+        padding-inline-end: 3rem;
+    }
+
+    .docs-sidebar {
+        width: 280px;
+    }
+}

@@ -1,0 +1,31 @@
+<header class="sticky top-0" style="border-bottom: 1px solid rgb(0 0 0 / 10%); z-index: 6; background-color: var(--card-bg, #fff);">
+    <div class="flex justify-between items-center py-2 md-py-4 container">
+        <a href="/" class="logo -style-block inline-block">
+            {% svgUse "/images/sprite.svg#logo", '{"title": "Fylgja"}' %}
+        </a>
+        {% if navigation.main %}
+            <div class="flex items-center">
+                <nav id="main-menu" class="menu -row hidden sm-inline-flex items-center space-x-2">
+                    {% for item in navigation.main %}
+                        <a href="{{ item.url }}"
+                            {% if page.url==item.url %}class="is-active"{% endif %}
+                            {% if item.icon %}style="--menu-item-padding: 0.4375rem;"{% endif %}
+                            {% if page.url==item.url %}aria-current="page"{% endif %}
+                            {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}
+                            {% if item.icon %}title="{{ item.text }}"{% endif %}>
+                            {% if item.icon %}
+                                {{ item.icon | svgContents("block") | safe }}
+                            {% else %}
+                                <span>{{ item.text }}</span>
+                            {% endif %}
+                        </a>
+                    {% endfor %}
+                </nav>
+                <button id="show-offcanvas-menu" type="button" class="btn -icon md-hidden ml-4">
+                    {% svgUse "/images/sprite.svg#menu", '{"title": "Open menu"}' %}
+                </button>
+            </div>
+        {% endif %}
+    </div>
+</header>
+{% include "offcanvas.njk" %}

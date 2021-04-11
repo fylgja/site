@@ -1,0 +1,28 @@
+// Fylgja (Fylgja.com)
+// Licensed under MIT Open Source
+
+$footer-spacer: 40px;
+$footer-sub-spacer: 1em;
+
+.page-footer {
+    padding-top: $footer-spacer;
+    background-color: var(--footer-bg, var(--color-theme));
+    color: var(--footer-color, var(--color-on-theme));
+
+    :any-link {
+        color: inherit;
+        text-decoration: none;
+
+        &:focus,
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    > .sub-footer {
+        margin-top: $footer-spacer;
+        padding-top: $footer-sub-spacer;
+        padding-bottom: $footer-sub-spacer;
+        background-color: rgb(0 0 0 / 10%);
+    }
+}

@@ -1,0 +1,8 @@
+{
+  "tags": "components",
+  "layout": "components",
+  "permalink": "/components/{{ page.fileSlug }}/",
+  "requiresJs": false,
+  "featured": false,
+  "order": 10
+}

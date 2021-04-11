@@ -1,0 +1,19 @@
+---
+layout: default
+style: "
+.page-container {
+    --container-width: 84ch;
+}
+"
+---
+
+{% include "header.njk" %}
+<main class="page-container flex-grow-1 my-6">
+    <div class="container">
+        {% if title %}
+            <h1>{{ title }}</h1>
+        {% endif %}
+        {{ content | safe }}
+    </div>
+</main>
+{% include "footer.njk" %}

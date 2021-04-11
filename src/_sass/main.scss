@@ -1,0 +1,35 @@
+@use "theme";
+
+@use "@fylgja/fylgja/aria-only";
+@use "@fylgja/fylgja/base" with (
+    $family-main: ("Rubik", system-ui, sans-serif),
+    $font-weight: 300,
+);
+@use "code";
+@use "details";
+@use "@fylgja/fylgja/button";
+@use "@fylgja/fylgja/badge";
+@use "@fylgja/fylgja/list";
+@use "@fylgja/fylgja/table";
+@use "@fylgja/fylgja/form";
+@use "@fylgja/fylgja/control";
+@use "@fylgja/fylgja/avatar";
+@use "@fylgja/fylgja/elevation";
+@use "@fylgja/fylgja/container";
+@use "github-hashlink";
+@use "@fylgja/fylgja/card";
+@use "@fylgja/fylgja/auto-grid";
+@use "@fylgja/fylgja/menu";
+@use "@fylgja/fylgja/aspect-ratio";
+@use "@fylgja/fylgja/section";
+@use "@fylgja/fylgja/scroll-slider";
+@use "@fylgja/fylgja/scrollbar";
+@use "@fylgja/fylgja/dialog";
+
+@use "logo";
+@use "docs";
+@use "page-footer";
+
+@use "@fylgja/fylgja/utilpack";
+
+@use "color-scheme";

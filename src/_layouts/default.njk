@@ -1,0 +1,59 @@
+{%- set pageTitle %}{% if title %}{{ title }} - {% endif %}{{ meta.siteName }}{% endset -%}
+{%- set pageDescription %}{% if description %}{{ description }}{% else %}{{ meta.siteDescription }}{% endif %}{% endset -%}
+{%- set pageSocialImg %}{{ meta.url }}/images/{% if preview %}{{ preview }}{% else %}preview.png{% endif %}{% endset -%}
+{%- set pageUrl %}{{ meta.url }}{{ page.url }}{% endset -%}
+{%- set pageCanonical %}{{ meta.url }}{% if canonical %}{{ canonical }}{% else %}{{ page.url }}{% endif %}{% endset -%}
+{%- set twitterCreator %}{% if twitter %}{{ twitter }}{% else %}{{ meta.socials.twitter }}{% endif %}{% endset -%}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <link rel="alternate" type="application/rss+xml" title="{{ meta.title }}" href="{{ meta.url }}/feed.xml"/>
+    <title>{{ pageTitle }}</title>
+    <meta name="description" content="{{ pageDescription }}">
+    {# Webapp #}
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="{{ meta.themeColor }}">
+    <meta name="apple-mobile-web-app-title" content="{{ meta.siteName }}">
+    <meta name="application-name" content="{{ meta.siteName }}">
+    <meta name="msapplication-TileColor" content="{{ meta.themeColor }}">
+    <meta name="theme-color" content="{{ meta.themeColor }}">
+    {# Seo #}
+    <meta name="twitter:card" content="summary_large_image">
+    {% if meta.socials.twitter %}
+      <meta name="twitter:site" content="@{{ meta.socials.twitter }}">
+      <meta name="twitter:creator" content="@{{ twitterCreator }}">
+    {% endif %}
+    <meta name="twitter:title" content="{{pageTitle}}">
+    <meta name="twitter:description" content="{{pageDescription}}">
+    <meta name="twitter:image" content="{{pageSocialImg}}">
+    <meta name="og:title" content="{{pageTitle}}">
+    <meta name="og:description" content="{{pageDescription}}">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{pageUrl}}" />
+    <meta property="og:image" content="{{pageSocialImg}}">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <link rel="canonical" href="{{pageCanonical}}" />
+    {# Assets #}
+    {% if preconnect %}
+        {{ preconnect | safe }}
+    {% endif %}
+    <link rel="stylesheet" href="/css/main.css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,350;0,500;1,350;1,500&display=swap" rel="stylesheet">
+    {% if style %}
+      <style>{{ style | safe }}</style>
+    {% endif %}
+    <script src="/js/main.js" defer></script>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    {{ content | safe }}
+  </body>
+</html>

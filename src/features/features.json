@@ -1,0 +1,7 @@
+{
+  "tags": ["docs", "features"],
+  "layout": "docs",
+  "permalink": "/features/{{ page.fileSlug }}/",
+  "order": 10,
+  "hasToc": true
+}

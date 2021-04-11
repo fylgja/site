@@ -1,0 +1,24 @@
+{# Markdown import compatible, no indentation #}
+<h2>Related components</h2>
+<p>Components that set the correct foundaton. Or add accessible supporting functions.</p>
+<div class="auto-grid">
+{%- for item in collections.a11y -%}
+<a href="{{ item.url }}" class="card card-content flex-row">
+{% if item.data.preview %}
+{% set preview %}{{ meta.componentsMedia }}{{ item.data.preview }}{% endset %}
+<div class="avatar aspect-ratio mr-4" style="--aspect-ratio: 1/1; --avatar-radius: 8px; --avatar-bg: transparent;">
+{% image preview, "", "thumbnail" %}
+</div>
+{% endif %}
+<div>
+<strong>{{ item.data.title }}</strong>
+{%- set strLimit %}50{%- endset -%}
+{% if item.data.description %}
+<p class="text-small">{{ item.data.description | limit(strLimit) }}</p>
+{% else %}
+<p class="text-small">{{ item.templateContent | excerpt(strLimit) }}</p>
+{% endif %}
+</div>
+</a>
+{%- endfor -%}
+</div>

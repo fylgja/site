@@ -1,0 +1,62 @@
+---
+title: "Hashlink"
+description: "The Hashlink is a small utility component,
+Which adds smooth scrolling to the page, via CSS.
+And a scroll offset to any element with a id."
+npm: "@fylgja/hashlink"
+tags: "utils"
+preview: "hashlink.png"
+---
+
+The Hashlink is a small utility component,
+Which adds smooth scrolling to the page, via CSS.
+And a scroll offset to any element with a id.
+
+Making it perfect for hashlinks.
+But also works with Javascript scrollto actions.
+
+## Installation
+
+```bash
+npm install hashlink
+```
+
+And include the component in to your code via;
+
+```scss
+@use "@fylgja/hashlink";
+// Or via PostCSS and other options as plain CSS
+@import "@fylgja/hashlink/hashlink.css";
+```
+
+## How to use
+
+The styles require no additional html markup.
+But will only take affect if a hashlink points to the correct id.
+And can receive focus.
+
+```html
+<a href="#heading">Go to Heading</a>
+..
+<h2 id="heading" tabindex="-1">..</h2>
+```
+
+Now the page will smooth scroll to the target id.
+And with a specific offset.
+
+_Which is also be super handy with sticky headers._
+
+## Config
+
+As with almost all of our components.
+CSS variables can be configured to add your own look/style.
+
+Want direct control on the base styles.
+Down here are the following SCSS variables can you modify.
+
+```scss
+$enable-hashlink-scroll-behavior: true !default;
+$enable-hashlink-scroll-behavior-focus-only: true !default;
+$enable-hashlink-id-offset: true !default;
+$hashlink-scroll-offset: 1rem !default;
+```

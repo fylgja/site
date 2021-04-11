@@ -1,0 +1,72 @@
+{
+  "name": "11ty-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "rollup:watch": "npx rollup -c --watch",
+    "rollup": "NODE_ENV=production npx rollup -c",
+    "clean": "rm -r _site/ || true",
+    "test:scss": "stylelint src/**/*.scss",
+    "test": "npm run test:scss",
+    "start": "npm run dev",
+    "dev": "npx gulp watch | npm run rollup:watch | eleventy --quiet --serve",
+    "build": "ELEVENTY_ENV=prod eleventy",
+    "prebuild": "npm test && npm run clean && npx gulp styles && npm run rollup",
+    "postbuild": "NODE_ENV=production npx gulp minify"
+  },
+  "keywords": [],
+  "author": "fylgja",
+  "license": "MIT",
+  "stylelint": {
+    "extends": "@fylgja/stylelint-config/scss"
+  },
+  "browserslist": [
+    "last 1 version",
+    "> 2%",
+    "not dead",
+    "last 3 iOS major versions",
+    "not IE 11"
+  ],
+  "dependencies": {
+    "@fylgja/fylgja": "file:../../@fylgja/fylgja/packages",
+    "@fylgja/theme": "^0.1.0",
+    "dialog-polyfill": "^0.5.6",
+    "lite-youtube-embed": "^0.1.3",
+    "prismjs": "^1.23.0"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^0.11.1",
+    "@11ty/eleventy-img": "^0.8.0",
+    "@11ty/eleventy-plugin-rss": "^1.1.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.6",
+    "@fullhuman/postcss-purgecss": "^4.0.2",
+    "@fylgja/fontface": "^2.1.1",
+    "@fylgja/sass": "^1.0.1",
+    "@fylgja/stylelint-config": "^3.4.0",
+    "@quasibit/eleventy-plugin-sitemap": "^2.0.4",
+    "@rollup/plugin-node-resolve": "^11.2.0",
+    "cssnano": "^4.1.10",
+    "eleventy-plugin-nesting-toc": "^1.2.0",
+    "eleventy-plugin-svg-contents": "^0.7.0",
+    "eleventy-plugin-youtube-embed": "^1.5.0",
+    "fibers": "^5.0.0",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-postcss": "^9.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-terser": "^2.0.1",
+    "html-minifier": "^4.0.0",
+    "markdown-it-anchor": "^7.0.2",
+    "postcss": "^8.2.7",
+    "postcss-cli": "^8.3.1",
+    "postcss-preset-env": "^6.7.0",
+    "rollup": "^2.42.4",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "sass": "^1.32.8",
+    "slugify": "^1.4.7",
+    "stylelint": "^13.12.0",
+    "terser": "^5.6.0"
+  }
+}

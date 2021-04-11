@@ -1,0 +1,88 @@
+{% if navigation.main %}
+    <dialog id="offcanvas-menu" class="offcanvas w-75 py-0 px-2">
+        <header class="flex justify-between items-center py-4 px-2">
+            <a href="/" class="logo -style-block inline-block">
+                {% svgUse "/images/sprite.svg#logo", '{"title": "fylgja"}' %}
+            </a>
+            <button type="button" class="btn -icon close">
+                {% svgUse "/images/sprite.svg#close", '{"title": "Close menu"}' %}
+            </button>
+        </header>
+        <div class="dialog-inner flex-auto">
+            <nav class="menu">
+                <ul>
+                    {%- for item in collections.started | sortByOrder -%}
+                    <li>
+                        <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page" class="is-active"{% endif %}>
+                            {{ item.data.title }}
+                        </a>
+                    </li>
+                    {%- endfor -%}
+                    <li>
+                        <a href="/components/"
+                            {% if page.url == "/components/" %}class="is-active"{% endif %}
+                            {% if page.url == "/components/" %}aria-current="page"{% endif %}>
+                            <span>Components</span>
+                        </a>
+                        <ul class="menu-nested">
+                            {%- for items in collections.componentsGroup -%}
+                                {% if items.title !== "Featured" %}
+                                <li>
+                                    <details class="text-small my-0">
+                                        <summary class="btn block weight-light">
+                                            <span class="caret mr-2"></span>
+                                            {{ items.title }}
+                                        </summary>
+                                        <ul class="mb-1" style="--menu-margin: 0 0 0.5em;">
+                                            {%- for item in items.data | sortByName -%}
+                                            <li>
+                                                <a href="{{ item.url }}"
+                                                {% if page.url == item.url %}aria-current="page" class="is-active"{% endif %}
+                                                >{{ item.data.title }}</a>
+                                            </li>
+                                            {%- endfor -%}
+                                        </ul>
+                                    </details>
+                                </li>
+                                {% endif %}
+                            {%- endfor -%}
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/features/"
+                            {% if page.url == "/features/" %}class="is-active"{% endif %}
+                            {% if page.url == "/features/" %}aria-current="page"{% endif %}>
+                            <span>Features</span>
+                        </a>
+                        <ul>
+                            {%- for item in collections.features | sortByOrder -%}
+                            <li class="text-small">
+                                <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page" class="is-active"{% endif %}>
+                                    {{ item.data.title }}
+                                </a>
+                            </li>
+                            {%- endfor -%}
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <footer class="py-4 px-2">
+            <nav class="footer-nav flex">
+                {% for item in navigation.socials %}
+                    <a href="{{ item.url }}"
+                        class="btn -icon mr-1 {% if page.url==item.url %} is-active{% endif %}"
+                        {% if page.url==item.url %}aria-current="page"{% endif %}
+                        {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}
+                        title="{{ item.text }}">
+                        {{ item.icon | svgContents("block") | safe }}
+                    </a>
+                {% endfor %}
+                <button data-toggle-color-scheme
+                    title="Toggle color scheme"
+                    class="btn -icon ml-auto"
+                >{{ '/src/_static/icons/color-scheme.svg' | svgContents | safe }}</button>
+            </nav>
+        </footer>
+    </dialog>
+{% endif %}

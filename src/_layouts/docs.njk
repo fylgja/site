@@ -1,0 +1,50 @@
+---
+layout: default
+---
+
+{% include "header.njk" %}
+<main class="docs-page md-flex container flex-grow-1">
+    <article class="docs-layout my-6">
+        <header class="mb-5">
+            <h1 class="page-title mb-0">{{ title }}</h1>
+        </header>
+        <div class="body">{{ content | safe }}</div>
+    </article>
+    <aside class="docs-sidebar hidden md-block overflow-auto overflow-contain thin-scrollbar">
+        <nav class="menu my-7 text-small">
+            <ul>
+                <li>
+                    <strong class="block mb-2">Getting started</strong>
+                    <ul>
+                        {%- for item in collections.started | sortByOrder -%}
+                        <li>
+                            <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page" class="is-active"{% endif %}>
+                                {{ item.data.title }}
+                            </a>
+                            {% if page.url == item.url and hasToc %}
+                                {{ content | toc(wrapper="div") | safe }}
+                            {% endif %}
+                        </li>
+                        {%- endfor -%}
+                    </ul>
+                </li>
+                <li class="mt-2">
+                    <strong class="block mb-2">Features</strong>
+                    <ul>
+                        {%- for item in collections.features | sortByOrder -%}
+                        <li>
+                            <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page" class="is-active"{% endif %}>
+                                {{ item.data.title }}
+                            </a>
+                            {% if page.url == item.url %}
+                                {{ content | toc(wrapper="div") | safe }}
+                            {% endif %}
+                        </li>
+                        {%- endfor -%}
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+</main>
+{% include "footer.njk" %}

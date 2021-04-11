@@ -1,0 +1,33 @@
+<footer class="page-footer">
+  <div class="container">
+    <div class="auto-grid">
+        {% if navigation.about %}
+            <nav id="about-menu">
+                <ul class="list-style -none mb-0 space-y-2">
+                    {% for item in navigation.about %}
+                        <li>
+                            <a href="{{ item.url }}"
+                                {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}
+                                {% if page.url==item.url %}class="is-active"{% endif %}
+                                {% if page.url==item.url %}aria-current="page"{% endif %}>{{ item.text }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        {% endif %}
+    </div>
+  </div>
+  <div class="sub-footer">
+    <div class="flex container items-center justify-between">
+      <small class="copyright-text">
+        © {% year %} {{ meta.siteName }}. All Rights Reserved.
+      </small>
+      <div class="footer-nav menu -row flex-wrap">
+        <button data-toggle-color-scheme
+            title="Toggle color scheme"
+            class="btn -icon"
+        >{{ '/src/_static/icons/color-scheme.svg' | svgContents | safe }}</button>
+      </div>
+    </div>
+  </div>
+</footer>

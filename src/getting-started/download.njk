@@ -1,0 +1,83 @@
+---
+title: "Download"
+description: "Get Fylgja via the following services"
+order: 2
+hasToc: false
+style: "
+.intro-section svg {
+    width: 3em;
+    height: 3em;
+}
+
+.svg-sass { color: #c69; }
+.svg-css { color: #1572b6; }
+"
+---
+
+<section id="download-options">
+    <div class="divide-y">
+        <div class="intro-section flex">
+            <div class="svg-sass mt-2 mr-4">
+                {{ "/src/_static/icons/sass.svg" | svgContents | safe }}
+            </div>
+            <div>
+                <h2 id="download-scss" class="my-0">
+                    Get Fylgja as Sass library
+                    <a class="hashlink" href="#download-scss" aria-hidden="true" tabindex="-1"></a>
+                </h2>
+                <p>A collection of <code>.scss</code> files to build your own styles with Fylgja</p>
+            </div>
+        </div>
+        <div class="py-6">
+            <h3 class="h5 my-0">Option 1. Install the NPM package</h3>
+            <p>All of Fylgja is available through one NPM package:</p>
+            {% highlight "bash" %}
+            npm install fylgja
+            {% endhighlight %}
+            <p>
+                <small>
+                    But you can also get each package individually.
+                    <a href="/components/">See the components for how to do this.</a>
+                </small>
+            </p>
+        </div>
+        <div class="py-6">
+            <h3 class="h5 my-0">Option 2. Clone the GitHub repository</h3>
+            <p>Clone the repo to your own project and import it via Sass:</p>
+            {% highlight "bash" %}
+            git clone git@github.com:fylgja/fylgja.git
+            {% endhighlight %}
+            <p><small>Or via <a href="https://cli.github.com/" target="_blank" rel="noopener noreferrer">GitHub CLI</a></small></p>
+        </div>
+    </div>
+    <div class="divide-y">
+        <div class="intro-section flex">
+            <div class="svg-css mt-2 mr-4">
+                {{ "/src/_static/icons/css.svg" | svgContents | safe }}
+            </div>
+            <div>
+                <h2 id="download-css" class="my-0">
+                    Get Fylgja as CSS file
+                    <a class="hashlink" href="#download-css" aria-hidden="true" tabindex="-1"></a>
+                </h2>
+                <p>A single <code>.css</code> file that includes all of Fylgja</p>
+            </div>
+        </div>
+        <div class="py-6">
+            <h3 class="h5 my-0">Option 1. Use a CDN</h3>
+            <p>You can import the CSS file directly from jsDelivr:</p>
+            {% highlight "html" %}
+            <link href="https://cdn.jsdelivr.net/npm/fylgja/fylgja.css" rel="stylesheet">
+            {% endhighlight %}
+        </div>
+        <div class="py-6">
+            <h3 class="h5 my-0">Option 2. Download the Github release</h3>
+            <p>You can get the latest Fylgja release as a .zip from GitHub:</p>
+            <a href="https://github.com/fylgja/fylgja/releases/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn -theme"
+            >Download the latest Fylgja version</a>
+        </div>
+    </div>
+</section>

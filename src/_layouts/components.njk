@@ -1,0 +1,42 @@
+---
+layout: default
+preconnect: <link rel="preconnect" href="https://img.shields.io">
+---
+
+{% include "header.njk" %}
+<main class="docs-page md-flex container flex-grow-1">
+    <article class="docs-layout my-6">
+        <header class="mb-5">
+            <h1 class="page-title mb-0">{{ title }}</h1>
+            {% if npm %}
+                <div class="mt-2">{% npmBadges npm %}</div>
+            {% endif %}
+        </header>
+        <div class="body">{{ content | safe }}</div>
+    </article>
+    <aside class="docs-sidebar hidden md-block overflow-auto overflow-contain thin-scrollbar">
+        <nav class="menu my-7 text-small">
+            <ul>
+                <li>
+                    <strong class="block mb-2">{{ title }}</strong>
+                    {{ content | toc(wrapper="div") | safe }}
+                </li>
+                <li class="hr" role="separator"></li>
+                {%- for items in collections.componentsGroup -%}
+                    <li class="mt-4">
+                        <strong class="block mb-2">{{ items.title }}</strong>
+                        {%- for item in items.data | sortByName -%}
+                        <ul>
+                            <li>
+                                <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page" class="is-active"{% endif %}
+                                >{{ item.data.title }}</a>
+                            </li>
+                        </ul>
+                        {%- endfor -%}
+                    </li>
+                {%- endfor -%}
+            </ul>
+        </nav>
+    </aside>
+</main>
+{% include "footer.njk" %}

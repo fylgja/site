@@ -1,0 +1,47 @@
+---
+title: "Guides"
+description: ""
+permalink: "/{{ page.fileSlug }}/"
+tags: ["docs", "started"]
+style: "
+#guides {
+    --aspect-ratio: 1/1;
+    --card-radius: 8px;
+    --card-elevation: none;
+    --card-border: 1px solid rgb(0 0 0 / 12%);
+    --avatar-radius: 8px;
+}
+"
+---
+
+{% if collections.guides %}
+<div id="guides" class="auto-grid">
+    {%- for item in collections.guides -%}
+    <a href="{{ item.url }}" class="card card-content flex-row">
+        {% if item.data.thumb %}
+            {% set preview %}./src/_static/images/{{ item.data.thumb }}{% endset %}
+            <div class="avatar aspect-ratio mr-4">
+                {% image preview, "", "thumbnail" %}
+            </div>
+        {% endif %}
+        <div class="self-center">
+            <strong>{{ item.data.title }}</strong>
+            {%- set strLimit %}50{%- endset -%}
+            {% if item.data.description %}
+                <p class="text-small my-0">{{ item.data.description | limit(strLimit) }}</p>
+            {% else %}
+                <p class="text-small my-0">{{ item.templateContent | excerpt(strLimit) }}</p>
+            {% endif %}
+        </div>
+    </a>
+    {%- endfor -%}
+    <a href="http://" target="_blank" rel="noopener noreferrer" class="card card-content items-center flex-row">
+        <div class="avatar p-3 mr-4" style="--avatar-bg: #111; --avatar-color: #fff;">
+            {{ "/src/_static/icons/socials/github.svg" | svgContents("w-full h-full") | safe }}
+        </div>
+        <strong>Add your own</strong>
+    </a>
+</div>
+{% else %}
+{% include "todo.njk" %}
+{% endif %}
