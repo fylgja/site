@@ -1,15 +1,15 @@
 ---
-title: "Darkmode"
-description: "Fylgja does not ship with darkmode styles by default. Since we don't force a specific color pallet for your use."
+title: "Dark mode"
+description: "Fylgja does not ship with dark mode styles by default. Since we don't force a specific color pallet for your use."
 ---
 
-Fylgja does not ship with darkmode styles by default.
+Fylgja does not ship with dark mode styles by default.
 Since we don't force a specific color pallet for your use.
 
-But the foundation for each component is made in a flexable way.
-So you can change it via the CSS variables or the Sass variables.
+But the foundation for each component is made in a flexible way.
+So you can change it via the CSS variables or the SCSS variables.
 
-By just setting these Sass vars in the `@fylgja/theme`.
+By just setting these SCSS variables in the `@fylgja/theme`.
 All component styles are dark.
 
 ```scss
@@ -29,7 +29,7 @@ Down in the footer you will find a moon or sun icon.
 
 _Depending on what theme your using._
 
-For this we made a small css rule for dark mode.
+For this we made a small CSS rule for dark mode.
 And added a small bit of JS to toggle the state.
 If the user prefers a specific mode over the system default one.
 
@@ -102,9 +102,9 @@ themeScheme.addEventListener("click", () => {
 ## Considerations to take when adding or using dark mode.
 
 Dark mode does not necessary mean black with white text.
-And as you could see it in our sample.
 
-We used a dark tint of our theme (primary) color.
+And as you could see it in our sample,
+we used a dark tint of our theme (primary) color.
 This gives it a more personal feel than just a inverted version.
 
 Also dark mode is never a must.

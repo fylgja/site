@@ -19,7 +19,10 @@
   "author": "fylgja",
   "license": "MIT",
   "stylelint": {
-    "extends": "@fylgja/stylelint-config/scss"
+    "extends": "@fylgja/stylelint-config/scss",
+    "rules": {
+      "selector-max-id": 1
+    }
   },
   "browserslist": [
     "last 1 version",

@@ -41,8 +41,8 @@ The only requirement is Sass.
 Not a fan of Sass.
 Fylgja also ships with a CSS version for each component.
 
-You can use each CSS file via Webpack or Rollup directly in your JS framework.
-Or bundle the CSS files via PostCSS.
+You can use each CSS file via Webpack or Rollup directly in your JS framework
+or bundle the CSS files via PostCSS.
 You can use {% extLink "PostCSS import", "https://github.com/postcss/postcss-import" %} for this.
 See the PostCSS import docs on how to do this.
 

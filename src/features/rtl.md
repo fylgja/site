@@ -10,7 +10,7 @@ in addition to translating the texts,
 you need to also mirror the layout to match the text direction.
 
 To enable this behavior.
-You must have the follwing html tags set
+You must have the following html tags set
 
 - Set `dir="rtl"` on the `<html>` element.
 - Add an appropriate lang attribute, like `lang="ar"`, on the `<html>` element.
@@ -22,5 +22,5 @@ So no additional CSS or plugins needed 😉
 In case you need something to be in a LTR direction.
 No mather the language or direction.
 
-Set the `dir="ltr"` on the html element where you need this behavior.
-Or use the CSS property `direction: ltr;`
+Set the `dir="ltr"` on the html element where you need this behavior
+or use the CSS property `direction: ltr;`

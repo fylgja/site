@@ -32,7 +32,7 @@ module.exports = [
     {
         title: "Less typing",
         description:
-            "Fylgja is very DRY. And requires less code writing via CSS component and utility classes.<br>But also ship's with native element styles, that requires no CSS classes.",
+            "Fylgja is very DRY and requires less code writing via CSS component and utility classes.<br>But also ship's with native element styles, that requires no CSS classes.",
         icon: "/src/_static/icons/build.svg",
         iconStyle: {
             bg: "#f37c20",
