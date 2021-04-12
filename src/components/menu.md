@@ -53,8 +53,7 @@ By using the modifier `.-row` the menu items can be placed in a row layout.
 ### Menu items
 
 The menu class will style all links automatically,
-But only if the are a child of the menu class.
-Or of a direct child of list item.
+But only if the are a child of the menu class or if a direct child of list item.
 
 If you want to use a wrapper.
 Then use the class `.menu-item`.

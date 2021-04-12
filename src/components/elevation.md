@@ -11,8 +11,8 @@ The Elevation component is a util package for shadows.
 Where it offers shadows as CSS variables.
 
 It follows the same principals as Google's material design.
-But stayes more small and practical.
-By focusing only on elevation indexes that commonly used 
+But stay's more small and practical.
+By focusing only on elevation indexes that are commonly used.
 
 ## Installation
 
@@ -30,7 +30,7 @@ And include the component in to your code via;
 
 ## How to use
 
-The variables van be used on any shadow property that acepts 4 values.
+The variables can be used on any shadow property that accepts 4 values.
 For example the `box-shadow` property.
 
 The elevation component offers 6 layers based on the material design layers.
@@ -41,8 +41,7 @@ The elevation component offers 6 layers based on the material design layers.
 }
 ```
 
-If you plan to just use the SCSS version.
-And don't want the CSS variables.
+If you plan to just use the SCSS version and don't want the CSS variables.
 You can disable them via the `$enable-elevation` boolean.
 
 The SCSS values are available via the map `$elevation`.

@@ -8,8 +8,8 @@ preview: "progress.png"
 
 The progress component show a progression of a form or somethings else.
 
-By offering the easer to style native progress element.
-And the class based option.
+By offering the easer to style native progress element
+and the class based option.
 
 ## Installation
 

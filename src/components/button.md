@@ -10,8 +10,8 @@ The Button component serves as an interactive element.
 To call your users to an action.
 
 Since not all buttons need to be an Call To Action.
-The base button is as simple as possible.
-And many styles can be build on top of this foundation.
+The base button is as simple as possible
+and many styles can be build on top of this foundation.
 
 ## Installation
 
@@ -29,7 +29,7 @@ And include the component in to your code via;
 
 ## How to use
 
-In your html you only need the btn class to use the button style.
+In your html you only need the `.btn` class to use the button style.
 
 ```html
 <a href="#link" class="btn">..</a>
@@ -37,10 +37,10 @@ In your html you only need the btn class to use the button style.
 ```
 
 The buttons component is by default is blank with a soft focus and active color.
-Based on the root-fg color, which is black by default.
+Based on the `root-fg` color, which is black by default.
 
-Besides that the buttons component also comes with allot of CSS variables.
-Which allow easier construction of specific btn styles via an modifier class.
+Besides that the buttons component also comes with a lot of CSS variables.
+Which allow easier construction of specific button styles via a modifier class.
 
 ### Modifier classes
 

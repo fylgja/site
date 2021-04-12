@@ -36,8 +36,8 @@ And include the component in to your code via;
 
 ## How to use
 
-To use the dialog simply create a html dialog element.
-And a button that can open the dialog.
+To use the dialog simply create a html dialog element and a button,
+that can open the dialog.
 
 ```html
 <!-- Modal -->

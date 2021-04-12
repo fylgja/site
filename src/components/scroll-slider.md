@@ -29,7 +29,7 @@ And include the component in to your code via;
 
 ## How to use
 
-To create an slider.
+To create a slider.
 You will need a wrapper element with the class `.scroll-slider`.
 Any direct children of the slider will become scroll items.
 

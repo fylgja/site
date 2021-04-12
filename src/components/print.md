@@ -34,7 +34,7 @@ Then consider adding you own styles to improve on this basis.
 
 Need to show color in printing.
 Or don't like the link urls in your print.
-Simply disable them.
+You can do so via the following variables;
 
 ```scss
 $enable-print-economic: true !default;

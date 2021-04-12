@@ -8,9 +8,9 @@ tags: "utils"
 preview: "hashlink.png"
 ---
 
-The Hashlink is a small utility component,
-Which adds smooth scrolling to the page, via CSS.
-And a scroll offset to any element with a id.
+The Hashlink is a small utility component.
+Which adds smooth scrolling to the page via CSS
+and a scroll offset to any element with a id.
 
 Making it perfect for hashlinks.
 But also works with Javascript scrollto actions.
@@ -32,8 +32,8 @@ And include the component in to your code via;
 ## How to use
 
 The styles require no additional html markup.
-But will only take affect if a hashlink points to the correct id.
-And can receive focus.
+But will only take affect if a hashlink points to the correct id
+and can receive focus.
 
 ```html
 <a href="#heading">Go to Heading</a>
@@ -41,8 +41,7 @@ And can receive focus.
 <h2 id="heading" tabindex="-1">..</h2>
 ```
 
-Now the page will smooth scroll to the target id.
-And with a specific offset.
+Now the page will smooth scroll to the target id and with a specific offset.
 
 _Which is also be super handy with sticky headers._
 

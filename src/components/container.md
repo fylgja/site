@@ -32,7 +32,7 @@ To use the container create element with the class `.container`.
 ```
 
 The container is pretty straight forward.
-But its power if found in its customization via CSS variables.
+But its power is found in its customization via CSS variables.
 
 Allowing for smaller of bigger containers when needed.
 

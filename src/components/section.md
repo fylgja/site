@@ -36,7 +36,7 @@ This will create element with CSS variables.
 For easy customization for the min-height, background and colors.
 So the real power lies in its strength to be customized via CSS variables.
 
-So if you want to build something like a hero.
+So if you want to build something like a hero,
 you only need something like this;
 
 ```html

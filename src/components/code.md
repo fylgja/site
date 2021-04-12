@@ -1,12 +1,12 @@
 ---
 title: "Code"
-description: "The Code package is a extension package to the base package."
+description: "The Code component is a extension component to the base component."
 npm: "@fylgja/code"
 tags: ["typography", "nativeElements"]
 preview: "code.png"
 ---
 
-The Code package is a extension package to the base package.
+The Code component is a extension component to the base component.
 
 This includes more styling to the `<code>`, `<pre>` and `<kbd>` element.
 

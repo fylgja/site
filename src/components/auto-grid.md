@@ -61,8 +61,8 @@ Taking control of each grid on each specific page or section.
 Or take complete control via the CSS variable `--cols`.
 Changing the complete `grid-template-columns` value.
 
-Which allows you to build a static grid based on the viewport, on desktop.
-And fallback to the auto-grid.
+Which allows you to build a static grid based on the viewport,
+on desktop and fallback to the auto-grid.
 
 ### Using a static grid
 

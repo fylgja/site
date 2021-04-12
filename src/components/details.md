@@ -28,7 +28,7 @@ Out of the box all the styling is done directly.
 So no extra steps are needed.
 And the details element wil look relativity the same as the browser default.
 
-The sole reason that the style should be changable for many purposes.
+The sole reason that the style should be changeable for many purposes.
 Think a sub menu toggle or a accordion.
 
 ## Config
@@ -37,7 +37,7 @@ As with almost all of our components.
 CSS variables can be configured to add your own look/style.
 
 Want direct control on the base styles.
-Down here are the following scss variables can you modify.
+Down here are the following SCSS variables can you modify.
 
 ```scss
 $details-animation: details-show 200ms ease-in-out !default;

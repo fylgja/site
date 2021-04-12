@@ -7,7 +7,7 @@ tags: ["utils", "a11y"]
 preview: "aria-only.png"
 ---
 
-The aria-only visually hides elements.
+The aria-only (a.k.a. sr-only) visually hides elements.
 But keeps it accessible to screen-readers and other aria tools.
 
 ## Installation
@@ -34,9 +34,9 @@ Add the class aria-only to any element to visually hide it.
 
 ### Use as Skip link
 
-The aria-only only component also support the skip navigation option.
+The aria-only component also support the skip navigation option.
 
-This van be used via the class `.aria-only-focusable`.
+This can be used via the class `.aria-only-focusable`.
 Since this class will still show the content when receiving focus.
 
 _If you want to extent this behavior,_
@@ -46,11 +46,11 @@ _to make a true skip link [see the tips](#tips)._
 
 The aria-only component is by default not set to render it's styles as important.
 
-If you do prefere this.
+If you do prefer this.
 You can enable this via the variable `$enable-aria-only-important`.
 And set the value to `true`.
 
-### Mixin (SCSS)
+### Mixin (SCSS only)
 
 You can also use it as a mixin with your own styles, via;
 

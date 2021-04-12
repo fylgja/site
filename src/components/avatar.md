@@ -6,7 +6,7 @@ tags: "elements"
 preview: "avatar.png"
 ---
 
-The avatar component allows you to make a avatar style with ease.
+The avatar component allows you to make an avatar style with ease.
 
 ## Installation
 
@@ -33,8 +33,8 @@ To use the avatar create element with the class `.avatar`.
 Avatars are by default round and are `3em` big.
 Allowing to scale with your text.
 
-You can change this via the CSS variables.
-Or via the SCSS variables if it is your default style.
+You can change this via the CSS variables or via the SCSS variables,
+if it is your default style.
 
 ## Config
 
@@ -47,4 +47,6 @@ Down here are the following SCSS variables can you modify.
 ```scss
 $avatar-size: 3em !default;
 $avatar-radius: 50% !default;
+$avatar-bg: #eee !default;
+$avatar-color: null !default;
 ```

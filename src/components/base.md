@@ -32,8 +32,8 @@ And can be considered as more than one component.
 But everything makes more sense together.
 Since these are small CSS setters to the body, typography and media.
 
-Down here is small list of each component.
-And what main things each component does.
+Down here is a small list of each component
+and what main things each component does.
 
 | Component Parts | Description                                          |
 | --------------- | ---------------------------------------------------- |
@@ -50,6 +50,7 @@ But next to that all styles are set on the html elements directly.
 | Class          | Description                               |
 | -------------- | ----------------------------------------- |
 | `.h1` to `.h6` | Same as the html element of the same name |
+| `.hr`          | Same as the `<hr>` element                |
 | `.text-small`  | Same as the `<small>` element             |
 
 ## Config
@@ -145,8 +146,8 @@ $h6-font-weight: bold !default;
 No. The base component is a setter for common styles but not a reset file.
 
 Each reset for a specific html element is handled by the component that needs it.
-And not first set by one reset file and then restyled by the component.
-Which creates double CSS.
+And not first set by one reset file and then restyled by the component,
+which creates double CSS.
 
 </details>
 

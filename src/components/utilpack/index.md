@@ -25,10 +25,9 @@ And include the component in to your code via;
 
 ## How to use
 
-The util pack out of the box commes with some commen used util classes.
+The util pack out of the box comes with some common used util classes.
 That can be used directly.
-See the docs for what is available.
-Or see the defaults folder.
+See the docs for what is available or see the defaults <!-- LINK -->.
 
 ## Config
 
@@ -37,12 +36,12 @@ Look no further, down here.
 
 ### Adding util classes
 
-Change the SCSS the variable `$utilpack()` to your SCSS.
+Change the SCSS variable `$utilpack()`.
 And use one of the following sample use cases in this map.
 
 > By default the key will be used with the value for the class name.
-> If you want to change this behavior make use of the prop `class`.
-> And add a key to the value.
+> If you want to change this behavior make use of the prop `class`
+> and add a key to the value.
 > As seen below.
 
 **Simple Sample**
@@ -76,7 +75,7 @@ And use one of the following sample use cases in this map.
 
 **Sample with class**
 
-If you want to use diffrent value for the class.
+If you want to use different value for the class.
 Than what the util key name is.
 
 ```scss
@@ -93,7 +92,7 @@ Than what the util key name is.
 
 **Sample with property**
 
-If you want to use diffrent value for the property.
+If you want to use different value for the property.
 Than what the util key name is.
 
 ```scss
@@ -223,12 +222,12 @@ And the value is always the min-width media query.
 }
 ```
 
-It will use the hyphen as default sepparator.
+It will use the hyphen as default separator.
 
-But if prefer the same sepparator as seen in TailwindCSS.
-You can by changing the `$utilpack-sepparator: "\:"`. 
+But if prefer the same separator as seen in TailwindCSS.
+You can by changing the `$utilpack-separator: "\:"`. 
 
-_The Tailwind sepparator can conflict with specific tools and linters._
+_The Tailwind separator can conflict with specific tools and linters._
 _Since it uses specific characters that are normally marked as unsafe._
 
 ## FAQ
@@ -276,12 +275,11 @@ Instead using static colors.
 Most grid solution still rely on the older grid solution, like 12 columns.
 But now use CSS grid spec instead.
 This is considered a bad solution for the way how we handel layouts.
-And creates still allot of 1 time uses, even with utilities.
+And creates still a lot of 1 time uses, even with utilities.
 
 If you must really rely on a util class.
-We would advise to use our own CSS grid component.
-Or make your own that uses CSS variables instead.
-
+We would advise to use our own CSS grid component to make your own.
+That uses CSS variables instead.
 Or use the `@fylgja/autogrid`.
 Which fully uses the power of CSS variables and the grid spec.
 

@@ -1,14 +1,14 @@
 ---
 title: "Aspect Ratio"
-description: "The aspect ratio component allows you to make not just videos.
-But anything you want to a certain responsive aspect ratio."
+description: "The aspect ratio component allows you to make not just videos,
+but anything you want to a certain responsive aspect ratio."
 npm: "@fylgja/aspect-ratio"
 tags: "layouts"
 preview: "aspect-ratio.png"
 ---
 
-The aspect ratio component allows you to make not just videos.
-But anything you want to a certain responsive aspect ratio.
+The aspect ratio component allows you to make not just videos,
+but anything you want to a certain responsive aspect ratio.
 
 ## Installation
 

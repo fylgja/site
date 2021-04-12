@@ -58,8 +58,8 @@ Tables are as responsive as the content.
 So it is hard to make a responsive behavior that fits all table data types.
 
 So use the `@fylgja/utilpack` overflow util class.
-That at least allows your table not the break the page.
-And can be scrolled instead.
+That at least allows your table not the break the page
+and can be scrolled instead.
 Giving a basic user experience.
 
 ```html
@@ -68,7 +68,7 @@ Giving a basic user experience.
 </div>
 ```
 
-If you really want your table to shine on mobile device.
+If you really want your table to shine on mobile devices.
 Use some custom CSS for collapsing the expected data in the layout you want.
 
 ## Config

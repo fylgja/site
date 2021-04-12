@@ -33,8 +33,8 @@ And include the component in to your code via;
 By default the form style is set to our default style.
 
 To use the field or box style.
-Change the variable `$form-style` to any other the 2 options.
-Or if you are a importing this as plain CSS in PostCSS or any other option.
+Change the variable `$form-style` to any of the other 2 options.
+Or if you are importing this as plain CSS, in PostCSS or any other option.
 
 ```css
 @import "@fylgja/form/form-style-field.css";

@@ -1,8 +1,7 @@
 ---
 title: "Input-group"
-description: "The input group extends upon the @fylgja/form.
-By providing a wrapper that allows for more complex form field elements.
-Like a search bar with button in the same field."
+description: "The input group extends upon the `@fylgja/form`.
+By providing a wrapper that allows for more complex form field styles."
 npm: "@fylgja/input-group"
 tags: ["layout", "forms"]
 preview: "input-group.png"
@@ -31,26 +30,26 @@ And include the component in to your code via;
 By default the form style is set to our default style.
 
 To use the **field** or **box** style.
-Change the variable `$form-style` in `@fylgja/form`.
-To the other 2 options, via;
+Change the variable `$input-group-style`.
+To one of the options, via;
 
 ```scss
-@use "@fylgja/form/helper" with ($form-style: box);
+@use "index" with ($input-group-style: box);
 ```
 
 Or if you are a importing this as plain CSS in PostCSS or any other option.
 Import the style directly via;
 
 ```css
-@import "@fylgja/form/form-style-field.css";
+@import "@fylgja/input-group/input-group-style-field.css";
 /* Or */
-@import "@fylgja/form/form-style-box.css";
+@import "@fylgja/input-group/input-group-style-box.css";
 ```
 
 ## How to use
 
 The input group allows you to build simple things.
-Like a search form with a submit btn in the same form field.
+Like a search form with a submit button in the same form field.
 
 ```html
 <form id="search-form">
@@ -64,7 +63,7 @@ Like a search form with a submit btn in the same form field.
 </form>
 ```
 
-And to more complex things.
+To more complex things.
 
 The main focus is that you have the freedom to add anything.
 So down here are all the classes that you have to your disposal.
@@ -72,19 +71,18 @@ So down here are all the classes that you have to your disposal.
 ### Input group
 
 The main component and required for this component to do anything.
-Simply create a wrapper element with this class.
-And everything is a input child.
+Simply create a wrapper element with this class and everything is a input child.
 
 ### Input extra & Input icon
 
 The child components for just rendering child form elements, text or an icon.
 
 The `.input-extra` can act as many things.
-But is for its main focus is just like a flex-shrink class.
-So that this element will fit nicely next to the main form element.
-That will fill the `.input-group`.
+But its main focus is the flex-shrink style.
+So this element will fit nicely next to the main form element.
 
-The `.input-extra` can also be used for custom elements.
+The `.input-extra` can also be used for custom elements,
+like Checkboxes.
 
 The `.input-icon` is the same.
 Except one thing.
@@ -92,7 +90,27 @@ It will also receive the focus color when any form element has focus.
 
 ## Config
 
-The `@fylgja/input-group` inherits all of its variables from the `@fylgja/form` component.
-So for what you can change.
-See the readme from the `@fylgja/form` component.
-Or use the the CSS variables.
+The `@fylgja/input-group` inherits all of its variable values,
+from the `@fylgja/form` component.
+
+So for what each variable you can do.
+See the the doc from the `@fylgja/form` component.
+
+Or override it directly.
+Via the variables found down here;
+
+```scss
+$input-group-style: default !default;
+
+$input-group-border-width: input.$form-border-width !default;
+$input-group-border-style: input.$form-border-style !default;
+$input-group-border-color: var(
+    --form-stroke,
+    #{input.$form-border-color}
+) !default;
+$input-group-radius: var(--form-radius, #{input.$form-radius}) !default;
+$input-group-bg: var(--form-bg, #{input.$form-bg}) !default;
+$input-group-color: var(--form-color, #{input.$form-color}) !default;
+$input-group-focus-color: input.$form-focus-color !default;
+$input-group-focus-style: input.$form-focus-style !default;
+```

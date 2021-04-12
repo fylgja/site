@@ -27,8 +27,8 @@ And include the component in to your code via;
 To use the stretched-link make sure you component is relative positioned.
 Like a the `@fylgja/card`.
 
-This sample is made with the card component with a nested link.
-And to make the card completely clickable.
+This sample is made with the card component with a nested link
+and to make the card completely clickable.
 We also added the stretched-link on the nested link.
 
 ```html
@@ -51,8 +51,8 @@ You might ask.
 Well for accessibility.
 
 If you use a link on the card.
-The complete content becomes part of the link description.
-Which causes a bad description for the link.
+The complete content becomes part of the link description,
+which causes a bad description for the link.
 
 Instead the link should only describe where the link will go to.
 

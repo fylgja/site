@@ -28,7 +28,7 @@ And include the component in to your code via;
 
 In your html you need besides the pagination class also some html for the items.
 
-We advice you to use of an ordered list.
+We advice you to use an ordered list.
 As this tells the user the structure of the list of links.
 
 ```html
@@ -45,11 +45,11 @@ Using the `aria-current="page"`
 will tell the user that this is the current page.
 And it is also used to give it the active item style.
 
-### With pagination buttons and ellipsis.
+### Pagination with buttons and ellipsis.
 
 If you need a more complex pagination with buttons and ellipsis.
-You can nest the pagination with buttons.
-And there is a class `.pagination-ellipsis`,
+You can nest the pagination with buttons
+and there is a class `.pagination-ellipsis`
 for adding a gap in you pagination items.
 
 ```html

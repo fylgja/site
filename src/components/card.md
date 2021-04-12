@@ -8,7 +8,7 @@ preview: "card.png"
 ---
 
 The card component is a wrapper component.
-Which allow you to make visual sectioned content,
+Which allows you to make visual sectioned content,
 that is not part of the main flow.
 
 ## Installation
@@ -56,8 +56,8 @@ We kept the card child classes to 3 use cases;
 
 Besides that the card is also extremely flexable in style, via CSS variables.
 
-The card style is by default elevated.
-But can also make a flat one via 2 variables.
+The card style is by default elevated,
+but can also make it a flat card via 2 variables.
 
 ```html
 <style>
