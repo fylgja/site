@@ -18,7 +18,7 @@ But also works with Javascript scrollto actions.
 ## Installation
 
 ```bash
-npm install hashlink
+npm install @fylgja/hashlink
 ```
 
 And include the component in to your code via;

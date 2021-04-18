@@ -25,10 +25,38 @@ And include the component in to your code via;
 
 ## How to use
 
-To use the badge create element with the class `.badge`.
+To use the badge, create element with the class `.badge`.
 
 ```html
-<div class="badge">..</div>
+<span class="badge">..</span>
+```
+
+But if you need a badge with a little more complexity.
+Like a badge with 2 sides of data or with a close button.
+
+You can use the `.badge-addon` as wrapper that binds the 2 badge to one badge.
+
+```html
+<div class="badge-addon">
+    <span class="badge">New</span>
+    <button class="badge -theme">Close</button>
+</div>
+```
+
+### Badge group (Tag cloud)
+
+To create Badge group (Tag cloud).
+You need to use custom CSS or the `@fylgja/utilpack`.
+To create a flex-grid with gap via margin or via the gap property
+(when it is better supported).
+
+```html
+<div class="flex flex-wrap">
+    <span class="badge m-1">Wolfs</span>
+    <span class="badge m-1">Cats</span>
+    <span class="badge m-1">Bears</span>
+    ...
+</div>
 ```
 
 ## Config
@@ -40,10 +68,10 @@ Want direct control on the base styles.
 Down here are the following SCSS variables can you modify.
 
 ```scss
-$badge-padding: 0.3em 0.35em !default;
-$badge-radius: 0.25rem !default;
-$badge-bg: var(--color-theme, #{$color-theme}) !default;
-$badge-color: var(--color-on-theme, #{$color-on-theme}) !default;
-$badge-font-size: 0.85em !default;
-$badge-line-height: 1 !default;
+$badge-padding: 0.125em 0.75em !default;
+$badge-radius: 0.375em !default;
+$badge-bg: if($root-fg == #000, #eee, #222) !default;
+$badge-color: $color-text !default;
+$badge-font-size: 0.75em !default;
+$badge-font-weight: 500 !default;
 ```

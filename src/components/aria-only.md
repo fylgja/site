@@ -7,7 +7,7 @@ tags: ["utils", "a11y"]
 preview: "aria-only.png"
 ---
 
-The aria-only (a.k.a. sr-only) visually hides elements.
+The aria-only (a.k.a. **sr-only**) visually hides elements.
 But keeps it accessible to screen-readers and other aria tools.
 
 ## Installation
@@ -55,6 +55,8 @@ And set the value to `true`.
 You can also use it as a mixin with your own styles, via;
 
 ```scss
+@use "@fylgja/aria-only/helper" as *;
+
 .new-class {
     // Set $enforce to true to set the values to !important
     @include aria-only($enforce: false);

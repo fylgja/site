@@ -43,7 +43,7 @@ Any direct children of the slider will become scroll items.
 The scroll items will by default will the space they have in size.
 
 If you want your slides to a specific size.
-Add the `@fylgja/utilkit` width classes.
+Add the `@fylgja/utilpack` width classes.
 
 ## Config
 
