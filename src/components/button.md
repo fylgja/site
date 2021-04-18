@@ -42,9 +42,9 @@ Based on the `root-fg` color, which is black by default.
 Besides that the buttons component also comes with a lot of CSS variables.
 Which allow easier construction of specific button styles via a modifier class.
 
-### Modifier classes
+### Variable classes
 
-By default we also offer some base default modifiers class.
+By default we also offer some base default variable class.
 Which you can disabled via de SCSS variables if needed.
 
 | Class      | Description                                         |
@@ -53,8 +53,8 @@ Which you can disabled via de SCSS variables if needed.
 | `-theme`   | Paints the btn with and filled `$color-theme` color |
 | `-icon`    | Creates a icon btn's with equal width and height    |
 
-Besides these modifier classes.
-We try to keep away from adding more modifier classes.
+Besides these variable classes.
+We try to keep away from adding more variable classes.
 As this will create to much extra CSS you will most likely never use.
 
 ## Config
@@ -92,7 +92,7 @@ $btn-bg: transparent !default;
 $btn-color: inherit !default;
 
 $btn-focus-stroke: transparent !default;
-$btn-focus-bg: color.change($root-fg, $alpha: 0.1) !default;
+$btn-focus-bg: color.change($root-fg, $alpha: 0.05) !default;
 $btn-focus-color: inherit !default;
 
 $btn-active-stroke: transparent !default;
