@@ -1,6 +1,6 @@
 ---
 title: "Auto Grid"
-description: "A super small grid with auto flowing behavior based on the container size.
+description: "A super small grid with auto flowing behavior, based on the container size.
 Using a similar method to container queries."
 npm: "@fylgja/auto-grid"
 tags: ["layouts"]
@@ -9,7 +9,7 @@ featured: true
 order: 2
 ---
 
-A super small grid with auto flowing behavior based on the container size.
+A super small grid with auto flowing behavior, based on the container size.
 Using a similar method to container queries.
 
 This grid uses a minmax method.

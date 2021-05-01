@@ -2,7 +2,7 @@ module.exports = [
     {
         title: "GitHub Discussions",
         text:
-            'Questions or need support<br class="hidden lg-block">ask them in the community.',
+            'Questions or Support<br class="hidden lg-block">ask them in the community.',
         url: "https://github.com/fylgja/fylgja/discussions",
         external: true,
         icon: "/src/_static/icons/socials/github.svg",
