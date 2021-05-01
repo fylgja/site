@@ -4,12 +4,12 @@ import copy from "rollup-plugin-copy";
 const { input, output } = require("./src/_data/meta.js");
 
 const copyConfig = {
-    targets: [
-        {
-            src: "node_modules/lite-youtube-embed/src/lite-yt-embed.js",
-            dest: `${output}/js`,
-        },
-    ],
+    // targets: [
+    //     {
+    //         src: "",
+    //         dest: `${output}/js`,
+    //     },
+    // ],
 };
 
 const devConfig = {

@@ -34,20 +34,12 @@ module.exports = function (config) {
         config.addPassthroughCopy({ "src/_static/css/*.map": "css" });
     }
 
-    const liteYtSrc = "node_modules/lite-youtube-embed/src";
-    config.addPassthroughCopy({
-        [liteYtSrc + "/lite-yt-embed.css"]: "css/lite-yt-embed.css",
-    });
-    config.addPassthroughCopy({
-        [liteYtSrc + "/lite-yt-embed.js"]: "js/lite-yt-embed.js",
-    });
-
     // Plugins
     config.addPlugin(syntaxHighlight);
     config.addPlugin(embedYouTube, {
         lite: {
-            css: { path: "/css/lite-yt-embed.css" },
-            js: { path: "/js/lite-yt-embed.js" },
+            css: { inline: true },
+            js: { inline: true },
         },
     });
     config.addPlugin(sitemap, { sitemap: { hostname: url } });
