@@ -20,9 +20,10 @@ $page-header-height: 71px;
     .docs-sidebar {
         position: sticky;
         top: $page-header-height;
+        align-self: flex-start;
         flex: 0 0 auto;
         width: 230px;
-        height: calc(100vh - #{$page-header-height});
+        max-height: calc(100vh - #{$page-header-height});
     }
 }
 
