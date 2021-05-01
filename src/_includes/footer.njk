@@ -1,6 +1,5 @@
 <footer class="page-footer">
-  <div class="container">
-    <div class="auto-grid">
+    <div class="container auto-grid">
         {% if navigation.about %}
             <nav id="about-menu">
                 <ul class="list-style -none mb-0 space-y-2">
@@ -16,18 +15,26 @@
             </nav>
         {% endif %}
     </div>
-  </div>
-  <div class="sub-footer">
-    <div class="flex container items-center justify-between">
-      <small class="copyright-text">
-        © {% year %} {{ meta.siteName }}. All Rights Reserved.
-      </small>
-      <div class="footer-nav menu -row flex-wrap">
-        <button data-toggle-color-scheme
-            title="Toggle color scheme"
-            class="btn -icon"
-        >{{ '/src/_static/icons/color-scheme.svg' | svgContents | safe }}</button>
-      </div>
+    <div class="sub-footer">
+        <div class="flex container items-center justify-between">
+            <small class="copyright-text">
+                © {% year %} {{ meta.siteName }}. All Rights Reserved.
+            </small>
+            <nav class="footer-nav menu -row flex-wrap">
+                {% for item in navigation.socials %}
+                    <a href="{{ item.url }}"
+                        class="btn -icon mr-1 md-mr-6"
+                        {% if page.url==item.url %}aria-current="page"{% endif %}
+                        {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}
+                        title="{{ item.text }}">
+                        {{ item.icon | svgContents("block") | safe }}
+                    </a>
+                {% endfor %}
+                <button data-toggle-color-scheme
+                    title="Toggle color scheme"
+                    class="btn -icon"
+                >{{ '/src/_static/icons/color-scheme.svg' | svgContents | safe }}</button>
+            </nav>
+        </div>
     </div>
-  </div>
 </footer>
