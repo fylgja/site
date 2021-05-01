@@ -5,7 +5,6 @@ function minifyHtml(content, outputPath) {
         let minified = htmlmin.minify(content, {
             removeAttributeQuotes: true,
             collapseBooleanAttributes: true,
-            collapseInlineTagWhitespace: true,
             collapseWhitespace: true,
             removeComments: true,
             sortClassName: true,
