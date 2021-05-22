@@ -9,32 +9,33 @@ module.exports = async function imageShortcode(
     sizes = "100vw"
 ) {
     const originalFormat = path.extname(src).replace(/\./g, "");
-    let imgSizes = null;
+    let imgSizes = [null];
     let imgName = "";
     switch (widths) {
         case "thumbnail":
-            imgSizes = 150;
+            imgSizes = [150];
             imgName = "thumbnail";
             break;
 
         case "small":
-            imgSizes = 350;
+            imgSizes = [350];
             imgName = "small";
             break;
 
         case "medium":
-            imgSizes = 500;
+            imgSizes = [500];
             imgName = "medium";
             break;
 
         case "large":
-            imgSizes = 1200;
+            imgSizes = [1200];
             imgName = "large";
             break;
 
         case "screen":
-            imgSizes = [640, 1200, 1920];
-            sizes = "(min-width: 1200px) 1920w, (min-width: 640px) 1200w, 640w";
+            imgSizes = [320, 640, 1200, 1920];
+            sizes =
+                "(min-width: 1200px) 1920w, (min-width: 640px) 1200w, (min-width: 320px) 640w, 320w";
             break;
 
         default:
@@ -44,9 +45,13 @@ module.exports = async function imageShortcode(
 
     let metadata = await Image(src, {
         widths: [imgSizes],
-        formats: ["avif", "webp", originalFormat],
+        formats:
+            originalFormat === "svg"
+                ? [originalFormat]
+                : ["avif", "webp", originalFormat],
         urlPath: "/images/gen",
         outputDir: `${output}/images/gen`,
+        duration: "1d",
         useCache: true,
         filenameFormat: function (_id, src, width, format, _options) {
             const extension = path.extname(src);
