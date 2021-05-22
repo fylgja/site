@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "debug": "DEBUG=* npx eleventy",
     "rollup:watch": "npx rollup -c --watch",
     "rollup": "NODE_ENV=production npx rollup -c",
     "clean": "rm -r _site/ || true",
