@@ -1,8 +1,11 @@
 <a href="#page-main" class="skip-link">Go to main content</a>
 <header class="sticky top-0" style="border-bottom: 1px solid rgb(0 0 0 / 10%); z-index: 6; background-color: var(--card-bg, #fff);">
     <div class="flex justify-between items-center py-2 md-py-4 container">
-        <a href="/" class="logo -style-block inline-block">
-            {% svgUse "/images/sprite.svg#logo", '{"title": "Fylgja"}' %}
+        <a href="/" class="logo">
+            <svg width="76" height="38" fill="currentColor">
+                <title>Fylgja</title>
+                <use href="/images/sprite.svg#logo" />
+            </svg>
         </a>
         {% if navigation.main %}
             <div class="flex items-center">
@@ -23,7 +26,10 @@
                     {% endfor %}
                 </nav>
                 <button id="show-offcanvas-menu" type="button" class="btn -icon md-hidden ml-4">
-                    {% svgUse "/images/sprite.svg#menu", '{"title": "Open menu"}' %}
+                    <svg width="24" height="24" fill="currentColor">
+                        <title>Open menu</title>
+                        <use href="/images/sprite.svg#menu" />
+                    </svg>
                 </button>
             </div>
         {% endif %}

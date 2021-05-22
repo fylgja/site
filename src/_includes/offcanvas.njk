@@ -1,11 +1,17 @@
 {% if navigation.main %}
     <dialog id="offcanvas-menu" class="offcanvas-end py-0 px-2">
         <header class="flex justify-between items-center py-3 px-2">
-            <a href="/" class="logo -style-block inline-block">
-                {% svgUse "/images/sprite.svg#logo", '{"title": "fylgja"}' %}
+            <a href="/" class="logo">
+                <svg width="72" height="24" fill="currentColor">
+                    <title>Fylgja</title>
+                    <use href="/images/sprite.svg#logo" />
+                </svg>
             </a>
             <button type="button" class="btn -icon close">
-                {% svgUse "/images/sprite.svg#close", '{"title": "Close menu"}' %}
+                <svg width="24" height="24" fill="currentColor">
+                    <title>Close menu</title>
+                    <use href="/images/sprite.svg#close" />
+                </svg>
             </button>
         </header>
         <div class="dialog-inner flex-auto">
