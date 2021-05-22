@@ -2,14 +2,14 @@
 layout: default
 style: "
 .page-container {
-    --container-width: 84ch;
+    --container-size: 84ch;
 }
 "
 ---
 
 {% include "header.njk" %}
 <main id="page-main" class="page-container flex-grow-1 my-6">
-    <div class="container">
+    <div class="container my-6">
         {% if title %}
             <h1>{{ title }}</h1>
         {% endif %}

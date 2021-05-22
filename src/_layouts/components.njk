@@ -4,16 +4,19 @@ preconnect: <link rel="preconnect" href="https://img.shields.io">
 ---
 
 {% include "header.njk" %}
-<main id="page-main" class="docs-page md-flex container flex-grow-1">
-    <article class="docs-layout my-6">
-        <header class="mb-5">
-            <h1 class="page-title mb-0">{{ title }}</h1>
-            {% if npm %}
-                <div class="mt-2">{% npmBadges npm %}</div>
-            {% endif %}
-        </header>
-        <div class="body">{{ content | safe }}</div>
-    </article>
+<main class="docs-page md-flex container flex-grow-1 mb-4">
+    <div class="docs-layout my-6">
+        {% include "breadcrumbs.njk" %}
+        <article id="page-main">
+            <header class="mb-5">
+                <h1 class="page-title mb-0">{{ title }}</h1>
+                {% if npm %}
+                    <div class="mt-2">{% npmBadges npm %}</div>
+                {% endif %}
+            </header>
+            <div class="body">{{ content | safe }}</div>
+        </article>
+    </div>
     <aside class="docs-sidebar hidden md-block overflow-auto overflow-contain thin-scrollbar">
         <nav class="menu my-7 text-small">
             <ul>
@@ -25,14 +28,14 @@ preconnect: <link rel="preconnect" href="https://img.shields.io">
                 {%- for items in collections.componentsGroup -%}
                     <li class="mt-4">
                         <strong class="block mb-2">{{ items.title }}</strong>
-                        {%- for item in items.data | sortByName -%}
                         <ul>
+                            {%- for item in items.data | sortByName -%}
                             <li>
                                 <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page" class="is-active"{% endif %}
                                 >{{ item.data.title }}</a>
                             </li>
+                            {%- endfor -%}
                         </ul>
-                        {%- endfor -%}
                     </li>
                 {%- endfor -%}
             </ul>

@@ -3,16 +3,26 @@ layout: default
 ---
 
 {% include "header.njk" %}
-<main id="page-main" class="docs-page md-flex container flex-grow-1">
-    <article class="docs-layout my-6">
-        <header class="mb-5">
-            <h1 class="page-title mb-0">{{ title }}</h1>
-        </header>
-        <div class="body">{{ content | safe }}</div>
-    </article>
+<main class="docs-page md-flex container flex-grow-1 mb-4">
+    <div class="docs-layout my-6">
+        {% include "breadcrumbs.njk" %}
+        <article id="page-main">
+            <header class="mb-5">
+                <h1 class="page-title mb-0">{{ title }}</h1>
+            </header>
+            <div class="body">{{ content | safe }}</div>
+        </article>
+    </div>
     <aside class="docs-sidebar hidden md-block overflow-auto overflow-contain thin-scrollbar">
         <nav class="menu my-7 text-small">
             <ul>
+                {% if hasToc and tocTitle %}
+                    <li>
+                        <strong class="block mb-2">{{ title }}</strong>
+                        {{ content | toc(wrapper="div") | safe }}
+                    </li>
+                    <li class="hr" role="separator"></li>
+                {%- endif -%}
                 <li>
                     <strong class="block mb-2">Getting started</strong>
                     <ul>
