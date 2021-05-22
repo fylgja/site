@@ -1,3 +1,7 @@
+const { socials } = require("./meta");
+const GithubUrl = `https://github.com/${socials.github}`;
+const TwitterUrl = `https://twitter.com/${socials.twitter}`;
+
 module.exports = {
     main: [
         {
@@ -11,45 +15,55 @@ module.exports = {
         {
             icon: "/src/_static/icons/socials/github.svg",
             text: "Fylgja on Github",
-            url: "https://github.com/fylgja/fylgja",
+            url: GithubUrl,
             external: true,
         },
         {
             icon: "/src/_static/icons/socials/twitter.svg",
             text: "Fylgja on Twitter",
-            url: "https://twitter.com/fylgjacode",
+            url: TwitterUrl,
             external: true,
         },
     ],
     about: [
         {
-            text: "About",
+            text: "About us",
             url: "/about/",
         },
         {
-            text: "Theming",
-            url: "/guides/theming/",
-        },
-        {
-            text: "Get started",
-            url: "/getting-started/",
+            text: "Support",
+            url: "/support/",
         },
         {
             text: "Components",
             url: "/components/",
         },
     ],
+    support: [
+        {
+            text: "Get started",
+            url: "/getting-started/",
+        },
+        {
+            text: "Guides",
+            url: "/guides/",
+        },
+        {
+            text: "Starter projects",
+            url: "/starter-projects/",
+        },
+    ],
     socials: [
         {
             icon: "/src/_static/icons/socials/github.svg",
-            text: "Fylgja on Github",
-            url: "https://github.com/fylgja/fylgja",
+            text: "Github",
+            url: GithubUrl,
             external: true,
         },
         {
             icon: "/src/_static/icons/socials/twitter.svg",
-            text: "Fylgja on Twitter",
-            url: "https://twitter.com/fylgjacode",
+            text: "Twitter",
+            url: TwitterUrl,
             external: true,
         },
     ],
@@ -67,7 +81,7 @@ module.exports = {
         {
             icon: "/src/_static/icons/socials/github.svg",
             text: "View on Github",
-            url: "https://github.com/fylgja/fylgja",
+            url: GithubUrl,
             external: true,
         },
     ],

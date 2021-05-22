@@ -16,7 +16,7 @@ module.exports = {
     phone: false,
     address: false,
     socials: {
-        twitter: "FylgjaCode",
+        twitter: "FylgjaDev",
         github: "fylgja",
     },
     componentsMedia: "./src/components/images/",
