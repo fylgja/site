@@ -2,7 +2,8 @@
     <div class="container auto-grid">
         {% if navigation.about %}
             <nav id="about-menu">
-                <ul class="list-style -none mb-0 space-y-2">
+                <strong class="block mb-4">About</strong>
+                <ul class="list-style -none space-y-2">
                     {% for item in navigation.about %}
                         <li>
                             <a href="{{ item.url }}"
@@ -14,22 +15,56 @@
                 </ul>
             </nav>
         {% endif %}
+        {% if navigation.support %}
+            <nav id="support-menu">
+                <strong class="block mb-4">Guides</strong>
+                <ul class="list-style -none space-y-2">
+                    {% for item in navigation.support %}
+                        <li>
+                            <a href="{{ item.url }}"
+                                {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}
+                                {% if page.url==item.url %}class="is-active"{% endif %}
+                                {% if page.url==item.url %}aria-current="page"{% endif %}>{{ item.text }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        {% endif %}
+        <nav id="features-menu">
+            <strong class="block mb-4">Features</strong>
+            <ul class="list-style -none space-y-2">
+                {% for item in collections.features | sortByOrder %}
+                    <li>
+                        <a href="{{ item.url }}"
+                            {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}
+                            {% if page.url==item.url %}class="is-active"{% endif %}
+                            {% if page.url==item.url %}aria-current="page"{% endif %}>{{ item.data.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+        <nav id="follow-us-menu">
+            <strong class="block mb-4">Find us also on</strong>
+            <ul class="list-style -none space-y-2">
+                {% for item in navigation.socials %}
+                    <li>
+                        <a href="{{ item.url }}"
+                            class="flex"
+                            {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}>
+                            {{ item.icon | svgContents("mr-2") | safe }}
+                            <span>{{ item.text }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
     </div>
     <div class="sub-footer">
         <div class="flex container items-center justify-between">
-            <small class="copyright-text">
-                © {% year %} {{ meta.siteName }}. All Rights Reserved.
+            <small class="copyright">
+                © {% year %} {{ meta.siteName }}. All Rights Reserved.<br>
             </small>
             <nav class="footer-nav menu -row flex-wrap">
-                {% for item in navigation.socials %}
-                    <a href="{{ item.url }}"
-                        class="btn -icon mr-1 md-mr-6"
-                        {% if page.url==item.url %}aria-current="page"{% endif %}
-                        {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}
-                        title="{{ item.text }}">
-                        {{ item.icon | svgContents("block") | safe }}
-                    </a>
-                {% endfor %}
                 <button data-toggle-color-scheme
                     title="Toggle color scheme"
                     class="btn -icon"
