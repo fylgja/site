@@ -1,6 +1,14 @@
 import newDialog from "./dialog";
+import { rovingIndex } from "roving-ux";
 
 newDialog("#offcanvas-menu", "#show-offcanvas-menu");
+
+document.querySelectorAll(".scroll-slider").forEach((scroller) =>
+    rovingIndex({
+        element: scroller,
+        target: "a",
+    })
+);
 
 const root = document.documentElement;
 let theme = "";
