@@ -14,10 +14,8 @@ const minify = require("./src/_utils/minify");
 
 const imageShortcode = require("./src/_utils/shortcodes/image");
 const npmBadges = require("./src/_utils/shortcodes/npm-badges");
-const svgUse = require("./src/_utils/shortcodes/svgUse");
 const eleventyFilters = require("./src/_utils/filters");
 const eleventyCollections = require("./src/_utils/collections");
-const extLink = require("./src/_utils/shortcodes/extLink");
 
 module.exports = function (config) {
     config.setLibrary("md", markdownConfig);
@@ -51,8 +49,6 @@ module.exports = function (config) {
     config.addShortcode("year", () => `${new Date().getFullYear()}`);
     config.addShortcode("npmBadges", npmBadges);
     config.addNunjucksAsyncShortcode("image", imageShortcode);
-    config.addShortcode("svgUse", svgUse);
-    config.addShortcode("extLink", extLink);
 
     // Filters
     eleventyFilters(config);
