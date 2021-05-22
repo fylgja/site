@@ -9,7 +9,7 @@ featured: true
 
 A sharable stylelint config object that enforces Fylgja's CSS rules.
 
-Extends {% extLink "stylelint-config-recommended", "https://github.com/stylelint/stylelint-config-standard" %}.
+Extends [stylelint-config-recommended](https://github.com/stylelint/stylelint-config-standard).
 
 ## Installation
 
@@ -27,7 +27,7 @@ If you've installed @fylgja/stylelint-config, just set your stylelint config to:
 }
 ```
 
-_SCSS support found under the [Extensions](#Extensions)_
+_SCSS support found under the [Extensions](#extensions)_
 
 ## Extending
 
@@ -67,7 +67,7 @@ Add to the end of the extend path `scss`
 }
 ```
 
-[For more infomation checkout the SCSS DOC.](./scss/README.md)
+[For more infomation checkout the SCSS DOC.](/components/stylelint-config/scss/)
 
 ### LESS
 
@@ -80,7 +80,7 @@ that conflict with the LESS naming.
 }
 ```
 
-[For more infomation checkout the LESS DOC.](./less/README.md)
+[For more infomation checkout the LESS DOC.](/components/stylelint-config/less/)
 
 ### Order
 
@@ -91,15 +91,15 @@ Well we don't like strict code order.
 
 We do follow a specific style of ordering our code.
 
-That is described in our [CSS order DOC](./order/README.md).
+That is described in our [CSS order DOC](/components/stylelint-config/order/).
 
 ## Rules
 
 For information on what each rule does.
-{% extLink "Checkout the original DOC", "https://stylelint.io/user-guide/rules/" %}
-or the rules folder on {% extLink "Stylelint Github Page", "https://github.com/stylelint/stylelint/tree/master/lib/rules" %}.
+[Checkout the original DOC](https://stylelint.io/user-guide/rules/)
+or the rules folder on [Stylelint Github Page](https://github.com/stylelint/stylelint/tree/master/lib/rules).
 
-Since we extend on the {% extLink "stylelint-config-recommended", "https://github.com/stylelint/stylelint-config-standard" %}. You should also checkout the rules set there.
+Since we extend on the [stylelint-config-recommended](https://github.com/stylelint/stylelint-config-standard). You should also checkout the rules set there.
 
 Down here are only the rules we have set.
 
