@@ -15,7 +15,7 @@ currently on the website.
 npm install @fylgja/breadcrumbs
 ```
 
-And include the component in to your code via;
+Now include the component in to your code via;
 
 ```scss
 @use "@fylgja/breadcrumbs";
@@ -32,7 +32,7 @@ As this tells the user the structure of the list of links.
 ```html
 <nav aria-label="breadcrumb">
     <span>You are here: </span>
-    <ol class="breadcrumb">
+    <ol class="breadcrumbs">
         <li><a href="/">Home</a></li>
         <li><a href="/path">Path</a></li>
         <li><a href="/path/cool-page" aria-current="page">Cool Page</a></li>

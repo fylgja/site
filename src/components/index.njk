@@ -1,6 +1,6 @@
 ---
 title: "Components"
-description: "All our components and plugins"
+description: "All Fylgja components and plugins in one swipe away"
 permalink: "/{{ page.fileSlug }}/"
 layout: "components-overview"
 eleventyExcludeFromCollections: true
@@ -13,7 +13,7 @@ style: "
     --aspect-ratio: 4/3;
     --aspect-img: contain;
     --card-elevation: var(--elevation-z1);
-    --scroll-width: 90%;
+    --scroll-size: 90%;
     max-width: 240px;
     transition: box-shadow 0.2s ease-out;
 }
@@ -28,12 +28,14 @@ style: "
 
 @media (min-width: 1280px) {
     .scroll-slider {
-        --scroll-padding-x: clamp(1.25rem, 5vw, 8rem);
+        --gap-inline: clamp(1.25rem, 5vw, 8rem);
+        --gap-block: 2rem;
     }
 
     .scroll-title {
-        --container-padding: 1rem clamp(1.25rem, 5vw, 8rem) 0;
-        --container-width: 100%;
+        --container-padding-y: 1rem;
+        --container-padding-x: clamp(1.25rem, 5vw, 8rem) 0;
+        --container-size: 100%;
     }
 }
 "
@@ -47,7 +49,7 @@ style: "
         </div>
         <div class="scroll-slider hide-scrollbar">
             {%- for item in collections.componentsFeatured -%}
-            <a class="card" href="{{ item.url }}">
+            <a class="card" href="{{ item.data.altUrl if item.data.altUrl else item.url }}">
                 <div class="card-media aspect-ratio">
                     {% if item.data.preview %}
                         {% set preview %}{{ meta.componentsMedia }}{{ item.data.preview }}{% endset %}
@@ -71,14 +73,14 @@ style: "
 
 {%- for items in collections.componentsGroup -%}
     {% if items.data | length %}
-        <section id="components-{{ items.title | lowercase }}" class="my-2 md-my-5">
+        <section id="{{ items.title | lowercase }}" class="my-2 md-my-5">
             <div class="scroll-title pt-2 container">
                 <h2 class="h3 my-0">{{ items.title }}{% if requiresJs %} <small>(Requires JavaScript)</small>{% endif %}</h2>
                 <p class="my-0">{{ items.description }}</p>
             </div>
             <div class="scroll-slider hide-scrollbar">
                 {%- for item in items.data | sortByOrder -%}
-                <a class="card" href="{{ item.url }}">
+                <a class="card" href="{{ item.data.altUrl if item.data.altUrl else item.url }}">
                     <div class="card-media aspect-ratio">
                         {% if item.data.preview %}
                             {% set preview %}{{ meta.componentsMedia }}{{ item.data.preview }}{% endset %}
@@ -87,11 +89,10 @@ style: "
                     </div>
                     <div class="card-content">
                         <h3 class="h5 my-0">{{ item.data.title }}</h3>
-                        {%- set strLimit %}85{%- endset -%}
                         {% if item.data.description %}
-                            <p class="text-small">{{ item.data.description | limit(strLimit) }}</p>
+                            <p class="text-small">{{ item.data.description }}</p>
                         {% else %}
-                            <p class="text-small">{{ item.templateContent | excerpt(strLimit) }}</p>
+                            <p class="text-small">{{ item.templateContent | excerpt(120) }}</p>
                         {% endif %}
                     </div>
                 </a>

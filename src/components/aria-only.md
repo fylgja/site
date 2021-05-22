@@ -16,7 +16,7 @@ But keeps it accessible to screen-readers and other aria tools.
 npm install @fylgja/aria-only
 ```
 
-And include the component in to your code via;
+Now include the component in to your code via;
 
 ```scss
 @use "@fylgja/aria-only";

@@ -15,7 +15,7 @@ Build and use your own CSS util classes with Sass via the Fylgja utilpack.
 npm install @fylgja/utilpack
 ```
 
-And include the component in to your code via;
+Now include the component in to your code via;
 
 ```scss
 @use "@fylgja/utilpack";
@@ -194,7 +194,7 @@ $enable-utilpack-typography-responsive: true;
 
 If you want to edit any values in the defaults, not mentioned above.
 You can also map merge your own values in the default utils map.
-{% extLink "See the Sass docs for how to use map merge", "https://sass-lang.com/documentation/modules/map" %}.
+[See the Sass docs for how to use map merge](https://sass-lang.com/documentation/modules/map).
 
 ### Breakpoints
 
@@ -228,7 +228,7 @@ But if prefer the same separator as seen in TailwindCSS.
 You can by changing the `$utilpack-separator: "\:"`. 
 
 _The Tailwind separator can conflict with specific tools and linters._
-_Since it uses specific characters that are normally marked as unsafe._
+_Since it uses specific characters that are normally marked as unsafe or need escaping._
 
 ## FAQ
 

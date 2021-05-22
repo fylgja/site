@@ -26,7 +26,7 @@ Following the **content first** approach!
 npm install @fylgja/auto-grid
 ```
 
-And include the component in to your code via;
+Now include the component in to your code via;
 
 ```scss
 @use "@fylgja/auto-grid";

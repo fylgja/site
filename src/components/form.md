@@ -20,7 +20,7 @@ Allowing you to focus on the form it self.
 npm install @fylgja/form
 ```
 
-And include the component in to your code via;
+Now include the component in to your code via;
 
 ```scss
 @use "@fylgja/form";

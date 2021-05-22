@@ -14,7 +14,7 @@ Make any component fully clickable via a nested link.
 npm install @fylgja/stretched-link
 ```
 
-And include the component in to your code via;
+Now include the component in to your code via;
 
 ```scss
 @use "@fylgja/stretched-link";

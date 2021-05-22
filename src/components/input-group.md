@@ -17,7 +17,7 @@ Like a search bar with button in the same form field.
 npm install @fylgja/input-group
 ```
 
-And include the component in to your code via;
+Now include the component in to your code via;
 
 ```scss
 @use "@fylgja/input-group";

@@ -20,7 +20,7 @@ By focusing only on elevation indexes that are commonly used.
 npm install @fylgja/elevation
 ```
 
-And include the component in to your code via;
+Now include the component in to your code via;
 
 ```scss
 @use "@fylgja/elevation";
@@ -105,7 +105,7 @@ $elevation: (
 ## Dept map
 
 This is based on the material design version.
-{% extLink "See there docs here at material.io", "https://material.io/design/environment/elevation.html" %}
+[See there docs here at material.io](https://material.io/design/environment/elevation.html)
 
 | Material | Fylgja | Description, For example                    |
 | :------: | :----: | ------------------------------------------- |
@@ -118,4 +118,4 @@ This is based on the material design version.
 |   dp12   |   z6   | Offcanvas, Modal                            |
 
 _There are other frameworks that use this same pattern._
-_E.g. {% extLink "materialize", "https://materializecss.com/shadow.html" %}_
+_E.g. [materialize](https://materializecss.com/shadow.html)_

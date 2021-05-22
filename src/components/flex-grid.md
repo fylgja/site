@@ -17,7 +17,7 @@ Making it even smaller than other flex grids.
 npm install @fylgja/flex-grid
 ```
 
-And include the component in to your code via;
+Now include the component in to your code via;
 
 ```scss 
 @import "@fylgja/flex-grid"; // DartSass or LibSass >= 3.6

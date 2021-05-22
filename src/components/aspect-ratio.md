@@ -16,7 +16,7 @@ but anything you want to a certain responsive aspect ratio.
 npm install @fylgja/aspect-ratio
 ```
 
-And include the component in to your code via;
+Now include the component in to your code via;
 
 ```scss
 @use "@fylgja/aspect-ratio";
@@ -67,4 +67,4 @@ cssnano: {
 }
 ```
 
-{% extLink "Find more about the postcss/postcss-calc issue on the github issue#91", "https://github.com/postcss/postcss-calc/issues/91" %}
+[Find more about the postcss/postcss-calc issue on the github issue#91](https://github.com/postcss/postcss-calc/issues/91)

@@ -16,7 +16,7 @@ This includes more styling to the `<code>`, `<pre>` and `<kbd>` element.
 npm install @fylgja/code
 ```
 
-And include the component in to your code via;
+Now include the component in to your code via;
 
 ```scss
 @use "@fylgja/code";
@@ -31,9 +31,9 @@ So no extra steps are needed.
 
 But for a more complete code syntax highlighting in `<pre>` element.
 Use a frameworks like
-{% extLink "Prims", "https://prismjs.com/" %},
-{% extLink "highlight", "https://highlightjs.org/" %}
-or {% extLink "shiki", "https://shiki.matsu.io/" %} instead.
+[Prims](https://prismjs.com/),
+[highlight](https://highlightjs.org/)
+or [shiki](https://shiki.matsu.io/) instead.
 Or combine it with `@fylgja/code`.
 
 ## Config

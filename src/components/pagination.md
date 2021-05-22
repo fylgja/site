@@ -16,7 +16,7 @@ Like button only next previous nav or dots nav.
 npm install @fylgja/pagination
 ```
 
-And include the component in to your code via;
+Now include the component in to your code via;
 
 ```scss
 @use "@fylgja/pagination";

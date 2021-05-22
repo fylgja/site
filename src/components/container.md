@@ -15,7 +15,7 @@ To make all child elements fit better in the page.
 npm install @fylgja/container
 ```
 
-And include the component in to your code via;
+Now include the component in to your code via;
 
 ```scss
 @use "@fylgja/container";
@@ -39,7 +39,7 @@ Allowing for smaller of bigger containers when needed.
 A more content max width based solution can be made via;
 
 ```html
-<div class="container" style="--container-width: 65ch;">..</div>
+<div class="container" style="--container-size: 65ch;">..</div>
 ```
 
 Making your text better readable for your users when needed.
@@ -53,6 +53,7 @@ Want direct control on the base styles.
 Down here are the following SCSS variables can you modify.
 
 ```scss
-$container-width: 1280px !default;
-$container-padding: 0 1.25rem !default;
+$container-size: 1280px !default;
+$container-padding-y: 0 !default;
+$container-padding-x: 1.25rem !default;
 ```

@@ -17,7 +17,7 @@ and the class based option.
 npm install @fylgja/progress
 ```
 
-And include the component in to your code via;
+Now include the component in to your code via;
 
 ```scss
 @use "@fylgja/progress";

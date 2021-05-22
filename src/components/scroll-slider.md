@@ -19,7 +19,7 @@ Like a navigation and a active state.
 npm install @fylgja/scroll-slider
 ```
 
-And include the component in to your code via;
+Now include the component in to your code via;
 
 ```scss
 @use "@fylgja/scroll-slider";
@@ -40,10 +40,21 @@ Any direct children of the slider will become scroll items.
 </div>
 ```
 
-The scroll items will by default will the space they have in size.
+The scroll items will by default have size from the content.
 
 If you want your slides to a specific size.
-Add the `@fylgja/utilpack` width classes.
+You can use the CSS variables provide by this CSS component.
+
+A full width slider can be made by setting the scroll-size to 100%
+and setting the inline gap to 0.
+If you also want to reserve the scroll gap, set the block gap to whatever your want.
+
+```html
+<div class="scroll-slider" style="--scroll-size: 100%; --gap-inline: 0;">
+    <div>..</div>
+    <img src="">
+</div>
+```
 
 ## Config
 
@@ -65,7 +76,7 @@ $scroll-stop-fine: normal !default;
 
 ## Tips
 
-Down here some usefull tips to enhance your slider.
+Down here some useful tips to enhance your slider.
 
 ### Adding a navigation
 
@@ -77,7 +88,7 @@ If don't like the hash to appear in your url.
 You can add a little javascript to enhance this behavior.
 And remove the hash from your url.
 
-<details class="faq-panel"><summary>Example of the Html and Javascript pagination</summary>
+<details class="faq-panel"><summary>Example of the HTML and Javascript pagination</summary>
 
 ```html
 <div class="scroll-slider">
@@ -101,15 +112,14 @@ And remove the hash from your url.
 </script>
 ```
 
-> An event listener would have been better. But this is just sample 😉
+_An event listener would have been better. But this is just sample 😉_
 
 </details>
 
-### Hiding the scrollbar
+### Hiding or Changing the scrollbar
 
-By default we don't hide the scrollbar.
-This should by default left to the choice of the Dev and the OS.
+By default we don't hide or change the scrollbar.
 
-But if you want to hide the scrollbar.
-You can add the `@fylgja/scrollbar` component.
-And use the `.hide-scrollbar` class.
+If you slider requires a more custom style you do so via the `@fylgja/scrollbar` component.
+By adding the thin or hide class.
+

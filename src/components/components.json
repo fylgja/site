@@ -2,6 +2,10 @@
   "tags": "components",
   "layout": "components",
   "permalink": "/components/{{ page.fileSlug }}/",
+  "altUrl": false,
+  "breadcrumbs": {
+    "Components": "/components/"
+  },
   "requiresJs": false,
   "featured": false,
   "order": 10

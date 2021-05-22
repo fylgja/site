@@ -8,6 +8,7 @@ requiresJs: true
 npm: "@fylgja/dialog"
 tags: "nativeElements"
 preview: "dialog.png"
+order: 1
 ---
 
 The dialog is 3 components in 1.
@@ -26,7 +27,7 @@ by changing a few CSS variables.
 npm install @fylgja/dialog
 ```
 
-And include the component in to your code via;
+Now include the component in to your code via;
 
 ```scss
 @use "@fylgja/dialog";
@@ -51,7 +52,7 @@ that can open the dialog.
 <!-- Offcanvas -->
 <button onclick="document.querySelector('#dialog-offcanvas').showModal()">Open</button>
 <dialog id="dialog-offcanvas" class="offcanvas">..</dialog>
-<!-- Or use 'offcanvas.-from-end' -->
+<!-- Or use 'offcanvas-end' -->
 ```
 
 Use the `.dialog-inner`.
@@ -72,9 +73,9 @@ That will always show, when you are scrolling.
 ### Support
 
 You will need the polyfill until the html dialog is supported fully
--> {% extLink "github.com/GoogleChrome/dialog-polyfill", "https://github.com/GoogleChrome/dialog-polyfill" %}.
+-> [github.com/GoogleChrome/dialog-polyfill](https://github.com/GoogleChrome/dialog-polyfill).
 
-[![Data on support for the dialog feature across the major browsers from caniuse.com](https://caniuse.bitsofco.de/image/dialog.jpg)](https://caniuse.com/dialog)
+[![Data on support for the dialog feature across the major browsers from caniuse.com](https://caniuse.bitsofco.de/image/dialog.webp)](https://caniuse.com/dialog)
 
 ## Config
 
