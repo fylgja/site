@@ -1,0 +1,11 @@
+{% if breadcrumbs and permalink !== "/{{ page.fileSlug }}/" %}
+<nav aria-label="breadcrumb">
+    <span class="aria-only">You are here: </span>
+    <ol class="breadcrumbs">
+        {%- for title, url in breadcrumbs -%}
+            <li><a href="{{ url }}">{{ title }}</a></li>
+        {%- endfor -%}
+        <li><a href="{{ page.url }}" aria-current="page">{{ title }}</a></li>
+    </ol>
+</nav>
+{% endif %}
