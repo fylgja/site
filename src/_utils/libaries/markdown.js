@@ -1,6 +1,8 @@
 const slugify = require("slugify");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
+const markdownItExternalAnchor = require("markdown-it-external-anchor");
+const { url } = require("../../_data/meta");
 
 const slugifyStr = (str) => {
     if (str instanceof String) {
@@ -28,7 +30,11 @@ const markdownItAnchorOptions = {
     slugify: slugifyStr,
 };
 
-module.exports = markdownConfig = markdownIt(markdownItOptions).use(
-    markdownItAnchor,
-    markdownItAnchorOptions
-);
+const markdownConfig = markdownIt(markdownItOptions)
+    .use(markdownItExternalAnchor, {
+        domain: url,
+        class: "external",
+    })
+    .use(markdownItAnchor, markdownItAnchorOptions);
+
+module.exports = markdownConfig;
