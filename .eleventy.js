@@ -75,7 +75,7 @@ module.exports = function (config) {
             layouts: `_layouts`,
             data: "_data",
         },
-        templateFormats: ["html", "md", "njk"],
+        templateFormats: ["md", "njk", "11ty.js"],
         markdownTemplateEngine: "njk",
         htmlTemplateEngine: "njk",
         passthroughFileCopy: true,
