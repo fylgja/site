@@ -3,12 +3,14 @@ title: "Guides"
 description: ""
 permalink: "/{{ page.fileSlug }}/"
 tags: ["docs", "started"]
+hasToc: false
 style: "
 #guides {
     --aspect-ratio: 1/1;
     --card-radius: 8px;
     --card-elevation: none;
     --card-border: 1px solid rgb(0 0 0 / 12%);
+    --avatar-size: 75px;
     --avatar-radius: 8px;
 }
 "
@@ -35,7 +37,7 @@ style: "
         </div>
     </a>
     {%- endfor -%}
-    <a href="http://" target="_blank" rel="noopener noreferrer" class="card card-content items-center flex-row">
+    <a href="https://github.com/fylgja/fylgja/issues" target="_blank" rel="noopener noreferrer" class="card card-content items-center flex-row">
         <div class="avatar p-3 mr-4" style="--avatar-bg: #111; --avatar-color: #fff;">
             {{ "/src/_static/icons/socials/github.svg" | svgContents("w-full h-full") | safe }}
         </div>
