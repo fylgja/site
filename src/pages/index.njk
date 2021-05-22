@@ -1,0 +1,390 @@
+---
+layout: home
+permalink: index.html
+style: "
+.home-grid {
+    --cols-size: 400px;
+}
+
+#hero {
+    --bg: #f7fafc;
+    --container-padding-y: 4rem;
+    --container-padding-x: 1.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme=light]) #hero {
+        --bg: var(--color-bg);
+        --img:
+            linear-gradient(190deg, rgba(12,57,109,1) 0%, rgba(0,0,0,0) 40%),
+            linear-gradient(170deg, rgba(115,22,117,1) 0%, rgba(0,0,0,0) 40%);
+    }
+
+    :root:not([data-theme=light]) svg#logo {
+        fill: currentColor;
+    }
+}
+
+:root[data-theme=dark] #hero {
+    --bg: var(--color-bg);
+    --img:
+        linear-gradient(190deg, rgba(12,57,109,1) 0%, rgba(0,0,0,0) 40%),
+        linear-gradient(170deg, rgba(115,22,117,1) 0%, rgba(0,0,0,0) 40%);
+}
+
+:root[data-theme=dark] svg#logo {
+    fill: currentColor
+}
+
+#hero .btn {
+    font-size: 1.25em;
+}
+
+.hero-nav {
+    --container-size: 680px;
+    --card-color: var(--color-text-alt);
+    margin-top: -2.8rem;
+}
+
+.hero-nav svg {
+    width: 2em;
+    height: 2em;
+}
+
+#intro {
+    --container-padding-y: 3em;
+}
+
+.code-sample pre {
+    margin: 0;
+}
+
+.code-box {
+    box-shadow: var(--elevation-z1);
+    border-radius: 0.25rem;
+    background-color: var(--code-bg, #08274a);
+    color: var(--color-on-theme, #fff);
+    overflow: hidden;
+}
+
+.code-box pre {
+    border: 0;
+    border-radius: 0;
+}
+
+.code-box-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.75em;
+    border-bottom: 1px solid rgb(255 255 255 / 10%);
+}
+
+.code-box-header .osx-close,
+.code-box-header .osx-close::before,
+.code-box-header .osx-close::after {
+    width: 0.75em;
+    height: 0.75em;
+    border-radius: 50%;
+}
+
+.code-box-header .osx-close::before,
+.code-box-header .osx-close::after {
+    content: '';
+    position: absolute;
+}
+
+.code-box-header .osx-close {
+    position: relative;
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    margin: 0 1.2em;
+    background-color: orange;
+}
+
+.code-box-header .osx-close::before {
+    right: 100%;
+    margin-right: 0.5em;
+    background-color: red;
+}
+
+.code-box-header .osx-close::after {
+    left: 100%;
+    margin-left: 0.5em;
+    background-color: green;
+}
+
+.usp-section {
+    --container-size: 640px;
+}
+
+#usp-points {
+    --avatar-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    --avatar-bg: #f7df1e;
+    --avatar-color: #000;
+}
+
+#usp-points .avatar.-icon-palette {
+    --avatar-radius: 30% 70% 30% 70% / 56% 22% 78% 44%;
+    --avatar-bg: #f43059;
+    --avatar-color: #fff;
+}
+
+#usp-points-a11y {
+    --avatar-radius: 71% 29% 64% 36% / 51% 60% 40% 49%;
+    --avatar-bg: #609926;
+    --avatar-color: #fff;
+}
+
+#usp-points-a11y .avatar.-icon-visibility {
+    --avatar-radius: 64% 36% 64% 36% / 27% 60% 40% 73%;
+    --avatar-bg: #1BB6F6;
+    --avatar-color: #fff;
+}
+
+#contact {
+    --container-size: 640px;
+    --height: 300px;
+}
+
+#collection-featured {
+    --container-size: 640px;
+}
+
+#collection-featured .card {
+    --aspect-ratio: 4/3;
+    --aspect-img: contain;
+    --card-elevation: var(--elevation-z1);
+    transition: box-shadow 0.2s ease-out;
+}
+
+#collection-featured .card:hover {
+    --card-elevation: var(--elevation-z4);
+}
+
+@media (min-width: 640px) {
+    #intro {
+        --container-padding-y: 5em;
+        font-size: 1.125em;
+    }
+}
+
+@media (min-width: 1024px) {
+    .usp-section,
+    #contact,
+    #collection-featured {
+        --container-size: 1280px;
+    }
+
+    #collection-featured {
+        --cols: repeat(4, 1fr);
+    }
+
+    #usp-points,
+    #usp-points-a11y {
+        --cols-size: 450px;
+    }
+}
+"
+---
+
+<header id="hero" class="section pb-8">
+    <div class="container">
+        <div class="text-center">
+            <h1 class="inline-block h4 mt-0 mb-2 logo">
+                <svg id="logo" width="300" height="130" fill="url(#logo-gradient)">
+                    <title>Fylgja</title>
+                    <defs>
+                        <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="var(--color-alt)"></stop>
+                        <stop offset="1000%" stop-color="var(--color-theme)"></stop>
+                        </linearGradient>
+                    </defs>
+                    <use href="/images/sprite.svg#logo" />
+                </svg>
+                <span class="block mt-1">The modular highly customzable CSS framework.</span>
+            </h1>
+            <div class="h5">
+                <a href="/getting-started/" class="btn -theme px-4">Get started</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+{% if navigation.intro %}
+<nav class="hero-nav container pb-8">
+    <div class="card divide-y sm-divide-y-none sm-divide-x sm-flex-row">
+        {% for item in navigation.intro %}
+        <a href="{{ item.url }}"
+            {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}
+            class="card-content sm-w-33 text-reset text-center">
+            {% if item.icon %}
+                {{ item.icon | svgContents | safe }}
+            {% endif %}
+            <div class="mt-1">{{ item.text }}</div>
+        </a>
+        {% endfor %}
+    </div>
+</nav>
+{% endif %}
+
+<section id="intro" class="container py-4 md-py-8 text-center">
+    <h2 class="h1">The experiences you get from using Fylgja</h2>
+    <p class="mb-0">
+        Fylgja is a very flexable CSS framework,<br>
+        that offers the best features from other CSS frameworks, bundled into one framework.<br>
+        Use and extend it with your own CSS or extend your current framework with Fylgja.
+    </p>
+</section>
+
+<section id="usp-modularity" class="usp-section container py-6 md-py-8">
+    <div class="lg-flex">
+        <div class="lg-w-50 mb-4 md-mb-0 md-mr-8">
+            <h2>Modularity</h2>
+            <p>Fylgja is build with modularity in mind.</p>
+            <p>Import only the parts you need.<br>Keep your bundle size and CSS small without using any extra tools.</p>
+        </div>
+        <div class="lg-w-50 xs-flex xs-space-x-4 code-sample">
+            <div class="code-box mb-4 xs-mb-0 xs-w-50">
+                <div class="code-box-header">
+                    <span class="osx-close"></span>
+                    <span class="lang">SCSS</span>
+                </div>
+                {% include "code-sample/scss.njk" %}
+            </div>
+            <div class="code-box xs-w-50">
+                <div class="code-box-header">
+                    <span class="osx-close"></span>
+                    <span class="lang">PostCSS</span>
+                </div>
+                {% include "code-sample/postcss.njk" %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="usp-points" class="usp-section container py-6 md-py-8 auto-grid">
+    <section class="flex">
+        <div class="avatar -icon-css mr-6">
+            {{ "/src/_static/icons/css.svg" | svgContents | safe }}
+        </div>
+        <div>
+            <h2>No JavaScript required</h2>
+            <p>Fylgja is CSS only, so you can integrate it in any JS environment without having to worry it conflict with something.</p>
+        </div>
+    </section>
+    <section class="flex">
+        <div class="avatar -icon-palette mr-6">
+            {{ "/src/_static/icons/palette.svg" | svgContents | safe }}
+        </div>
+        <div>
+            <h2>Ease to edit and to add your own style</h2>
+            <p>Fylgja is a basis where you can build your own style uppon.</p>
+            <p>All of this is thanks to SCSS and/or CSS Variables and CSS Utilities</p>
+        </div>
+    </section>
+</div>
+
+
+<section id="usp-whats-in-the-📦" class="usp-section container py-6 md-py-8">
+    <h2 class="my-6  lg-text-center">Combine the power of 3 in to 1</h2>
+    <div class="lg-flex text-center">
+        <div class="lg-w-33 py-4 lg-px-8">
+            <h3>CSS Utilities</h3>
+        </div>
+        <div class="lg-w-33 py-4 lg-px-8">
+            <h3>CSS Components</h3>
+        </div>
+        <div class="lg-w-33 py-4 lg-px-8">
+            <h3>Native styles</h3>
+        </div>
+    </div>
+    <p class="h3 my-6 lg-text-center">Into one Framework</p>
+</section>
+
+<div id="usp-points-a11y" class="usp-section container py-6 md-py-8 auto-grid">
+    <section class="flex">
+        <div class="avatar -icon-rtl mr-6">
+            {{ "/src/_static/icons/format_textdirection_rtl.svg" | svgContents | safe }}
+        </div>
+        <div>
+            <h2>RTL out of the box</h2>
+            <p>Fylgja is made directly with writing direction in mind.</p>
+            <p>So it works with Languages that use a diffrent direction, than LTR.</p>
+        </div>
+    </section>
+    <section class="flex">
+        <div class="avatar -icon-visibility mr-6">
+            {{ "/src/_static/icons/visibility.svg" | svgContents | safe }}
+        </div>
+        <div>
+            <h2>Accessibility in mind</h2>
+            <p>
+                Each Fylgja component thaks accessibility in mind.<br>
+                And some encourage the right HTML for it even.
+            </p>
+        </div>
+    </section>
+</div>
+
+{% if support %}
+<section id="contact" class="flex flex-col justify-center">
+    <div class="container">
+        <div class="md-text-center md-mb-7">
+            <h2>Get involved on</h2>
+        </div>
+        <ul class="max-w-content mx-auto p-0 md-flex justify-center md-space-x-6">
+            {% for item in support %}
+            <li class="inline-block">
+                <a href="{{ item.url }}"
+                    {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}
+                    class="text-reset no-underline flex items-start space-x-4">
+                    {% if item.icon %}
+                        <div class="avatar p-2"
+                            style="--avatar-bg: {{ item.iconStyle.bg }}; --avatar-color: {{ item.iconStyle.color }};">
+                            {{ item.icon | svgContents | safe }}
+                        </div>
+                    {% endif %}
+                    <div class="flex-auto">
+                        <h3 class="h5 mt-2 mb-0">{{ item.title }}</h3>
+                        <p>{{ item.text | safe }}</p>
+                    </div>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+{% endif %}
+
+{% if collections.componentsFeatured %}
+<section id="collection-featured" class="my-4 md-my-8">
+    <div class="container">
+        <div class="md-text-center md-mb-7">
+            <h2>Featured components</h2>
+        </div>
+        <div class="auto-grid">
+            {%- for item in collections.componentsFeatured | sortByOrder -%}
+            <a class="card" href="{{ item.url }}">
+                <div class="card-media aspect-ratio">
+                    {% if item.data.preview %}
+                        {% set preview %}{{ meta.componentsMedia }}{{ item.data.preview }}{% endset %}
+                        {% image preview %}
+                    {% endif %}
+                </div>
+                <div class="card-content">
+                    <h3 class="h5 my-0">{{ item.data.title }}</h3>
+                    {% if item.data.description %}
+                        <p class="text-small">{{ item.data.description | limit(strLimit) }}</p>
+                    {% else %}
+                        <p class="text-small">{{ item.templateContent | excerpt(strLimit) }}</p>
+                    {% endif %}
+                </div>
+            </a>
+            {%- endfor -%}
+        </div>
+    </div>
+</section>
+{% endif %}
