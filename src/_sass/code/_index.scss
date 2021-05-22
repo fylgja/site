@@ -1,0 +1,13 @@
+/**
+ * Based on prism.js tomorrow night eighties
+ * Which is based on https://github.com/chriskempson/tomorrow-theme
+ */
+
+@use "sass:color";
+@use "@fylgja/theme" as *;
+@use "@fylgja/fylgja/code" with (
+    $pre-bg: #{color.change($color-theme, $lightness: 16%)},
+    $pre-color: #{$color-on-theme},
+);
+@use "syntax";
+@use "layout";

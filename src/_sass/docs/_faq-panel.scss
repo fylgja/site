@@ -1,9 +1,7 @@
-@use "@fylgja/fylgja/details";
-
 .faq-panel {
     padding: 0.875em 1.25em;
-    border-radius: 4px;
-    border: 1px solid var(--details-stroke, #ddd);
+    border-radius: 8px;
+    border: 1px solid var(--details-stroke, #eee);
     background-color: var(--details-bg);
     color: var(--details-color);
     transition: border-color 0.2s ease-out, background-color 0.2s ease-out,
@@ -28,9 +26,9 @@
             min-width: var(--details-marker-size, 1.5em);
             min-height: var(--details-marker-size, 1.5em);
             margin-left: auto;
-            border: 1px solid currentColor;
-            background-color: var(--color-theme);
-            color: var(--color-on-theme);
+            background-color: var(--color-theme-fade);
+            color: currentColor;
+            font-variant-numeric: tabular-nums;
         }
 
         + * {
@@ -41,22 +39,5 @@
     &[open] {
         --details-marker: "-";
         --details-stroke: var(--color-theme);
-        --details-bg: var(--color-theme);
-        --details-color: var(--color-on-theme);
-    }
-}
-
-.caret {
-    display: inline-block;
-    width: 0;
-    height: 0;
-    vertical-align: middle;
-    border-style: solid;
-    border-color: currentColor transparent;
-    border-width: var(--size, 0.25em) var(--size, 0.25em) 0;
-
-    .is-open > &,
-    [open] > summary & {
-        border-width: 0 var(--size, 0.25em) var(--size, 0.25em);
     }
 }

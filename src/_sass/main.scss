@@ -1,35 +1,46 @@
-@use "theme";
+@use "./theme";
 
-@use "skip-link";
+@use "./skip-link";
 @use "@fylgja/fylgja/base" with (
     $family-main: ("Rubik", system-ui, sans-serif),
     $font-weight: 300,
 );
-@use "code";
-@use "details";
-@use "@fylgja/fylgja/button";
-@use "@fylgja/fylgja/badge";
 @use "@fylgja/fylgja/list";
 @use "@fylgja/fylgja/table";
+@use "@fylgja/fylgja/details";
+
 @use "@fylgja/fylgja/form";
 @use "@fylgja/fylgja/control";
+@use "@fylgja/fylgja/button";
 @use "@fylgja/fylgja/avatar";
-@use "@fylgja/fylgja/elevation";
-@use "@fylgja/fylgja/container";
-@use "github-hashlink";
 @use "@fylgja/fylgja/card";
+
+@use "@fylgja/fylgja/container";
 @use "@fylgja/fylgja/auto-grid";
-@use "@fylgja/fylgja/menu";
-@use "@fylgja/fylgja/aspect-ratio";
 @use "@fylgja/fylgja/section";
 @use "@fylgja/fylgja/scroll-slider";
+
+@use "@fylgja/fylgja/breadcrumbs";
+@use "@fylgja/fylgja/menu";
+
+@use "./code";
+@use "./caret";
+@use "./logo";
+@use "./offcanvas";
+@use "./page-footer";
+
+@use "@fylgja/fylgja/aspect-ratio";
 @use "@fylgja/fylgja/scrollbar";
+@use "@fylgja/fylgja/hashlink" with (
+    $enable-hashlink-scroll-behavior-focus-only: false,
+    $hashlink-scroll-offset: 5rem
+);
 
-@use "logo";
-@use "docs";
-@use "offcanvas";
-@use "page-footer";
-
-@use "@fylgja/fylgja/utilpack";
+@use "./docs/faq-panel";
+@use "./docs/github-hashlink";
+@use "./docs/layout";
 
 @use "color-scheme";
+
+@use "@fylgja/fylgja/elevation";
+@use "@fylgja/fylgja/utilpack";

@@ -3,11 +3,17 @@
 
 $footer-spacer: 2rem;
 $footer-sub-spacer: 1em;
+$footer-mq: 768px;
 
 .page-footer {
+    --cols-size: 160px;
     padding-top: $footer-spacer;
     background-color: var(--footer-bg, var(--color-theme));
     color: var(--footer-color, var(--color-on-theme));
+
+    @media (min-width: $footer-mq) {
+        --cols-size: 200px;
+    }
 
     :any-link {
         color: inherit;

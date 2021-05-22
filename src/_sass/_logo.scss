@@ -1,15 +1,10 @@
 .logo {
-    color: inherit;
+    --link-color: currentColor;
+    --link-color-focus: currentColor;
+    display: inline-block;
     text-decoration: none;
 
     svg {
         max-width: 100%;
-    }
-
-    &.-style-block {
-        padding: 0.25em;
-        border-radius: 6px;
-        background-color: var(--color-theme);
-        color: var(--color-on-theme);
     }
 }

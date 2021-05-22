@@ -7,13 +7,14 @@
     --color-text: #fff;
     --color-text-alt: #{color.change(#fff, $alpha: 0.8)};
     --color-text-muted: #{color.change(#fff, $alpha: 0.67)};
-    --scrollbar-thumb-color: #{color.change(#fff, $alpha: 0.25)};
     --link-color: #{color.change($color-theme, $lightness: 75%)};
     --link-color-state: #{color.change($color-theme, $lightness: 65%)};
     --code-bg: #{color.change($color-theme, $lightness: 16%)};
     --code-color: #{$color-on-theme};
     --card-bg: #{color.change($color-theme, $lightness: 16%)};
     --card-color: #{$color-on-theme};
+    --details-stroke: #{color.change($color-theme, $lightness: 16%)};
+    --details-bg: #{color.change($color-theme, $lightness: 12%)};
     --dialog-bg: #{color.change($color-theme, $lightness: 16%)};
     --select-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23fff"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 10l5 5 5-5z"/></svg>');
     --btn-focus-bg: #{color.change(#fff, $alpha: 0.1)};
@@ -22,10 +23,20 @@
     --menu-item-focus-bg: #{color.change(#fff, $alpha: 0.1)};
     --logo-color: #fff;
     --footer-bg: #{color.change($color-theme, $lightness: 16%)};
+
+    ::-webkit-scrollbar-thumb {
+        --scrollbar-thumb-color: #{color.change(#fff, $alpha: 0.25)};
+    }
+
+    .card:any-link,
+    .card-content:any-link {
+        --link-color: currentColor;
+        --link-color-focus: currentColor;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
+    :root:not([data-theme]) {
         @include dark-mode;
     }
 }

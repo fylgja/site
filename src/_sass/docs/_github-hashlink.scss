@@ -1,8 +1,3 @@
-@use "@fylgja/fylgja/hashlink" with (
-    $enable-hashlink-scroll-behavior-focus-only: false,
-    $hashlink-scroll-offset: 4.5rem
-);
-
 // TODO look at a option to add this in some form to the hashlink component
 .hashlink {
     position: absolute;
