@@ -43,7 +43,7 @@ style: "
 .hero-nav {
     --container-size: 680px;
     --card-color: var(--color-text-alt);
-    margin-top: -2.8rem;
+    margin-block-start: -2.8rem;
 }
 
 .hero-nav svg {
@@ -241,7 +241,7 @@ style: "
 
 <section id="usp-modularity" class="usp-section container py-6 md-py-8">
     <div class="lg-flex">
-        <div class="lg-w-50 mb-4 md-mb-0 md-mr-8">
+        <div class="lg-w-50 mb-4 md-mb-0 md-me-8">
             <h2>Modularity</h2>
             <p>Fylgja is build with modularity in mind.</p>
             <p>Import only the parts you need.<br>Keep your bundle size and CSS small without using any extra tools.</p>
@@ -267,7 +267,7 @@ style: "
 
 <div id="usp-points" class="usp-section container py-6 md-py-8 auto-grid">
     <section class="flex">
-        <div class="avatar -icon-css mr-6">
+        <div class="avatar -icon-css me-6">
             {{ "/src/_static/icons/css.svg" | svgContents | safe }}
         </div>
         <div>
@@ -276,7 +276,7 @@ style: "
         </div>
     </section>
     <section class="flex">
-        <div class="avatar -icon-palette mr-6">
+        <div class="avatar -icon-palette me-6">
             {{ "/src/_static/icons/palette.svg" | svgContents | safe }}
         </div>
         <div>
@@ -306,7 +306,7 @@ style: "
 
 <div id="usp-points-a11y" class="usp-section container py-6 md-py-8 auto-grid">
     <section class="flex">
-        <div class="avatar -icon-rtl mr-6">
+        <div class="avatar -icon-rtl me-6">
             {{ "/src/_static/icons/format_textdirection_rtl.svg" | svgContents | safe }}
         </div>
         <div>
@@ -316,7 +316,7 @@ style: "
         </div>
     </section>
     <section class="flex">
-        <div class="avatar -icon-visibility mr-6">
+        <div class="avatar -icon-visibility me-6">
             {{ "/src/_static/icons/visibility.svg" | svgContents | safe }}
         </div>
         <div>
@@ -340,7 +340,7 @@ style: "
             <li class="inline-block">
                 <a href="{{ item.url }}"
                     {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}
-                    class="text-reset no-underline flex items-start space-x-4">
+                    class="text-reset no-underline flex iteme-start space-x-4">
                     {% if item.icon %}
                         <div class="avatar p-2"
                             style="--avatar-bg: {{ item.iconStyle.bg }}; --avatar-color: {{ item.iconStyle.color }};">

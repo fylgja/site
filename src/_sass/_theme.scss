@@ -10,5 +10,5 @@ $color-on-alt: #fff;
 :root {
     --color-alt: #{$color-alt};
     --color-on-alt: #{$color-on-alt};
-    --divider-color: #{color.change(#000, $alpha: 0.2)};
+    --divide-color: #{color.change(#000, $alpha: 0.2)};
 }

@@ -1,6 +1,6 @@
 {% if navigation.main %}
     <dialog id="offcanvas-menu" class="offcanvas-end py-0 px-2">
-        <header class="flex justify-between items-center py-3 px-2">
+        <header class="flex justify-between iteme-center py-3 px-2">
             <a href="/" class="logo">
                 <svg width="72" height="24" fill="currentColor">
                     <title>Fylgja</title>
@@ -36,7 +36,7 @@
                                 <li>
                                     <details class="text-small my-0">
                                         <summary class="btn block weight-light">
-                                            <span class="caret mr-2"></span>
+                                            <span class="caret me-2"></span>
                                             {{ items.title }}
                                         </summary>
                                         <ul class="mb-1" style="--menu-margin: 0 0 0.5em;">
@@ -77,7 +77,7 @@
             <nav class="footer-nav flex">
                 {% for item in navigation.socials %}
                     <a href="{{ item.url }}"
-                        class="btn -icon mr-1 {% if page.url==item.url %} is-active{% endif %}"
+                        class="btn -icon me-1 {% if page.url==item.url %} is-active{% endif %}"
                         {% if page.url==item.url %}aria-current="page"{% endif %}
                         {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}
                         title="{{ item.text }}">
@@ -86,7 +86,7 @@
                 {% endfor %}
                 <button data-toggle-color-scheme
                     title="Toggle color scheme"
-                    class="btn -icon ml-auto"
+                    class="btn -icon ms-auto"
                 >{{ '/src/_static/icons/color-scheme.svg' | svgContents | safe }}</button>
             </nav>
         </footer>

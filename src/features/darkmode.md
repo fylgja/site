@@ -38,62 +38,55 @@ If the user prefers a specific mode over the system default one.
 ```scss
 // _color-scheme.scss
 @mixin dark-mode {
-    :root:not(.light-mode) {
-        --color-scheme: dark;
-        --color-bg: #{color.change($color-theme, $lightness: 8%)};
-        --color-text: #fff;
-        --color-text-alt: #{color.change(#fff, $alpha: 0.8)};
-        --color-text-muted: #{color.change(#fff, $alpha: 0.67)};
-        --code-bg: #{color.change($color-theme, $lightness: 16%)};
-        --code-color: #fff;
-        --card-bg: #{color.change($color-theme, $lightness: 16%)};
-        --card-color: #fff;
-        --dialog-bg: #{color.change($color-theme, $lightness: 16%)};
-        --select-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23fff"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 10l5 5 5-5z"/></svg>');
-        --btn-focus-bg: #{color.change(#fff, $alpha: 0.1)};
-        --btn-active-bg: #{color.change(#fff, $alpha: 0.2)};
-        --divider-color: #{color.change(#fff, $alpha: 0.2)};
-        --menu-item-bg-focus: #{color.change(#fff, $alpha: 0.1)};
-    }
+    --color-scheme: dark;
+    --color-bg: #{color.change($color-theme, $lightness: 8%)};
+    --color-text: #fff;
+    --color-text-alt: #{color.change(#fff, $alpha: 0.8)};
+    --color-text-muted: #{color.change(#fff, $alpha: 0.67)};
+    --code-bg: #{color.change($color-theme, $lightness: 16%)};
+    --code-color: #fff;
+    --btn-focus-bg: #{color.change(#fff, $alpha: 0.1)};
+    --btn-active-bg: #{color.change(#fff, $alpha: 0.2)};
+    --divide-color: #{color.change(#fff, $alpha: 0.2)};
+    ...
 }
 
 @media (prefers-color-scheme: dark) {
-    @include dark-mode;
+    :root:not([data-theme]) {
+        @include dark-mode;
+    }
 }
 
-.dark-mode {
+:root[data-theme="dark"] {
     @include dark-mode;
 }
 ```
 
 ```js
 const root = document.documentElement;
-const themeScheme = document.querySelector("#color-scheme-toggle");
+let theme = "";
 
 // Check for dark mode preference at the OS level
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-
 const currentTheme = localStorage.getItem("theme");
-let theme = "";
-if (currentTheme == "dark") {
-    root.classList.add("dark-mode");
-    root.classList.remove("light-mode");
-} else if (currentTheme == "light") {
-    root.classList.add("light-mode");
-    root.classList.remove("dark-mode");
+
+if (currentTheme) {
+    root.setAttribute("data-theme", currentTheme);
 }
 
-themeScheme.addEventListener("click", () => {
-    if (root.classList.contains("dark-mode")) {
-        theme = "light";
-        root.classList.add("light-mode");
-        root.classList.remove("dark-mode");
+function toggleColorScheme(e) {
+    if (!e.target.closest("[data-toggle-color-scheme]")) return;
+    if (root.getAttribute("data-theme")) {
+        theme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
     } else {
-        theme = "dark";
-        root.classList.add("dark-mode");
-        root.classList.remove("light-mode");
+        theme = prefersDarkScheme ? "light" : "dark";
     }
+    root.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
+}
+
+document.addEventListener("click", (event) => {
+    toggleColorScheme(event);
 });
 ```
 

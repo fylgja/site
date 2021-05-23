@@ -27,7 +27,7 @@
 <a href="{{ item.url }}" class="card card-content flex-row">
 {% if item.data.preview %}
 {% set preview %}{{ meta.componentsMedia }}{{ item.data.preview }}{% endset %}
-<div class="avatar aspect-ratio mr-4 border">
+<div class="avatar aspect-ratio me-4 border">
 {% image preview, "", "thumbnail" %}
 </div>
 {% endif %}

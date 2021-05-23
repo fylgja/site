@@ -51,7 +51,7 @@
                         <a href="{{ item.url }}"
                             class="flex"
                             {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}>
-                            {{ item.icon | svgContents("mr-2") | safe }}
+                            {{ item.icon | svgContents("me-2") | safe }}
                             <span>{{ item.text }}</span>
                         </a>
                     </li>
@@ -60,7 +60,7 @@
         </nav>
     </div>
     <div class="sub-footer">
-        <div class="flex container items-center justify-between">
+        <div class="flex container iteme-center justify-between">
             <small class="copyright">
                 © {% year %} {{ meta.siteName }}. All Rights Reserved.<br>
             </small>

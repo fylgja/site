@@ -1,6 +1,6 @@
 <a href="#page-main" class="skip-link">Go to main content</a>
 <header class="sticky top-0" style="border-bottom: 1px solid rgb(0 0 0 / 10%); z-index: 6; background-color: var(--card-bg, #fff);">
-    <div class="flex justify-between items-center py-2 md-py-4 container">
+    <div class="flex justify-between iteme-center py-2 md-py-4 container">
         <a href="/" class="logo">
             <svg width="76" height="38" fill="currentColor">
                 <title>Fylgja</title>
@@ -8,8 +8,8 @@
             </svg>
         </a>
         {% if navigation.main %}
-            <div class="flex items-center">
-                <nav id="main-menu" class="menu -row hidden sm-inline-flex items-center space-x-2">
+            <div class="flex iteme-center">
+                <nav id="main-menu" class="menu -row hidden sm-inline-flex iteme-center space-x-2">
                     {% for item in navigation.main %}
                         <a href="{{ item.url }}"
                             {% if page.url==item.url %}class="is-active"{% endif %}
@@ -25,7 +25,7 @@
                         </a>
                     {% endfor %}
                 </nav>
-                <button id="show-offcanvas-menu" type="button" class="btn -icon md-hidden ml-4">
+                <button id="show-offcanvas-menu" type="button" class="btn -icon md-hidden ms-4">
                     <svg width="24" height="24" fill="currentColor">
                         <title>Open menu</title>
                         <use href="/images/sprite.svg#menu" />
