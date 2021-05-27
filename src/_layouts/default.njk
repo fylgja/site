@@ -47,7 +47,11 @@
     {% endif %}
     <link rel="stylesheet" href="/css/main.css"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,350;0,500;1,350;1,500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,350;0,500;1,350;1,500&display=swap"
+        rel="stylesheet"
+        media="print"
+        onload="this.media='all'">
     {% if style %}
       <style>{{ style | safe }}</style>
     {% endif %}
