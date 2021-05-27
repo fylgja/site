@@ -1,8 +1,7 @@
-let url = "http://localhost:8080";
-
-if (process.env.ELEVENTY_ENV === "prod") {
-    url = "https://getfylgja.test";
-}
+const url =
+    process.env.ELEVENTY_ENV === "prod"
+        ? "https://fylgja.dev"
+        : "http://localhost:8080";
 
 module.exports = {
     output: "_site",
@@ -12,7 +11,8 @@ module.exports = {
     siteName: "Fylgja",
     siteDescription:
         "A Modular and customizable front-end framework for building UI components for the web.",
-    email: "info@getfylgja.com",
+    author: "Fylgja",
+    email: "info@fylgja.dev",
     phone: false,
     address: false,
     socials: {
