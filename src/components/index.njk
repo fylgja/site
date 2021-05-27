@@ -80,7 +80,7 @@ style: "
             </div>
             <div class="scroll-slider hide-scrollbar">
                 {%- for item in items.data | sortByOrder -%}
-                <a class="card" href="{{ item.data.altUrl if item.data.altUrl else item.url }}">
+                <a class="card" href="{{ item.url }}">
                     <div class="card-media aspect-ratio">
                         {% if item.data.preview %}
                             {% set preview %}{{ meta.componentsMedia }}{{ item.data.preview }}{% endset %}
