@@ -1,12 +1,10 @@
-const { src, dest, parallel, series, watch } = require("gulp");
+const { src, dest, series, watch } = require("gulp");
 const { input, output } = require("./src/_data/meta.js");
 const isProduction = process.env.NODE_ENV === "production";
 
 const Fiber = require("fibers");
 const sass = require("gulp-sass");
 sass.compiler = require("sass");
-
-const terser = require("gulp-terser");
 
 const postcss = require("gulp-postcss");
 const postcssPresetEnv = require("postcss-preset-env");
@@ -23,12 +21,6 @@ const sassTask = () => {
     return src(`${input}/_sass/**/*.scss`, { sourcemaps })
         .pipe(sass(sassConfig).on("error", sass.logError))
         .pipe(dest(`${output}/css`, { sourcemaps: "." }));
-};
-
-const minifyJs = () => {
-    return src([`${output}/js/*.js`, `!${output}/js/main.js`])
-        .pipe(terser({ warnings: true }))
-        .pipe(dest(`${output}/js`));
 };
 
 const minifyCss = () => {
@@ -60,7 +52,5 @@ const watcher = () => {
     watch(`${input}/_sass/`, { ignoreInitial: true }, sassTask);
 };
 
-exports.default = parallel(sassTask, series(minifyJs, minifyCss));
-exports.styles = sassTask;
-exports.minify = series(minifyJs, minifyCss);
-exports.watch = series(sassTask, watcher);
+exports.default = series(sassTask, minifyCss);
+exports.dev = series(sassTask, watcher);

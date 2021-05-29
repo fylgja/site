@@ -1,35 +1,48 @@
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import { terser } from "rollup-plugin-terser";
-import copy from "rollup-plugin-copy";
 const { input, output } = require("./src/_data/meta.js");
+const isProd = process.env.NODE_ENV === "production";
+const plugins = isProd ? [nodeResolve(), terser()] : [nodeResolve()];
 
-const copyConfig = {
-    // targets: [
-    //     {
-    //         src: "",
-    //         dest: `${output}/js`,
-    //     },
-    // ],
-};
-
-const devConfig = {
-    input: `${input}/_js/main.js`,
-    output: {
-        file: `${output}/js/main.js`,
-        format: "cjs",
+const devConfig = [
+    {
+        input: `${input}/_js/main.js`,
+        output: {
+            file: `${output}/js/main.js`,
+            format: "cjs",
+        },
+        watch: { clearScreen: false },
+        plugins,
     },
-    watch: { clearScreen: false },
-    plugins: [nodeResolve(), copy(copyConfig)],
-};
-
-const productionConfig = {
-    input: `${input}/_js/main.js`,
-    output: {
-        file: `${output}/js/main.js`,
-        format: "cjs",
+    {
+        input: `${input}/_js/sw.js`,
+        output: {
+            file: `${output}/sw.js`,
+            format: "cjs",
+        },
+        watch: { clearScreen: false },
+        plugins,
     },
-    plugins: [nodeResolve(), terser(), copy(copyConfig)],
-};
+];
+
+const productionConfig = [
+    {
+        input: `${input}/_js/main.js`,
+        output: {
+            file: `${output}/js/main.js`,
+            format: "cjs",
+        },
+        plugins,
+    },
+    {
+        input: `${input}/_js/sw.js`,
+        output: {
+            file: `${output}/sw.js`,
+            format: "cjs",
+        },
+        plugins,
+    },
+];
 
 export default () => {
     if (process.env.NODE_ENV === "production") {
