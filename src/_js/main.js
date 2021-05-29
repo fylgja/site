@@ -35,3 +35,9 @@ function toggleColorScheme(e) {
 document.addEventListener("click", (event) => {
     toggleColorScheme(event);
 });
+
+window.addEventListener("load", () => {
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/sw.js");
+    }
+});
