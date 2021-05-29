@@ -5,12 +5,11 @@
     $family-main: ("Rubik", system-ui, sans-serif),
     $font-weight: 300,
 );
+
 @use "@fylgja/fylgja/list";
 @use "@fylgja/fylgja/table";
 @use "@fylgja/fylgja/details";
 
-@use "@fylgja/fylgja/form";
-@use "@fylgja/fylgja/control";
 @use "@fylgja/fylgja/button";
 @use "@fylgja/fylgja/avatar";
 @use "@fylgja/fylgja/card";
