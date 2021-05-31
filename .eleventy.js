@@ -33,7 +33,9 @@ module.exports = function (config) {
     }
 
     // Plugins
-    config.addPlugin(syntaxHighlight);
+    config.addPlugin(syntaxHighlight, {
+        preAttributes: { tabindex: 0 },
+    });
     config.addPlugin(embedYouTube, {
         lite: {
             css: { inline: true },
