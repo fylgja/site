@@ -50,16 +50,16 @@ then add your overrides and additions there.
 
 ## Extensions
 
-While the core rules already take preprocessors in account.
-There are some times extra's rules needed.
-To add support for a specific preprocessor.
+While the core rules already take preprocessors in account,
+
+some times extra rules are needed,
+to add support for a specific preprocessor.
 
 ### SCSS
 
 We have added the stylelint plugin SCSS to better support SCSS styles
 
-To include these rules.
-Add to the end of the extend path `scss`
+To include these rules, add `scss` to the end of the extend path 
 
 ```json
 {
@@ -71,7 +71,7 @@ Add to the end of the extend path `scss`
 
 ### LESS
 
-We have super small config to unset some rules,
+We have a super small config to unset some rules,
 that conflict with the LESS naming.
 
 ```json
@@ -84,14 +84,7 @@ that conflict with the LESS naming.
 
 ### Order
 
-There are some parties that do this.
-
-Why don't we?
-Well we don't like strict code order.
-
-We do follow a specific style of ordering our code.
-
-That is described in our [CSS order DOC](/components/stylelint-config/order/).
+We do follow a specific style of ordering our code, it's is described in our [CSS order DOC](/components/stylelint-config/order/).
 
 ## Rules
 
@@ -103,8 +96,8 @@ Since we extend on the [stylelint-config-recommended](https://github.com/styleli
 
 Down here are only the rules we have set.
 
-_We have not set any [white/black]-list values._
-_These are better for project specific rules (if needed)._
+_We have not set any [allowed/disallowed]-list values._
+_it's better to set those project specific, if needed._
 
 **At-rule**
 
@@ -194,8 +187,9 @@ _These are better for project specific rules (if needed)._
 
 > Notes about `number-leading-zero`.
 > Just as Bootstrap & Google we support no leading zero's.
-> But since pretty much all compilers and prettier use leading zero's.
-> We have kept the rule set to the default value, set by stylelint.
+> 
+> But since pretty much all compilers and prettier use leading zero's,
+> we have kept the rule set to the default value.
 
 **Property**
 

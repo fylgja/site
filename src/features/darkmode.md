@@ -1,16 +1,16 @@
 ---
 title: "Dark mode"
-description: "Fylgja does not ship with dark mode styles by default. Since we don't force a specific color pallet for your use."
+description: "Fylgja does not ship with dark mode styles by default. Since we don't force a specific color pallet."
 ---
 
 Fylgja does not ship with dark mode styles by default.
-Since we don't force a specific color pallet for your use.
+Since we don't force a specific color pallet.
 
 But the foundation for each component is made in a flexible way.
-So you can change it via the CSS variables or the SCSS variables.
 
-By just setting these SCSS variables in the `@fylgja/theme`.
-All component styles are dark.
+So you can change it via the CSS variables or the SCSS variables, 
+
+by just setting these SCSS variables in the `@fylgja/theme`, all component styles are dark.
 
 ```scss
 @use "@fylgja/theme" with (
@@ -29,9 +29,10 @@ Down in the footer you will find a moon or sun icon.
 
 _Depending on what theme your using._
 
-For this we made a small CSS rule for dark mode.
-And added a small bit of JS to toggle the state.
-If the user prefers a specific mode over the system default one.
+For this we made a small CSS rule for dark mode,
+and added a small bit of JS to toggle the state.
+
+So a user can pick a prefer a specific mode over the system default one.
 
 <details class="faq-panel"><summary>Sample from our site</summary>
 
@@ -98,11 +99,9 @@ Dark mode does not necessary mean black with white text.
 
 And as you could see it in our sample,
 we used a dark tint of our theme (primary) color.
+
 This gives it a more personal feel than just a inverted version.
 
-Also dark mode is never a must.
-If your brand/site does not fits in this style.
-Than don't bother trying to add it.
-This only adds confusion to your users.
+Also dark mode is never a must, if your brand/site does not fit in this style,
 
-This of course also work the other way around.
+then don't bother trying to add it, it only confuses your users.

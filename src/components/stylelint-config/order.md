@@ -16,26 +16,23 @@ eleventyExcludeFromCollections: true,
 
 ## Reason
 
-We don't believe in a strict code order.
+Why don't we believe in a strict code order?
 
-While code linting is great.
-The order of the code is something that should be left to the developer.
+While code linting is great,
+the order of the code is something that should be left to the developer.
 
-While we do follow a specific order of our styles.
-This never strict for the following reasons.
+We do follow a specific order of our styles,
+but never strict for the following reasons.
 
 - New css properties that are not in the order of the style config,
-  causing high maintence.
+  causing high maintenace.
 - Cases where the code order makes no sense, yes they exist.
 - CSS properties that work for multiple parent properties,
-  e.g. `gap` with Grid, Flex or Columns.
+  for example, `gap` with Grid, Flex or Columns.
 
 ## What CSS order to follow.
 
-There are some rules out there.
-
-We follow a DOM Like order.
-Others follow the Alphabetical order or something else 🤷‍.
+We follow a DOM Like order, other options are the Alphabetical order or something else 🤷‍.
 
 So the DOM order is;
 
@@ -47,7 +44,7 @@ So the DOM order is;
 * Typographic
 * Misc
 
-<details class="faq-panel"><summary>Or view this code sample of the list mentioned above.</summary>
+<details class="faq-panel"><summary>View a code sample of the order.</summary>
 
 ```scss
 .order-example {
@@ -110,21 +107,17 @@ So the DOM order is;
 
 </details>
 
-We follow a set of groups that specify how we order our code.
+Fylgja uses a set of groups, that specify the order of our code, the logic is to keep properties bundeled together.
 
-The logic in this order is to keep properties bundeled together.
+For example the properties like, text-overflow, overflow-wrap and overflow are better together than split,
 
-For example the properties like;
-text-overflow, overflow-wrap and overflow are better together than split.
+based on the role they have.
 
-Not for the name but for the role they have.
+The same goes for the position properties top, right, bottom and left,
 
-Same for position properties top, right, bottom and left.
-Should be bundeld together.
+they should be bundeld together, not randomly somewhere in your class.
 
-Not randomly somewhere in your class.
-
-So **NO** to this 😫
+So **DON'T** do this 😫
 
 ```css
 .class {
@@ -139,40 +132,38 @@ So **NO** to this 😫
 
 <details open class="faq-panel"><summary>Is there also an order for each group?</summary>
 
-Soft yes.
-The properties that have a direction should follow the DOM order.
+Yes the properties that have a direction should follow the DOM order.
 
-That is: top, right, bottom, left or block, inline.
-Also width comes before height.
+That is: top, right, bottom, left or block, inline, also width comes before height.
 
 </details>
 
-<details class="faq-panel"><summary>Why is the var's/special setters group before the box group?</summary>
+<details class="faq-panel"><summary>Why is the variables/special setters group before the box group?</summary>
 
 The properties in this group are specifically used to set values.
 
-CSS var should always come before all, similar to SCSS var's.
-And the other properties are used to set values used by the content property.
+CSS variables should always come before all, similar to SCSS variables.
+
+Other properties are used to set values used by the content property.
 
 </details>
 
 <details class="faq-panel"><summary>Should all browser specific styles come at the end?</summary>
 
-Depends on the style.
+That depends on the style.
 
 Browsers prefixes should be avoided!
 Use [autoprefixer](https://github.com/postcss/autoprefixer) instead.
 
-But if they are needed.
-And they it only exist for 1 specific browers.
-
-Then _Yes_ that property should come at the end.
+But if they are needed,
+and they it only exist for 1 specific brower,
+then _Yes_ but that property should come at the end.
 
 </details>
 
 <details class="faq-panel"><summary>Why is float part of the box group</summary>
 
-Float moves the box like position while flex and grid move the children.
+Float moves the box, like position, while flex and grid move the children.
 
 </details>
 
@@ -180,7 +171,8 @@ Float moves the box like position while flex and grid move the children.
 
 Not really sure.
 Still working out the best position for it.
-For now where using the default order used by Chrome and Firefox.
+
+Momentarily Fylgja is using the default order used by Chrome and Firefox.
 
 Another reason is that the `display` property can have the value `list-item`.
 
@@ -190,11 +182,8 @@ _Suggestions are welcome_
 
 ## Exceptions & Preprocessors
 
-There are some exceptions for the code order.
+There are some exceptions in the code order, Preprocessors are using some code order rules.
 
-In preprocessors there are some code order rules.
-
-These are;
 - `extends` before
 - `mixins` before but after `extends`
 - `inline variables` before but after `mixins`

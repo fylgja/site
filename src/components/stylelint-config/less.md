@@ -12,20 +12,18 @@ breadcrumbs: {
 eleventyExcludeFromCollections: true,
 ---
 
-There no specific rules set for LESS.
-And we don't really work with LESS anymore.
+There no specific rules set for LESS, since we don't use with LESS anymore.
 
-If there are still rules that conflict with your LESS code.
-Than please share with us what.
-So we can add this to our rules.
+If you find any rules that conflict with your LESS code, 
+please share those with us, so we can add/fix this in our rules.
 
-That said there are some rules set here,
-that unset some rules that conflict with the LESS code.
+For all that, there are some rules set here,
+they unset some rules that conflict with the LESS code.
 
 ## Usage
 
-Same as for the main stylelint config.
-But now add less to the end to also load these rules.
+Same as for the main stylelint config,
+but now add less to the end to also load these rules.
 
 ```json
 {

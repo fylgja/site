@@ -10,9 +10,10 @@ featured: true
 order: 2
 ---
 
-The form component is super easy to use.
-Since it is a zero config module that styles the form elements directly.
-Allowing you to focus on the form it self.
+The form component is super easy to use,
+it's a zero config module that styles all form elements directly.
+
+Allowing you to focus on the form itself.
 
 ## Installation
 
@@ -20,7 +21,7 @@ Allowing you to focus on the form it self.
 npm install @fylgja/form
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/form";
@@ -30,11 +31,12 @@ Now include the component in to your code via;
 
 ### Styles
 
-By default the form style is set to our default style.
+By default all form styles are set to the fylgja default style. 
 
-To use the field or box style.
-Change the variable `$form-style` to any of the other 2 options.
-Or if you are importing this as plain CSS, in PostCSS or any other option.
+If you whatnt to use the field or box style,
+change the variable `$form-style` to one of the other options.
+
+Or if you are importing this as plain CSS or in PostCSS use;
 
 ```css
 @import "@fylgja/form/form-style-field.css";
@@ -43,16 +45,16 @@ Or if you are importing this as plain CSS, in PostCSS or any other option.
 
 ## How to use
 
-Out of the box all the styling is done directly.
-So no extra steps are needed.
+Out of the box all the styling is done directly,
+so no extra steps are needed.
 
 ## Config
 
-As with almost all of our components.
+As with almost all of our components,
 CSS variables can be configured to add your own look/style.
 
-Want direct control on the base styles.
-Down here are the following SCSS variables can you modify.
+For direct control of the base styles,
+here are the following SCSS variables can you modify.
 
 ```scss
 $enable-webkit-autofill-dark-mode: true !default;
@@ -163,7 +165,8 @@ $form-file-btn-color: var(--color-on-theme, #{$color-on-theme}) !default;
 ```
 
 > `form-style-get()` is `map-get()` function.
-> That gets the values from the `$form-styles`.
-> Which contains premade form styles.
 > 
-> See the `helper.scss` for what is in this map
+> It gets the values from the `$form-styles` variable
+> that contains the predefined form styles.
+> 
+> Inspect the `helper.scss` file tot see what is in this map

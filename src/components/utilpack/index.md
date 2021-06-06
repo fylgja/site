@@ -7,7 +7,7 @@ featured: true
 order: 1
 ---
 
-Build and use your own CSS util classes with Sass via the Fylgja utilpack.
+Build and use your own CSS utility classes with Sass using the Fylgja utilpack.
 
 ## Installation
 
@@ -15,7 +15,7 @@ Build and use your own CSS util classes with Sass via the Fylgja utilpack.
 npm install @fylgja/utilpack
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/utilpack";
@@ -25,24 +25,22 @@ Now include the component in to your code via;
 
 ## How to use
 
-The util pack out of the box comes with some common used util classes.
-That can be used directly.
-See the docs for what is available or see the defaults <!-- LINK -->.
+The util pack comes out of the box  with some commonly used utility classes,
+that can be used directly.
+
+Read the docs to see what is available and see the defaults <!-- LINK -->.
 
 ## Config
 
-If you want to add or configure the util classes to your own taste.
-Look no further, down here.
+If you want to add or configure the utility classes to your own taste, look no further, its down here.
 
 ### Adding util classes
 
-Change the SCSS variable `$utilpack()`.
-And use one of the following sample use cases in this map.
+Change the SCSS variable `$utilpack()`, and use one of the following sample use cases in this map.
 
 > By default the key will be used with the value for the class name.
-> If you want to change this behavior make use of the prop `class`
-> and add a key to the value.
-> As seen below.
+> If you want to change this behavior, use the key value.
+> See example `Sample with number/key values`.
 
 **Simple Sample**
 
@@ -75,8 +73,8 @@ And use one of the following sample use cases in this map.
 
 **Sample with class**
 
-If you want to use different value for the class.
-Than what the util key name is.
+If you want to use a different value for the class, 
+then what the util key name is.
 
 ```scss
 @use "@fylgja/utilpack" with ($utilpack: (
@@ -92,8 +90,8 @@ Than what the util key name is.
 
 **Sample with property**
 
-If you want to use different value for the property.
-Than what the util key name is.
+If you want to use a different value for the class,
+then what the util key name is.
 
 ```scss
 @use "@fylgja/utilpack" with ($utilpack: (
@@ -165,7 +163,7 @@ Than what the util key name is.
 
 ### Changing the default util classes
 
-You can start fresh by setting the default utils map to false or an empty map.
+You can start fresh by setting the `$utilpack-defaults` map to false or to a empty map.
 
 ```scss
 @use "@fylgja/utilpack" with (
@@ -181,8 +179,8 @@ Or unset a specific default, like the typography.
 );
 ```
 
-You can also quickly edit certain default settings without changing the config.
-This can be done via the;
+You can also quickly edit various default settings without changing the config,
+this can be done via;
 
 ```scss
 $enable-utilpack-UTIL-responsive: false;
@@ -192,14 +190,10 @@ $enable-utilpack-UTIL-important: false;
 $enable-utilpack-typography-responsive: true;
 ```
 
-If you want to edit any values in the defaults, not mentioned above.
-You can also map merge your own values in the default utils map.
-[See the Sass docs for how to use map merge](https://sass-lang.com/documentation/modules/map).
-
 ### Breakpoints
 
-The response mode will use the breakpoint values set in the map `$utilpack-breakpoints`.
-This by default;
+The responsive mode will use the breakpoint values set in the map `$utilpack-breakpoints`,
+these are the defaults;
 
 ```scss
 $utilpack-breakpoints: (
@@ -211,8 +205,8 @@ $utilpack-breakpoints: (
 ) !default;
 ```
 
-The key will be used as the prefix name for the util.
-And the value is always the min-width media query.
+The key will be used as the prefix name for the utility,
+and the value is always the min-width media query.
 
 ```css
 @media (min-width: 420px) {
@@ -222,40 +216,37 @@ And the value is always the min-width media query.
 }
 ```
 
-It will use the hyphen as default separator.
+It will use the hyphen as default separator,
+but if prefer the same separator as seen in TailwindCSS,
+you can use `$utilpack-separator: "\:"`. 
 
-But if prefer the same separator as seen in TailwindCSS.
-You can by changing the `$utilpack-separator: "\:"`. 
-
-_The Tailwind separator can conflict with specific tools and linters._
-_Since it uses specific characters that are normally marked as unsafe or need escaping._
+_The Tailwind separator can conflict with specific tools and linters,_
+_since it uses specific characters that are normally marked as unsafe or need escaping._
 
 ## FAQ
 
 <details class="faq-panel" open><summary>Do I need CSS Purge?</summary>
 
-If you are using the CSS version instead the SCSS.
-Then yes, for sure.
+If you are using the CSS version instead of the SCSS version,
+then yes for sure.
 
-If you are using the SCSS version.
-Use the map remove function instead.
-Keeping your dependencies small.
+If you are using the SCSS version, use the map remove function instead,
+keeping your dependencies small.
 
-But if you plan to use this for all of your CSS needs, similar to TailwindCSS.
-Then yes use it.
-But we do advice against a utility only approach.
-Always combine it with CSS components for a better HTML and CSS.
+If you plan to use this for all of your CSS needs, similar to TailwindCSS,
+then yes use it.
+
+We do advice against a utility only approach, always combine it with CSS components
+for a better HTML and CSS.
 
 </details>
 
 <details class="faq-panel"><summary>Why are there no colors utils?</summary>
 
-We advices to use CSS variables for color management.
+We advice to use CSS variables for color management.
 
-If you want to use utils for almost everything.
-Consider adding the following utilpack config.
-
-Instead using static colors.
+If you want to use utils for almost everything,
+consider adding the following utilpack config, instead using static colors.
 
 ```scss
 @use "@fylgja/utilpack" with ($utilpack: (
@@ -272,15 +263,13 @@ Instead using static colors.
 
 <details class="faq-panel"><summary>Why are there no grid utils?</summary>
 
-Most grid solution still rely on the older grid solution, like 12 columns.
-But now use CSS grid spec instead.
-This is considered a bad solution for the way how we handel layouts.
-And creates still a lot of 1 time uses, even with utilities.
+Most grid solutions still rely on the older grid solution, like 12 columns,
+now we use CSS grid spec instead.<br>
+Its is considered a bad solution for handeling layouts,
+and creates a lot of 1 time uses, even with utilities.
 
-If you must really rely on a util class.
-We would advise to use our own CSS grid component to make your own.
-That uses CSS variables instead.
-Or use the `@fylgja/autogrid`.
-Which fully uses the power of CSS variables and the grid spec.
+If you really must rely on a utility class, we would advise to build your own.
+Or even better use the `@fylgja/autogrid`,
+that uses the power of CSS variables and the grid spec.
 
 </details>

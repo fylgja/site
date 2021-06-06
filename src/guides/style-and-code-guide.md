@@ -1,21 +1,21 @@
 ---
 title: "Style and code guide"
-description: "The way how we write our code and name it"
+description: "How we write our code and name it"
 thumb: "guide-thumb/css-awesome.jpg"
 ---
 
-At Fylgja we use specific style and code guides.
-That we try to follow when possible.
-There are always exceptions.
-But we try to keep this to a minimal.
+At Fylgja we use specific style and code guides, we try to follow where possible.
 
-Theses style and code guides are not specific to Fylgja and can be also used by any one.
+There are always exceptions, we try to keep them to a minimal.
+
+Style and code guides are not specific to Fylgja and be used at large.
 
 ## Single layered styles for multi layered Components
 
 Fylgja uses the concept of single layered styles.
-This means we try to avoid any styles set via nested classes.
-So we use the power of inheritance of CSS as much as we can.
+This means that we try to avoid any styles set via nested classes.
+
+We use the power of inheritance of CSS as much as we can.
 
 A good example is our table component vs other table styles.
 In most cases you will see this type of style for a `td` element.
@@ -26,7 +26,7 @@ table tr > td {
 }
 ```
 
-In Fylgja you will find it like this, _Normally with CSS variables_;
+In Fylgja you will find it like this, _Mostly with CSS variables_;
 
 ```css
 table {
@@ -38,37 +38,34 @@ td {
 }
 ```
 
-What we do is set the style as generic as possible.
-And inherit the styles from the parent element if it exists.
-This allows you to override any styles via the `table` or `td`.
-Without having to write the entire CSS level of dept.
+What we do is set the style as generic as possible, and inherit the styles from the parent element if it exists.
 
-At first this looks as more CSS, 
-but actually save you bytes as you add new custom styles.
-Since you can use 1 class to override every styles set by the component.
+This allows you to override any styles via the `table` or `td`, without having to write the entire CSS level of dept.
 
-This principal can be used for any Native elements and CSS components.
-And gets even better if you add CSS variables 🤗
+At first this looks as more CSS, but actually it saves you bytes as you add new custom styles, 
+since you can use 1 class to override every style set by the component.
+
+This principle can be used for Native elements and CSS components,
+and gets even better if you add CSS variables 🤗
 
 ## CSS class variables (class modifier)
 
-This little convention helps us name things when we need a extra classes to our component, 
-to override specific styles.
-Which will clearly show that this a class to changes stuff for main class.
+This convention helps us name things when we need ad extra classes to our component, 
+to override specific styles, it clearly shows that it's a class to change the main class.
 
-Sample;
+example;
 
 ```css
 .class.-clipped {}
 ```
 
-The only thing we change is adding a hyphen in front of any class
+The only change is adding a hyphen in front of any class
 that will just change styles from a CSS Component.
 
-Our most common class variables is `.-theme`.
-This will add the color-theme styles to any component that supports this.
+Our most commonly used class variable is `.-theme`.
+It will add the color-theme styles to any component that supports this.
 
-More practical sample of a button toolbar;
+Practical example of a button toolbar;
 
 ```html
 <div class="flex">
@@ -77,9 +74,8 @@ More practical sample of a button toolbar;
 </div>
 ```
 
-As you can see the 2 modifier styles are clearly visible.
-And has the same affect as if you would use BEM syntax
+The 2 modifier styles are clearly visible, and have the same affect as if you would use BEM syntax
 with the extra btn in front of the modifier class.
 
-We use this naming convention mostly to bundle CSS variables in to one class.
-That is needed to be reused allot.
+We use this naming convention mostly to bundle CSS variables in to one class,
+that wil be reused a lot. We consider this a more readable and DRY way than the BEM syntax.

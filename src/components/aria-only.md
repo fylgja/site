@@ -16,7 +16,7 @@ But keeps it accessible to screen-readers and other aria tools.
 npm install @fylgja/aria-only
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/aria-only";
@@ -71,8 +71,7 @@ You can also use it as a mixin with your own styles, via;
 
 The `.aria-only-focusable` will unset its own styles when receiving focus.
 
-To prevent this, for some styles.
-You must set some styles to always take effect, even when the skip link has focus.
+To prevent this for some styles, You must set some styles to always take effect, even when the skip link has focus.
 
 You only need this sample to prevent layout jank.
 

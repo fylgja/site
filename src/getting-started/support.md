@@ -6,10 +6,10 @@ preconnect: <link rel="preconnect" href="https://img.shields.io">
 
 Do you want to support Fylgja?
 
-You can do so in many ways.
+You can that in many ways.
 
 <p class="share-me">
-<span>Most simple one is to Star the Github repo</span>
+<span>Start with Starring the repro on Github</span>
 <a href="https://github.com/fylgja/fylgja"
     class="no-underline text-reset"
     target="_blank"
@@ -21,8 +21,8 @@ You can do so in many ways.
     loading="eager"
     style="width: auto;">
 </a>
-<span>or share it on your favorite social network with hashtag #fylgja.</span>
-<span>Making it easier to find Fylgja for others.<span>
+<p>Or share us on your favorite social network use the hashtag #fylgja</p>
+<span>making it easier for others to find Fylgja.<span>
 </p>
 
 But you also contribute directly to fylgja by;
@@ -31,5 +31,4 @@ But you also contribute directly to fylgja by;
 - [Adding a pull request to our github repo](https://github.com/fylgja/fylgja/pulls)
 - [Helping out with the Site doc and guides, via the github repo](https://github.com/fylgja/site)
 
-We appreciate any contribution.
-No mather if it is small or big.
+We appreciate any contribution, no mather if it is small or big.
