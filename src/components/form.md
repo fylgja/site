@@ -147,7 +147,7 @@ $form-fields: (
 // Form select
 $form-icon-size: 1.25em !default;
 $form-icon-color: $color-text !default;
-$form-select-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$form-icon-color}"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 10l5 5 5-5z"/></svg>') !default;
+$form-select-icon: url('data:image/svg+xml,<svg .. /></svg>') !default;
 
 // Form color
 $form-color-radius: null !default;

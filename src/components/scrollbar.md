@@ -63,6 +63,8 @@ This CSS component also ships with a handy SCSS mixin that you can use via;
     $track, // track color
     $width: null, // width of the scrollbar
     $radius: 0.5rem // border radius of the scrollbar, webkit only
+    $width-size: if($width, ..) // $width setters for the older spec
+    $width-name: if($width, ..) // $width setters for the newer spec
 );
 ```
 

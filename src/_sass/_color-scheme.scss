@@ -23,10 +23,7 @@
     --menu-item-focus-bg: #{color.change(#fff, $alpha: 0.1)};
     --logo-color: #fff;
     --footer-bg: #{color.change($color-theme, $lightness: 16%)};
-
-    ::-webkit-scrollbar-thumb {
-        --scrollbar-thumb-color: #{color.change(#fff, $alpha: 0.25)};
-    }
+    --scrollbar-thumb-color: #{color.change(#fff, $alpha: 0.25)};
 
     .card:any-link,
     .card-content:any-link {
