@@ -15,7 +15,7 @@ Helper component for adding theme specific variables to multiple components.
 npm install @fylgja/theme
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/theme";

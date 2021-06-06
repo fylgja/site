@@ -15,7 +15,7 @@ Like a Hero, Banner or just simple section with a different color in the page.
 npm install @fylgja/section
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/section";

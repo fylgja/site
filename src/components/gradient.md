@@ -17,7 +17,7 @@ Which you can modify to your needs.
 npm install @fylgja/gradient
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @import "@fylgja/gradient";

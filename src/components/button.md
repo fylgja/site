@@ -19,7 +19,7 @@ and many styles can be build on top of this foundation.
 npm install @fylgja/buttons
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/button";

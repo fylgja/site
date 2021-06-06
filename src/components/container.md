@@ -15,7 +15,7 @@ To make all child elements fit better in the page.
 npm install @fylgja/container
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/container";

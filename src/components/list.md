@@ -16,7 +16,7 @@ By adding a custom marker option with full flexibility to style and animate.
 npm install @fylgja/list
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/list";

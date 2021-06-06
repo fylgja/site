@@ -14,7 +14,7 @@ The avatar component allows you to make an avatar style with ease.
 npm install @fylgja/avatar
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/avatar";

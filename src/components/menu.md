@@ -16,7 +16,7 @@ Like a navbar or menu in a dropdown.
 npm install @fylgja/menu
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/menu";

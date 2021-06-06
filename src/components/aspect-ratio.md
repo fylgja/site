@@ -16,7 +16,7 @@ but anything you want to a certain responsive aspect ratio.
 npm install @fylgja/aspect-ratio
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/aspect-ratio";

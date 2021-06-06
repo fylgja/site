@@ -15,7 +15,7 @@ currently on the website.
 npm install @fylgja/breadcrumbs
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/breadcrumbs";

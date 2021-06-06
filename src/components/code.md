@@ -16,7 +16,7 @@ This includes more styling to the `<code>`, `<pre>` and `<kbd>` element.
 npm install @fylgja/code
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/code";

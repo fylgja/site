@@ -18,7 +18,7 @@ Allowing you to focus on the table it self.
 npm install @fylgja/table
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/table";

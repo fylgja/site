@@ -20,7 +20,7 @@ By focusing only on elevation indexes that are commonly used.
 npm install @fylgja/elevation
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/elevation";

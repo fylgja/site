@@ -14,7 +14,7 @@ The details components enhances the default details behavior.
 npm install @fylgja/details
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/details";

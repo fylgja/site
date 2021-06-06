@@ -16,7 +16,7 @@ Allowing an easier control on the style of both these elements.
 npm install @fylgja/control
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/control";

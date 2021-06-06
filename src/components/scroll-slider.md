@@ -19,7 +19,7 @@ Like a navigation and a active state.
 npm install @fylgja/scroll-slider
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/scroll-slider";

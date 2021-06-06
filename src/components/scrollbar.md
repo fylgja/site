@@ -14,7 +14,7 @@ Customize or hide the scrollbar with ease.
 npm install @fylgja/scrollbar
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/scrollbar";

@@ -15,7 +15,7 @@ Or to highlight an item.
 npm install @fylgja/badge
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/badge";

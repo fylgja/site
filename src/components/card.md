@@ -17,7 +17,7 @@ that is not part of the main flow.
 npm install @fylgja/card
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/card";

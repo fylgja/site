@@ -21,7 +21,7 @@ But also works with Javascript scrollto actions.
 npm install @fylgja/hashlink
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/hashlink";
