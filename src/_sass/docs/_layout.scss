@@ -7,12 +7,6 @@ $docs-page-lg-mq: 1024px !default;
     margin-bottom: 1em;
 }
 
-@media (any-pointer: fine) {
-    .docs-sidebar:not(:hover):not(:focus-within)::-webkit-scrollbar {
-        display: none;
-    }
-}
-
 @media (min-width: $docs-page-mq) {
     .docs-layout {
         width: calc(100% - 230px);

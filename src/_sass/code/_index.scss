@@ -11,3 +11,18 @@
 );
 @use "syntax";
 @use "layout";
+@use "@fylgja/fylgja/scrollbar/helper" as *;
+
+pre {
+    @include scrollbar(
+        $thumb: color.change(#fff, $alpha: 0.2),
+        $track: color.change(#000, $alpha: 0),
+        $width: thin
+    );
+
+    @media (any-pointer: fine) {
+        &:not(:hover):not(:focus) {
+            --scrollbar-thumb-color: #{color.change(#000, $alpha: 0)};
+        }
+    }
+}
