@@ -1,7 +1,7 @@
 <footer class="page-footer">
     <div class="container auto-grid">
         {% if navigation.about %}
-            <nav id="about-menu">
+            <nav id="about-menu" aria-label="About us Menu">
                 <strong class="block mb-4">About</strong>
                 <ul class="list-style -none space-y-2">
                     {% for item in navigation.about %}
@@ -16,7 +16,7 @@
             </nav>
         {% endif %}
         {% if navigation.support %}
-            <nav id="support-menu">
+            <nav id="support-menu" aria-label="Support Menu">
                 <strong class="block mb-4">Guides</strong>
                 <ul class="list-style -none space-y-2">
                     {% for item in navigation.support %}
@@ -30,7 +30,7 @@
                 </ul>
             </nav>
         {% endif %}
-        <nav id="features-menu">
+        <nav id="features-menu" aria-label="Features Menu">
             <strong class="block mb-4">Features</strong>
             <ul class="list-style -none space-y-2">
                 {% for item in collections.features | sortByOrder %}
@@ -43,7 +43,7 @@
                 {% endfor %}
             </ul>
         </nav>
-        <nav id="follow-us-menu">
+        <nav id="follow-us-menu" aria-label="Follow use">
             <strong class="block mb-4">Find us also on</strong>
             <ul class="list-style -none space-y-2">
                 {% for item in navigation.socials %}
@@ -64,12 +64,10 @@
             <small class="copyright">
                 © {% year %} {{ meta.siteName }}. All Rights Reserved.<br>
             </small>
-            <nav class="footer-nav menu -row flex-wrap">
-                <button data-toggle-color-scheme
-                    title="Toggle color scheme"
-                    class="btn -icon"
-                >{{ '/src/_static/icons/color-scheme.svg' | svgContents | safe }}</button>
-            </nav>
+            <button data-toggle-color-scheme
+                title="Toggle color scheme"
+                class="btn -icon"
+            >{{ '/src/_static/icons/color-scheme.svg' | svgContents | safe }}</button>
         </div>
     </div>
 </footer>

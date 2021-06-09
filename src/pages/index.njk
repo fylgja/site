@@ -214,7 +214,7 @@ font-size: 1.125em;
 </header>
 
 {% if navigation.intro %}
-<nav class="hero-nav container pb-8">
+<nav aria-label="quick menu" class="hero-nav container pb-8">
     <div class="card divide-y sm-divide-y-none sm-divide-x sm-flex-row">
         {% for item in navigation.intro %}
         <a href="{{ item.url }}" {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}

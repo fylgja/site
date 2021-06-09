@@ -1,6 +1,6 @@
 {% if navigation.main %}
     <dialog id="offcanvas-menu" class="offcanvas-end py-0 px-2">
-        <header class="flex justify-between iteme-center py-3 px-2">
+        <div class="flex justify-between items-center py-3 px-2">
             <a href="/" class="logo">
                 <svg width="72" height="24" fill="currentColor">
                     <title>Fylgja</title>
@@ -13,9 +13,9 @@
                     <use href="/images/sprite.svg#close" />
                 </svg>
             </button>
-        </header>
+        </div>
         <div class="dialog-inner flex-auto">
-            <nav class="menu">
+            <nav class="menu" aria-label="Offcanvas menu">
                 <ul>
                     {%- for item in collections.started | sortByOrder -%}
                     <li>
@@ -73,8 +73,8 @@
                 </ul>
             </nav>
         </div>
-        <footer class="py-4 px-2">
-            <nav class="footer-nav flex">
+        <div class="py-4 px-2">
+            <nav  aria-label="Offcanvas extra menu" class="footer-nav flex">
                 {% for item in navigation.socials %}
                     <a href="{{ item.url }}"
                         class="btn -icon me-1 {% if page.url==item.url %} is-active{% endif %}"
@@ -89,6 +89,6 @@
                     class="btn -icon ms-auto"
                 >{{ '/src/_static/icons/color-scheme.svg' | svgContents | safe }}</button>
             </nav>
-        </footer>
+        </div>
     </dialog>
 {% endif %}

@@ -9,7 +9,9 @@
         </a>
         {% if navigation.main %}
             <div class="flex iteme-center">
-                <nav id="main-menu" class="menu -row hidden sm-inline-flex iteme-center space-x-2">
+                <nav id="main-menu"
+                    aria-label="Main menu"
+                    class="menu -row hidden sm-inline-flex iteme-center space-x-2">
                     {% for item in navigation.main %}
                         <a href="{{ item.url }}"
                             {% if page.url==item.url %}class="is-active"{% endif %}
