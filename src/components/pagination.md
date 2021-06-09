@@ -7,8 +7,8 @@ tags: ["navs"]
 preview: "pagination.png"
 ---
 
-Pagination component makes it easy to build many pagination patterns.
-Like button only next previous nav or dots nav.
+The pagination component makes it easy to build many pagination patterns, 
+like button only next previous nav or dots nav.
 
 ## Installation
 
@@ -26,10 +26,9 @@ Then include the component in to your code via;
 
 ## How to use
 
-In your html you need besides the pagination class also some html for the items.
+In your html, you need besides the pagination class, also some html for the items.
 
-We advice you to use an ordered list.
-As this tells the user the structure of the list of links.
+We advice you to use an ordered list, as this tells the user the structure of the list of links.
 
 ```html
 <nav aria-label="pagination">
@@ -41,16 +40,17 @@ As this tells the user the structure of the list of links.
 </nav>
 ```
 
-Using the `aria-current="page"`
-will tell the user that this is the current page.
+Using the `aria-current="page"` will tell the user that this is the current page.
+
 And it is also used to give it the active item style.
 
 ### Pagination with buttons and ellipsis.
 
-If you need a more complex pagination with buttons and ellipsis.
-You can nest the pagination with buttons
-and there is a class `.pagination-ellipsis`
-for adding a gap in you pagination items.
+If you need a more complex pagination with buttons and ellipsis, 
+
+you can nest the pagination with buttons and there is a class
+
+`.pagination-ellipsis` for adding a gap in you pagination items.
 
 ```html
 <nav aria-label="pagination" class="pagination justify-center">
@@ -69,10 +69,9 @@ for adding a gap in you pagination items.
 ### Other use cases
 
 The pagination component also works for any other use cases,
-that is also in some form a pagination.
+that are a form a pagination.
 
-Do you need a pagination for slider dots.
-Use the dots variable class.
+Do you need a pagination with slider dots, use the dots variable class.
 
 
 ```html
@@ -84,8 +83,7 @@ Use the dots variable class.
 </nav>
 ```
 
-Need a more btn like pagination.
-Combine this component with the `@fylgja/btn` component.
+Need a more btn like pagination, combine this component with the `@fylgja/btn` component.
 
 ```html
 <nav aria-label="pagination" class="pagination">
@@ -94,16 +92,13 @@ Combine this component with the `@fylgja/btn` component.
 </nav>
 ```
 
-Or even more options.
-Like a pagination slider thumbs with images as content, instead of text.
+Or even more options, like a pagination slider thumbs with images as content, instead of text.
 
 ## Config
 
-As with almost all of our components.
-CSS variables can be configured to add your own look/style.
+As with almost all of our components, CSS variables can be configured to add your own look/style.
 
-Want direct control on the base styles.
-Down here are the following SCSS variables can you modify.
+Want direct control on the base styles, here are the following SCSS variables can you modify.
 
 ```scss
 $enable-pagination-old-gap: true !default;

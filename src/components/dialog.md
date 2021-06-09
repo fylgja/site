@@ -11,15 +11,14 @@ preview: "dialog.png"
 order: 1
 ---
 
-The dialog is 3 components in 1.
-It is by default a modal.
-But with 1 small change can be a offcanvas,
-notification popup or as it also know as, the snackbar.
+The dialog combines 3 components in 1, it a modal by default,
+and with a small change it's a offcanvas,
+notification popup aka the snackbar.
 
-With this, the code is super tiny compared to other solutions.
-And is super flexible.
-Since you can show it as modal on desktop and a offcanvas on mobile.
-by changing a few CSS variables.
+This code is super tiny compared to other solutions,
+and it's super flexible.
+Use it to have a modal on desktop and offcanvas on mobile,
+simply by changing a few CSS variables.
 
 ## Installation
 
@@ -27,7 +26,7 @@ by changing a few CSS variables.
 npm install @fylgja/dialog
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/dialog";
@@ -55,12 +54,13 @@ that can open the dialog.
 <!-- Or use 'offcanvas-end' -->
 ```
 
-Use the `.dialog-inner`.
-If your content can be to big for specific screen sizes.
-This will allow scrolling inside the dialog-inner.
+Use the `.dialog-inner` 
+if your content will be to big for specific screen sizes.
 
-You can combine this with a header and/or footer.
-That will always show, when you are scrolling.
+This will allow scrolling the content inside the dialog-inner.
+
+You can combine this with a header and/or footer, 
+that always will be visible when you are scrolling.
 
 ```html
 <dialog id="dialog-modal">
@@ -82,8 +82,8 @@ You will need the polyfill until the html dialog is supported fully
 As with almost all of our components.
 CSS variables can be configured to add your own look/style.
 
-Want direct control on the base styles.
-Down here are the following SCSS variables can you modify.
+For direct control of the base styles, 
+use the following SCSS variables can you modify.
 
 ```scss
 $enable-dialog-polyfill: true !default;

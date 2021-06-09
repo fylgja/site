@@ -48,9 +48,7 @@ The card becomes clickable with the href from the nested link.
 
 ## Why use this
 
-Why do this.
-You might ask.
-Well for accessibility.
+Why do this, you might ask, well for accessibility.
 
 If you use a link on the card, the complete content becomes part of the link description,
 

@@ -10,6 +10,7 @@ The Button component serves as an interactive element.
 To call your users to an action.
 
 Since not all buttons need to be an Call To Action.
+
 The base button is as simple as possible
 and many styles can be build on top of this foundation.
 
@@ -37,15 +38,16 @@ In your html you only need the `.btn` class to use the button style.
 ```
 
 The buttons component is by default is blank with a soft focus and active color.
+
 Based on the `root-fg` color, which is black by default.
 
-Besides that the buttons component also comes with a lot of CSS variables.
-Which allow easier construction of specific button styles via a modifier class.
+Besides that, the buttons component also comes with a lot of CSS variables,
+
+which allow easier construction of specific button styles via a modifier class.
 
 ### Variable classes
 
-By default we also offer some base default variable class.
-Which you can disabled via de SCSS variables if needed.
+By default we also offer some base default variable class, that can be disabled via de SCSS variables if needed.
 
 | Class      | Description                                         |
 | ---------- | --------------------------------------------------- |
@@ -53,17 +55,15 @@ Which you can disabled via de SCSS variables if needed.
 | `-theme`   | Paints the btn with and filled `$color-theme` color |
 | `-icon`    | Creates a icon btn's with equal width and height    |
 
-Besides these variable classes.
-We try to keep away from adding more variable classes.
+Besides these variable classes, we try to keep away from adding more variable classes.
+
 As this will create to much extra CSS you will most likely never use.
 
 ## Config
 
-As with almost all of our components.
-CSS variables can be configured to add your own look/style.
+As with almost all of our components, CSS variables can be configured to add your own look/style.
 
-Want direct control on the base styles.
-Down here are the following SCSS variables can you modify.
+Want direct control on the base styles, here are the following SCSS variables can you modify.
 
 ```scss
 $enable-btn-theme: true !default;

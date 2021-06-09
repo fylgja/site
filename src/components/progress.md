@@ -6,10 +6,9 @@ tags: ["nativeElements", "forms"]
 preview: "progress.png"
 ---
 
-The progress component show a progression of a form or somethings else.
+The progress component is used to show progress indication in a form or somethings else.
 
-By offering the easer to style native progress element
-and the class based option.
+Fylgja supports both the native HTML progress element and the class based option.
 
 ## Installation
 
@@ -17,7 +16,7 @@ and the class based option.
 npm install @fylgja/progress
 ```
 
-Now include the component in to your code via;
+Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/progress";
@@ -27,7 +26,7 @@ Now include the component in to your code via;
 
 ## How to use
 
-No instruction are really needed.
+No instructions are really needed.
 The progress styles are automatically added when loaded.
 
 That said no site is the same.

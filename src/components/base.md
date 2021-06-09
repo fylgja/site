@@ -7,8 +7,8 @@ preview: "base.png"
 order: 1
 ---
 
-Common defaults to make your body and typography look good.
-And easy to change to your needs.
+Common defaults to make your body and typography look good
+and easy to change to your needs.
 
 ## Installation
 
@@ -30,7 +30,7 @@ Then include the component in to your code via;
 The base component can be considered as more than one component, everything makes more sense together,
 since these are small CSS setters to the body, typography and media.
 
-Down here is a list of each component and what main things each component does.
+Here is a list of each component and the main things each component does.
 
 | Component Parts | Description                                          |
 | --------------- | ---------------------------------------------------- |
@@ -41,7 +41,7 @@ Down here is a list of each component and what main things each component does.
 | Media           | Makes images responsive by default                   |
 | Typography      | Sets defaults for all common text elements           |
 
-There are also few helper classes, but mostly all styles are set on the html elements directly.
+There are also helper classes, but mostly all styles are set directly on the html elements.
 
 | Class          | Description                               |
 | -------------- | ----------------------------------------- |
@@ -53,7 +53,7 @@ There are also few helper classes, but mostly all styles are set on the html ele
 
 As with almost all of our components, you can configure CSS variables to add your own look/style.
 
-Direct control on the base styles, You can you modify the following SCSS variables.
+Direct control on the base styles, you can you modify the following SCSS variables.
 
 ```scss
 // Typography
@@ -135,21 +135,21 @@ $h6-font-weight: bold !default;
 
 ## FAQ
 
-<details class="faq-panel" open><summary>Is this a Rest CSS or Normalizer CSS component?</summary>
+<details class="faq-panel" open><summary>Is this a Reset CSS or Normalizer CSS component?</summary>
 
 No, the base component is a setter for common styles but not a reset file.
 
-Each reset for a specific html element is handled by the component that needs it.
+Each reset for a specific html element is handled by the component that needs it,
 
-And not first set by one reset file and then restyled by the component,
+not first set by one reset file and then restyled by the component.
 
-that can be considered bad practice and creates double CSS.
+Doing that would be considered bad practice and creates double CSS.
 
 </details>
 
 <details class="faq-panel"><summary>Do I need everything in this CSS component?</summary>
 
-No. If you need only parts of the base component just import these parts only.
+No. If you only need parts of the base component, just import these parts.
 
 ```scss
 @use "@fylgja/base/body";

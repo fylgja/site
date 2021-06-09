@@ -10,15 +10,17 @@ order: 2
 ---
 
 A super small grid with auto flowing behavior, based on the container size.
+
 Using a similar method to container queries.
 
 This grid uses a minmax method,
-that fills the grid items based on the space available.
+it fills the grid items based on the space available.
+
 Where the min value is static value and the max value is `1fr`.
 
-This creates a grid without needing to setup any columns and rows.
-Since the grid items will do this for you.
-Following the **content first** approach!
+It creates a grid without needing to setup any columns and rows,
+
+since the grid items will do this for you, following the **content first** approach!
 
 ## Installation
 

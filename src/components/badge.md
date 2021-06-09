@@ -6,8 +6,7 @@ npm: "@fylgja/badge"
 preview: "badge.png"
 ---
 
-Badges component serves as a small blocks to indicate notifications.
-Or to highlight an item.
+The badges component serves as a small blocks to indicate notifications, or to highlight an item.
 
 ## Installation
 
@@ -31,10 +30,10 @@ To use the badge, create element with the class `.badge`.
 <span class="badge">..</span>
 ```
 
-But if you need a badge with a little more complexity.
-Like a badge with 2 sides of data or with a close button.
+But if you need a badge with a little more complexity,
+like a badge with 2 sides of data or with a close button.
 
-You can use the `.badge-addon` as wrapper that binds the 2 badge to one badge.
+You can use the `.badge-addon` as wrapper that binds the 2 badges to one badge.
 
 ```html
 <div class="badge-addon">
@@ -45,10 +44,9 @@ You can use the `.badge-addon` as wrapper that binds the 2 badge to one badge.
 
 ### Badge group (Tag cloud)
 
-To create Badge group (Tag cloud).
-You need to use custom CSS or the `@fylgja/utilpack`.
-To create a flex-grid with gap via margin or via the gap property
-(when it is better supported).
+To create Badge group (Tag cloud), you need to use custom CSS or the `@fylgja/utilpack`.
+
+To create a flex-grid with gap via margin or via the gap property (when it is better supported).
 
 ```html
 <div class="flex flex-wrap">
@@ -61,11 +59,9 @@ To create a flex-grid with gap via margin or via the gap property
 
 ## Config
 
-As with almost all of our components.
-CSS variables can be configured to add your own look/style.
+As with almost all of our components, CSS variables can be configured to add your own look/style.
 
-Want direct control on the base styles.
-Down here are the following SCSS variables can you modify.
+Want direct control on the base styles, here are the following SCSS variables can you modify.
 
 ```scss
 $badge-padding: 0.125em 0.75em !default;

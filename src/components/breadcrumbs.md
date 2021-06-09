@@ -6,8 +6,7 @@ tags: ["navs", "list"]
 preview: "breadcrumbs.png"
 ---
 
-Breadcrumbs component will show your visitors where they are
-currently on the website.
+The breadcrumbs component is a navigational aid, it allows users to maintain awareness of their location in an app or a website. 
 
 ## Installation
 
@@ -25,9 +24,9 @@ Then include the component in to your code via;
 
 ## How to use
 
-In your html you will need besides the breadcrumb class also some html for the items.
-We advice you to use of an ordered list.
-As this tells the user the structure of the list of links.
+In your html for the breadcrumb class, you also need some html for the items.
+
+We advice you to use of an ordered list, as this tells the user the structure of the list of links.
 
 ```html
 <nav aria-label="breadcrumb">
@@ -40,24 +39,22 @@ As this tells the user the structure of the list of links.
 </nav>
 ```
 
-Using an anchor for the current page allows your user to reload
-the page via the breadcrumbs.
-And most voiceovers tools will also speak the item.
+Using an anchor for the current page allows your user to reload the page via the breadcrumbs.
 
-Using the `aria-current="page"`
-will tell the user that this is the current page.
-And it is also used to give it a different style
-compared to the rest of the breadcrumb items.
+And most voiceovers tools will also speak the list items.
+
+Using the `aria-current="page"` will tell the user that this is the current page.
+
+It is also used to give anchor links a different style compared to the rest of the breadcrumb items.
 
 _By default this is a black grayish text, still clickable if an anchor is used_
 
 ## Config
 
-As with almost all of our components.
-CSS variables can be configured to add your own look/style.
+As with almost all of our components, CSS variables can be configured to add your own look/style.
 
-Want direct control on the base styles.
-Down here are the following SCSS variables can you modify.
+Want direct control on the base styles,
+here are the following SCSS variables can you modify.
 
 ```scss
 $breadcrumbs-divider: "  /  " !default;

@@ -6,11 +6,12 @@ tags: ["layouts"]
 preview: "scroll-slider.png"
 ---
 
-This CSS slider component allows you to make sliders with eas.
-And no requirements to any Javascript.
+This CSS slider component allows you to make sliders with ease,
+and has no requirements to any Javascript.
 
 The only reason to add some additional Javascript,
-Would be to add extra supporting functions.
+would be to add extra supporting functions.
+
 Like a navigation and a active state.
 
 ## Installation
@@ -29,8 +30,8 @@ Then include the component in to your code via;
 
 ## How to use
 
-To create a slider.
-You will need a wrapper element with the class `.scroll-slider`.
+To create a slider, you will need a wrapper element with the class `.scroll-slider`.
+
 Any direct children of the slider will become scroll items.
 
 ```html
@@ -40,13 +41,14 @@ Any direct children of the slider will become scroll items.
 </div>
 ```
 
-The scroll items will by default have size from the content.
+The scroll items will by default have the size from the content.
 
-If you want your slides to a specific size.
-You can use the CSS variables provide by this CSS component.
+If you want your slides to have a specific size, 
+you can use the CSS variables provided by this CSS component.
 
 A full width slider can be made by setting the scroll-size to 100%
 and setting the inline gap to 0.
+
 If you also want to reserve the scroll gap, set the block gap to whatever your want.
 
 ```html
@@ -58,8 +60,8 @@ If you also want to reserve the scroll gap, set the block gap to whatever your w
 
 ## Config
 
-Want more control on the base styles, than the CSS variables.
-Down here are the following SCSS variables you can modify.
+Want more control on the base styles, then the CSS variables,
+here are the following SCSS variables you can modify.
 
 ```scss
 $enable-scroll-overflow-fix: true !default;
@@ -80,13 +82,15 @@ Down here some useful tips to enhance your slider.
 
 ### Adding a navigation
 
-You can create a navigation for the slider.
-By using an anchor hash link pagination.
-And using the `@fylgja/pagination` as CSS component for the style.
+You can create a navigation for the slider,
+by using an anchor hash link pagination,
 
-If don't like the hash to appear in your url.
-You can add a little javascript to enhance this behavior.
-And remove the hash from your url.
+and using the `@fylgja/pagination` as CSS component for the style.
+
+If don't like the hash to appear in your url,
+you can add a little javascript to enhance this behavior,
+
+and remove the hash from your url.
 
 <details class="faq-panel"><summary>Example of the HTML and Javascript pagination</summary>
 
@@ -120,6 +124,6 @@ _An event listener would have been better. But this is just sample 😉_
 
 By default we don't hide or change the scrollbar.
 
-If you slider requires a more custom style you do so via the `@fylgja/scrollbar` component.
-By adding the thin or hide class.
+If you slider requires a more custom style use the `@fylgja/scrollbar` component,
+adding the thin or hide class.
 

@@ -6,8 +6,7 @@ tags: ["layout", "plugins"]
 preview: "flex-grid.png"
 ---
 
-Create a complete grid using flexbox.
-And only set the columns you need.
+Create a complete grid using flexbox, and only set the columns you need.
 
 Making it even smaller than other flex grids.
 
@@ -29,10 +28,11 @@ Then include the component in to your code via;
 
 This grid does not work with a 12 columns or 24 columns layout,
 unlike other frameworks.
+
 This only makes your CSS bigger with unused columns.
 
-The power of the flex-grid is
-that for each media query there are specific amount of columns set.
+The power of the flex-grid is that for each media query,
+there are specific amount of columns set.
 
 So for example on mobile you might only need 2 columns.
 Then you can set the flex-grid to only load 2 columns.
@@ -47,7 +47,9 @@ Then you can set the flex-grid to only load 2 columns.
 Each cell size is 100% divided by `$i`.
 
 Making it way more clear what size you can set.
+
 And unlike 12 column grid you can set a 5 column grid row.
+
 Since each column you create is based on the 100% divided by `$i`.
 
 ### Classes
@@ -66,8 +68,8 @@ _$mq = @media, e.g. `.sm-2` or `.lg-2`_
 
 `.-gap`: modifier class to set grid gap
 
-`.-fill`: modifier class to makes each cells content equal height.
-Works great with cards and other flexable componets.
+`.-fill`: modifier class to make each cells content equal height,
+works great with cards and other flexable components.
 
 `.offset-${mq}-${i}`: set the cell offset, from left.
 
@@ -84,8 +86,8 @@ Example:
 
 ## Config
 
-By default the config is set for the smallest use case.
-So many configs are disabled to load only what is needed.
+By default the config is set for the smallest use case,
+so many configs are disabled to load only what is needed.
 
 ### Booleans
 
@@ -135,8 +137,7 @@ mq is shorthand for media query.
 
 <details class="faq-panel"><summary>Why is there a hyphen before some classes?</summary>
 
-Some classes are modifier classes.
-And we wanted to have different naming,
+Some classes are modifier classes, and we wanted to have different naming,
 to separate them from normal CSS class naming.
 
 In the upcoming framework you will see a little more of this.
@@ -151,7 +152,7 @@ So good stuff to come 😉
 It's not an valid answer to say browser support,
 since you can use CSS grid in IE11, via Explicit grid (fixed size).
 
-Flex-grid makes sense for flexable grids.
-Where you don't know the layout before hand.
+Flex-grid makes sense for flexable grids,
+where you don't know the layout before hand.
 
 </details>

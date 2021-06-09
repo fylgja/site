@@ -8,7 +8,8 @@ preview: "card.png"
 ---
 
 The card component is a wrapper component.
-Which allows you to make visual sectioned content,
+
+It allows you to make visual sectioned content,
 that is not part of the main flow.
 
 ## Installation
@@ -30,14 +31,14 @@ Then include the component in to your code via;
 The card is one of the few CSS components that requires a little bit more
 classes or/and elements.
 
-A simple card can be just be 1 element.
-And so you can collapse the child card classes to the parent.
+A simple card can be just be 1 element,
+and so you can collapse the child card classes to the parent,
 
 ```html
 <div class="card card-content">..</div>
 ```
 
-And a more complex card requires nesting.
+and a more complex card requires nesting.
 
 ```html
 <div class="card">
@@ -73,11 +74,11 @@ but can also make it a flat card via 2 variables.
 
 ## Config
 
-As with almost all of our components.
+As with almost all of our components,
 CSS variables can be configured to add your own look/style.
 
 Want direct control on the base styles.
-Down here are the following SCSS variables can you modify.
+Here are the following SCSS variables can you modify.
 
 ```scss
 $enable-card-link: true !default;

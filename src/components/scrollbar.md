@@ -30,6 +30,7 @@ By default `@fylgja/scrollbar` offers 2 scrollbar styles.
 - `.thin-scrollbar`
 
 Both are based on the browser default styles thats is supported by Firefox.
+
 Giving a close cross browser support to the scrollbar style.
 
 Apply the scrollbar style to any element that has overflow and so has a scrollbar.
@@ -42,14 +43,15 @@ Apply the scrollbar style to any element that has overflow and so has a scrollba
 
 ### Cross browser support
 
-Currently the scrollbar styles are split in the newer spec.
-That is only supported by Firefox.
+Currently the scrollbar styles are split in the newer specification that is only supported by Firefox.
+
 And the webkit version that is supported by all moderne browsers except Firefox.
 
 This CSS component mimics the newer spec with the webkit version.
+
 And so limits the possibilities found in the webkit version.
-Making this CSS component as safe solution for a near cross browser style.
-With minor OS differences.
+
+Making this CSS component as safe solution for a near cross browser style, with minor OS differences.
 
 ### Mixin (SCSS only)
 
@@ -74,8 +76,8 @@ This mixin will create a near cross browser scrollbar.
 
 ## Config
 
-Want more control on the base styles, than the CSS variables.
-Down here are the following SCSS variables you can modify.
+Want more control on the base styles, than the CSS variables,
+Here are the following SCSS variables you can modify.
 
 ```scss
 $scrollbar-thumb-color: rgba($root-fg, 25%) !default;

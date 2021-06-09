@@ -7,9 +7,11 @@ tags: ["layout", "forms"]
 preview: "input-group.png"
 ---
 
-The input group extends upon the `@fylgja/form`.
-By providing a wrapper that allows for more complex form field styles.
-Like a search bar with button in the same form field.
+The input group extends upon the `@fylgja/form`, 
+
+by providing a wrapper that allows for more complex form field styles,
+
+like a search bar with button in the same form field.
 
 ## Installation
 
@@ -48,8 +50,8 @@ Import the style directly via;
 
 ## How to use
 
-The input group allows you to build simple things.
-Like a search form with a submit button in the same form field.
+The input group allows you to build simple things,
+like a search form with a submit button in the same form field.
 
 ```html
 <form id="search-form">
@@ -65,8 +67,8 @@ Like a search form with a submit button in the same form field.
 
 To more complex things.
 
-The main focus is that you have the freedom to add anything.
-So down here are all the classes that you have to your disposal.
+The main focus is that you have the freedom to add anything,
+so down here are all the classes that you have to your disposal.
 
 ### Input group
 

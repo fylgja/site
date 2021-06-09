@@ -24,8 +24,8 @@ Then include the component in to your code via;
 ## How to use
 
 This component does not create any CSS.
-And only contains some SCSS variable for Fylgja components.
-That have theme specific styles.
+
+And only contains some SCSS variable for Fylgja components, that have theme specific styles.
 
 You can use this component to quickly override the specific styles,
 set to a button, links and more, via;
@@ -39,8 +39,9 @@ set to a button, links and more, via;
 
 Instead of the default the theme is now a teal color.
 
-And you also reuse this in your own components.
-By importing the `@fylgja/theme` or use it directly in your styles via;
+And you can also reuse this in your own components,
+
+by importing the `@fylgja/theme` or use it directly in your styles via;
 
 ```scss
 @use "@fylgja/theme" as ft with (

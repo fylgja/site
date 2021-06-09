@@ -8,8 +8,8 @@ tags: "utils"
 preview: "hashlink.png"
 ---
 
-The Hashlink is a small utility component.
-Which adds smooth scrolling to the page via CSS
+The Hashlink is a small utility component, which adds smooth scrolling to the page via CSS
+
 and a scroll offset to any element with a id.
 
 Making it perfect for hashlinks.
@@ -31,9 +31,9 @@ Then include the component in to your code via;
 
 ## How to use
 
-The styles require no additional html markup.
-But will only take affect if a hashlink points to the correct id
-and can receive focus.
+The styles require no additional html markup, 
+
+but will only take affect if a hashlink points to the correct id and can receive focus.
 
 ```html
 <a href="#heading">Go to Heading</a>
@@ -47,11 +47,9 @@ _Which is also be super handy with sticky headers._
 
 ## Config
 
-As with almost all of our components.
-CSS variables can be configured to add your own look/style.
+As with almost all of our components, CSS variables can be configured to add your own look/style.
 
-Want direct control on the base styles.
-Down here are the following SCSS variables can you modify.
+Want direct control on the base styles, here are the following SCSS variables can you modify.
 
 ```scss
 $enable-hashlink-scroll-behavior: true !default;

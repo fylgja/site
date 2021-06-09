@@ -217,7 +217,7 @@ and the value is always the min-width media query.
 ```
 
 It will use the hyphen as default separator,
-but if prefer the same separator as seen in TailwindCSS,
+but if you prefer the same separator as seen in TailwindCSS,
 you can use `$utilpack-separator: "\:"`. 
 
 _The Tailwind separator can conflict with specific tools and linters,_

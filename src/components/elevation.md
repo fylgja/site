@@ -7,12 +7,11 @@ tags: ["utils"]
 preview: "addon.png"
 ---
 
-The Elevation component is a util package for shadows.
-Where it offers shadows as CSS variables.
+The Elevation component is a util package for shadows, where it offers shadows as CSS variables.
 
 It follows the same principals as Google's material design.
-But stay's more small and practical.
-By focusing only on elevation indexes that are commonly used.
+
+But stay's more small and practical, by focusing only on elevation indexes that are commonly used.
 
 ## Installation
 
@@ -55,11 +54,9 @@ Or the SCSS function `elevation()`.
 
 ## Config
 
-As with almost all of our components.
-CSS variables can be configured to add your own look/style.
+As with almost all of our components, CSS variables can be configured to add your own look/style.
 
-Want direct control on the base styles.
-Down here are the following SCSS variables can you modify.
+Want direct control on the base styles, here are the following SCSS variables can you modify.
 
 ```scss
 $enable-elevation: true !default;

@@ -8,7 +8,8 @@ preview: "aria-only.png"
 ---
 
 The aria-only (a.k.a. **sr-only**) visually hides elements.
-But keeps it accessible to screen-readers and other aria tools.
+
+But keeps them accessible to screen-readers and other aria tools.
 
 ## Installation
 
@@ -26,7 +27,7 @@ Then include the component in to your code via;
 
 ## How to use
 
-Add the class aria-only to any element to visually hide it.
+Add the class `.aria-only` to any element to visually hide it.
 
 ```html
 <div class="aria-only">Text that is visually hidden</div>
@@ -36,8 +37,9 @@ Add the class aria-only to any element to visually hide it.
 
 The aria-only component also support the skip navigation option.
 
-This can be used via the class `.aria-only-focusable`.
-Since this class will still show the content when receiving focus.
+This can be used via the class `.aria-only-focusable`,
+
+since this class will still show the content when receiving focus.
 
 _If you want to extent this behavior,_
 _to make a true skip link [see the tips](#tips)._
@@ -46,9 +48,9 @@ _to make a true skip link [see the tips](#tips)._
 
 The aria-only component is by default not set to render it's styles as important.
 
-If you do prefer this.
-You can enable this via the variable `$enable-aria-only-important`.
-And set the value to `true`.
+If you do prefer this, you can enable this via the variable
+
+`$enable-aria-only-important`, and set the value to `true`.
 
 ### Mixin (SCSS only)
 
@@ -71,7 +73,7 @@ You can also use it as a mixin with your own styles, via;
 
 The `.aria-only-focusable` will unset its own styles when receiving focus.
 
-To prevent this for some styles, You must set some styles to always take effect, even when the skip link has focus.
+To prevent this for some styles, you must set some styles to always take effect, even when the skip link has focus.
 
 You only need this sample to prevent layout jank.
 

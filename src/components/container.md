@@ -6,8 +6,8 @@ tags: "layouts"
 preview: "container.png"
 ---
 
-The container component is wrapper component.
-To make all child elements fit better in the page.
+The container component is wrapper component,
+to make all child elements fit better in the page.
 
 ## Installation
 
@@ -31,26 +31,26 @@ To use the container create element with the class `.container`.
 <div class="container">..</div>
 ```
 
-The container is pretty straight forward.
-But its power is found in its customization via CSS variables.
+The container is pretty straight forward,
+its power is found in its customization via CSS variables.
 
 Allowing for smaller of bigger containers when needed.
 
-A more content max width based solution can be made via;
+A more content max width based solution, can be made via;
 
 ```html
 <div class="container" style="--container-size: 65ch;">..</div>
 ```
 
-Making your text better readable for your users when needed.
+Making your content better readable for your users when needed.
 
 ## Config
 
-As with almost all of our components.
+As with almost all of our components,
 CSS variables can be configured to add your own look/style.
 
-Want direct control on the base styles.
-Down here are the following SCSS variables can you modify.
+Want direct control on the base styles,
+Here are the following SCSS variables can you modify.
 
 ```scss
 $container-size: 1280px !default;

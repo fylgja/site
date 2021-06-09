@@ -7,7 +7,8 @@ tags: ["typography"]
 preview: "list.png"
 ---
 
-The list component add more control on how you can style lists.
+The list component adds more control on how you can style lists.
+
 By adding a custom marker option with full flexibility to style and animate.
 
 ## Installation
@@ -26,14 +27,14 @@ Then include the component in to your code via;
 
 ## How to use
 
-Out of the box this will work by just adding the class `.list-style`
-to any `ul` or `ol` tag.
+Out of the box this will work by just adding the class `.list-style` to any `ul` or `ol` tag.
 
 The `.list-style` will replace the default list style
 with a `::before` with editable content inside.
+
 This way you have the same list but now can edit the style of the marker.
 
-Down here is a sample with a custom check mark style.
+Here is a sample with a custom check mark style.
 
 ```html
 <style>
@@ -48,8 +49,7 @@ Down here is a sample with a custom check mark style.
 
 ### Unset list style
 
-The list style also comes with a CSS variable class, none.
-This will unset the list style.
+The list style also comes with a CSS variable class, none, this will unset the list style.
 
 ```html
 <ul class="list-style -none">..</ul>
@@ -57,12 +57,11 @@ This will unset the list style.
 
 ### Build new lists (SCSS only)
 
-The list component also comes packing with a build in mixin.
-That will create the marker style.
+The list component also comes with a build in mixin, that will create the marker style.
 
 Call the mixin `list-style()` and pass the props as seen down here.
-This allows creation of a custom lists in CSS,
-without writing any sub classes that are needed.
+
+This allows creation of a custom lists in CSS, without writing any sub classes that are needed.
 
 ```scss
 .list-style.-custom {
@@ -89,11 +88,9 @@ without writing any sub classes that are needed.
 
 ## Config
 
-As with almost all of our components.
-CSS variables can be configured to add your own look/style.
+As with almost all of our components, CSS variables can be configured to add your own look/style.
 
-Want direct control on the base styles.
-Down here are the following SCSS variables can you modify.
+Want direct control on the base styles, here are the following SCSS variables can you modify.
 
 ```scss
 $enable-list-style-none: true !default;
@@ -111,14 +108,16 @@ $list-marker-icon-height: 1.5em !default; // Same as line-height default
 
 <details class="faq-panel" open><summary><span>Do I still needs this with the pseudo <code>:marker</code></span></summary>
 
-No.
-If you plan to just set an icon and the color.
-The native solution via the `:marker` pseudo selector, is all you need.
+No if you plan to just set an icon and the color, 
 
-But if you plan to do more like animation or need better browser support.
+then native solution via the `:marker` pseudo selector, is all you need.
+
+But if you plan to do more like animation or need better browser support,
+
 You should use this.
 
-We are planing to update the logic for the list-style to the pseudo `:marker`.
-When support is better and more stable.
+We are planing to update the logic for the list-style to the pseudo `:marker`,
+
+when browser support is better and more stable.
 
 </details>

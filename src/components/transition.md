@@ -24,8 +24,7 @@ Then include the component in to your code via;
 
 The transition component can be used 2 ways.
 
-The first one is the CSS only way,
-where you use the class provided by this Component.
+The first one is the CSS only way, where you use the class provided by this Component.
 
 ```html
 <div class="transition">..</div>
@@ -41,6 +40,7 @@ After this you can easily edit the behavior via CSS Variables.
 
 The CSS Variables are set in the component, and not used as fallback value,
 so each variables is scoped and does not inherit.
+
 This way each animation is set specific for that element.
 
 Don't you like inline styles? then use a class instead. Add a inline style tag in the head of your page or via your CSS file.
@@ -82,5 +82,7 @@ There are a lot of options to use easing,
 using the name keywords or by using a cubic-bezier.
 
 Cubic-bezier give more flexibility on how to animate something,
+
 and tools like [cubic-bezier.com](https://cubic-bezier.com/) make this even easier.
+
 But if your animations are simple it is better to stick to the linear and ease-out keywords.

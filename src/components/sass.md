@@ -6,10 +6,9 @@ tags: ["config", "plugins"]
 preview: "sass.png"
 ---
 
-Adds more SCSS super powers functions.
+Adds more SCSS super power functions.
 
-This repo will add more functions that adds options
-not found in the core sass project.
+This repo will add more functions and adds options not found in the core sass project.
 
 ## Installation
 
@@ -20,6 +19,7 @@ npm install @fylgja/sass
 ## How to use
 
 Since this is a Sass function library it require only usages where it is needed.
+
 So if you need to string replace something.
 
 Then include the specific sass typed function via;

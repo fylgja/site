@@ -6,7 +6,7 @@ tags: ["typography", "nativeElements"]
 preview: "details.png"
 ---
 
-The details components enhances the default details behavior.
+The details component enhances the default details behavior.
 
 ## Installation
 
@@ -24,20 +24,21 @@ Then include the component in to your code via;
 
 ## How to use
 
-Out of the box all the styling is done directly.
-So no extra steps are needed.
+Out of the box all the styling is done directly, 
+so no extra steps are needed.
+
 And the details element wil look relativity the same as the browser default.
 
-The sole reason that the style should be changeable for many purposes.
-Think a sub menu toggle or a accordion.
+The style should be changeable for many purposes, 
+think a sub menu toggle or a accordion.
 
 ## Config
 
-As with almost all of our components.
+As with almost all of our components,
 CSS variables can be configured to add your own look/style.
 
-Want direct control on the base styles.
-Down here are the following SCSS variables can you modify.
+Want direct control on the base styles,
+here are the following SCSS variables can you modify.
 
 ```scss
 $details-animation: details-show 200ms ease-in-out !default;
@@ -46,8 +47,8 @@ $details-margin: 1em 0 !default;
 
 ## Tip
 
-If you need the common accordion style you can use the Card component.
-And a little extra CSS.
+If you need the common accordion style you can use the Card component,
+and a little extra CSS.
 
 ```html
 <style>

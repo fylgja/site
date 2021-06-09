@@ -31,8 +31,7 @@ where you use the class provided by this Component.
 <div class="transform">..</div>
 ```
 
-By default this will do nothing,
-you need some CSS Variables to use its magic.
+By default this will do nothing, you need some CSS Variables to use its magic.
 
 You can move anything on the X axis by calling the variable `--tx`
 
@@ -42,9 +41,11 @@ You can move anything on the X axis by calling the variable `--tx`
 
 The CSS Variables are set in the component, and not used as fallback value,
 so each variables is scoped and does not inherit.
+
 This way you can transform something to what you want to realise.
 
 Don't you like inline styles? then use a class instead.
+
 Add a inline style tag in the head of your page or via your CSS file.
 
 ```html
