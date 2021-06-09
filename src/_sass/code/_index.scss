@@ -15,7 +15,7 @@
 
 pre {
     @include scrollbar(
-        $thumb: color.change(#fff, $alpha: 0.2),
+        $thumb: color.change(#fff, $alpha: 0.5),
         $track: color.change(#000, $alpha: 0),
         $width: thin
     );
