@@ -1,0 +1,17 @@
+$mq-desktop: 2200px !default;
+$mq-desktop-tv: 2500px !default;
+
+@media (min-width: $mq-desktop) {
+    :root {
+        --container-size: 1440px;
+        --font-size: 1.125rem;
+        --line-height: 1.8;
+    }
+}
+
+@media (min-width: $mq-desktop-tv) {
+    :root {
+        --container-size: 1620px;
+        --font-size: 1.25rem;
+    }
+}
