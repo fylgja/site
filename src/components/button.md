@@ -1,6 +1,7 @@
 ---
 title: "Button"
-description: "The Button component serves as an interactive element. To call your users to an action."
+description: "The Button component serves as an interactive element.
+To call your users to an action."
 npm: "@fylgja/button"
 tags: "elements"
 preview: "button.png"
@@ -58,6 +59,12 @@ By default we also offer some base default variable class, that can be disabled 
 Besides these variable classes, we try to keep away from adding more variable classes.
 
 As this will create to much extra CSS you will most likely never use.
+
+### Active class
+
+The button can be used for more stateful components.
+
+So it also ships with a `.is-active` class that does the same as the active state.
 
 ## Config
 

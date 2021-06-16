@@ -1,9 +1,8 @@
 ---
 title: "Offcanvas"
-description: "The dialog is 3 components in 1.
-It is by default a modal.
-But with 1 small change can be a offcanvas,
-notification popup or as it also know as, the snackbar."
+description: "The dialog combines 3 components in 1, it a modal by default,
+and with a small change it's a offcanvas,
+notification popup aka the snackbar."
 permalink: "/components/dialog/#offcanvas"
 tags: "nativeElements"
 preview: "dialog.png"

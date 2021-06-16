@@ -1,6 +1,6 @@
 ---
 title: "Sass Extend"
-description: "Adds more SCSS super powers functions."
+description: "Adds more SCSS super power functions."
 npm: "@fylgja/sass"
 tags: ["config", "plugins"]
 preview: "sass.png"

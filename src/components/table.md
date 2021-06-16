@@ -1,7 +1,7 @@
 ---
 title: "Table"
-description: "The table component is super easy to use.
-Since it is a zero config module that styles the table directly.
+description: "TThe table component is super easy to use,
+since it is a zero config module that styles the table directly.
 Allowing you to focus on the table it self."
 npm: "@fylgja/table"
 tags: ["nativeElements", "typography"]

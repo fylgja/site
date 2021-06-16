@@ -1,12 +1,14 @@
 ---
 title: "Breadcrumbs"
-description: "Breadcrumbs component will show your visitors where they are currently on the website"
+description: "The breadcrumbs component is a navigational aid,
+it allows users to maintain awareness of their location in an app or a website."
 npm: "@fylgja/breadcrumbs"
 tags: ["navs", "list"]
 preview: "breadcrumbs.png"
 ---
 
-The breadcrumbs component is a navigational aid, it allows users to maintain awareness of their location in an app or a website. 
+The breadcrumbs component is a navigational aid,
+it allows users to maintain awareness of their location in an app or a website.
 
 ## Installation
 

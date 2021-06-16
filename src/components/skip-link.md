@@ -1,6 +1,7 @@
 ---
 title: "Skip Link"
-description: "The aria-only component also support the skip navigation option. This can be used via the class .aria-only-focusable. "
+description: "The aria-only (a.k.a. sr-only) visually hides elements.
+But keeps it accessible to screen-readers and other aria tools."
 permalink: "/components/aria-only/#use-as-skip-link"
 tags: ["navs", "a11y"]
 preview: "aria-only.png"

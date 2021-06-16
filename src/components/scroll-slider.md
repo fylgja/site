@@ -1,6 +1,7 @@
 ---
 title: "Scroll-slider"
-description: "This CSS slider component allows you to make sliders with eas. And no requirements to any Javascript"
+description: "This CSS slider component allows you to make sliders with ease,
+and has no requirements to any Javascript."
 npm: "@fylgja/scroll-slider"
 tags: ["layouts"]
 preview: "scroll-slider.png"
@@ -52,7 +53,13 @@ and setting the inline gap to 0.
 If you also want to reserve the scroll gap, set the block gap to whatever your want.
 
 ```html
-<div class="scroll-slider" style="--scroll-size: 100%; --gap-inline: 0;">
+<style>
+    .scroll-slider.-full-slide {
+        --scroll-size: 100%;
+        --gap-inline: 0;
+    }
+</style>
+<div class="scroll-slider -full-slide">
     <div>..</div>
     <img src="">
 </div>

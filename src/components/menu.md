@@ -1,13 +1,14 @@
 ---
 title: "Menu"
-description: "The menu component makes it easy to build many common navigation patterns.
-Like navbar or menu items in a dropdown."
+description: "The menu component makes it easy to build common navigation patterns,
+like a navbar or menu in a dropdown."
 npm: "@fylgja/menu"
 tags: "navs"
 preview: "menu.png"
 ---
 
-The menu component makes it easy to build common navigation patterns, like a navbar or menu in a dropdown.
+The menu component makes it easy to build common navigation patterns,
+like a navbar or menu in a dropdown.
 
 ## Installation
 

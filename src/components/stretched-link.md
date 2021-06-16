@@ -59,6 +59,7 @@ Example:
 ```html
 <!-- Bad accessibility but clickable completely -->
 <a href="#" class="card">
+    <img src=".." class="card-media">
     <div class="card-content">
         <p>..</p>
     </div>

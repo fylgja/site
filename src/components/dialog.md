@@ -1,9 +1,8 @@
 ---
 title: "Dialog"
-description: "The dialog is 3 components in 1.
-It is by default a modal.
-But with 1 small change can be a offcanvas,
-notification popup or as it also know as, the snackbar."
+description: "The dialog combines 3 components in 1, it a modal by default,
+and with a small change it's a offcanvas,
+notification popup aka the snackbar."
 requiresJs: true
 npm: "@fylgja/dialog"
 tags: "nativeElements"
@@ -64,9 +63,9 @@ that always will be visible when you are scrolling.
 
 ```html
 <dialog id="dialog-modal">
-    <header>Modal Title</header>
+    <div>Modal Title</div>
     <div class="dialog-inner"></div>
-    <footer><button>Sumbit</button></footer>
+    <div><button>Sumbit</button></div>
 </dialog>
 ```
 
@@ -89,6 +88,7 @@ use the following SCSS variables can you modify.
 $enable-dialog-polyfill: true !default;
 
 // Modal (default)
+$dialog-index: 9 !default;
 $dialog-offset: 2em !default;
 $dialog-max-width: calc(100% - #{$dialog-offset}) !default;
 $dialog-max-height: $dialog-max-width !default;

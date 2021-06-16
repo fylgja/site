@@ -1,6 +1,6 @@
 ---
 title: "Section"
-description: "The Section component is a wrapper component to show content in a sectioned area"
+description: "The Section component is a wrapper component to show content in a sectioned area."
 npm: "@fylgja/section"
 tags: ["layouts"]
 preview: "section.png"

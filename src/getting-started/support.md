@@ -9,7 +9,7 @@ Do you want to support Fylgja?
 You can that in many ways.
 
 <p class="share-me">
-<span>Start with Starring the repro on Github</span>
+<span>Start with starring the repro on Github</span>
 <a href="https://github.com/fylgja/fylgja"
     class="no-underline text-reset"
     target="_blank"
@@ -21,9 +21,11 @@ You can that in many ways.
     loading="eager"
     style="width: auto;">
 </a>
-<p>Or share us on your favorite social network use the hashtag #fylgja</p>
-<span>making it easier for others to find Fylgja.<span>
 </p>
+
+Or share us on your favorite social network with the hashtag #fylgja.
+
+Making it easier for others to find Fylgja.
 
 But you also contribute directly to fylgja by;
 

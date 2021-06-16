@@ -1,7 +1,8 @@
 ---
 title: "Card"
 description: "The card component is a wrapper component.
-Which allow you to make visual sectioned content."
+It allows you to make visual sectioned content,
+that is not part of the main flow."
 npm: "@fylgja/card"
 tags: "layouts"
 preview: "card.png"
@@ -55,10 +56,10 @@ We kept the card child classes to 3 use cases;
 | `.card-media`   | For media (e.g. img or video)   |
 | `.card-action`  | For links and buttons           |
 
-Besides that the card is also extremely flexable in style, via CSS variables.
+Besides that the card is also extremely flexible in style, via CSS variables.
 
 The card style is by default elevated,
-but can also make it a flat card via 2 variables.
+but can be made flat via 2 variables.
 
 ```html
 <style>

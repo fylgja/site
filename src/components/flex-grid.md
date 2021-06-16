@@ -1,6 +1,6 @@
 ---
 title: "Flex Grid"
-description: "Create a complete grid using flexbox. And only set the columns you need."
+description: "Create a complete grid using flexbox, and only set the columns you need."
 npm: "@fylgja/flex-grid"
 tags: ["layout", "plugins"]
 preview: "flex-grid.png"

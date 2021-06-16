@@ -12,9 +12,9 @@ So you don't have to repeat them in every project, giving you a good default to 
 
 ## Backstory
 
-The original version of Fylgja, ( that was never released), was build as an utility pack for Bootstrap 2 & 3.
+The original version of Fylgja, (that was never released), was build as an utility pack for Bootstrap 2 & 3.
 This version was purely to add specific flex features to the grid, made it easier to add button styles,
-and added the spacer utility class that's now know as `.mb-1`
+and added the spacer utility class that's now know as `.mb-4`
 
 Later versions moved to the SCSS syntax and started to add own blocks,
 slowly growing and converting that what started as a simple extension for Bootstrap, to a complete CSS framework.

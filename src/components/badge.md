@@ -1,6 +1,6 @@
 ---
 title: "Badge"
-description: "Badges component serves as a small blocks to indicate notifications. Or to highlight an item."
+description: "The badges component serves as a small blocks to indicate notifications, or to highlight an item."
 tags: "elements"
 npm: "@fylgja/badge"
 preview: "badge.png"

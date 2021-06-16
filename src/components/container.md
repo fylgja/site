@@ -1,6 +1,7 @@
 ---
 title: "Container"
-description: "The container component is wrapper component. To make all child elements fit better in the page"
+description: "The container component is wrapper component,
+to make all child elements fit better in the page."
 npm: "@fylgja/container"
 tags: "layouts"
 preview: "container.png"

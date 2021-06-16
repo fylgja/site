@@ -1,6 +1,7 @@
 ---
 title: "Control"
-description: "The control component styles the default input radio's and checkboxes"
+description: "The control component styles the default `input[radio]` and `input[checkbox]`,
+allowing an easier control on the style of both these elements."
 npm: "@fylgja/control"
 tags: ["nativeElements", "forms"]
 preview: "control.png"

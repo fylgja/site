@@ -1,6 +1,6 @@
 ---
 title: "Utilpack"
-description: "Build and use your own CSS util classes with Sass via the Fylgja utilpack."
+description: "Build and use your own CSS utility classes with Sass using the Fylgja utilpack."
 tags: ["utils", "utilpack"]
 preview: "utilpack.png"
 featured: true
@@ -221,7 +221,7 @@ but if you prefer the same separator as seen in TailwindCSS,
 you can use `$utilpack-separator: "\:"`. 
 
 _The Tailwind separator can conflict with specific tools and linters,_
-_since it uses specific characters that are normally marked as unsafe or need escaping._
+_since it uses specific characters that are normally marked as unsafe and needs escaping._
 
 ## FAQ
 
@@ -264,8 +264,8 @@ consider adding the following utilpack config, instead using static colors.
 <details class="faq-panel"><summary>Why are there no grid utils?</summary>
 
 Most grid solutions still rely on the older grid solution, like 12 columns,
-now we use CSS grid spec instead.<br>
-Its is considered a bad solution for handeling layouts,
+but now via the CSS grid spec instead.<br>
+Its is considered a bad solution for handling layouts,
 and creates a lot of 1 time uses, even with utilities.
 
 If you really must rely on a utility class, we would advise to build your own.

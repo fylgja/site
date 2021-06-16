@@ -1,6 +1,6 @@
 ---
 title: "Gradient"
-description: "Add gradient's with easy via the gradient utility class."
+description: "Add gradient's with ease via the gradient utility class."
 npm: "@fylgja/gradients"
 tags: ["utils"]
 preview: "addon.png"
@@ -72,11 +72,11 @@ Default angles:
 - `bottom-right`
 - `bottom-left`
 
-_Top the the default value_
+_Top is the default value_
 
 ### Modifying the color
 
-Both gradients offer CSS variables and class variables for the gradient angle.
+Both gradients offer CSS variables and class variables for the color options.
 
 ```html
 <!-- Class variables -->

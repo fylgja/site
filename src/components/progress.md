@@ -1,6 +1,6 @@
 ---
 title: "Progress"
-description: "The progress component show a progression of a form or somethings else."
+description: "The progress component is used to show progress indication in a form or somethings else."
 npm: "@fylgja/progress"
 tags: ["nativeElements", "forms"]
 preview: "progress.png"

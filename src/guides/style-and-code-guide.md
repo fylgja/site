@@ -38,11 +38,14 @@ td {
 }
 ```
 
-What we do is set the style as generic as possible, and inherit the styles from the parent element if it exists.
+What we do is set the style as generic as possible,
+and inherit the styles from the parent element if it exists.
 
-This allows you to override any styles via the `table` or `td`, without having to write the entire CSS level of dept.
+This allows you to override any styles via the `table` or `td`,
+without having to write the entire CSS level of dept.
 
-At first this looks as more CSS, but actually it saves you bytes as you add new custom styles, 
+At first this looks as more CSS,
+but actually it saves you bytes as you add new custom styles, 
 since you can use 1 class to override every style set by the component.
 
 This principle can be used for Native elements and CSS components,
@@ -50,8 +53,9 @@ and gets even better if you add CSS variables 🤗
 
 ## CSS class variables (class modifier)
 
-This convention helps us name things when we need ad extra classes to our component, 
-to override specific styles, it clearly shows that it's a class to change the main class.
+This convention helps us name things when we need to ad extra classes to our components,
+to override specific styles,
+it clearly shows that it's a class to change the main class.
 
 example;
 
@@ -78,4 +82,4 @@ The 2 modifier styles are clearly visible, and have the same affect as if you wo
 with the extra btn in front of the modifier class.
 
 We use this naming convention mostly to bundle CSS variables in to one class,
-that wil be reused a lot. We consider this a more readable and DRY way than the BEM syntax.
+that wil be reused a lot. We consider this a more readable and DRY way.

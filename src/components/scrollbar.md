@@ -1,6 +1,6 @@
 ---
 title: "Scrollbar"
-description: "Customize or hide the scrollbar with ease"
+description: "Customize or hide the scrollbar with ease."
 npm: "@fylgja/scrollbar"
 tags: ["utils"]
 preview: "addon.png"

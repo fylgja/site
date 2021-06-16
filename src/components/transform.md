@@ -1,10 +1,12 @@
 ---
 title: "Transform"
-description: "Add transforms with ease with the power of CSS variables"
+description: "Add transforms with ease, with the power of CSS variables."
 npm: "@fylgja/transform"
 tags: ["utils"]
 preview: "addon.png"
 ---
+
+Add transforms with ease, with the power of CSS variables.
 
 ## Installation
 
@@ -61,9 +63,6 @@ Add a inline style tag in the head of your page or via your CSS file.
 As you can see there are several options by using this basis.
 
 The second option is to use our helper mixin directly, it is Sass only option.
-
-Although it is possible to use PostCSS to extend a class with a class,
-this it is not recommended.
 
 First call the helper and then use the mixin `transform`;
 

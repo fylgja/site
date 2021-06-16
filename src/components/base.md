@@ -1,6 +1,7 @@
 ---
 title: "Base"
-description: "Common defaults to make your body and typography look good. And easy to change to your needs."
+description: "Common defaults to make your body and typography look good
+and easy to change to your needs."
 npm: "@fylgja/base"
 tags: ["typography", "nativeElements", "a11y"]
 preview: "base.png"
@@ -149,7 +150,7 @@ Doing that would be considered bad practice and creates double CSS.
 
 <details class="faq-panel"><summary>Do I need everything in this CSS component?</summary>
 
-No. If you only need parts of the base component, just import these parts.
+No. If you only need parts of the base component, just import each part.
 
 ```scss
 @use "@fylgja/base/body";

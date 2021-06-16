@@ -6,7 +6,7 @@ hasToc: false
 ---
 
 Fylgja is a component based CSS framework,
-lowing you to pick only what you need,
+allowing you to pick only what you need,
 
 this will keep your build bundle small without using any tools.
 

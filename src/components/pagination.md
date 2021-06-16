@@ -1,7 +1,7 @@
 ---
 title: "Pagination"
-description: "Pagination component makes it easy to build many pagination patterns.
-Like button only next previous nav or dots nav."
+description: "The pagination component makes it easy to build many pagination patterns, 
+like button only next previous nav or dots nav."
 npm: "@fylgja/pagination"
 tags: ["navs"]
 preview: "pagination.png"

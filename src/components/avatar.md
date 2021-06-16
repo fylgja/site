@@ -1,6 +1,6 @@
 ---
 title: "Avatar"
-description: "The avatar component allows you to make a avatar style with ease."
+description: "The avatar component allows you to make an avatar style with ease."
 npm: "@fylgja/avatar"
 tags: "elements"
 preview: "avatar.png"

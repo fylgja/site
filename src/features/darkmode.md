@@ -32,7 +32,8 @@ _Depending on what theme your using._
 For this we made a small CSS rule for dark mode,
 and added a small bit of JS to toggle the state.
 
-So a user can pick a prefer a specific mode over the system default one.
+So a user can pick a preferred mode over the system default one,
+if they desire so.
 
 <details class="faq-panel"><summary>Sample from our site</summary>
 

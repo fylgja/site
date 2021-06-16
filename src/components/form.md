@@ -1,8 +1,8 @@
 ---
 title: "Form"
-description: "The form component is super easy to use.
-Since it is a zero config module that styles the form elements directly.
-Allowing you to focus on the form it self."
+description: "The form component is super easy to use,
+it's a zero config module that styles all form elements directly.
+Allowing you to focus on the form itself."
 npm: "@fylgja/form"
 tags: ["nativeElements", "forms"]
 preview: "form.png"
@@ -147,7 +147,7 @@ $form-fields: (
 // Form select
 $form-icon-size: 1.25em !default;
 $form-icon-color: $color-text !default;
-$form-select-icon: url('data:image/svg+xml,<svg .. /></svg>') !default;
+$form-select-icon: url("data:image/svg+xml,<svg .. /></svg>") !default;
 
 // Form color
 $form-color-radius: null !default;
@@ -164,9 +164,9 @@ $form-file-btn-bg: var(--color-theme, #{$color-theme}) !default;
 $form-file-btn-color: var(--color-on-theme, #{$color-on-theme}) !default;
 ```
 
-> `form-style-get()` is `map-get()` function.
+> `form-style-get()` is the `map-get()` function.
 > 
 > It gets the values from the `$form-styles` variable
 > that contains the predefined form styles.
 > 
-> Inspect the `helper.scss` file tot see what is in this map
+> Inspect the `helper.scss` file tot see what is in the default styles.
