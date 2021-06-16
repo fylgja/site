@@ -18,13 +18,13 @@ layout: default
             <ul>
                 {% if hasToc and tocTitle %}
                     <li>
-                        <strong class="block mb-2">{{ title }}</strong>
+                        <strong class="block mx-2 mb-2">{{ title }}</strong>
                         {{ content | toc(wrapper="div") | safe }}
                     </li>
-                    <li class="hr" role="separator"></li>
+                    <li class="hr mb-6" role="separator"></li>
                 {%- endif -%}
                 <li>
-                    <strong class="block mb-2">Getting started</strong>
+                    <strong class="block mx-2 mb-2">Getting started</strong>
                     <ul>
                         {%- for item in collections.started | sortByOrder -%}
                         <li>
@@ -39,7 +39,7 @@ layout: default
                     </ul>
                 </li>
                 <li class="mt-2">
-                    <strong class="block mb-2">Features</strong>
+                    <strong class="block mx-2 mb-2">Features</strong>
                     <ul>
                         {%- for item in collections.features | sortByOrder -%}
                         <li>

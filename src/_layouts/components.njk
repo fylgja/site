@@ -21,13 +21,13 @@ preconnect: <link rel="preconnect" href="https://img.shields.io">
         <nav aria-label="Components Menu" class="menu my-7 text-small">
             <ul>
                 <li>
-                    <strong class="block mb-2">{{ title }}</strong>
+                    <strong class="block mx-2 mb-2">{{ title }}</strong>
                     {{ content | toc(wrapper="div") | safe }}
                 </li>
                 <li class="hr" role="separator"></li>
                 {%- for items in collections.componentsGroup -%}
                     <li class="mt-4">
-                        <strong class="block mb-2">{{ items.title }}</strong>
+                        <strong class="block mx-2 mb-2">{{ items.title }}</strong>
                         <ul>
                             {%- for item in items.data | sortByName -%}
                             <li>
