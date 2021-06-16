@@ -1,5 +1,5 @@
 ---
-title: "RTL"
+title: "RTL (Right to Left)"
 description: "Fylgja works out of the box for right-to-left (RTL) languages such as Arabic and Hebrew."
 ---
 
