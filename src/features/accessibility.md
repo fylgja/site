@@ -8,7 +8,7 @@ Fylgja is out of the box fully accessible.
 We don't make color choices for you, and follow the principles of typography.
 
 All our click based elements fit in to the minimum 38 pixel size,
-and most even have the recommended w3 44 pixel size.
+and most even have the recommended w3c 44 pixel size.
 
 Besides that, a good HTML structure solves most accessibility issues.
 
