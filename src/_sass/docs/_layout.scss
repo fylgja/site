@@ -7,6 +7,12 @@ $docs-page-lg-mq: 1024px !default;
     margin-bottom: 1em;
 }
 
+.docs-sidebar {
+    .hr {
+        opacity: 0.3;
+    }
+}
+
 @media (min-width: $docs-page-mq) {
     .docs-layout {
         width: calc(100% - 230px);
