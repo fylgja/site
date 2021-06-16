@@ -43,7 +43,8 @@
         <link rel="alternate" type="application/rss+xml" title="{{ meta.title }}" href="{{ meta.url }}/feed.xml"/>
 
         {# Webapp #}
-        <meta name="theme-color" content="{{ meta.themeColor }}">
+        <meta name="theme-color" content="{{ meta.themeColor }}" media="(prefers-color-scheme: light)">
+        <meta name="theme-color" content="{{ meta.themeColorDark }}" media="(prefers-color-scheme: dark)">
         <meta name="apple-mobile-web-app-title" content="{{ meta.siteName }}">
         <meta name="application-name" content="{{ meta.siteName }}">
         <meta name="msapplication-TileColor" content="{{ meta.themeColor }}">
