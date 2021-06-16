@@ -2,190 +2,179 @@
 layout: home
 permalink: index.html
 style: "
-.home-grid {
---cols-size: 400px;
+.home-grid { --cols-size: 400px }
+
+#logo {
+    width: 18.75em;
+    height: 8.125em;
 }
 
 #hero {
---bg: #f7fafc;
---container-padding-y: 4rem;
---container-padding-x: 1.25rem;
+    --bg: #f7fafc;
+    --container-padding-y: 4rem;
+    --container-padding-x: 1.25rem;
 }
 
 @media (prefers-color-scheme: dark) {
-:root:not([data-theme=light]) #hero {
---bg: var(--color-bg);
---img:
-linear-gradient(190deg, rgba(12,57,109,1) 0%, rgba(0,0,0,0) 40%),
-linear-gradient(170deg, rgba(115,22,117,1) 0%, rgba(0,0,0,0) 40%);
-}
+    :root:not([data-theme=light]) #hero {
+        --bg: var(--color-bg);
+        --img:
+            linear-gradient(190deg, rgba(12,57,109,1) 0%, rgba(0,0,0,0) 40%),
+            linear-gradient(170deg, rgba(115,22,117,1) 0%, rgba(0,0,0,0) 40%);
+    }
 
-:root:not([data-theme=light]) svg#logo {
-fill: currentColor;
-}
+    :root:not([data-theme=light]) svg#logo { fill: currentColor }
 }
 
 :root[data-theme=dark] #hero {
---bg: var(--color-bg);
---img:
-linear-gradient(190deg, rgba(12,57,109,1) 0%, rgba(0,0,0,0) 40%),
-linear-gradient(170deg, rgba(115,22,117,1) 0%, rgba(0,0,0,0) 40%);
+    --bg: var(--color-bg);
+    --img:
+        linear-gradient(190deg, rgba(12,57,109,1) 0%, rgba(0,0,0,0) 40%),
+        linear-gradient(170deg, rgba(115,22,117,1) 0%, rgba(0,0,0,0) 40%);
 }
 
-:root[data-theme=dark] svg#logo {
-fill: currentColor
-}
+:root[data-theme=dark] svg#logo { fill: currentColor }
 
-#hero .btn {
-font-size: 1.25em;
-}
+#hero .btn { font-size: 1.25em }
 
 .hero-nav {
---container-size: 680px;
---card-color: var(--color-text-alt);
-margin-block-start: -2.8rem;
+    --container-size: 680px;
+    --card-color: var(--color-text-alt);
+    margin-block-start: -2.8rem;
 }
 
 .hero-nav svg {
-width: 2em;
-height: 2em;
+    width: 2em;
+    height: 2em;
 }
 
-#intro {
---container-padding-y: 3em;
-}
+#intro { --container-padding-y: 3em }
 
-.code-sample pre {
-margin: 0;
-}
+.code-sample pre { margin: 0 }
 
 .code-box {
-box-shadow: var(--elevation-z1);
-border-radius: 0.25rem;
-background-color: var(--code-bg, #08274a);
-color: var(--color-on-theme, #fff);
-overflow: hidden;
+    box-shadow: var(--elevation-z1);
+    border-radius: 0.25rem;
+    background-color: var(--code-bg, #08274a);
+    color: var(--color-on-theme, #fff);
+    overflow: hidden;
 }
 
 .code-box pre {
-border: 0;
-border-radius: 0;
+    border: 0;
+    border-radius: 0;
 }
 
 .code-box-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 0.5rem 1rem;
-font-size: 0.75em;
-border-bottom: 1px solid rgb(255 255 255 / 10%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.75em;
+    border-bottom: 1px solid rgb(255 255 255 / 10%);
 }
 
 .code-box-header .osx-close,
 .code-box-header .osx-close::before,
 .code-box-header .osx-close::after {
-width: 0.75em;
-height: 0.75em;
-border-radius: 50%;
+    width: 0.75em;
+    height: 0.75em;
+    border-radius: 50%;
 }
 
 .code-box-header .osx-close::before,
 .code-box-header .osx-close::after {
-content: '';
-position: absolute;
+    content: '';
+    position: absolute;
 }
 
 .code-box-header .osx-close {
-position: relative;
-display: inline-flex;
-flex-shrink: 0;
-align-items: center;
-margin: 0 1.2em;
-background-color: orange;
+    position: relative;
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    margin: 0 1.2em;
+    background-color: orange;
 }
 
 .code-box-header .osx-close::before {
-right: 100%;
-margin-right: 0.5em;
-background-color: red;
+    right: 100%;
+    margin-right: 0.5em;
+    background-color: red;
 }
 
 .code-box-header .osx-close::after {
-left: 100%;
-margin-left: 0.5em;
-background-color: green;
+    left: 100%;
+    margin-left: 0.5em;
+    background-color: green;
 }
 
 .usp-section {
---container-size: 640px;
+    --container-size: 640px;
 }
 
 #usp-points {
---avatar-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
---avatar-bg: #f7df1e;
---avatar-color: #000;
+    --avatar-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    --avatar-bg: #f7df1e;
+    --avatar-color: #000;
 }
 
 #usp-points .avatar.-icon-palette {
---avatar-radius: 30% 70% 30% 70% / 56% 22% 78% 44%;
---avatar-bg: #f43059;
---avatar-color: #fff;
+    --avatar-radius: 30% 70% 30% 70% / 56% 22% 78% 44%;
+    --avatar-bg: #f43059;
+    --avatar-color: #fff;
 }
 
 #usp-points-a11y {
---avatar-radius: 71% 29% 64% 36% / 51% 60% 40% 49%;
---avatar-bg: #609926;
---avatar-color: #fff;
+   --avatar-radius: 71% 29% 64% 36% / 51% 60% 40% 49%;
+   --avatar-bg: #609926;
+   --avatar-color: #fff;
 }
 
 #usp-points-a11y .avatar.-icon-visibility {
---avatar-radius: 64% 36% 64% 36% / 27% 60% 40% 73%;
---avatar-bg: #1BB6F6;
---avatar-color: #fff;
+    --avatar-radius: 64% 36% 64% 36% / 27% 60% 40% 73%;
+    --avatar-bg: #1BB6F6;
+    --avatar-color: #fff;
 }
 
 #contact {
---container-size: 640px;
---height: 300px;
+    --container-size: 640px;
+    --height: 300px;
 }
 
-#collection-featured {
---container-size: 640px;
-}
+#collection-featured { --container-size: 640px }
 
 #collection-featured .card {
---aspect-ratio: 4/3;
---aspect-img: contain;
---card-elevation: var(--elevation-z1);
-transition: box-shadow 0.2s ease-out;
+    --aspect-ratio: 4/3;
+    --aspect-img: contain;
+    --card-elevation: var(--elevation-z1);
+    transition: box-shadow 0.2s ease-out;
 }
 
-#collection-featured .card:hover {
---card-elevation: var(--elevation-z4);
-}
+#collection-featured .card:hover { --card-elevation: var(--elevation-z4) }
 
 @media (min-width: 640px) {
-#intro {
---container-padding-y: 5em;
-font-size: 1.125em;
-}
+    #intro {
+        --container-padding-y: 5em;
+        font-size: 1.125em;
+    }
 }
 
 @media (min-width: 1024px) {
-.usp-section,
-#contact,
-#collection-featured {
---container-size: 1280px;
-}
+    .usp-section,
+    #contact,
+    #collection-featured {
+        --container-size: 1280px;
+    }
 
-#collection-featured {
---cols: repeat(4, 1fr);
-}
+    #collection-featured {
+        --cols: repeat(4, 1fr);
+    }
 
-#usp-points,
-#usp-points-a11y {
---cols-size: 450px;
-}
+    #usp-points,
+    #usp-points-a11y {
+        --cols-size: 450px;
+    }
 }
 "
 ---
@@ -290,15 +279,15 @@ font-size: 1.125em;
 
 <section id="usp-whats-in-the-📦" class="usp-section container text-center py-6 md-py-8">
     <h2 class="my-6">Combine the power of</h2>
-    <div class="inline-flex">
-        <div class="w-33 px-8">
-            <h3>CSS Utilities</h3>
+    <div class="inline-flex flex-wrap items-end justify-center">
+        <div class="w-full sm-w-33 px-4">
+            <h3 class="h4 md-m-0">Native styles</h3>
         </div>
-        <div class="w-33 px-8">
-            <h3>CSS Components</h3>
+        <div class="w-50 sm-w-33 px-4 md-mb-4">
+            <h3 class="h4 md-m-0">CSS Components</h3>
         </div>
-        <div class="w-33 px-8">
-            <h3>Native styles</h3>
+        <div class="w-50 sm-w-33 px-4">
+            <h3 class="h4 md-m-0">CSS Utilities</h3>
         </div>
     </div>
     <div>{% image "src/_static/images/whatsinthebox.png", "Whats Fylgja all has to offer", "medium" %}</div>
