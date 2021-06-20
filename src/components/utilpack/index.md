@@ -28,7 +28,7 @@ Then include the component in to your code via;
 The util pack comes out of the box  with some commonly used utility classes,
 that can be used directly.
 
-Read the docs to see what is available and see the defaults <!-- LINK -->.
+Read the docs to see what is available and [see the default utilities classes here](/components/utilpack/default-utilities).
 
 ## Config
 
