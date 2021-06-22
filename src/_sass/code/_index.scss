@@ -5,13 +5,13 @@
 
 @use "sass:color";
 @use "@fylgja/theme" as *;
-@use "@fylgja/fylgja/code" with (
+@use "@fylgja/code" with (
     $pre-bg: #{color.change($color-theme, $lightness: 16%)},
     $pre-color: #{$color-on-theme},
 );
 @use "syntax";
 @use "layout";
-@use "@fylgja/fylgja/scrollbar/helper" as *;
+@use "@fylgja/scrollbar/helper" as *;
 
 pre {
     @include scrollbar(

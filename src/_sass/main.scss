@@ -1,26 +1,26 @@
 @use "./theme";
 
 @use "./skip-link";
-@use "@fylgja/fylgja/base" with (
+@use "@fylgja/base" with (
     $family-main: ("Rubik", system-ui, sans-serif),
     $font-weight: 300,
 );
 
-@use "@fylgja/fylgja/list";
-@use "@fylgja/fylgja/table";
-@use "@fylgja/fylgja/details";
+@use "@fylgja/list";
+@use "@fylgja/table";
+@use "@fylgja/details";
 
-@use "@fylgja/fylgja/button";
-@use "@fylgja/fylgja/avatar";
-@use "@fylgja/fylgja/card";
+@use "@fylgja/button";
+@use "@fylgja/avatar";
+@use "@fylgja/card";
 
-@use "@fylgja/fylgja/container";
-@use "@fylgja/fylgja/auto-grid";
-@use "@fylgja/fylgja/section";
-@use "@fylgja/fylgja/scroll-slider";
+@use "@fylgja/container";
+@use "@fylgja/auto-grid";
+@use "@fylgja/section";
+@use "@fylgja/scroll-slider";
 
-@use "@fylgja/fylgja/breadcrumbs";
-@use "@fylgja/fylgja/menu";
+@use "@fylgja/breadcrumbs";
+@use "@fylgja/menu";
 
 @use "./code";
 @use "./caret";
@@ -29,9 +29,9 @@
 @use "./page-header";
 @use "./page-footer";
 
-@use "@fylgja/fylgja/aspect-ratio";
-@use "@fylgja/fylgja/scrollbar";
-@use "@fylgja/fylgja/hashlink" with (
+@use "@fylgja/aspect-ratio";
+@use "@fylgja/scrollbar";
+@use "@fylgja/hashlink" with (
     $enable-hashlink-scroll-behavior-focus-only: false,
     $hashlink-scroll-offset: 5rem
 );
@@ -43,5 +43,5 @@
 @use "color-scheme";
 @use "screen";
 
-@use "@fylgja/fylgja/elevation";
-@use "@fylgja/fylgja/utilpack";
+@use "@fylgja/elevation";
+@use "@fylgja/utilpack";
