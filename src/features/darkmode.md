@@ -69,7 +69,7 @@ const root = document.documentElement;
 let theme = "";
 
 // Check for dark mode preference at the OS level
-const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
 const currentTheme = localStorage.getItem("theme");
 
 if (currentTheme) {
