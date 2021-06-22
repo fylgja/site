@@ -1,7 +1,7 @@
 ---
 title: "Gradient"
 description: "Add gradient's with ease via the gradient utility class."
-npm: "@fylgja/gradients"
+npm: "@fylgja/gradient"
 tags: ["utils"]
 preview: "addon.png"
 ---
