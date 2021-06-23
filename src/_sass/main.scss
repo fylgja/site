@@ -1,14 +1,16 @@
 @use "./theme";
+@use "./fonts";
 
 @use "./skip-link";
 @use "@fylgja/base" with (
-    $family-main: ("Rubik", system-ui, sans-serif),
-    $font-weight: 300,
+    $family-main: (Rubik, Roboto, system-ui, sans-serif),
+    $font-weight: 350,
+    $h1-font-weight: 500,
+    $h2-font-weight: 500,
+    $h3-font-weight: 500,
 );
 
 @use "@fylgja/list";
-@use "@fylgja/table";
-@use "@fylgja/details";
 
 @use "@fylgja/button";
 @use "@fylgja/avatar";
@@ -16,17 +18,13 @@
 
 @use "@fylgja/container";
 @use "@fylgja/auto-grid";
-@use "@fylgja/section";
+@use "@fylgja/section" with ($enable-section-theme: false);
 @use "@fylgja/scroll-slider";
 
 @use "@fylgja/breadcrumbs";
 @use "@fylgja/menu";
 
 @use "./code";
-@use "./caret";
-@use "./logo";
-@use "./offcanvas";
-@use "./page-header";
 @use "./page-footer";
 
 @use "@fylgja/aspect-ratio";
@@ -35,10 +33,6 @@
     $enable-hashlink-scroll-behavior-focus-only: false,
     $hashlink-scroll-offset: 5rem
 );
-
-@use "./docs/faq-panel";
-@use "./docs/github-hashlink";
-@use "./docs/layout";
 
 @use "color-scheme";
 @use "screen";

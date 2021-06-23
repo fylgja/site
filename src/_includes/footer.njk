@@ -49,7 +49,7 @@
                 {% for item in navigation.socials %}
                     <li>
                         <a href="{{ item.url }}"
-                            class="flex"
+                            class="flex items-center"
                             {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}>
                             {{ item.icon | svgContents("me-2") | safe }}
                             <span>{{ item.text }}</span>

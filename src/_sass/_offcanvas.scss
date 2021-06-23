@@ -1,4 +1,5 @@
 @use "@fylgja/dialog";
+@use "./caret";
 
 #offcanvas-menu {
     --dialog-width: min(350px, 100%);

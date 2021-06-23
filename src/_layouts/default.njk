@@ -59,11 +59,9 @@
         {% if preconnect %}{{ preconnect | safe }}{% endif %}
         <link rel="stylesheet" href="/css/main.css"/>
         <link rel="stylesheet" href="/css/print.css" media="print"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,350;0,500;1,350;1,500&display=swap"
-            media="print"
-            onload="this.media='all'">
+        <link rel="preload" as="font" href="/fonts/Rubik-Italic-VariableFont_wght.woff2" crossorigin>
+        <link rel="preload" as="font" href="/fonts/Rubik-VariableFont_wght.woff2" crossorigin>
+        {% if css %}{{ css | safe }}{% endif %}
         {% if style %}<style>{{ style | safe }}</style>{% endif %}
         <script src="/js/main.js" defer></script>
     </head>
