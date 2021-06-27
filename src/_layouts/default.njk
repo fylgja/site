@@ -57,11 +57,12 @@
 
         {# Assets #}
         {% if preconnect %}{{ preconnect | safe }}{% endif %}
-        <link rel="preload" as="style" href="/css/main.css" crossorigin>
-        <link rel="preload" as="font" href="/fonts/Rubik-Italic-VariableFont_wght.woff2" crossorigin>
-        <link rel="preload" as="font" href="/fonts/Rubik-VariableFont_wght.woff2" crossorigin>
-        <link rel="stylesheet" href="/css/main.css"/>
-        <link rel="stylesheet" href="/css/print.css" media="print"/>
+        <link rel="preload" as="style" href="/css/main.css">
+        <link rel="preload" as="font" href="/fonts/Rubik-Italic-VariableFont_wght.woff2" type="font/woff2" crossorigin>
+        <link rel="preload" as="font" href="/fonts/Rubik-VariableFont_wght.woff2" type="font/woff2" crossorigin>
+        {% if preload %}{{ preload | safe }}{% endif %}
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/print.css" media="print">
         {% if css %}{{ css | safe }}{% endif %}
         {% if style %}<style>{{ style | safe }}</style>{% endif %}
         <script src="/js/main.js" defer></script>
