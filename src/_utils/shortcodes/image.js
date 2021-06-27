@@ -34,8 +34,6 @@ module.exports = async function imageShortcode(
 
         case "screen":
             imgSizes = [320, 640, 1200, 1920];
-            sizes =
-                "(min-width: 1200px) 1920w, (min-width: 640px) 1200w, (min-width: 320px) 640w, 320w";
             break;
 
         default:
