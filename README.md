@@ -4,7 +4,7 @@ The website and also the documentation for [Fylgja](https://fylgja.dev).
 
 The website is build with [11ty](https://www.11ty.dev/).
 
-So our main repo here -> https://github.com/fylgja/fylgja
+See our main repo here -> https://github.com/fylgja/fylgja
 Any documentation found in each component there, is based on the documentation here.
 
 ## How to Contribute
