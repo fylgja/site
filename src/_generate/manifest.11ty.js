@@ -38,7 +38,13 @@ const webmanifest = {
             name: "Components",
             description: `View all ${siteName} components`,
             url: "/components/",
-            icon: "/shortcut-components.webp",
+            icons: [
+                {
+                    src: "/shortcuts/components.png",
+                    sizes: "96x96",
+                    type: "image/png",
+                },
+            ],
         },
     ],
 };
