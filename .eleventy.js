@@ -24,7 +24,8 @@ module.exports = function (config) {
     config.addWatchTarget("./src/_js/");
 
     // Copy
-    config.addPassthroughCopy({ "src/**/*.{jpg,jpeg,png,svg}": "images" });
+    config.addPassthroughCopy({ "src/_static/images": "images" });
+    config.addPassthroughCopy({ "src/_static/icons": "images" });
     config.addPassthroughCopy({ "src/_static/webapp": "./" });
     config.addPassthroughCopy({ "src/_static/fonts": "fonts" });
 
