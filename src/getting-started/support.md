@@ -23,7 +23,7 @@ You can that in many ways.
 </a>
 </p>
 
-Or share us on your favorite social network with the hashtag #fylgja.
+Or share us on your favorite social network with the hashtag #FylgjaCode.
 
 Making it easier for others to find Fylgja.
 

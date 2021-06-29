@@ -41,7 +41,7 @@ const webmanifest = {
             icons: [
                 {
                     src: "/shortcuts/components.png",
-                    sizes: "96x96",
+                    sizes: "192x192",
                     type: "image/png",
                 },
             ],
