@@ -8,25 +8,23 @@
         color 0.2s ease-out;
 
     summary {
-        display: flex;
-        align-items: center;
-        list-style-type: none;
+        display: block;
         outline-offset: 0.5em;
 
-        &::marker {
+        // Safari unset for default marker
+        &::-webkit-details-marker {
             display: none;
         }
 
         &::before {
             content: var(--details-marker, "+");
-            order: 1;
+            float: right;
             display: inline-flex;
             justify-content: center;
             align-items: center;
             border-radius: 50%;
             min-width: var(--details-marker-size, 1.5em);
             min-height: var(--details-marker-size, 1.5em);
-            margin-left: auto;
             background-color: var(--color-theme-fade);
             color: currentColor;
             font-variant-numeric: tabular-nums;
