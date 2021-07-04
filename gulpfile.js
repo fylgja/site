@@ -26,6 +26,7 @@ const sassTask = () => {
 const minifyCss = () => {
     const presetEnvConfig = {
         stage: 3,
+        features: { "custom-properties": false },
     };
 
     const cssnanoConfig = {
