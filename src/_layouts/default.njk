@@ -4,6 +4,10 @@
 {%- set pageUrl %}{{ meta.url }}{{ page.url }}{% endset -%}
 {%- set pageCanonical %}{{ meta.url }}{% if canonical %}{{ canonical }}{% else %}{{ page.url }}{% endif %}{% endset -%}
 {%- set twitterCreator %}{% if twitter %}{{ twitter }}{% else %}{{ meta.socials.twitter }}{% endif %}{% endset -%}
+{%- set cssinline %}
+    {% if (style | isObject ) %}{% for i in style %}{% include i %}{% endfor %}
+    {% else %}{{ style }}{% endif %}
+{% endset -%}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +64,8 @@
         <link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="/css/print.css" media="print">
         {% if css %}{{ css | safe }}{% endif %}
-        {% if style %}<style>{{ style | safe }}</style>{% endif %}
+        {# {% if style %}<style>{{ style | safe }}</style>{% endif %} #}
+        {% if cssinline %}<style>{{ cssinline | cssmin | safe }}</style>{% endif %}
         <script src="/js/main.js" defer></script>
     </head>
     <body class="flex flex-col min-h-screen">

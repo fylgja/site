@@ -11,6 +11,7 @@ const svgContents = require("eleventy-plugin-svg-contents");
 
 const browserSyncConfig = require("./src/_utils/libaries/browserSync");
 const minify = require("./src/_utils/minify");
+const CleanCSS = require("clean-css");
 
 const imageShortcode = require("./src/_utils/shortcodes/image");
 const npmBadges = require("./src/_utils/shortcodes/npm-badges");
@@ -55,6 +56,15 @@ module.exports = function (config) {
 
     // Filters
     eleventyFilters(config);
+
+    config.addFilter("cssmin", function (code) {
+        return new CleanCSS({}).minify(code).styles;
+    });
+
+    config.addFilter("isObject", (value) => typeof value === "object");
+    config.addFilter("isArray", (value) => typeof value === "array");
+    config.addFilter("isString", (value) => typeof value === "string");
+    config.addFilter("isNumber", (value) => typeof value === "number");
 
     // Collections
     eleventyCollections(config);
