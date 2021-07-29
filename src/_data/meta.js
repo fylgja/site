@@ -11,7 +11,7 @@ module.exports = {
     themeColorDark: "#08274a",
     siteName: "Fylgja",
     siteDescription:
-        "A Modular and customizable CSS front-end framework for building UI components for the web.",
+        "Fylgja is your CSS front-end framework for building your own websites or webapps using modular and customizable CSS components, by loading only what you need.",
     author: "Fylgja",
     email: "info@fylgja.dev",
     phone: false,
