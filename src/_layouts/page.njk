@@ -10,11 +10,11 @@ style: "
 
 {% include "header.njk" %}
 <main id="page-main" class="page-container flex-grow my-6">
-    <div class="container my-6">
+    <article class="container my-6">
         {% if title %}
             <h1>{{ title }}</h1>
         {% endif %}
         {{ content | safe }}
-    </div>
+    </article>
 </main>
 {% include "footer.njk" %}
