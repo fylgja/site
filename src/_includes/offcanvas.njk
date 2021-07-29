@@ -41,11 +41,13 @@
                                         </summary>
                                         <ul class="mb-1" style="--menu-margin: 0 0 0.5em;">
                                             {%- for item in items.data | sortByName -%}
-                                            <li>
-                                                <a href="{{ item.url }}"
-                                                {% if page.url == item.url %}aria-current="page" class="is-active"{% endif %}
-                                                >{{ item.data.title }}</a>
-                                            </li>
+                                                {% if not item.data.altlink %}
+                                                <li>
+                                                    <a href="{{ item.url }}"
+                                                    {% if page.url == item.url %}aria-current="page" class="is-active"{% endif %}
+                                                    >{{ item.data.title }}</a>
+                                                </li>
+                                                {%- endif %}
                                             {%- endfor -%}
                                         </ul>
                                     </details>

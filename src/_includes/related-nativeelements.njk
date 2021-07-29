@@ -24,6 +24,7 @@
 <p>Components that require no additional CSS classes to work.</p>
 <div id="related" class="auto-grid">
 {%- for item in collections.nativeElements -%}
+{% if not item.data.altlink %}
 <a href="{{ item.url }}" class="card card-content flex-row">
 {% if item.data.preview %}
 {% set preview %}{{ meta.componentsMedia }}{{ item.data.preview }}{% endset %}
@@ -41,5 +42,6 @@
 {% endif %}
 </div>
 </a>
+{% endif %}
 {%- endfor -%}
 </div>

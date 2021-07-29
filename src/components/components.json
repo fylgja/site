@@ -2,7 +2,7 @@
   "tags": "components",
   "layout": "components",
   "permalink": "/components/{{ page.fileSlug }}/",
-  "altUrl": false,
+  "altlink": false,
   "breadcrumbs": {
     "Components": "/components/"
   },
