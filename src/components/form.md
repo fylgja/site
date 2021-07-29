@@ -7,6 +7,8 @@ npm: "@fylgja/form"
 tags: ["nativeElements", "forms"]
 preview: "form.png"
 featured: true
+sitemap:
+  priority: 0.6
 order: 2
 ---
 

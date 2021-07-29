@@ -5,6 +5,8 @@ npm: "@fylgja/utilpack"
 tags: ["utils", "utilpack"]
 preview: "utilpack.png"
 featured: true
+sitemap:
+  priority: 0.6
 order: 1
 ---
 

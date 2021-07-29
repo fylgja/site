@@ -6,6 +6,8 @@ npm: "@fylgja/auto-grid"
 tags: ["layouts"]
 preview: "auto-grid.png"
 featured: true
+sitemap:
+  priority: 0.6
 order: 2
 ---
 
