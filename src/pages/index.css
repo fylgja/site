@@ -16,34 +16,28 @@
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) #hero {
         --bg: var(--color-bg);
-        --img: linear-gradient(
-                190deg,
-                rgba(12, 57, 109, 1) 0%,
-                rgba(0, 0, 0, 0) 40%
-            ),
-            linear-gradient(
-                170deg,
-                rgba(115, 22, 117, 1) 0%,
-                rgba(0, 0, 0, 0) 40%
-            );
+
+        /* prettier-ignore */
+        --img:
+            linear-gradient(190deg, rgba(12, 57, 109, 1) 0%, rgba(0, 0, 0, 0) 40%),
+            linear-gradient(170deg, rgba(115, 22, 117, 1) 0%, rgba(0, 0, 0, 0) 40%);
     }
 
-    :root:not([data-theme="light"]) svg#logo {
+    :root:not([data-theme="light"]) #logo {
         fill: currentColor;
     }
 }
 
 :root[data-theme="dark"] #hero {
     --bg: var(--color-bg);
-    --img: linear-gradient(
-            190deg,
-            rgba(12, 57, 109, 1) 0%,
-            rgba(0, 0, 0, 0) 40%
-        ),
+
+    /* prettier-ignore */
+    --img:
+        linear-gradient(190deg, rgba(12, 57, 109, 1) 0%, rgba(0, 0, 0, 0) 40%),
         linear-gradient(170deg, rgba(115, 22, 117, 1) 0%, rgba(0, 0, 0, 0) 40%);
 }
 
-:root[data-theme="dark"] svg#logo {
+:root[data-theme="dark"] #logo {
     fill: currentColor;
 }
 
@@ -160,18 +154,33 @@
     --height: 300px;
 }
 
-#collection-featured {
+.collection-row {
     --container-size: 640px;
+    --card-elevation: var(--elevation-z1);
+    --aspect-ratio: 1/1;
+    --card-radius: 8px;
+    --avatar-size: 75px;
+    --avatar-bg: transparent;
+    --avatar-color: inherit;
+    --avatar-radius: 8px;
+    --border-color: rgb(0 0 0 / 10%);
 }
 
-#collection-featured .card {
-    --aspect-ratio: 4/3;
-    --aspect-img: contain;
-    --card-elevation: var(--elevation-z1);
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .collection-row {
+        --border-color: rgb(255 255 255 / 20%);
+    }
+}
+
+:root[data-theme="dark"] .collection-row {
+    --border-color: rgb(255 255 255 / 20%);
+}
+
+.collection-row .card {
     transition: box-shadow 0.2s ease-out;
 }
 
-#collection-featured .card:hover {
+.collection-row .card:hover {
     --card-elevation: var(--elevation-z4);
 }
 
@@ -182,14 +191,22 @@
     }
 }
 
+@media (min-width: 768px) {
+    .collection-row {
+        --aspect-ratio: 4/3;
+        --avatar-size: auto;
+        --aspect-img: contain;
+    }
+}
+
 @media (min-width: 1024px) {
     .usp-section,
     #contact,
-    #collection-featured {
+    .collection-row {
         --container-size: 1280px;
     }
 
-    #collection-featured {
+    .collection-row {
         --cols: repeat(4, 1fr);
     }
 
@@ -202,7 +219,7 @@
 @media (min-width: 2200px) {
     .usp-section,
     #contact,
-    #collection-featured {
+    .collection-row {
         --container-size: 1440px;
     }
 

@@ -178,18 +178,22 @@ sitemap:
 {% endif %}
 
 {% if collections.componentsFeatured %}
-<section id="collection-featured" class="my-4 md-my-8">
+<section id="collection-featured" class="collection-row my-8 md-my-12">
     <div class="container">
-        <div class="md-text-center md-mb-7">
-            <h2>Featured components</h2>
+        <div class="md-mb-7">
+            <h2 class="mb-1">Our Featured CSS Components</h2>
+            <p>
+                Our Featured CSS Components, that really show the full potential of what each Fylgja Component can do.<br>
+                Want more? <a href="/components/">See the full list of Fylgja CSS Components here.</a>
+            </p>
         </div>
         <div class="auto-grid">
             {%- for item in collections.componentsFeatured | sortByOrder -%}
-            <a class="card" href="{{ item.url }}">
-                <div class="card-media aspect-ratio">
+            <a class="card flex-row md-flex-col" href="{{ item.url }}">
+                <div class="card-media avatar border md-border-0 my-4 ms-4 md-m-0 aspect-ratio">
                     {% if item.data.preview %}
                     {% set preview %}{{ meta.componentsMedia }}{{ item.data.preview }}{% endset %}
-                    {% image preview %}
+                    {% image preview, "", "medium" %}
                     {% endif %}
                 </div>
                 <div class="card-content">
