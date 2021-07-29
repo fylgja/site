@@ -1,6 +1,6 @@
 ---
 title: "Stylelint Config - LESS"
-description: "A sharable stylelint config object that enforces Fylgja's CSS rules."
+description: "A sharable stylelint config object that enforces Fylgja's LESS CSS rules."
 npm: "@fylgja/stylelint-config"
 tags: ["config", "plugins"]
 preview: "stylelint.png"

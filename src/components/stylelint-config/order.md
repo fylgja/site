@@ -1,6 +1,6 @@
 ---
 title: "Stylelint Config - Order"
-description: "A sharable stylelint config object that enforces Fylgja's CSS rules."
+description: "A sharable stylelint config object that enforces Fylgja's CSS order rules."
 npm: "@fylgja/stylelint-config"
 tags: ["config", "plugins"]
 preview: "stylelint.png"
@@ -59,7 +59,7 @@ So the DOM order is;
     position: absolute;
     right: 0;
     // Layout
-    display: block;;
+    display: block;
     float: left;
     grid-column: span 2;
     flex-flow: row wrap;
@@ -97,7 +97,7 @@ So the DOM order is;
     transform: scaleX(1);
     opacity: 1;
     animation: 3s infinite;
-    transition: transform .2s linear;
+    transition: transform 0.2s linear;
     appearance: none;
     overflow: visible;
     cursor: pointer;

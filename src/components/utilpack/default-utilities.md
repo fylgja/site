@@ -1,6 +1,6 @@
 ---
 title: "Utilpack - Default utility classes"
-description: "Build and use your own CSS utility classes with Sass using the Fylgja utilpack."
+description: "All  of the default prebuild CSS utility classes build with the Fylgja utilpack."
 tags: ["utils", "utilpack"]
 preview: "utilpack.png"
 permalink: "/components/utilpack/{{ page.fileSlug }}/"
