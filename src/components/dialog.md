@@ -7,7 +7,10 @@ requiresJs: true
 npm: "@fylgja/dialog"
 tags: "nativeElements"
 preview: "dialog.png"
-order: 1
+featured: true
+sitemap:
+  priority: 0.6
+order: 3
 ---
 
 The dialog combines 3 components in 1, it a modal by default,

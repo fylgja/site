@@ -4,9 +4,6 @@ description: "A sharable stylelint config object that enforces Fylgja's CSS rule
 npm: "@fylgja/stylelint-config"
 tags: ["config", "plugins"]
 preview: "stylelint.png"
-featured: true
-sitemap:
-  priority: 0.6
 ---
 
 A sharable stylelint config object that enforces Fylgja's CSS rules.

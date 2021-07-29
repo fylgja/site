@@ -9,7 +9,7 @@ preview: "form.png"
 featured: true
 sitemap:
   priority: 0.6
-order: 2
+order: 3
 ---
 
 The form component is super easy to use,
