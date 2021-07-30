@@ -24,6 +24,12 @@
 
         {# Preconnect #}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+        {% if preconnect %}{{ preconnect | safe }}{% endif %}
+        <link rel="preload" as="style" href="/css/main.css">
+        <link rel="preload" as="font" href="/fonts/Rubik-Italic-VariableFont_wght.woff2" type="font/woff2" crossorigin>
+        <link rel="preload" as="font" href="/fonts/Rubik-VariableFont_wght.woff2" type="font/woff2" crossorigin>
+        {% if preload %}{{ preload | safe }}{% endif %}
+
         {# Seo & Feed #}
         <meta name="twitter:card" content="summary_large_image">
         {% if meta.socials.twitter %}
@@ -58,11 +64,6 @@
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="{{ meta.themeColor }}">
 
         {# Assets #}
-        {% if preconnect %}{{ preconnect | safe }}{% endif %}
-        <link rel="preload" as="style" href="/css/main.css">
-        <link rel="preload" as="font" href="/fonts/Rubik-Italic-VariableFont_wght.woff2" type="font/woff2" crossorigin>
-        <link rel="preload" as="font" href="/fonts/Rubik-VariableFont_wght.woff2" type="font/woff2" crossorigin>
-        {% if preload %}{{ preload | safe }}{% endif %}
         <link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="/css/print.css" media="print">
         {% if css %}{{ css | safe }}{% endif %}
