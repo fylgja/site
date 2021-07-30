@@ -2,14 +2,13 @@
 title: "Stylelint Config - Order"
 description: "A sharable stylelint config object that enforces Fylgja's CSS order rules."
 npm: "@fylgja/stylelint-config"
-tags: ["config", "plugins"]
 preview: "stylelint.png"
 permalink: "/components/stylelint-config/{{ page.fileSlug }}/"
 breadcrumbs: {
     Components: "/components/",
     Stylelint Config: "/components/stylelint-config/"
 }
-eleventyExcludeFromCollections: true,
+currentBreadcrumbTitle: "Order"
 ---
 
 > NO PLUGIN and CONFIG required!

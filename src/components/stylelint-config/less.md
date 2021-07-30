@@ -2,14 +2,13 @@
 title: "Stylelint Config - LESS"
 description: "A sharable stylelint config object that enforces Fylgja's LESS CSS rules."
 npm: "@fylgja/stylelint-config"
-tags: ["config", "plugins"]
 preview: "stylelint.png"
 permalink: "/components/stylelint-config/{{ page.fileSlug }}/"
 breadcrumbs: {
     Components: "/components/",
     Stylelint Config: "/components/stylelint-config/",
 }
-eleventyExcludeFromCollections: true,
+currentBreadcrumbTitle: "LESS"
 ---
 
 There no specific rules set for LESS, since we don't use with LESS anymore.

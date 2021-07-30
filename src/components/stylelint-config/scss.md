@@ -2,14 +2,13 @@
 title: "Stylelint Config - SCSS"
 description: "A sharable stylelint config object that enforces Fylgja's SCSS/SASS CSS rules."
 npm: "@fylgja/stylelint-config"
-tags: ["config", "plugins"]
 preview: "stylelint.png"
 permalink: "/components/stylelint-config/{{ page.fileSlug }}/"
 breadcrumbs: {
     Components: "/components/",
     Stylelint Config: "/components/stylelint-config/"
 }
-eleventyExcludeFromCollections: true
+currentBreadcrumbTitle: "SCSS"
 ---
 
 Extra rules for when you use SCSS.

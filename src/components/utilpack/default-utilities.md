@@ -1,14 +1,13 @@
 ---
 title: "Utilpack - Default utility classes"
-description: "All  of the default prebuild CSS utility classes build with the Fylgja utilpack."
-tags: ["utils", "utilpack"]
+description: "All of the default prebuild CSS utility classes build with the Fylgja utilpack."
 preview: "utilpack.png"
 permalink: "/components/utilpack/{{ page.fileSlug }}/"
 breadcrumbs: {
     Components: "/components/",
-    Utilpack: "/components/utilpack/",
+    Utilpack: "/components/utilpack/"
 }
-eleventyExcludeFromCollections: true,
+currentBreadcrumbTitle: "Default utilities"
 ---
 
 Here you will find all default utility classes.
