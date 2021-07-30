@@ -78,6 +78,20 @@
             gtag('js', new Date());
             gtag('config', 'G-55ZD5EZJ1G');
         </script>
+        {# Schema data #}
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "Fylgja",
+                "url": "https://fylgja.dev/",
+                "logo": "https://fylgja.dev/images/logo-icon.png",
+                "sameAs": [
+                    "https://twitter.com/FylgjaCSS/",
+                    "https://github.com/fylgja/"
+                ]
+            }
+        </script>
     </head>
     <body class="flex flex-col min-h-screen">
         {{ content | safe }}
