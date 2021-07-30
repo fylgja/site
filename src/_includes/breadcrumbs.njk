@@ -1,11 +1,21 @@
 {% if breadcrumbs and permalink !== "/{{ page.fileSlug }}/" %}
 <nav aria-label="breadcrumb">
     <span class="aria-only">You are here: </span>
-    <ol class="breadcrumbs">
+    <ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
         {%- for title, url in breadcrumbs -%}
-            <li><a href="{{ url }}">{{ title }}</a></li>
+            <li itemscope itemprop="itemListElement" itemtype="https://schema.org/ListItem">
+                <a itemprop="item" href="{{ url }}">
+                    <span itemprop="name">{{ title }}</span>
+                    <meta itemprop="position" content="{{ loop.index }}" />
+                </a>
+            </li>
         {%- endfor -%}
-        <li><a href="{{ page.url }}" aria-current="page">{{ title }}</a></li>
+        <li itemscope itemprop="itemListElement" itemtype="https://schema.org/ListItem">
+            <a itemprop="item" href="{{ page.url }}" aria-current="page">
+                <span itemprop="name">{% if currentBreadcrumbTitle %}{{ currentBreadcrumbTitle }}{% else %}{{ title }}{% endif %}</span>
+                <meta itemprop="position" content="{{ breadcrumbs | length + 1 }}">
+            </a>
+        </li>
     </ol>
 </nav>
 {% endif %}
