@@ -7,4 +7,5 @@ permalink: "/components/dialog/#offcanvas"
 altlink: true
 tags: "nativeElements"
 preview: "dialog.png"
+order: 50
 ---
