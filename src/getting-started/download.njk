@@ -4,6 +4,11 @@ description: "Get Fylgja via the following services"
 order: 2
 hasToc: false
 style: "
+#download-options {
+    --cols-size: 400px;
+    --gap: 2em;
+}
+
 .intro-section svg {
     width: 3em;
     height: 3em;
@@ -14,7 +19,7 @@ style: "
 "
 ---
 
-<section id="download-options">
+<section id="download-options" class="auto-grid">
     <div class="divide-y">
         <div class="intro-section flex">
             <div class="svg-sass mt-2 me-4">
@@ -25,7 +30,7 @@ style: "
                     Get Fylgja as Sass library
                     <a class="hashlink" href="#download-scss" aria-hidden="true" tabindex="-1"></a>
                 </h2>
-                <p>A collection of <code>.scss</code> files to build your own styles with Fylgja</p>
+                <p>A collection of <code>.scss</code> files to build your own styles with Fylgja.</p>
             </div>
         </div>
         <div class="py-6">
@@ -33,6 +38,10 @@ style: "
             <p>All of Fylgja is available through one NPM package:</p>
             {% highlight "bash" %}
             npm install fylgja
+            {% endhighlight %}
+            <p>And inlcude all of fylgja your SCSS via;</p>
+            {% highlight "scss" %}
+            @use "fylgja";
             {% endhighlight %}
             <p>
                 <small>
@@ -60,18 +69,38 @@ style: "
                     Get Fylgja as CSS file
                     <a class="hashlink" href="#download-css" aria-hidden="true" tabindex="-1"></a>
                 </h2>
-                <p>A single <code>.css</code> file that includes all of Fylgja</p>
+                <p>
+                    A single <code>.css</code> file that includes all of Fylgja.<br>
+                    Or as collection of <code>.css</code> files.
+                </p>
             </div>
         </div>
         <div class="py-6">
-            <h3 class="h5 my-0">Option 1. Use a CDN</h3>
+            <h3 class="h5 my-0">Option 1. Install the NPM package</h3>
+            <p>All of Fylgja is available through one NPM package:</p>
+            {% highlight "bash" %}
+            npm install fylgja
+            {% endhighlight %}
+            <p>And inlcude it in your css file via;</p>
+            {% highlight "css" %}
+            @import "node_modules/fylgja/fylgja.css";
+            {% endhighlight %}
+            <p>
+                <small>
+                    But you can also get each package individually.
+                    <a href="/components/">See the components for how to do this.</a>
+                </small>
+            </p>
+        </div>
+        <div class="py-6">
+            <h3 class="h5 my-0">Option 2. Use a CDN</h3>
             <p>You can import the CSS file directly from jsDelivr:</p>
             {% highlight "html" %}
             <link href="https://cdn.jsdelivr.net/npm/fylgja/fylgja.css" rel="stylesheet">
             {% endhighlight %}
         </div>
         <div class="py-6">
-            <h3 class="h5 my-0">Option 2. Download the Github release</h3>
+            <h3 class="h5 my-0">Option 3. Download the Github release</h3>
             <p>You can get the latest Fylgja release as a .zip from GitHub:</p>
             <a href="https://github.com/fylgja/fylgja/releases/"
                 target="_blank"
