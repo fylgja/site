@@ -80,17 +80,7 @@
         </script>
         {# Schema data #}
         <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "Organization",
-                "name": "Fylgja",
-                "url": "https://fylgja.dev/",
-                "logo": "https://fylgja.dev/images/logo-icon.png",
-                "sameAs": [
-                    "https://twitter.com/{{ meta.socials.twitter }}/",
-                    "https://github.com/{{ meta.socials.github }}/"
-                ]
-            }
+            {"@context": "https://schema.org","@type": "Organization","name": "{{ meta.siteName }}","url": "{{ meta.url }}","logo": "{{ meta.url }}/images/logo-icon.png","sameAs": ["https://twitter.com/{{ meta.socials.twitter }}/", "https://github.com/{{ meta.socials.github }}/"]}
         </script>
     </head>
     <body class="flex flex-col min-h-screen">
