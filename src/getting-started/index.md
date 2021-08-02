@@ -20,19 +20,11 @@ and build one or more CSS files via Sass or PostCSS.
 The easiest way to include Fylgja is via the core NPM package,
 or add it by using a CDN.
 
-```bash
-npm install fylgja
-```
-
-```html
-<link href="https://cdn.jsdelivr.net/npm/fylgja/fylgja.css" rel="stylesheet">
-```
-
-[See our downloads page](/download/), for more information.
+[See our downloads page](/download/), for more information on how to add Fylgja to your project.
 
 ## More Guides to help you getting started
 
-Since Fylgja is build via Sass, it is very easy to intergrate it with other frameworks,
+Since Fylgja is build via Sass, it is very easy to intergrade it with other frameworks,
 the only requirement is Sass.
 
 Not a fan of Sass, Fylgja also ships with a CSS version for each component.
