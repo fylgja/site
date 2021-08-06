@@ -1,4 +1,5 @@
 ---
+layout: "page"
 title: "About us"
 description: "About Fylgja and how it was created"
 ---

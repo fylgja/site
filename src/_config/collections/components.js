@@ -63,13 +63,9 @@ const componentsFeatured = (collection) => {
     return items;
 };
 
-const components = (collection) => {
+const componentsAll = (collection) => {
     const items = collection.getFilteredByGlob("./src/components/**/*.md");
     return items;
 };
 
-module.exports = function eleventyCollections(config) {
-    config.addCollection("componentsGroup", componentsGroup);
-    config.addCollection("componentsFeatured", componentsFeatured);
-    config.addCollection("components", components);
-};
+module.exports = { componentsAll, componentsFeatured, componentsGroup };

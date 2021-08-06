@@ -36,9 +36,9 @@
 <strong>{{ item.data.title }}</strong>
 {%- set strLimit %}50{%- endset -%}
 {% if item.data.description %}
-<p class="text-small">{{ item.data.description | limit(strLimit) }}</p>
+<p class="text-small">{{ item.data.description | truncate(strLimit) }}</p>
 {% else %}
-<p class="text-small">{{ item.templateContent | excerpt(strLimit) }}</p>
+<p class="text-small">{{ item.templateContent | truncate(strLimit) }}</p>
 {% endif %}
 </div>
 </a>

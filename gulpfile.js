@@ -18,7 +18,7 @@ const sassTask = () => {
         includePaths: ["node_modules"],
     };
 
-    return src(`${input}/_sass/**/*.scss`, { sourcemaps })
+    return src(`${input}/assets/sass/**/*.scss`, { sourcemaps })
         .pipe(sass(sassConfig).on("error", sass.logError))
         .pipe(dest(`${output}/css`, { sourcemaps: "." }));
 };
@@ -34,7 +34,7 @@ const minifyCss = () => {
     };
 
     const purgecssConfig = {
-        content: ["_site/**/*.html"],
+        content: [`${output}/**/*.html`],
         safelist: [/^\:/, /lite-youtube/, /backdrop/],
     };
 
@@ -50,7 +50,7 @@ const minifyCss = () => {
 };
 
 const watcher = () => {
-    watch(`${input}/_sass/`, { ignoreInitial: true }, sassTask);
+    watch(`${input}/assets/sass/`, { ignoreInitial: true }, sassTask);
 };
 
 exports.default = series(sassTask, minifyCss);

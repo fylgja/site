@@ -6,38 +6,46 @@ const sitemap = require("@quasibit/eleventy-plugin-sitemap");
 
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginTOC = require("eleventy-plugin-nesting-toc");
-const markdownConfig = require("./src/_utils/libaries/markdown");
+const markdownConfig = require("./src/_config/markdown");
 const svgContents = require("eleventy-plugin-svg-contents");
 
-const browserSyncConfig = require("./src/_utils/libaries/browserSync");
-const minify = require("./src/_utils/minify");
+const browserSyncConfig = require("./src/_config/browserSync");
+const minifyHtml = require("./src/_config/minifyHtml");
 const CleanCSS = require("clean-css");
 
-const imageShortcode = require("./src/_utils/shortcodes/image");
-const npmBadges = require("./src/_utils/shortcodes/npm-badges");
-const eleventyFilters = require("./src/_utils/filters");
-const eleventyCollections = require("./src/_utils/collections");
+const imageShortcode = require("./src/_config/shortcodes/image");
+const npmBadges = require("./src/_config/shortcodes/npm-badges");
+const {
+    componentsAll,
+    componentsFeatured,
+    componentsGroup,
+} = require("./src/_config/collections/components");
+const { sortByName, sortByOrder } = require("./src/_config/filters/sortby");
+const {
+    isArray,
+    isBoolean,
+    isNumber,
+    isObject,
+    isString,
+} = require("./src/_config/filters/types");
+
+const isProd = process.env.ELEVENTY_ENV === "prod";
 
 module.exports = function (config) {
     config.setLibrary("md", markdownConfig);
     config.setBrowserSyncConfig(browserSyncConfig);
-    config.addWatchTarget("./src/_sass/");
-    config.addWatchTarget("./src/_js/");
+    config.addWatchTarget("./src/assets/sass/");
+    config.addWatchTarget("./src/assets/js/");
 
     // Copy
-    config.addPassthroughCopy({ "src/_static/images": "images" });
-    config.addPassthroughCopy({ "src/_static/icons": "images" });
-    config.addPassthroughCopy({ "src/_static/webapp": "./" });
-    config.addPassthroughCopy({ "src/_static/fonts": "fonts" });
-
-    if (process.env.ELEVENTY_ENV !== "prod") {
-        config.addPassthroughCopy({ "src/_static/css/*.map": "css" });
-    }
+    config.addPassthroughCopy({ "src/assets/images": "images" });
+    config.addPassthroughCopy({ "src/assets/icons": "images" });
+    config.addPassthroughCopy({ "src/assets/webapp": "./" });
+    config.addPassthroughCopy({ "src/assets/fonts": "fonts" });
+    if (isProd) config.addPassthroughCopy({ "src/assets/css/*.map": "css" });
 
     // Plugins
-    config.addPlugin(syntaxHighlight, {
-        preAttributes: { tabindex: 0 },
-    });
+    config.addPlugin(syntaxHighlight, { preAttributes: { tabindex: 0 } });
     config.addPlugin(embedYouTube, {
         lite: {
             css: { inline: true },
@@ -50,31 +58,29 @@ module.exports = function (config) {
     config.addPlugin(svgContents);
 
     // Shortcodes
+    config.addNunjucksAsyncShortcode("image", imageShortcode);
     config.addShortcode("year", () => `${new Date().getFullYear()}`);
     config.addShortcode("npmBadges", npmBadges);
-    config.addNunjucksAsyncShortcode("image", imageShortcode);
 
     // Filters
-    eleventyFilters(config);
-
-    config.addFilter("cssmin", function (code) {
-        return new CleanCSS({}).minify(code).styles;
-    });
-
-    config.addFilter("isObject", (value) => typeof value === "object");
-    config.addFilter("isArray", (value) => typeof value === "array");
-    config.addFilter("isString", (value) => typeof value === "string");
-    config.addFilter("isNumber", (value) => typeof value === "number");
+    config.addFilter("isArray", isArray);
+    config.addFilter("isBoolean", isBoolean);
+    config.addFilter("isNumber", isNumber);
+    config.addFilter("isObject", isObject);
+    config.addFilter("isString", isString);
+    config.addFilter("cssmin", (code) => new CleanCSS({}).minify(code).styles);
+    config.addFilter("sortByName", sortByName);
+    config.addFilter("sortByOrder", sortByOrder);
 
     // Collections
-    eleventyCollections(config);
+    config.addCollection("componentsGroup", componentsGroup);
+    config.addCollection("componentsFeatured", componentsFeatured);
+    config.addCollection("componentsAll", componentsAll);
 
     // Transform
     // These transforms should always go last
     // Because they look at the final HTML.
-    if (process.env.ELEVENTY_ENV === "prod") {
-        config.addTransform("minify", minify.html);
-    }
+    if (isProd) config.addTransform("minify", minifyHtml);
 
     return {
         dir: {

@@ -1,5 +1,5 @@
 const fs = require("fs");
-const { output } = require("../../_data/meta");
+const { output } = require("../_data/meta");
 
 module.exports = {
     callbacks: {

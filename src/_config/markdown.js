@@ -2,7 +2,7 @@ const slugify = require("slugify");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const markdownItExternalAnchor = require("markdown-it-external-anchor");
-const { url } = require("../../_data/meta");
+const { url } = require("../_data/meta");
 
 const slugifyStr = (str) => {
     if (str instanceof String) {

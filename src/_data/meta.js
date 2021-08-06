@@ -4,6 +4,7 @@ const url =
         : "http://localhost:8080";
 
 module.exports = {
+    env: process.env.ELEVENTY_ENV,
     output: "_site",
     input: "src",
     url,

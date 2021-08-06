@@ -1,4 +1,4 @@
-const { siteName, siteDescription, themeColor } = require("../_data/meta");
+const { siteName, siteDescription, themeColor } = require("./_data/meta");
 
 const webmanifest = {
     name: siteName,

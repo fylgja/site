@@ -1,7 +1,7 @@
 ---
 layout: home
 permalink: index.html
-style: ["../pages/index.css"]
+style: ["css/index.css"]
 sitemap:
   priority: 0.8
 ---
@@ -84,7 +84,7 @@ sitemap:
 <div id="usp-points" class="usp-section container py-6 md-py-8 auto-grid">
     <section class="flex">
         <div class="avatar -icon-css me-6">
-            {{ "/src/_static/icons/css.svg" | svgContents | safe }}
+            {{ "/src/assets/icons/css.svg" | svgContents | safe }}
         </div>
         <div>
             <h2>No JavaScript required</h2>
@@ -94,7 +94,7 @@ sitemap:
     </section>
     <section class="flex">
         <div class="avatar -icon-palette me-6">
-            {{ "/src/_static/icons/palette.svg" | svgContents | safe }}
+            {{ "/src/assets/icons/palette.svg" | svgContents | safe }}
         </div>
         <div>
             <h2>Ease to edit and to add your own style</h2>
@@ -117,14 +117,14 @@ sitemap:
             <h3 class="h4 md-m-0">CSS Utilities</h3>
         </div>
     </div>
-    <div>{% image "src/_static/images/whatsinthebox.png", "Whats Fylgja all has to offer", "medium" %}</div>
+    <div>{% image "src/assets/images/whatsinthebox.png", "Whats Fylgja all has to offer", "medium" %}</div>
     <p class="h3 my-6">Into one Framework</p>
 </section>
 
 <div id="usp-points-a11y" class="usp-section container py-6 md-py-8 auto-grid">
     <section class="flex">
         <div class="avatar -icon-rtl me-6">
-            {{ "/src/_static/icons/format_textdirection_rtl.svg" | svgContents | safe }}
+            {{ "/src/assets/icons/format_textdirection_rtl.svg" | svgContents | safe }}
         </div>
         <div>
             <h2>RTL out of the box</h2>
@@ -136,7 +136,7 @@ sitemap:
     </section>
     <section class="flex">
         <div class="avatar -icon-visibility me-6">
-            {{ "/src/_static/icons/visibility.svg" | svgContents | safe }}
+            {{ "/src/assets/icons/visibility.svg" | svgContents | safe }}
         </div>
         <div>
             <h2>Web Accessibility in mind</h2>
@@ -199,9 +199,9 @@ sitemap:
                 <div class="card-content">
                     <h3 class="h5 my-0">{{ item.data.title }}</h3>
                     {% if item.data.description %}
-                    <p class="text-small">{{ item.data.description | limit(strLimit) }}</p>
+                    <p class="text-small">{{ item.data.description | truncate(strLimit) }}</p>
                     {% else %}
-                    <p class="text-small">{{ item.templateContent | excerpt(strLimit) }}</p>
+                    <p class="text-small">{{ item.templateContent | truncate(strLimit) }}</p>
                     {% endif %}
                 </div>
             </a>

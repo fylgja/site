@@ -6,7 +6,7 @@ const plugins = isProd ? [nodeResolve(), terser()] : [nodeResolve()];
 
 const devConfig = [
     {
-        input: `${input}/_js/main.js`,
+        input: `${input}/assets/js/main.js`,
         output: {
             file: `${output}/js/main.js`,
             format: "cjs",
@@ -15,7 +15,7 @@ const devConfig = [
         plugins,
     },
     {
-        input: `${input}/_js/sw.js`,
+        input: `${input}/assets/js/sw.js`,
         output: {
             file: `${output}/sw.js`,
             format: "cjs",
@@ -27,7 +27,7 @@ const devConfig = [
 
 const productionConfig = [
     {
-        input: `${input}/_js/main.js`,
+        input: `${input}/assets/js/main.js`,
         output: {
             file: `${output}/js/main.js`,
             format: "cjs",
@@ -35,7 +35,7 @@ const productionConfig = [
         plugins,
     },
     {
-        input: `${input}/_js/sw.js`,
+        input: `${input}/assets/js/sw.js`,
         output: {
             file: `${output}/sw.js`,
             format: "cjs",

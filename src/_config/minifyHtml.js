@@ -20,4 +20,4 @@ function minifyHtml(content, outputPath) {
     return content;
 }
 
-module.exports = { html: minifyHtml };
+module.exports = minifyHtml;

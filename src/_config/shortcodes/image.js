@@ -13,27 +13,27 @@ module.exports = async function imageShortcode(
     let imgName = "";
     switch (widths) {
         case "thumbnail":
-            imgSizes = [150];
+            imgSizes = [150, 300];
             imgName = "thumbnail";
             break;
 
         case "small":
-            imgSizes = [350];
+            imgSizes = [350, 620];
             imgName = "small";
             break;
 
         case "medium":
-            imgSizes = [500];
+            imgSizes = [500, 620, 920];
             imgName = "medium";
             break;
 
         case "large":
-            imgSizes = [1200];
+            imgSizes = [1200, 1600];
             imgName = "large";
             break;
 
         case "screen":
-            imgSizes = [320, 640, 1200, 1920];
+            imgSizes = [null, 350, 620, 920, 1200, 1920];
             break;
 
         default:
@@ -46,7 +46,7 @@ module.exports = async function imageShortcode(
         formats:
             originalFormat === "svg"
                 ? [originalFormat]
-                : ["avif", "webp", originalFormat],
+                : ["webp", originalFormat],
         urlPath: "/images/gen",
         outputDir: `${output}/images/gen`,
         duration: "1d",
@@ -54,7 +54,7 @@ module.exports = async function imageShortcode(
         filenameFormat: function (_id, src, width, format, _options) {
             const extension = path.extname(src);
             const name = path.basename(src, extension);
-            let suffix = imgName || `${width}w`;
+            let suffix = `${width}w`;
             return `${name}-${suffix}.${format}`;
         },
     });

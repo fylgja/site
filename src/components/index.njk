@@ -61,9 +61,9 @@ style: "
                     <h3 class="h5 my-0">{{ item.data.title }}</h3>
                     {%- set strLimit %}150{%- endset -%}
                     {% if item.data.description %}
-                        <p class="text-small">{{ item.data.description | limit(strLimit) }}</p>
+                        <p class="text-small">{{ item.data.description | truncate(strLimit) }}</p>
                     {% else %}
-                        <p class="text-small">{{ item.templateContent | excerpt(strLimit) }}</p>
+                        <p class="text-small">{{ item.templateContent | truncate(strLimit) }}</p>
                     {% endif %}
                 </div>
             </a>
@@ -74,7 +74,7 @@ style: "
 
 {%- for items in collections.componentsGroup -%}
     {% if items.data | length %}
-        <section id="{{ items.title | lowercase }}" class="my-2 md-my-5">
+        <section id="{{ items.title | lower }}" class="my-2 md-my-5">
             <div class="scroll-title pt-2 container">
                 <h2 class="h3 my-0">{{ items.title }}{% if requiresJs %} <small>(Requires JavaScript)</small>{% endif %}</h2>
                 <p class="my-0">{{ items.description }}</p>
@@ -93,7 +93,7 @@ style: "
                         {% if item.data.description %}
                             <p class="text-small">{{ item.data.description }}</p>
                         {% else %}
-                            <p class="text-small">{{ item.templateContent | excerpt(120) }}</p>
+                            <p class="text-small">{{ item.templateContent | truncate(120) }}</p>
                         {% endif %}
                     </div>
                 </a>
