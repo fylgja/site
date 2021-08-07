@@ -15,7 +15,10 @@
                     {% for item in navigation.main %}
                         {% if item.icon %}
                             {% menuItem item.url, "btn -icon", page.url, item.external %}
-                                {{ item.icon | svgContents("block") | safe }}
+                                <svg width="22" height="22" fill="currentColor">
+                                    <title>{{ item.text }}</title>
+                                    <use href="/images/socials.svg#{{ item.icon }}" />
+                                </svg>
                             {% endmenuItem %}
                         {% else %}
                             {% menuItem item.url, "", page.url, item.external %}

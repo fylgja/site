@@ -13,13 +13,13 @@ module.exports = {
             url: "/components/",
         },
         {
-            icon: "/src/assets/icons/socials/github.svg",
+            icon: "github",
             text: "Fylgja on Github",
             url: GithubUrl,
             external: true,
         },
         {
-            icon: "/src/assets/icons/socials/twitter.svg",
+            icon: "twitter",
             text: "Fylgja on Twitter",
             url: TwitterUrl,
             external: true,
@@ -55,13 +55,13 @@ module.exports = {
     ],
     socials: [
         {
-            icon: "/src/assets/icons/socials/github.svg",
+            icon: "github",
             text: "Github",
             url: GithubUrl,
             external: true,
         },
         {
-            icon: "/src/assets/icons/socials/twitter.svg",
+            icon: "twitter",
             text: "Twitter",
             url: TwitterUrl,
             external: true,
@@ -69,17 +69,17 @@ module.exports = {
     ],
     intro: [
         {
-            icon: "/src/assets/icons/download.svg",
+            icon: "download",
             text: "Download Fylgja",
             url: "/download/",
         },
         {
-            icon: "/src/assets/icons/code.svg",
+            icon: "code",
             text: "Components",
             url: "/components/",
         },
         {
-            icon: "/src/assets/icons/socials/github.svg",
+            icon: "github",
             text: "View on Github",
             url: GithubUrl,
             external: true,

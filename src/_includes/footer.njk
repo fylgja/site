@@ -46,7 +46,9 @@
                 {% for item in navigation.socials %}
                     <li>
                         {% menuItem item.url, "flex items-center", page.url, item.external %}
-                            {{ item.icon | svgContents("me-2") | safe }}
+                            <svg width="20" height="20" fill="currentColor" class="me-2">
+                                <use href="/images/socials.svg#{{ item.icon }}" />
+                            </svg>
                             <span>{{ item.text }}</span>
                         {% endmenuItem %}
                     </li>
@@ -64,7 +66,7 @@
                     type="button"
                     title="Toggle color scheme"
                     class="btn -icon"
-                >{{ '/src/assets/icons/color-scheme.svg' | svgContents | safe }}</button>
+                >{{ '/src/assets/images/color-scheme.svg' | svgContents | safe }}</button>
             </div>
         </div>
     </div>

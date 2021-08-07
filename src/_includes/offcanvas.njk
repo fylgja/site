@@ -75,14 +75,17 @@
             <nav  aria-label="Offcanvas extra menu" class="footer-nav flex">
                 {% for item in navigation.socials %}
                     {% menuItem item.url, "btn -icon me-1", page.url, item.external %}
-                        {{ item.icon | svgContents("block") | safe }}
+                        <svg width="24" height="24" fill="currentColor">
+                            <title>{{ item.text }}</title>
+                            <use href="/images/socials.svg#{{ item.icon }}" />
+                        </svg>
                     {% endmenuItem %}
                 {% endfor %}
                 <button data-toggle-color-scheme
                     type="button"
                     title="Toggle color scheme"
                     class="btn -icon ms-auto"
-                >{{ '/src/assets/icons/color-scheme.svg' | svgContents | safe }}</button>
+                >{{ '/src/assets/images/color-scheme.svg' | svgContents | safe }}</button>
             </nav>
         </div>
     </dialog>

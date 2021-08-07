@@ -36,7 +36,8 @@ sitemap:
         <a href="{{ item.url }}" {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}
             class="card-content sm-w-33 text-reset text-center">
             {% if item.icon %}
-            {{ item.icon | svgContents | safe }}
+                {%- set introIcon -%}/src/assets/images/icons/{{ item.icon }}.svg{%- endset -%}
+                {{ introIcon | svgContents | safe }}
             {% endif %}
             <div class="mt-1">{{ item.text }}</div>
         </a>
@@ -84,7 +85,7 @@ sitemap:
 <div id="usp-points" class="usp-section container py-6 md-py-8 auto-grid">
     <section class="flex">
         <div class="avatar -icon-css me-6">
-            {{ "/src/assets/icons/css.svg" | svgContents | safe }}
+            {{ "/src/assets/images/icons/css.svg" | svgContents | safe }}
         </div>
         <div>
             <h2>No JavaScript required</h2>
@@ -94,7 +95,7 @@ sitemap:
     </section>
     <section class="flex">
         <div class="avatar -icon-palette me-6">
-            {{ "/src/assets/icons/palette.svg" | svgContents | safe }}
+            {{ "/src/assets/images/icons/palette.svg" | svgContents | safe }}
         </div>
         <div>
             <h2>Ease to edit and to add your own style</h2>
@@ -124,7 +125,7 @@ sitemap:
 <div id="usp-points-a11y" class="usp-section container py-6 md-py-8 auto-grid">
     <section class="flex">
         <div class="avatar -icon-rtl me-6">
-            {{ "/src/assets/icons/format_textdirection_rtl.svg" | svgContents | safe }}
+            {{ "/src/assets/images/icons/format_textdirection_rtl.svg" | svgContents | safe }}
         </div>
         <div>
             <h2>RTL out of the box</h2>
@@ -136,7 +137,7 @@ sitemap:
     </section>
     <section class="flex">
         <div class="avatar -icon-visibility me-6">
-            {{ "/src/assets/icons/visibility.svg" | svgContents | safe }}
+            {{ "/src/assets/images/icons/visibility.svg" | svgContents | safe }}
         </div>
         <div>
             <h2>Web Accessibility in mind</h2>
@@ -162,7 +163,9 @@ sitemap:
                     {% if item.icon %}
                     <div class="avatar p-2"
                         style="--avatar-bg: {{ item.iconStyle.bg }}; --avatar-color: {{ item.iconStyle.color }};">
-                        {{ item.icon | svgContents | safe }}
+                        <svg width="24" height="24" fill="currentColor">
+                            <use href="/images/socials.svg#{{ item.icon }}" />
+                        </svg>
                     </div>
                     {% endif %}
                     <div class="flex-auto">

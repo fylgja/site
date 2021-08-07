@@ -8,7 +8,7 @@ module.exports = [
         text: 'Questions or Support<br class="hidden lg-block">ask them in the community.',
         url: GithubUrl,
         external: true,
-        icon: "/src/assets/icons/socials/github.svg",
+        icon: "github",
         iconStyle: {
             bg: "#181717",
             color: "#fff",
@@ -19,7 +19,7 @@ module.exports = [
         text: 'Follow the Fylgja Twitter account<br class="hidden lg-block">for news and updates.',
         url: TwitterUrl,
         external: true,
-        icon: "/src/assets/icons/socials/twitter.svg",
+        icon: "twitter",
         iconStyle: {
             bg: "#1da1f2",
             color: "#fff",

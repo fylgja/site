@@ -21,7 +21,7 @@ style: "
     {%- for item in collections.guides -%}
     <a href="{{ item.url }}" class="card card-content flex-row">
         {% if item.data.thumb %}
-            {% set preview %}./src/assets/images/{{ item.data.thumb }}{% endset %}
+            {%- set preview -%}./src/assets/images/{{ item.data.thumb }}{%- endset -%}
             <div class="avatar aspect-ratio me-4">
                 {% image preview, "", "thumbnail" %}
             </div>
@@ -39,7 +39,9 @@ style: "
     {%- endfor -%}
     <a href="https://github.com/fylgja/fylgja/issues" target="_blank" rel="noopener noreferrer" class="card card-content iteme-center flex-row">
         <div class="avatar p-3 me-4" style="--avatar-bg: #111; --avatar-color: #fff;">
-            {{ "/src/assets/icons/socials/github.svg" | svgContents("w-full h-full") | safe }}
+            <svg width="50" height="50" fill="currentColor" class="w-full h-full">
+                <use href="/images/socials.svg#github" />
+            </svg>
         </div>
         <strong>Add your own</strong>
     </a>
