@@ -19,17 +19,15 @@
                 <ul>
                     {%- for item in collections.started | sortByOrder -%}
                     <li>
-                        <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page" class="is-active"{% endif %}>
+                        {% menuItem item.url, "", page.url, item.external %}
                             {{ item.data.title }}
-                        </a>
+                        {% endmenuItem %}
                     </li>
                     {%- endfor -%}
                     <li>
-                        <a href="/components/"
-                            {% if page.url == "/components/" %}class="is-active"{% endif %}
-                            {% if page.url == "/components/" %}aria-current="page"{% endif %}>
+                        {% menuItem "/components/", "", "/components/" %}
                             <span>Components</span>
-                        </a>
+                        {% endmenuItem %}
                         <ul class="menu-nested">
                             {%- for items in collections.componentsGroup -%}
                                 {% if items.title !== "Featured" %}
@@ -43,9 +41,9 @@
                                             {%- for item in items.data | sortByName -%}
                                                 {% if not item.data.altlink %}
                                                 <li>
-                                                    <a href="{{ item.url }}"
-                                                    {% if page.url == item.url %}aria-current="page" class="is-active"{% endif %}
-                                                    >{{ item.data.title }}</a>
+                                                    {% menuItem item.url, "", page.url, item.external %}
+                                                        {{ item.data.title }}
+                                                    {% endmenuItem %}
                                                 </li>
                                                 {%- endif %}
                                             {%- endfor -%}
@@ -57,17 +55,15 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="/features/"
-                            {% if page.url == "/features/" %}class="is-active"{% endif %}
-                            {% if page.url == "/features/" %}aria-current="page"{% endif %}>
+                        {% menuItem "/features/", "", "/features/" %}
                             <span>Features</span>
-                        </a>
+                        {% endmenuItem %}
                         <ul>
                             {%- for item in collections.features | sortByOrder -%}
                             <li class="text-small">
-                                <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page" class="is-active"{% endif %}>
+                                {% menuItem item.url, "", page.url, item.external %}
                                     {{ item.data.title }}
-                                </a>
+                                {% endmenuItem %}
                             </li>
                             {%- endfor -%}
                         </ul>
@@ -78,13 +74,9 @@
         <div class="py-4 px-2">
             <nav  aria-label="Offcanvas extra menu" class="footer-nav flex">
                 {% for item in navigation.socials %}
-                    <a href="{{ item.url }}"
-                        class="btn -icon me-1 {% if page.url==item.url %} is-active{% endif %}"
-                        {% if page.url==item.url %}aria-current="page"{% endif %}
-                        {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}
-                        title="{{ item.text }}">
+                    {% menuItem item.url, "btn -icon me-1", page.url, item.external %}
                         {{ item.icon | svgContents("block") | safe }}
-                    </a>
+                    {% endmenuItem %}
                 {% endfor %}
                 <button data-toggle-color-scheme
                     type="button"

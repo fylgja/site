@@ -14,6 +14,7 @@ const minifyHtml = require("./src/_config/minifyHtml");
 const CleanCSS = require("clean-css");
 
 const imageShortcode = require("./src/_config/shortcodes/image");
+const menuItem = require("./src/_config/shortcodes/menu-item");
 const npmBadges = require("./src/_config/shortcodes/npm-badges");
 const {
     componentsAll,
@@ -61,6 +62,7 @@ module.exports = function (config) {
     config.addNunjucksAsyncShortcode("image", imageShortcode);
     config.addShortcode("year", () => `${new Date().getFullYear()}`);
     config.addShortcode("npmBadges", npmBadges);
+    config.addPairedShortcode("menuItem", menuItem);
 
     // Filters
     config.addFilter("isArray", isArray);

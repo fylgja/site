@@ -6,10 +6,9 @@
                 <ul class="list-style -none space-y-2">
                     {% for item in navigation.about %}
                         <li>
-                            <a href="{{ item.url }}"
-                                {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}
-                                {% if page.url==item.url %}class="is-active"{% endif %}
-                                {% if page.url==item.url %}aria-current="page"{% endif %}>{{ item.text }}</a>
+                            {% menuItem item.url, "", page.url, item.external %}
+                                {{ item.text }}
+                            {% endmenuItem %}
                         </li>
                     {% endfor %}
                 </ul>
@@ -21,10 +20,9 @@
                 <ul class="list-style -none space-y-2">
                     {% for item in navigation.support %}
                         <li>
-                            <a href="{{ item.url }}"
-                                {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}
-                                {% if page.url==item.url %}class="is-active"{% endif %}
-                                {% if page.url==item.url %}aria-current="page"{% endif %}>{{ item.text }}</a>
+                            {% menuItem item.url, "", page.url, item.external %}
+                                {{ item.text }}
+                            {% endmenuItem %}
                         </li>
                     {% endfor %}
                 </ul>
@@ -35,10 +33,9 @@
             <ul class="list-style -none space-y-2">
                 {% for item in collections.features | sortByOrder %}
                     <li>
-                        <a href="{{ item.url }}"
-                            {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}
-                            {% if page.url==item.url %}class="is-active"{% endif %}
-                            {% if page.url==item.url %}aria-current="page"{% endif %}>{{ item.data.title }}</a>
+                        {% menuItem item.url, "", page.url, item.external %}
+                            {{ item.data.title }}
+                        {% endmenuItem %}
                     </li>
                 {% endfor %}
             </ul>
@@ -48,12 +45,10 @@
             <ul class="list-style -none space-y-2">
                 {% for item in navigation.socials %}
                     <li>
-                        <a href="{{ item.url }}"
-                            class="flex items-center"
-                            {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}>
+                        {% menuItem item.url, "flex items-center", page.url, item.external %}
                             {{ item.icon | svgContents("me-2") | safe }}
                             <span>{{ item.text }}</span>
-                        </a>
+                        {% endmenuItem %}
                     </li>
                 {% endfor %}
             </ul>

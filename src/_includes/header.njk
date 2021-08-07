@@ -11,20 +11,17 @@
             <div class="flex iteme-center">
                 <nav id="main-menu"
                     aria-label="Main menu"
-                    class="menu -row hidden sm-inline-flex iteme-center space-x-2">
+                    class="menu -row hidden sm-inline-flex items-center space-x-2">
                     {% for item in navigation.main %}
-                        <a href="{{ item.url }}"
-                            {% if page.url==item.url %}class="is-active"{% endif %}
-                            {% if item.icon %}style="--menu-item-padding: 0.4375rem;"{% endif %}
-                            {% if page.url==item.url %}aria-current="page"{% endif %}
-                            {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}
-                            {% if item.icon %}title="{{ item.text }}"{% endif %}>
-                            {% if item.icon %}
+                        {% if item.icon %}
+                            {% menuItem item.url, "btn -icon", page.url, item.external %}
                                 {{ item.icon | svgContents("block") | safe }}
-                            {% else %}
+                            {% endmenuItem %}
+                        {% else %}
+                            {% menuItem item.url, "", page.url, item.external %}
                                 <span>{{ item.text }}</span>
-                            {% endif %}
-                        </a>
+                            {% endmenuItem %}
+                        {% endif %}
                     {% endfor %}
                 </nav>
                 <button id="show-offcanvas-menu" type="button" class="btn -icon md-hidden ms-4">
