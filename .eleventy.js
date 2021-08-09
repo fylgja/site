@@ -40,7 +40,7 @@ module.exports = function (config) {
 
     // Copy
     config.addPassthroughCopy({ "src/assets/images": "images" });
-    config.addPassthroughCopy({ "src/assets/icons": "images" });
+    config.addPassthroughCopy({ "src/components/images": "images" });
     config.addPassthroughCopy({ "src/assets/webapp": "./" });
     config.addPassthroughCopy({ "src/assets/fonts": "fonts" });
     if (isProd) config.addPassthroughCopy({ "src/assets/css/*.map": "css" });
