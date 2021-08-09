@@ -7,6 +7,7 @@
     --color-text: #fff;
     --color-text-alt: #{color.change(#fff, $alpha: 0.8)};
     --color-text-muted: #{color.change(#fff, $alpha: 0.67)};
+    --color-theme: #{color.change($color-theme, $lightness: 16%)};
     --link-color: #{color.change($color-theme, $lightness: 75%)};
     --link-color-state: #{color.change($color-theme, $lightness: 65%)};
     --code-bg: #{color.change($color-theme, $lightness: 16%)};
@@ -16,7 +17,6 @@
     --details-stroke: #{color.change($color-theme, $lightness: 16%)};
     --details-bg: #{color.change($color-theme, $lightness: 12%)};
     --dialog-bg: #{color.change($color-theme, $lightness: 16%)};
-    --select-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23fff"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 10l5 5 5-5z"/></svg>');
     --btn-focus-bg: #{color.change(#fff, $alpha: 0.1)};
     --btn-active-bg: #{color.change(#fff, $alpha: 0.2)};
     --divide-color: #{color.change(#fff, $alpha: 0.2)};
@@ -24,6 +24,11 @@
     --logo-color: #fff;
     --footer-bg: #{color.change($color-theme, $lightness: 16%)};
     --scrollbar-thumb-color: #{color.change(#fff, $alpha: 0.5)};
+
+    .btn.-theme {
+        --btn-focus-bg: #{color.change($color-theme, $lightness: 22%)};
+        --btn-active-bg: #{color.change($color-theme, $lightness: 2%)};
+    }
 
     .card:any-link,
     .card-content:any-link {
