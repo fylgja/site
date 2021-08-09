@@ -7,9 +7,9 @@
     --color-text: #fff;
     --color-text-alt: #{color.change(#fff, $alpha: 0.8)};
     --color-text-muted: #{color.change(#fff, $alpha: 0.67)};
-    --color-theme: #{color.change($color-theme, $lightness: 16%)};
+    --color-theme: #{color.change($color-theme, $lightness: 24%)};
     --link-color: #{color.change($color-theme, $lightness: 75%)};
-    --link-color-state: #{color.change($color-theme, $lightness: 65%)};
+    --link-color-focus: currentColor;
     --code-bg: #{color.change($color-theme, $lightness: 16%)};
     --code-color: #{$color-on-theme};
     --card-bg: #{color.change($color-theme, $lightness: 16%)};
@@ -26,8 +26,8 @@
     --scrollbar-thumb-color: #{color.change(#fff, $alpha: 0.5)};
 
     .btn.-theme {
-        --btn-focus-bg: #{color.change($color-theme, $lightness: 22%)};
-        --btn-active-bg: #{color.change($color-theme, $lightness: 2%)};
+        --btn-focus-bg: #{color.change($color-theme, $lightness: 26%)};
+        --btn-active-bg: #{color.change($color-theme, $lightness: 34%)};
     }
 
     .card:any-link,
