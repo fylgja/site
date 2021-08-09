@@ -12,11 +12,17 @@ css: '<link rel="stylesheet" href="/css/page.css">'
                 <h1 class="page-title mb-0">{{ title }}</h1>
             </header>
             <div class="body">{{ content | safe }}</div>
+            {% include "edit.njk" %}
         </article>
     </div>
     <aside class="docs-sidebar hidden md-block overflow-auto overflow-contain thin-scrollbar">
         <nav aria-label="Docs Menu" class="menu my-7 text-small">
             <ul>
+                <li>
+                    <strong class="block mx-2 mb-2">{{ title }}</strong>
+                    {{ content | toc(wrapper="div") | safe }}
+                </li>
+                <li class="hr mb-6" role="separator"></li>
                 <li>
                     <strong class="block mx-2 mb-2">Getting started</strong>
                     <ul>

@@ -2,7 +2,6 @@
 title: "Introduction"
 description: "Why use Fylgja and what does Fylgja offer"
 order: 1
-hasToc: false
 ---
 
 Fylgja is a component based CSS framework,

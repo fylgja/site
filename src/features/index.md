@@ -1,6 +1,6 @@
 ---
 title: "Features"
-description: ""
+description: "All of the features Fylgja supports to enhance your experience."
 permalink: "/{{ page.fileSlug }}/"
 eleventyExcludeFromCollections: true
 style: "

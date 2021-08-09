@@ -16,6 +16,7 @@ css: '<link rel="stylesheet" href="/css/page.css">'
                 {% endif %}
             </header>
             <div class="body">{{ content | safe }}</div>
+            {% include "edit.njk" %}
         </article>
     </div>
     <aside class="docs-sidebar hidden md-block overflow-auto overflow-contain thin-scrollbar">

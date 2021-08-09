@@ -60,7 +60,7 @@ it clearly shows that it's a class to change the main class.
 example;
 
 ```css
-.class.-clipped {}
+.class.-clipped { .. }
 ```
 
 The only change is adding a hyphen in front of any class

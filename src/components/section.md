@@ -70,7 +70,7 @@ Example: make a hero component that is realy easily build.
         --color: var(--color-on-theme);
     }
 </style>
-<section id="page-hero" class="flex iteme-center justify-center py-8">
+<section id="page-hero" class="flex items-center justify-center py-8">
     <div class="container">
         <h1 class="mb-0">Heading</h1>
         <p class="h5 mt-0">Slogan text</p>

@@ -1,6 +1,6 @@
 ---
 title: "Starter Projects"
-description: ""
+description: "All of Starter projects to get started with Fylgja CSS and more."
 ---
 
 {% include "todo.njk" %}

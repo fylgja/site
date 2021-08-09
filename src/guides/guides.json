@@ -1,11 +1,9 @@
 {
   "tags": ["docs", "guides"],
-  "layout": "docs",
+  "layout": "doc-item",
   "permalink": "/guides/{{ page.fileSlug }}/",
   "breadcrumbs": {
     "Guides": "/guides/"
   },
-  "order": 10,
-  "hasToc": true,
-  "tocTitle": true
+  "order": 10
 }
