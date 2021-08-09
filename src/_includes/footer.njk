@@ -1,9 +1,9 @@
 <footer class="page-footer">
-    <div class="container auto-grid">
+    <div class="main-footer py-8 container auto-grid">
         {% if navigation.about %}
             <nav id="about-menu" aria-label="About us Menu">
-                <strong class="block mb-4">About</strong>
-                <ul class="list-style -none space-y-2">
+                <strong class="block h5 mb-4">More Fylgja</strong>
+                <ul class="list-style -none space-y-3">
                     {% for item in navigation.about %}
                         <li>
                             {% menuItem item.url, "", page.url, item.external %}
@@ -16,8 +16,8 @@
         {% endif %}
         {% if navigation.support %}
             <nav id="support-menu" aria-label="Support Menu">
-                <strong class="block mb-4">Guides</strong>
-                <ul class="list-style -none space-y-2">
+                <strong class="block h5 mb-4">Guides</strong>
+                <ul class="list-style -none space-y-3">
                     {% for item in navigation.support %}
                         <li>
                             {% menuItem item.url, "", page.url, item.external %}
@@ -29,8 +29,8 @@
             </nav>
         {% endif %}
         <nav id="features-menu" aria-label="Features Menu">
-            <strong class="block mb-4">Features</strong>
-            <ul class="list-style -none space-y-2">
+            <strong class="block h5 mb-4">Features</strong>
+            <ul class="list-style -none space-y-3">
                 {% for item in collections.features | sortByOrder %}
                     <li>
                         {% menuItem item.url, "", page.url, item.external %}
@@ -41,8 +41,8 @@
             </ul>
         </nav>
         <nav id="follow-us-menu" aria-label="Follow use">
-            <strong class="block mb-4">Find us also on</strong>
-            <ul class="list-style -none space-y-2">
+            <strong class="block h5 mb-4">Find us also on</strong>
+            <ul class="list-style -none space-y-3">
                 {% for item in navigation.socials %}
                     <li>
                         {% menuItem item.url, "flex items-center", page.url, item.external %}
@@ -56,7 +56,7 @@
             </ul>
         </nav>
     </div>
-    <div class="sub-footer">
+    <div class="sub-footer py-4">
         <div class="sm-flex container items-center justify-between">
             <div><small class="copyright">© {% year %} {{ meta.siteName }}. All Rights Reserved.</small></div>
             <div class="flex items-center justify-between">

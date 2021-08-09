@@ -26,6 +26,10 @@ module.exports = {
             text: "All components",
             url: "/components/",
         },
+        {
+            text: "Get Fylgja",
+            url: "/download/",
+        },
     ],
     support: [
         {
