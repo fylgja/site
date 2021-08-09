@@ -12,18 +12,6 @@ module.exports = {
             text: "Components",
             url: "/components/",
         },
-        {
-            icon: "github",
-            text: "Fylgja on Github",
-            url: GithubUrl,
-            external: true,
-        },
-        {
-            icon: "twitter",
-            text: "Fylgja on Twitter",
-            url: TwitterUrl,
-            external: true,
-        },
     ],
     about: [
         {
@@ -31,11 +19,11 @@ module.exports = {
             url: "/about/",
         },
         {
-            text: "Support",
+            text: "Support us",
             url: "/support/",
         },
         {
-            text: "Components",
+            text: "All components",
             url: "/components/",
         },
     ],

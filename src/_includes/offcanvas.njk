@@ -3,7 +3,7 @@
         <div class="flex justify-between items-center py-3 px-2">
             <a href="/" class="logo">
                 <svg width="72" height="24" fill="currentColor">
-                    <title>Fylgja</title>
+                    <title>{{ meta.siteName }}</title>
                     <use href="/images/sprite.svg#logo" />
                 </svg>
             </a>
@@ -72,7 +72,7 @@
             </nav>
         </div>
         <div class="py-4 px-2">
-            <nav  aria-label="Offcanvas extra menu" class="footer-nav flex">
+            <nav aria-label="Offcanvas extra menu" class="footer-nav flex">
                 {% for item in navigation.socials %}
                     {% menuItem item.url, "btn -icon me-1", page.url, item.external %}
                         <svg width="24" height="24" fill="currentColor">
