@@ -3,6 +3,8 @@ title: "Button"
 description: "The Button component serves as an interactive element.
 To call your users to an action."
 npm: "@fylgja/button"
+git: "components/button"
+codepen: "XWRoKNp"
 tags: "elements"
 preview: "button.png"
 ---
@@ -34,8 +36,9 @@ Then include the component in to your code via;
 In your html you only need the `.btn` class to use the button style.
 
 ```html
-<a href="#link" class="btn">..</a>
-<button class="btn">..</button>
+<a href="#link" class="btn">Default</a>
+<button class="btn -theme">Theme</button>
+<button class="btn -outline">Outline</button>
 ```
 
 The buttons component is by default is blank with a soft focus and active color.

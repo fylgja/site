@@ -3,6 +3,7 @@ title: "Aspect Ratio"
 description: "The aspect ratio component is used to set videos to a certain responsive aspect ratio, 
 but can also be used for images and other content."
 npm: "@fylgja/aspect-ratio"
+git: "components/aspect-ratio"
 tags: "layouts"
 preview: "aspect-ratio.png"
 ---

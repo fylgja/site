@@ -2,6 +2,7 @@
 title: "Details"
 description: "The details component enhances the default details behavior."
 npm: "@fylgja/details"
+git: "components/details"
 tags: ["typography", "nativeElements"]
 preview: "details.png"
 ---

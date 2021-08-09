@@ -3,6 +3,7 @@ title: "Input-group"
 description: "The input group extends upon the `@fylgja/form`.
 By providing a wrapper that allows for more complex form field styles."
 npm: "@fylgja/input-group"
+git: "components/input-group"
 tags: ["layout", "forms"]
 preview: "input-group.png"
 ---

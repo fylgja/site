@@ -2,6 +2,7 @@
 title: "Theme"
 description: "Helper component for adding theme specific variables to multiple components."
 npm: "@fylgja/theme"
+git: "components/theme"
 tags: ["config", "utils"]
 preview: "theme.png"
 order: 11

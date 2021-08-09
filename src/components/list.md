@@ -3,6 +3,7 @@ title: "List"
 description: "The list component adds more control on how you can style lists.
 By adding a custom marker option with full flexibility to style and animate."
 npm: "@fylgja/list"
+git: "components/list"
 tags: ["typography"]
 preview: "list.png"
 ---

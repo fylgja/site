@@ -4,6 +4,7 @@ description: "The Hashlink is a small utility component,
 which adds smooth scrolling to the page via CSS
 and a scroll offset to any element with a id."
 npm: "@fylgja/hashlink"
+git: "components/hashlink"
 tags: "utils"
 preview: "hashlink.png"
 ---

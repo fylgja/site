@@ -3,6 +3,7 @@ title: "Base"
 description: "Common defaults to make your body and typography look good
 and easy to change to your needs."
 npm: "@fylgja/base"
+git: "components/base"
 tags: ["typography", "nativeElements", "a11y"]
 preview: "base.png"
 order: 1

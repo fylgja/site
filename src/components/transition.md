@@ -2,6 +2,7 @@
 title: "Transition"
 description: "Add transitions with ease, with the power of CSS variables."
 npm: "@fylgja/transition"
+git: "components/transition"
 tags: ["utils"]
 preview: "addon.png"
 ---

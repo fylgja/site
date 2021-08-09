@@ -2,6 +2,7 @@
 title: "Section"
 description: "The Section component is a wrapper component to show content in a sectioned area."
 npm: "@fylgja/section"
+git: "components/section"
 tags: ["layouts"]
 preview: "section.png"
 ---

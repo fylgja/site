@@ -3,6 +3,7 @@ title: "Container"
 description: "The container component is wrapper component,
 to make all child elements fit better in the page."
 npm: "@fylgja/container"
+git: "components/container"
 tags: "layouts"
 preview: "container.png"
 ---

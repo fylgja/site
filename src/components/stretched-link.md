@@ -2,6 +2,7 @@
 title: "Stretched-link"
 description: "Make any component fully clickable via a nested link."
 npm: "@fylgja/stretched-link"
+git: "components/stretched-link"
 tags: ["utils", "a11y"]
 preview: "stretched-link.png"
 ---

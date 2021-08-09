@@ -4,6 +4,7 @@ description: "The form component is super easy to use,
 it's a zero config module that styles all form elements directly.
 Allowing you to focus on the form itself."
 npm: "@fylgja/form"
+git: "components/form"
 tags: ["nativeElements", "forms"]
 preview: "form.png"
 featured: true

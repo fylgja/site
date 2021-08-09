@@ -4,6 +4,7 @@ description: "TThe table component is super easy to use,
 since it is a zero config module that styles the table directly.
 Allowing you to focus on the table it self."
 npm: "@fylgja/table"
+git: "components/table"
 tags: ["nativeElements", "typography"]
 preview: "table.png"
 ---

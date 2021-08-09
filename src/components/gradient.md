@@ -2,6 +2,7 @@
 title: "Gradient"
 description: "Add gradient's with ease via the gradient utility class."
 npm: "@fylgja/gradient"
+git: "components/gradient"
 tags: ["utils"]
 preview: "addon.png"
 ---

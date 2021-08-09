@@ -3,6 +3,7 @@ title: "Scroll-slider"
 description: "This CSS slider component allows you to make sliders with ease,
 and has no requirements to any Javascript."
 npm: "@fylgja/scroll-slider"
+git: "components/scroll-slider"
 tags: ["layouts"]
 preview: "scroll-slider.png"
 ---

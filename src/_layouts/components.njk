@@ -9,11 +9,15 @@ css: '<link rel="stylesheet" href="/css/page.css">'
     <div class="docs-layout my-6">
         {% include "breadcrumbs.njk" %}
         <article id="page-main">
-            <header class="mb-5">
-                <h1 class="page-title mb-0"><span class="aria-only">Fylgja component - </span>{{ title }}</h1>
-                {% if npm %}
-                    <div class="mt-2">{% npmBadges npm %}</div>
-                {% endif %}
+            <header class="mb-5 xl-flex justify-between">
+                <h1 class="page-title flex-shrink me-2 mb-0">
+                    <span class="aria-only">Fylgja component - </span>
+                    <span>{{ title }}</span>
+                </h1>
+                <div class="component-badges self-end mt-2">
+                    {%- if npm -%}{% badgeNpm npm %}{%- endif -%}
+                    {%- if git -%}{% badgeGit git, gitDomain %}{%- endif -%}
+                    {%- if codepen -%}{% badgeCodepen codepen %}{%- endif -%}
             </header>
             <div class="body">{{ content | safe }}</div>
             {% include "edit.njk" %}

@@ -1,8 +1,9 @@
 ---
 title: "Badge"
 description: "The badges component serves as a small blocks to indicate notifications, or to highlight an item."
-tags: "elements"
 npm: "@fylgja/badge"
+git: "components/badge"
+tags: "elements"
 preview: "badge.png"
 ---
 

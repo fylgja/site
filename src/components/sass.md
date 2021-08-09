@@ -2,6 +2,8 @@
 title: "Sass Extend"
 description: "Adds more SCSS super power functions."
 npm: "@fylgja/sass"
+git: "fylgja-sass"
+gitDomain: "https://github.com/fylgja/"
 tags: ["config", "plugins"]
 preview: "sass.png"
 ---

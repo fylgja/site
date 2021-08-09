@@ -2,6 +2,7 @@
 title: "Elevation"
 description: "The Elevation component is a util package for shadows, where it offers shadows as CSS variables."
 npm: "@fylgja/elevation"
+git: "components/elevation"
 tags: ["utils"]
 preview: "addon.png"
 ---

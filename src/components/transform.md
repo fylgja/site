@@ -2,6 +2,7 @@
 title: "Transform"
 description: "Add transforms with ease, with the power of CSS variables."
 npm: "@fylgja/transform"
+git: "components/transform"
 tags: ["utils"]
 preview: "addon.png"
 ---

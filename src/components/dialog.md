@@ -5,6 +5,7 @@ and with a small change it's a offcanvas,
 notification popup aka the snackbar."
 requiresJs: true
 npm: "@fylgja/dialog"
+git: "components/dialog"
 tags: "nativeElements"
 preview: "dialog.png"
 featured: true

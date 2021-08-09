@@ -3,6 +3,7 @@ title: "Auto Grid"
 description: "A super small grid with auto flowing behavior, based on the container size.
 Using a similar method to container queries."
 npm: "@fylgja/auto-grid"
+git: "components/auto-grid"
 tags: ["layouts"]
 preview: "auto-grid.png"
 featured: true

@@ -3,6 +3,7 @@ title: "Aria-only"
 description: "The aria-only (a.k.a. sr-only) visually hides elements.
 But keeps it accessible to screen-readers and other aria tools."
 npm: "@fylgja/aria-only"
+git: "components/aria-only"
 tags: ["utils", "a11y"]
 preview: "aria-only.png"
 ---

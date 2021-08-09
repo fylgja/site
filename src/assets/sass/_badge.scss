@@ -1,0 +1,40 @@
+@use "@fylgja/badge";
+
+.component-badges {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    > * {
+        height: 28px; // prevents render jump
+        margin-right: 0.5em;
+        margin-bottom: 0.5em;
+        outline-offset: 0.25em;
+    }
+}
+
+.badge {
+    &.-shield {
+        --badge-radius: 0;
+        --badge-bg: transparent;
+        --badge-color: currentColor;
+        min-height: 28px;
+        border: 1px solid currentColor;
+        font-weight: 600;
+        vertical-align: middle;
+        text-transform: uppercase;
+
+        svg {
+            width: 0.9rem;
+            height: 0.9rem;
+            margin-right: 0.35rem;
+            vertical-align: middle;
+        }
+
+        &:focus,
+        &:hover {
+            color: var(--badge-color);
+            text-decoration: none;
+        }
+    }
+}

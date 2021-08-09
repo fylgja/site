@@ -8,5 +8,6 @@
   },
   "requiresJs": false,
   "featured": false,
-  "order": 10
+  "order": 10,
+  "gitDomain": "https://github.com/fylgja/fylgja/tree/main/"
 }

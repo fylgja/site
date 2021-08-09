@@ -2,6 +2,8 @@
 title: "Stylelint Config"
 description: "A sharable stylelint config object that enforces Fylgja's CSS rules."
 npm: "@fylgja/stylelint-config"
+git: "stylelint-config"
+gitDomain: "https://github.com/fylgja/"
 tags: ["config", "plugins"]
 preview: "stylelint.png"
 ---

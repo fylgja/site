@@ -38,6 +38,7 @@
     "@fylgja/aspect-ratio": "^1.0.0",
     "@fylgja/auto-grid": "^1.0.1",
     "@fylgja/avatar": "^1.0.0",
+    "@fylgja/badge": "^1.0.0",
     "@fylgja/base": "^1.0.0",
     "@fylgja/breadcrumbs": "^1.0.0",
     "@fylgja/button": "^1.0.0",

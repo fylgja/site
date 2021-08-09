@@ -3,6 +3,7 @@ title: "Menu"
 description: "The menu component makes it easy to build common navigation patterns,
 like a navbar or menu in a dropdown."
 npm: "@fylgja/menu"
+git: "components/menu"
 tags: "navs"
 preview: "menu.png"
 ---

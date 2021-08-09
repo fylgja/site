@@ -2,6 +2,7 @@
 title: "Utilpack"
 description: "Build and use your own CSS utility classes with Sass using the Fylgja utilpack."
 npm: "@fylgja/utilpack"
+git: "components/utilpack"
 tags: ["utils", "utilpack"]
 preview: "utilpack.png"
 featured: true

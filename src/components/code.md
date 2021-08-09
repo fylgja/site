@@ -2,6 +2,7 @@
 title: "Code"
 description: "The Code component is a extension component on the base component."
 npm: "@fylgja/code"
+git: "components/code"
 tags: ["typography", "nativeElements"]
 preview: "code.png"
 ---
