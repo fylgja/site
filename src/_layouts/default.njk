@@ -69,6 +69,7 @@
         {# Assets #}
         <link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="/css/print.css" media="print">
+        <link rel="stylesheet" href="/css/code-syntax.css" media="print" onload="this.media='all'">
         {% if css %}{{ css | safe }}{% endif %}
         {% if cssinline %}<style>{{ cssinline | cssmin | safe }}</style>{% endif %}
         <script src="/js/main.js" defer></script>

@@ -5,24 +5,24 @@
 
 @use "sass:color";
 @use "@fylgja/theme" as *;
-@use "@fylgja/code" with (
-    $pre-bg: #{color.change($color-theme, $lightness: 16%)},
-    $pre-color: #{$color-on-theme},
-);
-@use "syntax";
-@use "layout";
+@use "@fylgja/code";
 @use "@fylgja/scrollbar/helper" as *;
 
 pre {
-    @include scrollbar(
-        $thumb: color.change(#fff, $alpha: 0.5),
-        $track: color.change(#000, $alpha: 0),
-        $width: thin
-    );
-
     @media (any-pointer: fine) {
+        @include scrollbar($width: thin);
+
         &:not(:hover):not(:focus) {
             --scrollbar-thumb-color: #{color.change(#000, $alpha: 0)};
         }
+    }
+}
+
+// stylelint-disable-next-line
+@media screen and (max-width: 640px) {
+    article pre {
+        margin-inline-start: calc(var(--container-padding-x) / -1);
+        margin-inline-end: calc(var(--container-padding-x) / -1);
+        border-radius: 0;
     }
 }

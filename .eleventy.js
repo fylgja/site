@@ -39,15 +39,19 @@ const isProd = process.env.ELEVENTY_ENV === "prod";
 module.exports = function (config) {
     config.setLibrary("md", markdownConfig);
     config.setBrowserSyncConfig(browserSyncConfig);
+    config.setWatchThrottleWaitTime(100);
     config.addWatchTarget("./src/assets/sass/");
     config.addWatchTarget("./src/assets/js/");
 
     // Copy
-    config.addPassthroughCopy({ "src/assets/images": "images" });
-    config.addPassthroughCopy({ "src/components/images": "images" });
+    config.addPassthroughCopy({
+        "src/assets/images/**/*.{jpg,png,svg}": "images",
+    });
+    config.addPassthroughCopy({
+        "src/components/images/**/*.{jpg,png,svg}": "images",
+    });
     config.addPassthroughCopy({ "src/assets/webapp": "./" });
-    config.addPassthroughCopy({ "src/assets/fonts": "fonts" });
-    if (isProd) config.addPassthroughCopy({ "src/assets/css/*.map": "css" });
+    config.addPassthroughCopy({ "src/assets/fonts/*.{woff,woff2}": "fonts" });
 
     // Plugins
     config.addPlugin(syntaxHighlight, { preAttributes: { tabindex: 0 } });
