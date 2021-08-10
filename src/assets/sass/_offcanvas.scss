@@ -3,4 +3,8 @@
 
 #offcanvas-menu {
     --dialog-width: min(350px, 100%);
+
+    .menu-nested {
+        --menu-margin: 0 0 0.5em;
+    }
 }

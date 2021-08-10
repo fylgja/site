@@ -13,7 +13,7 @@ const badgeNpm = (npmUrl) => {
             width="87"
             height="28"
             loading="eager"
-            style="width: auto;">
+            class="w-auto">
     </a>`;
     badges += `<a href="https://www.npmjs.org/package/${npmUrl}"
         class="inline-block text-reset"
@@ -24,7 +24,7 @@ const badgeNpm = (npmUrl) => {
             width="196"
             height="28"
             loading="eager"
-            style="width: auto;">
+            class="w-auto">
     </a>`;
 
     return badges;

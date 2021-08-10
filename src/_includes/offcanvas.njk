@@ -37,7 +37,7 @@
                                             <span class="caret me-2"></span>
                                             {{ items.title }}
                                         </summary>
-                                        <ul class="mb-1" style="--menu-margin: 0 0 0.5em;">
+                                        <ul>
                                             {%- for item in items.data | sortByName -%}
                                                 {% if not item.data.altlink %}
                                                 <li>
