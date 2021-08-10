@@ -1,4 +1,4 @@
-:root:not([data-theme="dark"]) {
+@mixin light-mode {
     .token.comment,
     .token.prolog,
     .token.doctype,
@@ -67,6 +67,16 @@
     .token.italic {
         font-style: italic;
     }
+}
+
+@media (prefers-color-scheme: light) {
+    :root:not([data-theme]) {
+        @include light-mode;
+    }
+}
+
+:root[data-theme="light"] {
+    @include light-mode;
 }
 
 @mixin dark-mode {
