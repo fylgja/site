@@ -28,7 +28,7 @@
             <link rel="dns-prefetch" href="https://www.googletagmanager.com">
         {% endif %}
         {% if preconnect %}{{ preconnect | safe }}{% endif %}
-        <link rel="preload" as="style" href="/css/main.css">
+        <link rel="preload" as="style" href="/css/main.css?=v21.08">
         <link rel="preload" as="font" href="/fonts/Rubik-Italic-VariableFont_wght.woff2" type="font/woff2" crossorigin>
         <link rel="preload" as="font" href="/fonts/Rubik-VariableFont_wght.woff2" type="font/woff2" crossorigin>
         {% if preload %}{{ preload | safe }}{% endif %}
@@ -67,12 +67,12 @@
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="{{ meta.themeColor }}">
 
         {# Assets #}
-        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/main.css?=v21.08">
         <link rel="stylesheet" href="/css/print.css" media="print">
         <link rel="stylesheet" href="/css/code-syntax.css" media="print" onload="this.media='all'">
         {% if css %}{{ css | safe }}{% endif %}
         {% if cssinline %}<style>{{ cssinline | cssmin | safe }}</style>{% endif %}
-        <script src="/js/main.js" defer></script>
+        <script src="/js/main.js?=v21.08" defer></script>
         {% if meta.env == 'prod' %}
             {# Global site tag (gtag.js) - Google Analytics #}
             <script async src="https://www.googletagmanager.com/gtag/js?id=G-55ZD5EZJ1G"></script>
