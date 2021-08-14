@@ -41,6 +41,8 @@ module.exports = async function imageShortcode(
             break;
     }
 
+    // TODD: add avif support back when pixi box encoding is fixed
+    // https://github.com/11ty/eleventy-img/issues/91
     let metadata = await Image(src, {
         widths: [imgSizes],
         formats:
