@@ -1,5 +1,5 @@
 const { socials } = require("./meta");
-const GithubUrl = `https://github.com/${socials.github}`;
+const GithubUrl = `https://github.com/fylgja/fylgja`;
 const TwitterUrl = `https://twitter.com/${socials.twitter}`;
 
 module.exports = {
