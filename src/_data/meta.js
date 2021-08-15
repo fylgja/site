@@ -1,3 +1,4 @@
+const { version } = require("../../package.json");
 const url =
     process.env.ELEVENTY_ENV === "prod"
         ? "https://fylgja.dev"
@@ -5,6 +6,7 @@ const url =
 
 module.exports = {
     env: process.env.ELEVENTY_ENV,
+    version,
     output: "_site",
     input: "src",
     url,
