@@ -1,20 +1,23 @@
 ---
-layout: default
-css: '<link rel="stylesheet" href="/css/page.css">'
-style: "
-.page-container {
-    --container-size: 84ch;
-}
-"
+search: true
+css: { page: "/css/page.css" }
+style: { page: ".page-container { --container-size: 84ch; }" }
 ---
 
-{% include "header.njk" %}
-<main id="page-main" class="page-container flex-grow my-6">
-    <article class="container my-6">
-        {% if title %}
-            <h1>{{ title }}</h1>
-        {% endif %}
-        {{ content | safe }}
-    </article>
-</main>
-{% include "footer.njk" %}
+<!DOCTYPE html>
+<html lang="en">
+    {% include "head.njk" %}
+    <body class="flex flex-col min-h-screen">
+        {% include "header.njk" %}
+        <main id="page-main" class="page-container flex-grow my-6">
+            <article class="container my-6">
+                {% if title %}
+                    <h1>{{ title }}</h1>
+                {% endif %}
+                {{ content | safe }}
+            </article>
+        </main>
+        {% include "footer.njk" %}
+    </body>
+</html>
+

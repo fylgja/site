@@ -1,53 +1,59 @@
 ---
-layout: default
-preconnect: <link rel="preconnect" href="https://img.shields.io">
-css: '<link rel="stylesheet" href="/css/page.css">'
+search: true
+preconnect: { badge: "https://img.shields.io" }
+css: { page: "/css/page.css" }
 ---
 
-{% include "header.njk" %}
-<main class="docs-page md-flex container flex-grow mb-4">
-    <div class="docs-layout my-6">
-        {% include "breadcrumbs.njk" %}
-        <article id="page-main">
-            <header class="mb-5 xl-flex justify-between">
-                <h1 class="page-title flex-shrink me-2 mb-0">
-                    <span class="aria-only">Fylgja component - </span>
-                    <span>{{ title }}</span>
-                </h1>
-                <div class="component-badges self-end mt-2">
-                    {%- if npm -%}{% badgeNpm npm %}{%- endif -%}
-                    {%- if git -%}{% badgeGit git, gitDomain %}{%- endif -%}
-                    {%- if codepen -%}{% badgeCodepen codepen %}{%- endif -%}
-            </header>
-            <div class="body">{{ content | safe }}</div>
-            {% include "edit.njk" %}
-        </article>
-    </div>
-    <aside class="docs-sidebar hidden md-block overflow-auto overflow-contain thin-scrollbar">
-        <nav aria-label="Components Menu" class="menu my-7 text-small">
-            <ul>
-                <li>
-                    <strong class="block mx-2 mb-2">{{ title }}</strong>
-                    {{ content | toc(wrapper="div") | safe }}
-                </li>
-                <li class="hr" role="separator"></li>
-                {%- for items in collections.componentsGroup -%}
-                    <li class="mt-4">
-                        <strong class="block mx-2 mb-2">{{ items.title }}</strong>
-                        <ul>
-                            {%- for item in items.data | sortByName -%}
-                                {% if not item.data.altlink %}
-                                    <li>
-                                        <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page" class="is-active"{% endif %}
-                                        >{{ item.data.title }}</a>
-                                    </li>
-                                {% endif %}
-                            {%- endfor -%}
-                        </ul>
-                    </li>
-                {%- endfor -%}
-            </ul>
-        </nav>
-    </aside>
-</main>
-{% include "footer.njk" %}
+<!DOCTYPE html>
+<html lang="en">
+    {% include "head.njk" %}
+    <body class="flex flex-col min-h-screen">
+        {% include "header.njk" %}
+        <main class="docs-page md-flex container flex-grow mb-4">
+            <div class="docs-layout my-6">
+                {% include "breadcrumbs.njk" %}
+                <article id="page-main">
+                    <header class="mb-5 xl-flex justify-between">
+                        <h1 class="page-title flex-shrink me-2 mb-0">
+                            <span class="aria-only">Fylgja component - </span>
+                            <span>{{ title }}</span>
+                        </h1>
+                        <div class="component-badges self-end mt-2">
+                            {%- if npm -%}{% badgeNpm npm %}{%- endif -%}
+                            {%- if git -%}{% badgeGit git, gitDomain %}{%- endif -%}
+                            {%- if codepen -%}{% badgeCodepen codepen %}{%- endif -%}
+                    </header>
+                    <div class="body">{{ content | safe }}</div>
+                    {% include "edit.njk" %}
+                </article>
+            </div>
+            <aside class="docs-sidebar hidden md-block overflow-auto overflow-contain thin-scrollbar">
+                <nav aria-label="Components Menu" class="menu my-7 text-small">
+                    <ul>
+                        <li>
+                            <strong class="block mx-2 mb-2">{{ title }}</strong>
+                            {{ content | toc(wrapper="div") | safe }}
+                        </li>
+                        <li class="hr" role="separator"></li>
+                        {%- for items in collections.componentsGroup -%}
+                            <li class="mt-4">
+                                <strong class="block mx-2 mb-2">{{ items.title }}</strong>
+                                <ul>
+                                    {%- for item in items.data | sortByName -%}
+                                        {% if not item.data.altlink %}
+                                            <li>
+                                                <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page" class="is-active"{% endif %}
+                                                >{{ item.data.title }}</a>
+                                            </li>
+                                        {% endif %}
+                                    {%- endfor -%}
+                                </ul>
+                            </li>
+                        {%- endfor -%}
+                    </ul>
+                </nav>
+            </aside>
+        </main>
+        {% include "footer.njk" %}
+    </body>
+</html>

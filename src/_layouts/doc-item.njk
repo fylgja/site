@@ -1,54 +1,60 @@
 ---
-layout: default
-css: '<link rel="stylesheet" href="/css/page.css">'
+search: true
+css: { page: "/css/page.css" }
 ---
 
-{% include "header.njk" %}
-<main class="docs-page md-flex container flex-grow mb-4">
-    <div class="docs-layout my-6">
-        {% include "breadcrumbs.njk" %}
-        <article id="page-main">
-            <header class="mb-5">
-                <h1 class="page-title mb-0">{{ title }}</h1>
-            </header>
-            <div class="body">{{ content | safe }}</div>
-            {% include "edit.njk" %}
-        </article>
-    </div>
-    <aside class="docs-sidebar hidden md-block overflow-auto overflow-contain thin-scrollbar">
-        <nav aria-label="Docs Menu" class="menu my-7 text-small">
-            <ul>
-                <li>
-                    <strong class="block mx-2 mb-2">{{ title }}</strong>
-                    {{ content | toc(wrapper="div") | safe }}
-                </li>
-                <li class="hr mb-6" role="separator"></li>
-                <li>
-                    <strong class="block mx-2 mb-2">Getting started</strong>
+<!DOCTYPE html>
+<html lang="en">
+    {% include "head.njk" %}
+    <body class="flex flex-col min-h-screen">
+        {% include "header.njk" %}
+        <main class="docs-page md-flex container flex-grow mb-4">
+            <div class="docs-layout my-6">
+                {% include "breadcrumbs.njk" %}
+                <article id="page-main">
+                    <header class="mb-5">
+                        <h1 class="page-title mb-0">{{ title }}</h1>
+                    </header>
+                    <div class="body">{{ content | safe }}</div>
+                    {% include "edit.njk" %}
+                </article>
+            </div>
+            <aside class="docs-sidebar hidden md-block overflow-auto overflow-contain thin-scrollbar">
+                <nav aria-label="Docs Menu" class="menu my-7 text-small">
                     <ul>
-                        {%- for item in collections.started | sortByOrder -%}
                         <li>
-                            <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page" class="is-active"{% endif %}>
-                                {{ item.data.title }}
-                            </a>
+                            <strong class="block mx-2 mb-2">{{ title }}</strong>
+                            {{ content | toc(wrapper="div") | safe }}
                         </li>
-                        {%- endfor -%}
-                    </ul>
-                </li>
-                <li class="mt-2">
-                    <strong class="block mx-2 mb-2">Features</strong>
-                    <ul>
-                        {%- for item in collections.features | sortByOrder -%}
+                        <li class="hr mb-6" role="separator"></li>
                         <li>
-                            <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page" class="is-active"{% endif %}>
-                                {{ item.data.title }}
-                            </a>
+                            <strong class="block mx-2 mb-2">Getting started</strong>
+                            <ul>
+                                {%- for item in collections.started | sortByOrder -%}
+                                <li>
+                                    <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page" class="is-active"{% endif %}>
+                                        {{ item.data.title }}
+                                    </a>
+                                </li>
+                                {%- endfor -%}
+                            </ul>
                         </li>
-                        {%- endfor -%}
+                        <li class="mt-2">
+                            <strong class="block mx-2 mb-2">Features</strong>
+                            <ul>
+                                {%- for item in collections.features | sortByOrder -%}
+                                <li>
+                                    <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page" class="is-active"{% endif %}>
+                                        {{ item.data.title }}
+                                    </a>
+                                </li>
+                                {%- endfor -%}
+                            </ul>
+                        </li>
                     </ul>
-                </li>
-            </ul>
-        </nav>
-    </aside>
-</main>
-{% include "footer.njk" %}
+                </nav>
+            </aside>
+        </main>
+        {% include "footer.njk" %}
+    </body>
+</html>

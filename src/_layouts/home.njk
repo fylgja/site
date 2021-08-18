@@ -1,8 +1,15 @@
 ---
-layout: default
+search: false
+style: ["css/index.css"]
 ---
 
-<main id="page-main" class="flex-grow mb-8">
-    <article>{{ content | safe }}</article>
-</main>
-{% include "footer.njk" %}
+<!DOCTYPE html>
+<html lang="en">
+    {% include "head.njk" %}
+    <body class="flex flex-col min-h-screen">
+        <main id="page-main" class="flex-grow mb-8">
+            <article>{{ content | safe }}</article>
+        </main>
+        {% include "footer.njk" %}
+    </body>
+</html>
