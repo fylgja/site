@@ -79,7 +79,7 @@
     <link rel="stylesheet" href="/css/code-syntax.css" media="print" onload="this.media='all'">
     {%- if css -%}
         {% for name, item in css %}
-            <link rel="stylesheet" href="{{ item }}">
+            <link rel="stylesheet" href="{{ item }}?=v{{ meta.version }}">
         {% endfor %}
     {%- endif -%}
 
