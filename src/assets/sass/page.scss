@@ -1,3 +1,6 @@
+@use "@fylgja/form" with (
+    $form-fields: (search)
+);
 @use "@fylgja/table";
 @use "@fylgja/details";
 
