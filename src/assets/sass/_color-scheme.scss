@@ -35,6 +35,12 @@
         --link-color: currentColor;
         --link-color-focus: currentColor;
     }
+
+    .searchbox-wrapper {
+        --form-stroke: #fff2;
+        --form-focus-color: currentColor;
+        --algolia-bg: #{color.change($color-theme, $lightness: 12%)};
+    }
 }
 
 @media (prefers-color-scheme: dark) {
