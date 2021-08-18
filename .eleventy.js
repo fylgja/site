@@ -37,9 +37,11 @@ const {
 const isProd = process.env.ELEVENTY_ENV === "prod";
 
 module.exports = function (config) {
+    config.setDataDeepMerge(true);
+    config.setWatchThrottleWaitTime(100);
     config.setLibrary("md", markdownConfig);
     config.setBrowserSyncConfig(browserSyncConfig);
-    config.setWatchThrottleWaitTime(100);
+
     config.addWatchTarget("./src/assets/sass/");
     config.addWatchTarget("./src/assets/js/");
 
