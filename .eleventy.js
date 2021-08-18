@@ -54,6 +54,10 @@ module.exports = function (config) {
     });
     config.addPassthroughCopy({ "src/assets/webapp": "./" });
     config.addPassthroughCopy({ "src/assets/fonts/*.{woff,woff2}": "fonts" });
+    config.addPassthroughCopy({
+        "node_modules/docsearch.js/dist/cdn/docsearch.min.js":
+            "js/docsearch.js",
+    });
 
     // Plugins
     config.addPlugin(syntaxHighlight, { preAttributes: { tabindex: 0 } });

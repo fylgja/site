@@ -98,6 +98,10 @@
 
     <script src="/js/main.js?=v{{ meta.version }}" defer></script>
 
+    {% if search %}
+        <script src="/js/docsearch.js?=v{{ meta.version }}" defer></script>
+    {%- endif -%}
+
     {%- if js -%}
         {% for name, item in js %}
             <script src="{{ item }}"></script>

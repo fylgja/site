@@ -1,9 +1,12 @@
+import commonjs from "@rollup/plugin-commonjs";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import { terser } from "rollup-plugin-terser";
 const { input, output } = require("./src/_data/meta.js");
 const isProd = process.env.NODE_ENV === "production";
 
-const plugins = isProd ? [nodeResolve(), terser()] : [nodeResolve()];
+const plugins = isProd
+    ? [commonjs(), nodeResolve(), terser()]
+    : [commonjs(), nodeResolve()];
 const watch = isProd ? { clearScreen: false } : {};
 
 export default () => {
