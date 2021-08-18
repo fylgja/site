@@ -59,13 +59,7 @@
     <div class="sub-footer py-4">
         <div class="flex container items-center justify-between">
             <div><small class="copyright">© {% year %} {{ meta.siteName }}. All Rights Reserved.</small></div>
-            <div class="flex items-center justify-between">
-                <button data-toggle-color-scheme
-                    type="button"
-                    title="Toggle color scheme"
-                    class="btn -icon"
-                >{{ '/src/assets/images/color-scheme.svg' | svgContents | safe }}</button>
-            </div>
+            {% include "theme-toggle.njk" %}
         </div>
     </div>
 </footer>

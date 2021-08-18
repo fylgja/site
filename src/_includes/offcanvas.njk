@@ -81,11 +81,7 @@
                         </svg>
                     {% endmenuItem %}
                 {% endfor %}
-                <button data-toggle-color-scheme
-                    type="button"
-                    title="Toggle color scheme"
-                    class="btn -icon ms-auto"
-                >{{ '/src/assets/images/color-scheme.svg' | svgContents | safe }}</button>
+                {% include "theme-toggle.njk" %}
             </nav>
         </div>
     </dialog>
