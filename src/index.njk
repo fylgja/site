@@ -8,17 +8,8 @@ sitemap:
 <header id="hero" class="section pb-8">
     <div class="container">
         <div class="text-center">
-            <h1 class="inline-block h4 mt-0 mb-2 logo">
-                <svg id="logo" width="300" height="130" fill="url(#logo-gradient)">
-                    <title>Fylgja</title>
-                    <defs>
-                        <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" stop-color="var(--color-alt)"></stop>
-                            <stop offset="1000%" stop-color="var(--color-theme)"></stop>
-                        </linearGradient>
-                    </defs>
-                    <use href="/images/sprite.svg#logo" />
-                </svg>
+            <h1 class="inline-block h4 mt-0 mb-2 logo -large">
+                {{ "/src/assets/images/logo.svg" | svgContents | safe }}
                 <span class="block mt-1">The modular highly customizable CSS framework.</span>
             </h1>
             <div class="h5">

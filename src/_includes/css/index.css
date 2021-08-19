@@ -9,10 +9,10 @@
     --cols-size: 400px;
 }
 
-#logo {
+.logo.-large svg {
     width: 18.75em;
     height: 8.125em;
-    fill: var(--logo-color, url("#logo-gradient"));
+    fill: var(--logo-color, url("#logog"));
 }
 
 #hero {

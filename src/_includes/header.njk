@@ -2,10 +2,7 @@
 <header class="page-header sticky top-0">
     <div class="flex items-center py-2 md-py-4 container">
         <a href="/" class="logo flex-shrink me-auto">
-            <svg width="76" height="38" fill="currentColor">
-                <title>{{ meta.siteName }}</title>
-                <use href="/images/sprite.svg#logo" />
-            </svg>
+            {{ "/src/assets/images/logo.svg" | svgContents | safe }}
         </a>
         {% include "search.njk" %}
         {% if navigation.main %}
