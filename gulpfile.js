@@ -3,8 +3,7 @@ const { input, output } = require("./src/_data/meta.js");
 const isProduction = process.env.NODE_ENV === "production";
 
 const Fiber = require("fibers");
-const sass = require("gulp-sass");
-sass.compiler = require("sass");
+const sass = require("gulp-sass")(require("sass"));
 
 const postcss = require("gulp-postcss");
 const postcssPresetEnv = require("postcss-preset-env");
