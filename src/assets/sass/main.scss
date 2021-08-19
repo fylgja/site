@@ -18,7 +18,9 @@
 
 @use "@fylgja/container";
 @use "@fylgja/auto-grid";
-@use "@fylgja/section" with ($enable-section-theme: false);
+@use "@fylgja/section" with (
+    $enable-section-theme: false
+);
 @use "@fylgja/scroll-slider";
 
 @use "@fylgja/breadcrumbs";
@@ -31,7 +33,6 @@
 @use "@fylgja/aspect-ratio";
 @use "@fylgja/scrollbar";
 @use "@fylgja/hashlink" with (
-    $enable-hashlink-scroll-behavior-focus-only: false,
     $hashlink-scroll-offset: 5rem
 );
 

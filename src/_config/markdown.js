@@ -1,7 +1,7 @@
 const slugify = require("slugify");
-const markdownIt = require("markdown-it");
-const markdownItAnchor = require("markdown-it-anchor");
-const markdownItExternalAnchor = require("markdown-it-external-anchor");
+const md = require("markdown-it");
+const anchor = require("markdown-it-anchor");
+const externalAnchor = require("markdown-it-external-anchor");
 const { url } = require("../_data/meta");
 
 const slugifyStr = (str) => {
@@ -17,24 +17,26 @@ const slugifyStr = (str) => {
     });
 };
 
-const markdownItOptions = { html: true };
-const markdownItAnchorOptions = {
+const mdOptions = {
+    html: true,
+};
+
+const anchorOptions = {
     level: [2, 3],
-    permalink: true,
-    permalinkClass: "hashlink",
-    permalinkSymbol: "",
-    permalinkAttrs: () => ({
-        "aria-hidden": true,
-        tabindex: "-1",
+    permalink: anchor.permalink.ariaHidden({
+        symbol: "",
+        placement: "after",
     }),
     slugify: slugifyStr,
 };
 
-const markdownConfig = markdownIt(markdownItOptions)
-    .use(markdownItExternalAnchor, {
-        domain: url,
-        class: "external",
-    })
-    .use(markdownItAnchor, markdownItAnchorOptions);
+const externalAnchorOptions = {
+    domain: url,
+    class: "external",
+};
+
+const markdownConfig = md(mdOptions)
+    .use(externalAnchor, externalAnchorOptions)
+    .use(anchor, anchorOptions);
 
 module.exports = markdownConfig;
