@@ -127,6 +127,7 @@
 #contact {
     --container-size: 640px;
     --height: 300px;
+    --bg: var(--hero-bg, #f7fafc);
 }
 
 .collection-row {
@@ -147,6 +148,16 @@
 
 .collection-row .card:hover {
     --card-elevation: var(--elevation-z4);
+}
+
+#collection-featured {
+    content-visibility: auto;
+    contain-intrinsic-size: 825px;
+}
+
+#usp-whats-in-the-📦 {
+    content-visibility: auto;
+    contain-intrinsic-size: 586px;
 }
 
 :root[data-theme="dark"] {
@@ -178,6 +189,14 @@
         --container-padding-y: 5em;
         font-size: 1.125em;
     }
+
+    #collection-featured {
+        contain-intrinsic-size: 450px;
+    }
+
+    #usp-whats-in-the-📦 {
+        contain-intrinsic-size: 665px;
+    }
 }
 
 @media (min-width: 768px) {
@@ -202,6 +221,14 @@
     #usp-points,
     #usp-points-a11y {
         --cols-size: 450px;
+    }
+
+    #collection-featured {
+        contain-intrinsic-size: 450px;
+    }
+
+    #usp-whats-in-the-📦 {
+        contain-intrinsic-size: 665px;
     }
 }
 
