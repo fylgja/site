@@ -34,7 +34,7 @@ $search-mq-max: 639px;
         top: 100%;
         right: 0;
         left: 0;
-        background-color: var(--algolia-bg);
+        background-color: var(--algolia-bg, #f7fafc);
     }
 
     @media (min-width: $search-mq) {
