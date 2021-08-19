@@ -22,23 +22,25 @@ style: "
 {% if collections.guides %}
 <div id="guides" class="auto-grid">
     {%- for item in collections.guides -%}
-    <a href="{{ item.url }}" class="card card-content items-center flex-row">
-        {% if item.data.thumb %}
-            {%- set preview -%}./src/assets/images/{{ item.data.thumb }}{%- endset -%}
-            <div class="avatar aspect-ratio me-4">
-                {% image preview, "", "thumbnail" %}
-            </div>
-        {% endif %}
-        <div>
-            <strong>{{ item.data.title }}</strong>
-            {%- set strLimit %}50{%- endset -%}
-            {% if item.data.description %}
-                <p class="text-small my-0">{{ item.data.description | truncate(strLimit) }}</p>
-            {% else %}
-                <p class="text-small my-0">{{ item.templateContent | truncate(strLimit) }}</p>
+    {% if item.data.title !== "Guides" %}
+        <a href="{{ item.url }}" class="card card-content items-center flex-row">
+            {% if item.data.thumb %}
+                {%- set preview -%}./src/assets/images/{{ item.data.thumb }}{%- endset -%}
+                <div class="avatar aspect-ratio me-4">
+                    {% image preview, "", "thumbnail" %}
+                </div>
             {% endif %}
-        </div>
-    </a>
+            <div>
+                <strong>{{ item.data.title }}</strong>
+                {%- set strLimit %}50{%- endset -%}
+                {% if item.data.description %}
+                    <p class="text-small my-0">{{ item.data.description | truncate(strLimit) }}</p>
+                {% else %}
+                    <p class="text-small my-0">{{ item.templateContent | truncate(strLimit) }}</p>
+                {% endif %}
+            </div>
+        </a>
+    {% endif %}
     {%- endfor -%}
     <a href="https://github.com/fylgja/site/issues/new?&labels=enhancement&title=New%20Guide:"
         target="_blank"
