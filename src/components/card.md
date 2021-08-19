@@ -5,6 +5,7 @@ It allows you to make visual sectioned content,
 that is not part of the main flow."
 npm: "@fylgja/card"
 git: "components/card"
+codepen: "KKmOaNv"
 tags: "layouts"
 preview: "card.png"
 ---
