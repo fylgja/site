@@ -10,6 +10,7 @@
     --color-theme: #{color.change($color-theme, $lightness: 24%)};
     --link-color: #{color.change($color-theme, $lightness: 75%)};
     --link-color-focus: currentColor;
+    --selection-color: #{color.change($color-theme, $lightness: 75%)};
     --code-bg: #{color.change($color-theme, $lightness: 16%)};
     --code-color: #{$color-on-theme};
     --card-bg: #{color.change($color-theme, $lightness: 16%)};
