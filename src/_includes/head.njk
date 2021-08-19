@@ -28,6 +28,7 @@
         {% endfor %}
     {%- endif -%}
     <link rel="preload" as="style" href="/css/main.css?=v{{ meta.version }}">
+    <link rel="preload" as="image" href="/images/sprite.svg" type="image/svg+xml" >
     <link rel="preload" as="font" href="/fonts/Rubik-Italic-VariableFont_wght.woff2" type="font/woff2" crossorigin>
     <link rel="preload" as="font" href="/fonts/Rubik-VariableFont_wght.woff2" type="font/woff2" crossorigin>
     {%- if preloadCss -%}
@@ -134,7 +135,5 @@
     {%- endif -%}
 
     {# Schema data #}
-    <script type="application/ld+json">
-        {% include "json-ld.njk" %}
-    </script>
+    <script type="application/ld+json">{% include "json-ld.njk" %}</script>
 </head>
