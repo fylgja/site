@@ -2,15 +2,12 @@
     <dialog id="offcanvas-menu" class="offcanvas-end py-0 px-2">
         <div class="flex justify-between items-center py-3 px-2">
             <a href="/" class="logo">
-                <svg width="72" height="24" fill="currentColor">
-                    <title>{{ meta.siteName }}</title>
-                    <use href="/images/sprite.svg#logo" />
-                </svg>
+                {{ "/src/assets/images/logo.svg" | svgContents | safe }}
             </a>
             <button type="button" class="btn -icon close">
                 <svg width="24" height="24" fill="currentColor">
                     <title>Close menu</title>
-                    <use href="/images/sprite.svg#close" />
+                    <use href="{{ '/images/sprite.svg' | assetUrl }}#close" />
                 </svg>
             </button>
         </div>
@@ -25,14 +22,14 @@
                     </li>
                     {%- endfor -%}
                     <li>
-                        {% menuItem "/components/", "", "/components/" %}
+                        {% menuItem "/components/", "", page.url %}
                             <span>Components</span>
                         {% endmenuItem %}
                         <ul class="menu-nested">
                             {%- for items in collections.componentsGroup -%}
                                 {% if items.title !== "Featured" %}
                                 <li>
-                                    <details class="text-small my-0">
+                                    <details class="text-small my-0" open>
                                         <summary class="btn block weight-light">
                                             <span class="caret me-2"></span>
                                             {{ items.title }}
@@ -55,7 +52,7 @@
                         </ul>
                     </li>
                     <li>
-                        {% menuItem "/features/", "", "/features/" %}
+                        {% menuItem "/features/", "", page.url %}
                             <span>Features</span>
                         {% endmenuItem %}
                         <ul>
@@ -77,7 +74,7 @@
                     {% menuItem item.url, "btn -icon me-1", page.url, item.external %}
                         <svg width="24" height="24" fill="currentColor">
                             <title>{{ item.text }}</title>
-                            <use href="/images/socials.svg#{{ item.icon }}" />
+                            <use href="{{ '/images/socials.svg' | assetUrl }}#{{ item.icon }}" />
                         </svg>
                     {% endmenuItem %}
                 {% endfor %}

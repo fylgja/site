@@ -27,7 +27,7 @@
             <link rel="preconnect" href="{{ item }}">
         {% endfor %}
     {%- endif -%}
-    <link rel="preload" href="/css/main.css?=v{{ meta.version }}" as="style">
+    <link rel="preload" href="{{ '/css/main.css' | assetUrl }}" as="style">
     <link rel="preload" href="/fonts/Rubik-Italic-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/Rubik-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin>
     {%- if preloadCss -%}
@@ -68,19 +68,19 @@
     <meta name="application-name" content="{{ meta.siteName }}">
     <meta name="msapplication-TileColor" content="{{ meta.themeColor }}">
 
-    <link rel="manifest" href="/site.webmanifest?=v{{ meta.version }}">
+    <link rel="manifest" href="{{ '/site.webmanifest' | assetUrl }}">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="{{ meta.themeColor }}">
 
     {# Assets #}
-    <link rel="stylesheet" href="/css/main.css?=v{{ meta.version }}">
-    <link rel="stylesheet" href="/css/print.css?=v{{ meta.version }}" media="print">
-    <link rel="stylesheet" href="/css/code-syntax.css?=v{{ meta.version }}" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ '/css/main.css' | assetUrl }}">
+    <link rel="stylesheet" href="{{ '/css/print.css' | assetUrl }}" media="print">
+    <link rel="stylesheet" href="{{ '/css/code-syntax.css' | assetUrl }}" media="print" onload="this.media='all'">
     {%- if css -%}
         {% for name, item in css %}
-            <link rel="stylesheet" href="{{ item }}?=v{{ meta.version }}">
+            <link rel="stylesheet" href="{{ item | assetUrl }}">
         {% endfor %}
     {%- endif -%}
 
@@ -97,15 +97,15 @@
         <style>{{ cssinline | cssmin | safe }}</style>
     {%- endif -%}
 
-    <script src="/js/main.js?=v{{ meta.version }}" defer></script>
+    <script src="{{ '/js/main.js' | assetUrl }}" defer></script>
 
     {% if search %}
-        <script src="/js/docsearch.js?=v{{ meta.version }}" defer></script>
+        <script src="{{ '/js/docsearch.js' | assetUrl }}" defer></script>
     {%- endif -%}
 
     {%- if js -%}
         {% for name, item in js %}
-            <script src="{{ item }}"></script>
+            <script src="{{ item | assetUrl }}"></script>
         {% endfor %}
     {%- endif -%}
 

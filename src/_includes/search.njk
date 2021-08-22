@@ -1,7 +1,7 @@
 <button type="button" id="searchbox-toggle" class="btn -icon sm-hidden ms-2" onclick="toggleSearch()">
     <svg width="24" height="24" fill="currentColor">
         <title>Toggle Search</title>
-        <use href="/images/sprite.svg#search"/>
+        <use href="{{ '/images/sprite.svg' | assetUrl }}#search" />
     </svg>
 </button>
 <div id="searchbox" class="input-group searchbox-wrapper hidden sm-block sm-ms-12">

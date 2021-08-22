@@ -154,7 +154,7 @@ sitemap:
                     <div class="avatar p-2"
                         style="--avatar-bg: {{ item.iconStyle.bg }}; --avatar-color: {{ item.iconStyle.color }};">
                         <svg width="24" height="24" fill="currentColor">
-                            <use href="/images/socials.svg#{{ item.icon }}" />
+                            <use href="{{ '/images/socials.svg' | assetUrl }}#{{ item.icon }}" />
                         </svg>
                     </div>
                     {% endif %}

@@ -14,7 +14,7 @@
                         {% menuItem item.url, "btn -icon", page.url, item.external %}
                             <svg width="22" height="22" fill="currentColor">
                                 <title>{{ item.text }}</title>
-                                <use href="/images/socials.svg#{{ item.icon }}" />
+                                <use href="{{ '/images/socials.svg' | assetUrl }}#{{ item.icon }}" />
                             </svg>
                         {% endmenuItem %}
                     {% else %}
@@ -28,7 +28,7 @@
         <button id="show-offcanvas-menu" type="button" class="btn -icon md-hidden ms-2">
             <svg width="24" height="24" fill="currentColor">
                 <title>Open menu</title>
-                <use href="/images/sprite.svg#menu" />
+                <use href="{{ '/images/sprite.svg' | assetUrl }}#menu" />
             </svg>
         </button>
     </div>

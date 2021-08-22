@@ -33,6 +33,7 @@ const {
     isObject,
     isString,
 } = require("./src/_config/filters/types");
+const assetUrl = require("./src/_config/filters/asset-url");
 
 const isProd = process.env.ELEVENTY_ENV === "prod";
 
@@ -89,6 +90,7 @@ module.exports = function (config) {
     config.addFilter("cssmin", (code) => new CleanCSS({}).minify(code).styles);
     config.addFilter("sortByName", sortByName);
     config.addFilter("sortByOrder", sortByOrder);
+    config.addFilter("assetUrl", assetUrl);
 
     // Collections
     config.addCollection("componentsGroup", componentsGroup);
