@@ -13,9 +13,6 @@ But feel free to use the CSS alternative instead.
 This guide will focus on the Sass setup.
 And will show you a sample setup in a blank environment.
 
-> For how to use Fylgja CSS classes in your `html`, `php`, `js`, `jsx` or `vue`.
-> See each component instead.
-
 ## Setup dependencies
 
 First make sure to install Sass.
@@ -30,35 +27,23 @@ Add a script that will run your Sass styles;
 ```json
 // package.json
 {
-  "name": "project",
-  "version": "1.0.0",
-  "description": "Your cool project",
+  ...
   "scripts": {
     "start": "sass src/main.scss dist/main.css -s compressed --load-path=node_modules",
   },
-  "keywords": [],
-  "author": "you",
-  "license": "MIT",
-  "dependencies": {},
   "devDependencies": {
     "sass": "^1.32.11",
   }
 }
 ```
 
-Or run it via Gulp, Webpack or Rollup.
-
-Additionally you can also add `postcss-preset-env`
-to optimize the CSS for older browsers.
-Adding browser prefixes
-and adding legacy styles for newer CSS that not yet fully supported.
-
+_Or run it via your own preferred tool, e.g. Gulp, Webpack or Rollup._
 
 ## Adding Fylgja components
 
 This part can be done via a bundle or adding each component individual.
 
-For this sample we are setting up a blog page that has no exciting styles.
+For this sample we are setting up a blog page.
 Using each package as separate dependency.
 
 ```bash
