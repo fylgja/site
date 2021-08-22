@@ -1,0 +1,57 @@
+---
+title: "Starter Projects"
+description: "Looking for a prebuilt templates that already comes with Fylgja build in your favorite framework, look no further."
+order: 30
+style: "
+#list-of {
+    --cols-size: 18em;
+    --aspect-ratio: 1/1;
+    --card-radius: 8px;
+    --card-elevation: none;
+    --card-border: 1px solid rgb(0 0 0 / 12%);
+    --avatar-size: 75px;
+    --avatar-radius: 8px;
+}
+"
+---
+
+{% if collections.starterProjects %}
+<p>Looking for a prebuilt templates that already comes with Fylgja build in your favorite framework, look no further.</p>
+<div id="list-of" class="auto-grid">
+    {%- for item in collections.starterProjects -%}
+        <a href="{{ item.url }}" class="card card-content items-center flex-row">
+            {% if item.data.thumb %}
+                {%- set preview -%}./src/assets/images/{{ item.data.thumb }}{%- endset -%}
+                <div class="avatar aspect-ratio me-4">
+                    {% image preview, "", "thumbnail" %}
+                </div>
+            {% endif %}
+            <div>
+                <strong>{{ item.data.title }}</strong>
+                {%- set strLimit %}50{%- endset -%}
+                {% if item.data.description %}
+                    <p class="text-small my-0">{{ item.data.description | truncate(strLimit) }}</p>
+                {% else %}
+                    <p class="text-small my-0">{{ item.templateContent | truncate(strLimit) }}</p>
+                {% endif %}
+            </div>
+        </a>
+    {%- endfor -%}
+    <a href="https://github.com/fylgja/site/issues/new?&labels=enhancement&title=New%Starter%20Project:"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="card card-content items-center flex-row">
+        <div class="avatar p-3 me-4" style="--avatar-bg: #111; --avatar-color: #fff;">
+            <svg width="50" height="50" fill="currentColor" class="w-full h-full">
+                <use href="{{ '/images/socials.svg' | assetUrl }}#github" />
+            </svg>
+        </div>
+        <div>
+            <strong>Add your own</strong>
+            <p class="text-small my-0">Have written your own Starter Projects, share it here.</p>
+        </div>
+    </a>
+</div>
+{% else %}
+{% include "todo.njk" %}
+{% endif %}

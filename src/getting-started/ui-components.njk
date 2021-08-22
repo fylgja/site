@@ -1,12 +1,10 @@
 ---
-title: "Guides"
-description: "Looking for help or is something unclear, look no further in the Fylgja guides."
-permalink: "/{{ page.fileSlug }}/"
-tags: ["docs", "started"]
-layout: "docs"
-hasToc: false
+title: "UI Components"
+description: "Need inspiration or looking for prebuilt Fylgja UI Components to copy and past, look no further."
+order: 20
 style: "
-#guides {
+#list-of {
+    --cols-size: 18em;
     --aspect-ratio: 1/1;
     --card-radius: 8px;
     --card-elevation: none;
@@ -17,12 +15,10 @@ style: "
 "
 ---
 
-<p>Looking for help or is something unclear, look no further in the Fylgja guides.</p>
-
-{% if collections.guides %}
-<div id="guides" class="auto-grid">
-    {%- for item in collections.guides -%}
-    {% if item.data.title !== "Guides" %}
+{% if collections.uiComponents %}
+<p>Need inspiration or looking for prebuilt Fylgja UI Components to copy and past, look no further.</p>
+<div id="list-of" class="auto-grid">
+    {%- for item in collections.uiComponents -%}
         <a href="{{ item.url }}" class="card card-content items-center flex-row">
             {% if item.data.thumb %}
                 {%- set preview -%}./src/assets/images/{{ item.data.thumb }}{%- endset -%}
@@ -40,20 +36,19 @@ style: "
                 {% endif %}
             </div>
         </a>
-    {% endif %}
     {%- endfor -%}
-    <a href="https://github.com/fylgja/site/issues/new?&labels=enhancement&title=New%20Guide:"
+    <a href="https://github.com/fylgja/site/issues/new?&labels=enhancement&title=New%20UI%20Component:"
         target="_blank"
         rel="noopener noreferrer"
         class="card card-content items-center flex-row">
         <div class="avatar p-3 me-4" style="--avatar-bg: #111; --avatar-color: #fff;">
             <svg width="50" height="50" fill="currentColor" class="w-full h-full">
-                <use href="/images/socials.svg#github" />
+                <use href="{{ '/images/socials.svg' | assetUrl }}#github" />
             </svg>
         </div>
         <div>
             <strong>Add your own</strong>
-            <p class="text-small my-0">Have written your own guide, share it here.</p>
+            <p class="text-small my-0">Have written your own UI Component, share it here.</p>
         </div>
     </a>
 </div>
