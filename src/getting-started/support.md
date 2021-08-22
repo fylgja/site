@@ -8,7 +8,7 @@ Do you want to support Fylgja?
 You can that in many ways;
 
 * [Star the Fylgja repo on Github](https://github.com/fylgja/fylgja)
-* Spread the word on [Twitter](https://twitter.com/) or on your favorite social network with the hashtag #FylgjaCode.
+* Spread the word on [Twitter](https://twitter.com/) or on your favorite social network with the hashtag #FylgjaCSS.
 
 Making it easier for others to find Fylgja.
 
