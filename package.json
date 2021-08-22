@@ -48,7 +48,7 @@
     "@fylgja/details": "^1.0.0",
     "@fylgja/dialog": "^1.0.0",
     "@fylgja/elevation": "^1.0.0",
-    "@fylgja/form": "^1.0.0",
+    "@fylgja/form": "^1.0.2",
     "@fylgja/hashlink": "^1.0.0",
     "@fylgja/list": "^1.0.0",
     "@fylgja/menu": "^1.0.0",
