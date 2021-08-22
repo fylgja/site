@@ -2,8 +2,8 @@
     <div class="main-footer pt-8 pb-5 container auto-grid">
         {% if navigation.about %}
             <nav id="about-menu" aria-label="About us Menu">
-                <strong class="block h5 mb-4">More Fylgja</strong>
-                <ul class="list-style -none space-y-3">
+                <strong class="block h5 mb-3">More Fylgja</strong>
+                <ul class="list-style -none space-y-3 lg-space-y-2">
                     {% for item in navigation.about %}
                         <li>
                             {% menuItem item.url, "", page.url, item.external %}
@@ -16,8 +16,8 @@
         {% endif %}
         {% if navigation.support %}
             <nav id="support-menu" aria-label="Support Menu">
-                <strong class="block h5 mb-4">Guides</strong>
-                <ul class="list-style -none space-y-3">
+                <strong class="block h5 mb-3">Guides</strong>
+                <ul class="list-style -none space-y-3 lg-space-y-2">
                     {% for item in navigation.support %}
                         <li>
                             {% menuItem item.url, "", page.url, item.external %}
@@ -29,8 +29,8 @@
             </nav>
         {% endif %}
         <nav id="features-menu" aria-label="Features Menu">
-            <strong class="block h5 mb-4">Features</strong>
-            <ul class="list-style -none space-y-3">
+            <strong class="block h5 mb-3">Features</strong>
+            <ul class="list-style -none space-y-3 lg-space-y-2">
                 {% for item in collections.features | sortByOrder %}
                     <li>
                         {% menuItem item.url, "", page.url, item.external %}
@@ -41,13 +41,13 @@
             </ul>
         </nav>
         <nav id="follow-us-menu" aria-label="Follow use">
-            <strong class="block h5 mb-4">Find us also on</strong>
-            <ul class="list-style -none space-y-3">
+            <strong class="block h5 mb-3">Find us also on</strong>
+            <ul class="list-style -none space-y-3 lg-space-y-2">
                 {% for item in navigation.socials %}
                     <li>
                         {% menuItem item.url, "flex items-center", page.url, item.external %}
                             <svg width="20" height="20" fill="currentColor" class="me-2">
-                                <use href="/images/socials.svg#{{ item.icon }}" />
+                                <use href="{{ '/images/socials.svg' | assetUrl }}#{{ item.icon }}" />
                             </svg>
                             <span>{{ item.text }}</span>
                         {% endmenuItem %}
