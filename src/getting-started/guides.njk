@@ -15,8 +15,6 @@ style: "
 "
 ---
 
-
-{% if collections.guides %}
 <p>Looking for help or is something unclear, look no further in the Fylgja guides.</p>
 <div id="list-of" class="auto-grid">
     {%- for item in collections.guides -%}
@@ -53,6 +51,3 @@ style: "
         </div>
     </a>
 </div>
-{% else %}
-{% include "todo.njk" %}
-{% endif %}

@@ -9,30 +9,46 @@ allowing you to pick only what you need,
 
 this will keep your build bundle small without using any tools.
 
-Each component is made as a single layer CSS class, easily editable via SCSS or/and CSS variables,
+So instead of including everything as one package,
+you can only include only what you need.
 
-giving you a foundation to work on, and you can add your own styles on top.
+```css
+/* Instead of */
+@import "vendor";
 
-Since it is so modular, we recommend using NPM to get the specific components you need,
+/* You do this */
+@import "@fylgja/auto-grid";
+@import "@fylgja/utilpack";
+```
+
+Each CSS Component is made as a single layer CSS class.
+So you don't have to worry about specificity.
+
+And each component is easy to edit via SCSS and CSS variables.
+
+Giving you a foundation to work on, and you can add your own styles on top.
+
+Since it is so modular,
+we recommend using NPM to get the specific components you need,
+
 and build one or more CSS files via Sass or PostCSS.
 
-The easiest way to include Fylgja is via the core NPM package,
-or add it by using a CDN.
+Or use the easy way and include Fylgja as one package via NPM or via a CDN.
 
-[See our downloads page](/download/), for more information on how to add Fylgja to your project.
+[See our downloads page](/download/),
+for more information on how to add Fylgja to your project.
 
-## More Guides to help you getting started
+## More to help you getting started
 
-Since Fylgja is build via Sass, it is very easy to intergrade it with other frameworks,
-the only requirement is Sass.
+If you still have questions or are looking for some samples.
 
-Not a fan of Sass, Fylgja also ships with a CSS version for each component.
+We have growing section of guides, UI Components<sup>*</sup> and starter projects.
 
-You can use each CSS file via Webpack or Rollup directly in your JS framework or bundle the CSS files via PostCSS,
+We advice you to first checkout the [Default setup guide](/guides/default/)
+on how to get started.
 
-use [PostCSS import](https://github.com/postcss/postcss-import) for this.
-See the PostCSS import docs on how to do this.
+Or if you want to see some code in action,
+[checkout our Codepen page](https://codepen.io/Fylgja) where we have samples of each of our CSS components.
 
-For more in dept guides. [see the guides page](/guides/).
-
+<small><sup>*</sup>We are hard at work adding this</small>
 
