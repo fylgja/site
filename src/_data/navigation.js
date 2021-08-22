@@ -1,6 +1,7 @@
 const { socials } = require("./meta");
-const GithubUrl = `https://github.com/fylgja/fylgja`;
-const TwitterUrl = `https://twitter.com/${socials.twitter}`;
+const githubUrl = `https://github.com/fylgja/fylgja`;
+const twitterUrl = `https://twitter.com/${socials.twitter}`;
+const devToUrl = `https://dev.to/${socials.devTo}`;
 
 module.exports = {
     main: [
@@ -11,6 +12,12 @@ module.exports = {
         {
             text: "Components",
             url: "/components/",
+        },
+        {
+            icon: "github",
+            text: "View on Github",
+            url: githubUrl,
+            external: true,
         },
     ],
     about: [
@@ -49,13 +56,19 @@ module.exports = {
         {
             icon: "github",
             text: "Github",
-            url: GithubUrl,
+            url: githubUrl,
             external: true,
         },
         {
             icon: "twitter",
             text: "Twitter",
-            url: TwitterUrl,
+            url: twitterUrl,
+            external: true,
+        },
+        {
+            icon: "devto",
+            text: "dev.to",
+            url: devToUrl,
             external: true,
         },
     ],
@@ -73,7 +86,7 @@ module.exports = {
         {
             icon: "github",
             text: "View on Github",
-            url: GithubUrl,
+            url: githubUrl,
             external: true,
         },
     ],

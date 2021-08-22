@@ -22,6 +22,7 @@ module.exports = {
     socials: {
         twitter: "FylgjaDev",
         github: "fylgja",
+        devTo: "fylgja",
     },
     componentsMedia: "./src/components/images/",
 };

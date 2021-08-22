@@ -12,7 +12,7 @@
                 {% for item in navigation.main %}
                     {% if item.icon %}
                         {% menuItem item.url, "btn -icon", page.url, item.external %}
-                            <svg width="18" height="18" fill="currentColor">
+                            <svg width="22" height="22" fill="currentColor">
                                 <title>{{ item.text }}</title>
                                 <use href="/images/socials.svg#{{ item.icon }}" />
                             </svg>
@@ -24,18 +24,6 @@
                     {% endif %}
                 {% endfor %}
             </nav>
-        {% endif %}
-        {% if navigation.socials %}
-            <div class="icons ms-6 space-x-1 hidden sm-inline-flex">
-                {% for item in navigation.socials %}
-                    {% menuItem item.url, "btn -icon", page.url, item.external %}
-                        <svg width="18" height="18" fill="currentColor">
-                            <title>{{ item.text }}</title>
-                            <use href="/images/socials.svg#{{ item.icon }}" />
-                        </svg>
-                    {% endmenuItem %}
-                {% endfor %}
-            </div>
         {% endif %}
         <button id="show-offcanvas-menu" type="button" class="btn -icon md-hidden ms-2">
             <svg width="24" height="24" fill="currentColor">
