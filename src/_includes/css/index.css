@@ -16,6 +16,7 @@
 }
 
 #hero {
+    --height: 64vmin;
     --bg: var(--hero-bg, #f7fafc);
     --img: var(--hero-img);
     --container-padding-y: 4rem;
@@ -161,7 +162,7 @@
 }
 
 :root[data-theme="dark"] {
-    --hero-bg: var(--color-bg);
+    --hero-bg: #0002;
     --logo-color: currentColor;
     --code-box-header-stroke: rgb(255 255 255 / 15%);
     --hero-img: var(--gradient-hero-img);
@@ -173,7 +174,7 @@
 
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme]) {
-        --hero-bg: var(--color-bg);
+        --hero-bg: #0002;
         --logo-color: currentColor;
         --code-box-header-stroke: rgb(255 255 255 / 15%);
         --hero-img: var(--gradient-hero-img);
