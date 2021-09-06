@@ -23,11 +23,11 @@ const mdOptions = {
 
 const anchorOptions = {
     level: [2, 3],
+    slugify: slugifyStr,
     permalink: anchor.permalink.ariaHidden({
         symbol: "",
         placement: "after",
     }),
-    slugify: slugifyStr,
 };
 
 const externalAnchorOptions = {
