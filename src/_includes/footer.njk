@@ -63,3 +63,15 @@
         </div>
     </div>
 </footer>
+{%- set jsinline -%}
+    {%- if (script | isObject ) -%}
+        {% for i in script %}
+            {% include i %}
+        {% endfor %}
+    {%- else -%}
+        {{ script | safe }}
+    {%- endif -%}
+{%- endset -%}
+{%- if jsinline -%}
+    <script>{{ jsinline | safe }}</script>
+{%- endif -%}

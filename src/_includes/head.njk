@@ -109,19 +109,6 @@
         {% endfor %}
     {%- endif -%}
 
-    {%- set jsinline -%}
-        {%- if (script | isObject ) -%}
-            {% for i in script %}
-                {% include i %}
-            {% endfor %}
-        {%- else -%}
-            {{ script | safe }}
-        {%- endif -%}
-    {%- endset -%}
-    {%- if jsinline -%}
-        <script>{{ jsinline | safe }}</script>
-    {%- endif -%}
-
     {# Global site tag (gtag.js) - Google Analytics #}
     {%- if meta.env == 'prod' -%}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-55ZD5EZJ1G"></script>
