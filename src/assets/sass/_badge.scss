@@ -9,6 +9,8 @@
         margin-right: 0.5em;
         margin-bottom: 0.5em;
         outline-offset: 0.25em;
+        font-size: var(--badge-font-size, 12px);
+        line-height: 1;
     }
 }
 
