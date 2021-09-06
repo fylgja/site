@@ -4,6 +4,7 @@ description: "The control component styles the default `input[radio]` and `input
 allowing an easier control on the style of both these elements."
 npm: "@fylgja/control"
 git: "components/control"
+codepen: "XWgNzra"
 tags: ["nativeElements", "forms"]
 preview: "control.png"
 order: 3

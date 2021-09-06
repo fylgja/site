@@ -4,6 +4,7 @@ description: "The breadcrumbs component is a navigational aid,
 it allows users to maintain awareness of their location in an app or a website."
 npm: "@fylgja/breadcrumbs"
 git: "components/breadcrumbs"
+codepen: "QWgKzWm"
 tags: ["navs", "list"]
 preview: "breadcrumbs.png"
 ---

@@ -4,6 +4,7 @@ description: "The pagination component makes it easy to build many pagination pa
 like button only next previous nav or dots nav."
 npm: "@fylgja/pagination"
 git: "components/pagination"
+codepen: "ZEypmmj"
 tags: ["navs"]
 preview: "pagination.png"
 ---
