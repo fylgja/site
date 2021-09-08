@@ -21,15 +21,6 @@ export default () => {
             plugins,
         },
         {
-            input: `${input}/assets/js/scroll-slider.js`,
-            output: {
-                file: `${input}/_includes/js/scroll-slider.js`,
-                format: "cjs",
-            },
-            watch,
-            plugins,
-        },
-        {
             input: `${input}/assets/js/sw.js`,
             output: {
                 file: `${output}/sw.js`,
