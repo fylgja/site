@@ -7,10 +7,9 @@ import tabLock from "../tablock";
 function newDialog(id, button, backdrop = true) {
     const dialog = document.querySelector(id);
     const btn = document.querySelector(button);
+    if (!dialog || !btn) return;
 
-    if (!dialog) return;
-    if (!btn) return;
-
+    // Add polyfill logic
     if (typeof HTMLDialogElement !== "function") {
         dialogPolyfill.registerDialog(dialog);
     }
@@ -39,14 +38,14 @@ function newDialog(id, button, backdrop = true) {
     };
 
     btn.addEventListener("click", () => {
+        btn.setAttribute("aria-expanded", "true");
+
         if (backdrop) {
             dialog.showModal();
             dialogScrollLock();
             tabLock(dialog);
-            btn.setAttribute("aria-expanded", "true");
         } else {
             dialog.show();
-            btn.setAttribute("aria-expanded", "true");
         }
     });
 
