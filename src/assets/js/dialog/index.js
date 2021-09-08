@@ -52,6 +52,9 @@ function newDialog(id, button, backdrop = true) {
 
     dialog.addEventListener("click", (e) => {
         dialogClose(".close", e, dialog);
+    });
+
+    dialog.addEventListener("mouseup", (e) => {
         dialogCloseOnBackdrop(e, dialog);
     });
 
