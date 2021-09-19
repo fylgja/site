@@ -75,19 +75,26 @@ module.exports = {
     intro: [
         {
             icon: "download",
-            text: "Download Fylgja",
+            text: "Download",
+            alt: "Download Fylgja",
             url: "/download/",
         },
         {
-            icon: "code",
+            icon: "widgets",
             text: "Components",
             url: "/components/",
+        },
+        {
+            icon: "read_more",
+            text: "Guides",
+            url: "/guides/",
         },
         {
             icon: "github",
             text: "View on Github",
             url: githubUrl,
             external: true,
+            classList: "hidden md-block",
         },
     ],
 };

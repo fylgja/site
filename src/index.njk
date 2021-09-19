@@ -21,15 +21,16 @@ sitemap:
 
 {% if navigation.intro %}
 <nav aria-label="quick menu" class="hero-nav container pb-8">
-    <div class="card divide-y sm-divide-y-none sm-divide-x sm-flex-row">
+    <div class="card divide-y xs-divide-y-none xs-divide-x xs-flex-row">
         {% for item in navigation.intro %}
-        <a href="{{ item.url }}" {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}
-            class="card-content sm-w-33 text-reset text-center">
+        <a href="{{ item.url }}"
+            {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}
+            class="card-content xs-w-33 md-w-25 text-reset text-center{{ ' ' if item.classList }}{{ item.classList }}">
             {% if item.icon %}
                 {%- set introIcon -%}/src/assets/images/icons/{{ item.icon }}.svg{%- endset -%}
                 {{ introIcon | svgContents | safe }}
             {% endif %}
-            <div class="mt-1">{{ item.text }}</div>
+            <div class="mt-3"{% if item.alt %} aria-label="{{ item.alt }}"{% endif %}>{{ item.text }}</div>
         </a>
         {% endfor %}
     </div>

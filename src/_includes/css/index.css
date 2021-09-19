@@ -9,12 +9,6 @@
     --cols-size: 400px;
 }
 
-.logo.-large svg {
-    width: 18.75em;
-    height: 8.125em;
-    fill: var(--logo-color, url("#logog"));
-}
-
 #hero {
     --height: 64vmin;
     --bg: var(--hero-bg, #f7fafc);
@@ -25,14 +19,21 @@
 }
 
 .hero-nav {
-    --container-size: 680px;
-    --card-color: var(--color-text-alt);
+    --container-size: 800px;
     margin-block-start: -2.8rem;
+    font-size: 0.925em;
 }
 
 .hero-nav svg {
-    width: 2em;
-    height: 2em;
+    width: 2.4em;
+    height: 2.4em;
+    fill: url("#svg-gradient");
+}
+
+.logo.-large svg {
+    width: 18.75em;
+    height: 8.125em;
+    fill: var(--logo-color, url("#svg-gradient-logo"));
 }
 
 #intro {
