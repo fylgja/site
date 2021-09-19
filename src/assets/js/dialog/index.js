@@ -1,36 +1,30 @@
 // Fylgja (getfylgja.com)
 // Licensed under MIT Open Source
 
-import dialogPolyfill from "dialog-polyfill";
 import tabLock from "../tablock";
 
-function newDialog(id, button, backdrop = true) {
+export function newDialog(id, button, backdrop = true) {
     const dialog = document.querySelector(id);
     const btn = document.querySelector(button);
     if (!dialog || !btn) return;
-
-    // Add polyfill logic
-    if (typeof HTMLDialogElement !== "function") {
-        dialogPolyfill.registerDialog(dialog);
-    }
 
     const dialogScrollLock = (use = true) => {
         document.body.style.overflow = use ? "hidden" : "";
     };
 
-    const dialogClose = (target, e, dialog) => {
-        if (!e.target.closest(target)) return;
+    const dialogClose = (target, event, dialog) => {
+        if (!event.target.closest(target)) return;
         dialog.close();
         btn.setAttribute("aria-expanded", "false");
     };
 
-    const dialogCloseOnBackdrop = (e, dialog) => {
+    const dialogCloseOnBackdrop = (event, dialog) => {
         const rect = dialog.getBoundingClientRect();
         const isInDialog =
-            rect.top <= e.clientY &&
-            e.clientY <= rect.top + rect.height &&
-            rect.left <= e.clientX &&
-            e.clientX <= rect.left + rect.width;
+            rect.top <= event.clientY &&
+            event.clientY <= rect.top + rect.height &&
+            rect.left <= event.clientX &&
+            event.clientX <= rect.left + rect.width;
 
         if (!isInDialog) {
             dialog.close();
@@ -49,12 +43,12 @@ function newDialog(id, button, backdrop = true) {
         }
     });
 
-    dialog.addEventListener("click", (e) => {
-        dialogClose(".close", e, dialog);
+    dialog.addEventListener("click", (event) => {
+        dialogClose(".close", event, dialog);
     });
 
-    dialog.addEventListener("mouseup", (e) => {
-        dialogCloseOnBackdrop(e, dialog);
+    dialog.addEventListener("mouseup", (event) => {
+        dialogCloseOnBackdrop(event, dialog);
     });
 
     if (backdrop) {
@@ -62,5 +56,3 @@ function newDialog(id, button, backdrop = true) {
         dialog.addEventListener("cancel", () => dialogScrollLock(false));
     }
 }
-
-export default newDialog;

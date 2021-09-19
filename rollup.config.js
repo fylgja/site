@@ -4,17 +4,23 @@ import { terser } from "rollup-plugin-terser";
 const { input, output } = require("./src/_data/meta.js");
 const isProd = process.env.NODE_ENV === "production";
 
+const terserOptions = {
+    toplevel: false, // Force to false to avoid minification errors with the dialogPolyfill
+};
 const plugins = isProd
-    ? [commonjs(), nodeResolve(), terser()]
+    ? [commonjs(), nodeResolve(), terser(terserOptions)]
     : [commonjs(), nodeResolve()];
 const watch = isProd ? { clearScreen: false } : {};
 
 export default () => {
     return [
         {
-            input: `${input}/assets/js/main.js`,
+            input: [
+                `${input}/assets/js/main.js`,
+                `${input}/assets/js/scroller.js`,
+            ],
             output: {
-                file: `${output}/js/main.js`,
+                dir: `${output}/js`,
                 format: "cjs",
             },
             watch,
