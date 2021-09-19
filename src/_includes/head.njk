@@ -106,7 +106,7 @@
 
     {%- if js -%}
         {% for name, item in js %}
-            <script src="{{ item | assetUrl }}"></script>
+            <script src="{{ item | assetUrl }}" defer></script>
         {% endfor %}
     {%- endif -%}
 
