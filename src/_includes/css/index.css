@@ -98,10 +98,6 @@
     background-color: green;
 }
 
-.usp-section {
-    --container-size: 640px;
-}
-
 #usp-points {
     --avatar-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
     --avatar-bg: #f7df1e;
@@ -127,13 +123,11 @@
 }
 
 #contact {
-    --container-size: 640px;
     --height: 300px;
     --bg: var(--hero-bg, #f7fafc);
 }
 
 .collection-row {
-    --container-size: 640px;
     --card-elevation: var(--elevation-z1);
     --aspect-ratio: 1/1;
     --card-radius: 8px;
@@ -210,12 +204,6 @@
 }
 
 @media (min-width: 1024px) {
-    .usp-section,
-    #contact,
-    .collection-row {
-        --container-size: 1280px;
-    }
-
     .collection-row {
         --cols: repeat(4, 1fr);
     }
@@ -235,14 +223,16 @@
 }
 
 @media (min-width: 2200px) {
-    .usp-section,
-    #contact,
-    .collection-row {
-        --container-size: 1440px;
-    }
-
     #usp-points,
     #usp-points-a11y {
         --cols-size: 600px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .collection-row,
+    #contact,
+    .usp-section {
+        --container-size: 640px;
     }
 }
