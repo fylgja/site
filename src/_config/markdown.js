@@ -25,7 +25,7 @@ const anchorOptions = {
     level: [2, 3],
     slugify: slugifyStr,
     permalink: anchor.permalink.ariaHidden({
-        symbol: "",
+        symbol: '<span class="aria-only">Jump to Heading</span>',
         placement: "after",
     }),
 };
