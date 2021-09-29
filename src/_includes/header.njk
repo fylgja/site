@@ -3,6 +3,7 @@
     <div class="flex items-center py-2 md-py-4 container">
         <a href="/" class="logo flex-shrink me-auto">
             {{ "/src/assets/images/logo.svg" | svgContents | safe }}
+            <div class="aria-only">Go back to the Fylgja Homepage</div>
         </a>
         {% include "search.njk" %}
         {% if navigation.main %}
