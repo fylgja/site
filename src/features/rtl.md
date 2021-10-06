@@ -15,6 +15,8 @@ To enable this behavior, You must have the following html tags set
 
 So no additional CSS or plugins needed 😉
 
+<button onclick="document.querySelector('html').getAttribute('dir') !== 'rtl' ? document.querySelector('html').setAttribute('dir', 'rtl') : document.querySelector('html').setAttribute('dir', 'ltr')" class="btn -theme">Try it out here</button>
+
 ## How can I force a direction
 
 In case you need something to be in a LTR direction, no mather the language or direction.
