@@ -1,6 +1,5 @@
+@use "@fylgja/mq" as *;
 $page-header-height: 71px !default;
-$docs-page-mq: 768px !default;
-$docs-page-lg-mq: 1024px !default;
 
 .docs-sidebar {
     &::-webkit-scrollbar-track {
@@ -13,7 +12,7 @@ $docs-page-lg-mq: 1024px !default;
     }
 }
 
-@media (min-width: $docs-page-mq) {
+@media ($md) {
     .docs-layout {
         width: calc(100% - 230px);
         padding-inline-end: 1.5rem;
@@ -29,7 +28,7 @@ $docs-page-lg-mq: 1024px !default;
     }
 }
 
-@media (min-width: $docs-page-lg-mq) {
+@media ($lg) {
     .docs-layout {
         width: calc(100% - 280px);
         padding-inline-end: 3rem;

@@ -1,7 +1,5 @@
 @use "@fylgja/theme" as *;
-
-$search-mq: 640px;
-$search-mq-max: 639px;
+@use "@fylgja/mq" as *;
 
 // stylelint-disable declaration-no-important
 /* purgecss start ignore */
@@ -27,7 +25,7 @@ $search-mq-max: 639px;
         pointer-events: none;
     }
 
-    @media (max-width: $search-mq-max) {
+    @media ($sm-max) {
         --form-radius: 0;
         --search-dropdown-offset: 0;
         position: absolute;
@@ -37,7 +35,7 @@ $search-mq-max: 639px;
         background-color: var(--algolia-bg, #f7fafc);
     }
 
-    @media (min-width: $search-mq) {
+    @media ($sm) {
         max-width: 22em;
 
         &:not(:focus-within) {

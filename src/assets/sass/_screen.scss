@@ -1,7 +1,7 @@
-$mq-desktop: 2200px !default;
-$mq-desktop-tv: 2500px !default;
+@use "@fylgja/mq" as *;
+$xxxl: "min-width: 2500px" !default;
 
-@media (min-width: $mq-desktop) {
+@media ($xxl) {
     :root {
         --scroll-offset: 6rem;
         --container-size: 1440px;
@@ -10,7 +10,7 @@ $mq-desktop-tv: 2500px !default;
     }
 }
 
-@media (min-width: $mq-desktop-tv) {
+@media ($xxxl) {
     :root {
         --scroll-offset: 8rem;
         --container-size: 1620px;

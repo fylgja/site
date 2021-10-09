@@ -1,24 +1,19 @@
-// Fylgja (Fylgja.com)
-// Licensed under MIT Open Source
-
-$footer-mq: 420px;
-$footer-mq-tablet: 768px;
-$footer-mq-screen: 2200px;
+@use "@fylgja/mq" as *;
 
 .page-footer {
     --cols-size: 160px;
     background-color: var(--footer-bg, var(--color-theme));
     color: var(--footer-color, var(--color-on-theme));
 
-    @media (min-width: $footer-mq) {
+    @media ($xs) {
         --cols: repeat(2, 1fr);
     }
 
-    @media (min-width: $footer-mq-tablet) {
+    @media ($md) {
         --cols: repeat(4, 1fr);
     }
 
-    @media (min-width: $footer-mq-screen) {
+    @media ($xxl) {
         --cols: repeat(5, 1fr);
     }
 

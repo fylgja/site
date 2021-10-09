@@ -52,6 +52,7 @@
     "@fylgja/hashlink": "^1.0.0",
     "@fylgja/list": "^1.0.0",
     "@fylgja/menu": "^1.0.0",
+    "@fylgja/mq": "^1.0.0",
     "@fylgja/print": "^1.0.0",
     "@fylgja/scroll-slider": "^1.0.0",
     "@fylgja/scrollbar": "^1.0.0",
