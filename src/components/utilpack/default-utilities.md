@@ -1,6 +1,8 @@
 ---
 title: "Utilpack - Default utility classes"
 description: "All of the default prebuild CSS utility classes build with the Fylgja utilpack."
+npm: "@fylgja/utilpack"
+git: "components/utilpack"
 preview: "utilpack.png"
 permalink: "/components/utilpack/{{ page.fileSlug }}/"
 breadcrumbs: {
@@ -9,7 +11,7 @@ breadcrumbs: {
 }
 currentBreadcrumbTitle: "Default utilities"
 tocHeadings: ["h2"]
-style: "table { width: 100%; table-layout: fixed; }"
+style: "table { width: 100%; }"
 ---
 
 Here you will find all default utility classes.
@@ -74,12 +76,12 @@ It also has the following options available:
 
 ### Text Break
 
-| class        | value                                |
-| ------------ | ------------------------------------ |
-| break-normal | `overflow-wrap: normal;`             |
-| break-word   | `overflow-wrap: break-word;`         |
-| break-any    | `overflow-wrap: anywhere;`           |
-| break-auto   | `overflow-wrap: auto; hypens: auto;` |
+| class        | value                        |
+| ------------ | ---------------------------- |
+| break-normal | `overflow-wrap: normal;`     |
+| break-word   | `overflow-wrap: break-word;` |
+| break-any    | `overflow-wrap: anywhere;`   |
+| break-auto   | `hyphens: auto;`             |
 
 It also has the following options available:
 - Responsive classes
@@ -198,24 +200,22 @@ It also has the following options available:
 
 Available sizes for the border utility.
 
-| class              | value                                                                           |
-| ------------------ | ------------------------------------------------------------------------------- |
-| `{PREFIX}`-default | `{PROPERTY}: 1px var(--border-style, solid) var(--border-color, currentColor);` |
-| `{PREFIX}`-0       | `{PROPERTY}: 0;`                                                                |
-| `{PREFIX}`-2       | `{PROPERTY}: 2px var(--border-style, solid) var(--border-color, currentColor);` |
-| `{PREFIX}`-3       | `{PROPERTY}: 3px var(--border-style, solid) var(--border-color, currentColor);` |
+| class        | value                                                                           |
+| ------------ | ------------------------------------------------------------------------------- |
+| `{PREFIX}`   | `{PROPERTY}: 1px var(--border-style, solid) var(--border-color, currentColor);` |
+| `{PREFIX}`-0 | `{PROPERTY}: 0;`                                                                |
+| `{PREFIX}`-2 | `{PROPERTY}: 2px var(--border-style, solid) var(--border-color, currentColor);` |
+| `{PREFIX}`-3 | `{PROPERTY}: 3px var(--border-style, solid) var(--border-color, currentColor);` |
 
 To extend this, use the `$utilpack-border-sizes` map.
 
 The following options/direction are available.
 
-- `b` = border
-- `by` = border-block-start border-block-end
-- `bt` = border-block-start
-- `bb` = border-block-end
-- `bx` = border-inline-start border-inline-end
-- `bs` = border-inline-start
-- `be` = border-inline-end
+- `border`
+- `border-block-start`
+- `border-block-end`
+- `border-inline-start`
+- `border-inline-end`
 
 > Each option is using the writing direction.
 > in LTR `border-inline-start` is the same as `border-left`.
@@ -225,15 +225,15 @@ It also has the following options available:
 
 ## Divider
 
-Divider works similar to the border y and x version,
+Divider works similar to the border-block-start and border-inline-start,
 Except you can set the class on parent element.
 
 This class will give each child after another child a border per the value.
 
 The following options/direction are available.
 
-- `divider-y` = margin-block-start
-- `divider-x` = margin-inline-start
+- `divider-y` = border-block-start
+- `divider-x` = border-inline-start
 
 > Each option is using the writing direction.
 > in LTR `border-inline-start` is the same as `border-left`.
@@ -278,23 +278,6 @@ It also has the following options available:
 
 ## Layout
 
-### Display
-
-| class        | value                    |
-| ------------ | ------------------------ |
-| block        | `display: block;`        |
-| hidden       | `display: none;`         |
-| inline-block | `display: inline-block;` |
-| flex         | `display: flex;`         |
-| inline-flex  | `display: inline-flex;`  |
-| flow-root    | `display: flow-root;`    |
-
-> Grid is not by default part of this group.
-> And should be part of it own utility or component.
-
-It also has the following options available:
-- Responsive classes
-
 ### Float
 
 | class       | value           |
@@ -323,25 +306,6 @@ It also has the following options available:
 
 It also has the following options available:
 - Responsive classes
-
-### Object Fit
-
-| class             | value                     |
-| ----------------- | ------------------------- |
-| object-contain    | `object-fit: contain;`    |
-| object-cover      | `object-fit: cover;`      |
-| object-fill       | `object-fit: fill;`       |
-| object-none       | `object-fit: none;`       |
-| object-scale-down | `object-fit: scale-down;` |
-
-### Object Position
-
-| class         | value                      |
-| ------------- | -------------------------- |
-| object-top    | `object-position: top;`    |
-| object-right  | `object-position: right;`  |
-| object-bottom | `object-position: bottom;` |
-| object-left   | `object-position: left;`   |
 
 ### Overflow
 
@@ -378,14 +342,82 @@ The Utilpack also ship's with the position inset options;
 
 And the following values are available;
 
-| class        | value            |
-| ------------ | ---------------- |
-| `{PREFIX}`-0 | `{PROPERTY}: 0;` |
+| class           | value               |
+| --------------- | ------------------- |
+| `{PREFIX}`-auto | `{PROPERTY}: auto;` |
+| `{PREFIX}`-0    | `{PROPERTY}: 0;`    |
+| `{PREFIX}`-50   | `{PROPERTY}: 50%;`  |
+| `{PREFIX}`-full | `{PROPERTY}: 100%;` |
 
 To extend this, use the `$utilpack-positions` map.
 
 It also has the following options available:
 - Responsive classes
+
+### Z Index
+
+| class  | value            |
+| ------ | ---------------- |
+| z-auto | `z-index: auto;` |
+| z-0    | `z-index: 0;`    |
+| z-1    | `z-index: 1;`    |
+| z-2    | `z-index: 2;`    |
+| z-3    | `z-index: 3;`    |
+| z-4    | `z-index: 4;`    |
+| z-5    | `z-index: 5;`    |
+
+In case you need the index dept value to be bigger, like 10, 20 and 30.
+Simply change the `$utilpack-index-dept` variable from 1 to 10.
+
+## Display Layout
+
+### Display
+
+| class        | value                    |
+| ------------ | ------------------------ |
+| block        | `display: block;`        |
+| hidden       | `display: none;`         |
+| inline-block | `display: inline-block;` |
+| flex         | `display: flex;`         |
+| inline-flex  | `display: inline-flex;`  |
+| flow-root    | `display: flow-root;`    |
+
+> Grid is not by default part of this group.
+> And should be part of it own utility or component.
+
+It also has the following options available:
+- Responsive classes
+
+### Visibility
+
+| class     | value                    |
+| --------- | ------------------------ |
+| invisible | `visibility: invisible;` |
+| visible   | `visibility: visible;`   |
+
+It also has the following options available:
+- Responsive classes
+
+## Media Layout (Images, Video)
+
+### Object Fit
+
+| class             | value                     |
+| ----------------- | ------------------------- |
+| object-contain    | `object-fit: contain;`    |
+| object-cover      | `object-fit: cover;`      |
+| object-fill       | `object-fit: fill;`       |
+| object-none       | `object-fit: none;`       |
+| object-scale-down | `object-fit: scale-down;` |
+
+### Object Position
+
+| class         | value                      |
+| ------------- | -------------------------- |
+| object-top    | `object-position: top;`    |
+| object-right  | `object-position: right;`  |
+| object-bottom | `object-position: bottom;` |
+| object-left   | `object-position: left;`   |
 
 ## Flex
 
