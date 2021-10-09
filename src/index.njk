@@ -21,7 +21,7 @@ sitemap:
 
 {% if navigation.intro %}
 <nav aria-label="quick menu" class="hero-nav container pb-8">
-    <div class="card divide-y xs-divide-y-none xs-divide-x xs-flex-row">
+    <div class="card overflow-visible divide-y xs-divide-y-none xs-divide-x xs-flex-row">
         {% for item in navigation.intro %}
         <a href="{{ item.url }}"
             {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}
