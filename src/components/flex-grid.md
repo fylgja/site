@@ -6,6 +6,7 @@ git: "fylgja-flex-grid"
 gitDomain: "https://github.com/fylgja/"
 tags: ["plugins"]
 preview: "flex-grid.png"
+order: 20
 ---
 
 Create a complete grid using flexbox, and only set the columns you need.
