@@ -70,7 +70,7 @@ module.exports = function (config) {
     });
     config.addPlugin(sitemap, { sitemap: { hostname: url } });
     config.addPlugin(pluginRss);
-    config.addPlugin(pluginTOC, { tags: ["h2", "h3"] });
+    config.addPlugin(pluginTOC, { tags: ["h2", "h3"], ignoredElements: ["a"] });
     config.addPlugin(svgContents);
 
     // Shortcodes
