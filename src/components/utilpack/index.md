@@ -32,7 +32,9 @@ Then include the component in to your code via;
 The util pack comes out of the box  with some commonly used utility classes,
 that can be used directly.
 
-Read the docs to see what is available and [see the default utilities classes here](/components/utilpack/default-utilities).
+Read the docs to see what is available.
+
+<a href="/components/utilpack/default-utilities" class="btn -theme">See the default utilities classes</a>
 
 ## Config
 
