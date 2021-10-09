@@ -8,6 +8,7 @@ breadcrumbs: {
     Utilpack: "/components/utilpack/"
 }
 currentBreadcrumbTitle: "Default utilities"
+tocHeadings: ["h2"]
 style: "table { width: 100%; table-layout: fixed; }"
 ---
 
@@ -19,13 +20,13 @@ Then please check out the [main docs](/components/utilpack) here.
 
 ## Typography
 
-**Text Color**
+### Text Color
 
 | class      | value                  |
 | ---------- | ---------------------- |
 | text-reset | `color: currentColor;` |
 
-**Text Decoration**
+### Text Decoration
 
 | class        | value                            |
 | ------------ | -------------------------------- |
@@ -36,7 +37,7 @@ Then please check out the [main docs](/components/utilpack) here.
 It also has the following options available:
 - Responsive classes
 
-**Text Align**
+### Text Align
 
 | class       | value                 |
 | ----------- | --------------------- |
@@ -47,7 +48,7 @@ It also has the following options available:
 It also has the following options available:
 - Responsive classes
 
-**Vertical Align**
+### Vertical Align
 
 | class             | value                          |
 | ----------------- | ------------------------------ |
@@ -61,7 +62,7 @@ It also has the following options available:
 It also has the following options available:
 - Responsive classes
 
-**Text Wrap**
+### Text Wrap
 
 | class       | value                  |
 | ----------- | ---------------------- |
@@ -71,7 +72,7 @@ It also has the following options available:
 It also has the following options available:
 - Responsive classes
 
-**Text Break**
+### Text Break
 
 | class        | value                                |
 | ------------ | ------------------------------------ |
@@ -83,7 +84,7 @@ It also has the following options available:
 It also has the following options available:
 - Responsive classes
 
-**Font Weight**
+### Font Weight
 
 | class             | value                   |
 | ----------------- | ----------------------- |
@@ -102,7 +103,7 @@ It also has the following options available:
 It also has the following options available:
 - Responsive classes
 
-**Font Style**
+### Font Style
 
 | class        | value                 |
 | ------------ | --------------------- |
@@ -137,7 +138,7 @@ Available sizes for the Margin, Padding and Space utilities.
 
 To extend this, use the `$utilpack-spacers` map.
 
-**Margin**
+### Margin
 
 The following options/direction are available.
 
@@ -155,7 +156,7 @@ The following options/direction are available.
 It also has the following options available:
 - Responsive classes
 
-**Padding**
+### Padding
 
 The following options/direction are available.
 
@@ -173,7 +174,7 @@ The following options/direction are available.
 It also has the following options available:
 - Responsive classes
 
-**Space**
+### Space
 
 Space works similar to the margin y and x version,
 Except you can set the class on parent element.
@@ -277,7 +278,7 @@ It also has the following options available:
 
 ## Layout
 
-**Display**
+### Display
 
 | class        | value                    |
 | ------------ | ------------------------ |
@@ -294,7 +295,7 @@ It also has the following options available:
 It also has the following options available:
 - Responsive classes
 
-**Float**
+### Float
 
 | class       | value           |
 | ----------- | --------------- |
@@ -311,7 +312,7 @@ It also has the following options available:
 > Tip2: Use the flow-root class as a wrapper to keep everting inside the box
 > and clear for inline element that may not have any floating elements next to it.
 
-**Clear**
+### Clear
 
 | class       | value           |
 | ----------- | --------------- |
@@ -323,7 +324,7 @@ It also has the following options available:
 It also has the following options available:
 - Responsive classes
 
-**Object Fit**
+### Object Fit
 
 | class             | value                     |
 | ----------------- | ------------------------- |
@@ -333,7 +334,7 @@ It also has the following options available:
 | object-none       | `object-fit: none;`       |
 | object-scale-down | `object-fit: scale-down;` |
 
-**Object Position**
+### Object Position
 
 | class         | value                      |
 | ------------- | -------------------------- |
@@ -342,7 +343,7 @@ It also has the following options available:
 | object-bottom | `object-position: bottom;` |
 | object-left   | `object-position: left;`   |
 
-**Overflow**
+### Overflow
 
 | class            | value                |
 | ---------------- | -------------------- |
@@ -353,7 +354,7 @@ It also has the following options available:
 
 Or use the `overflow-y` and `overflow-x` version.
 
-**Position**
+### Position
 
 | class    | value                 |
 | -------- | --------------------- |
@@ -388,7 +389,7 @@ It also has the following options available:
 
 ## Flex
 
-**Direction**
+### Direction
 
 | class            | value                             |
 | ---------------- | --------------------------------- |
@@ -400,7 +401,7 @@ It also has the following options available:
 It also has the following options available:
 - Responsive classes
 
-**Wrap**
+### Wrap
 
 | class             | value                      |
 | ----------------- | -------------------------- |
@@ -411,7 +412,7 @@ It also has the following options available:
 It also has the following options available:
 - Responsive classes
 
-**Flex Size**
+### Flex Size
 
 | class        | value             |
 | ------------ | ----------------- |
@@ -425,7 +426,7 @@ It also has the following options available:
 It also has the following options available:
 - Responsive classes
 
-**Order**
+### Order
 
 | class       | value        |
 | ----------- | ------------ |
@@ -439,7 +440,7 @@ It also has the following options available:
 
 ## Box Alignment (Flex & Grid)
 
-**Justify Content**
+### Justify Content
 
 | class           | value                             |
 | --------------- | --------------------------------- |
@@ -453,7 +454,7 @@ It also has the following options available:
 It also has the following options available:
 - Responsive classes
 
-**Justify Items**
+### Justify Items
 
 | class                 | value                     |
 | --------------------- | ------------------------- |
@@ -465,7 +466,7 @@ It also has the following options available:
 It also has the following options available:
 - Responsive classes
 
-**Justify Self**
+### Justify Self
 
 | class                | value                    |
 | -------------------- | ------------------------ |
@@ -477,7 +478,7 @@ It also has the following options available:
 It also has the following options available:
 - Responsive classes
 
-**Align Content**
+### Align Content
 
 | class           | value                           |
 | --------------- | ------------------------------- |
@@ -491,7 +492,7 @@ It also has the following options available:
 It also has the following options available:
 - Responsive classes
 
-**Align Items**
+### Align Items
 
 | class          | value                      |
 | -------------- | -------------------------- |
@@ -504,7 +505,7 @@ It also has the following options available:
 It also has the following options available:
 - Responsive classes
 
-**Align Self**
+### Align Self
 
 | class        | value                     |
 | ------------ | ------------------------- |

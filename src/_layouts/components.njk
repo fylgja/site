@@ -32,7 +32,11 @@ css: { page: "/css/page.css" }
                     <ul>
                         <li>
                             <strong class="block mx-2 mb-2">{{ title }}</strong>
-                            {{ content | toc(wrapper="div") | safe }}
+                            {%- if tocHeadings -%}
+                                {{ content | toc(tags=tocHeadings, wrapper="div") | safe }}
+                            {%- else -%}
+                                {{ content | toc(wrapper="div") | safe }}
+                            {%- endif -%}
                         </li>
                         <li class="hr" role="separator"></li>
                         {%- for items in collections.componentsGroup -%}
