@@ -1,0 +1,11 @@
+{
+  "tags": ["docs", "uiComponents"],
+  "layout": "doc-item",
+  "permalink": "/ui-components/{{ page.fileSlug }}/",
+  "breadcrumbs": {
+    "UI Components": "/ui-components/"
+  },
+  "order": 10,
+  "eleventyExcludeFromCollections": true,
+  "draft": true
+}

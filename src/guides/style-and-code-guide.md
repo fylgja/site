@@ -83,3 +83,10 @@ with the extra btn in front of the modifier class.
 
 We use this naming convention mostly to bundle CSS variables in to one class,
 that wil be reused a lot. We consider this a more readable and DRY way.
+
+## Stylelint config
+
+We also ship with a config for Stylelint.
+Works both for SCSS and CSS syntaxes.
+So if your interested in knowing more about our CSS formatting,
+[checkout our Stylelint config package](/components/stylelint-config/).
