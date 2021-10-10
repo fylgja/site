@@ -4,11 +4,6 @@
     opacity: 0;
     transition: opacity 0.2s ease;
 
-    &::before {
-        content: "#";
-        margin-inline-start: 0.35em;
-    }
-
     &:focus,
     :hover > & {
         opacity: 1;

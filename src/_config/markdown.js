@@ -24,8 +24,8 @@ const mdOptions = {
 const anchorOptions = {
     level: [2, 3],
     slugify: slugifyStr,
-    permalink: anchor.permalink.ariaHidden({
-        symbol: '<span class="aria-only">Jump to Heading</span>',
+    permalink: anchor.permalink.linkInsideHeader({
+        symbol: `<span>&nbsp;#&nbsp;</span>`,
         placement: "after",
     }),
 };

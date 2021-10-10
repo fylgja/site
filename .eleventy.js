@@ -48,7 +48,7 @@ module.exports = function (config) {
 
     // Copy
     config.addPassthroughCopy({
-        "src/assets/images/**/*.{jpg,png,svg}": "images",
+        "src/assets/images/**/*.{jpg,png,svg,webp}": "images",
     });
     config.addPassthroughCopy({
         "src/components/images/**/*.{jpg,png,svg}": "images",
@@ -70,7 +70,10 @@ module.exports = function (config) {
     });
     config.addPlugin(sitemap, { sitemap: { hostname: url } });
     config.addPlugin(pluginRss);
-    config.addPlugin(pluginTOC, { tags: ["h2", "h3"], ignoredElements: ["a"] });
+    config.addPlugin(pluginTOC, {
+        tags: ["h2", "h3"],
+        ignoredElements: ["a.header-anchor"],
+    });
     config.addPlugin(svgContents);
 
     // Shortcodes
