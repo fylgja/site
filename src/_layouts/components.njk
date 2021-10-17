@@ -28,8 +28,8 @@ css: { page: "/css/page.css" }
                 </article>
             </div>
             <aside class="docs-sidebar hidden md-block overflow-auto overflow-contain thin-scrollbar">
-                <nav aria-label="Components Menu" class="menu my-7 text-small">
-                    <ul>
+                <nav aria-label="Components Menu" class="my-7 text-small">
+                    <ul class="menu">
                         <li>
                             <strong class="block mx-2 mb-2">{{ title }}</strong>
                             {%- if tocHeadings -%}
@@ -42,7 +42,7 @@ css: { page: "/css/page.css" }
                         {%- for items in collections.componentsGroup -%}
                             <li class="mt-4">
                                 <strong class="block mx-2 mb-2">{{ items.title }}</strong>
-                                <ul>
+                                <ul class="menu">
                                     {%- for item in items.data | sortByName -%}
                                         {% if not item.data.altlink %}
                                             <li>

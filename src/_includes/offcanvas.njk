@@ -12,8 +12,8 @@
             </button>
         </div>
         <div class="dialog-inner flex-auto">
-            <nav class="menu" aria-label="Offcanvas menu">
-                <ul>
+            <nav aria-label="Offcanvas menu">
+                <ul class="menu">
                     {%- for item in collections.started | sortByOrder -%}
                     <li>
                         {% menuItem item.url, "", page.url, item.external %}
@@ -25,7 +25,7 @@
                         {% menuItem "/components/", "", page.url %}
                             <span>Components</span>
                         {% endmenuItem %}
-                        <ul class="menu-nested">
+                        <ul class="menu -nested">
                             {%- for items in collections.componentsGroup -%}
                                 {% if items.title !== "Featured" %}
                                 <li>
@@ -34,7 +34,7 @@
                                             <span class="caret me-2"></span>
                                             {{ items.title }}
                                         </summary>
-                                        <ul>
+                                        <ul class="menu">
                                             {%- for item in items.data | sortByName -%}
                                                 {% if not item.data.altlink %}
                                                 <li>
@@ -55,7 +55,7 @@
                         {% menuItem "/features/", "", page.url %}
                             <span>Features</span>
                         {% endmenuItem %}
-                        <ul>
+                        <ul class="menu">
                             {%- for item in collections.features | sortByOrder -%}
                             <li class="text-small">
                                 {% menuItem item.url, "", page.url, item.external %}

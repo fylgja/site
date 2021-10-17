@@ -38,3 +38,8 @@ $page-header-height: 71px !default;
         width: 280px;
     }
 }
+
+.toc ol {
+    list-style-type: none;
+    padding-inline-start: 0;
+}

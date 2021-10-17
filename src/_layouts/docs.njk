@@ -19,11 +19,11 @@ css: { page: "/css/page.css" }
                 </article>
             </div>
             <aside class="docs-sidebar hidden md-block overflow-auto overflow-contain thin-scrollbar">
-                <nav aria-label="Docs Menu" class="menu my-7 text-small">
-                    <ul>
+                <nav aria-label="Docs Menu" class="my-7 text-small">
+                    <ul class="menu">
                         <li>
                             <strong class="block mx-2 mb-2">Getting started</strong>
-                            <ul>
+                            <ul class="menu">
                                 {%- for item in collections.started | sortByOrder -%}
                                 <li>
                                     <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page" class="is-active"{% endif %}>
@@ -35,7 +35,7 @@ css: { page: "/css/page.css" }
                         </li>
                         <li class="mt-2">
                             <strong class="block mx-2 mb-2">Features</strong>
-                            <ul>
+                            <ul class="menu">
                                 {%- for item in collections.features | sortByOrder -%}
                                 <li>
                                     <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page" class="is-active"{% endif %}>
