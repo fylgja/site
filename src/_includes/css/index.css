@@ -135,7 +135,6 @@
     --avatar-bg: transparent;
     --avatar-color: inherit;
     --avatar-radius: 8px;
-    --border-color: rgb(0 0 0 / 10%);
 }
 
 .collection-row .card {
@@ -163,20 +162,12 @@
     --hero-img: var(--gradient-hero-img);
 }
 
-:root[data-theme="dark"] .collection-row {
-    --border-color: rgb(255 255 255 / 20%);
-}
-
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme]) {
         --hero-bg: #0002;
         --logo-color: currentColor;
         --code-box-header-stroke: rgb(255 255 255 / 15%);
         --hero-img: var(--gradient-hero-img);
-    }
-
-    .collection-row {
-        --border-color: rgb(255 255 255 / 20%);
     }
 }
 

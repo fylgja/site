@@ -2,9 +2,7 @@ const { src, dest, series, watch } = require("gulp");
 const { input, output } = require("./src/_data/meta.js");
 const isProduction = process.env.NODE_ENV === "production";
 
-const Fiber = require("fibers");
 const sass = require("gulp-sass")(require("sass"));
-
 const postcss = require("gulp-postcss");
 const postcssPresetEnv = require("postcss-preset-env");
 const cssnano = require("cssnano");
@@ -13,7 +11,6 @@ const purgecss = require("@fullhuman/postcss-purgecss");
 const sassTask = () => {
     const sourcemaps = !isProduction;
     const sassConfig = {
-        fiber: Fiber,
         includePaths: ["node_modules"],
     };
 
