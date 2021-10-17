@@ -41,5 +41,5 @@ $page-header-height: 71px !default;
 
 .toc ol {
     list-style-type: none;
-    padding-inline-start: 0;
+    padding-inline-start: var(--menu-nested-indent, 0);
 }
