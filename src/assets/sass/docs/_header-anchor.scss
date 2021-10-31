@@ -1,12 +1,4 @@
 .header-anchor {
-    position: absolute;
+    color: inherit;
     text-decoration: none;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-
-    &:focus,
-    :hover > & {
-        opacity: 1;
-        text-decoration: none;
-    }
 }

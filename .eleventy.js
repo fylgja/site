@@ -72,7 +72,6 @@ module.exports = function (config) {
     config.addPlugin(pluginRss);
     config.addPlugin(pluginTOC, {
         tags: ["h2", "h3"],
-        ignoredElements: ["a.header-anchor"],
     });
     config.addPlugin(svgContents);
 

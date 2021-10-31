@@ -24,10 +24,7 @@ const mdOptions = {
 const anchorOptions = {
     level: [2, 3],
     slugify: slugifyStr,
-    permalink: anchor.permalink.linkInsideHeader({
-        symbol: `<span>&nbsp;#&nbsp;</span>`,
-        placement: "after",
-    }),
+    permalink: anchor.permalink.headerLink({ safariReaderFix: true }),
 };
 
 const externalAnchorOptions = {
