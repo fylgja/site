@@ -4,6 +4,7 @@ description: "A super small grid with auto flowing behavior, based on the contai
 Using a similar method to container queries."
 npm: "@fylgja/auto-grid"
 git: "components/auto-grid"
+codepen: "oNeGEyz"
 tags: ["layouts"]
 preview: "auto-grid.png"
 featured: true
