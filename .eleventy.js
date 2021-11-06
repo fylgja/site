@@ -77,7 +77,7 @@ module.exports = function (config) {
 
     // Shortcodes
     config.addNunjucksAsyncShortcode("image", imageShortcode);
-    config.addShortcode("badgeNpm", badgeNpm);
+    config.addAsyncShortcode("badgeNpm", badgeNpm);
     config.addShortcode("badgeCodepen", badgeCodepen);
     config.addShortcode("badgeGit", badgeGit);
     config.addShortcode("year", () => `${new Date().getFullYear()}`);
