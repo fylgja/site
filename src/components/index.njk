@@ -55,7 +55,8 @@ style: "
                 <div class="card-media aspect-ratio">
                     {% if item.data.preview %}
                         {% set preview %}{{ meta.componentsMedia }}{{ item.data.preview }}{% endset %}
-                        {% image preview, "", "medium" %}
+                        {% set loading %}{% if loop.first %}eager{% else %}lazy{% endif %}{% endset %}
+                        {% image preview, "", "medium", loading %}
                     {% endif %}
                 </div>
                 <div class="card-content">

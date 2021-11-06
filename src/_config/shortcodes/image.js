@@ -6,6 +6,7 @@ module.exports = async function imageShortcode(
     src,
     alt = "",
     widths = false,
+    loading = "lazy",
     sizes = "100vw"
 ) {
     const originalFormat = path.extname(src).replace(/\./g, "");
@@ -62,7 +63,7 @@ module.exports = async function imageShortcode(
     let imageAttributes = {
         alt,
         sizes,
-        loading: "lazy",
+        loading,
         decoding: "async",
     };
 
