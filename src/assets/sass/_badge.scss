@@ -1,41 +1,62 @@
 @use "@fylgja/badge";
 
 .component-badges {
+    --badge-font-size: 0.825em;
+    --badge-radius: 0.375em;
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
 
     > * {
-        margin-right: 0.5em;
-        margin-bottom: 0.5em;
-        outline-offset: 0.25em;
-        font-size: var(--badge-font-size, 12px);
-        line-height: 1;
+        margin-right: 0.75em;
+        margin-bottom: 0.75em;
+    }
+
+    .badge {
+        --link-color: var(--badge-color, currentColor);
+        --link-color-focus: var(--badge-color, currentColor);
+        transition: outline-offset 0.2s ease-in-out,
+            background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
+        &:focus,
+        &:hover {
+            outline-offset: 0.25em;
+        }
+    }
+
+    svg {
+        width: 1.375em;
+        height: 1.375em;
     }
 }
 
 .badge {
-    &.-shield {
-        --badge-radius: 0;
-        --badge-bg: transparent;
-        --badge-color: currentColor;
-        min-height: 28px;
-        border: 1px solid currentColor;
-        font-weight: 600;
-        vertical-align: middle;
-        text-transform: uppercase;
+    &.-icon {
+        --badge-padding: 0.125em;
+    }
+}
 
-        svg {
-            width: 0.9rem;
-            height: 0.9rem;
-            margin-right: 0.35rem;
-            vertical-align: middle;
-        }
-
+.badge {
+    &.-git {
         &:focus,
         &:hover {
-            color: var(--badge-color);
-            text-decoration: none;
+            --badge-bg: #111;
+            --badge-color: #fff;
+        }
+    }
+
+    &.-npm {
+        &:focus,
+        &:hover {
+            --badge-bg: #f7f7f7;
+            --badge-color: #cb3837;
+        }
+    }
+
+    &.-codepen {
+        &:focus,
+        &:hover {
+            --badge-bg: #111;
+            --badge-color: #fff;
         }
     }
 }

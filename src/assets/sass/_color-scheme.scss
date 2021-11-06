@@ -13,6 +13,8 @@
     --selection-color: #{color.change($color-theme, $lightness: 75%)};
     --code-bg: #{color.change($color-theme, $lightness: 16%)};
     --code-color: #{$color-on-theme};
+    --badge-bg: #{color.change($color-theme, $lightness: 24%)};
+    --badge-color: #{$color-on-theme};
     --card-bg: #{color.change($color-theme, $lightness: 16%)};
     --card-color: #{$color-on-theme};
     --details-stroke: #{color.change($color-theme, $lightness: 16%)};
