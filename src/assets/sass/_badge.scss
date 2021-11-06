@@ -1,5 +1,11 @@
 @use "@fylgja/badge";
 
+.badge {
+    &.-icon {
+        --badge-padding: 0.125em;
+    }
+}
+
 .component-badges {
     --badge-font-size: 0.825em;
     --badge-radius: 0.375em;
@@ -20,43 +26,26 @@
         &:focus,
         &:hover {
             outline-offset: 0.25em;
+
+            &.-git {
+                --badge-bg: #111;
+                --badge-color: #fff;
+            }
+
+            &.-npm {
+                --badge-bg: #f7f7f7;
+                --badge-color: #cb3837;
+            }
+
+            &.-codepen {
+                --badge-bg: #111;
+                --badge-color: #fff;
+            }
         }
     }
 
     svg {
         width: 1.375em;
         height: 1.375em;
-    }
-}
-
-.badge {
-    &.-icon {
-        --badge-padding: 0.125em;
-    }
-}
-
-.badge {
-    &.-git {
-        &:focus,
-        &:hover {
-            --badge-bg: #111;
-            --badge-color: #fff;
-        }
-    }
-
-    &.-npm {
-        &:focus,
-        &:hover {
-            --badge-bg: #f7f7f7;
-            --badge-color: #cb3837;
-        }
-    }
-
-    &.-codepen {
-        &:focus,
-        &:hover {
-            --badge-bg: #111;
-            --badge-color: #fff;
-        }
     }
 }
