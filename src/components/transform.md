@@ -171,9 +171,13 @@ By default we load the following options;
 
 - 1: 1em
 - n1: -1em
-- half: 50%
+- 25: 25%
+- 50: 50%
+- 75: 75%
 - full: 100%
-- nhalf: -50%
+- n25: -25%
+- n50: -50%
+- n75: -75%
 - nfull: -100%
 
 | Class  | Value               |
