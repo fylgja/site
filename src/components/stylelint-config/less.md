@@ -11,6 +11,10 @@ breadcrumbs: {
 currentBreadcrumbTitle: "LESS"
 ---
 
+> ⚠️ The LessCSS feature has been dropped since version 4 of the `@fylgja/stylelint-config`,
+> 
+> Use the CSS version or use any version before this version.
+
 There no specific rules set for LESS, since we don't use with LESS anymore.
 
 If you find any rules that conflict with your LESS code, 

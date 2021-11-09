@@ -71,19 +71,6 @@ To include these rules, add `scss` to the end of the extend path
 
 [For more infomation checkout the SCSS DOC.](/components/stylelint-config/scss/)
 
-### LESS
-
-We have a super small config to unset some rules,
-that conflict with the LESS naming.
-
-```json
-{
-    "extends": "@fylgja/stylelint-config/less",
-}
-```
-
-[For more infomation checkout the LESS DOC.](/components/stylelint-config/less/)
-
 ### Order
 
 We do follow a specific style of ordering our code, it's is described in our [CSS order DOC](/components/stylelint-config/order/).
@@ -122,6 +109,7 @@ _it's better to set those project specific, if needed._
 
 **Color**
 
+- `alpha-value-notation`: null
 - `color-hex-case`: lower
   - _Lowercase letters are easier to distinguish from numbers_
 - `color-hex-length`: short
@@ -150,8 +138,6 @@ _it's better to set those project specific, if needed._
 
 **Font family**
 
-- `font-family-name-quotes`: always-where-recommended
-  - severity: warning
 - `font-family-no-missing-generic-family-keyword`: true
   - severity: warning
 
@@ -160,7 +146,6 @@ _it's better to set those project specific, if needed._
 - `function-name-case`: lower
   - ignoreFunctions: _Starting with: get, (e.g getColor)_
 - `function-url-no-scheme-relative`: true
-- `function-url-quotes`: always
 
 **General / Sheet**
 
@@ -173,13 +158,11 @@ _it's better to set those project specific, if needed._
   _The CSS dept is enforced via `selector-max`._
 - `no-descending-specificity`: true
   - severity: warning
-- `no-empty-first-line`: true
 
 **Media**
 
 - `media-feature-name-no-unknown`: true
   - severity: warning
-- `media-feature-name-no-vendor-prefix`: true
 - `media-query-list-comma-newline-before`: never-multi-line
   - _Would be never if this was an option_
 
@@ -206,7 +189,6 @@ _it's better to set those project specific, if needed._
 
 **Selector**
 
-- `selector-attribute-quotes`: always
 - `selector-list-comma-newline-before`: never-multi-line
   - _Would be never if this was an option_
 - `selector-list-comma-space-after`: always-single-line
@@ -216,20 +198,11 @@ _it's better to set those project specific, if needed._
 - `selector-max-empty-lines`: 0,
 - `selector-max-id`: 0
 - `selector-max-type`: 2
-- `selector-max-universal`: 1
+- `selector-max-universal`: 2
 - `selector-no-qualifying-type`: true
   - ignore: attribute, class
-- `selector-no-vendor-prefix`: true
 - `selector-type-no-unknown`: true
   - severity: warning
-
-**Shorthand property**
-
-- `shorthand-property-no-redundant-values`: true
-
-**String**
-
-- `string-quotes`: double
 
 **Value**
 

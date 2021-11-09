@@ -58,6 +58,7 @@ For information on what each rule does.
 
 - `at-mixin-argumentless-call-parentheses`: never
 - `at-mixin-parentheses-space-before`: never
+- `no-duplicate-mixins`: true
 
 **At-rule**
 
@@ -80,6 +81,9 @@ For information on what each rule does.
   - severity: warning
   - _Use the new scss color functions instead!_
 
+**Declaration**
+- `declaration-nested-properties-no-divided-groups`: true
+
 **Comments**
 
 - `comment-no-empty`: always
@@ -99,4 +103,4 @@ For information on what each rule does.
 
 **Selector**
 
-- `selector-no-redundant-nesting-selector`: true
+- `selector-no-redundant-nesting-selector`: true,
