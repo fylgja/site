@@ -46,6 +46,7 @@ This package offers the following functions.
 | contrast       | color  | Sets an dark or light color based on the contrast |
 | gray           | color  | Get a specific gray based an a given precentage   |
 | nth-side       | list   | Extract value based on shorthand sizing property  |
+| negative       | map    | Converters a map with units to a negative units   |
 | strip-unit     | math   | Removes the unit (e.g. px, em, rem) from a value  |
 | replace        | string | Replace part of a string with new value           |
 | url-encode     | string | Encode Unsafe urls to safe urls                   |
