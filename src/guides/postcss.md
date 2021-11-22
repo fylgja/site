@@ -7,6 +7,29 @@ thumb: "guide-thumb/postcss.jpg"
 Looking for Tips, Tricks and Fixes for using specific PostCSS plugins with Fylgja.
 Look no further then down here.
 
+## PostCSS Import
+
+This a great alternative if your planing to not go the SCSS route.
+
+In Fylgja we made sure all of our NPM packages contain the the `style` key,
+so PostCSS Import knows where to import it from.
+
+Making it just as easy to import as with SCSS.
+
+With both, SCSS and PostCSS Import you don't need to specify the file in the path, only the vendor and component.
+
+_Sample of both PostCSS Import and SCSS imports;_
+
+```scss
+// Without file
+@import "@fylgja/auto-grid"; // PostCSS Import
+@use "@fylgja/auto-grid"; // SCSS
+
+// With file (not recommended)
+@import "@fylgja/auto-grid/auto-grid.css"; // PostCSS Import
+@use "@fylgja/auto-grid/index"; // SCSS
+```
+
 ## Preset Env or Autoprefixer
 
 While Fylgja support all ever green browser versions.

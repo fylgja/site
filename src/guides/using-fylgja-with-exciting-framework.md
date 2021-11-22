@@ -1,5 +1,5 @@
 ---
-title: "How to use with an existing framework"
+title: "How to use with an framework"
 description: "How to use fylgja in a existing framework like Tailwind"
 thumb: "guide-thumb/bootstrap-tailwindcss.jpg"
 ---
@@ -37,7 +37,7 @@ and include it in your CSS like this.
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 
-@import "@fylgja/form/form.css";
+@import "@fylgja/form";
 
 @import "tailwindcss/utilities";
 ```
