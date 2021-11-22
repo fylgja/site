@@ -1,6 +1,6 @@
 {
   "name": "fylgja-site",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "The Fylgja site powered by eleventy",
   "private": true,
   "scripts": {

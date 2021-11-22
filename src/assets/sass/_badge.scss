@@ -1,14 +1,9 @@
+@use "@fylgja/mq" as *;
 @use "@fylgja/badge";
-
-.badge {
-    &.-icon {
-        --badge-padding: 0.125em;
-    }
-}
 
 .component-badges {
     --badge-font-size: 0.825em;
-    --badge-radius: 0.375em;
+    --badge-radius: 0.35em;
     display: flex;
     flex-wrap: wrap;
 
@@ -17,11 +12,23 @@
         margin-bottom: 0.75em;
     }
 
-    .badge {
+    .badge-addon {
         --link-color: var(--badge-color, currentColor);
         --link-color-focus: var(--badge-color, currentColor);
+        position: relative;
+        text-decoration: none;
         transition: outline-offset 0.2s ease-in-out,
             background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        overflow: hidden;
+
+        &.-git,
+        &.-codepen {
+            > :not(.-icon) {
+                @media ($xs-max) {
+                    display: none;
+                }
+            }
+        }
 
         &:focus,
         &:hover {
@@ -33,7 +40,7 @@
             }
 
             &.-npm {
-                --badge-bg: #f7f7f7;
+                --badge-bg: #fdf1f1;
                 --badge-color: #cb3837;
             }
 
@@ -41,6 +48,21 @@
                 --badge-bg: #111;
                 --badge-color: #fff;
             }
+        }
+    }
+
+    .badge.-icon {
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: currentColor;
+            opacity: 0.1;
         }
     }
 
