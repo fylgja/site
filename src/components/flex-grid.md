@@ -9,6 +9,16 @@ preview: "flex-grid.png"
 order: 20
 ---
 
+> This our legacy grid following the more static column approach used by many.
+> 
+> We moved to a more flexible approach with the [Auto Grid](https://fylgja.dev/components/auto-grid/),
+> that follows a content based approach instead.
+> 
+> The Flex Grid did get an upgrade in version 3,
+> which is support for the newer Sass version, with the new module syntax.
+> but with this version we will also started to stop supporting any development on this grid,
+> and will just support the Flex Grid with bug fixes.
+
 Create a complete grid using flexbox, and only set the columns you need.
 
 Making it even smaller than other flex grids.
@@ -21,10 +31,10 @@ npm install @fylgja/flex-grid
 
 Then include the component in to your code via;
 
-```scss 
-@import "@fylgja/flex-grid"; // DartSass or LibSass >= 3.6
-@import "@fylgja/flex-grid/index"; // LibSass <= 3.5
-@import "@fylgja/flex-grid/flex-grid.css"; // CSS or PostCSS
+```scss
+@use "@fylgja/flex-grid";
+// Or via PostCSS import
+@import "@fylgja/flex-grid";
 ```
 
 ## How to use
@@ -103,18 +113,19 @@ so many configs are disabled to load only what is needed.
 
 ### Setters
 
-| Var              | Default                      | Description             |
-| ---------------- | ---------------------------- | ----------------------- |
-| $flex-grid-gaps  | ()                           | Additional gaps         |
-| $flex-grid-cells | xs 2, sm 3, md 3, lg 4, xl 5 | Amount of cells, per MQ |
-| $gap-size        | 1rem                         | The default gap size    |
+| Var              | Default                              | Description             |
+| ---------------- | ------------------------------------ | ----------------------- |
+| $flex-grid-gaps  | ()                                   | Additional gaps         |
+| $flex-grid-cells | xxs: 2, xs 3, sm 3, md 4, lg 4, xl 5 | Amount of cells, per MQ |
+| $gap-size        | 1rem                                 | The default gap size    |
 
 ### Breakpoints
 
-All breakpoints are set via the SCSS map `$breakpoints`.
-Each point is based on the Bootstrap naming.
+All breakpoints are set via the Fylgja component helper [`@fylgja/mq`](https://fylgja.dev/components/mq/),
+and can be changed from there or directly with `$flex-grid-breakpoints` map.
 
-See the upcoming `@fylgja/core` module for more information.
+`xxs` is the version of the cell sizes and breakpoint'less version, this value is required in the map.,
+but the key name can be anything you want it to be.
 
 ## Helper (mixins)
 
@@ -127,35 +138,3 @@ You can use the helpers if you need a little more than the config can offer you.
 | flex-grid-gap     | $size, $class | Create a grid gap             |
 | flex-grid-cells   | $mq, $i       | Create a cell sizes           |
 | flex-grid-offsets | $mq, $i       | Create a cell offset sizes    |
-
-## FAQ
-
-<details class="faq-panel" open><summary>What is mq?</summary>
-
-As stated under the section [How to use, classes](#Classes)
-
-mq is shorthand for media query.
-
-</details>
-
-<details class="faq-panel"><summary>Why is there a hyphen before some classes?</summary>
-
-Some classes are modifier classes, and we wanted to have different naming,
-to separate them from normal CSS class naming.
-
-In the upcoming framework you will see a little more of this.
-And we will also add a section to explain our CSS naming convention.
-
-So good stuff to come 😉
-
-</details>
-
-<details class="faq-panel"><summary>Why should I still use a flex-grid instead of a CSS Grid</summary>
-
-It's not an valid answer to say browser support,
-since you can use CSS grid in IE11, via Explicit grid (fixed size).
-
-Flex-grid makes sense for flexable grids,
-where you don't know the layout before hand.
-
-</details>
