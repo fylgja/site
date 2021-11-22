@@ -8,7 +8,8 @@ Fylgja does not need a framework or specific tools to work.
 Giving you the freedom on how to use Fylgja in project.
 
 By default we advice the [Dart Sass](https://sass-lang.com/dart-sass) setup.
-But feel free to use the CSS alternative instead.
+But feel free to use the PostCSS import alternative instead.
+Which is almost the same as the SCSS version, in use.
 
 This guide will focus on the Sass setup.
 And will show you a sample setup in a blank environment.
@@ -44,34 +45,17 @@ _Or run it via your own preferred tool, e.g. Gulp, Webpack or Rollup._
 This part can be done via a bundle or adding each component individual.
 
 For this sample we are setting up a blog page.
-Using each package as separate dependency.
+But for making this demo a little easier, we will install Fylgja as one package instead.
 
 ```bash
-# Adding Typography Components
-npm i @fylgja/base @fylgja/details @fylgja/table @fylgja/list
-# Adding Element Components that are common in a blog
-npm i @fylgja/breadcrumbs @fylgja/pagination @fylgja/avatar @fylgja/button
-# Adding Layout helpers
-npm i @fylgja/container @fylgja/section @fylgja/card
-# Adding utils to help out with specif spacing and other logic
-npm i @fylgja/utilpack @fylgja/hashlink
+npm i fylgja
 ```
-
-> This will also be available via bundles like `npm i @fylgja/blog`.
-> That does the same thing as above. But via 1 command.
 
 ## Loading the styles
 
 Create a `src/main.scss`.
 
-Add each package that you just installed to the `src/main.scss`.
-
-Also add the `@fylgja/theme` component.
-That is part of many packages as dependency.
-This will allow you to set theme specific colors and/or spacers, 
-that you want to change.
-Each variable that you change will also effect the dependents of the `@fylgja/theme`.
-So you don't have to change each components variables.
+Add the following Fylgja components to your `src/main.scss`.
 
 ```scss
 // src/main.scss
@@ -97,6 +81,12 @@ So you don't have to change each components variables.
 @use "@fylgja/hashlink";
 @use "@fylgja/utilpack";
 ```
+
+We will also add the `@fylgja/theme` component,
+which is part of many Fylgja component as dependency and helper for color and spacer styles.
+
+With this we can quickly edit the theme color for all of the Fylgja components,
+without having to set it per Fylgja component we just imported.
 
 ## Building your CSS
 
