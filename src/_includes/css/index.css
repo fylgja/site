@@ -10,7 +10,7 @@
 }
 
 #hero {
-    --height: 64vmin;
+    --height: 52vmin;
     --bg: var(--hero-bg, #f7fafc);
     --img: var(--hero-img);
     --container-padding-y: 4rem;
