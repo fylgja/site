@@ -1,6 +1,6 @@
 ---
-title: "How to use with an framework"
-description: "How to use fylgja in a existing framework like Tailwind"
+title: "How to use with another framework"
+description: "How to use fylgja in another existing framework like Tailwind"
 thumb: "guide-thumb/bootstrap-tailwindcss.jpg"
 ---
 
