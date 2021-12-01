@@ -50,7 +50,7 @@ since the `@fylgja/form` component styles them directly.
 And this way you can also add more and more Fylgja CSS components
 without having to create them with utility classes.
 
-So instead having to us `@apply` to create a Card component,
+So instead having to use `@apply` to create a Card component,
 You can just include it, just as with the form.
 The only difference is the Fylgja Card component uses classes, but that is just wat we want,
 moving to a more DRY approach and still using the flexibly of utility classes. 😄
