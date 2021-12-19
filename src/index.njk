@@ -5,64 +5,52 @@ sitemap:
   priority: 0.8
 ---
 
-<header id="hero" class="section flex flex-col justify-center pb-8">
-    <div class="container">
-        <div class="text-center">
+<header id="hero" class="section flex flex-col">
+    {% if navigation.home %}
+    <nav aria-label="quick menu" class="hero-nav py-2 container px-1 md-px-5 flex justify-end items-center">
+        {% for item in navigation.home %}
+            <a href="{{ item.url }}"
+                {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}
+                {% if item.alt %} aria-label="{{ item.alt }}"{% endif %}
+                class="inline-flex items-center py-1 mx-2 md-mx-4 text-reset{{ ' ' if item.classList }}{{ item.classList }}">
+                {% if item.icon %}
+                    {%- set introIcon -%}/src/assets/images/icons/{{ item.icon }}.svg{%- endset -%}
+                    {{ introIcon | svgContents | safe }}
+                {% endif %}
+                <div>{{ item.text }}</div>
+            </a>
+        {% endfor %}
+        <a
+            href="https://github.com/fylgja/fylgja"
+            rel="noopener noreferrer"
+            target="_blank"
+            title="Visit the Fylgja Github repo"
+            aria-label="Visit the Fylgja Github repo"
+            class="ms-4 me-2 btn -icon"
+        >{{ "/src/assets/images/icons/github.svg" | svgContents | safe }}</a>
+        {% include "theme-toggle.njk" %}
+    </nav>
+    {% endif %}
+    <div class="hero-content container my-auto flex flex-col lg-flex-row lg-justify-between items-center">
+        <div class="text-center mb-12 mx-2 md-mx-4">
             <h1 class="inline-block h4 mt-0 mb-2 logo -large">
                 {{ "/src/assets/images/logo.svg" | svgContents | safe }}
-                <span class="block mt-1">The modular highly customizable CSS framework.</span>
+                <span class="block subheading mt-4">The modular highly customizable CSS framework.</span>
             </h1>
-            <div class="h5">
-                <a href="/getting-started/" class="btn -theme px-4">Get started</a>
+            <div class="mt-4">
+                <a href="/getting-started/" class="btn -theme px-4 m-1">Get started</a>
+                <a href="/components/" class="btn -outline px-4 m-1 hidden xs-inline-flex">Components</a>
             </div>
         </div>
-    </div>
-</header>
-
-{% if navigation.intro %}
-<nav aria-label="quick menu" class="hero-nav container pb-8">
-    <div class="card overflow-visible divide-y xs-divide-y-none xs-divide-x xs-flex-row">
-        {% for item in navigation.intro %}
-        <a href="{{ item.url }}"
-            {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}
-            class="card-content xs-w-33 md-w-25 text-reset text-center{{ ' ' if item.classList }}{{ item.classList }}">
-            {% if item.icon %}
-                {%- set introIcon -%}/src/assets/images/icons/{{ item.icon }}.svg{%- endset -%}
-                {{ introIcon | svgContents | safe }}
-            {% endif %}
-            <div class="mt-3"{% if item.alt %} aria-label="{{ item.alt }}"{% endif %}>{{ item.text }}</div>
-        </a>
-        {% endfor %}
-    </div>
-</nav>
-{% endif %}
-
-<section id="intro" class="container py-4 md-py-8 sm-text-center">
-    <h2 class="h1">The experiences you get from using Fylgja</h2>
-    <p class="mb-0">
-        Fylgja is a very flexable CSS framework,<br>
-        it offers the best features from other CSS frameworks, bundled into one framework.<br>
-        Use and extend it with your own CSS or extend your current stack with Fylgja.
-    </p>
-</section>
-
-<section id="usp-modularity" class="usp-section container py-6 md-py-8">
-    <div class="lg-flex">
-        <div class="lg-w-50 mb-4 md-mb-0 md-me-8">
-            <h2>Modularity</h2>
-            <p>Fylgja is build with modularity in mind, import only the parts you need,
-                <br>keep your bundle size and CSS small without using any extra tools.
-            </p>
-        </div>
-        <div class="lg-w-50 xs-flex xs-space-x-4">
-            <div class="code-box mb-4 xs-mb-0 xs-w-50">
+        <div class="code-box-grid">
+            <div class="code-box">
                 <div class="code-box-header">
                     <span class="osx-close"></span>
                     <span class="lang">SCSS</span>
                 </div>
                 {% include "code-sample/scss.njk" %}
             </div>
-            <div class="code-box xs-w-50">
+            <div class="code-box">
                 <div class="code-box-header">
                     <span class="osx-close"></span>
                     <span class="lang">PostCSS Import</span>
@@ -71,74 +59,86 @@ sitemap:
             </div>
         </div>
     </div>
-</section>
+</header>
 
-<div id="usp-points" class="usp-section container py-6 md-py-8 auto-grid">
-    <section class="flex">
-        <div class="avatar -icon-css me-6">
-            {{ "/src/assets/images/icons/css.svg" | svgContents | safe }}
-        </div>
-        <div>
-            <h2>No JavaScript required</h2>
-            <p>Fylgja is CSS only, so you can integrate it in any JS environment,<br>
-                without having to worry it conflicts with something.</p>
-        </div>
-    </section>
-    <section class="flex">
-        <div class="avatar -icon-palette me-6">
-            {{ "/src/assets/images/icons/palette.svg" | svgContents | safe }}
-        </div>
-        <div>
-            <h2>Ease to edit and to add your own style</h2>
-            <p>Use Fylgja as a solid basis to build your own styles with minimal effort,<br>
-                thanks to SCSS and/or CSS Variables and CSS Utilities.</p>
-        </div>
-    </section>
-</div>
-
-<section id="usp-whats-in-the-📦" class="usp-section container text-center py-6 md-py-8">
-    <h2 class="my-6">Combine the power of</h2>
-    <div class="inline-flex flex-wrap items-end justify-center">
-        <div class="w-full sm-w-33 px-4">
-            <h3 class="h4 md-m-0">Native styles</h3>
-        </div>
-        <div class="w-50 sm-w-33 px-4 md-mb-4">
-            <h3 class="h4 md-m-0">CSS Components</h3>
-        </div>
-        <div class="w-50 sm-w-33 px-4">
-            <h3 class="h4 md-m-0">CSS Utilities</h3>
+<section id="features" class="container py-6 md-py-8">
+    <div id="intro" class="py-12">
+        <h2 class="h1">The experiences you get from using Fylgja</h2>
+        <p class="mb-0">
+            Fylgja is a very flexable CSS framework,<br>
+            it offers the best features from other CSS frameworks, bundled into one framework.<br>
+            Use and extend it with your own CSS or extend your current stack with Fylgja.
+        </p>
+    </div>
+    <div class="flex flex-col lg-flex-row items-center lg-items-start justify-between">
+        <ul id="features-list" class="auto-grid w-full lg-w-auto px-0 py-12">
+            {% for item in usps.home %}
+                <li class="flex{{ ' ' if item.classList }}{{ item.classList }}">
+                    {% if item.icon %}
+                        {%- set listIcon -%}/src/assets/images/icons/{{ item.icon }}.svg{%- endset -%}
+                        <div class="avatar me-6 lg-me-10">
+                            {{ listIcon | svgContents | safe }}
+                        </div>
+                    {% endif %}
+                    <div>
+                        <h2 class="h4">{{ item.title }}</h2>
+                        <p>{{ item.content | safe }}</p>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <div id="features-box" class="text-center py-4 xl-py-12">
+            <h3 class="my-6">Combine the power of</h3>
+            <div class="inline-flex flex-wrap items-end justify-center">
+                <div class="w-full sm-w-33 px-4">
+                    <h4 class="md-m-0">Native styles</h4>
+                </div>
+                <div class="w-50 sm-w-33 px-4 md-mb-4">
+                    <h4 class="md-m-0">CSS Components</h4>
+                </div>
+                <div class="w-50 sm-w-33 px-4">
+                    <h4 class="md-m-0">CSS Utilities</h4>
+                </div>
+            </div>
+            <div>{% image "src/assets/images/whatsinthebox.png", "Whats Fylgja all has to offer", "medium" %}</div>
+            <p class="h3 mt-6 mb-0">Into one Framework</p>
         </div>
     </div>
-    <div>{% image "src/assets/images/whatsinthebox.png", "Whats Fylgja all has to offer", "medium" %}</div>
-    <p class="h3 my-6">Into one Framework</p>
 </section>
 
-<div id="usp-points-a11y" class="usp-section container py-6 md-py-8 auto-grid">
-    <section class="flex">
-        <div class="avatar -icon-rtl me-6">
-            {{ "/src/assets/images/icons/format_textdirection_rtl.svg" | svgContents | safe }}
-        </div>
-        <div>
-            <h2>RTL out of the box</h2>
-            <p>Fylgja is made with writing direction in mind,<br>so it works with Languages that use a different
-                direction
-                than LTR.
-            </p>
-        </div>
-    </section>
-    <section class="flex">
-        <div class="avatar -icon-visibility me-6">
-            {{ "/src/assets/images/icons/visibility.svg" | svgContents | safe }}
-        </div>
-        <div>
-            <h2>Web Accessibility in mind</h2>
+{% if collections.componentsFeatured %}
+<section id="collection-featured" class="collection-row py-12 my-4 md-my-8">
+    <div class="container md-py-8">
+        <div class="md-mb-7">
+            <h2 class="mb-1">Our Featured CSS Components</h2>
             <p>
-                Each Fylgja component is built with accessibility in mind,<br>
-                and Encourages the use of the right HTML syntax.
+                Our Featured CSS Components, that really show the full potential of what each Fylgja Component can do.<br>
+                Want more? <a href="/components/">See the full list of Fylgja CSS Components here.</a>
             </p>
         </div>
-    </section>
-</div>
+        <div class="auto-grid">
+            {%- for item in collections.componentsFeatured | sortByOrder -%}
+            <a class="card flex-row md-flex-col" href="{{ item.url }}">
+                <div class="card-media avatar border md-border-0 my-4 ms-4 md-m-0 aspect-ratio">
+                    {% if item.data.preview %}
+                    {% set preview %}{{ meta.componentsMedia }}{{ item.data.preview }}{% endset %}
+                    {% image preview, "", "medium" %}
+                    {% endif %}
+                </div>
+                <div class="card-content">
+                    <h3 class="h5 my-0">{{ item.data.title }}</h3>
+                    {% if item.data.description %}
+                    <p class="text-small">{{ item.data.description | truncate(strLimit) }}</p>
+                    {% else %}
+                    <p class="text-small">{{ item.templateContent | truncate(strLimit) }}</p>
+                    {% endif %}
+                </div>
+            </a>
+            {%- endfor -%}
+        </div>
+    </div>
+</section>
+{% endif %}
 
 {% if support %}
 <section id="contact" class="flex flex-col justify-center">
@@ -167,40 +167,6 @@ sitemap:
             </li>
             {% endfor %}
         </ul>
-    </div>
-</section>
-{% endif %}
-
-{% if collections.componentsFeatured %}
-<section id="collection-featured" class="collection-row py-4 my-4 md-my-8">
-    <div class="container">
-        <div class="md-mb-7">
-            <h2 class="mb-1">Our Featured CSS Components</h2>
-            <p>
-                Our Featured CSS Components, that really show the full potential of what each Fylgja Component can do.<br>
-                Want more? <a href="/components/">See the full list of Fylgja CSS Components here.</a>
-            </p>
-        </div>
-        <div class="auto-grid">
-            {%- for item in collections.componentsFeatured | sortByOrder -%}
-            <a class="card flex-row md-flex-col" href="{{ item.url }}">
-                <div class="card-media avatar border md-border-0 my-4 ms-4 md-m-0 aspect-ratio">
-                    {% if item.data.preview %}
-                    {% set preview %}{{ meta.componentsMedia }}{{ item.data.preview }}{% endset %}
-                    {% image preview, "", "medium" %}
-                    {% endif %}
-                </div>
-                <div class="card-content">
-                    <h3 class="h5 my-0">{{ item.data.title }}</h3>
-                    {% if item.data.description %}
-                    <p class="text-small">{{ item.data.description | truncate(strLimit) }}</p>
-                    {% else %}
-                    <p class="text-small">{{ item.templateContent | truncate(strLimit) }}</p>
-                    {% endif %}
-                </div>
-            </a>
-            {%- endfor -%}
-        </div>
     </div>
 </section>
 {% endif %}

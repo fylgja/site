@@ -72,29 +72,28 @@ module.exports = {
             external: true,
         },
     ],
-    intro: [
+    home: [
         {
-            icon: "download",
-            text: "Download",
-            alt: "Download Fylgja",
-            url: "/download/",
+            text: "Get Started",
+            alt: "Get started with Fylgja",
+            url: "/getting-started/",
+            classList: "hidden xs-inline-flex",
         },
         {
-            icon: "widgets",
-            text: "Components",
-            url: "/components/",
-        },
-        {
-            icon: "read_more",
             text: "Guides",
+            alt: "View all of Fylgja's Guides",
             url: "/guides/",
         },
         {
-            icon: "github",
-            text: "View on Github",
-            url: githubUrl,
+            text: "Components",
+            alt: "View all of Fylgja's Components, Utilities and Design Tokens",
+            url: "/components/",
+        },
+        {
+            text: "Try in browser",
+            url: "https://stackblitz.com/edit/fylgja-playground",
             external: true,
-            classList: "hidden md-block",
+            classList: "hidden md-inline-flex",
         },
     ],
 };
