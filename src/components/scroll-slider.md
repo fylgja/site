@@ -4,6 +4,7 @@ description: "This CSS slider component allows you to make sliders with ease,
 and has no requirements to any Javascript."
 npm: "@fylgja/scroll-slider"
 git: "components/scroll-slider"
+codepen: "bGoRbJW"
 tags: ["layouts"]
 preview: "scroll-slider.png"
 ---
@@ -58,6 +59,7 @@ If you also want to reserve the scroll gap, set the block gap to whatever your w
     .scroll-slider.-full-slide {
         --scroll-size: 100%;
         --gap-inline: 0;
+        --gap-block: 0.5em;
     }
 </style>
 <div class="scroll-slider -full-slide">
@@ -109,10 +111,10 @@ and remove the hash from your url.
 </div>
 <div class="pagination my-1" aria-label="pagination">
     <a href="#scroll-item-1" class="pagination-link" onclick="scrollToElement()">
-        <span><span class="aria-hidden">Go to slide </span>1</span>
+        <span><span class="aria-only">Go to slide </span>1</span>
     </a>
     <a href="#scroll-item-2" class="pagination-link" onclick="scrollToElement()">
-        <span><span class="aria-hidden">Go to slide </span>2</span>
+        <span><span class="aria-only">Go to slide </span>2</span>
     </a>
 </div>
 <script>
