@@ -11,7 +11,7 @@ style: ["css/index.css", "css/codebox.css"]
             <article>{{ content | safe }}</article>
         </main>
         {% include "footer.njk" %}
-        <svg class="aria-only" width="0" height="0">
+        <svg aria-hidden="true" class="aria-only" width="0" height="0">
             <defs>
                 <linearGradient id="svg-gradient-logo" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stop-color="var(--color-alt)"/>

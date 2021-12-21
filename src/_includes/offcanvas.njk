@@ -79,7 +79,13 @@
                     {% endmenuItem %}
                 {% endfor %}
                 <div class="ms-auto">
-                    {% include "theme-toggle.njk" %}
+                    <button
+                        type="button"
+                        title="Toggle color scheme"
+                        class="btn -icon"
+                        data-toggle-color-scheme>
+                        {{ '/src/assets/images/color-scheme-offcanvas.svg' | svgContents | safe }}
+                    </button>
                 </div>
             </nav>
         </div>
