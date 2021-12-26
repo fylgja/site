@@ -62,7 +62,7 @@ sitemap:
 </header>
 
 <section id="features" class="container py-6 md-py-8">
-    <div id="intro" class="py-12">
+    <div id="intro" class="pt-12 pb-6">
         <h2 class="h1">The experiences you get from using Fylgja</h2>
         <p class="mb-0">
             Fylgja is a very flexable CSS framework,<br>
@@ -71,17 +71,17 @@ sitemap:
         </p>
     </div>
     <div class="flex flex-col lg-flex-row items-center lg-items-start justify-between">
-        <ul id="features-list" class="auto-grid w-full lg-w-auto px-0 py-12">
+        <ul id="features-list" class="auto-grid w-full lg-w-auto lg-me-4 xl-me-8 px-0 py-12">
             {% for item in usps.home %}
                 <li class="flex{{ ' ' if item.classList }}{{ item.classList }}">
                     {% if item.icon %}
                         {%- set listIcon -%}/src/assets/images/icons/{{ item.icon }}.svg{%- endset -%}
-                        <div class="avatar me-6 lg-me-10">
+                        <div class="avatar me-6 lg-me-10" style="{{ item.iconStyle }}">
                             {{ listIcon | svgContents | safe }}
                         </div>
                     {% endif %}
                     <div>
-                        <h2 class="h4">{{ item.title }}</h2>
+                        <h3>{{ item.title }}</h3>
                         <p>{{ item.content | safe }}</p>
                     </div>
                 </li>

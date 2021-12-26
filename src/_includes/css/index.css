@@ -25,11 +25,6 @@
     --hero-img: var(--gradient-hero-img);
 }
 
-.hero-nav {
-    --container-size: 2200px;
-    font-weight: 375;
-}
-
 .hero-content {
     --container-padding-y: 4rem;
     color: var(--color-text);
@@ -73,34 +68,30 @@
     --gap: 1em 1.5em;
 }
 
-#features-list li:nth-child(1) {
-    --avatar-radius: 71% 29% 64% 36% / 51% 60% 40% 49%;
-    --avatar-bg: #5c6bc0;
+#features-list .avatar {
     --avatar-color: #fff;
+    background-image: linear-gradient(
+        45deg,
+        var(--color-theme),
+        var(--avatar-bg)
+    );
+    box-shadow: var(--elevation-z3);
 }
 
-#features-list li:nth-child(2) {
-    --avatar-radius: 30% 70% 30% 70% / 56% 22% 78% 44%;
-    --avatar-bg: #f43059;
-    --avatar-color: #fff;
-}
-
-#features-list li:nth-child(3) {
-    --avatar-radius: 64% 36% 64% 36% / 56% 22% 78% 44%;
-    --avatar-bg: #609926;
-    --avatar-color: #fff;
-}
-
-#features-list li:nth-child(4) {
-    --avatar-radius: 64% 36% 64% 36% / 27% 60% 40% 73%;
-    --avatar-bg: #1bb6f6;
-    --avatar-color: #fff;
-}
-
-#features-list li:nth-child(5) {
+#features-list li {
     --avatar-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    --avatar-bg: #f7df1e;
-    --avatar-color: #000;
+}
+
+#features-list li:nth-child(4n + 1) {
+    --avatar-radius: 71% 29% 64% 36% / 51% 60% 40% 49%;
+}
+
+#features-list li:nth-child(4n + 2) {
+    --avatar-radius: 30% 70% 30% 70% / 56% 22% 78% 44%;
+}
+
+#features-list li:nth-child(4n + 3) {
+    --avatar-radius: 64% 36% 64% 36% / 27% 60% 40% 73%;
 }
 
 #features-box {
@@ -194,6 +185,10 @@
 @media (min-width: 1024px) {
     .collection-row {
         --cols: repeat(4, 1fr);
+    }
+
+    #features-list {
+        --cols-size: 380px;
     }
 
     #collection-featured {
