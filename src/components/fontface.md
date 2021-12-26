@@ -4,7 +4,7 @@ description: "Add fonts with ease, via the font-face mixin"
 npm: "@fylgja/fontface"
 git: "fylgja-fontface"
 gitDomain: "https://github.com/fylgja/"
-tags: ["plugins"]
+tags: ["typography"]
 preview: "font-face.png"
 order: 21
 ---

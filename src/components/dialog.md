@@ -7,7 +7,7 @@ requiresJs: true
 npm: "@fylgja/dialog"
 git: "components/dialog"
 codepen: "rNmXjRo"
-tags: "nativeElements"
+tags: ["elements", "nativeElements"]
 preview: "dialog.png"
 featured: true
 sitemap:

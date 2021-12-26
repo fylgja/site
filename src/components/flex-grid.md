@@ -4,7 +4,7 @@ description: "Create a complete grid using flexbox, and only set the columns you
 npm: "@fylgja/flex-grid"
 git: "fylgja-flex-grid"
 gitDomain: "https://github.com/fylgja/"
-tags: ["plugins"]
+tags: ["layouts"]
 preview: "flex-grid.png"
 order: 20
 ---

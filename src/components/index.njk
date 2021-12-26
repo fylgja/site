@@ -20,7 +20,14 @@ style: "
     transition: box-shadow 0.2s ease-out;
 }
 
-.card:hover {
+.card.-draft {
+    --card-bg: transparent;
+    --card-elevation: none;
+    --card-border: 1px solid rgba(0, 0, 0, 0.3);
+    opacity: 0.8;
+}
+
+a.card:hover {
     --card-elevation: var(--elevation-z4);
 }
 
@@ -83,7 +90,11 @@ style: "
             </div>
             <div class="scroll-slider hide-scrollbar">
                 {%- for item in items.data | sortByOrder -%}
+                {%- if item.data.draft -%}
+                <div class="card -draft">
+                {% else %}
                 <a class="card" href="{{ item.url }}">
+                {% endif %}
                     <div class="card-media aspect-ratio">
                         {% if item.data.preview %}
                             {% set preview %}{{ meta.componentsMedia }}{{ item.data.preview }}{% endset %}
@@ -98,7 +109,11 @@ style: "
                             <p class="text-small">{{ item.templateContent | truncate(120) }}</p>
                         {% endif %}
                     </div>
+                {%- if item.data.draft -%}
+                </div>
+                {% else %}
                 </a>
+                {% endif %}
                 {%- endfor -%}
             </div>
         </section>

@@ -1,14 +1,14 @@
 ---
 title: "Theme"
-description: "Helper component for adding theme specific variables to multiple components."
+description: "Helper component for adding theme specific SCSS variables to multiple components."
 npm: "@fylgja/theme"
 git: "components/theme"
-tags: ["config", "utils"]
+tags: ["config", "addons"]
 preview: "theme.png"
 order: 11
 ---
 
-Helper component for adding theme specific variables to multiple components.
+Helper component for adding theme specific SCSS variables to multiple components.
 
 ## Installation
 

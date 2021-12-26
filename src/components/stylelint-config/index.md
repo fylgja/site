@@ -4,7 +4,7 @@ description: "A sharable stylelint config object that enforces Fylgja's CSS rule
 npm: "@fylgja/stylelint-config"
 git: "stylelint-config"
 gitDomain: "https://github.com/fylgja/"
-tags: ["config", "plugins"]
+tags: ["addons"]
 preview: "stylelint.png"
 order: 11
 ---

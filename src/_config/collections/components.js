@@ -7,6 +7,18 @@ const componentsGroup = (collection) => {
             data: collection.getFilteredByTag("nativeElements"),
         },
         {
+            title: "Utilities",
+            description:
+                "Fylgja Utilities that make it easier to apply styles and spacing, using CSS classes directly in your HTML",
+            data: collection.getFilteredByTag("utils"),
+        },
+        {
+            title: "Props (Design Tokens)",
+            description:
+                "Fylgja Props (Design Tokens) that make it easier to apply styles and spacing, using CSS variables",
+            data: collection.getFilteredByTag("tokens"),
+        },
+        {
             title: "Layouts",
             description:
                 "Fylgja Components that make it easier to apply layout styles",
@@ -37,16 +49,10 @@ const componentsGroup = (collection) => {
             data: collection.getFilteredByTag("elements"),
         },
         {
-            title: "Utilities",
+            title: "Add-ons",
             description:
-                "Fylgja Utilities that make it easier to apply styles and spacing",
-            data: collection.getFilteredByTag("utils"),
-        },
-        {
-            title: "Plugins",
-            description:
-                "Fylgja Plugins that improve on the core components or add extra functionally",
-            data: collection.getFilteredByTag("plugins"),
+                "Fylgja Plugins that improve or add extra functionality to Fylgja or other tools",
+            data: collection.getFilteredByTag("addons"),
         },
     ];
 
