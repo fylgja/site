@@ -1,12 +1,14 @@
 <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
   <style>
     #sun-offcanvas {
+      transform: scale(var(--scale, .5));
       transition: transform .5s cubic-bezier(.25, 0, .2, 1);
       transform-origin: center;
     }
 
     #sun-beams-offcanvas {
-      --opacity-dur: .15s;
+      --opacity-dur: .5s;
+      transform: rotate(.25turn);
       transform-origin: center;
       transition: transform .5s cubic-bezier(.5, 1.5, .75, 1.25), opacity var(--opacity-dur) cubic-bezier(.25, 0, .3, 1);
     }
@@ -15,29 +17,34 @@
       transition: transform .5s cubic-bezier(0, 0, .3, 1);
     }
 
-    [data-theme=light] #sun-offcanvas {
-      transform: scale(.5)
+    [data-theme="dark"] {
+      --scale: 1;
     }
 
-    [data-theme=light] #sun-beams-offcanvas {
-      --opacity-dur: .5s;
-      transform: rotate(.25turn);
-    }
-
-    [data-theme=dark] #moon-offcanvas>circle {
+    [data-theme="dark"] #moon-offcanvas>circle {
       transform: translate(-20px);
     }
 
-    [data-theme=dark] #sun-beams-offcanvas {
+    [data-theme="dark"] #sun-beams-offcanvas {
       opacity: 0
     }
 
     @media (prefers-color-scheme: dark) {
+      :root:not([data-theme]) {
+        --scale: 1;
+      }
+
       :root:not([data-theme]) #moon-offcanvas>circle {
         transform: translate(-20px);
       }
 
+
+      :root:not([data-theme]) #sun-offcanvas {
+        transform: none;
+      }
+
       :root:not([data-theme]) #sun-beams-offcanvas {
+        --opacity-dur: .15s;
         opacity: 0
       }
     }
