@@ -3,7 +3,7 @@ title: "Mq"
 description: "Helper component for adding media query specific variables to multiple components."
 npm: "@fylgja/mq"
 git: "components/mq"
-tags: ["config", "utils"]
+tags: ["config", "utils", "tokens"]
 preview: "theme.png"
 order: 11
 ---
