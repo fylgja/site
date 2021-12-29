@@ -7,6 +7,7 @@ style: ["css/index.css", "css/codebox.css"]
 <html lang="en">
     {% include "head.njk" %}
     <body class="flex flex-col min-h-screen">
+        {{ '/src/assets/images/color-scheme-style.svg' | svgContents | safe }}
         <main id="page-main" class="flex-grow mb-8">
             <article>{{ content | safe }}</article>
         </main>
