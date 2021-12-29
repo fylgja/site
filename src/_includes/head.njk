@@ -79,6 +79,9 @@
     <link rel="stylesheet" href="{{ '/css/main.css' | assetUrl }}">
     <link rel="stylesheet" href="{{ '/css/print.css' | assetUrl }}" media="print">
     <link rel="stylesheet" href="{{ '/css/code-syntax.css' | assetUrl }}" media="print" onload="this.media='all'">
+    {% if search %}
+        <link rel="stylesheet" href="{{ '/css/search.css' | assetUrl }}" media="print" onload="this.media='all'">
+    {%- endif -%}
     {%- if css -%}
         {% for name, item in css %}
             <link rel="stylesheet" href="{{ item | assetUrl }}">
@@ -101,7 +104,7 @@
     <script src="{{ '/js/main.js' | assetUrl }}" defer></script>
 
     {% if search %}
-        <script src="{{ '/js/docsearch.js' | assetUrl }}" defer></script>
+        <script src="{{ '/js/search.js' | assetUrl }}" defer></script>
     {%- endif -%}
 
     <script>

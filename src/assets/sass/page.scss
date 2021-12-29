@@ -1,5 +1,8 @@
+// prettier-ignore
 @use "@fylgja/form" with (
-    $form-fields: (search)
+    $form-fields: (
+        search,
+    )
 );
 @use "@fylgja/table";
 @use "@fylgja/details";
@@ -9,5 +12,4 @@
 @use "./docs/faq-panel";
 @use "./docs/header-anchor";
 @use "./docs/layout";
-@use "./docs/search";
 @use "./badge";

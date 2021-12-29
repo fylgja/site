@@ -5,11 +5,11 @@
             {{ "/src/assets/images/logo.svg" | svgContents | safe }}
             <div class="aria-only">Go back to the Fylgja Homepage</div>
         </a>
-        {% include "search.njk" %}
+        <div id="docsearch"></div>
         {% if navigation.main %}
             <nav id="main-menu"
                 aria-label="Main menu"
-                class="menu -row hidden md-inline-flex items-center flex-shrink ms-6 space-x-2">
+                class="menu -row hidden md-inline-flex items-center flex-shrink ms-6 me-4 space-x-2">
                 {% for item in navigation.main %}
                     {% if item.icon %}
                         {% menuItem item.url, "btn -icon", page.url, item.external %}

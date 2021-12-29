@@ -28,6 +28,7 @@
     --footer-bg: #{color.change($color-theme, $lightness: 16%)};
     --scrollbar-thumb-color: #{color.change(#fff, $alpha: 0.5)};
     --border-color: #{color.change(#fff, $alpha: 0.2)};
+    --form-focus-color: #fff;
 
     .btn.-theme {
         --btn-focus-bg: #{color.change($color-theme, $lightness: 26%)};
