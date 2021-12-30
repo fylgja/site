@@ -10,6 +10,10 @@ module.exports = {
             url: "/getting-started/",
         },
         {
+            text: "Guides",
+            url: "/guides/",
+        },
+        {
             text: "Components",
             url: "/components/",
         },

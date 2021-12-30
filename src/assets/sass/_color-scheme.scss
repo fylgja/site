@@ -1,9 +1,18 @@
 @use "sass:color";
 @use "@fylgja/theme" as *;
 
+$theme-dark: color.change($color-theme, $lightness: 16%);
+$theme-dark-alpha: color.change($theme-dark, $alpha: 0.85);
+$theme-darker: color.change($color-theme, $lightness: 12%);
+$theme-darkest: color.change($color-theme, $lightness: 8%);
+
+$white-softest: color.change(#fff, $alpha: 0.1);
+$white-softer: color.change(#fff, $alpha: 0.2);
+$white-soft: color.change(#fff, $alpha: 0.5);
+
 @mixin dark-mode {
     --color-scheme: dark;
-    --color-bg: #{color.change($color-theme, $lightness: 8%)};
+    --color-bg: #{$theme-darkest};
     --color-text: #fff;
     --color-text-alt: #{color.change(#fff, $alpha: 0.8)};
     --color-text-muted: #{color.change(#fff, $alpha: 0.67)};
@@ -11,24 +20,24 @@
     --link-color: #{color.change($color-theme, $lightness: 75%)};
     --link-color-focus: currentColor;
     --selection-color: #{color.change($color-theme, $lightness: 75%)};
-    --code-bg: #{color.change($color-theme, $lightness: 16%)};
+    --code-bg: #{$theme-dark};
     --code-color: #{$color-on-theme};
     --badge-bg: #{color.change($color-theme, $lightness: 24%)};
     --badge-color: #{$color-on-theme};
-    --card-bg: #{color.change($color-theme, $lightness: 16%)};
+    --card-bg: #{$theme-dark};
     --card-color: #{$color-on-theme};
-    --details-stroke: #{color.change($color-theme, $lightness: 16%)};
-    --details-bg: #{color.change($color-theme, $lightness: 12%)};
-    --dialog-bg: #{color.change($color-theme, $lightness: 16%)};
-    --btn-focus-bg: #{color.change(#fff, $alpha: 0.1)};
-    --btn-active-bg: #{color.change(#fff, $alpha: 0.2)};
-    --divide-color: #{color.change(#fff, $alpha: 0.2)};
-    --menu-item-focus-bg: #{color.change(#fff, $alpha: 0.1)};
+    --details-stroke: #{$theme-dark};
+    --details-bg: #{$theme-darker};
+    --dialog-bg: #{$theme-dark};
+    --btn-focus-bg: #{$white-softest};
+    --btn-active-bg: #{$white-softer};
+    --divide-color: #{$white-softer};
+    --menu-item-focus-bg: #{$white-softest};
     --logo-color: #fff;
-    --page-header-bg: #{color.change($color-theme, $lightness: 16%, $alpha: 0.8)};
-    --footer-bg: #{color.change($color-theme, $lightness: 16%)};
-    --scrollbar-thumb-color: #{color.change(#fff, $alpha: 0.5)};
-    --border-color: #{color.change(#fff, $alpha: 0.2)};
+    --page-header-bg: #{$theme-dark-alpha};
+    --footer-bg: #{$theme-dark};
+    --scrollbar-thumb-color: #{$white-soft};
+    --border-color: #{$white-softer};
     --form-focus-color: #fff;
 
     .btn.-theme {
