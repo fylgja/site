@@ -62,11 +62,12 @@
     padding: 0 1em;
 }
 
-.DocSearch-Search-Icon {
+.DocSearch .DocSearch-Search-Icon {
     stroke-width: 1.6;
 }
 
 .DocSearch-Button-Keys {
+    display: inline-flex;
     margin-inline-start: 1em;
 
     > * + * {
@@ -90,14 +91,18 @@
     min-height: var(--btn-size);
 }
 
-@media ($md) {
+@media ($lg) {
+    #docsearch {
+        width: 14em;
+    }
+
     .DocSearch-Button {
         --btn-stroke: hsl(0deg 0% 0% / 20%);
         --btn-color: hsl(0deg 0% 0% / 60%);
         --btn-focus-bg: var(--color-bg);
         --btn-font-weight: 400;
-        min-width: 12em;
         justify-content: space-between;
+        width: 100%;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -113,7 +118,7 @@
     }
 }
 
-@media ($md-max) {
+@media ($lg-max) {
     .DocSearch-Button {
         --btn-padding: 1px;
         --btn-size: #{$btn-icon-size};

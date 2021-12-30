@@ -2,8 +2,8 @@ module.exports = function menuItem(
     content,
     url,
     className = "",
-    pageUrl,
-    isExternal = false
+    isExternal = false,
+    pageUrl = ""
 ) {
     const isActive = pageUrl === url;
     const current = isActive ? 'aria-current="page"' : "";

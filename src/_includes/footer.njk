@@ -6,7 +6,7 @@
                 <ul class="list-style -none space-y-3 lg-space-y-2">
                     {% for item in navigation.about %}
                         <li>
-                            {% menuItem item.url, "", page.url, item.external %}
+                            {% menuItem item.url, "", item.external, page.url %}
                                 {{ item.text }}
                             {% endmenuItem %}
                         </li>
@@ -20,7 +20,7 @@
                 <ul class="list-style -none space-y-3 lg-space-y-2">
                     {% for item in navigation.support %}
                         <li>
-                            {% menuItem item.url, "", page.url, item.external %}
+                            {% menuItem item.url, "", item.external, page.url %}
                                 {{ item.text }}
                             {% endmenuItem %}
                         </li>
@@ -33,7 +33,7 @@
             <ul class="list-style -none space-y-3 lg-space-y-2">
                 {% for item in collections.features | sortByOrder %}
                     <li>
-                        {% menuItem item.url, "", page.url, item.external %}
+                        {% menuItem item.url, "", item.external, page.url %}
                             {{ item.data.title }}
                         {% endmenuItem %}
                     </li>

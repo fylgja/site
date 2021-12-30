@@ -90,16 +90,16 @@
 
     {%- set cssinline -%}
         {%- if (style | isObject ) -%}
-            {% for i in style %}
-                {% include i %}
-            {% endfor %}
+            {% for i in style %}{% include i %}{% endfor %}
         {%- else -%}
             {{ style }}
         {%- endif -%}
     {%- endset -%}
-    {%- if cssinline -%}
-        <style>{{ cssinline | cssmin | safe }}</style>
-    {%- endif -%}
+    {%- set colorScheme -%}{% include "css/color-scheme.css" %}{%- endset -%}
+    <style>
+        {{ colorScheme | cssmin | safe }}
+        {%- if cssinline -%}{{ cssinline | cssmin | safe }}{%- endif -%}
+    </style>
 
     <script src="{{ '/js/main.js' | assetUrl }}" defer></script>
 

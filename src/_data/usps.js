@@ -5,14 +5,14 @@ module.exports = {
             content:
                 "Fylgja is build with modularity in mind, import only the parts you need,<br>keep your bundle size and CSS small without using any extra tools, like PurgeCSS.",
             icon: "widgets",
-            iconStyle: "--avatar-bg: var(--color-theme);",
+            iconStyle: "--avatar-bg: #f57c00;",
         },
         {
             title: "Ease to edit and to add your own style",
             content:
                 "Use Fylgja as a solid basis to build your own styles with minimal effort,<br>thanks to SCSS and/or CSS Variables",
             icon: "palette",
-            iconStyle: "--avatar-bg: #f57c00;",
+            iconStyle: "",
         },
         {
             title: "RTL out of the box",

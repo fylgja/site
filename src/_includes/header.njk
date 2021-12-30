@@ -1,4 +1,4 @@
-{{ '/src/assets/images/color-scheme-style.svg' | svgContents | safe }}
+{{ '/src/assets/images/color-scheme-mask.svg' | svgContents | safe }}
 <a href="#page-main" class="skip-link">Go to main content</a>
 <header class="page-header sticky top-0">
     <div class="flex items-center py-2 md-py-4 container">
@@ -6,34 +6,36 @@
             {{ "/src/assets/images/logo.svg" | svgContents | safe }}
             <div class="aria-only">Go back to the Fylgja Homepage</div>
         </a>
-        <div id="docsearch"></div>
+
         {% if navigation.main %}
             <nav id="main-menu"
                 aria-label="Main menu"
                 class="menu -row hidden md-inline-flex items-center flex-shrink ms-6 me-4 space-x-2">
                 {% for item in navigation.main %}
-                    {% if item.icon %}
-                        {% menuItem item.url, "btn -icon", page.url, item.external %}
-                            <svg width="22" height="22" fill="currentColor">
-                                <title>{{ item.text }}</title>
-                                <use href="{{ '/images/socials.svg' | assetUrl }}#{{ item.icon }}" />
-                            </svg>
-                        {% endmenuItem %}
-                    {% else %}
-                        {% menuItem item.url, "", page.url, item.external %}
-                            <span>{{ item.text }}</span>
-                        {% endmenuItem %}
-                    {% endif %}
+                    {% menuItem item.url, "", item.external, page.url %}
+                        {{ item.text }}
+                    {% endmenuItem %}
                 {% endfor %}
-                {% include "theme-toggle.njk" %}
             </nav>
         {% endif %}
-        <button id="show-offcanvas-menu" type="button" class="btn -icon md-hidden ms-2">
-            <svg width="24" height="24" fill="currentColor">
-                <title>Open menu</title>
-                <use href="{{ '/images/sprite.svg' | assetUrl }}#menu" />
-            </svg>
-        </button>
+        <div class="icons inline-flex ms-4">
+            <div id="docsearch"></div>
+            <div class="hidden xs-flex space-x-2 ms-2 md-space-x-4 md-ms-4 lg-ms-8">
+                {% menuItem "https://github.com/fylgja/fylgja", "btn -icon", true %}
+                    <svg width="24" height="24" fill="currentColor">
+                        <title>Visit the Fylgja Github repo</title>
+                        <use href="{{ '/images/socials.svg' | assetUrl }}#github" />
+                    </svg>
+                {% endmenuItem %}
+                {% include "theme-toggle.njk" %}
+            </div>
+            <button id="show-offcanvas-menu" type="button" class="offcanvas-menu-icon btn -icon md-hidden ms-4">
+                <svg width="24" height="24" fill="currentColor">
+                    <title>Open menu</title>
+                    <use href="{{ '/images/sprite.svg' | assetUrl }}#menu" />
+                </svg>
+            </button>
+        </div>
     </div>
 </header>
 {% include "offcanvas.njk" %}

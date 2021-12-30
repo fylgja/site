@@ -13,12 +13,6 @@ module.exports = {
             text: "Components",
             url: "/components/",
         },
-        {
-            icon: "github",
-            text: "View on Github",
-            url: githubUrl,
-            external: true,
-        },
     ],
     about: [
         {

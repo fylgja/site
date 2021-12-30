@@ -16,7 +16,7 @@
                 <ul class="menu">
                     {%- for item in collections.started | sortByOrder -%}
                     <li>
-                        {% menuItem item.url, "", page.url, item.external %}
+                        {% menuItem item.url, "", item.external, page.url %}
                             {{ item.data.title }}
                         {% endmenuItem %}
                     </li>
@@ -38,7 +38,7 @@
                                             {%- for item in items.data | sortByName -%}
                                                 {% if not item.data.altlink %}
                                                 <li>
-                                                    {% menuItem item.url, "", page.url, item.external %}
+                                                    {% menuItem item.url, "", item.external, page.url %}
                                                         {{ item.data.title }}
                                                     {% endmenuItem %}
                                                 </li>
@@ -58,7 +58,7 @@
                         <ul class="menu">
                             {%- for item in collections.features | sortByOrder -%}
                             <li class="text-small">
-                                {% menuItem item.url, "", page.url, item.external %}
+                                {% menuItem item.url, "", item.external, page.url %}
                                     {{ item.data.title }}
                                 {% endmenuItem %}
                             </li>

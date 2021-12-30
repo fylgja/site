@@ -25,6 +25,7 @@
     --divide-color: #{color.change(#fff, $alpha: 0.2)};
     --menu-item-focus-bg: #{color.change(#fff, $alpha: 0.1)};
     --logo-color: #fff;
+    --page-header-bg: #{color.change($color-theme, $lightness: 16%, $alpha: 0.8)};
     --footer-bg: #{color.change($color-theme, $lightness: 16%)};
     --scrollbar-thumb-color: #{color.change(#fff, $alpha: 0.5)};
     --border-color: #{color.change(#fff, $alpha: 0.2)};

@@ -69,7 +69,8 @@
 }
 
 #features-list .avatar {
-    --avatar-color: #fff;
+    --avatar-bg: var(--color-theme);
+    --avatar-color: var(--color-on-theme);
     position: relative;
     overflow: unset;
 }
