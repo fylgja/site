@@ -7,7 +7,7 @@ sitemap:
 
 <header id="hero" class="section flex flex-col">
     {% if navigation.home %}
-    <nav aria-label="quick menu" class="hero-nav py-2 container px-2 md-px-5 flex justify-end items-center">
+    <nav aria-label="quick menu" class="hero-nav container p-2 md-py-4 md-px-5 flex justify-end items-center">
         {% for item in navigation.home %}
             <a href="{{ item.url }}"
                 {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}

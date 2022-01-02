@@ -2,7 +2,7 @@
 @use "@fylgja/theme" as *;
 
 $theme-dark: color.change($color-theme, $lightness: 16%);
-$theme-dark-alpha: color.change($theme-dark, $alpha: 0.85);
+$theme-dark-alpha: color.change($theme-dark, $alpha: 0.7);
 $theme-darker: color.change($color-theme, $lightness: 12%);
 $theme-darkest: color.change($color-theme, $lightness: 8%);
 
