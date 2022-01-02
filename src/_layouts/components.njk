@@ -43,7 +43,8 @@ css: { page: "/css/page.css" }
                                 <strong class="block mx-2 mb-2">{{ items.title }}</strong>
                                 <ul class="menu">
                                     {%- for item in items.data | sortByName -%}
-                                        {% if not item.data.altlink %}
+                                        {% if (item.data.altlink) or (item.data.draft) %}
+                                        {%- else -%}
                                             <li>
                                                 <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page" class="is-active"{% endif %}
                                                 >{{ item.data.title }}</a>
