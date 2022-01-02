@@ -49,9 +49,9 @@ const componentsGroup = (collection) => {
             data: collection.getFilteredByTag("elements"),
         },
         {
-            title: "Add-ons",
+            title: "Add-ons and Helpers",
             description:
-                "Fylgja Plugins that improve or add extra functionality to Fylgja or other tools",
+                "Fylgja Plugins that improve or add extra functionality to Fylgja and/or other tools",
             data: collection.getFilteredByTag("addons"),
         },
     ];
