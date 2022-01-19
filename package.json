@@ -71,7 +71,7 @@
     "rollup": "^2.58.0",
     "rollup-plugin-terser": "^7.0.2",
     "sass": "^1.49.0",
-    "slugify": "^1.6.1",
+    "slugify": "^1.6.5",
     "stylelint": "^14.1.0"
   }
 }
