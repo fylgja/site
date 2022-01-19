@@ -61,7 +61,7 @@
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.3.0",
     "gulp-postcss": "^9.0.1",
-    "gulp-sass": "^5.0.0",
+    "gulp-sass": "^5.1.0",
     "html-minifier": "^4.0.0",
     "markdown-it-anchor": "^8.4.1",
     "markdown-it-external-anchor": "^1.0.0",
