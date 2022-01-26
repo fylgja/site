@@ -1,5 +1,9 @@
 @use "@fylgja/print";
 
+// @use "@fylgja/print" with (
+//     $enable-print-mq: false
+// );
+
 .page-header,
 .page-footer {
     display: none;
