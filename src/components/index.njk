@@ -1,5 +1,5 @@
 ---
-title: "Components"
+title: "Fylgja Components"
 description: "All Fylgja components and plugins in one swipe away"
 permalink: "/{{ page.fileSlug }}/"
 layout: "components-overview"
@@ -14,7 +14,7 @@ style: "
 .card {
     --aspect-ratio: 4/3;
     --aspect-img: contain;
-    --card-elevation: var(--elevation-z1);
+    --card-elevation: var(--shadow-2);
     --scroll-size: 90%;
     max-width: 15em;
     transition: box-shadow 0.2s ease-out;
@@ -28,7 +28,7 @@ style: "
 }
 
 a.card:hover {
-    --card-elevation: var(--elevation-z4);
+    --card-elevation: var(--shadow-4);
 }
 
 #components-featured .card {
@@ -39,6 +39,7 @@ a.card:hover {
     .scroll-slider {
         --gap-inline: clamp(1.25rem, 5vw, 8rem);
         --gap-block: 2rem;
+        --item-gap: 0.8rem;
     }
 
     .scroll-title {

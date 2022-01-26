@@ -1,8 +1,8 @@
 ---
-title: "Z Index"
+title: "shadow"
 description: "Coming Soon"
 # npm: "@fylgja/text"
-git: "components/z-index"
+git: "components/shadow"
 tags: ["tokens"]
 preview: "theme.png"
 draft: true
