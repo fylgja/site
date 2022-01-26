@@ -14,7 +14,7 @@ const badgeNpm = async (npmUrl) => {
 
 const badgeCodepen = (id) => {
     const url = `https://codepen.io/Fylgja/details/${id}`;
-    const text = 'Try out<span class="aria-only"> on Codepen</span>';
+    const text = 'View demo<span class="aria-only"> on Codepen</span>';
     const icon = `<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M21 9v6M3 15V9M12 21v-6M12 3v6M12 15 3 9l9-6 9 6-9 6Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="m12 21-9-6 9-6 9 6-9 6Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
     return `<a href="${url}" target="_blank" rel="noopener noreferrer" title="View demo on Codepen" class="badge-addon -codepen"><span class="badge -icon">${icon}</span><span class="badge">${text}</span></a>`;
 };
