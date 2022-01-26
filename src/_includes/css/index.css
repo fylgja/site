@@ -4,12 +4,12 @@
         linear-gradient(
             190deg,
             hsl(212deg 80% var(--hero-l, 80%)) 0%,
-            hsl(0deg 0% 0% / 0%) 40%
+            hsl(212deg 80% var(--hero-l, 80%) / 0%) 40%
         ),
         linear-gradient(
             170deg,
             hsl(299deg 68% var(--hero-l, 80%)) 0%,
-            hsl(0deg 0% 0% / 0%) 40%
+            hsl(299deg 68% var(--hero-l, 80%) / 0%) 40%
         );
 }
 
@@ -34,9 +34,9 @@
 @supports (background-clip: text) or (-webkit-background-clip: text) {
     .hero-content .subheading,
     .hero-content .btn.-outline {
+        background-clip: text;
         /* stylelint-disable-next-line property-no-vendor-prefix */
         -webkit-background-clip: text;
-        background-clip: text;
         background-image: var(
             --hero-content-gradient,
             linear-gradient(to right, var(--color-text), var(--color-text))
@@ -120,7 +120,6 @@
 .collection-row {
     --card-elevation: var(--elevation-z1);
     --aspect-ratio: 1/1;
-    --card-radius: 8px;
     --avatar-size: 75px;
     --avatar-bg: transparent;
     --avatar-color: inherit;
