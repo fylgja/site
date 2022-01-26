@@ -1,20 +1,13 @@
 @use "@fylgja/mq" as *;
 
 .page-footer {
-    --cols-size: 160px;
+    border-radius: var(--radius-conditional-3) var(--radius-conditional-3) 0 0;
     background-color: var(--footer-bg, var(--color-theme));
     color: var(--footer-color, var(--color-on-theme));
 
-    @media ($xs) {
-        --cols: repeat(2, 1fr);
-    }
-
-    @media ($md) {
-        --cols: repeat(4, 1fr);
-    }
-
-    @media ($xxl) {
-        --cols: repeat(5, 1fr);
+    @media ($xl) {
+        margin-inline-start: 2rem;
+        margin-inline-end: 2rem;
     }
 
     :any-link {
@@ -29,5 +22,17 @@
 
     > .sub-footer {
         background-color: rgb(0 0 0 / 10%);
+    }
+}
+
+.main-footer {
+    --cols-size: 160px;
+
+    @media ($xs) {
+        --cols: repeat(2, 1fr);
+    }
+
+    @media ($md) {
+        --cols: repeat(4, 1fr);
     }
 }
