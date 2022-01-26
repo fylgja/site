@@ -17,12 +17,3 @@ pre {
         }
     }
 }
-
-// stylelint-disable-next-line
-@media screen and (max-width: 640px) {
-    article pre {
-        margin-inline-start: calc(var(--container-padding-x) / -1);
-        margin-inline-end: calc(var(--container-padding-x) / -1);
-        border-radius: 0;
-    }
-}

@@ -1,8 +1,9 @@
+@use "temp";
+
 @use "./theme";
 @use "./fonts";
 
 @use "./skip-link";
-// prettier-ignore
 @use "@fylgja/base" with (
     $family-main: (
         Rubik,
@@ -20,11 +21,16 @@
 
 @use "@fylgja/button";
 @use "@fylgja/avatar";
-@use "@fylgja/card";
+@use "@fylgja/card" with (
+    $card-elevation: var(--card-elevation, var(--shadow-2)),
+    $card-radius: 10px
+);
 
 @use "@fylgja/container";
 @use "@fylgja/auto-grid";
-@use "@fylgja/section" with ($enable-section-theme: false);
+@use "@fylgja/section" with (
+    $enable-section-theme: false
+);
 @use "@fylgja/scroll-slider";
 
 @use "@fylgja/breadcrumbs";
@@ -36,10 +42,11 @@
 
 @use "@fylgja/aspect-ratio";
 @use "@fylgja/scrollbar";
-@use "@fylgja/hashlink" with ($hashlink-scroll-offset: 5rem);
+@use "@fylgja/hashlink" with (
+    $hashlink-scroll-offset: 5rem
+);
 
 @use "color-scheme";
 @use "screen";
 
-@use "@fylgja/elevation";
 @use "@fylgja/utilpack";

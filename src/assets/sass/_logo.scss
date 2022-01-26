@@ -1,6 +1,8 @@
+@use "@fylgja/mq" as *;
+
 .logo {
-    --link-color: currentColor;
-    --link-color-focus: currentColor;
+    --link-color: currentcolor;
+    --link-color-focus: currentcolor;
     display: inline-block;
     text-decoration: none;
 
@@ -8,5 +10,9 @@
         max-width: 100%;
         width: 4.75em;
         height: 2.375em;
+    }
+
+    @media ($xl) {
+        font-size: 1.25em;
     }
 }

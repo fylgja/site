@@ -4,7 +4,7 @@
     height: 0;
     vertical-align: middle;
     border-style: solid;
-    border-color: currentColor transparent;
+    border-color: currentcolor transparent;
     border-width: var(--size, 0.25em) var(--size, 0.25em) 0;
 
     .is-open > &,

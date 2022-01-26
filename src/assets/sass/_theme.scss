@@ -1,5 +1,8 @@
 @use "sass:color";
-@use "@fylgja/theme" with ($color-theme: #1565c0, $color-on-theme: #fff);
+@use "@fylgja/theme" with (
+    $color-theme: #1565c0,
+    $color-on-theme: #fff
+);
 
 $color-alt: #ff00ad;
 $color-on-alt: #fff;

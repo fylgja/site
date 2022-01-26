@@ -13,8 +13,8 @@
     }
 
     .badge-addon {
-        --link-color: var(--badge-color, currentColor);
-        --link-color-focus: var(--badge-color, currentColor);
+        --link-color: var(--badge-color, currentcolor);
+        --link-color-focus: var(--badge-color, currentcolor);
         position: relative;
         text-decoration: none;
         transition: outline-offset 0.2s ease-in-out,
@@ -61,7 +61,7 @@
             right: 0;
             bottom: 0;
             left: 0;
-            background-color: currentColor;
+            background-color: currentcolor;
             opacity: 0.1;
         }
     }

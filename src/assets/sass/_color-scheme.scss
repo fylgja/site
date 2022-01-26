@@ -1,25 +1,24 @@
 @use "sass:color";
 @use "@fylgja/theme" as *;
 
-$theme-dark: color.change($color-theme, $lightness: 16%);
+$theme-dark: color.change($color-theme, $lightness: 18%);
 $theme-dark-alpha: color.change($theme-dark, $alpha: 0.7);
 $theme-darker: color.change($color-theme, $lightness: 12%);
-$theme-darkest: color.change($color-theme, $lightness: 8%);
+$theme-darkest: color.change($color-theme, $lightness: 6%);
 
 $white-softest: color.change(#fff, $alpha: 0.1);
 $white-softer: color.change(#fff, $alpha: 0.2);
 $white-soft: color.change(#fff, $alpha: 0.5);
 
 @mixin dark-mode {
-    --color-scheme: dark;
     --color-bg: #{$theme-darkest};
     --color-text: #fff;
     --color-text-alt: #{color.change(#fff, $alpha: 0.8)};
     --color-text-muted: #{color.change(#fff, $alpha: 0.67)};
     --color-theme: #{color.change($color-theme, $lightness: 24%)};
     --link-color: #{color.change($color-theme, $lightness: 75%)};
-    --link-color-focus: currentColor;
-    --selection-color: #{color.change($color-theme, $lightness: 75%)};
+    --link-color-focus: currentcolor;
+    --selection-bg: #{$theme-dark};
     --code-bg: #{$theme-dark};
     --code-color: #{$color-on-theme};
     --badge-bg: #{color.change($color-theme, $lightness: 24%)};
@@ -34,11 +33,18 @@ $white-soft: color.change(#fff, $alpha: 0.5);
     --divide-color: #{$white-softer};
     --menu-item-focus-bg: #{$white-softest};
     --logo-color: #fff;
-    --page-header-bg: #{$theme-dark-alpha};
+    --page-header-bg: #{$theme-dark};
     --footer-bg: #{$theme-dark};
     --scrollbar-thumb-color: #{$white-soft};
     --border-color: #{$white-softer};
     --form-focus-color: #fff;
+    --shadow-strength: 25%;
+    --shadow-color: 220 40% 2%;
+    color-scheme: dark;
+
+    @supports (backdrop-filter: blur(1px)) {
+        --page-header-bg: #{$theme-dark-alpha};
+    }
 
     .btn.-theme {
         --btn-focus-bg: #{color.change($color-theme, $lightness: 26%)};
@@ -47,13 +53,13 @@ $white-soft: color.change(#fff, $alpha: 0.5);
 
     .card:any-link,
     .card-content:any-link {
-        --link-color: currentColor;
-        --link-color-focus: currentColor;
+        --link-color: currentcolor;
+        --link-color-focus: currentcolor;
     }
 
     .searchbox-wrapper {
         --form-stroke: #fff2;
-        --form-focus-color: currentColor;
+        --form-focus-color: currentcolor;
         --algolia-bg: #{color.change($color-theme, $lightness: 12%)};
     }
 }
