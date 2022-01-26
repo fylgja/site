@@ -7,8 +7,8 @@ const url =
 module.exports = {
     env: process.env.ELEVENTY_ENV,
     version,
-    output: "_site",
     input: "src",
+    output: "_site",
     url,
     themeColor: "#1565c0",
     themeColorDark: "#08274a",
