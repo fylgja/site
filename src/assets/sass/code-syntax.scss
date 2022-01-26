@@ -1,3 +1,12 @@
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+
+.token.italic {
+    font-style: italic;
+}
+
 @mixin light-mode {
     .token.comment,
     .token.prolog,
@@ -56,15 +65,6 @@
     .token.important,
     .token.variable {
         color: #c04800;
-    }
-
-    .token.important,
-    .token.bold {
-        font-weight: bold;
-    }
-
-    .token.italic {
-        font-style: italic;
     }
 }
 
@@ -141,17 +141,12 @@
         color: #67cdcc;
     }
 
-    .token.important,
-    .token.bold {
-        font-weight: bold;
-    }
-
-    .token.italic {
-        font-style: italic;
-    }
-
     .token.inserted {
         color: green;
+    }
+
+    .token.variable {
+        color: #f8c555;
     }
 }
 
