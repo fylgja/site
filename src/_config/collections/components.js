@@ -1,19 +1,19 @@
 const componentsGroup = (collection) => {
     const items = [
         {
-            title: "NativeElements",
+            title: "Native Elements",
             description:
                 "Fylgja Components that require no additional CSS classes to work",
             data: collection.getFilteredByTag("nativeElements"),
         },
         {
-            title: "Utilities",
+            title: "CSS Utilities",
             description:
                 "Fylgja Utilities that make it easier to apply styles and spacing, using CSS classes directly in your HTML",
             data: collection.getFilteredByTag("utils"),
         },
         {
-            title: "Props (Design Tokens)",
+            title: "CSS Props (Design Tokens)",
             description:
                 "Fylgja Props (Design Tokens) that make it easier to apply styles and spacing, using CSS variables",
             data: collection.getFilteredByTag("tokens"),
