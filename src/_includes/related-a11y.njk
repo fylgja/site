@@ -1,7 +1,7 @@
 {# Markdown import compatible, no indentation #}
 <style>
 #related {
---aspect-ratio: 1/1;
+--aspect-ratio: 1;
 --avatar-radius: 6px;
 --avatar-bg: transparent;
 }
@@ -10,7 +10,7 @@
 <p>Components that set the correct foundation or add accessible supporting functions.</p>
 <div id="related" class="auto-grid">
 {%- for item in collections.a11y -%}
-{% if not item.data.altlink %}
+{% if not item.data.draft %}
 <a href="{{ item.url }}" class="card card-content flex-row">
 {% if item.data.preview %}
 {% set preview %}{{ meta.componentsMedia }}{{ item.data.preview }}{% endset %}

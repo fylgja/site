@@ -7,9 +7,9 @@
 }
 </style>
 <h2>Related components</h2>
-<p>Components that require no additional CSS classes to work.</p>
+<p>Components that offer design tokens, a.k.a. CSS Props.</p>
 <div id="related" class="auto-grid">
-{%- for item in collections.nativeElements -%}
+{%- for item in collections.tokens -%}
 {% if not item.data.draft %}
 <a href="{{ item.url }}" class="card card-content flex-row">
 {% if item.data.preview %}
