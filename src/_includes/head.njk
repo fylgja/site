@@ -75,6 +75,10 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="{{ meta.themeColor }}">
 
+    {# Dark mode #}
+    {%- set themeToggle -%}{% include 'js/theme-toggle.js' %}{%- endset -%}
+    <script>{{ themeToggle | safe }}</script>
+
     {# Assets #}
     <link rel="stylesheet" href="{{ '/css/main.css' | assetUrl }}">
     <link rel="stylesheet" href="{{ '/css/print.css' | assetUrl }}" media="print">
@@ -106,20 +110,6 @@
     {% if search %}
         <script src="{{ '/js/search.js' | assetUrl }}" defer></script>
     {%- endif -%}
-
-    <script>
-        const root = document.documentElement;
-
-        // Check for dark mode preference at the OS level
-        const prefersDarkScheme = window.matchMedia(
-            "(prefers-color-scheme: dark)"
-        ).matches;
-        const currentTheme = localStorage.getItem("theme");
-
-        if (currentTheme) {
-            root.setAttribute("data-theme", currentTheme);
-        }
-    </script>
 
     {%- if js -%}
         {% for name, item in js %}

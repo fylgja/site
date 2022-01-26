@@ -60,25 +60,6 @@
         <small class="container block copyright">© {% year %} {{ meta.siteName }}. All Rights Reserved.</small>
     </div>
 </footer>
-<script>
-    function themeToggle(eventElement) {
-        const root = document.documentElement;
-        let theme = "";
-
-        if (!eventElement.target.closest("[data-toggle-color-scheme]")) return;
-        if (root.getAttribute("data-theme")) {
-            theme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-        } else {
-            theme = prefersDarkScheme ? "light" : "dark";
-        }
-        root.setAttribute("data-theme", theme);
-        localStorage.setItem("theme", theme);
-    }
-
-    document.addEventListener("click", (event) => {
-        themeToggle(event);
-    });
-</script>
 {%- set jsinline -%}
     {%- if (script | isObject ) -%}
         {% for i in script %}

@@ -1,7 +1,8 @@
 <button
-    type="button"
     title="Toggle color scheme"
     class="btn -icon"
-    data-toggle-color-scheme>
+    data-color-preference
+    aria-label="auto"
+    aria-live="polite">
     {{ '/src/assets/images/color-scheme.svg' | svgContents | safe }}
 </button>

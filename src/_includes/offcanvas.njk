@@ -52,7 +52,7 @@
                         </ul>
                     </li>
                     <li>
-                        {% menuItem "/features/", "", page.url %}
+                        {% menuItem "/features/", "", false, page.url %}
                             <span>Features</span>
                         {% endmenuItem %}
                         <ul class="menu">
@@ -80,10 +80,11 @@
                 {% endfor %}
                 <div class="ms-auto">
                     <button
-                        type="button"
                         title="Toggle color scheme"
                         class="btn -icon"
-                        data-toggle-color-scheme>
+                        data-toggle-preference
+                        aria-label="auto"
+                        aria-live="polite">
                         {{ '/src/assets/images/color-scheme.svg' | svgContents | safe }}
                     </button>
                 </div>
