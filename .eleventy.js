@@ -1,18 +1,20 @@
 const { input, output, url } = require("./src/_data/meta");
 
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const pluginRss = require("@11ty/eleventy-plugin-rss");
+
 const embedYouTube = require("eleventy-plugin-youtube-embed");
 const sitemap = require("@quasibit/eleventy-plugin-sitemap");
-
-const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginTOC = require("eleventy-plugin-nesting-toc");
-const markdownConfig = require("./src/_config/markdown");
 const svgContents = require("eleventy-plugin-svg-contents");
 
+const eleventySass = require("@grimlink/eleventy-plugin-sass");
+const sass = require("sass");
+
+const markdownConfig = require("./src/_config/markdown");
 const browserSyncConfig = require("./src/_config/browserSync");
 const minifyHtml = require("./src/_config/minifyHtml");
 const CleanCSS = require("clean-css");
-
 const imageShortcode = require("./src/_config/shortcodes/image");
 const menuItem = require("./src/_config/shortcodes/menu-item");
 const {
@@ -35,16 +37,12 @@ const {
 } = require("./src/_config/filters/types");
 const assetUrl = require("./src/_config/filters/asset-url");
 
-const isProd = process.env.ELEVENTY_ENV === "prod";
-
 module.exports = function (config) {
-    config.setDataDeepMerge(true);
-    config.setWatchThrottleWaitTime(100);
+    config.setQuietMode(true);
     config.setLibrary("md", markdownConfig);
     config.setBrowserSyncConfig(browserSyncConfig);
 
-    config.addWatchTarget("./src/assets/sass/");
-    config.addWatchTarget("./src/assets/js/");
+    config.addWatchTarget("./src/assets/js/**/*.js");
 
     // Copy
     config.addPassthroughCopy({
@@ -57,14 +55,19 @@ module.exports = function (config) {
     config.addPassthroughCopy({ "src/assets/fonts/*.{woff,woff2}": "fonts" });
 
     // Plugins
-    config.addPlugin(syntaxHighlight, { preAttributes: { tabindex: 0 } });
+    config.addPlugin(eleventySass, { sass, outputPath: "css" });
+    config.addPlugin(syntaxHighlight, {
+        preAttributes: { tabindex: 0 },
+    });
     config.addPlugin(embedYouTube, {
         lite: {
             css: { inline: true },
             js: { inline: true },
         },
     });
-    config.addPlugin(sitemap, { sitemap: { hostname: url } });
+    config.addPlugin(sitemap, {
+        sitemap: { hostname: url },
+    });
     config.addPlugin(pluginRss);
     config.addPlugin(pluginTOC, {
         tags: ["h2", "h3"],
@@ -85,6 +88,7 @@ module.exports = function (config) {
     config.addFilter("isNumber", isNumber);
     config.addFilter("isObject", isObject);
     config.addFilter("isString", isString);
+
     config.addFilter("cssmin", (code) => new CleanCSS({}).minify(code).styles);
     config.addFilter("sortByName", sortByName);
     config.addFilter("sortByOrder", sortByOrder);
@@ -95,22 +99,15 @@ module.exports = function (config) {
     config.addCollection("componentsFeatured", componentsFeatured);
     config.addCollection("componentsAll", componentsAll);
 
-    // Transform
-    // These transforms should always go last
-    // Because they look at the final HTML.
-    if (isProd) config.addTransform("minify", minifyHtml);
+    if (process.env.ELEVENTY_ENV === "prod") {
+        config.addPlugin(require("@11ty/eleventy-plugin-directory-output"));
+        config.addTransform("minify", minifyHtml);
+    }
 
     return {
-        dir: {
-            output,
-            input,
-            includes: "_includes",
-            layouts: `_layouts`,
-            data: "_data",
-        },
+        dir: { input, output, layouts: "_layouts" },
         templateFormats: ["md", "njk", "11ty.js"],
         markdownTemplateEngine: "njk",
         htmlTemplateEngine: "njk",
-        passthroughFileCopy: true,
     };
 };
