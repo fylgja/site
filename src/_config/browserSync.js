@@ -16,4 +16,7 @@ module.exports = {
             });
         },
     },
+    reloadDelay: 1000, // Give some time for the 11ty build to finish
+    ui: false,
+    ghostMode: false,
 };
