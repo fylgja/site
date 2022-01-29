@@ -6,11 +6,13 @@ description: "Fylgja does not ship with dark mode styles by default. Since we do
 Fylgja does not ship with dark mode styles by default.
 Since we don't force a specific color pallet.
 
-But the foundation for each component is made in a flexible way.
+But the foundation for each CSS Component is made in a way that you can change it very easily.
 
-So you can change it via the CSS variables or the SCSS variables, 
+You can change it with the CSS variables or the SCSS variables.
 
-by just setting these SCSS variables in the `@fylgja/theme`, all component styles are dark.
+So for an simple example,
+just setting all of Fylgja colors to a dark mode style,
+can be done with the `@fylgja/theme` component, like this;
 
 ```scss
 @use "@fylgja/theme" with (
@@ -19,26 +21,30 @@ by just setting these SCSS variables in the `@fylgja/theme`, all component style
 );
 ```
 
-## Sample dark mode setup
+## True dark mode setup
 
-But if your really want the light and dark mode experience.
-You should use the CSS variables we offer in the `@fylgja/base`.
+But if your really want the true dark mode experience.
 
-We also have dark mode support in our site.
-Down in the footer you will find a moon or sun icon.
+You should use the CSS variables that are available in each Fylgja Component.
 
-_Depending on what theme your using._
+Taking a note from our own website,
+that also ships with dark mode feature,
+there are few things you need.
 
-For this we made a small CSS rule for dark mode,
-and added a small bit of JS to toggle the state.
+1. you need a base color pallet,
+  with the Fylgja Base Component you get this for free.
+2. you need a CSS file where you change all of your light color for dark variant.
+3. you need<sup>*</sup> a little bit of javascript to toggle that logic manually.
 
-So a user can pick a preferred mode over the system default one,
-if they desire so.
+> \* While you don't need javascript for a dark mode experience,
+> having this option there,
+> is a better user experience for your users.
 
-<details class="faq-panel"><summary>Sample from our site</summary>
+So if you interested, down here is an example form our own site.
+
+<details class="faq-panel"><summary>View dark mode sample from Fylgja</summary>
 
 ```scss
-// _color-scheme.scss
 @mixin dark-mode {
     --color-scheme: dark;
     --color-bg: #{color.change($color-theme, $lightness: 8%)};
@@ -46,55 +52,30 @@ if they desire so.
     --color-text-alt: #{color.change(#fff, $alpha: 0.8)};
     --color-text-muted: #{color.change(#fff, $alpha: 0.67)};
     --code-bg: #{color.change($color-theme, $lightness: 16%)};
-    --code-color: #fff;
-    --btn-focus-bg: #{color.change(#fff, $alpha: 0.1)};
-    --btn-active-bg: #{color.change(#fff, $alpha: 0.2)};
-    --divide-color: #{color.change(#fff, $alpha: 0.2)};
     ...
 }
 
+// Native CSS dark mode
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme]) {
         @include dark-mode;
     }
 }
 
+// JS dark mode
 :root[data-theme="dark"] {
     @include dark-mode;
 }
 ```
 
 ```js
-const root = document.documentElement;
-let theme = "";
-
-// Check for dark mode preference at the OS level
-const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
-const currentTheme = localStorage.getItem("theme");
-
-if (currentTheme) {
-    root.setAttribute("data-theme", currentTheme);
-}
-
-function toggleColorScheme(e) {
-    if (!e.target.closest("[data-toggle-color-scheme]")) return;
-    if (root.getAttribute("data-theme")) {
-        theme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-    } else {
-        theme = prefersDarkScheme ? "light" : "dark";
-    }
-    root.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-}
-
-document.addEventListener("click", (event) => {
-    toggleColorScheme(event);
-});
+{% include 'js/theme-toggle.js' %}
 ```
+
 
 </details>
 
-## Considerations to take when adding or using dark mode.
+## Considerations to take when adding dark mode.
 
 Dark mode does not necessary mean black with white text.
 
@@ -103,6 +84,7 @@ we used a dark tint of our theme (primary) color.
 
 This gives it a more personal feel than just a inverted version.
 
-Also dark mode is never a must, if your brand/site does not fit in this style,
-
-then don't bother trying to add it, it only confuses your users.
+Also dark mode is never a must,
+if your brand or site does not fit in this color style,
+then don't bother trying to add it,
+as it only confuses your users.
