@@ -46,6 +46,10 @@ $white-soft: color.change(#fff, $alpha: 0.5);
         --page-header-bg: #{$theme-dark-alpha};
     }
 
+    pre {
+        --selection-bg: #{$white-softest};
+    }
+
     .btn.-theme {
         --btn-focus-bg: #{color.change($color-theme, $lightness: 26%)};
         --btn-active-bg: #{color.change($color-theme, $lightness: 34%)};
