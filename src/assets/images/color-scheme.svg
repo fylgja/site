@@ -1,6 +1,6 @@
 <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
-  <circle class="theme-sun" cx="12" cy="12" r="11" fill="currentColor" mask="url(#moon)"></circle>
-  <g class="theme-sun-beams" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle class="theme-sun" cx="12" cy="12" r="11" fill="currentcolor" mask="url(#moon)"></circle>
+  <g class="theme-sun-beams" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <line x1="12" y1="1" x2="12" y2="3"></line>
     <line x1="12" y1="21" x2="12" y2="23"></line>
     <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>

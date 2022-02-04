@@ -26,7 +26,7 @@ Then please check out the [main docs](/components/utilpack) here.
 
 | class      | value                  |
 | ---------- | ---------------------- |
-| text-reset | `color: currentColor;` |
+| text-reset | `color: currentcolor;` |
 
 ### Text Decoration
 
@@ -202,10 +202,10 @@ Available sizes for the border utility.
 
 | class        | value                                                                           |
 | ------------ | ------------------------------------------------------------------------------- |
-| `{PREFIX}`   | `{PROPERTY}: 1px var(--border-style, solid) var(--border-color, currentColor);` |
+| `{PREFIX}`   | `{PROPERTY}: 1px var(--border-style, solid) var(--border-color, currentcolor);` |
 | `{PREFIX}`-0 | `{PROPERTY}: 0;`                                                                |
-| `{PREFIX}`-2 | `{PROPERTY}: 2px var(--border-style, solid) var(--border-color, currentColor);` |
-| `{PREFIX}`-3 | `{PROPERTY}: 3px var(--border-style, solid) var(--border-color, currentColor);` |
+| `{PREFIX}`-2 | `{PROPERTY}: 2px var(--border-style, solid) var(--border-color, currentcolor);` |
+| `{PREFIX}`-3 | `{PROPERTY}: 3px var(--border-style, solid) var(--border-color, currentcolor);` |
 
 To extend this, use the `$utilpack-border-sizes` map.
 

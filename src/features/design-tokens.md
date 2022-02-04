@@ -1,6 +1,13 @@
 ---
 title: "Design Tokens (CSS Props)"
 description: "Adding style to your component with prebuilt design tokens, a.k.a. CSS Props."
+style: "
+#token-use-case-samples {
+    --cols-size: 320px;
+    --pre-margin-start: 0;
+    --pre-margin-end: 0;
+}
+"
 ---
 
 Fylgja Components are by default as much as possible styleless.
@@ -23,7 +30,7 @@ Javascript and JSON design tokens to use.
 Making it very ease to apply a specific style, to a CSS Component,
 using it in almost any languages, as seen below;
 
-<div class="scroll-slider thin-scrollbar" style="--gap-inline: 0; scroll-snap-type: none;">
+<div id="token-use-case-samples" class="auto-grid">
 
 ```jsx
 // Javascript Sample, e.g. React or Vue

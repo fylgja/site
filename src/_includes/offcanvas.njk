@@ -5,7 +5,7 @@
                 {{ "/src/assets/images/logo.svg" | svgContents | safe }}
             </a>
             <button type="button" class="btn -icon close">
-                <svg width="24" height="24" fill="currentColor">
+                <svg width="24" height="24" fill="currentcolor">
                     <title>Close menu</title>
                     <use href="{{ '/images/sprite.svg' | assetUrl }}#close" />
                 </svg>
@@ -72,7 +72,7 @@
             <nav aria-label="Offcanvas extra menu" class="footer-nav flex">
                 {% for item in navigation.socials %}
                     {% menuItem item.url, "btn -icon me-1", page.url, item.external %}
-                        <svg width="24" height="24" fill="currentColor">
+                        <svg width="24" height="24" fill="currentcolor">
                             <title>{{ item.text }}</title>
                             <use href="{{ '/images/socials.svg' | assetUrl }}#{{ item.icon }}" />
                         </svg>

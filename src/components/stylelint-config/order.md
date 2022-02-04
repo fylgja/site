@@ -75,14 +75,14 @@ So the DOM order is;
     margin: auto;
     padding: 0;
     border-radius: 50%;
-    border: 1px solid currentColor;
+    border: 1px solid currentcolor;
     box-shadow: 0 0 0 #fff2;
     outline: none;
     // Visual
     background-color: #eee;
     color: #333;
-    fill: currentColor; // svg
-    stroke: currentColor; // svg
+    fill: currentcolor; // svg
+    stroke: currentcolor; // svg
     // Typographic
     font-family: system-ui, sans-serif;
     font-size: 1em;
@@ -122,7 +122,7 @@ So **DON'T** do this 😫
 .class {
     left: -5px;
     position: absolute;
-    border-color: currentColor;
+    border-color: currentcolor;
     top: 3px;
 }
 ```

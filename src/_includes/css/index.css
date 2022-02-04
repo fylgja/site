@@ -147,7 +147,7 @@
     --hero-bg: #0002;
     --hero-color: var(--color-text-alt);
     --hero-l: 27%;
-    --logo-color: currentColor;
+    --logo-color: currentcolor;
     --code-box-header-stroke: rgb(255 255 255 / 15%);
 }
 
@@ -167,7 +167,7 @@
         --hero-bg: #0002;
         --hero-color: var(--color-text-alt);
         --hero-l: 27%;
-        --logo-color: currentColor;
+        --logo-color: currentcolor;
         --code-box-header-stroke: rgb(255 255 255 / 15%);
     }
 }

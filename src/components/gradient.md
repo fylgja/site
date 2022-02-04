@@ -100,7 +100,7 @@ Default colors:
 
 - `var(--color-theme)`
 - `var(--color-bg)`
-- `currentColor`
+- `currentcolor`
 
 ## Config
 
@@ -116,7 +116,7 @@ $enable-gradient-text: true !default;
 $gradient-colors: (
     "theme": var(--color-theme, #{$color-theme}),
     "bg": var(--color-bg, #{$root-bg}),
-    "color": currentColor,
+    "color": currentcolor,
 ) !default;
 
 // prettier-ignore

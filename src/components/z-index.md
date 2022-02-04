@@ -5,7 +5,6 @@ description: "Coming Soon"
 git: "components/z-index"
 tags: ["tokens"]
 preview: "theme.png"
-draft: true
 ---
 
 Coming Soon...

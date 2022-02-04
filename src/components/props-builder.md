@@ -5,7 +5,6 @@ description: "Build your own CSS props a.k.a Design Tokens, with ease."
 git: "components/props-builder"
 tags: ["addons"]
 preview: "theme.png"
-draft: true
 ---
 
 Build your own CSS props a.k.a Design Tokens, with ease.
