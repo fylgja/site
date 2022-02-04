@@ -117,17 +117,6 @@
         {% endfor %}
     {%- endif -%}
 
-    {# Global site tag (gtag.js) - Google Analytics #}
-    {%- if meta.env == 'prod' -%}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-55ZD5EZJ1G"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){ dataLayer.push(arguments); }
-            gtag('js', new Date());
-            gtag('config', 'G-55ZD5EZJ1G', { 'anonymize_ip': true });
-        </script>
-    {%- endif -%}
-
     {# Schema data #}
     <script type="application/ld+json">{% include "json-ld.njk" %}</script>
 </head>
