@@ -5,7 +5,7 @@ description: "About Fylgja and how it was created"
 ---
 
 Fylgja is created by Sean van Zuidam ([@GrimLink](https://twitter.com/grimlink/)),
-with a little help from Ruud van Zuidam ([@Allrude](https://twitter.com/allrude/)).
+with help from Ruud van Zuidam ([@Allrude](https://twitter.com/allrude/)).
 
 Fylgja makes it easier to start with a front-end, using common block styles.
 
