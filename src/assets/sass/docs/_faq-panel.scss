@@ -10,6 +10,7 @@
     summary {
         display: block;
         outline-offset: 0.5em;
+        font-weight: normal;
 
         // Safari unset for default marker
         &::-webkit-details-marker {
