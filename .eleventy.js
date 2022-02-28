@@ -1,4 +1,5 @@
 const { input, output, url } = require("./src/_data/meta");
+const isProd = process.env.ELEVENTY_ENV === "prod";
 
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
@@ -93,13 +94,14 @@ module.exports = function (config) {
     config.addFilter("sortByName", sortByName);
     config.addFilter("sortByOrder", sortByOrder);
     config.addFilter("assetUrl", assetUrl);
+    config.addFilter("limit", (arr, limit) => arr.slice(0, limit));
 
     // Collections
     config.addCollection("componentsGroup", componentsGroup);
     config.addCollection("componentsFeatured", componentsFeatured);
     config.addCollection("componentsAll", componentsAll);
 
-    if (process.env.ELEVENTY_ENV === "prod") {
+    if (isProd) {
         config.addPlugin(require("@11ty/eleventy-plugin-directory-output"));
         config.addTransform("minify", minifyHtml);
     }

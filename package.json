@@ -51,7 +51,7 @@
     "@fullhuman/postcss-purgecss": "^4.0.3",
     "@fylgja/sass": "^2.0.0",
     "@fylgja/stylelint-config": "^4.0.1",
-    "@grimlink/eleventy-plugin-sass": "^1.0.1",
+    "@grimlink/eleventy-plugin-sass": "^1.0.2",
     "@quasibit/eleventy-plugin-sitemap": "^2.1.4",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.5",
