@@ -10,7 +10,7 @@ preview: "auto-grid.png"
 featured: true
 sitemap:
   priority: 0.6
-order: 2
+order: 3
 ---
 
 A super small grid with auto flowing behavior, based on the container size.
