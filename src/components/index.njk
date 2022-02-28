@@ -16,7 +16,7 @@ style: "
     --aspect-img: contain;
     --card-elevation: var(--shadow-2);
     --scroll-size: 90%;
-    max-width: 15em;
+    max-width: 16em;
     transition: box-shadow 0.2s ease-out;
 }
 
@@ -47,6 +47,14 @@ a.card:hover {
         --container-padding-x: clamp(1.25rem, 5vw, 8rem);
         --container-size: 100%;
     }
+
+    .card {
+        max-width: 17.5em;
+    }
+
+    #components-featured .card {
+        max-width: 23em;
+    }
 }
 "
 ---
@@ -59,7 +67,11 @@ a.card:hover {
         </div>
         <div class="scroll-slider hide-scrollbar">
             {%- for item in collections.componentsFeatured -%}
-            <a class="card" href="{{ item.data.altUrl if item.data.altUrl else item.url }}">
+            {%- if item.data.draft -%}
+            <div class="card -draft">
+            {% else %}
+            <a class="card" href="{{ item.url }}">
+            {% endif %}
                 <div class="card-media aspect-ratio">
                     {% if item.data.preview %}
                         {% set preview %}{{ meta.componentsMedia }}{{ item.data.preview }}{% endset %}
@@ -76,7 +88,11 @@ a.card:hover {
                         <p class="text-small">{{ item.templateContent | truncate(strLimit) }}</p>
                     {% endif %}
                 </div>
+            {%- if item.data.draft -%}
+            </div>
+            {% else %}
             </a>
+            {% endif %}
             {%- endfor -%}
         </div>
     </section>

@@ -75,6 +75,8 @@ As with almost all of our components, CSS variables can be configured to add you
 
 Want direct control on the base styles, here are the following SCSS variables can you modify.
 
+<details class="faq-panel"><summary>View SCSS variables</summary>
+
 ```scss
 $enable-btn-theme: true !default;
 $enable-btn-outline: true !default;
@@ -111,3 +113,5 @@ $btn-active-color: inherit !default;
 
 $btn-disabled-opacity: 0.7 !default;
 ```
+
+</details>
