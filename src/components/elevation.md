@@ -13,7 +13,7 @@ order: 100
 > The shadow component offers better shadow defaults,
 > and fully embraces the Design Token (CSS Props) system.
 >
-> This package will be deprecated in in the next release.
+> This package will be deprecated in the next release.
 
 The Elevation component is a util package for shadows, where it offers shadows as CSS variables.
 
