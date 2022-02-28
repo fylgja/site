@@ -45,7 +45,7 @@
             <ul class="list-style -none space-y-3 lg-space-y-2">
                 {% for item in navigation.socials %}
                     <li>
-                        {% menuItem item.url, "flex items-center", page.url, item.external %}
+                        {% menuItem item.url, "inline-flex items-center", page.url, item.external %}
                             <svg width="20" height="20" fill="currentcolor" class="me-2">
                                 <use href="{{ '/images/socials.svg' | assetUrl }}#{{ item.icon }}" />
                             </svg>
