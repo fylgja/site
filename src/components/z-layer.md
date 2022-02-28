@@ -41,7 +41,7 @@ or use it in a React or Vue based project.
 ```scss
 @use "@fylgja/z-layer" as *;
 
-.layer {
+.box {
     z-index: $layer1;
 }
 ```
@@ -49,7 +49,7 @@ or use it in a React or Vue based project.
 ### CSS version
 
 ```css
-.layer {
+.box {
     z-index: var(--layer1);
 }
 ```
@@ -114,19 +114,6 @@ Lets hope 3de party vendors will start to support CSS variables in there CSS ðŸ¤
 
 If you need a component to be layered, and also to be content aware,
 its probably better to use CSS grid instead.
-
-Sample with CSS Grid
-
-```css
-.parent-layer {
-    display: grid;
-}
-
-.child-layer {
-    grid-column: 1 / -1;
-    grid-row: 1 / -1;
-}
-```
 
 You can still use this package with `position: relative`,
 if the order of the DOM is mixed.
