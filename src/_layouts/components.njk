@@ -22,6 +22,12 @@ css: { page: "/css/page.css" }
                             {%- if git -%}{% badgeGit git, gitDomain %}{%- endif -%}
                             {%- if codepen -%}{% badgeCodepen codepen %}{%- endif -%}
                     </header>
+                    {%- if draft -%}
+                        <blockquote class="notice">
+                            <strong>Notice!</strong> This page is still work in progress.<br>
+                            Please check back later.
+                        </blockquote>
+                    {%- endif -%}
                     <div class="body">{{ content | safe }}</div>
                     {% include "edit.njk" %}
                 </article>
