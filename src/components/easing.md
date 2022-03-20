@@ -5,6 +5,7 @@ description: "Coming Soon"
 git: "components/easing"
 tags: ["tokens"]
 preview: "theme.png"
+draft: true
 ---
 
 Coming Soon...

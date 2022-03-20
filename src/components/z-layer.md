@@ -5,6 +5,8 @@ description: "The Fylgja z-layer offers Design Tokens (CSS props) for consistent
 git: "components/z-layer"
 tags: ["tokens"]
 preview: "theme.png"
+order: 3
+draft: true
 ---
 
 The Fylgja z-layer offers Design Tokens (CSS props) for consistent and semantic z-indexing.
