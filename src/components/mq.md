@@ -5,12 +5,10 @@ npm: "@fylgja/mq"
 git: "components/mq"
 tags: ["config", "tokens"]
 preview: "theme.png"
-order: 11
+order: 1
 ---
 
-The Fylgja MQ CSS component is an helper component and collection of media query specific variables props.
-
-Available to be used as CSS props in our own CSS.
+Helper component for adding media query specific variables to multiple components.
 
 ## Installation
 
@@ -22,85 +20,57 @@ Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/mq";
-// Or via PostCSS and other options as plain CSS
-@import "@fylgja/mq"; // *
 ```
-
-> \* The PostCSS version is using the newer spec with `@custom-media`,
-> and also requires the [PostCSS Custom Media](https://github.com/postcss/postcss-custom-media) plugin to work,
-> until Custom Media queries are better supported
 
 ## How to use
 
-This component comes in 2 versions.
+This component does not create any CSS.
 
-The SCSS version comes with just SCSS variables and creates no css when imported.
+And only contains some SCSS variable for Fylgja components, that have media query specific styles.
 
-The CSS version comes packing CSS variables, and while this version does ship some CSS.
-This does offer you more flexibilities with other tools and languages.
-
-### SCSS version
-
-You can use this component to quickly adjust the Fylgja component media queries used across all of the Fylgja CSS components,
-with 1 map variable trough the mq component;
+You can use this component to quickly adjust the Fylgja component media queries.
 
 ```scss
-@use "@fylgja/mq" with ($breakpoints: (..));
+@use "@fylgja/mq" with (
+    $mq-breakpoints: (
+        "xs": 420px,
+        "sm": 640px,
+        "md": 768px,
+        "lg": 1024px,
+        "xl": 1440px,
+        "xxl": 2200px,
+    )
+);
 ```
 
-or you can use it in your own SCSS components;
+Or you can use it in your own CSS components.
 
 ```scss
-@use "@fylgja/mq" as *;
+@use "@fylgja/mq";
 
-@media ($md) {..}
+@media (mq.$motion-reduce) {
+    // Your motion reduced based styles here
+}
+
+@media (mq.$md) {
+    // Your viewport size based styles here
+}
 ```
 
-### CSS version
-
-As for the CSS variables,
-this only allows you to use the variables in your CSS, and it can not adjust the Fylgja CSS components directly.
-
-To use it, simply use at media with the Fylgja CSS media variable.
-
-```css
-@media (--md) {..}
-```
-
-> If your planing to use the CSS version,
-> we also recommend you use the [PurgeCSS variables option](https://purgecss.com/configuration.html#options)
-> or use [PostCSS JIT Props](https://github.com/GoogleChromeLabs/postcss-jit-props).
-> See each option, for what is possible and what fit better with you and your project.
+_You can also use it without the prefix if you want via * selector_
 
 ## Config
 
 The following variables are available.
 
-With the CSS variables you can use the same name with `--` as prefix instead of `$` and writing in cameCase.
-For example `$scheme-dark` is now `--schemeDark`;
-
 ```scss
-$scheme-dark: "prefers-color-scheme: dark";
-$scheme-light: "prefers-color-scheme: light";
+$scheme-dark: "prefers-color-scheme: dark" !default;
+$scheme-light: "prefers-color-scheme: light" !default;
 
-$motion-safe: "prefers-reduced-motion: no-preference";
-$motion-reduce: "prefers-reduced-motion: reduce";
+$motion-safe: "prefers-reduced-motion: no-preference" !default;
+$motion-reduce: "prefers-reduced-motion" !default;
 
-$opacity-safe: "prefers-reduced-transparency: no-preference";
-$opacity-reduce: "prefers-reduced-transparency: reduce";
-
-$data-safe: "prefers-reduced-data: no-preference";
-$data-reduce: "prefers-reduced-data: reduce";
-
-$contrast-high: "prefers-contrast: high";
-$contrast-low: "prefers-contrast: low";
-
-$hd-color: "dynamic-range: high";
-$portrait: "orientation: portrait";
-$landscape: "orientation: landscape";
-
-// Sizing mq's
-$breakpoints: (
+$mq-breakpoints: (
     "xs": 420px,
     "sm": 640px,
     "md": 768px,
@@ -123,6 +93,3 @@ $lg-max: "max-width: #{(getMq(lg) - 1px)}" !default;
 $xl-max: "max-width: #{(getMq(xl) - 1px)}" !default;
 $xxl-max: "max-width: #{(getMq(xxl) - 1px)}" !default;
 ```
-
-_Some prefers media queries have bad support at them moment of writing,_
-_so always check what is usable._
