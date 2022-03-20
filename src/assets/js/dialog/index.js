@@ -1,12 +1,16 @@
 // Fylgja (getfylgja.com)
 // Licensed under MIT Open Source
 
+import dialogPolyfill from "dialog-polyfill/dist/dialog-polyfill.js";
 import tabLock from "../tablock";
 
 export function newDialog(id, button, backdrop = true) {
     const dialog = document.querySelector(id);
     const btn = document.querySelector(button);
     if (!dialog || !btn) return;
+    if (typeof HTMLDialogElement !== "function") {
+        dialogPolyfill.registerDialog(dialog);
+    }
 
     const dialogScrollLock = (use = true) => {
         document.body.style.overflow = use ? "hidden" : "";
