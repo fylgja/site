@@ -8,6 +8,7 @@ style: "
     --pre-margin-end: 0;
 }
 "
+eleventyExcludeFromCollections: true
 ---
 
 Fylgja Components are by default as much as possible styleless.

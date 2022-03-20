@@ -6,7 +6,7 @@ git: "components/text"
 tags: ["typography", "tokens"]
 preview: "theme.png"
 order: 51
-draft: true
+eleventyExcludeFromCollections: true
 ---
 
 Coming Soon...

@@ -5,7 +5,7 @@ description: "Coming Soon"
 git: "components/color"
 tags: ["tokens"]
 preview: "theme.png"
-draft: true
+eleventyExcludeFromCollections: true
 # featured: true
 ---
 
