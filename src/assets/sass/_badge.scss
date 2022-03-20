@@ -21,17 +21,13 @@
             background-color 0.2s ease-in-out, color 0.2s ease-in-out;
         overflow: hidden;
 
-        &.-git,
-        &.-codepen {
-            > :not(.-icon) {
-                @media ($xs-max) {
-                    display: none;
-                }
+        &:is(.-git, .-codepen) > :not(.-icon) {
+            @media ($xs-max) {
+                display: none;
             }
         }
 
-        &:focus,
-        &:hover {
+        &:is(:focus, :hover) {
             outline-offset: 0.25em;
 
             &.-git {

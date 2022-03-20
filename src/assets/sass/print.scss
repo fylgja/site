@@ -4,8 +4,7 @@
 //     $enable-print-mq: false
 // );
 
-.page-header,
-.page-footer {
+:is(.page-header, .page-footer) {
     display: none;
 }
 

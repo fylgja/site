@@ -31,23 +31,20 @@
         outline: 0;
     }
 
-    &:hover,
-    &:focus {
+    &:is(:hover, :focus) {
         border-color: var(--btn-focus-stroke, #{$btn-focus-stroke});
         background-color: var(--btn-focus-bg, #{$btn-focus-bg});
         color: var(--btn-focus-color, #{$btn-focus-color});
         text-decoration: none;
     }
 
-    &.is-active,
-    &:active {
+    &:is(.is-active, :active) {
         border-color: var(--btn-active-stroke, #{$btn-active-stroke});
         background-color: var(--btn-active-bg, #{$btn-active-bg});
         color: var(--btn-active-color, #{$btn-active-color});
     }
 
-    &.is-disabled,
-    &:disabled {
+    &:is(.is-disabled, :disabled) {
         opacity: $btn-disabled-opacity;
         pointer-events: none;
     }

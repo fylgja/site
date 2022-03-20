@@ -7,8 +7,7 @@
     background-color: var(--color-bg);
     padding: 1em;
 
-    &:focus,
-    &:hover {
+    &:is(:focus, :hover) {
         --link-color-state: var(--color-text);
     }
 }

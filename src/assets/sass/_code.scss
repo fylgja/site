@@ -12,7 +12,7 @@ pre {
     @media (any-pointer: fine) {
         @include scrollbar($width: thin);
 
-        &:not(:hover):not(:focus) {
+        &:not(:hover, :focus) {
             --scrollbar-thumb-color: #{color.change(#000, $alpha: 0)};
         }
     }

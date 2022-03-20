@@ -185,8 +185,7 @@
     text-decoration: none;
     outline-offset: 0.5em;
 
-    &:focus,
-    &:hover {
+    &:is(:focus, :hover) {
         text-decoration: none;
     }
 }

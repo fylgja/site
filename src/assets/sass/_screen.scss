@@ -1,5 +1,5 @@
 @use "@fylgja/mq" as *;
-$xxxl: "min-width: 2500px" !default;
+$sl: "min-width: 2500px" !default;
 
 @media ($xxl) {
     :root {
@@ -10,7 +10,7 @@ $xxxl: "min-width: 2500px" !default;
     }
 }
 
-@media ($xxxl) {
+@media ($sl) {
     :root {
         --scroll-offset: 8rem;
         --container-size: 1620px;

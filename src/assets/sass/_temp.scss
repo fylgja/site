@@ -1,6 +1,6 @@
 // stylelint-disable
 // prettier-ignore
-:where(html) {
+:root {
     --shadow-1: 0 2px 1px -1px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 18%)), 0 1px 1px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 12%)), 0 1px 3px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 10%));
     --shadow-2: 0 3px 1px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 18%)), 0 2px 2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 12%)), 0 1px 5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 10%));
     --shadow-3: 0 2px 4px -1px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 18%)), 0 4px 5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 12%)), 0 1px 10px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 10%));
