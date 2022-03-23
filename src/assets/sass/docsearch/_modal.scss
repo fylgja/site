@@ -105,6 +105,43 @@
     color: var(--color-text-muted);
 }
 
+.DocSearch-NoResults {
+    padding: 0.5em 1em;
+
+    .DocSearch-Screen-Icon {
+        display: none;
+    }
+
+    .DocSearch-Title {
+        margin-block-start: 2.5rem;
+        margin-block-end: 2.5rem;
+        text-align: center;
+    }
+}
+
+.DocSearch-NoResults-Prefill-List {
+    --btn-stroke: hsl(0deg 0% 0% / 20%);
+
+    li:not(:last-child) {
+        margin-block-end: 0.5em;
+    }
+
+    button.DocSearch-Prefill {
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    @media ($scheme-dark) {
+        :root:not([data-theme]) {
+            --btn-stroke: hsl(0deg 0% 100% / 20%);
+        }
+    }
+
+    :root[data-theme="dark"] & {
+        --btn-stroke: hsl(0deg 0% 100% / 20%);
+    }
+}
+
 .DocSearch-Hit-source {
     padding: 0.5em 1em;
     color: var(--color-text-muted);
@@ -128,6 +165,16 @@
             text-decoration: none;
             background-color: var(--color-theme-fade);
         }
+    }
+
+    @media ($scheme-dark) {
+        :root:not([data-theme]) {
+            --mark-bg: #030f1c;
+        }
+    }
+
+    :root[data-theme="dark"] & {
+        --mark-bg: #030f1c;
     }
 }
 
