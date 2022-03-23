@@ -19,6 +19,7 @@
         opacity: 0.7;
     }
 
+    // stylelint-disable-next-line max-line-length
     .token:is(.property, .tag, .boolean, .number, .constant, .symbol, .deleted) {
         color: #905;
     }
