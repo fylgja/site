@@ -1,6 +1,8 @@
 @use "@fylgja/mq" as *;
 @use "@fylgja/form/helper" as *;
-@use "@fylgja/dialog/helper" as *;
+@use "@fylgja/dialog/helper" as * with (
+    $dialog-elevation: var(--shadow-4)
+);
 
 // stylelint-disable selector-class-pattern, no-descending-specificity
 .DocSearch svg {
@@ -25,6 +27,7 @@
     @extend %backdrop-polyfill;
     z-index: 9;
     padding: 0;
+    backdrop-filter: blur(3px);
 }
 
 .DocSearch-Container--Stalled .DocSearch-MagnifierLabel,
