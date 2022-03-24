@@ -15,15 +15,20 @@ const saveColorPreference = () => {
     localStorage.setItem(storageKey, theme.value);
 };
 
-const applyColorPreference = () => {
-    document.documentElement.setAttribute("data-theme", theme.value);
-
-    document.querySelectorAll(btnTogglePreference).forEach((element) => {
-        element.setAttribute("aria-label", theme.value);
+const updateBtnTogglePreference = () => {
+    document.querySelectorAll(btnTogglePreference).forEach((el) => {
+        el.setAttribute("aria-label", theme.value);
     });
 };
 
+const applyColorPreference = () => {
+    document.documentElement.setAttribute("data-theme", theme.value);
+    updateBtnTogglePreference();
+};
+
 applyColorPreference();
+
+document.addEventListener("DOMContentLoaded", updateBtnTogglePreference, false);
 
 document.addEventListener("click", (e) => {
     if (!e.target.closest(btnTogglePreference)) return;
