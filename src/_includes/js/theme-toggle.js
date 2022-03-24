@@ -17,7 +17,12 @@ const saveColorPreference = () => {
 
 const updateBtnTogglePreference = () => {
     document.querySelectorAll(btnTogglePreference).forEach((el) => {
-        el.setAttribute("aria-label", theme.value);
+        el.setAttribute(
+            "aria-label",
+            theme.value === "dark"
+                ? "Activate light mode"
+                : "Activate dark mode"
+        );
     });
 };
 
