@@ -6,6 +6,7 @@ git: "components/shadow"
 tags: ["tokens"]
 preview: "theme.png"
 order: 2
+draft: true
 eleventyExcludeFromCollections: true
 ---
 

@@ -6,6 +6,7 @@ git: "components/z-layer"
 tags: ["tokens"]
 preview: "theme.png"
 order: 3
+draft: true
 eleventyExcludeFromCollections: true
 ---
 
