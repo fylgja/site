@@ -1,16 +1,8 @@
 :root {
     /* prettier-ignore */
     --gradient-hero-img:
-        linear-gradient(
-            190deg,
-            hsl(212deg 80% var(--hero-l, 80%)) 0%,
-            hsl(212deg 80% var(--hero-l, 80%) / 0%) 40%
-        ),
-        linear-gradient(
-            170deg,
-            hsl(299deg 68% var(--hero-l, 80%)) 0%,
-            hsl(299deg 68% var(--hero-l, 80%) / 0%) 40%
-        );
+        linear-gradient(190deg, hsl(212deg 80% var(--hero-l, 80%)) 0%, hsl(212deg 80% var(--hero-l, 80%) / 0%) 40%),
+        linear-gradient(170deg, hsl(299deg 68% var(--hero-l, 80%)) 0%, hsl(299deg 68% var(--hero-l, 80%) / 0%) 40%);
 }
 
 #hero {
@@ -136,11 +128,8 @@
 
 :root[data-theme="light"] {
     --code-bg: #fff;
-    --hero-content-gradient: linear-gradient(
-        45deg,
-        var(--color-alt),
-        var(--color-theme)
-    );
+    // prettier-ignore
+    --hero-content-gradient: linear-gradient(45deg, var(--color-alt), var(--color-theme));
 }
 
 :root[data-theme="dark"] {
@@ -154,11 +143,8 @@
 @media (prefers-color-scheme: light) {
     :root:not([data-theme]) {
         --code-bg: #fff;
-        --hero-content-gradient: linear-gradient(
-            45deg,
-            var(--color-alt),
-            var(--color-theme)
-        );
+        // prettier-ignore
+        --hero-content-gradient: linear-gradient(45deg, var(--color-alt), var(--color-theme));
     }
 }
 
