@@ -79,14 +79,7 @@
                     {% endmenuItem %}
                 {% endfor %}
                 <div class="ms-auto">
-                    <button
-                        title="Toggle color scheme"
-                        class="btn -icon"
-                        data-toggle-preference
-                        aria-label="auto"
-                        aria-live="polite">
-                        {{ '/src/assets/images/color-scheme.svg' | svgContents | safe }}
-                    </button>
+                    {% include "theme-toggle.njk" %}
                 </div>
             </nav>
         </div>
