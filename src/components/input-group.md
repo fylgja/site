@@ -45,9 +45,9 @@ Or if you are a importing this as plain CSS in PostCSS or any other option.
 Import the style directly via;
 
 ```css
-@import "@fylgja/input-group/input-group-style-field.css";
+@import "@fylgja/input-group/style-field.css";
 /* Or */
-@import "@fylgja/input-group/input-group-style-box.css";
+@import "@fylgja/input-group/style-box.css";
 ```
 
 ## How to use
