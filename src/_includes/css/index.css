@@ -1,3 +1,5 @@
+/* stylelint-disable max-line-length */
+
 :root {
     /* prettier-ignore */
     --gradient-hero-img:
@@ -31,17 +33,23 @@
         -webkit-background-clip: text;
         background-image: var(
             --hero-content-gradient,
-            linear-gradient(to right, var(--color-text), var(--color-text))
+            linear-gradient(45deg, var(--color-alt), var(--color-theme))
         );
-        color: transparent;
+        color: var(--hero-content-text, transparent);
     }
 
     .hero-content .btn.-outline {
         border-image-source: var(
             --hero-content-gradient,
-            linear-gradient(to right, var(--color-text), var(--color-text))
+            linear-gradient(45deg, var(--color-alt), var(--color-theme))
         );
         border-image-slice: 1;
+    }
+
+    /* NOTE: Drop focus when new button style is added */
+    .hero-content .btn.-outline:focus,
+    .hero-content .btn.-outline:hover {
+        filter: grayscale(0.5);
     }
 }
 
@@ -118,18 +126,17 @@
     --avatar-radius: 8px;
 }
 
-.collection-row .card {
-    transition: box-shadow 0.2s ease-out;
-}
-
-.collection-row .card:hover {
-    --card-elevation: var(--elevation-z4);
-}
-
-:root[data-theme="light"] {
-    --code-bg: #fff;
-    // prettier-ignore
-    --hero-content-gradient: linear-gradient(45deg, var(--color-alt), var(--color-theme));
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        --hero-bg: #0002;
+        --hero-color: var(--color-text-alt);
+        --hero-l: 27%;
+        --logo-color: currentcolor;
+        --code-box-header-stroke: rgb(255 255 255 / 15%);
+        --hero-content-gradient: none;
+        --hero-content-text: currentcolor;
+        --code-box-bg: #092c53;
+    }
 }
 
 :root[data-theme="dark"] {
@@ -138,24 +145,9 @@
     --hero-l: 27%;
     --logo-color: currentcolor;
     --code-box-header-stroke: rgb(255 255 255 / 15%);
-}
-
-@media (prefers-color-scheme: light) {
-    :root:not([data-theme]) {
-        --code-bg: #fff;
-        // prettier-ignore
-        --hero-content-gradient: linear-gradient(45deg, var(--color-alt), var(--color-theme));
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme]) {
-        --hero-bg: #0002;
-        --hero-color: var(--color-text-alt);
-        --hero-l: 27%;
-        --logo-color: currentcolor;
-        --code-box-header-stroke: rgb(255 255 255 / 15%);
-    }
+    --hero-content-gradient: none;
+    --hero-content-text: currentcolor;
+    --code-box-bg: #092c53;
 }
 
 @media (min-width: 480px) {
