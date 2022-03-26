@@ -21,10 +21,7 @@
 
 @use "@fylgja/button";
 @use "@fylgja/avatar";
-@use "@fylgja/card" with (
-    $card-elevation: var(--card-elevation, var(--shadow-2)),
-    $card-radius: 10px
-);
+@use "card";
 
 @use "@fylgja/container";
 @use "@fylgja/auto-grid";
