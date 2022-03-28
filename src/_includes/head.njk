@@ -16,12 +16,6 @@
         <meta name="robots" content="noindex" />
     {%- endif -%}
 
-    {# Preconnect #}
-    {%- if meta.env == 'prod' -%}
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-        <link rel="dns-prefetch" href="https://www.google-analytics.com">
-    {%- endif -%}
-
     {%- if preconnect -%}
         {% for name, item in preconnect %}
             <link rel="preconnect" href="{{ item }}">
