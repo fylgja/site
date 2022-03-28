@@ -25,12 +25,16 @@
     border-width: 2px;
 }
 
+/* NOTE: Drop focus when new button style is added */
+.hero-content .btn:not(:active):is(:focus, :hover) {
+    box-shadow: var(--shadow-4);
+}
+
 @supports (background-clip: text) or (-webkit-background-clip: text) {
-    .hero-content .subheading,
-    .hero-content .btn.-outline {
-        background-clip: text;
+    .hero-content :is(.subheading, .btn.-outline) {
         /* stylelint-disable-next-line property-no-vendor-prefix */
         -webkit-background-clip: text;
+        background-clip: text;
         background-image: var(
             --hero-content-gradient,
             linear-gradient(45deg, var(--color-alt), var(--color-theme))
@@ -44,12 +48,6 @@
             linear-gradient(45deg, var(--color-alt), var(--color-theme))
         );
         border-image-slice: 1;
-    }
-
-    /* NOTE: Drop focus when new button style is added */
-    .hero-content .btn.-outline:focus,
-    .hero-content .btn.-outline:hover {
-        filter: grayscale(0.5);
     }
 }
 
