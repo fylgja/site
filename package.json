@@ -40,7 +40,7 @@
     "docsearch.js": "^2.6.3",
     "fylgja": "^1.1.5",
     "prismjs": "^1.27.0",
-    "roving-ux": "^1.0.3"
+    "roving-ux": "^1.0.4"
   },
   "devDependencies": {
     "@11ty/eleventy": "^1.0.0",
