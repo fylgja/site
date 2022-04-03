@@ -12,7 +12,22 @@ module.exports = {
             preset: ["default", { calc: false }],
         }),
         purgecss({
-            content: ["_site/**/*.html"],
+            content: [
+                "_site/about/**/*.html",
+                "_site/download/**/*.html",
+                "_site/features/**/*.html",
+                "_site/getting-started/**/*.html",
+                "_site/guides/**/*.html",
+                "_site/starter-projects/**/*.html",
+                "_site/support/**/*.html",
+                // Note we ant to avoid scanning the complete components folder,
+                // Since we don't want to include any CSS from the code samples
+                "_site/components/base/index.html",
+                "_site/components/theme/index.html",
+                "_site/components/index.html",
+                "_site/404.html",
+                "_site/index.html",
+            ],
             safelist: [/^\:/, /lite-youtube/, /backdrop/, /DocSearch/],
         }),
     ],
