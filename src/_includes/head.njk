@@ -26,12 +26,12 @@
     <link rel="preload" href="/fonts/Rubik-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin>
     {%- if preloadCss -%}
         {% for name, item in preload %}
-            <link rel="preload" href="{{ item }}" as="style">
+            <link rel="preload" href="{{ item | assetUrl }}" as="style">
         {% endfor %}
     {%- endif -%}
     {%- if preloadFont -%}
         {% for name, item in preload %}
-            <link rel="preload" href="{{ item }}" as="font" type="font/woff2" crossorigin>
+            <link rel="preload" href="{{ item | assetUrl }}" as="font" type="font/woff2" crossorigin>
         {% endfor %}
     {%- endif -%}
 
@@ -63,9 +63,9 @@
     <meta name="application-name" content="{{ meta.siteName }}">
     <meta name="msapplication-TileColor" content="{{ meta.themeColor }}">
 
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" href="{{ '/favicon.ico' | assetUrl }}" sizes="any">
+    <link rel="icon" href="{{ '/favicon.svg' | assetUrl }}" type="image/svg+xml">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ '/apple-touch-icon.png' | assetUrl }}">
     <link rel="manifest" href="{{ '/site.webmanifest' | assetUrl }}">
 
     {# Dark mode #}

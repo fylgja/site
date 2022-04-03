@@ -6,7 +6,9 @@ const { version } = require("../../../package.json");
  * @param {string} url
  * @return {string} url with cache busting
  */
-module.exports = (url) => {
+const assetUrl = (url) => {
     const hash = process.env.ELEVENTY_ENV === "prod" ? "?=v" + version : "";
     return url + hash;
 };
+
+module.exports = { assetUrl };

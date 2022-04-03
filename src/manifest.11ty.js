@@ -1,4 +1,5 @@
 const { siteName, siteDescription, themeColor } = require("./_data/meta");
+const { assetUrl } = require("./_config/filters/asset-url.js");
 
 const webmanifest = {
     name: siteName,
@@ -7,23 +8,23 @@ const webmanifest = {
     start_url: "/",
     icons: [
         {
-            src: "/icon-192x192.png",
+            src: assetUrl("/icon-192x192.png"),
             sizes: "192x192",
             type: "image/png",
         },
         {
-            src: "/icon-192x192.png",
+            src: assetUrl("/icon-192x192.png"),
             sizes: "192x192",
             type: "image/png",
             purpose: "maskable",
         },
         {
-            src: "/icon-512x512.png",
+            src: assetUrl("/icon-512x512.png"),
             sizes: "512x512",
             type: "image/png",
         },
         {
-            src: "/icon-512x512.png",
+            src: assetUrl("/icon-512x512.png"),
             sizes: "512x512",
             type: "image/png",
             purpose: "maskable",
@@ -40,7 +41,7 @@ const webmanifest = {
             url: "/components/",
             icons: [
                 {
-                    src: "/shortcuts/components.png",
+                    src: assetUrl("/shortcuts/components.png"),
                     sizes: "192x192",
                     type: "image/png",
                 },

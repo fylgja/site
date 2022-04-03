@@ -36,7 +36,7 @@ const {
     isObject,
     isString,
 } = require("./src/_config/filters/types");
-const assetUrl = require("./src/_config/filters/asset-url");
+const { assetUrl } = require("./src/_config/filters/asset-url");
 
 module.exports = function (config) {
     config.setQuietMode(true);
