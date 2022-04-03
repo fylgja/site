@@ -2,6 +2,7 @@ const { siteName, siteDescription, themeColor } = require("./_data/meta");
 const { assetUrl } = require("./_config/filters/asset-url.js");
 
 const webmanifest = {
+    id: "/",
     name: siteName,
     short_name: siteName,
     description: siteDescription,
