@@ -196,7 +196,7 @@ _it's better to set those project specific, if needed._
 - `selector-max-class`: 4
 - `selector-max-compound-selectors`: 4
 - `selector-max-empty-lines`: 0,
-- `selector-max-id`: 0
+- `selector-max-id`: 1
 - `selector-max-type`: 2
 - `selector-max-universal`: 2
 - `selector-no-qualifying-type`: true
