@@ -1,8 +1,4 @@
-// Fylgja (getfylgja.com)
-// Licensed under MIT Open Source
-
 import dialogPolyfill from "dialog-polyfill/dist/dialog-polyfill.js";
-import tabLock from "../tablock";
 
 export function newDialog(id, button, backdrop = true) {
     const dialog = document.querySelector(id);
@@ -12,16 +8,35 @@ export function newDialog(id, button, backdrop = true) {
         dialogPolyfill.registerDialog(dialog);
     }
 
+    /**
+     * Lock the screen when the dialog is open
+     * Can be dropped when `:has` is fully supported in all browsers
+     *
+     * @param {boolean} use
+     */
     const dialogScrollLock = (use = true) => {
         document.body.style.overflow = use ? "hidden" : "";
     };
 
+    /**
+     * Handles the close of the dialog and the button state
+     *
+     * @param {string} target
+     * @param {Event} event
+     * @param {HTMLDialogElement} dialog
+     */
     const dialogClose = (target, event, dialog) => {
         if (!event.target.closest(target)) return;
         dialog.close();
         btn.setAttribute("aria-expanded", "false");
     };
 
+    /**
+     * check if clicked outside of the dialog
+     *
+     * @param {Event} event
+     * @param {HTMLDialogElement} dialog
+     */
     const dialogCloseOnBackdrop = (event, dialog) => {
         const rect = dialog.getBoundingClientRect();
         const isInDialog =
@@ -31,7 +46,7 @@ export function newDialog(id, button, backdrop = true) {
             event.clientX <= rect.left + rect.width;
 
         if (!isInDialog) {
-            dialog.close();
+            dialog.close("dismiss");
         }
     };
 
@@ -41,7 +56,6 @@ export function newDialog(id, button, backdrop = true) {
         if (backdrop) {
             dialog.showModal();
             dialogScrollLock();
-            tabLock(dialog);
         } else {
             dialog.show();
         }
