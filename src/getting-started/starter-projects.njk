@@ -4,21 +4,21 @@ description: "Looking for a prebuilt templates that already comes with Fylgja bu
 order: 30
 style: "
 #list-of {
-    --cols-size: 18em;
+    --cols-size: 20em;
     --aspect-ratio: 1/1;
     --card-radius: 8px;
     --card-elevation: none;
     --card-border: 1px solid rgb(0 0 0 / 12%);
-    --avatar-size: 75px;
+    --avatar-size: 55px;
     --avatar-radius: 8px;
 }
 "
 ---
 
-{% if collections.starterProjects %}
+{% if collections.starters %}
 <p>Looking for a prebuilt templates that already comes with Fylgja build in your favorite framework, look no further.</p>
 <div id="list-of" class="auto-grid">
-    {%- for item in collections.starterProjects -%}
+    {%- for item in collections.starters -%}
         <a href="{{ item.url }}" class="card card-content items-center flex-row">
             {% if item.data.thumb %}
                 {%- set preview -%}./src/assets/images/{{ item.data.thumb }}{%- endset -%}
