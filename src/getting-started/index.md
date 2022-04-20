@@ -2,6 +2,10 @@
 title: "Introduction"
 description: "Why use Fylgja and what does Fylgja offer"
 order: 1
+style: "
+#sample-import { --cols-size: 300px }
+#sample-import pre { margin: 0; }
+"
 ---
 
 Fylgja is a component based CSS framework,
@@ -10,10 +14,11 @@ allowing you to pick only what you need,
 this will keep your build bundle small without using any tools.
 
 So instead of including everything as one package,
-you can only include only what you need.
+you can only include only what you need,
+keeping your CSS small without any tools.
 
 ```css
-/* Instead of */
+/* So instead of */
 @import "vendor";
 
 /* You do this */
@@ -21,22 +26,34 @@ you can only include only what you need.
 @import "@fylgja/utilpack";
 ```
 
-Each CSS Component is made as a single layer CSS class.
-So you don't have to worry about specificity.
+## Quick start
 
-And each component is easy to edit via SCSS and CSS variables.
+```bash
+npm install fylgja
+```
 
-Giving you a foundation to work on, and you can add your own styles on top.
+And include it with;
 
-Since it is so modular,
-we recommend using NPM to get the specific components you need,
+<div id="sample-import" class="auto-grid my-4">
 
-and build one or more CSS files via Sass or PostCSS.
+```scss
+// SCSS
+@use "@fylgja/auto-grid";
+@use "@fylgja/utilpack";
+```
 
-Or use the easy way and include Fylgja as one package via NPM or via a CDN.
+```css
+/* PostCSS Import */
+@import "@fylgja/auto-grid";
+@import "@fylgja/utilpack";
+```
 
-[See our downloads page](/download/),
-for more information on how to add Fylgja to your project.
+</div>
+
+For more information on how to add Fylgja [see our downloads page](/download/),
+
+and for the documentation of each Fylgja CSS Component,
+see each component at the [Fylgja components page](/components/).
 
 ## More to help you getting started
 
