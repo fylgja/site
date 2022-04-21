@@ -39,13 +39,15 @@ And include it with;
 ```scss
 // SCSS
 @use "@fylgja/auto-grid";
-@use "@fylgja/utilpack";
+@use "@fylgja/form";
+// ...more
 ```
 
 ```css
 /* PostCSS Import */
 @import "@fylgja/auto-grid";
-@import "@fylgja/utilpack";
+@import "@fylgja/form";
+/* ...more */
 ```
 
 </div>
