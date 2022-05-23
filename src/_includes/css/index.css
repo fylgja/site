@@ -8,7 +8,7 @@
 }
 
 #hero {
-    --height: 64vmin;
+    --height: min(64vmin, 620px);
     --bg: var(--hero-bg, hsl(213deg 95% 95% / 45%));
     --color: var(--hero-color);
     --img: var(--hero-img);
@@ -155,10 +155,6 @@
 }
 
 @media (min-width: 640px) {
-    :root {
-        --container-padding-x: 2rem;
-    }
-
     #collection-featured {
         contain-intrinsic-size: 1018px;
     }
