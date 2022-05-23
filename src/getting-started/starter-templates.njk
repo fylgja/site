@@ -1,11 +1,12 @@
 ---
-title: "Starter Projects"
+title: "Starter Templates"
 description: "Looking for a prebuilt templates that already comes with Fylgja build in your favorite framework, look no further."
 order: 30
 style: "
 #list-of {
     --cols-size: 20em;
     --aspect-ratio: 1/1;
+    --avatar-bg: transparent;
     --card-radius: 8px;
     --card-elevation: none;
     --card-border: 1px solid rgb(0 0 0 / 12%);
@@ -15,32 +16,37 @@ style: "
 "
 ---
 
-{% if collections.starters %}
+{% if starters %}
 <p>Looking for a prebuilt templates that already comes with Fylgja build in your favorite framework, look no further.</p>
 <div id="list-of" class="auto-grid">
-    {%- for item in collections.starters -%}
-        <a href="{{ item.url }}" class="card card-content items-center flex-row">
-            {% if item.data.thumb %}
-                {%- set preview -%}./src/assets/images/{{ item.data.thumb }}{%- endset -%}
+    {%- for item in starters -%}
+        <a
+            href="{{ item.url }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="card card-content items-center flex-row"
+        >
+            {% if item.thumb %}
+                {%- set preview -%}./src/assets/images/{{ item.thumb }}{%- endset -%}
                 <div class="avatar aspect-ratio me-4">
                     {% image preview, "", "thumbnail" %}
                 </div>
             {% endif %}
             <div>
-                <strong>{{ item.data.title }}</strong>
+                <strong>{{ item.title }}</strong>
                 {%- set strLimit %}50{%- endset -%}
-                {% if item.data.description %}
-                    <p class="text-small my-0">{{ item.data.description | truncate(strLimit) }}</p>
-                {% else %}
-                    <p class="text-small my-0">{{ item.templateContent | truncate(strLimit) }}</p>
+                {% if item.description %}
+                    <p class="text-small my-0">{{ item.description | truncate(strLimit) }}</p>
                 {% endif %}
             </div>
         </a>
     {%- endfor -%}
-    <a href="https://github.com/fylgja/site/issues/new?&labels=enhancement&title=New%Starter%20Project:"
+    <a
+        href="https://github.com/fylgja/site/issues/new?&labels=enhancement&title=New%Starter%20Project:"
         target="_blank"
         rel="noopener noreferrer"
-        class="card card-content items-center flex-row">
+        class="card card-content items-center flex-row"
+    >
         <div class="avatar p-3 me-4" style="--avatar-bg: #111; --avatar-color: #fff;">
             <svg width="50" height="50" fill="currentcolor" class="w-full h-full">
                 <use href="{{ '/images/socials.svg' | assetUrl }}#github" />
