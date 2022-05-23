@@ -1,5 +1,5 @@
 ---
-title: Browser Support
+title: "Browser Support"
 description: "How wel is Fylgja support in which browsers"
 thumb: "guide-thumb/www.jpg"
 ---
