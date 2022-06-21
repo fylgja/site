@@ -20,6 +20,7 @@
     &:not([hidden]) {
         animation: dialog-show 300ms;
         transition: none;
+        visibility: visible;
     }
 }
 
