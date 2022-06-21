@@ -43,3 +43,20 @@ $page-header-height: 71px !default;
     list-style-type: none;
     padding-inline-start: var(--menu-nested-indent, 0);
 }
+
+details .toc > ol {
+    margin: 0;
+    padding-inline-start: 0;
+}
+
+.toc-btn {
+    list-style: none;
+    border-width: 1px 0;
+    --btn-radius: 0;
+    --btn-font-size: 0.875em;
+    --btn-stroke: var(--border-color);
+    --btn-color: var(--color-text-muted);
+    --btn-focus-stroke: currentcolor;
+    --btn-focus-bg: transparent;
+    --btn-active-bg: transparent;
+}

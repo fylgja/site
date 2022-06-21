@@ -21,7 +21,18 @@ css: { page: "/css/page.css" }
                             {%- if npm -%}{% badgeNpm npm %}{%- endif -%}
                             {%- if git -%}{% badgeGit git, gitDomain %}{%- endif -%}
                             {%- if codepen -%}{% badgeCodepen codepen %}{%- endif -%}
+                        </div>
                     </header>
+                    <details class="md-hidden mb-6">
+                        <summary class="toc-btn btn justify-start w-full">Table of Contents</summary>
+                        <nav class="menu mt-2">
+                            {%- if tocHeadings -%}
+                                {{ content | toc(tags=tocHeadings, wrapper="div") | safe }}
+                            {%- else -%}
+                                {{ content | toc(wrapper="div") | safe }}
+                            {%- endif -%}
+                        </nav>
+                    </details>
                     {%- if draft -%}
                         <blockquote class="notice">
                             <strong>Notice!</strong> This page is still work in progress.<br>
