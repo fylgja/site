@@ -22,98 +22,9 @@ Then please check out the [main docs](/components/utilpack) here.
 
 ## Typography
 
-### Text Color
+{% include "utils/color.md" %}
 
-| class      | value                  |
-| ---------- | ---------------------- |
-| text-reset | `color: currentcolor;` |
-
-### Text Decoration
-
-| class        | value                            |
-| ------------ | -------------------------------- |
-| underline    | `text-decoration: underline;`    |
-| line-through | `text-decoration: line-through;` |
-| no-underline | `text-decoration: none;`         |
-
-It also has the following options available:
-- Responsive classes
-
-### Text Align
-
-| class       | value                 |
-| ----------- | --------------------- |
-| text-start  | `text-align: start;`  |
-| text-center | `text-align: center;` |
-| text-end    | `text-align: end;`    |
-
-It also has the following options available:
-- Responsive classes
-
-### Vertical Align
-
-| class             | value                          |
-| ----------------- | ------------------------------ |
-| align-baseline    | `vertical-align: baseline;`    |
-| align-top         | `vertical-align: top;`         |
-| align-middle      | `vertical-align: middle;`      |
-| align-bottom      | `vertical-align: bottom;`      |
-| align-text-top    | `vertical-align: text-top;`    |
-| align-text-bottom | `vertical-align: text-bottom;` |
-
-It also has the following options available:
-- Responsive classes
-
-### Text Wrap
-
-| class       | value                  |
-| ----------- | ---------------------- |
-| text-wrap   | `white-space: wrap;`   |
-| text-nowrap | `white-space: nowrap;` |
-
-It also has the following options available:
-- Responsive classes
-
-### Text Break
-
-| class        | value                        |
-| ------------ | ---------------------------- |
-| break-normal | `overflow-wrap: normal;`     |
-| break-word   | `overflow-wrap: break-word;` |
-| break-any    | `overflow-wrap: anywhere;`   |
-| break-auto   | `hyphens: auto;`             |
-
-It also has the following options available:
-- Responsive classes
-
-### Font Weight
-
-| class             | value                   |
-| ----------------- | ----------------------- |
-| weight-thin       | `font-weight: 100;`     |
-| weight-extralight | `font-weight: 200;`     |
-| weight-light      | `font-weight: 300;`     |
-| weight-normal     | `font-weight: 400;`     |
-| weight-strong     | `font-weight: 500;`     |
-| weight-semibold   | `font-weight: 600;`     |
-| weight-bold       | `font-weight: 700;`     |
-| weight-extrabold  | `font-weight: 800;`     |
-| weight-black      | `font-weight: 900;`     |
-| weight-lighter    | `font-weight: lighter;` |
-| weight-bolder     | `font-weight: bolder;`  |
-
-It also has the following options available:
-- Responsive classes
-
-### Font Style
-
-| class        | value                 |
-| ------------ | --------------------- |
-| slant-normal | `font-style: normal;` |
-| slant-italic | `font-style: italic;` |
-
-It also has the following options available:
-- Responsive classes
+{% include "utils/typography.md" %}
 
 ## Spacers
 
@@ -140,414 +51,49 @@ Available sizes for the Margin, Padding and Space utilities.
 
 To extend this, use the `$utilpack-spacers` map.
 
-### Margin
+{% include "utils/margin.md" %}
 
-The following options/direction are available.
+{% include "utils/padding.md" %}
 
-- `m` = margin
-- `my` = margin-block-start margin-block-end
-- `mt` = margin-block-start
-- `mb` = margin-block-end
-- `mx` = margin-inline-start margin-inline-end
-- `ms` = margin-inline-start
-- `me` = margin-inline-end
+{% include "utils/space.md" %}
 
-> Each option is using the writing direction.
-> in LTR `margin-inline-start` is the same as `margin-left`.
+## Borders
 
-It also has the following options available:
-- Responsive classes
+{% include "utils/border.md" %}
 
-### Padding
-
-The following options/direction are available.
-
-- `p` = padding
-- `py` = padding-block-start padding-block-end
-- `pt` = padding-block-start
-- `pb` = padding-block-end
-- `px` = padding-inline-start padding-inline-end
-- `ps` = padding-inline-start
-- `pe` = padding-inline-en
-
-> Each option is using the writing direction.
-> in LTR `padding-inline-start` is the same as `padding-left`.
-
-It also has the following options available:
-- Responsive classes
-
-### Space
-
-Space works similar to the margin y and x version,
-Except you can set the class on parent element.
-
-This class will give each child after another child spacing per the value.
-Similar to the gap property.
-Except this can also be used on elements that are not part of a grid or flex container.
-
-The following options/direction are available.
-
-- `space-y` = margin-block-start
-- `space-x` = margin-inline-start
-
-> Each option is using the writing direction.
-> in LTR `margin-inline-start` is the same as `margin-left`.
-
-It also has the following options available:
-- Responsive classes
-
-## Border
-
-Available sizes for the border utility.
-
-| class        | value                                                                           |
-| ------------ | ------------------------------------------------------------------------------- |
-| `{PREFIX}`   | `{PROPERTY}: 1px var(--border-style, solid) var(--border-color, currentcolor);` |
-| `{PREFIX}`-0 | `{PROPERTY}: 0;`                                                                |
-| `{PREFIX}`-2 | `{PROPERTY}: 2px var(--border-style, solid) var(--border-color, currentcolor);` |
-| `{PREFIX}`-3 | `{PROPERTY}: 3px var(--border-style, solid) var(--border-color, currentcolor);` |
-
-To extend this, use the `$utilpack-border-sizes` map.
-
-The following options/direction are available.
-
-- `border`
-- `border-block-start`
-- `border-block-end`
-- `border-inline-start`
-- `border-inline-end`
-
-> Each option is using the writing direction.
-> in LTR `border-inline-start` is the same as `border-left`.
-
-It also has the following options available:
-- Responsive classes
-
-## Divider
-
-Divider works similar to the border-block-start and border-inline-start,
-Except you can set the class on parent element.
-
-This class will give each child after another child a border per the value.
-
-The following options/direction are available.
-
-- `divider-y` = border-block-start
-- `divider-x` = border-inline-start
-
-> Each option is using the writing direction.
-> in LTR `border-inline-start` is the same as `border-left`.
-
-It also has the following options available:
-- Responsive classes
+{% include "utils/divider.md" %}
 
 ## Sizing
 
-Available sizes for the `width` and `height` utilities.
-
-| class             | value                           |
-| ----------------- | ------------------------------- |
-| `{PREFIX}`-auto   | `{PROPERTY}: auto;`             |
-| `{PREFIX}`-none   | `{PROPERTY}: 0;`                |
-| `{PREFIX}`-25     | `{PROPERTY}: 25%;`              |
-| `{PREFIX}`-33     | `{PROPERTY}: calc(100% / 3);`   |
-| `{PREFIX}`-50     | `{PROPERTY}: 50%;`              |
-| `{PREFIX}`-66     | `{PROPERTY}: calc(100% / 1.5);` |
-| `{PREFIX}`-75     | `{PROPERTY}: 75%;`              |
-| `{PREFIX}`-full   | `{PROPERTY}: 100%;`             |
-| `{PREFIX}`-screen | `{PROPERTY}: 100vh;`            |
-
-Available sizes for the `min-width` and `min-height` utilities.
-
-| class                 | value                    |
-| --------------------- | ------------------------ |
-| `min-{PREFIX}`-none   | `min-{PROPERTY}: 0;`     |
-| `min-{PREFIX}`-full   | `min-{PROPERTY}: 100%;`  |
-| `min-{PREFIX}`-screen | `min-{PROPERTY}: 100vh;` |
-
-Available sizes for the `max-width` and `max-height` utilities.
-
-| class                 | value                    |
-| --------------------- | ------------------------ |
-| `max-{PREFIX}`-none   | `max-{PROPERTY}: 0;`     |
-| `max-{PREFIX}`-full   | `max-{PROPERTY}: 100%;`  |
-| `max-{PREFIX}`-screen | `max-{PROPERTY}: 100vh;` |
-
-It also has the following options available:
-- Responsive classes
+{% include "utils/sizing.md" %}
 
 ## Layout
 
-### Float
+{% include "utils/position.md" %}
 
-| class       | value           |
-| ----------- | --------------- |
-| float-right | `float: right;` |
-| float-left  | `float: left;`  |
-| float-none  | `float: none;`  |
+{% include "utils/z-layer.md" %}
 
-It also has the following options available:
-- Responsive classes
+{% include "utils/float.md" %}
 
-> Tip1: although we use flex or grid for many layouts.
-> Floats still have there uses with inline image in a article and more.
-> 
-> Tip2: Use the flow-root class as a wrapper to keep everting inside the box
-> and clear for inline element that may not have any floating elements next to it.
-
-### Clear
-
-| class       | value           |
-| ----------- | --------------- |
-| clear-right | `clear: right;` |
-| clear-left  | `clear: left;`  |
-| clear-both  | `clear: both;`  |
-| clear-none  | `clear: none;`  |
-
-It also has the following options available:
-- Responsive classes
-
-### Overflow
-
-| class            | value                |
-| ---------------- | -------------------- |
-| overflow-auto    | `overflow: auto;`    |
-| overflow-hidden  | `overflow: hidden;`  |
-| overflow-visible | `overflow: visible;` |
-| overflow-scroll  | `overflow: scroll;`  |
-
-Or use the `overflow-y` and `overflow-x` version.
-
-### Position
-
-| class    | value                 |
-| -------- | --------------------- |
-| static   | `position: static;`   |
-| relative | `position: relative;` |
-| absolute | `position: absolute;` |
-| fixed    | `position: fixed;`    |
-| sticky   | `position: sticky;`   |
-
-The Utilpack also ship's with the position inset options;
-
-- inset
-- top
-- right
-- bottom
-- left
-- inset-y
-- inset-x
-
-> the inset property still uses the older spec until the newer spec is better supported.
-
-And the following values are available;
-
-| class           | value               |
-| --------------- | ------------------- |
-| `{PREFIX}`-auto | `{PROPERTY}: auto;` |
-| `{PREFIX}`-0    | `{PROPERTY}: 0;`    |
-| `{PREFIX}`-50   | `{PROPERTY}: 50%;`  |
-| `{PREFIX}`-full | `{PROPERTY}: 100%;` |
-
-To extend this, use the `$utilpack-positions` map.
-
-It also has the following options available:
-- Responsive classes
-
-### Z Index
-
-| class  | value            |
-| ------ | ---------------- |
-| z-auto | `z-index: auto;` |
-| z-0    | `z-index: 0;`    |
-| z-1    | `z-index: 1;`    |
-| z-2    | `z-index: 2;`    |
-| z-3    | `z-index: 3;`    |
-| z-4    | `z-index: 4;`    |
-| z-5    | `z-index: 5;`    |
-
-In case you need the index dept value to be bigger, like 10, 20 and 30.
-Simply change the `$utilpack-index-dept` variable from 1 to 10.
+{% include "utils/overflow.md" %}
 
 ## Display Layout
 
-### Display
+{% include "utils/display.md" %}
 
-| class        | value                    |
-| ------------ | ------------------------ |
-| block        | `display: block;`        |
-| hidden       | `display: none;`         |
-| inline-block | `display: inline-block;` |
-| flex         | `display: flex;`         |
-| inline-flex  | `display: inline-flex;`  |
-| flow-root    | `display: flow-root;`    |
-
-> Grid is not by default part of this group.
-> And should be part of it own utility or component.
-
-It also has the following options available:
-- Responsive classes
-
-### Visibility
-
-| class     | value                    |
-| --------- | ------------------------ |
-| invisible | `visibility: invisible;` |
-| visible   | `visibility: visible;`   |
-
-It also has the following options available:
-- Responsive classes
+{% include "utils/visibility.md" %}
 
 ## Media Layout (Images, Video)
 
-### Object Fit
-
-| class             | value                     |
-| ----------------- | ------------------------- |
-| object-contain    | `object-fit: contain;`    |
-| object-cover      | `object-fit: cover;`      |
-| object-fill       | `object-fit: fill;`       |
-| object-none       | `object-fit: none;`       |
-| object-scale-down | `object-fit: scale-down;` |
-
-### Object Position
-
-| class         | value                      |
-| ------------- | -------------------------- |
-| object-top    | `object-position: top;`    |
-| object-right  | `object-position: right;`  |
-| object-bottom | `object-position: bottom;` |
-| object-left   | `object-position: left;`   |
+{% include "utils/object.md" %}
 
 ## Flex
 
-### Direction
-
-| class            | value                             |
-| ---------------- | --------------------------------- |
-| flex-row         | `flex-direction: row;`            |
-| flex-row-reverse | `flex-direction: row-reverse;`    |
-| flex-col         | `flex-direction: column;`         |
-| flex-col-reverse | `flex-direction: column-reverse;` |
-
-It also has the following options available:
-- Responsive classes
-
-### Wrap
-
-| class             | value                      |
-| ----------------- | -------------------------- |
-| flex-nowrap       | `flex-wrap: nowrap;`       |
-| flex-wrap         | `flex-wrap: wrap;`         |
-| flex-wrap-reverse | `flex-wrap: wrap-reverse;` |
-
-It also has the following options available:
-- Responsive classes
-
-### Flex Size
-
-| class        | value             |
-| ------------ | ----------------- |
-| flex-fill    | `flex: 1 1 0%;`   |
-| flex-auto    | `flex: 1 1 auto;` |
-| flex-shrink  | `flex: 0 0 auto;` |
-| flex-grow    | `flex: 1 0 auto;` |
-| flex-initial | `flex: 0 1 auto;` |
-| flex-none    | `flex: none;`     |
-
-It also has the following options available:
-- Responsive classes
-
-### Order
-
-| class       | value        |
-| ----------- | ------------ |
-| order-first | `order: -1;` |
-| order-0     | `order: 0;`  |
-| order-1     | `order: 1;`  |
-| order-last  | `order: 9;`  |
-
-It also has the following options available:
-- Responsive classes
+{% include "utils/flex.md" %}
 
 ## Box Alignment (Flex & Grid)
 
-### Justify Content
-
-| class           | value                             |
-| --------------- | --------------------------------- |
-| justify-start   | `justify-content: flex-start;`    |
-| justify-end     | `justify-content: flex-end;`      |
-| justify-center  | `justify-content: center;`        |
-| justify-between | `justify-content: space-between;` |
-| justify-around  | `justify-content: space-around;`  |
-| justify-evenly  | `justify-content: space-evenly;`  |
-
-It also has the following options available:
-- Responsive classes
-
-### Justify Items
-
-| class                 | value                     |
-| --------------------- | ------------------------- |
-| justify-items-start   | `justify-items: start;`   |
-| justify-items-end     | `justify-items: end;`     |
-| justify-items-center  | `justify-items: center;`  |
-| justify-items-stretch | `justify-items: stretch;` |
-
-It also has the following options available:
-- Responsive classes
-
-### Justify Self
-
-| class                | value                    |
-| -------------------- | ------------------------ |
-| justify-self-start   | `justify-self: start;`   |
-| justify-self-end     | `justify-self: end;`     |
-| justify-self-center  | `justify-self: center;`  |
-| justify-self-stretch | `justify-self: stretch;` |
-
-It also has the following options available:
-- Responsive classes
-
-### Align Content
-
-| class           | value                           |
-| --------------- | ------------------------------- |
-| content-start   | `align-content: flex-start;`    |
-| content-end     | `align-content: flex-end;`      |
-| content-center  | `align-content: center;`        |
-| content-between | `align-content: space-between;` |
-| content-around  | `align-content: space-around;`  |
-| content-evenly  | `align-content: space-evenly;`  |
-
-It also has the following options available:
-- Responsive classes
-
-### Align Items
-
-| class          | value                      |
-| -------------- | -------------------------- |
-| items-start    | `align-items: flex-start;` |
-| items-end      | `align-items: flex-end;`   |
-| items-center   | `align-items: center;`     |
-| items-baseline | `align-items: baseline;`   |
-| items-stretch  | `align-items: stretch;`    |
-
-It also has the following options available:
-- Responsive classes
-
-### Align Self
-
-| class        | value                     |
-| ------------ | ------------------------- |
-| self-start   | `align-self: flex-start;` |
-| self-end     | `align-self: flex-end;`   |
-| self-center  | `align-self: center;`     |
-| self-stretch | `align-self: stretch;`    |
-
-It also has the following options available:
-- Responsive classes
+{% include "utils/box-alignment.md" %}
 
 ## Responsive classes
 
