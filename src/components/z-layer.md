@@ -1,13 +1,11 @@
 ---
 title: "Z Layer"
 description: "The Fylgja z-layer offers Design Tokens (CSS props) for consistent and semantic z-indexing."
-# npm: "@fylgja/text"
+npm: "@fylgja/z-layer"
 git: "components/z-layer"
 tags: ["tokens"]
 preview: "theme.png"
 order: 3
-draft: true
-eleventyExcludeFromCollections: true
 ---
 
 The Fylgja z-layer offers Design Tokens (CSS props) for consistent and semantic z-indexing.
@@ -28,40 +26,50 @@ Then include the component in to your code via;
 
 ## How to use
 
-This component comes in 4 syntax versions.
+This component comes in 3 syntaxes.
 
-The SCSS offers both the default import, same as the CSS version,
-and offers the helper with just SCSS variables.
-
-The CSS version is the same as the SCSS version.
-
-The Javascript and JSON tokens are also available,
-if you want to combine it a with anther design token systems,
-or use it in a React or Vue based project.
+- SCSS, offered in both:
+  - the SCSS variable syntax
+  - the CSS variable syntax
+- CSS variables
+- Javascript Style Tokens,
+  if you want to use it in a Javascript based environment, like React or Vue.
 
 ### SCSS version
 
 ```scss
 @use "@fylgja/z-layer" as *;
 
-.box {
-    z-index: $layer1;
+.style {
+    z-index: $layer-1;
+}
+
+// CSS Syntax
+@use "@fylgja/z-layer/props";
+
+.style {
+    z-index: var(--layer-1);
 }
 ```
 
 ### CSS version
 
 ```css
-.box {
-    z-index: var(--layer1);
+@import "@fylgja/z-layer";
+
+.style {
+    z-index: var(--layer-1);
 }
 ```
 
 ### Javascript
 
 ```js
-import zLayer from "@fylgja/z-layer"
-import zLayer from "@fylgja/z-layer/tokens.json"; // Or as JSON
+import props from "@fylgja/z-layer"
+
+const style = {
+    zIndex: props.layer[1]
+}
 ```
 
 ## Config
