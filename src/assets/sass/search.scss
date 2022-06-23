@@ -1,5 +1,5 @@
 // prettier-ignore
 @use "@fylgja/form" with (
-    $form-fields: ("[type=search]")
+    $form-fields: ("search")
 );
 @use "./docsearch/modal";
