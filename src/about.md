@@ -57,3 +57,5 @@ So a little shout out to;
   
   It did shape plugin [`@fylgja/flex-grid`](/components/flex-grid/)
   that up to now still a great solution for a CSS grid is.
+  
+  And of course, Fylgja couldn't have happened without the help of the [Mooore Digital](https://www.mooore.nl/) team! :)
