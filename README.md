@@ -9,7 +9,7 @@ Any documentation found in each component there, is based on the documentation h
 
 ## How to Contribute
 
-Fylgja is an open source project, therefore contributions all appreciated!
+Fylgja is an open source project, therefore contributions are all appreciated!
 If you are looking for a bug to fix, check out our [contributing](./.github/contributing.md).
 
 ## Running it locally
