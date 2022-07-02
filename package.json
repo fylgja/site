@@ -61,7 +61,7 @@
     "markdown-it-anchor": "^8.6.4",
     "markdown-it-external-anchor": "^1.0.0",
     "postcss": "^8.4.13",
-    "postcss-cli": "^9.1.0",
+    "postcss-cli": "^10.0.0",
     "postcss-preset-env": "^7.7.1",
     "rollup": "^2.75.5",
     "rollup-plugin-terser": "^7.0.2",
