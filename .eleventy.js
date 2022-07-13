@@ -82,6 +82,18 @@ module.exports = function (config) {
     config.addShortcode("badgeGit", badgeGit);
     config.addShortcode("year", () => `${new Date().getFullYear()}`);
     config.addPairedShortcode("menuItem", menuItem);
+    config.addPairedShortcode(
+        "codeSample",
+        (content, language = "html", previewClass = "", previewStyle = "") => {
+            const className = previewClass ? ` ${previewClass}` : "";
+            const style = previewStyle ? ` style="${previewStyle}"` : "";
+            const code = syntaxHighlight.pairedShortcode(content, language);
+            return `<div class="code-sample">
+            <div class="preview${className}"${style}>${content}</div>
+            <div class="code">${code}</div>
+        </div>`;
+        }
+    );
 
     // Filters
     config.addFilter("isArray", isArray);
