@@ -23,12 +23,13 @@ module.exports = {
                 // Note we ant to avoid scanning the complete components folder,
                 // Since we don't want to include any CSS from the code samples
                 "_site/components/base/index.html",
+                "_site/components/range/index.html",
                 "_site/components/theme/index.html",
                 "_site/components/index.html",
                 "_site/404.html",
                 "_site/index.html",
             ],
-            safelist: [/^\:/, /lite-youtube/, /backdrop/, /DocSearch/],
+            safelist: [/^\:/, /lite-youtube/, /backdrop/, /DocSearch/, "kbd"],
         }),
     ],
 };

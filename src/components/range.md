@@ -1,10 +1,10 @@
 ---
 title: "Range"
-description: "range"
+description: "Range component will add solid foundation for a input range slider"
 npm: "@fylgja/range"
 git: "components/range"
 tags: ["nativeElements", "forms"]
-preview: "control.png"
+preview: "progress.png"
 style: ["../../node_modules/@fylgja/range/range.css"]
 ---
 
