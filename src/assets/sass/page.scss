@@ -1,8 +1,10 @@
 @use "@fylgja/table";
 @use "@fylgja/details";
+@use "@fylgja/form";
 @use "./offcanvas";
 @use "./page-header";
 @use "./docs/faq-panel";
+@use "./docs/code-sample";
 @use "./docs/header-anchor";
 @use "./docs/layout";
 @use "./badge";

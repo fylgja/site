@@ -19,6 +19,7 @@ $white-soft: color.change(#fff, $alpha: 0.5);
     --link-color: #{color.change($color-theme, $lightness: 75%)};
     --link-color-focus: currentcolor;
     --selection-bg: #{$theme-dark};
+    --code-stroke: #{$theme-dark};
     --code-bg: #{$theme-dark};
     --code-color: #{$color-on-theme};
     --badge-bg: #{color.change($color-theme, $lightness: 24%)};
@@ -38,8 +39,13 @@ $white-soft: color.change(#fff, $alpha: 0.5);
     --scrollbar-thumb-color: #{$white-soft};
     --border-color: #{$white-softer};
     --form-focus-color: #fff;
+    --select-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23fff"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 10l5 5 5-5z"/></svg>');
     --shadow-strength: 25%;
     --shadow-color: 220 40% 2%;
+    --range-track-color: #333;
+    --range-track-disabled-color: #222;
+    --range-thumb-disabled-color: #333;
+    --range-focus-color: #{$white-softer};
     color-scheme: dark;
 
     @supports (backdrop-filter: blur(1px)) {

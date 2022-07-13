@@ -1,0 +1,32 @@
+@use "@fylgja/mq" as *;
+
+.code-sample {
+    --color-theme: #1565c0;
+    --form-focus-color: #1565c0;
+    margin: 1em 0;
+    overflow-x: auto;
+
+    .preview {
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+        border: 1px solid var(--code-stroke, rgb(0 0 0 / 5%));
+        border-bottom: 0;
+        padding: 1.25rem 1rem;
+        background-size: 5px 5px;
+        background-image: radial-gradient(
+            var(--code-stroke, rgb(0 0 0 / 10%)) 1px,
+            transparent 1px
+        );
+        background-color: rgb(0 0 0 / 3%);
+
+        @media ($md) {
+            padding: 1.5rem;
+        }
+    }
+
+    pre {
+        margin: 0;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+}
