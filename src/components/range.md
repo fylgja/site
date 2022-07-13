@@ -1,7 +1,7 @@
 ---
 title: "Range"
 description: "range"
-# npm: "@fylgja/range"
+npm: "@fylgja/range"
 git: "components/range"
 tags: ["nativeElements", "forms"]
 preview: "control.png"
