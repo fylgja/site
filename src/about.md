@@ -46,14 +46,11 @@ So a little shout out to;
 - [Bootstrap](https://getbootstrap.com/) for always being a great tool. It has its own little modularity flaws, but it did kick start the Fylgja project.
 - [Bulma](https://bulma.io/) and [Material Components](https://material.io/components?platform=web)
   On how to do modularity with SCSS and CSS properly.
-- [Native Elements](https://native-elements.dev/) for showing how you can do nice looking Native Elements without losing any freedom on personal style.
 - [TailwindCSS](https://tailwindcss.com/) on how to do Utility classes
-  and most importantly! How to not do Utility classes.
-- [Iota grid](https://github.com/korywakefield/iota) while the project is dead,
-  It did do some cool things on how to make a grid system.
-  
-  This did not make it in the core project since we found a better idea,
-  following the idea of container queries in the `@fylgja/autogrid`.
-  
-  It did shape plugin [`@fylgja/flex-grid`](/components/flex-grid/)
-  that up to now still a great solution for a CSS grid is.
+  and most importantly! How to not do Utility classes
+- [Open Props](https://open-props.style/) on how to provide a comprehensive set of CSS Design Tokens
+- Dead but not forgoten, for what awesome stuff they did;
+  - [Native Elements](https://native-elements.dev/) for showing how you can do nice looking Native Elements without losing any freedom on personal style
+  - [Iota grid](https://github.com/korywakefield/iota) showed how you can create a fully customizable CSS grid with only a small CSS footprint, inspired some option in the [`@fylgja/flex-grid`](/components/flex-grid/)
+
+Also a little shout out to [Mooore Digital](https://www.mooore.nl/) for assisting this project and utilizing it in their own work.
