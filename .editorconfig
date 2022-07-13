@@ -11,19 +11,13 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-[*.{md,mdx}]
-indent_size = 4
+[*.md]
 trim_trailing_whitespace = false
 max_line_length = 80
 
-[*.{css,less,sass,scss,js,ts,mjs}]
+[*.{html,njk,css,scss,js,ts}]
 indent_size = 4
 max_line_length = 80
 
-[*.{html,njk,vue,jsx,tsx}]
-indent_size = 4
-max_line_length = 80
-
-[*.{xml,phtml,php}]
-indent_size = 4
-max_line_length = 120
+[feed.njk]
+indent_size = 2

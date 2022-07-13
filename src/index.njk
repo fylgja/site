@@ -7,29 +7,25 @@ sitemap:
 
 <header id="hero" class="section flex flex-col">
     {% if navigation.home %}
-    <nav aria-label="quick menu" class="hero-nav container p-2 md-py-4 md-px-5 flex justify-end items-center">
-        {% for item in navigation.home %}
-            <a href="{{ item.url }}"
-                {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}
-                {% if item.alt %} aria-label="{{ item.alt }}"{% endif %}
-                class="inline-flex items-center py-1 mx-2 md-mx-4 text-reset{{ ' ' if item.classList }}{{ item.classList }}">
-                {% if item.icon %}
-                    {%- set introIcon -%}/src/assets/images/icons/{{ item.icon }}.svg{%- endset -%}
-                    {{ introIcon | svgContents | safe }}
-                {% endif %}
-                <div>{{ item.text }}</div>
-            </a>
-        {% endfor %}
-        <a
-            href="https://github.com/fylgja/fylgja"
-            rel="noopener noreferrer"
-            target="_blank"
-            title="Visit the Fylgja Github repo"
-            aria-label="Visit the Fylgja Github repo"
-            class="ms-4 me-2 btn -icon"
-        >{{ "/src/assets/images/icons/github.svg" | svgContents | safe }}</a>
-        {% include "theme-toggle.njk" %}
-    </nav>
+        <nav aria-label="quick menu" class="hero-nav container p-2 md-py-4 md-px-5 flex justify-end items-center">
+            {% for item in navigation.home %}
+                <a href="{{ item.url }}" {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %} {% if item.alt %} aria-label="{{ item.alt }}" {% endif %} class="inline-flex items-center py-1 mx-2 md-mx-4 text-reset{{ ' ' if item.classList }}{{ item.classList }}">
+                    {% if item.icon %}
+                        {%- set introIcon -%}/src/assets/images/icons/{{ item.icon }}.svg{%- endset -%}
+                        {{ introIcon | svgContents | safe }}
+                    {% endif %}
+                    <div>{{ item.text }}</div>
+                </a>
+            {% endfor %}
+            <a
+                href="https://github.com/fylgja/fylgja"
+                rel="noopener noreferrer"
+                target="_blank"
+                title="Visit the Fylgja Github repo"
+                aria-label="Visit the Fylgja Github repo"
+                class="ms-4 me-2 btn -icon">{{ "/src/assets/images/icons/github.svg" | svgContents | safe }}</a>
+            {% include "theme-toggle.njk" %}
+        </nav>
     {% endif %}
     <div class="hero-content container my-auto flex flex-col lg-flex-row lg-justify-between items-center">
         <div class="text-center mb-12 mx-2 md-mx-4">
@@ -60,113 +56,109 @@ sitemap:
         </div>
     </div>
 </header>
-
 <section id="features" class="container py-6 md-py-8">
     <div id="intro" class="pt-12 pb-6">
         <h2 class="h1">The experiences you get from using Fylgja</h2>
         <p class="mb-0">
             Fylgja is a very flexable CSS framework,<br>
-            it offers the best features from other CSS frameworks, bundled into one framework.<br>
-            Use and extend it with your own CSS or extend your current stack with Fylgja.
-        </p>
-    </div>
-    <div class="flex flex-col lg-flex-row items-center lg-items-start justify-between">
-        <ul id="features-list" class="auto-grid w-full lg-w-auto lg-me-4 xl-me-8 px-0 py-12">
-            {% for item in usps.home %}
-                <li class="flex{{ ' ' if item.classList }}{{ item.classList }}">
-                    {% if item.icon %}
-                        {%- set listIcon -%}/src/assets/images/icons/{{ item.icon }}.svg{%- endset -%}
-                        <div class="avatar me-6 lg-me-10" style="{{ item.iconStyle }}">
-                            {{ listIcon | svgContents | safe }}
+                it offers the best features from other CSS frameworks, bundled into one framework.<br>
+                    Use and extend it with your own CSS or extend your current stack with Fylgja.
+                </p>
+            </div>
+            <div class="flex flex-col lg-flex-row items-center lg-items-start justify-between">
+                <ul id="features-list" class="auto-grid w-full lg-w-auto lg-me-4 xl-me-8 px-0 py-12">
+                    {% for item in usps.home %}
+                        <li class="flex{{ ' ' if item.classList }}{{ item.classList }}">
+                            {% if item.icon %}
+                                {%- set listIcon -%}/src/assets/images/icons/{{ item.icon }}.svg{%- endset -%}
+                                <div class="avatar me-6 lg-me-10" style="{{ item.iconStyle }}">
+                                    {{ listIcon | svgContents | safe }}
+                                </div>
+                            {% endif %}
+                            <div>
+                                <h3>{{ item.title }}</h3>
+                                <p>{{ item.content | safe }}</p>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div id="features-box" class="text-center py-4 xl-py-12">
+                    <h3 class="my-6">Combine the power of</h3>
+                    <div class="inline-flex flex-wrap items-end justify-center">
+                        <div class="w-full sm-w-33 px-4">
+                            <h4 class="md-m-0">Native styles</h4>
                         </div>
-                    {% endif %}
-                    <div>
-                        <h3>{{ item.title }}</h3>
-                        <p>{{ item.content | safe }}</p>
+                        <div class="w-50 sm-w-33 px-4 md-mb-4">
+                            <h4 class="md-m-0">CSS Components</h4>
+                        </div>
+                        <div class="w-50 sm-w-33 px-4">
+                            <h4 class="md-m-0">CSS Utilities</h4>
+                        </div>
                     </div>
-                </li>
-            {% endfor %}
-        </ul>
-        <div id="features-box" class="text-center py-4 xl-py-12">
-            <h3 class="my-6">Combine the power of</h3>
-            <div class="inline-flex flex-wrap items-end justify-center">
-                <div class="w-full sm-w-33 px-4">
-                    <h4 class="md-m-0">Native styles</h4>
-                </div>
-                <div class="w-50 sm-w-33 px-4 md-mb-4">
-                    <h4 class="md-m-0">CSS Components</h4>
-                </div>
-                <div class="w-50 sm-w-33 px-4">
-                    <h4 class="md-m-0">CSS Utilities</h4>
+                    <div>{% image "src/assets/images/whatsinthebox.png", "Whats Fylgja all has to offer", "medium" %}</div>
+                    <p class="h3 mt-6 mb-0">Into one Framework</p>
                 </div>
             </div>
-            <div>{% image "src/assets/images/whatsinthebox.png", "Whats Fylgja all has to offer", "medium" %}</div>
-            <p class="h3 mt-6 mb-0">Into one Framework</p>
-        </div>
-    </div>
-</section>
-
-{% if collections.componentsFeatured %}
-<section id="collection-featured" class="collection-row py-12 my-4 md-my-8">
-    <div class="container md-py-8">
-        <div class="md-mb-7">
-            <h2 class="mb-1">Our Featured CSS Components</h2>
-            <p>
-                Our Featured CSS Components, that really show the full potential of what each Fylgja Component can do.<br>
-                Want more? <a href="/components/">See the full list of Fylgja CSS Components here.</a>
-            </p>
-        </div>
-        <div class="auto-grid">
-            {%- for item in collections.componentsFeatured | sortByOrder | limit(4) -%}
-            <a class="card flex-row md-flex-col" href="{{ item.url }}">
-                <div class="card-media avatar border md-border-0 my-4 ms-4 md-m-0 aspect-ratio">
-                    {% if item.data.preview %}
-                    {% set preview %}{{ meta.componentsMedia }}{{ item.data.preview }}{% endset %}
-                    {% image preview, "", "medium" %}
-                    {% endif %}
-                </div>
-                <div class="card-content">
-                    <h3 class="h5 my-0">{{ item.data.title }}</h3>
-                    {% if item.data.description %}
-                    <p class="text-small">{{ item.data.description | truncate(strLimit) }}</p>
-                    {% else %}
-                    <p class="text-small">{{ item.templateContent | truncate(strLimit) }}</p>
-                    {% endif %}
-                </div>
-            </a>
-            {%- endfor -%}
-        </div>
-    </div>
-</section>
-{% endif %}
-
-{% if support %}
-<section id="contact" class="flex flex-col justify-center">
-    <div class="container">
-        <div class="md-text-center md-mb-7">
-            <h2>Get involved on</h2>
-        </div>
-        <ul class="max-w-content mx-auto p-0 md-flex justify-center md-space-x-6">
-            {% for item in support %}
-            <li class="inline-block">
-                <a href="{{ item.url }}" {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %}
-                    class="text-reset no-underline flex iteme-start space-x-4">
-                    {% if item.icon %}
-                    <div class="avatar p-2"
-                        style="--avatar-bg: {{ item.iconStyle.bg }}; --avatar-color: {{ item.iconStyle.color }};">
-                        <svg width="24" height="24" fill="currentcolor">
-                            <use href="{{ '/images/socials.svg' | assetUrl }}#{{ item.icon }}" />
-                        </svg>
+        </section>
+        {% if collections.componentsFeatured %}
+            <section id="collection-featured" class="collection-row py-12 my-4 md-my-8">
+                <div class="container md-py-8">
+                    <div class="md-mb-7">
+                        <h2 class="mb-1">Our Featured CSS Components</h2>
+                        <p>
+                            Our Featured CSS Components, that really show the full potential of what each Fylgja Component can do.<br>
+                                Want more?
+                                <a href="/components/">See the full list of Fylgja CSS Components here.</a>
+                            </p>
+                        </div>
+                        <div class="auto-grid">
+                            {%- for item in collections.componentsFeatured | sortByOrder | limit(4) -%}
+                                <a class="card flex-row md-flex-col" href="{{ item.url }}">
+                                    <div class="card-media avatar border md-border-0 my-4 ms-4 md-m-0 aspect-ratio">
+                                        {% if item.data.preview %}
+                                            {% set preview %}{{ meta.componentsMedia }}{{ item.data.preview }}{% endset %}
+                                            {% image preview, "", "medium" %}
+                                        {% endif %}
+                                    </div>
+                                    <div class="card-content">
+                                        <h3 class="h5 my-0">{{ item.data.title }}</h3>
+                                        {% if item.data.description %}
+                                            <p class="text-small">{{ item.data.description | truncate(strLimit) }}</p>
+                                        {% else %}
+                                            <p class="text-small">{{ item.templateContent | truncate(strLimit) }}</p>
+                                        {% endif %}
+                                    </div>
+                                </a>
+                            {%- endfor -%}
+                        </div>
                     </div>
-                    {% endif %}
-                    <div class="flex-auto">
-                        <h3 class="h5 mt-2 mb-0">{{ item.title }}</h3>
-                        <p>{{ item.text | safe }}</p>
+                </section>
+            {% endif %}
+            {% if support %}
+                <section id="contact" class="flex flex-col justify-center">
+                    <div class="container">
+                        <div class="md-text-center md-mb-7">
+                            <h2>Get involved on</h2>
+                        </div>
+                        <ul class="max-w-content mx-auto p-0 md-flex justify-center md-space-x-6">
+                            {% for item in support %}
+                                <li class="inline-block">
+                                    <a href="{{ item.url }}" {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %} class="text-reset no-underline flex iteme-start space-x-4">
+                                        {% if item.icon %}
+                                            <div class="avatar p-2" style="--avatar-bg: {{ item.iconStyle.bg }}; --avatar-color: {{ item.iconStyle.color }};">
+                                                <svg width="24" height="24" fill="currentcolor">
+                                                    <use href="{{ '/images/socials.svg' | assetUrl }}#{{ item.icon }}"/>
+                                                </svg>
+                                            </div>
+                                        {% endif %}
+                                        <div class="flex-auto">
+                                            <h3 class="h5 mt-2 mb-0">{{ item.title }}</h3>
+                                            <p>{{ item.text | safe }}</p>
+                                        </div>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </div>
-                </a>
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
-</section>
-{% endif %}
+                </section>
+            {% endif %}
