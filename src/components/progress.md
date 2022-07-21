@@ -6,6 +6,7 @@ git: "components/progress"
 codepen: "XWgEaEG"
 tags: ["nativeElements", "forms"]
 preview: "progress.png"
+style: ["../../node_modules/@fylgja/progress/progress.css"]
 ---
 
 The progress component is used to show progress indication in a form or somethings else.
@@ -31,6 +32,11 @@ Then include the component in to your code via;
 No instructions are really needed.
 
 The progress styles are automatically added when loaded.
+
+{% codeSample html, "space-y-4" %}
+<progress value="60" max="100"></progress>
+<progress indeterminate></progress>
+{% endcodeSample %}
 
 For the native html element progress.
 

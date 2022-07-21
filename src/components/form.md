@@ -33,6 +33,26 @@ Then include the component in to your code via;
 @import "@fylgja/form";
 ```
 
+## How to use
+
+Out of the box all the styling is done directly,
+so no extra steps are needed.
+
+{% codeSample html, "auto-grid items-start" %}
+<input type="text" placeholder="text">
+<input type="number" placeholder="number">
+<input type="password" placeholder="password">
+<input type="date" placeholder="data">
+<select>
+    <option disabled selected value>Pick a option</option>
+    <option value="option1">option 1</option>
+    <option value="option2">option 2</option>
+</select>
+<input type="file" placeholder="file">
+<textarea placeholder="textarea" rows="2"></textarea>
+<input type="color" placeholder="color" value="#e91e63">
+{% endcodeSample %}
+
 ### Styles
 
 By default all form styles are set to the fylgja default style. 
@@ -46,11 +66,6 @@ Or if you are importing this as plain CSS or in PostCSS use;
 @import "@fylgja/form/style-field.css";
 @import "@fylgja/form/style-box.css";
 ```
-
-## How to use
-
-Out of the box all the styling is done directly,
-so no extra steps are needed.
 
 ## Config
 
