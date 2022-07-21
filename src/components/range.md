@@ -4,7 +4,7 @@ description: "Range component will add solid foundation for a input range slider
 npm: "@fylgja/range"
 git: "components/range"
 tags: ["nativeElements", "forms"]
-preview: "progress.png"
+preview: "range.png"
 style: ["../../node_modules/@fylgja/range/range.css"]
 ---
 
