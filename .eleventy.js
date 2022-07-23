@@ -37,6 +37,9 @@ const {
     isString,
 } = require("./src/_config/filters/types");
 const { assetUrl } = require("./src/_config/filters/asset-url");
+const codeSettings = {
+    preAttributes: { tabindex: 0 },
+};
 
 module.exports = function (config) {
     config.setQuietMode(true);
@@ -57,9 +60,7 @@ module.exports = function (config) {
 
     // Plugins
     config.addPlugin(eleventySass, { sass, outputPath: "css" });
-    config.addPlugin(syntaxHighlight, {
-        preAttributes: { tabindex: 0 },
-    });
+    config.addPlugin(syntaxHighlight, codeSettings);
     config.addPlugin(embedYouTube, {
         lite: {
             css: { inline: true },
@@ -87,7 +88,12 @@ module.exports = function (config) {
         (content, language = "html", previewClass = "", previewStyle = "") => {
             const className = previewClass ? ` ${previewClass}` : "";
             const style = previewStyle ? ` style="${previewStyle}"` : "";
-            const code = syntaxHighlight.pairedShortcode(content, language);
+            const code = syntaxHighlight.pairedShortcode(
+                content,
+                language,
+                "",
+                codeSettings
+            );
             return `<div class="code-sample">
             <div class="preview${className}"${style}>${content}</div>
             <div class="code">${code}</div>
