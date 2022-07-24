@@ -1,0 +1,13 @@
+{# TODO: make this more a component #}
+<div class="overflow-x-auto" style="--table-align: center; --table-border-width: 0;">
+<table class="w-full">
+{% for colorKey in tokens.colors.keys %}
+<tr>
+<th class="ps-0" style="--table-align: start; text-transform: uppercase">{{ colorKey }}</th>
+{% for color in tokens.colors[colorKey] %}
+<td class="weight-bold" style="--table-bg: {{ color }};"><span class="aria-only">{{ loop.index0 }}</span></td>
+{% endfor %}
+</tr>
+{% endfor %}
+</table>
+</div>
