@@ -35,10 +35,10 @@ Then include the component in to your code via;
 
 In your html you only need the `.btn` class to use the button style.
 
-```html
-<a href="#link" class="btn">..</a>
-<button class="btn">..</button>
-```
+{% codeSample html, "space-x-2" %}
+<button class="btn">Button</button>
+<a href="#link" class="btn">Button as Link</a>
+{% endcodeSample %}
 
 The buttons component is by default is blank with a soft hover and active color.
 
@@ -51,6 +51,12 @@ which allow easier construction of specific button styles via a modifier class.
 ### Variable classes
 
 By default we also offer some base default variable class, that can be disabled via de SCSS variables if needed.
+
+{% codeSample html, "space-x-2" %}
+<a href="#link" class="btn -theme">Button Theme</a>
+<a href="#link" class="btn -outline">Button Outline</a>
+<a href="#link" class="btn -icon"><svg width="24" height="24" fill="currentcolor"><use href="/images/socials.svg#github"></use></svg></a>
+{% endcodeSample %}
 
 | Class      | Description                                               |
 | ---------- | --------------------------------------------------------- |

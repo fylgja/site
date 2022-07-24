@@ -32,16 +32,15 @@ In your html for the breadcrumb class, you also need some html for the items.
 
 We advice you to use of an ordered list, as this tells the user the structure of the list of links.
 
-```html
+{% codeSample %}
 <nav aria-label="breadcrumb">
-    <span>You are here: </span>
     <ol class="breadcrumbs">
         <li><a href="/">Home</a></li>
         <li><a href="/path">Path</a></li>
         <li><a href="/path/cool-page" aria-current="page">Cool Page</a></li>
     </ol>
 </nav>
-```
+{% endcodeSample %}
 
 Using an anchor for the current page allows your user to reload the page via the breadcrumbs.
 
