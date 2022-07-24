@@ -67,7 +67,7 @@ This component comes in 3 syntaxes.
 import props from "@fylgja/sizes"
 
 const style = {
-    boxSize: props.size[1],
+    borderRadius: props.size[1],
 }
 ```
 
