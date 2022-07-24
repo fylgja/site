@@ -24,6 +24,7 @@ module.exports = {
                 // Since we don't want to include any CSS from the code samples
                 "_site/components/base/index.html",
                 "_site/components/range/index.html",
+                "_site/components/form/index.html",
                 "_site/components/theme/index.html",
                 "_site/components/index.html",
                 "_site/404.html",

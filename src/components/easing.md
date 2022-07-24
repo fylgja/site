@@ -144,4 +144,3 @@ If your using another prop system,
 like [Pollen](https://www.pollen.style/modules/ui#easing),
 because they don't share any prop names,
 you can use both systems at that point.
-

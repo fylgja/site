@@ -8,12 +8,12 @@ preview: "addon.png"
 order: 10
 ---
 
-<!-- > The `@fylgja/elevation` component has been replaced by [`@fylgja/shadow`](https://fylgja.dev/components/shadow/).
+> The `@fylgja/elevation` component has been replaced by [`@fylgja/shadow`](https://fylgja.dev/components/shadow/).
 >
 > The shadow component offers better shadow defaults,
 > and fully embraces the Design Token (CSS Props) system.
 >
-> This package will be deprecated in the next release. -->
+> This package will be deprecated in the next release.
 
 The Elevation component is a util package for shadows, where it offers shadows as CSS variables.
 
