@@ -36,7 +36,7 @@
     "@fylgja/range": "^1.0.0",
     "dialog-polyfill": "^0.5.6",
     "docsearch.js": "^2.6.3",
-    "fylgja": "^1.2.0",
+    "fylgja": "^1.2.1",
     "prismjs": "^1.28.0",
     "roving-ux": "^1.0.4"
   },
