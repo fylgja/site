@@ -7,6 +7,15 @@ git: "components/control"
 codepen: "XWgNzra"
 tags: ["nativeElements", "forms"]
 preview: "control.png"
+style: {
+    control: "../../node_modules/@fylgja/control/control.css"
+}
+script: {
+    inline: "
+        const indeterminates = document.querySelectorAll('[indeterminate]');
+        [].forEach.call(indeterminates, item => item.indeterminate = true);
+    "
+}
 order: 3
 ---
 
@@ -31,19 +40,31 @@ Then include the component in to your code via;
 
 Out of the box all the styling is done directly,
 to the `input[type=radio]` and `input[type=checkbox]`,
+so no extra steps are needed.
 
-so no extra steps are needed, except for the switch style,
+{% codeSample html, "space-x-2" %}
+<input type="checkbox">
+<input type="checkbox" checked>
+<input type="checkbox" indeterminate>
+<input type="checkbox" disabled>
+<input type="radio">
+<input type="radio" checked>
+<input type="radio" disabled>
+{% endcodeSample %}
+
+The exception is for the switch style,
 that requires a class on the `input[type=checkbox]`.
 
-```html
+{% codeSample %}
 <input type="checkbox" class="control-switch">
-```
+<input type="checkbox" class="control-switch" checked>
+{% endcodeSample %}
 
 If you want to apply this style to other elements, like button.
 You can use the class `.control-radio`, `.control-checkbox` and `.control-switch`.
 
 ```html
-<button class="control-switch" aria-label="label"></button>
+<button class="control-radio" aria-label="label"></button>
 ```
 
 ## Config
