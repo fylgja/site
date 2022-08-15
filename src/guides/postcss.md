@@ -38,6 +38,15 @@ There still might be a use case, where you need to support older browsers.
 For this we recommend PostCSS Preset Env,
 since this plugin also polyfills modern CSS into something most browsers can understand.
 
+Make sure to use the stage 3 version to keep the inline and block based styles with a fallback,
+stage 4 will break stuff.
+
+```js
+require("postcss-preset-env")({
+    stage: 3,
+}),
+```
+
 If you are looking for more info, [checkout the preset-env.cssdb.org](https://preset-env.cssdb.org/)
 
 If you just looking for adding vendor prefixes then Autoprefixer is also a good alternative.
