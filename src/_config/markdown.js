@@ -34,6 +34,7 @@ const externalAnchorOptions = {
 
 const markdownConfig = md(mdOptions)
     .use(externalAnchor, externalAnchorOptions)
-    .use(anchor, anchorOptions);
+    .use(anchor, anchorOptions)
+    .disable("code");
 
 module.exports = markdownConfig;
