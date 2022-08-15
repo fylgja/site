@@ -25,7 +25,7 @@ style: {
     If not, we recommend you <a href="/components/">checkout the Fylgja components page.</a>
     Or if you have questions, please <a href="/guides/">checkout the guides</a> for more help.
 </p>
-<section id="main-download-options" class="auto-grid my-8">
+<section id="main-download-options" aria-label="Main download options for Fylgja" class="auto-grid my-8">
     <div>
         <div class="intro-section flex">
             <div class="svg-sass mt-2 me-4">
@@ -45,7 +45,7 @@ style: {
         <h3 class="h5 mt-1 mb-0">Install the NPM package</h3>
         <p>All of Fylgja is available through one NPM package:</p>
         {% highlight "bash" %}
-        npm install fylgja
+        npm install fylgja sass
         {% endhighlight %}
         <p>And include all of Fylgja in your SCSS;</p>
         {% highlight "scss" %}
@@ -71,7 +71,7 @@ style: {
         <h3 class="h5 mt-1 mb-0">Install the NPM package</h3>
         <p>All of Fylgja is available through one NPM package:</p>
         {% highlight "bash" %}
-        npm install fylgja
+        npm install fylgja postcss postcss-cli postcss-import
         {% endhighlight %}
         <p>And include all of Fylgja in your CSS, with PostCSS Import;</p>
         {% highlight "css" %}
@@ -79,7 +79,7 @@ style: {
         {% endhighlight %}
     </div>
 </section>
-<section id="other-download-options">
+<section id="other-download-options" arai-label="Other download option for Fylgja">
     <h2>Other download options</h2>
     <h3 class="h5 my-0">Download the latest Fylgja Github release</h3>
     <p>You can get the latest Fylgja release as a <code>tar.gz</code> or <code>zip</code> from GitHub:</p>
@@ -97,9 +97,9 @@ style: {
     <h3 class="h5 mt-8 mb-0">Get all of Fylgja as CSS trough a CDN</h3>
     <p>You can import the CSS file directly from jsDelivr, unpkg and more:</p>
     {% highlight "html" %}
-    <link href="https://cdn.jsdelivr.net/npm/fylgja@1/fylgja.css" rel="stylesheet">
+    <link href="https://unpkg.com/fylgja/fylgja.css" rel="stylesheet">
     {% endhighlight %}
     {% highlight "html" %}
-    <link href="https://unpkg.com/fylgja@1/fylgja.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/fylgja/fylgja.css" rel="stylesheet">
     {% endhighlight %}
 </section>
