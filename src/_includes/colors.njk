@@ -1,13 +1,20 @@
-{# TODO: make this more a component #}
-<div class="overflow-x-auto" style="--table-align: center; --table-padding: 5px 2px; --table-border-color: rgb(0 0 0 / 0); --table-collapse: separate;">
-<table class="w-full">
+<div
+  class="overflow-x-auto"
+  style="
+    --table-align: center;
+    --table-padding: 5px 2px;
+    --table-border-color: rgb(0 0 0 / 0);
+    --table-collapse: separate;
+    --table-weight: 500;
+    font-variant-numeric: tabular-nums;
+    "
+><table class="w-full">
 {% for colorKey in tokens.colors.keys %}
 <tr>
 <th class="ps-0 pe-4 md:pe-8" style="--table-align: start; text-transform: capitalize; width: 1%;">{{ colorKey }}</th>
 {% for color in tokens.colors[colorKey] %}
-<td style="--table-bg: {{ color }};"><span class="aria-only">{{ loop.index0 }}</span></td>
+<td style="--table-bg: {{ color }}; --table-color: {{ '#fff' if loop.index0 > 5 else '#000' }}">{{ loop.index0 }}</td>
 {% endfor %}
 </tr>
 {% endfor %}
-</table>
-</div>
+</table></div>
