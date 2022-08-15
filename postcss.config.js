@@ -12,7 +12,14 @@ module.exports = {
             preset: ["default", { calc: false }],
         }),
         purgecss({
-            content: ["_site/**/*.html", "_site/404.html", "_site/index.html"],
+            content: [
+                "_site/404.html",
+                "_site/index.html",
+                "_site/components/*.html",
+                "_site/features/**/*.html",
+                "_site/getting-started/**/*.html",
+                "_site/guides/**/*.html",
+            ],
             safelist: [/^\:/, /lite-youtube/, /backdrop/, /DocSearch/, "kbd"],
         }),
     ],
