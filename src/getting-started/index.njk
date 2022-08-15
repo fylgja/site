@@ -3,32 +3,11 @@ title: "Introduction"
 description: "Why use Fylgja and what does Fylgja offer"
 order: 1
 style: {
+    avatar: "css/avatar-blob.css",
     inline: "
         .intro-section .auto-grid {
             --cols-size: 400px;
             --gap: 2em;
-        }
-
-        .intro-section .avatar {
-            --avatar-bg: var(--color-theme);
-            --avatar-color: var(--color-on-theme);
-            --avatar-size: 3rem;
-            position: relative;
-            overflow: unset;
-        }
-
-        .intro-section .avatar::after {
-            content: '';
-            z-index: -1;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            border-radius: inherit;
-            background-color: var(--avatar-bg);
-            transform: translate(0.6rem, 0.6rem) rotate(24deg);
-            opacity: 0.3;
         }
 
         .intro-section #download .avatar {
@@ -62,7 +41,7 @@ style: {
     <div class="auto-grid">
         <div id="download">
             <h2 class="flex items-center mb-4">
-                <span class="avatar">
+                <span class="avatar -blob">
                     {{ "/src/assets/images/icons/widgets.svg" | svgContents | safe }}
                 </span>
                 <span class="ms-3">Install via package manager</span>
@@ -74,7 +53,7 @@ style: {
         </div>
         <div id="include-cdn">
             <h2 class="flex items-center mb-4">
-                <span class="avatar">
+                <span class="avatar -blob">
                     {{ "/src/assets/images/icons/cloud_download.svg" | svgContents | safe }}
                 </span>
                 <span class="ms-3">Include via CDN</span>
