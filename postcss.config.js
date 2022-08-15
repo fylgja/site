@@ -15,7 +15,11 @@ module.exports = {
             content: [
                 "_site/404.html",
                 "_site/index.html",
-                "_site/components/*.html",
+                "_site/components/index.html",
+                "_site/components/base/index.html",
+                "_site/components/range/index.html",
+                "_site/components/form/index.html",
+                "_site/components/colors/index.html",
                 "_site/features/**/*.html",
                 "_site/getting-started/**/*.html",
                 "_site/guides/**/*.html",
