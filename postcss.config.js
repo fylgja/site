@@ -19,6 +19,7 @@ module.exports = {
                 "_site/features/**/*.html",
                 "_site/getting-started/**/*.html",
                 "_site/guides/**/*.html",
+                "_site/ui-components/**/*.html",
             ],
             safelist: [/^\:/, /lite-youtube/, /backdrop/, /DocSearch/, "kbd"],
         }),
