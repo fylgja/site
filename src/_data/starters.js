@@ -4,5 +4,6 @@ module.exports = [
         title: "11ty Starter Template",
         description: "11ty starter template build using Fylgja CSS.",
         thumb: "starter-thumb/11ty.jpg",
+        previewUrl: "https://11ty-fylgja.netlify.app/",
     },
 ];

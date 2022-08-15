@@ -21,12 +21,7 @@ style: {
 <p>Looking for a prebuilt templates that already comes with Fylgja build in your favorite framework, look no further down here.</p>
 <div id="list-of" class="auto-grid">
     {%- for item in starters -%}
-        <a
-            href="{{ item.url }}"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="card card-content items-center flex-row"
-        >
+        <div class="card card-content items-center flex-row">
             {% if item.thumb %}
                 {%- set preview -%}./src/assets/images/{{ item.thumb }}{%- endset -%}
                 <div class="avatar aspect-ratio me-4">
@@ -34,13 +29,36 @@ style: {
                 </div>
             {% endif %}
             <div>
-                <strong>{{ item.title }}</strong>
+                <strong>
+                    <a
+                        href="{{ item.url }}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-reset"
+                    >{{ item.title }}</a>
+                </strong>
                 {%- set strLimit %}50{%- endset -%}
                 {% if item.description %}
                     <p class="text-small my-0">{{ item.description | truncate(strLimit) }}</p>
                 {% endif %}
+                <div class="flex flex-wrap mt-2">
+                    <a
+                        href="{{ item.url }}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="badge me-2 mt-2"
+                    >View repo</a>
+                    {% if item.previewUrl %}
+                        <a
+                            href="{{ item.previewUrl }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="badge me-2 mt-2"
+                        >View demo site</a>
+                    {% endif %}
+                </div>
             </div>
-        </a>
+        </div>
     {%- endfor -%}
     <a
         href="https://github.com/fylgja/site/issues/new?&labels=enhancement&title=New%Starter%20Project:"
