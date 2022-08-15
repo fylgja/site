@@ -1,51 +1,46 @@
-const { input, output, url } = require("./src/_data/meta");
-const isProd = process.env.ELEVENTY_ENV === "prod";
-
-const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const pluginRss = require("@11ty/eleventy-plugin-rss");
-
-const embedYouTube = require("eleventy-plugin-youtube-embed");
-const sitemap = require("@quasibit/eleventy-plugin-sitemap");
-const pluginTOC = require("eleventy-plugin-nesting-toc");
-const svgContents = require("eleventy-plugin-svg-contents");
-
+// Build tools
 const eleventySass = require("@grimlink/eleventy-plugin-sass");
 const sass = require("sass");
-
 const markdownConfig = require("./src/_config/markdown");
 const browserSyncConfig = require("./src/_config/browserSync");
 const minifyHtml = require("./src/_config/minifyHtml");
 const CleanCSS = require("clean-css");
+const pluginTOC = require("eleventy-plugin-nesting-toc");
+const pluginRss = require("@11ty/eleventy-plugin-rss");
+const sitemap = require("@quasibit/eleventy-plugin-sitemap");
+
+// Components
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const imageShortcode = require("./src/_config/shortcodes/image");
+const svgContents = require("eleventy-plugin-svg-contents");
+const embedYouTube = require("eleventy-plugin-youtube-embed");
 const menuItem = require("./src/_config/shortcodes/menu-item");
 const {
     badgeNpm,
     badgeCodepen,
     badgeGit,
 } = require("./src/_config/shortcodes/badges");
+
+// Helpers
+const { sortByName, sortByOrder } = require("./src/_config/filters/sortby");
+
+// Data
 const {
     componentsAll,
     componentsFeatured,
     componentsGroup,
 } = require("./src/_config/collections/components");
-const { sortByName, sortByOrder } = require("./src/_config/filters/sortby");
-const {
-    isArray,
-    isBoolean,
-    isNumber,
-    isObject,
-    isString,
-} = require("./src/_config/filters/types");
-const { assetUrl } = require("./src/_config/filters/asset-url");
+
+// Config
+const { isProd, input, output, url, hash } = require("./src/_data/meta");
 const codeSettings = {
     preAttributes: { tabindex: 0 },
 };
 
 module.exports = function (config) {
-    config.setQuietMode(true);
+    config.setQuietMode(!isProd);
     config.setLibrary("md", markdownConfig);
     config.setBrowserSyncConfig(browserSyncConfig);
-
     config.addWatchTarget("./src/assets/js/**/*.js");
 
     // Copy
@@ -102,16 +97,10 @@ module.exports = function (config) {
     );
 
     // Filters
-    config.addFilter("isArray", isArray);
-    config.addFilter("isBoolean", isBoolean);
-    config.addFilter("isNumber", isNumber);
-    config.addFilter("isObject", isObject);
-    config.addFilter("isString", isString);
-
     config.addFilter("cssmin", (code) => new CleanCSS({}).minify(code).styles);
     config.addFilter("sortByName", sortByName);
     config.addFilter("sortByOrder", sortByOrder);
-    config.addFilter("assetUrl", assetUrl);
+    config.addFilter("assetUrl", (url) => url + hash);
     config.addFilter("limit", (arr, limit) => arr.slice(0, limit));
 
     // Collections
@@ -120,7 +109,6 @@ module.exports = function (config) {
     config.addCollection("componentsAll", componentsAll);
 
     if (isProd) {
-        config.addPlugin(require("@11ty/eleventy-plugin-directory-output"));
         config.addTransform("minify", minifyHtml);
     }
 

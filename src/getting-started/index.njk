@@ -1,0 +1,118 @@
+---
+title: "Introduction"
+description: "Why use Fylgja and what does Fylgja offer"
+order: 1
+style: {
+    inline: "
+        .intro-section .auto-grid {
+            --cols-size: 400px;
+            --gap: 2em;
+        }
+
+        .intro-section .avatar {
+            --avatar-bg: var(--color-theme);
+            --avatar-color: var(--color-on-theme);
+            --avatar-size: 3rem;
+            position: relative;
+            overflow: unset;
+        }
+
+        .intro-section .avatar::after {
+            content: '';
+            z-index: -1;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border-radius: inherit;
+            background-color: var(--avatar-bg);
+            transform: translate(0.6rem, 0.6rem) rotate(24deg);
+            opacity: 0.3;
+        }
+
+        .intro-section #download .avatar {
+            --avatar-bg: #f57c00;
+            --avatar-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        }
+
+        .intro-section #include-cdn .avatar {
+            --avatar-bg: #66bb6a;
+            --avatar-radius: 71% 29% 64% 36% / 51% 60% 40% 49%;
+        }
+    "
+}
+---
+
+<section id="intro">
+    <p>
+        Fylgja is a component based CSS framework, allowing you to pick only what you need,<br>
+        this will keep your build bundle small without using any tools.
+    </p>
+
+    <p>
+        So instead of including everything as one package,
+        you can only include only what you need,
+        keeping your CSS small without any tools.
+    </p>
+</section>
+
+<section id="quick-start-options" class="intro-section my-8">
+    <p>Want </p>
+    <div class="auto-grid">
+        <div id="download">
+            <h2 class="flex items-center mb-4">
+                <span class="avatar">
+                    {{ "/src/assets/images/icons/widgets.svg" | svgContents | safe }}
+                </span>
+                <span class="ms-3">Install via package manager</span>
+            </h2>
+            {% highlight "bash" %}
+            npm install fylgja
+            {% endhighlight %}
+            {% include "code-sample/include.njk" %}
+        </div>
+        <div id="include-cdn">
+            <h2 class="flex items-center mb-4">
+                <span class="avatar">
+                    {{ "/src/assets/images/icons/cloud_download.svg" | svgContents | safe }}
+                </span>
+                <span class="ms-3">Include via CDN</span>
+            </h2>
+            {% include "code-sample/cdn-unpkg.njk" %}
+        </div>
+    </div>
+    <p class="text-center"><em>For more download options <a href="/download/">see our downloads page</a></em></p>
+</section>
+
+{# <section id="starters" class="my-8">
+    <h2>Fylgja starters</h2>
+    <p>Checkout these starters to get you starterd more quickly</p>
+    {%- for item in starters -%}
+        <a
+            href="{{ item.url }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn -icon"
+        >
+            {% if item.thumb %}
+                {%- set preview -%}./src/assets/images/{{ item.thumb }}{%- endset -%}
+                {% image preview, "", ["60"] %}
+            {% endif %}
+        </a>
+    {%- endfor -%}
+</section> #}
+
+<section id="docs" class="my-8">
+    <h2>More to help you getting started</h2>
+    <p>If you still have questions or are looking for some samples.</p>
+    <p>We have growing section of <a href="/guides/">Guides</a>, <span aria-describedby="in-progress">UI Components<sup>*</sup></span> and <a href="/starter-projects/">Starter Projects</a>.</p>
+    <p>First we advice you to checkout the <a href="/guides/default/">Default setup guide</a> on how to get started with a bit more explanation.</p>
+    <p>
+        Needs more information on a Fylgja Component, checkout thta component that has docs specific for that component,<br>
+        and even includes interactive preview.
+    </p>
+    <p>Want to see more Fylgja in action, <a href="https://codepen.io/Fylgja">checkout our Codepen page</a> where we have samples of each of our CSS components.</p>
+    <p id="in-progress"><small><sup>*</sup>We are hard at work adding this</small></p>
+</section>
+

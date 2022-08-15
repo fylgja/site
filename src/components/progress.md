@@ -6,7 +6,9 @@ git: "components/progress"
 codepen: "XWgEaEG"
 tags: ["nativeElements", "forms"]
 preview: "progress.png"
-style: ["../../node_modules/@fylgja/progress/progress.css"]
+style: {
+    progress: "../../node_modules/@fylgja/progress/progress.css"
+}
 ---
 
 The progress component is used to show progress indication in a form or somethings else.

@@ -1,21 +1,22 @@
 const { version } = require("../../package.json");
-const url =
-    process.env.ELEVENTY_ENV === "prod"
-        ? "https://fylgja.dev"
-        : "http://localhost:8080";
+const isProd = process.env.ELEVENTY_ENV === "prod";
+const cacheHash = isProd ? version : "dev";
 
-module.exports = {
-    env: process.env.ELEVENTY_ENV,
-    version,
+const metaEnv = {
+    isProd,
     input: "src",
     output: "_site",
-    url,
-    themeColor: "#1565c0",
-    themeColorDark: "#08274a",
+    url: isProd ? "https://fylgja.dev" : "http://localhost:8080",
+    hash: "?=v" + cacheHash,
+    componentsMedia: "./src/components/images/",
+};
+
+module.exports = {
+    ...metaEnv,
+    author: "Fylgja",
     siteName: "Fylgja",
     siteDescription:
         "Fylgja is your CSS front-end framework for building your own websites or webapps using modular and customizable CSS components, by loading only what you need.",
-    author: "Fylgja",
     email: "info@fylgja.dev",
     phone: false,
     address: false,
@@ -24,5 +25,6 @@ module.exports = {
         github: "fylgja",
         devTo: "fylgja",
     },
-    componentsMedia: "./src/components/images/",
+    themeColor: "#1565c0",
+    themeColorDark: "#08274a",
 };

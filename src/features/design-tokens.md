@@ -1,13 +1,15 @@
 ---
 title: "Design Tokens (CSS Props)"
 description: "Adding style to your component with prebuilt design tokens, a.k.a. CSS Props."
-style: "
-#token-use-case-samples {
-    --cols-size: 320px;
-    --pre-margin-start: 0;
-    --pre-margin-end: 0;
+style: {
+    inline: "
+        #token-use-case-samples {
+            --cols-size: 320px;
+            --pre-margin-start: 0;
+            --pre-margin-end: 0;
+        }
+    "
 }
-"
 eleventyExcludeFromCollections: true
 ---
 

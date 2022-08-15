@@ -60,15 +60,15 @@
         <small class="container block copyright">© {% year %} {{ meta.siteName }}. All Rights Reserved.</small>
     </div>
 </footer>
-{%- set jsinline -%}
-    {%- if (script | isObject ) -%}
-        {% for i in script %}
-            {% include i %}
+{%- if script -%}
+    <script>
+        {% for name, item in script %}
+            {%- if name.startsWith("inline") -%}
+                {{ item | safe }}
+            {%- else -%}
+                {%- set inlineScript -%}{% include item %}{%- endset -%}
+                {{ inlineScript | safe }}
+            {%- endif -%}
         {% endfor %}
-    {%- else -%}
-        {{ script | safe }}
-    {%- endif -%}
-{%- endset -%}
-{%- if jsinline -%}
-    <script>{{ jsinline | safe }}</script>
+    </script>
 {%- endif -%}

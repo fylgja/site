@@ -1,5 +1,5 @@
-const { siteName, siteDescription, themeColor } = require("./_data/meta");
-const { assetUrl } = require("./_config/filters/asset-url.js");
+const { siteName, siteDescription, themeColor, hash } = require("./_data/meta");
+const assetUrl = (url) => url + hash;
 
 const webmanifest = {
     id: "/",

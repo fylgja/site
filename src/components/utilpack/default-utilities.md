@@ -11,7 +11,9 @@ breadcrumbs: {
 }
 currentBreadcrumbTitle: "Default utilities"
 tocHeadings: ["h2"]
-style: "table { width: 100%; }"
+style: {
+    inline: "table { width: 100%; }"
+}
 ---
 
 Here you will find all default utility classes.

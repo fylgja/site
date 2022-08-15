@@ -21,14 +21,17 @@
             <link rel="preconnect" href="{{ item }}">
         {% endfor %}
     {%- endif -%}
+
     <link rel="preload" href="{{ '/css/main.css' | assetUrl }}" as="style">
     <link rel="preload" href="/fonts/Rubik-Italic-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/Rubik-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin>
+
     {%- if preloadCss -%}
         {% for name, item in preload %}
             <link rel="preload" href="{{ item | assetUrl }}" as="style">
         {% endfor %}
     {%- endif -%}
+
     {%- if preloadFont -%}
         {% for name, item in preload %}
             <link rel="preload" href="{{ item | assetUrl }}" as="font" type="font/woff2" crossorigin>
@@ -69,34 +72,37 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{ '/apple-touch-icon.png' | assetUrl }}">
     <link rel="manifest" href="{{ '/site.webmanifest' | assetUrl }}">
 
-    {# Dark mode #}
-    {%- set themeToggle -%}{% include 'js/theme-toggle.js' %}{%- endset -%}
-    <script>{{ themeToggle | safe }}</script>
-
     {# Assets #}
     <link rel="stylesheet" href="{{ '/css/main.css' | assetUrl }}">
     <link rel="stylesheet" href="{{ '/css/print.css' | assetUrl }}" media="print">
+
     {% if search %}
         <link rel="stylesheet" href="{{ '/css/search.css' | assetUrl }}" media="print" onload="this.media='all'">
     {%- endif -%}
+
     {%- if css -%}
         {% for name, item in css %}
             <link rel="stylesheet" href="{{ item | assetUrl }}">
         {% endfor %}
     {%- endif -%}
 
-    {%- set cssinline -%}
-        {%- if (style | isObject ) -%}
-            {% for i in style %}{% include i %}{% endfor %}
-        {%- else -%}
-            {{ style }}
-        {%- endif -%}
-    {%- endset -%}
+    {%- if style -%}
+        <style>
+            {% for name, item in style %}
+                {%- if name.startsWith("inline") -%}
+                    {{ item | cssmin | safe }}
+                {%- else -%}
+                    {%- set inlineStyle -%}{% include item %}{%- endset -%}
+                    {{ inlineStyle | cssmin | safe }}
+                {%- endif -%}
+            {% endfor %}
+        </style>
+    {%- endif -%}
+
     {%- set colorScheme -%}{% include "css/color-scheme.css" %}{%- endset -%}
-    <style>
-        {{ colorScheme | cssmin | safe }}
-        {%- if cssinline -%}{{ cssinline | cssmin | safe }}{%- endif -%}
-    </style>
+    <style>{{ colorScheme | cssmin | safe }}</style>
+    {%- set themeToggle -%}{% include 'js/theme-toggle.js' %}{%- endset -%}
+    <script>{{ themeToggle | safe }}</script>
 
     <script src="{{ '/js/main.js' | assetUrl }}" defer></script>
 

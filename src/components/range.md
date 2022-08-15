@@ -5,7 +5,9 @@ npm: "@fylgja/range"
 git: "components/range"
 tags: ["nativeElements", "forms"]
 preview: "range.png"
-style: ["../../node_modules/@fylgja/range/range.css"]
+style: {
+    range: "../../node_modules/@fylgja/range/range.css"
+}
 ---
 
 Range component will add solid foundation for a input range slider.

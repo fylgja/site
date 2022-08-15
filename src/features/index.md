@@ -3,13 +3,15 @@ title: "Features"
 description: "All of the features Fylgja supports to enhance your experience."
 permalink: "/{{ page.fileSlug }}/"
 eleventyExcludeFromCollections: true
-style: "
-#features-grid {
-    --card-radius: 8px;
-    --card-elevation: none;
-    --card-border: 1px solid rgb(0 0 0 / 12%);
+style: { 
+    inline: "
+        #features-grid {
+            --card-radius: 8px;
+            --card-elevation: none;
+            --card-border: 1px solid rgb(0 0 0 / 12%);
+        }
+    "
 }
-"
 ---
 
 All of the features Fylgja supports to enhance your experience.
