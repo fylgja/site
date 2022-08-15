@@ -65,7 +65,7 @@
     "postcss-preset-env": "^7.7.2",
     "rollup": "^2.78.0",
     "rollup-plugin-esbuild": "^4.9.1",
-    "sass": "^1.53.0",
+    "sass": "^1.54.4",
     "slugify": "^1.6.5",
     "stylelint": "^14.8.5"
   }
