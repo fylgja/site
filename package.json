@@ -67,6 +67,6 @@
     "rollup-plugin-esbuild": "^4.10.1",
     "sass": "^1.54.8",
     "slugify": "^1.6.5",
-    "stylelint": "^14.8.5"
+    "stylelint": "^14.11.0"
   }
 }
