@@ -36,7 +36,7 @@
     "dialog-polyfill": "^0.5.6",
     "docsearch.js": "^2.6.3",
     "fylgja": "^1.2.6",
-    "prismjs": "^1.28.0",
+    "prismjs": "^1.29.0",
     "roving-ux": "^1.0.4"
   },
   "devDependencies": {
