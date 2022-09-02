@@ -32,7 +32,7 @@
     "not IE 11"
   ],
   "dependencies": {
-    "@docsearch/js": "^3.1.1",
+    "@docsearch/js": "^3.2.1",
     "dialog-polyfill": "^0.5.6",
     "docsearch.js": "^2.6.3",
     "fylgja": "^1.2.6",
