@@ -7,6 +7,11 @@
     @include btn;
 }
 
+.DocSearch-Modal,
+.DocSearch-Button {
+    direction: ltr;
+}
+
 .DocSearch-Button-Container {
     display: flex;
     align-items: center;
