@@ -3,7 +3,7 @@ title: "Print"
 description: "Print component will add solid foundation for printing."
 npm: "@fylgja/print"
 git: "components/print"
-tags: ["print", "layout"]
+tags: ["print", "typography"]
 ---
 
 Print component will add solid foundation for printing.
