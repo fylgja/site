@@ -82,7 +82,7 @@
     max-width: 420px;
 }
 
-#collection-featured {
+#explore-fylgja {
     --bg: var(--hero-bg, #f7fafc);
     content-visibility: auto;
     contain-intrinsic-size: 938px;

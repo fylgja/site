@@ -100,13 +100,17 @@ sitemap:
     </div>
 </section>
 {% if collections.componentsFeatured %}
-    <section id="collection-featured" aria-label="Our Featured CSS Components" class="collection-row py-12 my-4 md-my-8">
+    <section
+        id="explore-fylgja"
+        aria-label="Explore all Fylgja Components"
+        class="collection-row py-12 my-4 md-my-8"
+    >
         <div class="container md-py-8">
-            <div class="md-mb-7">
+            <div>
                 <h2 class="mb-1">Our Featured CSS Components</h2>
-                <p>Our Featured CSS Components, that really show the full potential of what each Fylgja Component can do.<br>Want more? <a href="/components/">See the full list of Fylgja CSS Components here.</a></p>
+                <p>Our Featured CSS Components, that really show the full potential of what each Fylgja Component can do.</p>
             </div>
-            <div class="auto-grid">
+            <div class="auto-grid my-8">
                 {%- for item in collections.componentsFeatured | sortByOrder | limit(4) -%}
                     <a class="card flex-row md-flex-col" href="{{ item.url }}">
                         <div class="card-media avatar border md-border-0 my-4 ms-4 md-m-0 aspect-ratio">
@@ -125,6 +129,10 @@ sitemap:
                         </div>
                     </a>
                 {%- endfor -%}
+            </div>
+            <div class="text-center mt-12">
+                <p>Want to explore what Fylgja has the offer, checkout the Components page</p>
+                <p><a href="/components" class="btn -theme">Browse all Fylgja Components</a></p>
             </div>
         </div>
     </section>
