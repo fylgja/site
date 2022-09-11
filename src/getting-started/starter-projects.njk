@@ -21,7 +21,7 @@ style: {
 <p>Looking for a prebuilt templates that already comes with Fylgja build in your favorite framework, look no further down here.</p>
 <div id="list-of" class="auto-grid">
     {%- for item in starters -%}
-        <div class="card card-content items-center flex-row">
+        <div class="card card-content flex-row">
             {% if item.thumb %}
                 {%- set preview -%}./src/assets/images/{{ item.thumb }}{%- endset -%}
                 <div class="avatar aspect-ratio me-4">
@@ -64,7 +64,7 @@ style: {
         href="https://github.com/fylgja/site/issues/new?&labels=enhancement&title=New%Starter%20Project:"
         target="_blank"
         rel="noopener noreferrer"
-        class="card card-content items-center flex-row"
+        class="card card-content flex-row"
     >
         <div class="avatar p-3 me-4" style="--avatar-bg: #111; --avatar-color: #fff;">
             <svg width="50" height="50" fill="currentcolor" class="w-full h-full">
