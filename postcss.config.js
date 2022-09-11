@@ -6,10 +6,18 @@ module.exports = {
     plugins: [
         postcssPresetEnv({
             stage: 3,
-            features: { "custom-properties": false },
+            features: {
+                "custom-properties": false,
+                "logical-properties-and-values": false,
+            },
         }),
         cssnano({
-            preset: ["default", { calc: false }],
+            preset: [
+                "default",
+                {
+                    calc: false,
+                },
+            ],
         }),
         purgecss({
             content: [

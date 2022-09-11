@@ -25,11 +25,7 @@
     "extends": "@fylgja/stylelint-config/scss"
   },
   "browserslist": [
-    "last 1 version",
-    "> 2%",
-    "not dead",
-    "last 3 iOS major versions",
-    "not IE 11"
+    "defaults"
   ],
   "dependencies": {
     "@docsearch/js": "^3.2.1",
