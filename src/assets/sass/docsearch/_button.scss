@@ -47,8 +47,8 @@
     }
 
     .DocSearch-Button {
-        --btn-stroke: hsl(0deg 0% 0% / 20%);
-        --btn-color: hsl(0deg 0% 0% / 60%);
+        --btn-stroke: hsl(0 0% 0% / 20%);
+        --btn-color: hsl(0 0% 0% / 60%);
         --btn-focus-bg: var(--color-bg);
         --btn-font-weight: 400;
         justify-content: space-between;
@@ -57,14 +57,14 @@
 
     @media (prefers-color-scheme: dark) {
         :root:not([data-theme]) .DocSearch-Button {
-            --btn-stroke: hsl(0deg 0% 100% / 20%);
-            --btn-color: hsl(0deg 0% 100% / 60%);
+            --btn-stroke: hsl(0 0% 100% / 20%);
+            --btn-color: hsl(0 0% 100% / 60%);
         }
     }
 
     :root[data-theme="dark"] .DocSearch-Button {
-        --btn-stroke: hsl(0deg 0% 100% / 20%);
-        --btn-color: hsl(0deg 0% 100% / 60%);
+        --btn-stroke: hsl(0 0% 100% / 20%);
+        --btn-color: hsl(0 0% 100% / 60%);
     }
 }
 

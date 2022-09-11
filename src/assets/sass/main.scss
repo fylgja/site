@@ -3,6 +3,7 @@
 @use "./theme";
 @use "./fonts";
 
+@use "./print";
 @use "./skip-link";
 @use "@fylgja/base" with (
     $family-main: (
