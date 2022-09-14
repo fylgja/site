@@ -5,7 +5,7 @@ allowing an easier control on the style of both these elements."
 npm: "@fylgja/control"
 git: "components/control"
 codepen: "XWgNzra"
-tags: ["nativeElements", "forms"]
+tags: ["elements", "nativeElements", "forms"]
 preview: "control.png"
 style: {
     control: "../../node_modules/@fylgja/control/control.css"

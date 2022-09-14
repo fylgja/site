@@ -5,6 +5,7 @@ npm: "@fylgja/badge"
 git: "components/badge"
 tags: "elements"
 preview: "badge.png"
+order: 1
 ---
 
 The badges component serves as a small blocks to indicate notifications, or to highlight an item.

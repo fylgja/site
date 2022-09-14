@@ -5,6 +5,7 @@ npm: "@fylgja/avatar"
 git: "components/avatar"
 tags: "elements"
 preview: "avatar.png"
+order: 1
 ---
 
 The avatar component allows you to make an avatar style with ease.

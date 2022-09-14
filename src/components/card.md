@@ -6,7 +6,7 @@ that is not part of the main flow."
 npm: "@fylgja/card"
 git: "components/card"
 codepen: "KKmOaNv"
-tags: "layouts"
+tags: ["elements", "layouts"]
 preview: "card.png"
 ---
 

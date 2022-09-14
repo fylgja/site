@@ -5,7 +5,7 @@ To call your users to an action."
 npm: "@fylgja/button"
 git: "components/button"
 codepen: "XWRoKNp"
-tags: "elements"
+tags: ["elements", "navs"]
 preview: "button.png"
 ---
 
