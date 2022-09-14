@@ -21,7 +21,7 @@
             background-color 0.2s ease-in-out, color 0.2s ease-in-out;
         overflow: hidden;
 
-        &:is(.-git, .-codepen) > :not(.-icon) {
+        > :not(.-icon) {
             @media ($xs-max) {
                 display: none;
             }
