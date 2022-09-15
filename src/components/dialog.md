@@ -13,6 +13,7 @@ featured: true
 sitemap:
   priority: 0.6
 order: 3
+preconnect: { caniuse: "https://caniuse.bitsofco.de/" }
 ---
 
 The dialog combines 3 components in 1, it a modal by default,
@@ -43,20 +44,27 @@ Then include the component in to your code via;
 To use the dialog simply create a html dialog element and a button,
 that can open the dialog.
 
-```html
-<!-- Modal -->
-<button onclick="document.querySelector('#dialog-modal').showModal()">Open</button>
-<dialog id="dialog-modal">..</dialog>
+{% codeSample html, "flex justify-center" %}
+<button class="btn -theme" onclick="document.querySelector('#dialog-modal').showModal()">Open Modal</button>
+<dialog id="dialog-modal">
+    <p>Hello There! Hello World! Welcome!</p>
+    <button class="btn" onclick="document.querySelector('#dialog-modal').close()">Close</button>
+</dialog>
+{% endcodeSample %}
 
-<!-- Snackbar -->
-<button onclick="document.querySelector('#dialog-snackbar').show()">Open</button>
-<dialog id="dialog-snackbar" class="snackbar">..</dialog>
+Use the `.offcanvas` or `.offcanvas-end` to turn the modal to a offcanvas style.
 
-<!-- Offcanvas -->
-<button onclick="document.querySelector('#dialog-offcanvas').showModal()">Open</button>
-<dialog id="dialog-offcanvas" class="offcanvas">..</dialog>
-<!-- Or use 'offcanvas-end' -->
-```
+As for the `.snackbar` make sure to also use the `show()` function instead of the `showModal()` function;
+
+{% codeSample html, "flex justify-center" %}
+<button class="btn -theme" onclick="document.querySelector('#dialog-snackbar').show()">Show Notification</button>
+<dialog id="dialog-snackbar" class="snackbar" style="--dialog-padding: 1em 2em;">
+    <div class="flex items-center">
+        <p class="my-0 me-4">Hello There!</p>
+        <button class="btn" onclick="document.querySelector('#dialog-snackbar').close()">Close</button>
+    </div>
+</dialog>
+{% endcodeSample %}
 
 Use the `.dialog-inner` 
 if your content will be to big for specific screen sizes.
@@ -67,10 +75,10 @@ You can combine this with a header and/or footer,
 that always will be visible when you are scrolling.
 
 ```html
-<dialog id="dialog-modal">
-    <div>Modal Title</div>
-    <div class="dialog-inner"></div>
-    <div><button>Sumbit</button></div>
+<dialog id="dialog-offcanvas" class="offcanvas">
+    <div>Offcanvas Title</div>
+    <div class="dialog-inner">...</div>
+    <div><button>Submit</button></div>
 </dialog>
 ```
 
@@ -79,7 +87,10 @@ that always will be visible when you are scrolling.
 You will need the polyfill until the html dialog is supported fully
 -> [github.com/GoogleChrome/dialog-polyfill](https://github.com/GoogleChrome/dialog-polyfill).
 
-[![Data on support for the dialog feature across the major browsers from caniuse.com](https://caniuse.bitsofco.de/image/dialog.webp)](https://caniuse.com/dialog)
+<picture>
+<source type="image/webp" srcset="https://caniuse.bitsofco.de/image/dialog.webp">
+<img src="https://caniuse.bitsofco.de/image/dialog.jpg" alt="Data on support for the dialog feature across the major browsers from caniuse.com">
+</picture>
 
 ## Config
 
