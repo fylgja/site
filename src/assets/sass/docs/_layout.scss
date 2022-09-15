@@ -60,3 +60,8 @@ details .toc > ol {
     --btn-focus-bg: transparent;
     --btn-active-bg: transparent;
 }
+
+// For Safari 😬
+summary.block::-webkit-details-marker {
+    display: none;
+}
