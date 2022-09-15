@@ -2,8 +2,10 @@
 title: "Alpine Dialog"
 description: "Bring the power of AlpineJs to the HTML dialog."
 requiresJs: true
-npm: "@fylgja/dialog"
-git: "components/dialog"
+npm: "@fylgja/alpinejs-dialog"
+git: "alpinejs-dialog"
+gitDomain: "https://github.com/fylgja/"
+netlify: "https://alpinejs-dialog.netlify.app/"
 tags: ["addons"]
 preview: "alpine-dialog.png"
 featured: true
@@ -11,139 +13,69 @@ featured: true
 
 Bring the power of AlpineJs to the HTML dialog.
 
+[See it in action here https://alpinejs-dialog.netlify.app/](https://alpinejs-dialog.netlify.app/)
+
 ## Installation
 
+You can use this plugin by either installing it using NPM or including it from a CDN.
+
+### Via NPM
+
+You can install it from NPM and include it in your bundle:
+
 ```bash
-npm install @fylgja/dialog
+npm install @fylgja/alpinejs-dialog
 ```
 
-Then include the component in to your code via;
+```js
+import Alpine from 'alpinejs';
+import dialog from '@fylgja/alpinejs-dialog';
 
-```scss
-@use "@fylgja/dialog";
-// Or via PostCSS import
-@import "@fylgja/dialog";
+window.Alpine = Alpine;
+
+Alpine.plugin(dialog);
+Alpine.start();
+```
+
+### Via CDN
+
+You can include the CDN version of this plugin as a `<script>` tag,
+just make sure to include it before AlpineJs.
+
+```html
+<script defer src="https://unpkg.com/@fylgja/alpinejs-dialog/dist/index.min.js"></script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 ```
 
 ## How to use
 
-To use the dialog simply create a html dialog element and a button,
-that can open the dialog.
+To use this, create an Alpine component for example, like;
 
 ```html
-<!-- Modal -->
-<button onclick="document.querySelector('#dialog-modal').showModal()">Open</button>
-<dialog id="dialog-modal">..</dialog>
-
-<!-- Snackbar -->
-<button onclick="document.querySelector('#dialog-snackbar').show()">Open</button>
-<dialog id="dialog-snackbar" class="snackbar">..</dialog>
-
-<!-- Offcanvas -->
-<button onclick="document.querySelector('#dialog-offcanvas').showModal()">Open</button>
-<dialog id="dialog-offcanvas" class="offcanvas">..</dialog>
-<!-- Or use 'offcanvas-end' -->
+<div x-data="{ open: false }">
+    <button @click="open = !open">Open</button>
+    <dialog x-show="open" x-dialog="open = false">..</dialog>
+</div>
 ```
 
-Use the `.dialog-inner` 
-if your content will be to big for specific screen sizes.
+When adding the `x-dialog` to an `x-show` element,
+it will not toggle the display,
+but instead use the native `el.showModal()` function.
 
-This will allow scrolling the content inside the dialog-inner.
+The value inside the `x-dialog` is not required,
+but is recommended to close the dialog using the escape key or clicking the backdrop.
 
-You can combine this with a header and/or footer, 
-that always will be visible when you are scrolling.
+### Modifiers
+
+#### Scroll-lock
+
+To lock the page scroll add the modifier `noscroll`;
 
 ```html
-<dialog id="dialog-modal">
-    <div>Modal Title</div>
-    <div class="dialog-inner"></div>
-    <div><button>Sumbit</button></div>
-</dialog>
+<div x-data="{ open: false }">
+    <button @click="open = !open">Open</button>
+    <dialog x-show="open" x-dialog.noscroll="open = false">..</dialog>
+</div>
 ```
 
-### Support
-
-You will need the polyfill until the html dialog is supported fully
--> [github.com/GoogleChrome/dialog-polyfill](https://github.com/GoogleChrome/dialog-polyfill).
-
-[![Data on support for the dialog feature across the major browsers from caniuse.com](https://caniuse.bitsofco.de/image/dialog.webp)](https://caniuse.com/dialog)
-
-## Config
-
-As with almost all of our components.
-CSS variables can be configured to add your own look/style.
-
-For direct control of the base styles, 
-use the following SCSS variables can you modify.
-
-```scss
-$enable-dialog-polyfill: true !default;
-
-// Modal (default)
-$dialog-index: 9 !default;
-$dialog-offset: 2em !default;
-$dialog-max-width: calc(100% - #{$dialog-offset}) !default;
-$dialog-max-height: $dialog-max-width !default;
-$dialog-radius: 0.3em !default;
-$dialog-padding: 2em !default;
-
-$dialog-elevation: var(--elevation-z6) !default;
-$dialog-bg: var(--color-bg, #{$root-bg}) !default;
-$dialog-color: inherit !default;
-
-$dialog-backdrop: rgba(black, 0.2) !default;
-
-// Snackbar
-$dialog-snackbar-from: end !default;
-$dialog-snackbar-offset: 1em !default;
-
-// Offcanvas
-$dialog-offcanvas-radius: 0 !default;
-```
-
-## Tips
-
-If you need to use the older solutions, that don't use the HTML Dialog.
-But you do like to use the Fylgja Dialog styles.
-
-You can do so with the 2 extend classes available to you.
-
-```scss
-@use "@fylgja/dialog/helper" as *;
-
-@keyframes dialog-show {
-    from {
-        opacity: 0;
-        transform: var(--dialog-translate, translateY(#{$dialog-offset}));
-    }
-}
-
-@keyframes dialog-hide {
-    to {
-        opacity: 0;
-        transform: var(--dialog-translate, translateY(#{$dialog-offset}));
-    }
-}
-
-.dialog {
-    @extend %dialog;
-
-    &[hidden] {
-        visibility: hidden;
-        transition: visibility 0s 200ms;
-        animation: dialog-hide 200ms;
-    }
-
-    &:not([hidden]) {
-        animation: dialog-show 300ms;
-        transition: none;
-    }
-}
-
-.backdrop {
-    @extend %backdrop-polyfill;
-}
-```
-
-_You do still have to make your own logic for the open and closed styles._
-_As seen above._
+This will now prevent any scrolling on the page.
