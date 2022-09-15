@@ -1,9 +1,9 @@
 @use "sass:color";
 @use "@fylgja/theme" as *;
 
-$theme-dark: color.change($color-theme, $lightness: 18%);
+$theme-dark: color.change($color-theme, $lightness: 14%);
 $theme-dark-alpha: color.change($theme-dark, $alpha: 0.7);
-$theme-darker: color.change($color-theme, $lightness: 12%);
+$theme-darker: color.change($color-theme, $lightness: 10%);
 $theme-darkest: color.change($color-theme, $lightness: 6%);
 
 $white-softest: color.change(#fff, $alpha: 0.1);
