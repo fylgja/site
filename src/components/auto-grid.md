@@ -11,9 +11,7 @@ featured: true
 sitemap:
   priority: 0.6
 order: 3
-preconnect: {
-    placeimg: https://placeimg.com/
-}
+preconnect: { placeimg: "https://placeimg.com/" }
 ---
 
 A super small grid with auto flowing behavior, based on the container size.
@@ -47,14 +45,14 @@ Then include the component in to your code via;
 
 The grid can be added by just adding the class `.auto-grid`.
 
-{% codeSample %}
+{% codeSample html, "hidden sm-block" %}
 <div class="auto-grid" style="max-width: 880px;">
-    <img width="500" height="400" src="https://placeimg.com/600/500/nature?img=1" loading="lazy">
-    <img width="500" height="400" src="https://placeimg.com/600/500/nature?img=2" loading="lazy">
+    <img width="500" height="400" src="https://placeimg.com/500/400/nature?img=1" loading="lazy">
+    <img width="500" height="400" src="https://placeimg.com/500/400/nature?img=2" loading="lazy">
 </div>
 {% endcodeSample %}
 
-In this example we have a container thats `800px` width,
+In this example we have a container thats `880px` width,
 using a default col size of `250px` this wil result in 3 equal columns, 
 even if there are only 2 child's to fill the space.
 The third one is an empty placeholder, making the grid truly auto.
