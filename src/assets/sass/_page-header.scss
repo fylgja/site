@@ -10,8 +10,8 @@
     @supports (-webkit-backdrop-filter: blur(1px)) or
         (backdrop-filter: blur(1px)) {
         background-color: var(--page-header-bg, hsl(0 0% 100% / 70%));
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
     }
 
     .icons {

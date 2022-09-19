@@ -73,11 +73,11 @@ $white-soft: color.change(#fff, $alpha: 0.5);
     }
 }
 
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme]) {
-        @include dark-mode;
-    }
-}
+// @media (prefers-color-scheme: dark) {
+//     :root:not([data-theme]) {
+//         @include dark-mode;
+//     }
+// }
 
 :root[data-theme="dark"] {
     @include dark-mode;

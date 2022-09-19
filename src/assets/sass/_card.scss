@@ -1,5 +1,6 @@
+@use "@fylgja/shadow" as *;
 @use "@fylgja/card" with (
-    $card-elevation: var(--card-elevation, var(--shadow-2)),
+    $card-elevation: var(--card-elevation, #{$shadow-2}),
     $card-radius: 10px
 );
 
@@ -7,6 +8,6 @@
     transition: box-shadow 0.2s ease-out;
 
     &:hover {
-        --card-elevation: var(--shadow-4);
+        --card-elevation: #{$shadow-4};
     }
 }

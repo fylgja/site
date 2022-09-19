@@ -1,7 +1,6 @@
-@use "temp";
-
 @use "./theme";
 @use "./fonts";
+@use "@fylgja/shadow/base" as shadowBase;
 
 @use "./print";
 @use "./skip-link";
@@ -29,10 +28,6 @@
 @use "@fylgja/section" with (
     $enable-section-theme: false
 );
-@use "@fylgja/scroll-slider";
-
-@use "@fylgja/breadcrumbs";
-@use "@fylgja/menu";
 
 @use "./logo";
 @use "./code";

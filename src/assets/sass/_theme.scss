@@ -11,6 +11,13 @@ $color-on-alt: #fff;
     --color-alt: #{$color-alt};
     --color-on-alt: #{$color-on-alt};
     --border-color: #{color.change(#000, $alpha: 0.2)};
+    // TEMP, needs a pkg
+    --radius-3: 1rem;
+    --radius-conditional-3: clamp(
+        0px,
+        calc(100vw - 100%) * 1e5,
+        var(--radius-3)
+    );
 }
 
 :is(ul, ol) {
