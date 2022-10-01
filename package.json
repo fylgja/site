@@ -43,7 +43,7 @@
     "@fylgja/sass": "^2.0.0",
     "@fylgja/stylelint-config": "^4.2.0",
     "@grimlink/eleventy-plugin-sass": "^1.0.3",
-    "@quasibit/eleventy-plugin-sitemap": "^2.1.5",
+    "@quasibit/eleventy-plugin-sitemap": "^2.2.0",
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "clean-css": "^5.3.1",
