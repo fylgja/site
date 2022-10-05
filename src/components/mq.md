@@ -25,7 +25,7 @@ Then include the component in to your code via;
 ```
 
 > \* The PostCSS version is using the newer spec with `@custom-media`,
-> and also requires the [PostCSS Custom Media](https://github.com/postcss/postcss-custom-media) plugin to work,
+> and also requires the [PostCSS Custom Media](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media) plugin to work,
 > until Custom Media queries are better supported
 
 ## How to use
