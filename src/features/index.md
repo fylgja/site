@@ -20,7 +20,7 @@ All of the features Fylgja supports to enhance your experience.
 {%- for item in collections.features -%}
     <a href="{{ item.url }}" class="card card-content">
         <h2 class="h5">{{ item.data.title }}</h2>
-        <div>{{ item.data.description }}</div>
+        <p class="text-small my-0">{{ item.data.description | truncate(64) }}</p>
     </a>
 {%- endfor -%}
 </div>

@@ -27,4 +27,4 @@ but you don't need to remember a CSS class for this state.
 That said, Fylgja also offers helpers that make it easier to build your site,
 without compromising on style in favour of accessibility.
 
-{% include "related-a11y.njk" %}
+{% include "related/a11y.njk" %}

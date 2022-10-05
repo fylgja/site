@@ -26,6 +26,4 @@ To have good default.
 Best samples of this are our form based components,
 like `@fylgja/form` and `@fylgja/control`.
 
-For more Native Elements [checkout out the Fylgja components](/components#nativeelements).
-
-{% include "related-nativeelements.njk" %}
+{% include "related/nativeelements.njk" %}

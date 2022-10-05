@@ -11,7 +11,7 @@ style: {
     --card-radius: 8px;
     --card-elevation: none;
     --card-border: 1px solid rgb(0 0 0 / 12%);
-    --avatar-size: 55px;
+    --avatar-size: 42px;
     --avatar-radius: 8px;
 }
 "}
@@ -21,42 +21,45 @@ style: {
 <p>Looking for a prebuilt templates that already comes with Fylgja build in your favorite framework, look no further down here.</p>
 <div id="list-of" class="auto-grid">
     {%- for item in starters -%}
-        <div class="card card-content flex-row">
-            {% if item.thumb %}
-                {%- set preview -%}./src/assets/images/{{ item.thumb }}{%- endset -%}
-                <div class="avatar aspect-ratio me-4">
-                    {% image preview, "", "thumbnail" %}
-                </div>
-            {% endif %}
-            <div>
-                <strong>
-                    <a
-                        href="{{ item.url }}"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-reset"
-                    >{{ item.title }}</a>
-                </strong>
-                {%- set strLimit %}50{%- endset -%}
-                {% if item.description %}
-                    <p class="text-small my-0">{{ item.description | truncate(strLimit) }}</p>
+        <div class="card">
+            <div class="card-content flex flex-row">
+                {% if item.thumb %}
+                    {%- set preview -%}./src/assets/images/{{ item.thumb }}{%- endset -%}
+                    <div class="avatar aspect-ratio me-4">
+                        {% image preview, "", "thumbnail" %}
+                    </div>
                 {% endif %}
-                <div class="flex flex-wrap mt-2">
-                    <a
-                        href="{{ item.url }}"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="badge me-2 mt-2"
-                    >View repo</a>
-                    {% if item.previewUrl %}
+                <div>
+                    <strong>
                         <a
-                            href="{{ item.previewUrl }}"
+                            href="{{ item.url }}"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="badge me-2 mt-2"
-                        >View demo site</a>
+                            class="text-reset"
+                        >{{ item.title }}</a>
+                    </strong>
+                    {% if item.description %}
+                        <p class="text-small my-0">{{ item.description | truncate(50) }}</p>
                     {% endif %}
                 </div>
+            </div>
+            <div class="card-action p-0 flex flex-wrap border-block-start">
+                <a
+                    href="{{ item.url }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn flex-auto"
+                    style="--btn-radius: 0;"
+                >View git repo</a>
+                {% if item.previewUrl %}
+                    <a
+                        href="{{ item.previewUrl }}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn flex-auto"
+                        style="--btn-radius: 0;"
+                    >View demo site</a>
+                {% endif %}
             </div>
         </div>
     {%- endfor -%}

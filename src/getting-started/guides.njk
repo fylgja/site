@@ -10,7 +10,7 @@ style: {
             --card-radius: 8px;
             --card-elevation: none;
             --card-border: 1px solid rgb(0 0 0 / 12%);
-            --avatar-size: 55px;
+            --avatar-size: 42px;
             --avatar-radius: 8px;
         }
     "
@@ -24,16 +24,15 @@ style: {
         {% if item.data.thumb %}
             {%- set preview -%}./src/assets/images/{{ item.data.thumb }}{%- endset -%}
             <div class="avatar aspect-ratio me-4">
-                {% image preview, "", "thumbnail" %}
+                {% image preview, "", "84" %}
             </div>
         {% endif %}
         <div>
             <strong>{{ item.data.title }}</strong>
-            {%- set strLimit %}45{%- endset -%}
             {% if item.data.description %}
-                <p class="text-small my-0">{{ item.data.description | truncate(strLimit) }}</p>
+                <p class="text-small my-0">{{ item.data.description | truncate(50) }}</p>
             {% else %}
-                <p class="text-small my-0">{{ item.templateContent | truncate(strLimit) }}</p>
+                <p class="text-small my-0">{{ item.templateContent | truncate(50) }}</p>
             {% endif %}
         </div>
     </a>

@@ -6,10 +6,10 @@
 --avatar-bg: transparent;
 }
 </style>
-<h2>Related components</h2>
+<h2>Some related components</h2>
 <p>Components that require no additional CSS classes to work.</p>
-<div id="related" class="auto-grid">
-{%- for item in collections.nativeElements -%}
+<div id="related" class="auto-grid mb-6">
+{%- for item in collections.nativeElements | sortByOrder | limit(6) -%}
 {% if not item.data.draft %}
 <a href="{{ item.url }}" class="card card-content flex-row">
 {% if item.data.preview %}
@@ -31,3 +31,4 @@
 {% endif %}
 {%- endfor -%}
 </div>
+<p>For more <a href="/components">checkout out the Fylgja components</a>.</p>
