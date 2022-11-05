@@ -25,6 +25,17 @@ Then include the component in to your code via;
 @import "@fylgja/container";
 ```
 
+### `@layer` support
+
+If you need support for `@layer`,
+use the following import;
+
+```scss
+@use "@fylgja/container" with ($enable-container-layer: true);
+// Or via PostCSS import
+@import "@fylgja/container/layer";
+```
+
 ## How to use
 
 To use the container create element with the class `.container`.
@@ -55,6 +66,10 @@ Want direct control on the base styles,
 Here are the following SCSS variables can you modify.
 
 ```scss
+$enable-container-layer: false !default;
+
+$container-layer-name: components !default;
+
 $container-size: 1280px !default;
 $container-padding-y: 0 !default;
 $container-padding-x: 1.25rem !default;
