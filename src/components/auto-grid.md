@@ -41,6 +41,17 @@ Then include the component in to your code via;
 @import "@fylgja/auto-grid";
 ```
 
+### `@layer` support
+
+If you need support for `@layer`,
+use the following import;
+
+```scss
+@use "@fylgja/auto-grid" with ($enable-auto-grid-layer: true);
+// Or via PostCSS import
+@import "@fylgja/auto-grid/layer";
+```
+
 ## How to use
 
 The grid can be added by just adding the class `.auto-grid`.
@@ -53,7 +64,7 @@ The grid can be added by just adding the class `.auto-grid`.
 {% endcodeSample %}
 
 In this example we have a container thats `880px` width,
-using a default col size of `250px` this wil result in 3 equal columns, 
+using a default col size of `250px` this wil result in 3 equal columns,
 even if there are only 2 child's to fill the space.
 The third one is an empty placeholder, making the grid truly auto.
 
