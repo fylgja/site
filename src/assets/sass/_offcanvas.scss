@@ -1,6 +1,5 @@
-@use "@fylgja/shadow" as *;
 @use "@fylgja/dialog" with (
-    $dialog-elevation: #{$shadow-4}
+    $dialog-elevation: var(--shadow-4)
 );
 @use "./caret";
 

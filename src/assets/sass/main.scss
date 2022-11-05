@@ -1,6 +1,6 @@
 @use "./theme";
 @use "./fonts";
-@use "@fylgja/shadow/base" as shadowBase;
+@use "./tokens";
 
 @use "./print";
 @use "./skip-link";
