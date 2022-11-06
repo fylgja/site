@@ -2,10 +2,10 @@
 <p>We're hard at work, adding content here.</p>
 <p>Want to support us, via your own cool {{ title }}. Or keep track when we have added some things here?</p>
 {% if support %}
-<ul class="mt-8 list-style -none md-flex md-space-x-8">
+<ul class="mt-8 list-style -none md-flex md-gap-8">
 {% for item in support %}
 <li>
-<a href="{{ item.url }}" {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %} class="text-reset no-underline flex iteme-start space-x-2">
+<a href="{{ item.url }}" {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %} class="text-reset no-underline flex iteme-start gap-2">
 {% if item.icon %}
 <div class="avatar p-2 me-4"
 style="--avatar-bg: {{ item.iconStyle.bg }}; --avatar-color: {{ item.iconStyle.color }};"

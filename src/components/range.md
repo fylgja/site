@@ -31,7 +31,7 @@ Then include the component in to your code via;
 Out of the box all the styling is done directly,
 to the `input[type=range]`,
 
-{% codeSample html, "space-y-4" %}
+{% codeSample html, "flex flex-col gap-4" %}
 <input type="range" value="50">
 <input type="range" value="50" disabled>
 {% endcodeSample %}

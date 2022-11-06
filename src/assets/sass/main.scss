@@ -42,4 +42,25 @@
 @use "color-scheme";
 @use "screen";
 
-@use "@fylgja/utilpack";
+@use "@fylgja/utilpack" with (
+    $utilpack: (
+        "gap": (
+            "values": (
+                "0": 0,
+                "1": 0.25em,
+                "2": 0.5em,
+                "3": 0.75em,
+                "4": 1em,
+                "5": 1.25em,
+                "6": 1.5em,
+                "7": 1.75em,
+                "8": 2em,
+                "9": 2.25em,
+                "10": 2.5em,
+                "11": 2.75em,
+                "12": 3em,
+            ),
+            "responsive": true,
+        ),
+    )
+);

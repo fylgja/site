@@ -35,7 +35,7 @@ No instructions are really needed.
 
 The progress styles are automatically added when loaded.
 
-{% codeSample html, "space-y-4" %}
+{% codeSample html, "flex flex-col gap-4" %}
 <progress value="60" max="100"></progress>
 <progress indeterminate></progress>
 {% endcodeSample %}

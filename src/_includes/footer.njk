@@ -3,7 +3,7 @@
         {% if navigation.about %}
             <nav id="about-menu" aria-label="About us Menu">
                 <strong class="block h5 mb-3">More Fylgja</strong>
-                <ul class="list-style -none space-y-3 lg-space-y-2">
+                <ul class="list-style -none flex flex-col gap-3 lg-gap-2">
                     {% for item in navigation.about %}
                         <li>
                             {% menuItem item.url, "", item.external, page.url %}
@@ -17,7 +17,7 @@
         {% if navigation.support %}
             <nav id="support-menu" aria-label="Support Menu">
                 <strong class="block h5 mb-3">Guides</strong>
-                <ul class="list-style -none space-y-3 lg-space-y-2">
+                <ul class="list-style -none flex flex-col gap-3 lg-gap-2">
                     {% for item in navigation.support %}
                         <li>
                             {% menuItem item.url, "", item.external, page.url %}
@@ -30,7 +30,7 @@
         {% endif %}
         <nav id="features-menu" aria-label="Features Menu">
             <strong class="block h5 mb-3">Features</strong>
-            <ul class="list-style -none space-y-3 lg-space-y-2">
+            <ul class="list-style -none flex flex-col gap-3 lg-gap-2">
                 {% for item in collections.features | sortByOrder %}
                     <li>
                         {% menuItem item.url, "", item.external, page.url %}
@@ -42,7 +42,7 @@
         </nav>
         <nav id="follow-us-menu" aria-label="Follow use">
             <strong class="block h5 mb-3">Find us also on</strong>
-            <ul class="list-style -none space-y-3 lg-space-y-2">
+            <ul class="list-style -none flex flex-col gap-3 lg-gap-2">
                 {% for item in navigation.socials %}
                     <li>
                         {% menuItem item.url, "inline-flex items-center", page.url, item.external %}

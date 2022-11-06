@@ -42,7 +42,7 @@ Out of the box all the styling is done directly,
 to the `input[type=radio]` and `input[type=checkbox]`,
 so no extra steps are needed.
 
-{% codeSample html, "space-x-2" %}
+{% codeSample html, "flex flex-wrap gap-4" %}
 <input type="checkbox">
 <input type="checkbox" checked>
 <input type="checkbox" indeterminate>
@@ -55,7 +55,7 @@ so no extra steps are needed.
 The exception is for the switch style,
 that requires a class on the `input[type=checkbox]`.
 
-{% codeSample %}
+{% codeSample html, "flex flex-wrap gap-4" %}
 <input type="checkbox" class="control-switch">
 <input type="checkbox" class="control-switch" checked>
 {% endcodeSample %}
