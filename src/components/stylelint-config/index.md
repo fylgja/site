@@ -11,8 +11,6 @@ order: 11
 
 A sharable stylelint config object that enforces Fylgja's CSS rules.
 
-Extends [stylelint-config-recommended](https://github.com/stylelint/stylelint-config-standard).
-
 ## Installation
 
 ```bash
@@ -29,7 +27,7 @@ If you've installed @fylgja/stylelint-config, just set your stylelint config to:
 }
 ```
 
-_SCSS support found under the [Extensions](#extensions)_
+_SCSS, Tailwind and Inline CSS support found under the [Extra Syntax Support](#extra-syntax-support)_
 
 ## Extending
 
@@ -50,18 +48,19 @@ then add your overrides and additions there.
 }
 ```
 
-## Extensions
+## Extra Syntax Support
 
-While the core rules already take preprocessors in account,
+The core rules take some preprocessors rules in account,
+if they do not impact any CSS defaults.
 
-some times extra rules are needed,
-to add support for a specific preprocessor.
+For better support pre-processors and post-processors support,
+use the following options below.
 
 ### SCSS
 
-We have added the stylelint plugin SCSS to better support SCSS styles
+This adds support for Sass (scss syntax) support.
 
-To include these rules, add `scss` to the end of the extend path 
+To include these rules, add `scss` to the end of the extend path;
 
 ```json
 {
@@ -69,19 +68,44 @@ To include these rules, add `scss` to the end of the extend path
 }
 ```
 
-[For more infomation checkout the SCSS DOC.](/components/stylelint-config/scss/)
+[For more infomation checkout the SCSS Doc on fylgja.dev.](/stylelint-config/scss/)
 
-### Order
+### TailwindCSS
 
-We do follow a specific style of ordering our code, it's is described in our [CSS order DOC](/components/stylelint-config/order/).
+This adds support for TailwindCSS functions in CSS.
+
+To include these rules, add `tailwind` to the end of the extend path;
+
+```json
+{
+    "extends": "@fylgja/stylelint-config/tailwind",
+}
+```
+
+### CSS Order
+
+There are no rules,
+since we do feel there should be a form flexibility on that part.
+
+But we do follow a specific style of ordering for our CSS,
+it's is described in our [CSS order DOC at fylgja.dev](/stylelint-config/order/).
+
+### Inline CSS support (HTML and more)
+
+Any of the Fylgja Stylelint Config options will, as of v5.0 also check any inline CSS by default.
+
+This done thx to the Stylelint plugin [stylelint-config-html](https://github.com/ota-meshi/stylelint-config-html).
+
+This plugin will add support to check your project not just for errors in CSS files,
+but also checks in the style tags in your HTML.
+
+_You can opt out of this behavior by using the rules directly,_
+_found in the rules folder._
 
 ## Rules
 
-For information on what each rule does.
-[Checkout the original DOC](https://stylelint.io/user-guide/rules/)
-or the rules folder on [Stylelint Github Page](https://github.com/stylelint/stylelint/tree/master/lib/rules).
-
-Since we extend on the [stylelint-config-recommended](https://github.com/stylelint/stylelint-config-standard). You should also checkout the rules set there.
+All rules are base on the [stylelint-config-recommended](https://github.com/stylelint/stylelint-config-standard),
+you should also checkout the rules set there.
 
 Down here are only the rules we have set.
 
@@ -93,10 +117,7 @@ _it's better to set those project specific, if needed._
 - `at-rule-empty-line-before`: always
   - except: blockless-after-same-name-blockless, first-nested
   - ignore: after-comment, inside-block
-  - ignoreAtRules: use, forward, import, if, else
-- `at-rule-no-unknown`: true
-  - ignoreAtRules: for, each, if, else, mixin, mixin-*, include, screen
-    - _Includes support for PostCSS plugins and TailwindCSS_
+  - ignoreAtRules: import, if, else
 - `at-rule-no-vendor-prefix`: true
 - `at-rule-semicolon-space-before`: never
   - _If there was a option for never, it would be never_
@@ -106,14 +127,14 @@ _it's better to set those project specific, if needed._
 - `block-closing-brace-newline-after`: always-multi-line
   - ignoreAtRules: if, else
 - `block-closing-brace-newline-before`: always-multi-line
+- `block-opening-brace-space-before`: always
+  - ignoreAtRules: if, else
 
 **Color**
 
 - `alpha-value-notation`: null
 - `color-hex-case`: lower
-  - _Lowercase letters are easier to distinguish from numbers_
 - `color-hex-length`: short
-- `color-no-invalid-hex`: true
 
 **Comment**
 
@@ -127,17 +148,20 @@ _it's better to set those project specific, if needed._
 
 **Declaration**
 
+- `declaration-block-no-redundant-longhand-properties`: true
+- `declaration-block-semicolon-newline-before`: never-multi-line
+- `declaration-block-trailing-semicolon`: always
+  - ignore: single-declaration
 - `declaration-colon-newline-after`: null
   - _Works better with Prettier and does not always makes sense anyway._
     _So giving freedom to the dev._
-- `declaration-block-no-redundant-longhand-properties`: true
-- `declaration-block-semicolon-newline-before`: never-multi-line
-  - _Would be never if this was an option_
 - `declaration-empty-line-before`: never
 - `declaration-no-important`: true
 
 **Font family**
 
+- `font-family-no-duplicate-names`: true
+  - severity: warning
 - `font-family-no-missing-generic-family-keyword`: true
   - severity: warning
 
@@ -189,8 +213,8 @@ _it's better to set those project specific, if needed._
 
 **Selector**
 
+- `selector-class-pattern`: ^(?:[a-z]|-)([a-z0-9]*)(-[a-z0-9]+)*$
 - `selector-list-comma-newline-before`: never-multi-line
-  - _Would be never if this was an option_
 - `selector-list-comma-space-after`: always-single-line
 - `selector-max-attribute`: 2
 - `selector-max-class`: 4
@@ -209,6 +233,7 @@ _it's better to set those project specific, if needed._
 - `value-keyword-case`: lower
   - ignoreProperties: with the name `family`
   - _Font families may have uppercase letters_
+- `value-list-comma-newline-after`: null,
 - `value-list-comma-newline-before`: never-multi-line
 - `value-no-vendor-prefix`: true
   - ignoreValues: tap-highlight-color
