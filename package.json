@@ -32,7 +32,7 @@
     "dialog-polyfill": "^0.5.6",
     "fylgja": "^1.2.6",
     "prismjs": "^1.29.0",
-    "roving-ux": "^1.0.4"
+    "roving-ux": "^1.0.5"
   },
   "devDependencies": {
     "@11ty/eleventy": "^1.0.2",
