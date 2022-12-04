@@ -28,6 +28,7 @@ module.exports = {
                 "_site/components/range/index.html",
                 "_site/components/form/index.html",
                 "_site/components/colors/index.html",
+                "_site/components/card/index.html",
                 "_site/features/**/*.html",
                 "_site/getting-started/**/*.html",
                 "_site/guides/**/*.html",
