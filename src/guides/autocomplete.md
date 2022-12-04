@@ -14,9 +14,8 @@ Down here we have a few tips to make it even easier to work with Fylgja in your 
 
 This extension adds autocompletion for CSS variables.
 
-Install the extension [phoenisx.cssvar](https://marketplace.visualstudio.com/items?itemName=phoenisx.cssvar).
-
-Configure your editor to allow autocompletion from the node modules folder;
+Install the extension [phoenisx.cssvar](https://marketplace.visualstudio.com/items?itemName=phoenisx.cssvar),
+and configure your editor to allow autocompletion from the node modules folder;
 
 ```json
 // .vscode/settings.json
@@ -24,14 +23,14 @@ Configure your editor to allow autocompletion from the node modules folder;
   "cssvar.files": [
     "./node_modules/fylgja/fylgja.css",
     // Your styles folder
-    "src/variables.css"
+    "./src/styles/variables.css"
   ],
   // Do not ignore node_modules css files, which is ignored by default
   "cssvar.ignore": []
 }
 ```
 
-_Or use the specific Fylgja component path_
+_Or use the specific Fylgja component path._
 
 [For more config options see the extension docs](https://marketplace.visualstudio.com/items?itemName=phoenisx.cssvar).
 
@@ -44,9 +43,8 @@ This extension adds IntelliSense for SCSS with;
 - Rich documentation through SassDoc.
 - Suggestions and hover info for built-in Sass modules, when used with `@use`.
 
-Install the extension [somewhatstationery.some-sass](https://marketplace.visualstudio.com/items?itemName=SomewhatStationery.some-sass).
-
-Configure your editor to allow IntelliSense from the node modules folder;
+Install the extension [somewhatstationery.some-sass](https://marketplace.visualstudio.com/items?itemName=SomewhatStationery.some-sass),
+and configure your editor to allow IntelliSense from the node modules folder;
 
 ```json
 // .vscode/settings.json
