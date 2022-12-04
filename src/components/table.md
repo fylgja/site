@@ -34,6 +34,19 @@ Then include the component in to your code via;
 No instruction are really needed,
 the table styles are automatically added when loaded.
 
+{% codeSample %}
+<table>
+    <thead>
+        <tr><th>title 1</th><th>title 2</th><th>Long title 3</th><th>title 4</th><th>title 5</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>item 01</td><td>item 02</td><td>item 03</td><td>item 04</td><td>item 05</td></tr>
+        <tr><td>item 11</td><td>item 12</td><td>item 13</td><td>item 14</td><td>item 15</td></tr>
+        <tr><td>item 21</td><td>item 22</td><td>item 23</td><td>item 24</td><td>item 25</td></tr>
+    </tbody>
+</table>
+{% endcodeSample %}
+
 That said no site is the same, and if you need more than this basis,
 
 then consider adding you own styles to improve on this basis.
