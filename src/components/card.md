@@ -40,8 +40,8 @@ and so you can collapse the child card classes to the parent,
 
 {% codeSample %}
 <div class="card card-content">
-    <p>The card is one of the few CSS components that requires a little bit more classes or/and elements.</p>
-    <p>A simple card can be just be 1 element,<br>and so you can collapse the child card classes to the parent.</p>
+    <p>The card component is a wrapper component.</p>
+    <p>It allows you to make visual sectioned content,<br>that is not part of the main flow.</p>
 </div>
 {% endcodeSample %}
 
@@ -67,17 +67,18 @@ Besides that the card is also extremely flexible in style, via CSS variables.
 The card style is by default elevated,
 but can be made flat via 2 variables.
 
-```html
+{% codeSample %}
 <style>
     .card.-flat {
         --card-border: 1px solid #aaa;
         --card-elevation: none;
     }
 </style>
-<div class="card -flat">
-    <div class="card-content">..</div>
+<div class="card card-content -flat">
+    <p>The card component is a wrapper component.</p>
+    <p>It allows you to make visual sectioned content,<br>that is not part of the main flow.</p>
 </div>
-```
+{% endcodeSample %}
 
 ## Config
 
