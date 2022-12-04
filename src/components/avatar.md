@@ -6,6 +6,10 @@ git: "components/avatar"
 tags: "elements"
 preview: "avatar.png"
 order: 1
+preconnect: { placeimg: "https://placekitten.com/" }
+style: {
+    progress: "../../node_modules/@fylgja/avatar/avatar.css"
+}
 ---
 
 The avatar component allows you to make an avatar style with ease.
@@ -28,9 +32,10 @@ Then include the component in to your code via;
 
 To use the avatar create element with the class `.avatar`.
 
-```html
-<img class="avatar" src="..">
-```
+{% codeSample html, "flex flex-wrap items-center gap-4" %}
+<img class="avatar" style="--avatar-size: 6em; --avatar-bg: #8a4d19;" src="https://placekitten.com/120/120?img=1" width="120" height="120">
+<img class="avatar" src="https://placekitten.com/60/60?img=2" width="60" height="60">
+{% endcodeSample %}
 
 Avatars are by default round and are `3em` big, allowing to scale with your text.
 
