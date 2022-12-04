@@ -8,6 +8,7 @@ git: "components/card"
 codepen: "KKmOaNv"
 tags: ["elements", "layouts"]
 preview: "card.png"
+preconnect: { placeimg: "https://placeimg.com/" }
 ---
 
 The card component is a wrapper component.
@@ -37,18 +38,21 @@ classes or/and elements.
 A simple card can be just be 1 element,
 and so you can collapse the child card classes to the parent,
 
-```html
-<div class="card card-content">..</div>
-```
-
-and a more complex card requires nesting.
-
-```html
-<div class="card">
-    <img class="card-media" src="">
-    <div class="card-content">..</div>
+{% codeSample %}
+<div class="card card-content">
+    <p>The card is one of the few CSS components that requires a little bit more classes or/and elements.</p>
+    <p>A simple card can be just be 1 element,<br>and so you can collapse the child card classes to the parent.</p>
 </div>
-```
+{% endcodeSample %}
+
+and a more complex card case, requires nesting.
+
+{% codeSample %}
+<figure class="card inline-flex">
+    <img class="card-media" width="520" height="360" src="https://placeimg.com/520/360/nature?img=1" loading="lazy">
+    <figcaption class="card-content">Hello there</figcaption>
+</figure>
+{% endcodeSample %}
 
 We kept the card child classes to 3 use cases;
 
