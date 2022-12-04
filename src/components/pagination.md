@@ -7,6 +7,9 @@ git: "components/pagination"
 codepen: "ZEypmmj"
 tags: ["navs"]
 preview: "pagination.png"
+style: {
+    progress: "../../node_modules/@fylgja/pagination/pagination.css"
+}
 ---
 
 The pagination component makes it easy to build many pagination patterns, 
@@ -32,15 +35,16 @@ In your html, you need besides the pagination class, also some html for the item
 
 We advice you to use an ordered list, as this tells the user the structure of the list of links.
 
-```html
+{% codeSample %}
 <nav aria-label="pagination">
     <ol class="pagination">
         <li><a href="#item" aria-label="Page 1">1</a></li>
         <li><a href="#item" aria-label="Page 2" aria-current="page">2</a></li>
         <li><a href="#item" aria-label="Page 3">3</a></li>
+        <li><a href="#item" aria-label="Page 4">4</a></li>
     </ol>
 </nav>
-```
+{% endcodeSample %}
 
 Using the `aria-current="page"` will tell the user that this is the current page.
 
@@ -54,19 +58,19 @@ you can nest the pagination with buttons and there is a class
 
 `.pagination-ellipsis` for adding a gap in you pagination items.
 
-```html
-<nav aria-label="pagination" class="pagination justify-center">
-    <button class="pagination-item flex-grow md-flex-initial">Previous</button>
-    <button class="pagination-item flex-grow md-flex-initial md-order-last">Next</button>
+{% codeSample %}
+<nav aria-label="pagination" class="pagination justify-between">
+    <button class="pagination-item" aria-label="Previous">←</button>
+    <button class="pagination-item md-order-last" aria-label="Next">→</button>
     <ol class="pagination">
         <li><a href="#item" aria-label="Page 1">1</a></li>
         <li><a href="#item" aria-label="Page 2" aria-current="page">2</a></li>
         <li><a href="#item" aria-label="Page 3">3</a></li>
-        <li><span class="pagination-ellipsis">&hellip;</span></li>
+        <li><span class="pagination-ellipsis">…</span></li>
         <li><a href="#item" aria-label="Page 50">50</a></li>
     </ol>
 </nav>
-```
+{% endcodeSample %}
 
 ### Other use cases
 
@@ -75,24 +79,23 @@ that are a form a pagination.
 
 Do you need a pagination with slider dots, use the dots variable class.
 
-
-```html
+{% codeSample %}
 <nav aria-label="pagination" class="pagination -dots">
     <a href="#item" aria-label="Slide 1"></a>
     <a href="#item" aria-label="Slide 2" class="is-active"></a>
     <a href="#item" aria-label="Slide 3"></a>
     <a href="#item" aria-label="Slide 4"></a>
 </nav>
-```
+{% endcodeSample %}
 
 Need a more btn like pagination, combine this component with the `@fylgja/btn` component.
 
-```html
+{% codeSample %}
 <nav aria-label="pagination" class="pagination">
     <button class="btn -theme">Previous</button>
     <button class="btn -theme is-active">Next</button>
 </nav>
-```
+{% endcodeSample %}
 
 Or even more options, like a pagination slider thumbs with images as content, instead of text.
 
