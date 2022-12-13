@@ -68,7 +68,7 @@ To include these rules, add `scss` to the end of the extend path;
 }
 ```
 
-[For more infomation checkout the SCSS Doc on fylgja.dev.](/stylelint-config/scss/)
+[For more infomation checkout the SCSS Doc on fylgja.dev.](/components/stylelint-config/scss/)
 
 ### TailwindCSS
 
@@ -88,7 +88,7 @@ There are no rules,
 since we do feel there should be a form flexibility on that part.
 
 But we do follow a specific style of ordering for our CSS,
-it's is described in our [CSS order DOC at fylgja.dev](/stylelint-config/order/).
+it's is described in our [CSS order DOC at fylgja.dev](/components/stylelint-config/order/).
 
 ### Inline CSS support (HTML and more)
 
