@@ -1,6 +1,6 @@
 ---
-title: "Fylgja Components"
-description: "All Fylgja components and plugins in one swipe away"
+title: "Fylgja Components Overview"
+description: "Browser all of what Fylgja has to offer in CSS components and add-ons"
 permalink: "/components/"
 layout: "components-overview"
 sitemap:
@@ -32,14 +32,14 @@ style: {
     }
 
     @media (min-width: 1280px) {
-        .scroll-slider {
-            --gap-inline: clamp(1.25rem, 5vw, 8rem);
+        .section-slider {
             --gap-block: 2rem;
+            --gap-inline: clamp(1.25rem, 5vw, 8rem);
             --item-gap: 0.8rem;
+            padding-block-start: calc(var(--gap-block) / 2);
         }
 
         .scroll-title {
-            --container-padding-y: 1rem;
             --container-padding-x: clamp(1.25rem, 5vw, 8rem);
             --container-size: 100%;
         }
@@ -59,51 +59,50 @@ style: {
 {% if collections.componentsFeatured %}
     <section id="components-featured" class="my-2 md-my-5">
         <div class="scroll-title pt-2 container">
-            <h2 class="h3 my-0">Featured</h2>
+            <h2 class="my-0">Featured</h2>
             <p class="my-0">Our recommended components</p>
         </div>
-        <div class="scroll-slider hide-scrollbar">
+        <div class="section-slider scroll-slider hide-scrollbar">
             {%- for item in collections.componentsFeatured -%}
-            {%- if item.data.draft -%}
-            <div class="card -draft">
-            {% else %}
-            <a class="card" href="{{ item.url }}">
-            {% endif %}
-                <div class="card-media aspect-ratio">
-                    {% if item.data.preview %}
-                        {% set preview %}{{ meta.componentsMedia }}{{ item.data.preview }}{% endset %}
-                        {% set loading %}{% if loop.first %}eager{% else %}lazy{% endif %}{% endset %}
-                        {% image preview, "", "medium", loading %}
-                    {% endif %}
+                {%- if item.data.draft -%}
+                <div class="card -draft">
+                {% else %}
+                <a class="card" href="{{ item.url }}">
+                {% endif %}
+                    <div class="card-media aspect-ratio">
+                        {% if item.data.preview %}
+                            {% set preview %}{{ meta.componentsMedia }}{{ item.data.preview }}{% endset %}
+                            {% set loading %}{% if loop.first %}eager{% else %}lazy{% endif %}{% endset %}
+                            {% image preview, "", "medium", loading %}
+                        {% endif %}
+                    </div>
+                    <div class="card-content">
+                        <h3 class="h5 my-0">{{ item.data.title }}</h3>
+                        {%- set strLimit %}150{%- endset -%}
+                        {% if item.data.description %}
+                            <p class="text-small">{{ item.data.description | truncate(strLimit) }}</p>
+                        {% else %}
+                            <p class="text-small">{{ item.templateContent | truncate(strLimit) }}</p>
+                        {% endif %}
+                    </div>
+                {%- if item.data.draft -%}
                 </div>
-                <div class="card-content">
-                    <h3 class="h5 my-0">{{ item.data.title }}</h3>
-                    {%- set strLimit %}150{%- endset -%}
-                    {% if item.data.description %}
-                        <p class="text-small">{{ item.data.description | truncate(strLimit) }}</p>
-                    {% else %}
-                        <p class="text-small">{{ item.templateContent | truncate(strLimit) }}</p>
-                    {% endif %}
-                </div>
-            {%- if item.data.draft -%}
-            </div>
-            {% else %}
-            </a>
-            {% endif %}
+                {% else %}
+                </a>
+                {% endif %}
             {%- endfor -%}
         </div>
     </section>
 {% endif %}
 
 {%- for items in collections.componentsGroup -%}
-    {% if items.data | length %}
-        <section id="{{ items.title | lower }}" class="my-2 md-my-5">
-            <div class="scroll-title pt-2 container">
-                <h2 class="h3 my-0">{{ items.title }}{% if requiresJs %} <small>(Requires JavaScript)</small>{% endif %}</h2>
-                <p class="my-0">{{ items.description }}</p>
-            </div>
-            <div class="scroll-slider hide-scrollbar">
-                {%- for item in items.data | sortByOrder -%}
+    <section id="{{ items.title | lower }}" tabindex="-1" class="my-2 md-my-5">
+        <div class="scroll-title pt-2 container">
+            <h2 class="my-0">{{ items.title }}</h2>
+            <p class="my-0">{{ items.description }}</p>
+        </div>
+        <div class="section-slider scroll-slider hide-scrollbar">
+            {%- for item in items.data | sortByOrder -%}
                 {%- if item.data.draft -%}
                 <div class="card -draft">
                 {% else %}
@@ -128,8 +127,7 @@ style: {
                 {% else %}
                 </a>
                 {% endif %}
-                {%- endfor -%}
-            </div>
-        </section>
-    {% endif %}
+            {%- endfor -%}
+        </div>
+    </section>
 {%- endfor -%}
