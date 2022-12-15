@@ -1,7 +1,6 @@
 @use "@fylgja/mq" as *;
 
 .page-footer {
-    border-radius: var(--radius-conditional-3) var(--radius-conditional-3) 0 0;
     background-color: var(--footer-bg, var(--color-theme));
     color: var(--footer-color, var(--color-on-theme));
 

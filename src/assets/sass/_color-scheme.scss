@@ -22,7 +22,7 @@ $white-soft: color.change(#fff, $alpha: 0.5);
     --code-stroke: #{$theme-dark};
     --code-bg: #{$theme-dark};
     --code-color: #{$color-on-theme};
-    --badge-bg: #{color.change($color-theme, $lightness: 24%)};
+    --badge-bg: #{color.change($color-theme, $lightness: 18%)};
     --badge-color: #{$color-on-theme};
     --card-bg: #{$theme-darker};
     --card-color: #{$color-on-theme};
