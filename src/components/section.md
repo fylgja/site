@@ -45,7 +45,7 @@ you only need something like this;
 <style>
     #page-hero {
         --height: 500px;
-        --img: url(https://placeimg.com/1024/500/nature);
+        --img: url(https://picsum.photos/1024/500);
         --bg: var(--color-theme);
         --color: var(--color-on-theme);
         padding: 2em 1em;
@@ -66,7 +66,7 @@ Example: make a hero component that is realy easily build.
 <style>
     #page-hero {
         --height: 500px;
-        --img: url(https://placeimg.com/1024/500/nature);
+        --img: url(https://picsum.photos/1024/500);
         --bg: var(--color-theme);
         --color: var(--color-on-theme);
     }

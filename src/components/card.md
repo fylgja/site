@@ -6,9 +6,9 @@ that is not part of the main flow."
 npm: "@fylgja/card"
 git: "components/card"
 codepen: "KKmOaNv"
-tags: ["elements", "layouts"]
+tags: ["layouts", "elements"]
 preview: "card.png"
-preconnect: { placeimg: "https://placeimg.com/" }
+preconnect: { picsum: "https://picsum.photos" }
 ---
 
 The card component is a wrapper component.
@@ -49,7 +49,7 @@ and a more complex card case, requires nesting.
 
 {% codeSample %}
 <figure class="card inline-flex">
-    <img class="card-media" width="520" height="360" src="https://placeimg.com/520/360/nature?img=1" loading="lazy">
+    <img class="card-media" width="520" height="360" src="https://picsum.photos/id/7/500/375" loading="lazy">
     <figcaption class="card-content">Hello there</figcaption>
 </figure>
 {% endcodeSample %}

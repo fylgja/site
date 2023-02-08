@@ -3,7 +3,7 @@ title: "Theme"
 description: "Helper component for adding theme specific SCSS variables to multiple components."
 npm: "@fylgja/theme"
 git: "components/theme"
-tags: ["config", "addons"]
+tags: ["addons"]
 preview: "theme.png"
 order: 11
 ---

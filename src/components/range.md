@@ -3,7 +3,7 @@ title: "Range"
 description: "Range component will add solid foundation for a input range slider"
 npm: "@fylgja/range"
 git: "components/range"
-tags: ["nativeElements", "forms"]
+tags: ["forms", "nativeElements"]
 preview: "range.png"
 style: {
     range: "../../node_modules/@fylgja/range/range.css"

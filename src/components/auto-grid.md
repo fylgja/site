@@ -11,7 +11,7 @@ featured: true
 sitemap:
   priority: 0.6
 order: 3
-preconnect: { placeimg: "https://placeimg.com/" }
+preconnect: { picsum: "https://picsum.photos" }
 ---
 
 A super small grid with auto flowing behavior, based on the container size.
@@ -58,8 +58,8 @@ The grid can be added by just adding the class `.auto-grid`.
 
 {% codeSample html, "hidden sm-block" %}
 <div class="auto-grid" style="max-width: 880px;">
-    <img width="500" height="400" src="https://placeimg.com/500/400/nature?img=1" loading="lazy">
-    <img width="500" height="400" src="https://placeimg.com/500/400/nature?img=2" loading="lazy">
+    <img width="500" height="400" src="https://picsum.photos/id/7/500/375" loading="lazy">
+    <img width="500" height="400" src="https://picsum.photos/id/14/500/375" loading="lazy">
 </div>
 {% endcodeSample %}
 

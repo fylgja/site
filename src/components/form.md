@@ -6,7 +6,7 @@ Allowing you to focus on the form itself."
 npm: "@fylgja/form"
 git: "components/form"
 codepen: "wvewYLV"
-tags: ["nativeElements", "forms"]
+tags: ["forms", "nativeElements"]
 preview: "form.png"
 featured: true
 sitemap:

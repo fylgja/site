@@ -4,7 +4,7 @@ description: "The progress component is used to show progress indication in a fo
 npm: "@fylgja/progress"
 git: "components/progress"
 codepen: "XWgEaEG"
-tags: ["elements", "nativeElements", "forms"]
+tags: ["forms", "elements", "nativeElements"]
 preview: "progress.png"
 style: {
     progress: "../../node_modules/@fylgja/progress/progress.css"
