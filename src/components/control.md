@@ -36,6 +36,17 @@ Then include the component in to your code via;
 @import "@fylgja/control";
 ```
 
+### `@layer` support
+
+If you need support for `@layer`,
+use the following import;
+
+```scss
+@use "@fylgja/control" with ($enable-control-layer: true);
+// Or via PostCSS import
+@import "@fylgja/control/layer";
+```
+
 ## How to use
 
 Out of the box all the styling is done directly,
@@ -64,7 +75,7 @@ If you want to apply this style to other elements, like button.
 You can use the class `.control-radio`, `.control-checkbox` and `.control-switch`.
 
 ```html
-<button class="control-radio" aria-label="label"></button>
+<button class="control-switch" aria-label="label"></button>
 ```
 
 ## Config
@@ -76,6 +87,11 @@ Want direct control on the base styles,
 here are the following SCSS variables can you modify.
 
 ```scss
+$enable-control-switch: true !default;
+$enable-control-layer: false !default;
+
+$control-layer-name: base !default;
+
 $control-size: 1em !default;
 $control-radius: 0.25rem !default;
 $control-border-width: 1px !default;
@@ -104,8 +120,6 @@ $control-radio-icon: url("#") !default; // *1
 $control-checked-radio-icon: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='4'/%3e%3c/svg%3e") !default;
 
 // Switch
-$enable-control-switch: true !default;
-
 $control-switch-width: ($control-size * 1.75) !default;
 $control-switch-height: $control-size !default;
 $control-switch-radius: 3rem !default;
