@@ -40,7 +40,7 @@ css: { page: "/css/docs.css" }
             <aside class="docs-sidebar hidden md-block overflow-auto overflow-contain hide-scrollbar">
                 <nav aria-label="Fylgja Components Menu" class="my-6 text-small">
                     <div class="weight-bold my-2 mx-3">Table of Contents</div>
-                    {{ content | toc(tags=["h2"], wrapperClass="toc menu") | safe }}
+                    {{ content | toc(tags=["h2"], wrapper="div", wrapperClass="toc menu") | safe }}
                     {%- for items in collections.componentsGroup -%}
                         <details
                             id="sidebar-{{ items.id }}"
