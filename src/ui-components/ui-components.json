@@ -1,6 +1,8 @@
 {
   "tags": ["docs", "uiComponents"],
-  "layout": "doc-item",
+  "layout": "docs",
+  "showToc": true,
+  "showEdit": true,
   "permalink": "/ui-components/{{ page.fileSlug }}/",
   "breadcrumbs": {
     "UI Components": "/ui-components/"

@@ -8,7 +8,7 @@ css: { page: "/css/docs.css" }
     {% include "head.njk" %}
     <body class="flex flex-col min-h-screen">
         {% include "header.njk" %}
-        <main class="docs-page md-flex container flex-grow mb-4">
+        <main class="docs-page container flex-grow mb-4">
             <div class="docs-layout my-6">
                 {% include "breadcrumbs.njk" %}
                 <article id="page-main">
@@ -16,13 +16,21 @@ css: { page: "/css/docs.css" }
                         <h1 class="page-title mb-0">{{ title }}</h1>
                     </header>
                     <div class="body">{{ content | safe }}</div>
+                    {%- if showEdit -%}
+                        {% include "edit.njk" %}
+                    {%- endif -%}
                 </article>
             </div>
             <aside class="docs-sidebar hidden md-block overflow-auto overflow-contain thin-scrollbar">
                 <nav aria-label="Docs Menu" class="my-7 text-small">
-                    <ul class="menu">
+                    {%- if showToc -%}
+                        <div class="weight-bold my-2">{{ title }}</div>
+                        {{ content | toc(tags=["h2"], wrapperClass="toc menu") | safe }}
+                        <hr>
+                    {%- endif -%}
+                    <ul class="list-style -none">
                         <li>
-                            <strong class="block mx-2 mb-2">Getting started</strong>
+                            <strong class="block mb-2">Getting started</strong>
                             <ul class="menu">
                                 {%- for item in collections.started | sortByOrder -%}
                                 <li>
@@ -34,7 +42,7 @@ css: { page: "/css/docs.css" }
                             </ul>
                         </li>
                         <li class="mt-2">
-                            <strong class="block mx-2 mb-2">Features</strong>
+                            <strong class="block mb-2">Features</strong>
                             <ul class="menu">
                                 {%- for item in collections.features | sortByOrder -%}
                                 <li>

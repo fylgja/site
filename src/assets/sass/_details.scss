@@ -1,0 +1,28 @@
+$details-margin: 1em 0 !default;
+
+@keyframes details-show {
+    from {
+        opacity: 0;
+        transform: var(--details-translate, translateY(-1em));
+    }
+}
+
+// *1: Fix for Chrome/Webkit, child elements will not inheriting the box-sizing,
+// * and being set back to content-box
+details {
+    margin: var(--details-margin, #{$details-margin});
+
+    > * {
+        box-sizing: border-box; // *1
+    }
+}
+
+summary {
+    display: list-item;
+    font-weight: bolder;
+    cursor: pointer;
+
+    > * {
+        display: inline; // Makes sure any child is inline, useful for headings
+    }
+}

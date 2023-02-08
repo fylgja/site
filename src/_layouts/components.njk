@@ -8,8 +8,8 @@ css: { page: "/css/docs.css" }
     {% include "head.njk" %}
     <body class="flex flex-col min-h-screen">
         {% include "header.njk" %}
-        <main class="docs-page md-flex container flex-grow mb-4">
-            <div class="docs-layout my-6">
+        <main class="docs-page container flex-grow">
+            <div class="docs-layout my-6 ">
                 {% include "breadcrumbs.njk" %}
                 <article id="page-main">
                     <header class="mb-5 xl-flex justify-between">
@@ -23,15 +23,9 @@ css: { page: "/css/docs.css" }
                             {%- if codepen -%}{% badgeCodepen codepen %}{%- endif -%}
                         </div>
                     </header>
-                    <details class="md-hidden mb-6">
-                        <summary class="toc-btn btn justify-start w-full">Table of Contents</summary>
-                        <nav class="menu mt-2">
-                            {%- if tocHeadings -%}
-                                {{ content | toc(tags=tocHeadings, wrapper="div") | safe }}
-                            {%- else -%}
-                                {{ content | toc(wrapper="div") | safe }}
-                            {%- endif -%}
-                        </nav>
+                    <details class="faq-panel md-hidden mb-6">
+                        <summary class="text-small">Table of Contents</summary>
+                        {{ content | toc(tags=["h2"], wrapperClass="toc menu") | safe }}
                     </details>
                     {%- if draft -%}
                         <blockquote class="notice">
@@ -43,35 +37,30 @@ css: { page: "/css/docs.css" }
                     {% include "edit.njk" %}
                 </article>
             </div>
-            <aside class="docs-sidebar hidden md-block overflow-auto overflow-contain thin-scrollbar">
-                <nav aria-label="Components Menu" class="my-7 text-small">
-                    <ul class="menu">
-                        <li>
-                            <strong class="block mx-2 mb-2">{{ title }}</strong>
-                            {%- if tocHeadings -%}
-                                {{ content | toc(tags=tocHeadings, wrapper="div") | safe }}
-                            {%- else -%}
-                                {{ content | toc(wrapper="div") | safe }}
-                            {%- endif -%}
-                        </li>
-                        <li class="hr" role="separator"></li>
-                        {%- for items in collections.componentsGroup -%}
-                            <li class="mt-4">
-                                <strong class="block mx-2 mb-2">{{ items.title }}</strong>
-                                <ul class="menu">
-                                    {%- for item in items.data | sortByName -%}
-                                        {% if (item.data.altlink) or (item.data.draft) %}
-                                        {%- else -%}
-                                            <li>
-                                                <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page" class="is-active"{% endif %}
-                                                >{{ item.data.title }}</a>
-                                            </li>
-                                        {% endif %}
-                                    {%- endfor -%}
-                                </ul>
-                            </li>
-                        {%- endfor -%}
-                    </ul>
+            <aside class="docs-sidebar hidden md-block overflow-auto overflow-contain hide-scrollbar">
+                <nav aria-label="Fylgja Components Menu" class="my-6 text-small">
+                    <div class="weight-bold my-2 mx-3">Table of Contents</div>
+                    {{ content | toc(tags=["h2"], wrapperClass="toc menu") | safe }}
+                    {%- for items in collections.componentsGroup -%}
+                        <details
+                            id="sidebar-{{ items.id }}"
+                            class="faq-panel"
+                            {% if tags[1] == items.id %}open{% endif %}
+                        >
+                            <summary>{{ items.title }}</summary>
+                            <ul class="menu mx-n2">
+                                {%- for item in items.data | sortByName -%}
+                                    {% if (item.data.altlink) or (item.data.draft) %}
+                                    {%- else -%}
+                                        <li>
+                                            <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page" class="is-active"{% endif %}
+                                            >{{ item.data.title }}</a>
+                                        </li>
+                                    {% endif %}
+                                {%- endfor -%}
+                            </ul>
+                        </details>
+                    {%- endfor -%}
                 </nav>
             </aside>
         </main>

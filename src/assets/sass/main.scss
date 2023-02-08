@@ -36,7 +36,7 @@
 @use "@fylgja/aspect-ratio";
 @use "@fylgja/scrollbar";
 @use "@fylgja/hashlink" with (
-    $hashlink-scroll-offset: 5rem
+    $hashlink-scroll-offset: 6rem
 );
 
 @use "color-scheme";

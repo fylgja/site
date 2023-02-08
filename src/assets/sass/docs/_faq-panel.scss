@@ -1,16 +1,25 @@
 .faq-panel {
+    --menu-margin: 0 -0.75em;
+    --details-marker-size: 1.25em;
     padding: 0.875em 1.25em;
     border-radius: 8px;
-    border: 1px solid var(--details-stroke, #eee);
+    border: 1px solid var(--details-stroke, #ddd);
     background-color: var(--details-bg);
     color: var(--details-color);
     transition: border-color 0.2s ease-out, background-color 0.2s ease-out,
         color 0.2s ease-out;
 
+    &:hover {
+        --details-stroke: var(--color-theme);
+    }
+
     summary {
+        position: relative;
         display: block;
         outline-offset: 0.5em;
         font-weight: normal;
+        padding-right: var(--details-marker-size);
+        outline-offset: 1.25em;
 
         // Safari unset for default marker
         &::-webkit-details-marker {
@@ -18,18 +27,17 @@
         }
 
         &::before {
-            content: var(--details-marker, "+");
-            float: right;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            min-width: var(--details-marker-size, 1.5em);
-            min-height: var(--details-marker-size, 1.5em);
-            background-color: var(--color-theme-fade);
-            color: currentcolor;
-            line-height: 1.5em;
-            font-variant-numeric: tabular-nums;
+            --details-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+            content: "";
+            position: absolute;
+            top: calc(50% - (var(--details-marker-size) / 2));
+            right: 0;
+            width: var(--details-marker-size);
+            height: var(--details-marker-size);
+            background-color: currentcolor;
+            -webkit-mask-image: var(--details-icon);
+            mask-image: var(--details-icon);
+            transition: transform 150ms linear;
         }
 
         + * {
@@ -38,7 +46,8 @@
     }
 
     &[open] {
-        --details-marker: "-";
-        --details-stroke: var(--color-theme);
+        summary::before {
+            transform: rotate(90deg);
+        }
     }
 }

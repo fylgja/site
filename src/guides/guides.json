@@ -1,6 +1,8 @@
 {
   "tags": ["docs", "guides"],
-  "layout": "doc-item",
+  "layout": "docs",
+  "showToc": true,
+  "showEdit": true,
   "permalink": "/guides/{{ page.fileSlug }}/",
   "breadcrumbs": {
     "Guides": "/guides/"

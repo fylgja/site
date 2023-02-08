@@ -1,5 +1,4 @@
 @use "@fylgja/table";
-@use "@fylgja/details";
 @use "@fylgja/form";
 @use "@fylgja/scroll-slider";
 @use "@fylgja/breadcrumbs";
@@ -10,5 +9,6 @@
 @use "./docs/code-sample";
 @use "./docs/header-anchor";
 @use "./docs/layout";
+@use "./details";
 @use "./badge";
 @use "./search";

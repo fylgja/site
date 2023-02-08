@@ -1,67 +1,27 @@
 @use "@fylgja/mq" as *;
-$page-header-height: 71px !default;
 
-.docs-sidebar {
-    &::-webkit-scrollbar-track {
-        margin-top: 1em;
-        margin-bottom: 1em;
+.toc.menu {
+    ol {
+        list-style: none;
     }
 
-    .hr {
-        opacity: 0.3;
+    > ol {
+        padding-inline-start: 0;
     }
 }
 
 @media ($md) {
-    .docs-layout {
-        width: calc(100% - 230px);
-        padding-inline-end: 1.5rem;
+    .docs-page {
+        --sticky-offset: 6rem;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) clamp(13.75rem, 22vw, 16.25rem);
+        gap: clamp(1.5rem, 3vw, 3rem);
     }
 
     .docs-sidebar {
         position: sticky;
-        top: $page-header-height;
+        top: var(--sticky-offset);
         align-self: flex-start;
-        flex: 0 0 auto;
-        width: 230px;
-        max-height: calc(100vh - #{$page-header-height});
+        max-height: calc(100vh - var(--sticky-offset));
     }
-}
-
-@media ($lg) {
-    .docs-layout {
-        width: calc(100% - 280px);
-        padding-inline-end: 3rem;
-    }
-
-    .docs-sidebar {
-        width: 280px;
-    }
-}
-
-.toc ol {
-    list-style-type: none;
-    padding-inline-start: var(--menu-nested-indent, 0);
-}
-
-details .toc > ol {
-    margin: 0;
-    padding-inline-start: 0;
-}
-
-.toc-btn {
-    list-style: none;
-    border-width: 1px 0;
-    --btn-radius: 0;
-    --btn-font-size: 0.875em;
-    --btn-stroke: var(--border-color);
-    --btn-color: var(--color-text-muted);
-    --btn-focus-stroke: currentcolor;
-    --btn-focus-bg: transparent;
-    --btn-active-bg: transparent;
-}
-
-// For Safari 😬
-summary.block::-webkit-details-marker {
-    display: none;
 }
