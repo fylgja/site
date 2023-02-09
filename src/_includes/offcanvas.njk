@@ -16,13 +16,13 @@
                 <ul class="menu">
                     {%- for item in collections.started | sortByOrder -%}
                     <li>
-                        {% menuItem item.url, "", item.external, page.url %}
+                        {% menuItem item.url, { isExternal: item.external, pageUrl: page.url } %}
                             {{ item.data.title }}
                         {% endmenuItem %}
                     </li>
                     {%- endfor -%}
                     <li>
-                        {% menuItem "/components/", "", page.url %}
+                        {% menuItem "/components/", { pageUrl: page.url } %}
                             <span>Components</span>
                         {% endmenuItem %}
                         <ul class="menu -nested">
@@ -38,7 +38,7 @@
                                             {%- for item in items.data | sortByName -%}
                                                 {% if not item.data.altlink %}
                                                 <li>
-                                                    {% menuItem item.url, "", item.external, page.url %}
+                                                    {% menuItem item.url, { isExternal: item.external, pageUrl: page.url } %}
                                                         {{ item.data.title }}
                                                     {% endmenuItem %}
                                                 </li>
@@ -52,13 +52,13 @@
                         </ul>
                     </li>
                     <li>
-                        {% menuItem "/features/", "", false, page.url %}
+                        {% menuItem "/features/", { pageUrl: page.url } %}
                             <span>Features</span>
                         {% endmenuItem %}
                         <ul class="menu">
                             {%- for item in collections.features | sortByOrder -%}
                             <li class="text-small">
-                                {% menuItem item.url, "", item.external, page.url %}
+                                {% menuItem item.url, { isExternal: item.external, pageUrl: page.url } %}
                                     {{ item.data.title }}
                                 {% endmenuItem %}
                             </li>
@@ -71,7 +71,7 @@
         <div class="py-4 px-2">
             <nav aria-label="Offcanvas extra menu" class="footer-nav flex">
                 {% for item in navigation.socials %}
-                    {% menuItem item.url, "btn -icon me-1", page.url, item.external %}
+                    {% menuItem item.url, { classList: "btn -icon me-1", isExternal: item.external, pageUrl: page.url } %}
                         <svg width="24" height="24" fill="currentcolor">
                             <title>{{ item.text }}</title>
                             <use href="{{ '/images/socials.svg' | assetUrl }}#{{ item.icon }}" />
