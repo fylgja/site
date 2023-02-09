@@ -16,6 +16,12 @@ style: {
 
         .svg-sass { color: #c69; }
         .svg-css { color: #1572b6; }
+
+        @media (min-width: 991px) {
+            #main-download-options {
+                --cols: repeat(2, minmax(0, 1fr))
+            }
+        }
     "
 }
 ---

@@ -1,3 +1,5 @@
+// stylelint-disable property-no-vendor-prefix
+
 .faq-panel {
     --menu-margin: 0 -0.75em;
     --details-marker-size: 1.25em;
@@ -16,7 +18,6 @@
     summary {
         position: relative;
         display: block;
-        outline-offset: 0.5em;
         font-weight: normal;
         padding-right: var(--details-marker-size);
         outline-offset: 1.25em;

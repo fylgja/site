@@ -19,6 +19,12 @@ style: {
             --avatar-bg: #66bb6a;
             --avatar-radius: 71% 29% 64% 36% / 51% 60% 40% 49%;
         }
+
+        @media (min-width: 991px) {
+            .intro-section .auto-grid {
+                --cols: repeat(2, minmax(0, 1fr))
+            }
+        }
     "
 }
 ---

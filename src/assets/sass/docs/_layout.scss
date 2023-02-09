@@ -32,6 +32,7 @@
     }
 }
 
+// stylelint-disable-next-line scss/media-feature-value-dollar-variable
 @media (min-width: 2200px) {
     .docs-page {
         --sticky-offset: 90px;
