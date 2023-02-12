@@ -1,15 +1,23 @@
-/* stylelint-disable max-line-length */
+/* stylelint-disable property-no-vendor-prefix, scss/media-feature-value-dollar-variable */
 
 :root {
     /* prettier-ignore */
     --gradient-hero-img:
-        linear-gradient(190deg, hsl(212deg 80% var(--hero-l, 80%)) 0%, hsl(212deg 80% var(--hero-l, 80%) / 0%) 40%),
-        linear-gradient(170deg, hsl(299deg 68% var(--hero-l, 80%)) 0%, hsl(299deg 68% var(--hero-l, 80%) / 0%) 40%);
+        linear-gradient(
+            190deg,
+            hsl(212 80% var(--hero-l, 80%)) 0%,
+            hsl(212 80% var(--hero-l, 80%) / 0%) 40%
+        ),
+        linear-gradient(
+            170deg,
+            hsl(299 68% var(--hero-l, 80%)) 0%,
+            hsl(299 68% var(--hero-l, 80%) / 0%) 40%
+        );
 }
 
 #hero {
     --height: min(64vmin, 620px);
-    --bg: var(--hero-bg, hsl(213deg 95% 95% / 45%));
+    --bg: var(--hero-bg, hsl(213 95% 95% / 45%));
     --color: var(--hero-color);
     --img: var(--hero-img);
     --hero-img: var(--gradient-hero-img);
@@ -17,22 +25,18 @@
 
 .hero-content {
     --container-padding-y: 4rem;
+    --btn-font-size: clamp(1em, 1.25vw, 1.125em);
     color: var(--color-text);
 }
 
-.hero-content .btn {
-    --btn-radius: 0;
-    border-width: 2px;
-}
-
-/* NOTE: Drop focus when new button style is added */
-.hero-content .btn:not(:active):is(:focus, :hover) {
-    box-shadow: var(--shadow-4);
+:root[data-theme="light"] .hero-content .btn.-outline {
+    --btn-color: var(--color-theme);
+    --btn-focus-bg: var(--color-theme);
+    --btn-focus-color: var(--color-on-theme);
 }
 
 @supports (background-clip: text) or (-webkit-background-clip: text) {
-    .hero-content :is(.subheading, .btn.-outline) {
-        /* stylelint-disable-next-line property-no-vendor-prefix */
+    .hero-content .subheading {
         -webkit-background-clip: text;
         background-clip: text;
         background-image: var(
@@ -40,14 +44,6 @@
             linear-gradient(45deg, var(--color-alt), var(--color-theme))
         );
         color: var(--hero-content-text, transparent);
-    }
-
-    .hero-content .btn.-outline {
-        border-image-source: var(
-            --hero-content-gradient,
-            linear-gradient(45deg, var(--color-alt), var(--color-theme))
-        );
-        border-image-slice: 1;
     }
 }
 
@@ -59,7 +55,7 @@
 
 #features-list {
     --cols-size: 340px;
-    --gap: 1em 1.5em;
+    --gap: 1.5rem;
 }
 
 #features-list li {
@@ -76,10 +72,6 @@
 
 #features-list li:nth-child(4n + 3) {
     --avatar-radius: 64% 36% 64% 36% / 27% 60% 40% 73%;
-}
-
-#features-box {
-    max-width: 420px;
 }
 
 #explore-fylgja {
@@ -101,19 +93,6 @@
     --avatar-bg: transparent;
     --avatar-color: inherit;
     --avatar-radius: 8px;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme]) {
-        --hero-bg: #0002;
-        --hero-color: var(--color-text-alt);
-        --hero-l: 27%;
-        --logo-color: currentcolor;
-        --code-box-header-stroke: rgb(255 255 255 / 15%);
-        --hero-content-gradient: none;
-        --hero-content-text: currentcolor;
-        --code-box-bg: #092c53;
-    }
 }
 
 :root[data-theme="dark"] {
@@ -149,11 +128,21 @@
 
 @media (min-width: 1024px) {
     .collection-row .auto-grid {
-        --cols: repeat(4, 1fr);
+        --cols: repeat(4, minmax(0, 1fr));
     }
 
     #features-list {
-        --cols-size: 380px;
+        --cols: repeat(2, minmax(0, 1fr));
+        --gap: 2rem 3rem;
+    }
+
+    #features-list .avatar {
+        --avatar-size: 3.5rem;
+    }
+
+    #features-list .avatar svg {
+        width: 1.875rem;
+        height: 1.875rem;
     }
 
     #collection-featured {

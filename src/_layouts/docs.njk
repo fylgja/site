@@ -25,7 +25,7 @@ css: { page: "/css/docs.css" }
                 <nav aria-label="Docs Menu" class="my-7 text-small">
                     {%- if showToc -%}
                         <div class="weight-bold my-2">{{ title }}</div>
-                        {{ content | toc(tags=["h2"], wrapper="div", wrapperClass="toc menu") | safe }}
+                        {{ content | toc(tags=["h2","h3"], wrapper="div", wrapperClass="toc menu") | safe }}
                         <hr class="mt-0 mb-8">
                     {%- endif -%}
                     <ul class="list-style -none">

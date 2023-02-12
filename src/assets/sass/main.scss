@@ -1,6 +1,9 @@
 @use "./theme";
 @use "./fonts";
 @use "./tokens";
+@use "@fylgja/aria-only/helper" as aria-only-config with (
+    $enable-aria-only-mq: true
+);
 
 @use "./print";
 @use "./skip-link";
@@ -19,7 +22,10 @@
 
 @use "@fylgja/list";
 
-@use "@fylgja/button";
+@use "@fylgja/button" with (
+    $btn-padding: 0.5rem 1rem,
+    $btn-border-size: 2px
+);
 @use "@fylgja/avatar";
 @use "card";
 
@@ -42,6 +48,7 @@
 @use "color-scheme";
 @use "screen";
 
+@use "@fylgja/aria-only";
 @use "@fylgja/utilpack" with (
     $utilpack: (
         "gap": (

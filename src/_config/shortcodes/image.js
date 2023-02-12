@@ -62,6 +62,7 @@ module.exports = async function imageShortcode(
 
     let imageAttributes = {
         alt,
+        title: alt,
         sizes,
         loading,
         decoding: "async",
