@@ -113,10 +113,9 @@ to something that matches the same value in you project.
 }
 ```
 
-This better then changing your own styles,
-to match there ridicules z-index value.
+This is preferable to modifying your own styles to match their ridiculing z-index value.
 
-Lets hope 3de party vendors will start to support CSS variables in there CSS 🤞
+Let us hope that third-party vendors will begin to support CSS variables in their CSS. 🤞
 
 > **Tip** If you need to scope z-indexes you might want to checkout [CSS Isolation](https://developer.mozilla.org/en-US/docs/Web/CSS/isolation)
 
