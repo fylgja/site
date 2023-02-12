@@ -5,7 +5,6 @@ npm: "@fylgja/shadow"
 git: "components/shadow"
 tags: ["tokens"]
 preview: "theme.png"
-order: 2
 ---
 
 The Fylgja Shadow offers Design Tokens (CSS props) for consistent and semantic shadows.

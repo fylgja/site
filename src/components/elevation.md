@@ -5,7 +5,7 @@ npm: "@fylgja/elevation"
 git: "components/elevation"
 tags: ["tokens"]
 preview: "addon.png"
-order: 10
+order: 20
 ---
 
 > The `@fylgja/elevation` component has been replaced by [`@fylgja/shadow`](https://fylgja.dev/components/shadow/).

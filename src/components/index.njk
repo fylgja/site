@@ -73,7 +73,8 @@ style: {
                         {% if item.data.preview %}
                             {% set preview %}{{ meta.componentsMedia }}{{ item.data.preview }}{% endset %}
                             {% set loading %}{% if loop.first %}eager{% else %}lazy{% endif %}{% endset %}
-                            {% image preview, "", "medium", loading %}
+                            {% set alt %}Fylgja {{item.data.title}}{% endset %}
+                            {% image preview, alt, "medium", loading %}
                         {% endif %}
                     </div>
                     <div class="card-content">
@@ -111,7 +112,8 @@ style: {
                     <div class="card-media aspect-ratio">
                         {% if item.data.preview %}
                             {% set preview %}{{ meta.componentsMedia }}{{ item.data.preview }}{% endset %}
-                            {% image preview, "", "small" %}
+                            {% set alt %}Fylgja {{item.data.title}}{% endset %}
+                            {% image preview, alt, "small" %}
                         {% endif %}
                     </div>
                     <div class="card-content">

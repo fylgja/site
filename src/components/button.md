@@ -7,6 +7,9 @@ git: "components/button"
 codepen: "XWRoKNp"
 tags: ["navs", "elements"]
 preview: "button.png"
+style: {
+    inline: ".code-sample { --btn-border-width: 1px; --btn-padding: 0.375rem 0.8rem; }"
+}
 ---
 
 The Button component serves as an interactive element.
@@ -46,7 +49,7 @@ use the following import;
 
 In your html you only need the `.btn` class to use the button style.
 
-{% codeSample html, "flex flex-wrap gap-4" %}
+{% codeSample html, "flex flex-wrap items-center gap-4" %}
 <button class="btn">Button</button>
 <a href="#link" class="btn">Button as Link</a>
 {% endcodeSample %}
@@ -63,7 +66,7 @@ which allow easier construction of specific button styles via a modifier class.
 
 By default we also offer some base default variable class, that can be disabled via de SCSS variables if needed.
 
-{% codeSample html, "flex flex-wrap gap-4" %}
+{% codeSample html, "flex flex-wrap items-center gap-4" %}
 <a href="#link" class="btn -theme">Button Theme</a>
 <a href="#link" class="btn -outline">Button Outline</a>
 <a href="#link" class="btn -icon"><svg width="24" height="24" fill="currentcolor"><use href="/images/socials.svg#github"></use></svg></a>

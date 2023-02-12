@@ -5,7 +5,6 @@ npm: "@fylgja/colors"
 git: "components/colors"
 tags: ["tokens"]
 preview: "theme.png"
-order: 2
 ---
 
 Add a collection of prebuild colors to any project with ease, using Fylgja Colors.

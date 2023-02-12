@@ -5,7 +5,6 @@ npm: "@fylgja/mq"
 git: "components/mq"
 tags: ["tokens"]
 preview: "theme.png"
-order: 1
 ---
 
 The Fylgja MQ offers Design Tokens (CSS props) for consistent use of media queries.

@@ -9,6 +9,5 @@
   "requiresJs": false,
   "featured": false,
   "order": 10,
-  "gitDomain": "https://github.com/fylgja/fylgja/tree/main/",
-  "tocHeadings": ["h2", "h3"]
+  "gitDomain": "https://github.com/fylgja/fylgja/tree/main/"
 }

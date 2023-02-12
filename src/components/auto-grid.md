@@ -8,9 +8,7 @@ codepen: "oNeGEyz"
 tags: ["layouts"]
 preview: "auto-grid.png"
 featured: true
-sitemap:
-  priority: 0.6
-order: 3
+order: 6
 preconnect: { picsum: "https://picsum.photos" }
 ---
 

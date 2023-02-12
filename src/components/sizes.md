@@ -5,7 +5,6 @@ description: "The Fylgja Sizes offers Design Tokens (CSS props) for consistent a
 git: "components/sizes"
 tags: ["tokens"]
 preview: "theme.png"
-order: 2
 ---
 
 The Fylgja Sizes offers Design Tokens (CSS props) for consistent and semantic sizes,

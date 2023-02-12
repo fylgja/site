@@ -10,9 +10,7 @@ codepen: "rNmXjRo"
 tags: ["nativeElements", "elements"]
 preview: "dialog.png"
 featured: true
-sitemap:
-  priority: 0.6
-order: 3
+order: 6
 preconnect: { caniuse: "https://caniuse.bitsofco.de/" }
 ---
 
@@ -37,6 +35,17 @@ Then include the component in to your code via;
 @use "@fylgja/dialog";
 // Or via PostCSS import
 @import "@fylgja/dialog";
+```
+
+### `@layer` support
+
+If you need support for `@layer`,
+use the following import;
+
+```scss
+@use "@fylgja/dialog" with ($enable-dialog-layer: true);
+// Or via PostCSS import
+@import "@fylgja/dialog/layer";
 ```
 
 ## How to use
@@ -87,21 +96,21 @@ that always will be visible when you are scrolling.
 You will need the polyfill until the html dialog is supported fully
 -> [github.com/GoogleChrome/dialog-polyfill](https://github.com/GoogleChrome/dialog-polyfill).
 
-<picture>
-<source type="image/webp" srcset="https://caniuse.bitsofco.de/image/dialog.webp">
-<img src="https://caniuse.bitsofco.de/image/dialog.jpg" alt="Data on support for the dialog feature across the major browsers from caniuse.com">
-</picture>
+[![Data on support for the dialog feature across the major browsers from caniuse.com](https://caniuse.bitsofco.de/image/dialog.webp)](https://caniuse.com/dialog)
 
 ## Config
 
 As with almost all of our components.
 CSS variables can be configured to add your own look/style.
 
-For direct control of the base styles, 
+For direct control of the base styles,
 use the following SCSS variables can you modify.
 
 ```scss
 $enable-dialog-polyfill: true !default;
+$enable-dialog-layer: false !default;
+
+$dialog-layer-name: components !default;
 
 // Modal (default)
 $dialog-index: 9 !default;
@@ -127,47 +136,14 @@ $dialog-offcanvas-radius: 0 !default;
 
 ## Tips
 
-If you need to use the older solutions, that don't use the HTML Dialog.
+If you need to use the older solutions, that doesn't use the HTML Dialog.
 But you do like to use the Fylgja Dialog styles.
 
-You can do so with the 2 extend classes available to you.
+You can use the class `.dialog`.
 
-```scss
-@use "@fylgja/dialog/helper" as *;
-
-@keyframes dialog-show {
-    from {
-        opacity: 0;
-        transform: var(--dialog-translate, translateY(#{$dialog-offset}));
-    }
-}
-
-@keyframes dialog-hide {
-    to {
-        opacity: 0;
-        transform: var(--dialog-translate, translateY(#{$dialog-offset}));
-    }
-}
-
-.dialog {
-    @extend %dialog;
-
-    &[hidden] {
-        visibility: hidden;
-        transition: visibility 0s 200ms;
-        animation: dialog-hide 200ms;
-    }
-
-    &:not([hidden]) {
-        animation: dialog-show 300ms;
-        transition: none;
-    }
-}
-
-.backdrop {
-    @extend %backdrop-polyfill;
-}
+```html
+<button class="backdrop" aria-hidden="true"></button>
+<div role="dialog" class="dialog is-open">
+    ...
+</div>
 ```
-
-_You do still have to make your own logic for the open and closed styles._
-_As seen above._

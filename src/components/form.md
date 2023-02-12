@@ -9,9 +9,7 @@ codepen: "wvewYLV"
 tags: ["forms", "nativeElements"]
 preview: "form.png"
 featured: true
-sitemap:
-  priority: 0.6
-order: 2
+order: 4
 ---
 
 The form component is super easy to use,

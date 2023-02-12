@@ -6,9 +6,7 @@ git: "components/utilpack"
 tags: ["utils", "utilpack"]
 preview: "utilpack.png"
 featured: true
-sitemap:
-  priority: 0.6
-order: 4
+order: 8
 ---
 
 Build and use your own CSS utility classes with Sass using the Fylgja utilpack.

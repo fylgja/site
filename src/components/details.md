@@ -5,6 +5,33 @@ npm: "@fylgja/details"
 git: "components/details"
 tags: ["typography", "nativeElements"]
 preview: "details.png"
+style: {
+    inline: ".accordion {
+    --card-elevation: none;
+    --card-border: 1px solid #ccc;
+    --card-padding: 0.5em 0.8em;
+}
+
+.accordion > details:first-of-type {
+    border-radius: 4px 4px 0 0;
+    margin-bottom: 0;
+}
+
+.accordion > details:last-of-type {
+    border-radius: 0 0 4px 4px;
+    margin-top: 0;
+}
+
+.accordion > details:not(:last-of-type) {
+    border-bottom: 0;
+}
+
+.accordion > details:not(:first-of-type):not(:last-of-type) {
+    border-radius: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}"
+}
 ---
 
 The details component enhances the default details behavior.
@@ -51,34 +78,7 @@ $details-margin: 1em 0 !default;
 If you need the common accordion style you can use the Card component,
 and a little extra CSS.
 
-```html
-<style>
-    .accordion {
-        --card-elevation: none;
-        --card-border: 1px solid #ccc;
-        --card-padding: 0.5em 0.8em;
-    }
-
-    .accordion > details:first-of-type {
-        border-radius: 4px 4px 0 0;
-        margin-bottom: 0;
-    }
-
-    .accordion > details:last-of-type {
-        border-radius: 0 0 4px 4px;
-        margin-top: 0;
-    }
-
-    .accordion > details:not(:last-of-type) {
-        border-bottom: 0;
-    }
-
-    .accordion > details:not(:first-of-type):not(:last-of-type) {
-        border-radius: 0;
-        margin-top: 0;
-        margin-bottom: 0;
-    }
-</style>
+{% codeSample %}
 <div class="accordion">
     <details class="card">
         <summary class="card-action">Details element 1</summary>
@@ -93,4 +93,32 @@ and a little extra CSS.
         <div class="card-content pt-0">..</div>
     </details>
 </div>
+{% endcodeSample %}
+
+```css
+.accordion {
+    --card-elevation: none;
+    --card-border: 1px solid #ccc;
+    --card-padding: 0.5em 0.8em;
+}
+
+.accordion > details:first-of-type {
+    border-radius: 4px 4px 0 0;
+    margin-bottom: 0;
+}
+
+.accordion > details:last-of-type {
+    border-radius: 0 0 4px 4px;
+    margin-top: 0;
+}
+
+.accordion > details:not(:last-of-type) {
+    border-bottom: 0;
+}
+
+.accordion > details:not(:first-of-type):not(:last-of-type) {
+    border-radius: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
 ```
