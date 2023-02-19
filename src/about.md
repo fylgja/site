@@ -39,7 +39,7 @@ Slowing growing to the CSS Framework you see here.
 ## Inspirations
 
 Fylgja is not made out of thin air, it has many inspirations and we learned a lot on do's and don't from other CSS frameworks,
-and the dev's from Google and Mozila.
+and the dev's from Google and Mozilla.
 
 So a little shout out to;
 
