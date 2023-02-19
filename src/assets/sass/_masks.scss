@@ -1,0 +1,13 @@
+.overflow-mask {
+    --mask-dir: to right;
+    --mask-size: 20%;
+    --mask: linear-gradient(
+        var(--mask-dir),
+        hsl(0 0% 0% / 0),
+        hsl(0 0% 0% / 1) var(--mask-size),
+        hsl(0 0% 0% / 1) calc(100% - var(--mask-size)),
+        hsl(0 0% 0% / 0)
+    );
+    -webkit-mask-image: var(--mask);
+    mask-image: var(--mask);
+}
