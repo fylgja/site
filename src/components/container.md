@@ -31,9 +31,9 @@ If you need support for `@layer`,
 use the following import;
 
 ```scss
-@use "@fylgja/container" with ($enable-container-layer: true);
-// Or via PostCSS import
-@import "@fylgja/container/layer";
+@use "@fylgja/container" with ($container-layer: "components");
+// Or via native CSS import, also supported by PostCSS import
+@import "@fylgja/container" layer("components");
 ```
 
 ## How to use
@@ -66,10 +66,6 @@ Want direct control on the base styles,
 Here are the following SCSS variables can you modify.
 
 ```scss
-$enable-container-layer: false !default;
-
-$container-layer-name: components !default;
-
 $container-size: 1280px !default;
 $container-padding-y: 0 !default;
 $container-padding-x: 1.25rem !default;

@@ -8,7 +8,7 @@ preview: "theme.png"
 order: 11
 ---
 
-Helper component for adding theme specific SCSS variables to multiple components.
+Helper component for adding theme specific variables to multiple Fylgja Components.
 
 ## Installation
 
@@ -26,10 +26,11 @@ Then include the component in to your code via;
 
 This component does not create any CSS.
 
-And only contains some SCSS variable for Fylgja components, that have theme specific styles.
+And only contains shared SCSS variables for Fylgja components,
+that have theme specific styles.
 
 You can use this component to quickly override the specific styles,
-set to a button, links and more, via;
+to set any base colors or spacing, with;
 
 ```scss
 @use "@fylgja/theme" with (
@@ -38,25 +39,37 @@ set to a button, links and more, via;
 );
 ```
 
-Instead of the default the theme is now a teal color.
+instead of the default the theme color is now a teal color.
 
-And you can also reuse this in your own components,
-
+Also the Fylgja component is easier for reusing this in your own components,
 by importing the `@fylgja/theme` or use it directly in your styles via;
 
 ```scss
-@use "@fylgja/theme" as ft with (
-    $color-theme: #00897b,
-    $color-on-theme: #fff
-);
+@use "@fylgja/theme";
 
 .label {
-    background-color: ft.$color-theme;
-    color: ft.$color-on-theme;
+    background-color: theme.$color-theme;
+    color: theme.$color-on-theme;
 }
 ```
 
 _You can also use it without the prefix if you want via * selector_
+
+### atLayer
+
+This mixin is specific for Fylgja's build progress,
+and is used to create the Sass `@layer` variants for each component.
+
+You can use this, if you need something with the same logic,
+or for a Fylgja Add-On component.
+
+```scss
+@use "@fylgja/theme";
+
+@include theme.atLayer($name) {
+  // Your CSS here
+}
+```
 
 ## Config
 
@@ -81,5 +94,12 @@ $color-error: #b00020 !default;
 $color-warning: #ffab40 !default;
 $color-success: #00e676 !default;
 
-$item-spacer: 0 0 1em !default;
+$base-spacing: 1em !default;
+$item-spacer: 0 0 $base-spacing !default; // Legacy support
+
+// For any thing like forms and buttons
+$action-padding-block: 0.375em !default;
+$action-padding-inline: 0.625em !default;
+$action-padding: $action-padding-block $action-padding-inline;
+$action-border-width: 1px !default;
 ```

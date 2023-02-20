@@ -42,9 +42,9 @@ If you need support for `@layer`,
 use the following import;
 
 ```scss
-@use "@fylgja/control" with ($enable-control-layer: true);
-// Or via PostCSS import
-@import "@fylgja/control/layer";
+@use "@fylgja/control" with ($control-layer: "components");
+// Or via native CSS import, also supported by PostCSS import
+@import "@fylgja/control" layer("components");
 ```
 
 ## How to use
@@ -88,9 +88,6 @@ here are the following SCSS variables can you modify.
 
 ```scss
 $enable-control-switch: true !default;
-$enable-control-layer: false !default;
-
-$control-layer-name: base !default;
 
 $control-size: 1em !default;
 $control-radius: 0.25rem !default;

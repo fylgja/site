@@ -32,9 +32,9 @@ If you need support for `@layer`,
 use the following import;
 
 ```scss
-@use "@fylgja/aspect-ratio" with ($enable-aspect-ratio-layer: true);
-// Or via PostCSS import
-@import "@fylgja/aspect-ratio/layer";
+@use "@fylgja/aspect-ratio" with ($aspect-ratio-layer: "utilities");
+// Or via native CSS import, also supported by PostCSS import
+@import "@fylgja/aspect-ratio" layer("utilities");
 ```
 
 ## How to use
@@ -57,9 +57,5 @@ As with almost all of our components, CSS variables can be configured to add you
 Want direct control on the base styles, here are the following SCSS variables can you modify.
 
 ```scss
-$enable-aspect-ratio-layer: false !default;
-
-$aspect-ratio-layer-name: components !default;
-
 $aspect-ratio: "16/9" !default;
 ```

@@ -25,6 +25,17 @@ Then include the component in to your code via;
 @import "@fylgja/section";
 ```
 
+### `@layer` support
+
+If you need support for `@layer`,
+use the following import;
+
+```scss
+@use "@fylgja/section" with ($section-layer: "components");
+// Or via native CSS import, also supported by PostCSS import
+@import "@fylgja/section" layer("components");
+```
+
 ## How to use
 
 To use the section component create element with the class `.section`,

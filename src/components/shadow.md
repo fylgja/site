@@ -24,9 +24,11 @@ Then include the component in to your code via;
 @import "@fylgja/shadow"; // *
 ```
 
-> **Note** The sass version has the color and weight as SCSS variables,
+> **Note** The sass version has the color and weight as CSS variables,
 > but it is by default not set as CSS variable any where,
 > for this you need to include the base package as well, or build it your self
+>
+> Or use `@use "@fylgja/shadow/props` as plain CSS, works the same as the CSS version
 
 ## How to use
 

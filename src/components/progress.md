@@ -29,6 +29,17 @@ Then include the component in to your code via;
 @import "@fylgja/progress";
 ```
 
+### `@layer` support
+
+If you need support for `@layer`,
+use the following import;
+
+```scss
+@use "@fylgja/progress" with ($progress-layer: "components");
+// Or via native CSS import, also supported by PostCSS import
+@import "@fylgja/progress" layer("components");
+```
+
 ## How to use
 
 No instructions are really needed.

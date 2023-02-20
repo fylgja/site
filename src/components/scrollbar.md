@@ -23,6 +23,17 @@ Then include the component in to your code via;
 @import "@fylgja/scrollbar";
 ```
 
+### `@layer` support
+
+If you need support for `@layer`,
+use the following import;
+
+```scss
+@use "@fylgja/scrollbar" with ($scrollbar-layer: "utilities");
+// Or via native CSS import, also supported by PostCSS import
+@import "@fylgja/scrollbar" layer("utilities");
+```
+
 ## How to use
 
 By default `@fylgja/scrollbar` offers 2 scrollbar styles.

@@ -23,6 +23,17 @@ Then include the component in to your code via;
 @import "@fylgja/transition";
 ```
 
+### `@layer` support
+
+If you need support for `@layer`,
+use the following import;
+
+```scss
+@use "@fylgja/transition" with ($transition-layer: "utilities");
+// Or via native CSS import, also supported by PostCSS import
+@import "@fylgja/transition" layer("utilities");
+```
+
 ## How to use
 
 The transition component can be used 2 ways.

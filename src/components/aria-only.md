@@ -53,9 +53,9 @@ If you need support for `@layer`,
 use the following import;
 
 ```scss
-@use "@fylgja/aria-only" with ($enable-aria-only-layer: true);
-// Or via PostCSS import
-@import "@fylgja/aria-only/layer";
+@use "@fylgja/aria-only" with ($aria-only-layer: "utilities");
+// Or via native CSS import, also supported by PostCSS import
+@import "@fylgja/aria-only" layer("utilities");
 ```
 
 ## How to use
@@ -109,13 +109,9 @@ Want direct control on the base styles,
 here are the following SCSS variables can you modify.
 
 ```scss
-$aria-only-separator: "-" !default;
-
-$enable-aria-only-mq: false !default;
-$enable-aria-only-layer: false !default;
 $enable-aria-only-important: false !default;
 
-$aria-only-layer-name: utilities !default;
+$aria-only-separator: "-" !default;
 $aria-only-breakpoints: mq.$breakpoints !default;
 ```
 

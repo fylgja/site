@@ -31,11 +31,16 @@ style: {
         max-width: 21.5em;
     }
 
+    .section-slider {
+        --mask-size: 1.25rem;
+    }
+
     @media (min-width: 1280px) {
         .section-slider {
             --gap-block: 2rem;
             --gap-inline: clamp(1.25rem, 5vw, 8rem);
             --item-gap: 0.8rem;
+            --mask-size: clamp(1.5rem, 5vw, 5rem);
             padding-block-start: calc(var(--gap-block) / 2);
         }
 
@@ -62,7 +67,7 @@ style: {
             <h2 class="my-0">Featured</h2>
             <p class="my-0">Our recommended components</p>
         </div>
-        <div class="section-slider scroll-slider hide-scrollbar">
+        <div class="section-slider scroll-slider hide-scrollbar overflow-mask">
             {%- for item in collections.componentsFeatured -%}
                 {%- if item.data.draft -%}
                 <div class="card -draft">
@@ -102,7 +107,7 @@ style: {
             <h2 class="my-0">{{ items.title }}</h2>
             <p class="my-0">{{ items.description }}</p>
         </div>
-        <div class="section-slider scroll-slider hide-scrollbar">
+        <div class="section-slider scroll-slider hide-scrollbar overflow-mask">
             {%- for item in items.data | sortByOrder -%}
                 {%- if item.data.draft -%}
                 <div class="card -draft">

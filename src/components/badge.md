@@ -30,9 +30,9 @@ If you need support for `@layer`,
 use the following import;
 
 ```scss
-@use "@fylgja/badge" with ($enable-badge-layer: true);
-// Or via PostCSS import
-@import "@fylgja/badge/layer";
+@use "@fylgja/badge" with ($badge-layer: "components");
+// Or via native CSS import, also supported by PostCSS import
+@import "@fylgja/badge" layer("components");
 ```
 
 ## How to use
@@ -79,9 +79,6 @@ Want direct control on the base styles, here are the following SCSS variables ca
 ```scss
 $enable-badge-addon: true !default;
 $enable-badge-theme: true !default;
-$enable-badge-layer: false !default;
-
-$badge-layer-name: components !default;
 
 $badge-padding: 0.125em 0.75em !default;
 $badge-radius: 0.375em !default;

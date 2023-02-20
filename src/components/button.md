@@ -40,9 +40,9 @@ If you need support for `@layer`,
 use the following import;
 
 ```scss
-@use "@fylgja/button" with ($enable-btn-layer: true);
-// Or via PostCSS import
-@import "@fylgja/button/layer";
+@use "@fylgja/button" with ($button-layer: "components");
+// Or via native CSS import, also supported by PostCSS import
+@import "@fylgja/button" layer("components");
 ```
 
 ## How to use
@@ -103,10 +103,7 @@ Want direct control on the base styles, here are the following SCSS variables ca
 $enable-btn-theme: true !default;
 $enable-btn-outline: true !default;
 $enable-btn-icon: true !default;
-$enable-native-btn: false !default; // will be removed in v2, as it is default
-$enable-btn-layer: false !default;
-
-$btn-layer-name: components !default;
+$enable-native-btn: false !default;
 
 $btn-icon-size: 2.125em !default;
 
@@ -134,10 +131,9 @@ $btn-hover-stroke: transparent !default;
 $btn-hover-bg: color.change($root-fg, $alpha: 0.05) !default;
 $btn-hover-color: inherit !default;
 
-// Being replaced for `$btn-hover` in v2 for consistency
-$btn-focus-stroke: $btn-hover-stroke !default; // will be removed in v2
-$btn-focus-bg: $btn-hover-bg !default; // will be removed in v2
-$btn-focus-color: $btn-hover-color !default; // will be removed in v2
+$btn-focus-stroke: $btn-hover-stroke !default;
+$btn-focus-bg: $btn-hover-bg !default;
+$btn-focus-color: $btn-hover-color !default;
 
 $btn-active-stroke: transparent !default;
 $btn-active-bg: color.change($root-fg, $alpha: 0.2) !default;

@@ -7,6 +7,9 @@ git: "components/input-group"
 codepen: "mdwOgJV"
 tags: ["layouts", "forms"]
 preview: "input-group.png"
+style: {
+    input-group: "../../node_modules/@fylgja/input-group/input-group.css"
+}
 ---
 
 The input group extends upon the `@fylgja/form`, 
@@ -45,9 +48,22 @@ Or if you are a importing this as plain CSS in PostCSS or any other option.
 Import the style directly via;
 
 ```css
-@import "@fylgja/input-group/style-field.css";
+@import "@fylgja/input-group/field.css";
 /* Or */
-@import "@fylgja/input-group/style-box.css";
+@import "@fylgja/input-group/box.css";
+```
+
+_For versions older than v1.2 use `style-{field|box}.css`_
+
+### `@layer` support
+
+If you need support for `@layer`,
+use the following import;
+
+```scss
+@use "@fylgja/input-group" with ($input-group-layer: "components");
+// Or via native CSS import, also supported by PostCSS import
+@import "@fylgja/input-group" layer("components");
 ```
 
 ## How to use
@@ -55,22 +71,15 @@ Import the style directly via;
 The input group allows you to build simple things,
 like a search form with a submit button in the same form field.
 
-```html
-<style>
-    .input-group .btn {
-        --btn-radius: 0;
-    }
-</style>
-<form id="search-form">
-    <label for="search">Search</label>
-    <div class="input-group">
-        <input type="search" name="search" />
-        <button class="btn -icon">
-            <svg>..</svg>
-        </button>
-    </div>
-</form>
-```
+{% codeSample %}
+<div class="input-group">
+    <input type="search" name="search" />
+    <button class="btn -icon">
+        <span class="aria-only">Search</span>
+        <svg width="24" height="24" fill="currentcolor"><use href="/images/sprite.svg#search"/></svg>
+    </button>
+</div>
+{% endcodeSample %}
 
 To more complex things.
 

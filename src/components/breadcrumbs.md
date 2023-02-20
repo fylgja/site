@@ -32,11 +32,10 @@ If you need support for `@layer`,
 use the following import;
 
 ```scss
-@use "@fylgja/breadcrumbs" with ($enable-breadcrumbs-layer: true);
-// Or via PostCSS import
-@import "@fylgja/breadcrumbs/layer";
+@use "@fylgja/breadcrumbs" with ($breadcrumbs-layer: "components");
+// Or via native CSS import, also supported by PostCSS import
+@import "@fylgja/breadcrumbs" layer("components");
 ```
-
 
 ## How to use
 
@@ -72,10 +71,6 @@ Want direct control on the base styles,
 here are the following SCSS variables can you modify.
 
 ```scss
-$enable-breadcrumbs-layer: false !default;
-
-$breadcrumbs-layer-name: components !default;
-
 $breadcrumbs-divider: "  /  " !default;
 $breadcrumbs-flow: row wrap !default;
 $breadcrumbs-margin: 10px 0 !default;

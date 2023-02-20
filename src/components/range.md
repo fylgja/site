@@ -26,6 +26,17 @@ Then include the component in to your code via;
 @import "@fylgja/range";
 ```
 
+### `@layer` support
+
+If you need support for `@layer`,
+use the following import;
+
+```scss
+@use "@fylgja/range" with ($range-layer: "components");
+// Or via native CSS import, also supported by PostCSS import
+@import "@fylgja/range" layer("components");
+```
+
 ## How to use
 
 Out of the box all the styling is done directly,
@@ -104,20 +115,20 @@ Want direct control on the base styles,
 here are the following SCSS variables can you modify.
 
 ```scss
-$range-track-height: 0.5rem;
-$range-track-radius: 1rem;
-$range-track-bg: track-fill(var(--color-theme, #{$color-theme}));
-$range-track-color: #ccc;
-$range-track-disabled-bg: currentcolor;
-$range-track-disabled-color: #ddd;
+$range-track-height: 0.5rem !default;
+$range-track-radius: 1rem !default;
+$range-track-bg: track-fill(var(--color-theme, #{$color-theme})) !default;
+$range-track-color: #ccc !default;
+$range-track-disabled-bg: currentcolor !default;
+$range-track-disabled-color: #ddd !default;
 
-$range-thumb-size: 1rem;
-$range-thumb-radius: 100%;
-$range-thumb-border-size: 0;
-$range-thumb-border-color: var(--color-theme, #{$color-theme});
-$range-thumb-color: var(--color-theme, #{$color-theme});
-$range-thumb-disabled-color: #aaa;
-$range-thumb-shadow: 0 1px 2px rgb(0 0 0 / 50%);
+$range-thumb-size: 1rem !default;
+$range-thumb-radius: 100% !default;
+$range-thumb-border-size: 0 !default;
+$range-thumb-border-color: var(--color-theme, #{$color-theme}) !default;
+$range-thumb-color: var(--color-theme, #{$color-theme}) !default;
+$range-thumb-disabled-color: #aaa !default;
+$range-thumb-shadow: 0 1px 2px rgb(0 0 0 / 50%) !default;
 
 $range-focus-color: var(--color-theme-fade, #{$color-theme-fade}) !default;
 $range-focus-shadow: 0 0 0 0.4rem var(--range-focus-color, #{$range-focus-color}) !default;

@@ -8,7 +8,7 @@ preview: "avatar.png"
 order: 1
 preconnect: { placeimg: "https://placekitten.com/" }
 style: {
-    progress: "../../node_modules/@fylgja/avatar/avatar.css"
+    avatar: "../../node_modules/@fylgja/avatar/avatar.css"
 }
 ---
 
@@ -34,9 +34,9 @@ If you need support for `@layer`,
 use the following import;
 
 ```scss
-@use "@fylgja/avatar" with ($enable-avatar-layer: true);
-// Or via PostCSS import
-@import "@fylgja/avatar/layer";
+@use "@fylgja/avatar" with ($avatar-layer: "components");
+// Or via native CSS import, also supported by PostCSS import
+@import "@fylgja/avatar" layer("components");
 ```
 
 ## How to use
@@ -59,10 +59,6 @@ As with almost all of our components, CSS variables can be configured to add you
 Want direct control on the base styles, here are the following SCSS variables can you modify.
 
 ```scss
-$enable-avatar-layer: false !default;
-
-$avatar-layer-name: components !default;
-
 $avatar-size: 3em !default;
 $avatar-radius: 50% !default;
 $avatar-bg: #eee !default;

@@ -40,7 +40,7 @@ $white-soft: color.change(#fff, $alpha: 0.5);
     --border-color: #{$white-softer};
     --form-focus-color: #fff;
     --select-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23fff"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 10l5 5 5-5z"/></svg>');
-    --shadow-strength: 25%;
+    --shadow-weight: 25%;
     --shadow-color: 220 40% 2%;
     --range-track-color: #333;
     --range-track-disabled-color: #222;

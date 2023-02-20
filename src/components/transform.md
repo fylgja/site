@@ -23,6 +23,17 @@ Then include the component in to your code via;
 @import "@fylgja/transform";
 ```
 
+### `@layer` support
+
+If you need support for `@layer`,
+use the following import;
+
+```scss
+@use "@fylgja/transform" with ($transform-layer: "utilities");
+// Or via native CSS import, also supported by PostCSS import
+@import "@fylgja/transform" layer("utilities");
+```
+
 ## How to use
 
 The transform component is a helper and it can be used 2 ways.

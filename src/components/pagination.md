@@ -29,6 +29,17 @@ Then include the component in to your code via;
 @import "@fylgja/pagination";
 ```
 
+### `@layer` support
+
+If you need support for `@layer`,
+use the following import;
+
+```scss
+@use "@fylgja/pagination" with ($pagination-layer: "components");
+// Or via native CSS import, also supported by PostCSS import
+@import "@fylgja/pagination" layer("components");
+```
+
 ## How to use
 
 In your html, you need besides the pagination class, also some html for the items.
@@ -139,6 +150,10 @@ $pagination-disabled-opacity: 0.8 !default;
 
 $pagination-dots-size: 0.625em !default;
 $pagination-dots-gap: 0.35em !default;
+
+$pagination-dots-stroke: currentcolor !default;
+$pagination-dots-active-stroke: var(--color-theme, #{$color-theme}) !default;
+$pagination-dots-active-bg: var(--color-theme, #{$color-theme}) !default;
 ```
 
 _Setting the `$enable-pagination-old-gap` to false._

@@ -31,6 +31,17 @@ Then include the component in to your code via;
 @import "@fylgja/scroll-slider";
 ```
 
+### `@layer` support
+
+If you need support for `@layer`,
+use the following import;
+
+```scss
+@use "@fylgja/scroll-slider" with ($scroll-layer: "components");
+// Or via native CSS import, also supported by PostCSS import
+@import "@fylgja/scroll-slider" layer("components");
+```
+
 ## How to use
 
 To create a slider, you will need a wrapper element with the class `.scroll-slider`.
@@ -76,14 +87,9 @@ here are the following SCSS variables you can modify.
 ```scss
 $enable-scroll-overflow-fix: true !default;
 
+$scroll-padding: 1.25em !default;
 $scroll-gap: 0.5em !default;
-$scroll-padding-y: 1rem !default;
-$scroll-padding-x: 1.25rem !default;
-
-// Item
-$scroll-align: center !default;
-$scroll-stop: always !default;
-$scroll-stop-fine: normal !default;
+$scroll-align: start !default;
 ```
 
 ## Tips

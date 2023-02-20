@@ -31,6 +31,33 @@ Then include the component in to your code via;
 @import "@fylgja/form";
 ```
 
+### Styles
+
+By default all form styles are set to the fylgja default style.
+
+If you want to use the field or box style,
+change the variable `$form-style` to one of the other options.
+
+Or if you are importing this as plain CSS or in PostCSS use;
+
+```css
+@import "@fylgja/form/field.css";
+@import "@fylgja/form/box.css";
+```
+
+_For versions older than v1.2 use `style-{field|box}.css`_
+
+### `@layer` support
+
+If you need support for `@layer`,
+use the following import;
+
+```scss
+@use "@fylgja/form" with ($form-layer: "components");
+// Or via native CSS import, also supported by PostCSS import
+@import "@fylgja/form" layer("components");
+```
+
 ## How to use
 
 Out of the box all the styling is done directly,
@@ -78,10 +105,7 @@ here are the following SCSS variables can you modify.
 ```scss
 $enable-webkit-autofill-dark-mode: true !default;
 
-$form-focus-color: var(
-    --form-focus-color,
-    var(--color-theme, #{$color-theme})
-) !default;
+$form-focus-color: var(--color-theme, #{$color-theme}) !default;
 $form-placeholder-opacity: 0.5 !default;
 $form-disabled-opacity: 0.7 !default;
 $form-not-editable-border-style: dotted !default;
@@ -99,32 +123,34 @@ $legend-margin: 1rem 0 !default;
 $legend-padding: 0 !default;
 $legend-border: 0 !default;
 
+$label-margin: 0 !default;
+
 $form-style: default !default;
 $form-styles: (
     field: (
         padding: 0.375em 1px,
-        border-width: 0 0 1px,
+        border-width: 1px,
         border-style: solid,
-        border-color: currentcolor,
+        border-color: transparent transparent currentcolor,
         radius: 0,
         shadow: inset 0 -1px 0 $form-focus-color,
         bg: transparent,
         color: inherit,
         file-btn-padding: 0.375em 0.625em,
-        file-btn-radius: 3px 3px 0 0
+        file-btn-radius: 3px 3px 0 0,
     ),
     box: (
         padding: 0.375em 0.625em,
-        border-width: 0 0 1px,
+        border-width: 1px,
         border-style: solid,
-        border-color: currentcolor,
+        border-color: transparent transparent currentcolor,
         radius: 4px 4px 0 0,
         shadow: inset 0 -1px 0 $form-focus-color,
         bg: if($root-fg == #000, #eee, #222),
         color: inherit,
         file-btn-padding: 0.375em 0.625em,
-        file-btn-radius: 4px 4px 0 0
-    )
+        file-btn-radius: 4px 4px 0 0,
+    ),
 ) !default;
 
 // Set styles var's
@@ -157,30 +183,21 @@ $form-fields: (
     search,
     url,
     date,
-    textarea,
-    select,
+    time,
+    month,
+    week,
     color,
     file
 ) !default;
 
+$form-field-selectors: () !default;
+
 // Form select
 $form-icon-size: 1.25em !default;
 $form-icon-color: $color-text !default;
-$form-select-icon: url("data:image/svg+xml,<svg .. /></svg>") !default;
-
-// Form color
-$form-color-radius: null !default;
-$form-color-size: 2.375rem !default;
-$form-color-padding: ($form-padding-y / 2) !default;
-
-// Form file
-$form-file-gap-y: $form-padding-y !default;
-$form-file-gap-x: $form-padding-x !default;
-$form-file-btn-gap: 1ch !default;
-$form-file-btn-padding: form-style-get(file-btn-padding) !default;
-$form-file-btn-radius: form-style-get(file-btn-radius) !default;
-$form-file-btn-bg: var(--color-theme, #{$color-theme}) !default;
-$form-file-btn-color: var(--color-on-theme, #{$color-on-theme}) !default;
+// This a static svg turned to to a dataUri,
+// you can also use the `@fylgja/sass` package to generate this
+$form-select-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#{$form-icon-color}"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 10l5 5 5-5z"/></svg>') !default;
 ```
 
 > `form-style-get()` is the `map-get()` function.

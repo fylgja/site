@@ -45,9 +45,9 @@ If you need support for `@layer`,
 use the following import;
 
 ```scss
-@use "@fylgja/auto-grid" with ($enable-auto-grid-layer: true);
-// Or via PostCSS import
-@import "@fylgja/auto-grid/layer";
+@use "@fylgja/auto-grid" with ($auto-grid-layer: "components");
+// Or via native CSS import, also supported by PostCSS import
+@import "@fylgja/auto-grid" layer("components");
 ```
 
 ## How to use
@@ -97,10 +97,6 @@ Do you want more control over the Auto Grid CSS variables,
 modify the following SCSS variables.
 
 ```scss
-$enable-auto-grid-layer: false !default;
-
-$auto-grid-layer-name: components !default;
-
 $auto-grid-cols: 250px !default;
 $auto-grid-gap: 1em !default;
 ```
