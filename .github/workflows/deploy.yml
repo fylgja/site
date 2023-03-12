@@ -11,24 +11,26 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
-      - name: Install Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: "16.x"
-      - name: Install npm dependencies
-        run: npm install
-      - name: Run build task
-        run: npm run build
-      - name: Deploy to Server
-        uses: easingthemes/ssh-deploy@main
+          node-version: "${{ env.NODE }}"
+      - run: npm run build
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "${{ env.NODE }}"
+      - uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SOURCE: "_site/"
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
           TARGET: ${{ secrets.REMOTE_TARGET }}
+          SOURCE: "_site/"
           EXCLUDE: "/node_modules/"
