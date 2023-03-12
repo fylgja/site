@@ -26,12 +26,12 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "${{ env.NODE }}"
-      - uses: easingthemes/ssh-deploy@main
+      - uses: burnett01/rsync-deployments@5.2.1
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
-          TARGET: ${{ secrets.REMOTE_TARGET }}
-          SOURCE: "_site/"
-          EXCLUDE: "/node_modules/"
+          switches: -avzr --delete
+          path: "_site/"
+          remote_user: ${{ secrets.REMOTE_USER }}
+          remote_host: ${{ secrets.REMOTE_HOST }}
+          remote_port: ${{ secrets.REMOTE_PORT }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          remote_path: ${{ secrets.REMOTE_TARGET }}
