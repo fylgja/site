@@ -1,7 +1,7 @@
 ---
 title: "Sizes"
 description: "The Fylgja Sizes offers Design Tokens (CSS props) for consistent and semantic sizes, in typography, spacing and general sizes."
-# npm: "@fylgja/sizes"
+npm: "@fylgja/sizes"
 git: "components/sizes"
 tags: ["tokens"]
 preview: "theme.png"
