@@ -5,7 +5,7 @@ module.exports = [
     {
         title: "GitHub Discussions",
         text: 'Questions or Support<br class="hidden lg-block">ask them in the community.',
-        url: `${github.url}/discussions`,
+        url: `${github.url}/fylgja/discussions`,
         icon: github.icon,
         iconStyle: {
             bg: "#181717",
