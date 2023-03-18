@@ -133,7 +133,12 @@ sitemap:
             </div>
             <div class="flex flex-col flex-wrap gap-8 lg-flex-row lg-justify-center">
                 {% for item in support %}
-                    <a href="{{ item.url }}" {% if item.external %} rel="noopener noreferrer" target="_blank" {% endif %} class="text-reset no-underline flex iteme-start gap-4">
+                    <a
+                        href="{{ item.url }}"
+                        rel="me nofollow"
+                        target="_blank"
+                        class="text-reset no-underline flex iteme-start gap-4"
+                    >
                         {% if item.icon %}
                             <div class="avatar p-2" style="--avatar-bg: {{ item.iconStyle.bg }}; --avatar-color: {{ item.iconStyle.color }};">
                                 <svg width="24" height="24" fill="currentcolor">
