@@ -21,9 +21,26 @@ module.exports = {
     phone: false,
     address: false,
     socials: {
-        twitter: "FylgjaDev",
-        github: "fylgja",
-        devTo: "fylgja",
+        mastodon: {
+            name: "Mastodon",
+            icon: "mastodon",
+            url: "https://fosstodon.org/@fylgja",
+        },
+        twitter: {
+            name: "Twitter",
+            icon: "twitter",
+            url: "https://twitter.com/FylgjaDev",
+        },
+        github: {
+            name: "Github",
+            icon: "github",
+            url: "https://github.com/fylgja",
+        },
+        devTo: {
+            name: "dev.to",
+            icon: "devto",
+            url: "https://dev.to/fylgja",
+        },
     },
     themeColor: "#1565c0",
     themeColorDark: "#08274a",

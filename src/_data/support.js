@@ -1,25 +1,32 @@
 const { socials } = require("./meta");
-const GithubUrl = `https://github.com/fylgja/${socials.github}/discussions`;
-const TwitterUrl = `https://twitter.com/${socials.twitter}`;
+const { github, twitter, mastodon } = socials;
 
 module.exports = [
     {
         title: "GitHub Discussions",
         text: 'Questions or Support<br class="hidden lg-block">ask them in the community.',
-        url: GithubUrl,
-        external: true,
-        icon: "github",
+        url: `${github.url}/discussions`,
+        icon: github.icon,
         iconStyle: {
             bg: "#181717",
             color: "#fff",
         },
     },
     {
-        title: "Twitter",
-        text: 'Follow the Fylgja Twitter account<br class="hidden lg-block">for news and updates.',
-        url: TwitterUrl,
-        external: true,
-        icon: "twitter",
+        title: mastodon.name,
+        text: `Follow the Fylgja ${mastodon.name} account<br class="hidden lg-block">for news and updates.`,
+        url: mastodon.url,
+        icon: mastodon.icon,
+        iconStyle: {
+            bg: "#6364FF",
+            color: "#fff",
+        },
+    },
+    {
+        title: twitter.name,
+        text: `Follow the Fylgja ${twitter.name} account<br class="hidden lg-block">for news and updates.`,
+        url: twitter.url,
+        icon: twitter.icon,
         iconStyle: {
             bg: "#1da1f2",
             color: "#fff",

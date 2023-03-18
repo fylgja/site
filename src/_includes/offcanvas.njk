@@ -71,7 +71,11 @@
         <div class="py-4 px-2">
             <nav aria-label="Offcanvas extra menu" class="footer-nav flex">
                 {% for item in navigation.socials %}
-                    {% menuItem item.url, { classList: "btn -icon me-1", isExternal: item.external, pageUrl: page.url } %}
+                    {% menuItem item.url, {
+                        classList: "btn -icon me-1",
+                        isExternal: true,
+                        rel: "me"
+                    } %}
                         <svg width="24" height="24" fill="currentcolor">
                             <title>{{ item.text }}</title>
                             <use href="{{ '/images/socials.svg' | assetUrl }}#{{ item.icon }}" />

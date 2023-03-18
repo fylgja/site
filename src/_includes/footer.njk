@@ -45,7 +45,11 @@
             <ul class="list-style -none flex flex-col gap-3 lg-gap-2">
                 {% for item in navigation.socials %}
                     <li>
-                        {% menuItem item.url, { classList: "inline-flex items-center", rel: "nofollow me" } %}
+                        {% menuItem item.url, {
+                            classList: "inline-flex items-center",
+                            rel: "me",
+                            isExternal: true
+                        } %}
                             <svg width="20" height="20" fill="currentcolor" class="me-2">
                                 <use href="{{ '/images/socials.svg' | assetUrl }}#{{ item.icon }}" />
                             </svg>

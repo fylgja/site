@@ -1,7 +1,5 @@
 const { socials } = require("./meta");
-const githubUrl = `https://github.com/fylgja/fylgja`;
-const twitterUrl = `https://twitter.com/${socials.twitter}`;
-const devToUrl = `https://dev.to/${socials.devTo}`;
+const { github, twitter, mastodon, devTo } = socials;
 
 module.exports = {
     main: [
@@ -52,22 +50,24 @@ module.exports = {
     ],
     socials: [
         {
-            icon: "github",
-            text: "Github",
-            url: githubUrl,
-            external: true,
+            icon: github.icon,
+            text: github.name,
+            url: github.url,
         },
         {
-            icon: "twitter",
-            text: "Twitter",
-            url: twitterUrl,
-            external: true,
+            icon: mastodon.icon,
+            text: mastodon.name,
+            url: mastodon.url,
         },
         {
-            icon: "devto",
-            text: "dev.to",
-            url: devToUrl,
-            external: true,
+            icon: twitter.icon,
+            text: twitter.name,
+            url: twitter.url,
+        },
+        {
+            icon: devTo.icon,
+            text: devTo.name,
+            url: devTo.url,
         },
     ],
     home: [
