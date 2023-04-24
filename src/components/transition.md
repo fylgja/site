@@ -31,7 +31,7 @@ use the following import;
 ```scss
 @use "@fylgja/transition" with ($transition-layer: "utilities");
 // Or via native CSS import, also supported by PostCSS import
-@import "@fylgja/transition" layer("utilities");
+@import "@fylgja/transition" layer(utilities);
 ```
 
 ## How to use

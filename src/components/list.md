@@ -34,7 +34,7 @@ use the following import;
 ```scss
 @use "@fylgja/list" with ($list-layer: "components");
 // Or via native CSS import, also supported by PostCSS import
-@import "@fylgja/list" layer("components");
+@import "@fylgja/list" layer(components);
 ```
 
 ## How to use

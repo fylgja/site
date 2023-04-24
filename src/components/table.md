@@ -37,7 +37,7 @@ use the following import;
 ```scss
 @use "@fylgja/table" with ($table-layer: "base");
 // Or via native CSS import, also supported by PostCSS import
-@import "@fylgja/table" layer("base");
+@import "@fylgja/table" layer(base);
 ```
 
 ## How to use

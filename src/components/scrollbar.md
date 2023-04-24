@@ -31,7 +31,7 @@ use the following import;
 ```scss
 @use "@fylgja/scrollbar" with ($scrollbar-layer: "utilities");
 // Or via native CSS import, also supported by PostCSS import
-@import "@fylgja/scrollbar" layer("utilities");
+@import "@fylgja/scrollbar" layer(utilities);
 ```
 
 ## How to use

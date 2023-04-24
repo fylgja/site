@@ -63,7 +63,7 @@ use the following import;
 ```scss
 @use "@fylgja/input-group" with ($input-group-layer: "components");
 // Or via native CSS import, also supported by PostCSS import
-@import "@fylgja/input-group" layer("components");
+@import "@fylgja/input-group" layer(components);
 ```
 
 ## How to use

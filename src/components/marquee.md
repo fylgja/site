@@ -35,7 +35,7 @@ use the following import;
 ```scss
 @use "@fylgja/marquee" with ($marquee-layer: "components");
 // Or via native CSS import, also supported by PostCSS import
-@import "@fylgja/marquee" layer("components");
+@import "@fylgja/marquee" layer(components);
 ```
 
 ## How to use

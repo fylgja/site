@@ -55,7 +55,7 @@ use the following import;
 ```scss
 @use "@fylgja/form" with ($form-layer: "components");
 // Or via native CSS import, also supported by PostCSS import
-@import "@fylgja/form" layer("components");
+@import "@fylgja/form" layer(components);
 ```
 
 ## How to use

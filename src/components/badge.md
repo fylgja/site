@@ -32,7 +32,7 @@ use the following import;
 ```scss
 @use "@fylgja/badge" with ($badge-layer: "components");
 // Or via native CSS import, also supported by PostCSS import
-@import "@fylgja/badge" layer("components");
+@import "@fylgja/badge" layer(components);
 ```
 
 ## How to use

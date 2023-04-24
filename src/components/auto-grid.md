@@ -47,7 +47,7 @@ use the following import;
 ```scss
 @use "@fylgja/auto-grid" with ($auto-grid-layer: "components");
 // Or via native CSS import, also supported by PostCSS import
-@import "@fylgja/auto-grid" layer("components");
+@import "@fylgja/auto-grid" layer(components);
 ```
 
 ## How to use

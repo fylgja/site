@@ -37,7 +37,7 @@ use the following import;
 ```scss
 @use "@fylgja/progress" with ($progress-layer: "components");
 // Or via native CSS import, also supported by PostCSS import
-@import "@fylgja/progress" layer("components");
+@import "@fylgja/progress" layer(components);
 ```
 
 ## How to use

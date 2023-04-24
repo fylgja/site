@@ -33,7 +33,7 @@ use the following import;
 ```scss
 @use "@fylgja/section" with ($section-layer: "components");
 // Or via native CSS import, also supported by PostCSS import
-@import "@fylgja/section" layer("components");
+@import "@fylgja/section" layer(components);
 ```
 
 ## How to use

@@ -34,7 +34,7 @@ use the following import;
 ```scss
 @use "@fylgja/range" with ($range-layer: "components");
 // Or via native CSS import, also supported by PostCSS import
-@import "@fylgja/range" layer("components");
+@import "@fylgja/range" layer(components);
 ```
 
 ## How to use

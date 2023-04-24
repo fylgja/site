@@ -34,7 +34,7 @@ use the following import;
 ```scss
 @use "@fylgja/aspect-ratio" with ($aspect-ratio-layer: "utilities");
 // Or via native CSS import, also supported by PostCSS import
-@import "@fylgja/aspect-ratio" layer("utilities");
+@import "@fylgja/aspect-ratio" layer(utilities);
 ```
 
 ## How to use

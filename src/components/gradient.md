@@ -34,7 +34,7 @@ use the following import;
 ```scss
 @use "@fylgja/gradient" with ($gradient-layer: "components");
 // Or via native CSS import, also supported by PostCSS import
-@import "@fylgja/gradient" layer("components");
+@import "@fylgja/gradient" layer(components);
 ```
 
 ## How to use

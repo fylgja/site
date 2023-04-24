@@ -45,7 +45,7 @@ use the following import;
 ```scss
 @use "@fylgja/dialog" with ($dialog-layer: "components");
 // Or via native CSS import, also supported by PostCSS import
-@import "@fylgja/dialog" layer("components");
+@import "@fylgja/dialog" layer(components);
 ```
 
 ## How to use

@@ -31,7 +31,7 @@ use the following import;
 ```scss
 @use "@fylgja/transform" with ($transform-layer: "utilities");
 // Or via native CSS import, also supported by PostCSS import
-@import "@fylgja/transform" layer("utilities");
+@import "@fylgja/transform" layer(utilities);
 ```
 
 ## How to use

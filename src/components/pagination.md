@@ -37,7 +37,7 @@ use the following import;
 ```scss
 @use "@fylgja/pagination" with ($pagination-layer: "components");
 // Or via native CSS import, also supported by PostCSS import
-@import "@fylgja/pagination" layer("components");
+@import "@fylgja/pagination" layer(components);
 ```
 
 ## How to use

@@ -42,7 +42,7 @@ use the following import;
 ```scss
 @use "@fylgja/button" with ($button-layer: "components");
 // Or via native CSS import, also supported by PostCSS import
-@import "@fylgja/button" layer("components");
+@import "@fylgja/button" layer(components);
 ```
 
 ## How to use

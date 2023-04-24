@@ -36,7 +36,7 @@ use the following import;
 ```scss
 @use "@fylgja/avatar" with ($avatar-layer: "components");
 // Or via native CSS import, also supported by PostCSS import
-@import "@fylgja/avatar" layer("components");
+@import "@fylgja/avatar" layer(components);
 ```
 
 ## How to use

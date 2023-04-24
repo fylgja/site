@@ -33,7 +33,7 @@ use the following import;
 ```scss
 @use "@fylgja/container" with ($container-layer: "components");
 // Or via native CSS import, also supported by PostCSS import
-@import "@fylgja/container" layer("components");
+@import "@fylgja/container" layer(components);
 ```
 
 ## How to use

@@ -44,7 +44,7 @@ use the following import;
 ```scss
 @use "@fylgja/control" with ($control-layer: "components");
 // Or via native CSS import, also supported by PostCSS import
-@import "@fylgja/control" layer("components");
+@import "@fylgja/control" layer(components);
 ```
 
 ## How to use
