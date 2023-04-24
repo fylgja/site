@@ -1,5 +1,5 @@
 ---
-title: "Support"
+title: "Support Fylgja"
 description: "Do you want to support Fylgja?"
 order: 50
 ---

@@ -11,11 +11,10 @@ css: { page: "/css/docs.css" }
         <main class="docs-page container flex-grow">
             <div class="docs-layout my-6 ">
                 {% include "breadcrumbs.njk" %}
-                <article id="page-main">
+                <article id="page-main" aria-label="Fylgja Component - {{ title }}">
                     <header class="mb-5 xl-flex justify-between">
                         <h1 class="page-title flex-shrink me-2 mb-0">
-                            <span class="aria-only">Fylgja component - </span>
-                            <span>{{ title }}</span>
+                            {{ title }}
                         </h1>
                         <div class="component-badges self-end mt-2">
                             {%- if npm -%}{% badgeNpm npm %}{%- endif -%}
