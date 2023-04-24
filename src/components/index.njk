@@ -62,7 +62,7 @@ style: {
 ---
 
 {% if collections.componentsFeatured %}
-    <section id="components-featured" class="my-2 md-my-5">
+    <section id="components-featured" aria-label="Our recommended components" class="my-2 md-my-5">
         <div class="scroll-title pt-2 container">
             <h2 class="my-0">Featured</h2>
             <p class="my-0">Our recommended components</p>
@@ -102,7 +102,7 @@ style: {
 {% endif %}
 
 {%- for items in collections.componentsGroup -%}
-    <section id="{{ items.title | lower }}" tabindex="-1" class="my-2 md-my-5">
+    <section id="{{ items.title | lower }}"  aria-label="{{ items.title }}" tabindex="-1" class="my-2 md-my-5">
         <div class="scroll-title pt-2 container">
             <h2 class="my-0">{{ items.title }}</h2>
             <p class="my-0">{{ items.description }}</p>
