@@ -59,7 +59,7 @@
     "postcss": "^8.4.21",
     "postcss-cli": "^10.1.0",
     "postcss-preset-env": "^8.0.1",
-    "rollup": "^3.18.0",
+    "rollup": "^3.21.2",
     "rollup-plugin-esbuild": "^5.0.0",
     "sass": "^1.58.3",
     "slugify": "^1.6.5",
