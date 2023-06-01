@@ -58,7 +58,7 @@
     "markdown-it-external-anchor": "^1.0.0",
     "postcss": "^8.4.21",
     "postcss-cli": "^10.1.0",
-    "postcss-preset-env": "^8.0.1",
+    "postcss-preset-env": "^8.4.2",
     "rollup": "^3.18.0",
     "rollup-plugin-esbuild": "^5.0.0",
     "sass": "^1.58.3",
