@@ -1,20 +1,20 @@
-<div
-  class="overflow-x-auto"
-  style="
-    --table-align: center;
-    --table-padding: 5px 2px;
-    --table-border-color: rgb(0 0 0 / 0);
-    --table-collapse: separate;
-    --table-weight: 500;
-    font-variant-numeric: tabular-nums;
-    "
-><table class="w-full">
+<style>
+#component-colors-grid {--cols-size: 180px}
+#component-colors-grid dd {font-weight: bold; cursor: pointer}
+#component-colors-grid dd span {opacity: 0; transition: opacity 0.2s}
+#component-colors-grid dd:hover span {opacity: 1}
+</style>
+<p><em>Click the color to copy the variabel name to the clipboard</em></p>
+<dl id="component-colors-grid" class="auto-grid">
 {% for colorKey in tokens.colors.keys %}
-<tr>
-<th class="ps-0 pe-4 md:pe-8" style="--table-align: start; text-transform: capitalize; width: 1%;">{{ colorKey }}</th>
+<div>
+<dt class="mb-2">{{ colorKey | replace('-', ' ') | capitalize }}</dt>
 {% for color in tokens.colors[colorKey] %}
-<td style="--table-bg: {{ color }}; --table-color: {{ '#fff' if loop.index0 > 5 else '#000' }}">{{ loop.index0 }}</td>
+{%- set colorVar -%}--{{ colorKey }}-{{ loop.index0 }}{%- endset -%}
+<dd class="py-1 px-2" onclick="navigator.clipboard.writeText('{{ colorVar }}');" style="background-color: {{ color }}; color: {{ '#fff' if loop.index0 > 8 else '#000' }}">
+<span>{{ colorVar }}</span>
+</dd>
 {% endfor %}
-</tr>
+</div>
 {% endfor %}
-</table></div>
+</dl>
