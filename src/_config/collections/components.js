@@ -79,7 +79,11 @@ const componentsFeatured = (collection) => {
 };
 
 const componentsAll = (collection) => {
-    const items = collection.getFilteredByGlob("./src/components/**/*.md");
+    const items = collection.getFilteredByGlob([
+        "./src/components/*.md",
+        "./src/components/stylelint-config/*.md",
+        "./src/components/utilpack/*.md",
+    ]);
     return items;
 };
 

@@ -3,30 +3,20 @@ title: "Colors"
 description: "Add a collection of prebuild colors to any project with ease, using Fylgja Colors."
 npm: "@fylgja/colors"
 git: "components/colors"
-tags: ["tokens"]
 preview: "theme.png"
 order: 9
 versions: [
-    { name: "Latest", url: "colors" },
-    { name: '1.x', url: "v1/colors" }
+    { name: '1.x', url: "v1/colors" },
+    { name: "Latest", url: "colors" }
 ]
 ---
-
-> Attention!
-> This is the latest iteration of our color component, currently in its beta phase.
-> 
-> If you wish to access the previous version, [please visit the v1 page](/components/v1/colors).
-> 
-> However, if you're looking for a more comprehensive color palette with improved dark shades,
-> you've come to the right place.
-> Explore further below for an enhanced experience.
 
 Add a collection of prebuild colors to any project with ease, using Fylgja Colors.
 
 ## Installation
 
 ```bash
-npm install @fylgja/colors
+npm install @fylgja/colors@1
 ```
 
 Then include the component in to your code via;
@@ -50,7 +40,7 @@ And comes packing in both HEX and HSL syntax;
 
 ### Color options
 
-{% include "colors.njk" %}
+{% include "colors-v1.njk" %}
 
 ### SCSS version
 
@@ -102,10 +92,6 @@ Instead of importing the default version you can import the hsl version using;
     background-color: hsl(var(--blue-gray-4) / 10%);
 }
 ```
-
-### Using okLCH syntax
-
-> Coming soon...
 
 ### Using a single colors
 

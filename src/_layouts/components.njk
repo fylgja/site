@@ -17,6 +17,24 @@ css: { page: "/css/docs.css" }
                             {{ title }}
                         </h1>
                         <div class="component-badges self-end mt-2">
+                            {%- if versions -%}
+                                <details class="m-0 relative">
+                                    {% set firstVersion = versions | first %}
+                                    <summary
+                                        class="badge w-full"
+                                        aria-label="Change version"
+                                    >Version: {{ firstVersion.name }}</summary>
+                                    <div class="absolute top-full inset-x-0 card mt-1" style="--card-radius: 0.3rem;">
+                                        <ul class="menu text-small">
+                                            {% for version in versions %}
+                                                {% if loop.first %}{% else %}
+                                                    <li><a href="/components/{{ version.url }}">{{ version.name }}</a></li>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </details>
+                            {%- endif -%}
                             {%- if npm -%}{% badgeNpm npm %}{%- endif -%}
                             {%- if git -%}{% badgeGit git, gitDomain %}{%- endif -%}
                             {%- if codepen -%}{% badgeCodepen codepen %}{%- endif -%}

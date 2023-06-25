@@ -1,0 +1,13 @@
+{
+  "tags": ["components", "v1"],
+  "layout": "components",
+  "permalink": "/components/v1/{{ page.fileSlug }}/",
+  "altlink": false,
+  "breadcrumbs": {
+    "Components": "/components/"
+  },
+  "requiresJs": false,
+  "featured": false,
+  "order": 10,
+  "gitDomain": "https://github.com/fylgja/fylgja/tree/main/"
+}
