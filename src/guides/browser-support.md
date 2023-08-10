@@ -1,26 +1,25 @@
 ---
-title: "Browser Support"
-description: "How wel is Fylgja support in which browsers"
+title: "Fylgja Browser Support"
+description: "How Well Is Fylgja Supported in Which Browsers?"
 thumb: "guide-thumb/www.jpg"
 ---
 
-Fylgja is tested and supported in all modern browsers (Chrome, Firefox, Edge, and Safari).
+Fylgja is a CSS framework that is tested and supported in all modern browsers (Chrome, Firefox, Edge, and Safari).
+This means that you can use Fylgja without having to worry about compatibility issues with most browsers.
 
-The main goal is that you can use Fylgja, without having to use any extra tooling to make it work in the browser.
-So no need to have tools like postcss-preset-env or autoprefixer by default.
+We do recommend using tools like postcss-preset-env or autoprefixer to make it easier to use newer CSS features.
+These tools will automatically add the necessary vendor prefixes to your CSS code,
+so that it works in older browsers.
+However, Fylgja will still work without these tools, if you prefer to use them.
 
-> We do recommend tools like these,
-> to make it easier to use newer CSS features.
-> 
-> More on it [in our other guide for PostCSS tools](/guides/postcss/)
+> More on postcss-preset-env or autoprefixer in our [guide for PostCSS tools](/guides/postcss/)
 
-That said there are cases that some of the Fylgja's CSS Components may also include newer CSS/HTML features,
-That may need tooling or an polyfill to work.
+In some cases, Fylgja's CSS Components may include newer CSS/HTML features that require tooling or a polyfill to work in older browsers.
+Fylgja strives to support at least two major versions back.
 
-Fylgja strives to support at least a minimal of 2 major versions back,
-this does not include older browsers like IE11.
+If you need to support older browsers,
+you can avoid using the Fylgja components that require newer features.
+Fylgja CSS Components can be used separately,
+so you can pick and choose the components that you need.
 
-But in case one of Fylgja's components does not match your requirement for browser support, you can avoid it,
-since each Fylgja CSS Component can be used separately, meaning you decide what you need from Fylgja.
-
-And when in doubt always check [Can I Use](https://caniuse.com/) or the [Mozilla Docs](https://developer.mozilla.org/) for support of unfamiliar CSS features.
+And when in doubt, always check [Can I Use](https://caniuse.com/) or the [Mozilla Docs](https://developer.mozilla.org/) to see if a particular CSS feature is supported in the browsers that you need to target.
