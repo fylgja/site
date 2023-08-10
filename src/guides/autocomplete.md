@@ -4,7 +4,9 @@ description: "A few tips to make it even easier to work with Fylgja in your own 
 thumb: "guide-thumb/code.jpg"
 ---
 
-Down here we have a few tips to make it even easier to work with Fylgja in your own favorite editor.
+Fylgja is a CSS framework that makes it easy to create beautiful and responsive websites. But it can be even easier to use Fylgja if you have autocomplete in your editor.
+
+Here are a few tips to get autocomplete working in your favorite editor:
 
 > We use VSCode mainly for our own coding,
 > but if you have tips for other editors please share your tips,
