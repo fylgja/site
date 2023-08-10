@@ -1,25 +1,20 @@
 ---
-title: "Fylgja Style guide"
-description: "How we write our code and our name conventions"
+title: "Fylgja Code and Style Guidelines"
+description: "Best practices and naming conventions at Fylgja"
 thumb: "guide-thumb/css-awesome.jpg"
 order: 8
 ---
 
-At Fylgja we use specific style and code guides, we try to follow where possible.
+At Fylgja, we prioritize clean, efficient,
+and consistent code practices to enhance readability and maintainability across our projects.
 
-There are always exceptions, we try to keep them to a minimal.
+## Embracing Single Layered Styles for Multi-Layered Components
 
-Style and code guides are not specific to Fylgja and be used at large.
+At Fylgja, we embrace the concept of single layered styles, aiming to minimize the use of nested classes.
+By leveraging the power of CSS inheritance, we ensure a more organized and streamlined codebase.
 
-## Single layered styles for multi layered Components
-
-Fylgja uses the concept of single layered styles.
-This means that we try to avoid any styles set via nested classes.
-
-We use the power of inheritance of CSS as much as we can.
-
-A good example is our table component vs other table styles.
-In most cases you will see this type of style for a `td` element.
+For instance, consider our table component and compare it to other table styles.
+While typical implementations involve nested class structures for elements like `td` element.
 
 ```css
 table tr > td {
@@ -27,7 +22,7 @@ table tr > td {
 }
 ```
 
-In Fylgja you will find it like this, _Mostly with CSS variables_;
+In the Fylgja style, often using CSS variables, you will find a more concise structure:
 
 ```css
 table {
@@ -39,38 +34,46 @@ td {
 }
 ```
 
-What we do is set the style as generic as possible,
-and inherit the styles from the parent element if it exists.
+Our approach aims to establish a more generic style definition that inherits properties from parent elements when present.
 
-This allows you to override any styles via the `table` or `td`,
-without having to write the entire CSS level of dept.
+This strategy facilitates easy overrides for specific styles,
+without the need for extensive CSS nesting.
 
-At first this looks as more CSS,
-but actually it saves you bytes as you add new custom styles, 
-since you can use 1 class to override every style set by the component.
+Though it may initially appear to be more CSS code,
+this approach proves efficient as you add new custom styles,
+minimizing the volume of code required to achieve customization.
 
-This principle can be used for Native elements and CSS components,
-and gets even better if you add CSS variables 🤗
+This principle can be applied to both native HTML elements and custom CSS components,
+particularly when integrated with CSS variables for even more flexibility 🤗
 
-## CSS class variables (class modifier)
+## Finding Harmony: A Mix of CSS Components and Utilities
 
-This convention helps us name things when we need to ad extra classes to our components,
-to override specific styles,
-it clearly shows that it's a class to change the main class.
+Here at Fylgja, we're all about offering a dynamic mix of CSS Components and Utilities, understanding that there's no one-size-fits-all rule in the world of CSS. Our goal is to make the most of CSS's capabilities while keeping our HTML code tidy and organized.
 
-example;
+- **CSS Components:** Opt for CSS Components when you're looking to reuse styles across your website. They help maintain a consistent look and speed up development.
+
+- **CSS Utilities:** Embrace CSS Utilities for specific, targeted styling needs. They're perfect for tackling individual style requirements efficiently and are easy to create specific layouts without adding new custom styles.
+
+- **Inline Styles:** When you have unique styles that don't quite fit with CSS Components or Utilities, go for inline styles. If possible, consider expanding them with CSS Props (CSS variables). This enhances flexibility and makes maintenance easier.
+
+Our philosophy is all about flexibility and adaptability. By combining different CSS techniques, we empower developers to craft engaging, efficient, and responsive web designs.
+
+## Our approach for Component Modifiers
+
+To enhance clarity when adding extra classes for style overrides,
+we employ a naming convention for class modifiers.
+
+This convention distinguishes classes intended to modify the main class by adding a hyphen prefix:
 
 ```css
 .class.-clipped { .. }
 ```
 
-The only change is adding a hyphen in front of any class
-that will just change styles from a CSS Component.
+This clear distinction signifies that the class serves to modify styles within a CSS component.
+A common example of this convention is the widely used `.-theme` class modifier,
+which applies color-themed styles to supporting components.
 
-Our most commonly used class variable is `.-theme`.
-It will add the color-theme styles to any component that supports this.
-
-Practical example of a button toolbar;
+For instance, consider a button toolbar implementation:
 
 ```html
 <div class="flex">
@@ -79,15 +82,22 @@ Practical example of a button toolbar;
 </div>
 ```
 
-The 2 modifier styles are clearly visible, and have the same affect as if you would use BEM syntax
-with the extra btn in front of the modifier class.
+The two modifier styles are easily recognizable and deliver the same effect as the BEM syntax with the additional btn prefix for the modifier class.
 
-We use this naming convention mostly to bundle CSS variables in to one class,
-that wil be reused a lot. We consider this a more readable and DRY way.
+This naming convention simplifies the bundling of CSS variables into a reusable class,
+promoting readability and adhering to the DRY (Don't Repeat Yourself) principle.
 
-## Stylelint config
+## Linting with our stylelint-config
 
-We also ship with a config for Stylelint.
-Works both for SCSS and CSS syntaxes.
-So if your interested in knowing more about our CSS formatting,
-[checkout our Stylelint config package](/components/stylelint-config/).
+To ensure code uniformity and adherence to our style guide,
+we provide a comprehensive Stylelint configuration.
+Our configuration is compatible with both SCSS and CSS syntaxes,
+offering insights into our preferred CSS formatting practices.
+
+If you're interested in delving deeper into our CSS formatting guidelines,
+feel free to explore our [Stylelint config package](/components/stylelint-config/).
+
+By following these guidelines,
+we aim to create a unified and streamlined development process that results in maintainable,
+efficient,
+and visually appealing code.
