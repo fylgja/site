@@ -1,6 +1,6 @@
 ---
 title: "Autocomplete in your editor"
-description: "A few tips to make it even easier to work with Fylgja in your own favorite editor"
+description: "Tips to make it even easier to work with Fylgja in your editor"
 thumb: "guide-thumb/code.jpg"
 ---
 

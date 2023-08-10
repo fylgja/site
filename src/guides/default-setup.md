@@ -1,7 +1,8 @@
 ---
 title: "How to add Fylgja to your Project"
-description: "How to setup Fylgja"
-thumb: "guide-thumb/sass.jpg"
+description: "Step by Step setup on how to add Fylgja to your project"
+thumb: "logo-icon.png"
+order: 1
 ---
 
 Fylgja is a CSS framework that does not require a framework or specific tools to work. This gives you the freedom to use Fylgja in your project in any way that you see fit.

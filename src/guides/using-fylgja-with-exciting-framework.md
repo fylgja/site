@@ -1,7 +1,8 @@
 ---
-title: "How to use with another framework"
-description: "How to use fylgja in another existing framework like Tailwind"
+title: "How to use Fylgja with another framework"
+description: "Adding the power of Fylgja to existing project"
 thumb: "guide-thumb/frameworks.jpg"
+order: 5
 ---
 
 As we mention multiple times 😅,

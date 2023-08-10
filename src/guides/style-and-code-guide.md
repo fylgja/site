@@ -1,7 +1,8 @@
 ---
-title: "Style and code guide"
-description: "How we write our code and name it"
+title: "Fylgja Style guide"
+description: "How we write our code and our name conventions"
 thumb: "guide-thumb/css-awesome.jpg"
+order: 8
 ---
 
 At Fylgja we use specific style and code guides, we try to follow where possible.
