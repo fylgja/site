@@ -25,6 +25,7 @@
     <link rel="preload" href="{{ '/css/main.css' | assetUrl }}" as="style">
     <link rel="preload" href="/fonts/Rubik-Italic-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/Rubik-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/images/socials.svg" as="image" type="svg+xml" crossorigin>
 
     {%- if preloadCss -%}
         {% for name, item in preload %}
@@ -66,6 +67,9 @@
     <meta name="apple-mobile-web-app-title" content="{{ meta.siteName }}">
     <meta name="application-name" content="{{ meta.siteName }}">
     <meta name="msapplication-TileColor" content="{{ meta.themeColor }}">
+    {# TODO consider adding this feature for upcomign browser support  #}
+    {# Test it with the Chrome flag enabled: (viewTransition API for navigations) #}
+    {# <meta name="view-transition" content="same-origin" /> #}
 
     <link rel="icon" href="{{ '/favicon.ico' | assetUrl }}" sizes="any">
     <link rel="icon" href="{{ '/favicon.svg' | assetUrl }}" type="image/svg+xml">

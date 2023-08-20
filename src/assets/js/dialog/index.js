@@ -1,12 +1,7 @@
-import dialogPolyfill from "dialog-polyfill/dist/dialog-polyfill.js";
-
 export function newDialog(id, button, backdrop = true) {
     const dialog = document.querySelector(id);
     const btn = document.querySelector(button);
     if (!dialog || !btn) return;
-    if (typeof HTMLDialogElement !== "function") {
-        dialogPolyfill.registerDialog(dialog);
-    }
 
     /**
      * Lock the screen when the dialog is open

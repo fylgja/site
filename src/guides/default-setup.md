@@ -97,5 +97,4 @@ From here, you can extend or change many things to your liking. Here are a few i
 
 I hope this guide has been helpful!
 
-If you have questions, feel free to ask them at our github repo at https://github.com/orgs/fylgja/discussions
-
+If you have questions, feel free to ask them at our [github discussions](https://github.com/orgs/fylgja/discussions)
