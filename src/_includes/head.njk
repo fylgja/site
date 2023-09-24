@@ -3,7 +3,6 @@
 {%- set pageSocialImg -%}{{ meta.url }}/images/{% if preview %}{{ preview }}{% else %}preview.png{% endif %}{%- endset -%}
 {%- set pageUrl -%}{{ meta.url }}{{ page.url }}{%- endset -%}
 {%- set pageCanonical -%}{{ meta.url }}{% if canonical %}{{ canonical }}{% else %}{{ page.url }}{% endif %}{%- endset -%}
-{%- set twitterCreator -%}{% if twitter %}{{ twitter }}{% else %}{{ meta.socials.twitter }}{% endif %}{%- endset -%}
 
 <head>
     <meta charset="utf-8">
@@ -42,8 +41,8 @@
     {# Seo & Feed #}
     <meta name="twitter:card" content="summary_large_image">
     {%- if meta.socials.twitter -%}
-        <meta name="twitter:site" content="@{{ meta.socials.twitter }}">
-        <meta name="twitter:creator" content="@{{ twitterCreator }}">
+        <meta name="twitter:site" content="@{{ meta.socials.twitter.user }}">
+        <meta name="twitter:creator" content="@{{ meta.socials.twitter.user }}">
     {%- endif -%}
     <meta name="twitter:title" content="{{pageTitle}}">
     <meta name="twitter:description" content="{{pageDescription}}">
