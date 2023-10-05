@@ -23,6 +23,7 @@ updates:
           - "patch"
       rollup:
         patterns:
+          - "@rollup*"
           - "rollup*"
         update-types:
           - "minor"
