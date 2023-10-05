@@ -47,6 +47,11 @@ module.exports = {
             text: "Starter projects",
             url: "/starter-projects/",
         },
+        {
+            text: "Changelog",
+            url: "https://github.com/fylgja/fylgja/releases/",
+            external: true,
+        },
     ],
     socials: [
         {
