@@ -1,9 +1,29 @@
 version: 2
 updates:
-- package-ecosystem: npm
-  directory: "/"
-  ingore:
-    - dependency-name: "@11ty/eleventy"
-  schedule:
-    interval: monthly
-  open-pull-requests-limit: 10
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 10
+    groups:
+      eleventy:
+        patterns:
+          - "@11ty*"
+          - "eleventy*"
+          - "@grimlink/eleventy*"
+          - "@quasibit/eleventy*"
+        update-types:
+          - "minor"
+          - "patch"
+      postcss:
+        patterns:
+          - "postcss*"
+        update-types:
+          - "minor"
+          - "patch"
+      rollup:
+        patterns:
+          - "rollup*"
+        update-types:
+          - "minor"
+          - "patch"
