@@ -10,6 +10,8 @@
 @use "./print";
 @use "./skip-link";
 @use "@fylgja/base" with (
+    $color-theme: #1565c0,
+    $color-on-theme: #fff,
     $family-main: (
         Rubik,
         Roboto,
