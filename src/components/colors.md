@@ -118,7 +118,7 @@ Instead of importing the default version you can import the oklch version using;
 
 .silver-card {
     --color-hue: var(--blue); // or your own color angle/hue
-    background-color: oklch(var(--color-4-oklch));
+    background-color: oklch(var(--color-4));
 }
 ```
 
