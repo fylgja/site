@@ -26,7 +26,7 @@ Add a collection of prebuild colors to any project with ease, using Fylgja Color
 ## Installation
 
 ```bash
-npm install @fylgja/colors
+npm install @fylgja/colors@2.0.0-beta.6
 ```
 
 Then include the component in to your code via;
@@ -99,13 +99,28 @@ Instead of importing the default version you can import the hsl version using;
 @import "@fylgja/colors/hsl"; // *
 
 .silver-card {
-    background-color: hsl(var(--blue-gray-4) / 10%);
+    background-color: hsl(var(--blue-gray-4-hsl) / 10%);
 }
 ```
 
 ### Using okLCH syntax
 
-> Coming soon...
+> This syntax might still change in the actual v2 release
+
+Instead of importing the default version you can import the oklch version using;
+
+```scss
+@use "@fylgja/colors/oklch";
+@use "@fylgja/colors/oklch-hues";
+// Or via PostCSS and other options as plain CSS
+@import "@fylgja/colors/oklch"; // *
+@import "@fylgja/colors/oklch-hues"; // *
+
+.silver-card {
+    --color-hue: var(--blue); // or your own color angle/hue
+    background-color: oklch(var(--color-4-oklch));
+}
+```
 
 ### Using a single colors
 
