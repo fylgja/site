@@ -1,29 +1,19 @@
 ---
-title: "Native Elements"
+title: "Native Elements (Classless)"
 description: "Fylgja believes in a clean html.
 This done via single layered and purse classes.
 But it also ship's with many styles set directly on the html element,
 a.k.a. Native Elements."
 ---
 
-Fylgja believes in clean html.
+Fylgja believes in clean HTML. We achieve this through single-layered and purpose-driven classes. However, we also ship with many styles set directly on the HTML element, known as Native Elements.
 
-This done via single layered and purpose classes.
-But it also ship's with many styles set directly on the html element,
-a.k.a. Native Elements.
+Some elements, such as form fields, do not require different styles than the ones you use repeatedly throughout your site. Instead, we add flexibility through CSS variables, which allow you to change the style for a specific use case.
 
-Some elements like form fields don't require different styles.
-Than the one you use repeatedly trough the site.
-Instead the flexibility is added via CSS variables.
-If the style need to be different for that one use case.
+There is nothing wrong with having styles set directly on the HTML element, as long as they are foundational styles. The main advantage of Native Elements is that your HTML does not need to have any classes to have good defaults.
 
-Besides that there is nothing wrong with having the styles set directly.
-as long it is a foundational style.
+To see this in action, check out our CodePen using only HTML and nothing more: [https://codepen.io/Fylgja/pen/ExGOZaE]
 
-The main advantage of Native Elements is that your html does not need to have any classes.
-To have good default.
-
-Best samples of this are our form based components,
-like `@fylgja/form` and `@fylgja/control`.
+Or try it yourself using one of our Native Element components below.
 
 {% include "related/nativeelements.njk" %}

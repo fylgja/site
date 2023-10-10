@@ -45,6 +45,17 @@ use the following import;
 @import "@fylgja/button" layer(components);
 ```
 
+### Native Elements (Classless)
+
+If you want to use the button styles directly on the button element,
+use the following import;
+
+```scss
+@use "@fylgja/button" with ($enable-native-btn: true);
+// Or via native CSS import, also supported by PostCSS import
+@import "@fylgja/button/native";
+```
+
 ## How to use
 
 In your html you only need the `.btn` class to use the button style.
