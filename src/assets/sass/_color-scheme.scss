@@ -16,6 +16,11 @@ $white-soft: color.change(#fff, $alpha: 0.5);
     --color-text-alt: #{color.change(#fff, $alpha: 0.8)};
     --color-text-muted: #{color.change(#fff, $alpha: 0.67)};
     --color-theme: #{color.change($color-theme, $lightness: 24%)};
+    --color-theme-fade: #{color.change(
+            $color-theme,
+            $lightness: 54%,
+            $alpha: 0.67
+        )};
     --link-color: #{color.change($color-theme, $lightness: 75%)};
     --link-color-focus: currentcolor;
     --selection-bg: #{$theme-dark};
