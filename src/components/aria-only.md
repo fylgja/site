@@ -54,7 +54,7 @@ use the following import;
 
 ```scss
 @use "@fylgja/aria-only" with ($aria-only-layer: "utilities");
-// Or via native CSS import, also supported by PostCSS import
+// Or via PostCSS and other options as native CSS
 @import "@fylgja/aria-only" layer(utilities);
 ```
 

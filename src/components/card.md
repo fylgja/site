@@ -37,7 +37,7 @@ use the following import;
 
 ```scss
 @use "@fylgja/card" with ($card-layer: "components");
-// Or via native CSS import, also supported by PostCSS import
+// Or via PostCSS and other options as native CSS
 @import "@fylgja/card" layer(components);
 ```
 

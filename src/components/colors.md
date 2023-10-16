@@ -33,7 +33,7 @@ Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/colors";
-// Or via PostCSS and other options as plain CSS
+// Or via PostCSS and other options as native CSS
 @import "@fylgja/colors"; // *
 ```
 
@@ -95,7 +95,7 @@ Instead of importing the default version you can import the hsl version using;
 
 ```scss
 @use "@fylgja/colors/hsl";
-// Or via PostCSS and other options as plain CSS
+// Or via PostCSS and other options as native CSS
 @import "@fylgja/colors/hsl"; // *
 
 .silver-card {
@@ -112,7 +112,7 @@ Instead of importing the default version you can import the oklch version using;
 ```scss
 @use "@fylgja/colors/oklch";
 @use "@fylgja/colors/oklch-hues";
-// Or via PostCSS and other options as plain CSS
+// Or via PostCSS and other options as native CSS
 @import "@fylgja/colors/oklch"; // *
 @import "@fylgja/colors/oklch-hues"; // *
 

@@ -19,7 +19,7 @@ Then include the component in to your code via;
 
 ```scss
 @use "@fylgja/z-layer";
-// Or via PostCSS and other options as plain CSS
+// Or via PostCSS and other options as native CSS
 @import "@fylgja/z-layer"; // *
 ```
 

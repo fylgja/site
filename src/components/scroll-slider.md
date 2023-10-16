@@ -38,7 +38,7 @@ use the following import;
 
 ```scss
 @use "@fylgja/scroll-slider" with ($scroll-layer: "components");
-// Or via native CSS import, also supported by PostCSS import
+// Or via PostCSS and other options as native CSS
 @import "@fylgja/scroll-slider" layer(components);
 ```
 

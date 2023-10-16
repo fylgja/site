@@ -41,7 +41,7 @@ use the following import;
 
 ```scss
 @use "@fylgja/button" with ($button-layer: "components");
-// Or via native CSS import, also supported by PostCSS import
+// Or via PostCSS and other options as native CSS
 @import "@fylgja/button" layer(components);
 ```
 
@@ -52,7 +52,7 @@ use the following import;
 
 ```scss
 @use "@fylgja/button" with ($enable-native-btn: true);
-// Or via native CSS import, also supported by PostCSS import
+// Or via PostCSS and other options as native CSS
 @import "@fylgja/button/native";
 ```
 

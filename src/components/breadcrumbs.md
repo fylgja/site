@@ -33,7 +33,7 @@ use the following import;
 
 ```scss
 @use "@fylgja/breadcrumbs" with ($breadcrumbs-layer: "components");
-// Or via native CSS import, also supported by PostCSS import
+// Or via PostCSS and other options as native CSS
 @import "@fylgja/breadcrumbs" layer(components);
 ```
 
