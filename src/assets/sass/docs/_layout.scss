@@ -10,6 +10,13 @@
     }
 }
 
+.menu summary {
+    // Safari unset for default marker
+    &::-webkit-details-marker {
+        display: none;
+    }
+}
+
 @media ($md) {
     .docs-page {
         --sticky-offset: 71px;
