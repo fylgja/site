@@ -94,6 +94,7 @@ Now, all you need to do is add the HTML for your form:
 
     <label for="get-copy">
         <input id="get-copy" name="get-copy" type="checkbox">
+        Get copy of your Question
     </label>
 
     <button type="submit">Submit</button>
