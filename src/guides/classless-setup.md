@@ -1,5 +1,5 @@
 ---
-title: "Simplifying Styling with Fylgja: A Classless Approach"
+title: "Simplifying Styling: A Classless Approach"
 description: "Unlock the power of minimal CSS frameworks with Fylgja's classless styling"
 thumb: "logo-icon-orange.png"
 order: 2
@@ -86,7 +86,7 @@ Now, all you need to do is add the HTML for your form:
     <label for="name">Name</label>
     <input id="name" name="name" type="name" autocomplete="name" required>
 
-    <label for "email">Email</label>
+    <label for="email">Email</label>
     <input id="email" name="email" type="email" autocomplete="email" required>
 
     <label for="question">Question</label>
