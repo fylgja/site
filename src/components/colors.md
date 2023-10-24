@@ -15,7 +15,7 @@ versions: [
 > Attention!
 > This is the latest iteration of our color component, currently in its beta phase.
 > 
-> If you wish to access the previous version, [please visit the v1 page](/components/v1/colors).
+> If you wish to access the previous version, [please visit the v1 page](/components/v1/colors/).
 > 
 > However, if you're looking for a more comprehensive color palette with improved dark shades,
 > you've come to the right place.

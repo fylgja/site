@@ -28,7 +28,7 @@ css: { page: "/css/docs.css" }
                                         <ul class="menu text-small">
                                             {% for version in versions %}
                                                 {% if loop.first %}{% else %}
-                                                    <li><a href="/components/{{ version.url }}">{{ version.name }}</a></li>
+                                                    <li><a href="/components/{{ version.url }}/">{{ version.name }}</a></li>
                                                 {% endif %}
                                             {% endfor %}
                                         </ul>
