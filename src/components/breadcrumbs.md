@@ -47,8 +47,8 @@ We advice you to use of an ordered list, as this tells the user the structure of
 <nav aria-label="breadcrumb">
     <ol class="breadcrumbs">
         <li><a href="/">Home</a></li>
-        <li><a href="/path">Path</a></li>
-        <li><a href="/path/cool-page" aria-current="page">Cool Page</a></li>
+        <li><a href="/#path">Path</a></li>
+        <li><a href="/#path-deeper" aria-current="page">Cool Page</a></li>
     </ol>
 </nav>
 {% endcodeSample %}
