@@ -1,6 +1,9 @@
 @use "@fylgja/mq" as *;
 @use "@fylgja/form/helper" as *;
 @use "@fylgja/dialog/helper" as *;
+@use "@fylgja/dialog/keyframes" as *;
+
+@include dialog-keyframes;
 
 // stylelint-disable selector-class-pattern, no-descending-specificity
 .DocSearch svg {
@@ -17,6 +20,7 @@
 
     &:not([hidden]) {
         animation: dialog-show 300ms;
+        opacity: 1;
         transition: none;
         visibility: visible;
     }
