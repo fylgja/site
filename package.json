@@ -43,7 +43,7 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "@fullhuman/postcss-purgecss": "^5.0.0",
     "@fylgja/sass": "^2.0.1",
-    "@fylgja/stylelint-config": "^6.0.2",
+    "@fylgja/stylelint-config": "^7.0.0",
     "@grimlink/eleventy-plugin-sass": "^1.0.3",
     "@quasibit/eleventy-plugin-sitemap": "^2.2.0",
     "@rollup/plugin-commonjs": "^25.0.7",
