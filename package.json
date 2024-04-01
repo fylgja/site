@@ -28,7 +28,7 @@
     "defaults"
   ],
   "dependencies": {
-    "@docsearch/js": "^3.5.2",
+    "@docsearch/js": "^3.6.0",
     "@fylgja/colors": "^2.0.0-beta.6",
     "@fylgja/marquee": "^1.0.0",
     "dialog-polyfill": "^0.5.6",
