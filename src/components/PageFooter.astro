@@ -1,0 +1,112 @@
+---
+import siteConfig from "site.config";
+import Logo from "@assets/logo.svg?raw";
+import SocialIcons from "./SocialIcons.astro";
+---
+
+<footer style="--py: 2rem">
+	<div class="container">
+		<div class="main-footer">
+			<div>
+				<Fragment set:html={Logo} />
+			</div>
+			<div class="grid" style="--sm_grid-cols: 2; --lg_grid-cols: 3">
+				<div>
+					<h2>Resources</h2>
+					<nav aria-label="Resources">
+						<ul>
+							<li><a href="/docs/packages/base">Base</a></li>
+							<li><a href="/docs/packages/tokens">Tokens</a></li>
+							<li>
+								<a href="/docs/packages/utilities">Utilities</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+				<div>
+					<h2>About</h2>
+					<nav aria-label="About">
+						<ul>
+							<li>
+								<a href="/docs/core-concepts/why-fylgja"
+									>Why Choose Fylgja</a
+								>
+							</li>
+						</ul>
+					</nav>
+				</div>
+				<div>
+					<h2>Community</h2>
+					<nav aria-label="Community">
+						<ul>
+							<li>
+								<a
+									href="https://github.com/orgs/fylgja/discussions"
+									>Github Discussions</a
+								>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<hr />
+		<div
+			class="sub-footer flex align gap"
+			style="--flex-dir: column; --md_flex-dir: row;"
+		>
+			<nav
+				aria-label="License and Contributors"
+				class="flex gap"
+				style="--flex-wrap: wrap"
+			>
+				<a
+					target="_blank"
+					href="https://github.com/fylgja/fylgja/blob/main/LICENSE"
+					class="no-underline"
+				>
+					MIT License © 2024
+				</a>
+				<a
+					target="_blank"
+					href="https://github.com/fylgja/fylgja/graphs/contributors"
+					class="no-underline"
+				>
+					Fylgja Contributors
+				</a>
+			</nav>
+			<SocialIcons socials={siteConfig.socials} />
+		</div>
+	</div>
+</footer>
+
+<style>
+	footer {
+		border-block-start: 1px solid
+			color-mix(in srgb, currentcolor 20%, transparent);
+
+		& h2 {
+			--h-size: 1em;
+		}
+	}
+
+	.main-footer {
+		@media (width >= 640px) {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+		}
+
+		@media (width >= 1024px) {
+			grid-template-columns: 1.25fr 1fr;
+		}
+	}
+
+	nav a {
+		color: var(--text-color-muted);
+		text-decoration: none;
+
+		&:hover {
+			color: var(--text-color);
+		}
+	}
+</style>

@@ -1,9 +1,0 @@
-{
-  "tags": ["docs", "features"],
-  "layout": "docs",
-  "permalink": "/features/{{ page.fileSlug }}/",
-  "breadcrumbs": {
-    "Features": "/features/"
-  },
-  "order": 10
-}

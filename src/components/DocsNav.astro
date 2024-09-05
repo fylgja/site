@@ -1,0 +1,81 @@
+---
+interface Props {
+	items: {
+		title: string;
+		items: {
+			slug: string;
+			data: {
+				title: string;
+			};
+		}[];
+	}[];
+	class?: string;
+}
+
+const currentPath = Astro.url.pathname;
+const isCurrentPage = (href: string) => (currentPath === href ? "page" : null);
+const { items, class: classes } = Astro.props;
+---
+
+<nav aria-label="Docs Nav" class:list={["menu", classes]}>
+	<ul>
+		{
+			items.map((group) => {
+				if (!group.items.length) return;
+				return (
+					<li>
+						<details open>
+							<summary class="list-none btn w-full">
+								<span>{group.title}</span>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="20"
+									height="20"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="flip-rotate transistion" style="--duration: 300ms"
+									aria-hidden="true"
+								>
+									<path d="m6 9 6 6 6-6"/>
+								</svg>
+							</summary>
+							<ul style="--px: 1em 0">
+								{group.items.map((item) => (
+									<li>
+										<a
+											class="btn w-full"
+											href={`/docs/${item.slug}`}
+											aria-current={isCurrentPage(
+												`/docs/${item.slug}`
+											)}
+										>
+											{item.data.title}
+										</a>
+									</li>
+								))}
+							</ul>
+						</details>
+					</li>
+				);
+			})
+		}
+	</ul>
+</nav>
+
+<style>
+	nav {
+		& a {
+			color: var(--text-color-muted);
+			font-size: 0.875em;
+			text-decoration: none;
+
+			&:hover {
+				color: var(--text-color);
+			}
+		}
+	}
+</style>

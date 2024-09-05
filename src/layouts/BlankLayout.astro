@@ -1,0 +1,40 @@
+---
+import Head from "@components/Head.astro";
+import siteConfig from "site.config";
+
+interface Props {
+	title: string;
+	description?: string;
+	lang?: string;
+	dir?: "ltr" | "rtl";
+}
+
+const { description: siteDescription, themeColor, themeColorDark } = siteConfig;
+const {
+	title,
+	description = siteDescription,
+	lang = "en",
+	dir = "ltr",
+} = Astro.props;
+---
+
+<html lang={lang} dir={dir} data-theme="auto">
+	<Head
+		title={title}
+		description={description}
+		themeColor={themeColor}
+		themeColorDark={themeColorDark}
+	>
+		<link
+			rel="alternate"
+			type="application/rss+xml"
+			title=""
+			href={new URL("feed.xml", Astro.site)}
+		/>
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		<slot name="head" />
+	</Head>
+	<body>
+		<slot />
+	</body>
+</html>

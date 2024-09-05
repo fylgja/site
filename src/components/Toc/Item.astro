@@ -1,0 +1,31 @@
+---
+import type { TocItemProps } from "./types";
+
+interface Props {
+	item: TocItemProps;
+	startingDepth?: number;
+}
+
+const { item, startingDepth = 2 } = Astro.props;
+---
+
+<li style={{ '--toc-depth': (item.depth - startingDepth) }}>
+	<a href={"#" + item.slug}>
+		<span>{item.text}</span>
+	</a>
+	{item.children.length > 0 && (
+		<ul>
+			{
+				item.children.map((subItem: TocItemProps) => (
+					<Astro.self item={subItem} />
+				))
+			}
+		</ul>
+	)}
+</li>
+
+<style>
+	li {
+		padding-inline-start: calc(var(--toc-indent, 1rem) * var(--toc-depth));
+	}
+</style>

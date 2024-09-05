@@ -1,0 +1,54 @@
+---
+import Layout from "@layouts/PageLayout.astro";
+import FeatureGrid from "@components/ui/FeatureGrid.astro";
+import MediaText from "@components/ui/MediaText.astro";
+---
+
+<Layout title="Components" style="--py: 2rem">
+	<FeatureGrid
+		classItem="card"
+		items={[
+			{
+				title: "Realisatie",
+				description:
+					"Wij ontwerpen en creëren gebruiksvriendelijke webshops die technisch uitstekend werken en goed vindbaar zijn. We bieden maatwerk en bouwen de webshop volledig volgens uw wensen en huisstijl.",
+				icon: "/icon.svg",
+			},
+			{
+				title: "Onderhoud",
+				description:
+					"Bij ons ben je aan het juiste adres voor volledig webshop onderhoud. We verzorgen het onderhoud, optimalisatie en de beveiliging van zowel nieuwe als bestaande webshops.",
+				icon: "/icon.svg",
+			},
+			{
+				title: "Migratie",
+				description:
+					"Migreren en upgraden van e-commerce webshops, of je nu wilt overstappen naar een nieuwere versie van Magento of de sprong wilt maken naar een ander platform, wij zorgen ervoor dat jouw webshop met behoud van data en functionaliteit overgaat.",
+				icon: "/icon.svg",
+			},
+			{
+				title: "Verbetering",
+				description:
+					"Wij onderzoeken grondig, lossen problemen op en voeren verbeteringen door. Of het nu gaat om foutoplossing, gebruikerservaring of nieuwe functies, wij zorgen ervoor dat jouw webshop weer optimaal presteert en aan je verwachtingen voldoet.",
+				icon: "/icon.svg",
+			},
+			{
+				title: "Integratie",
+				description:
+					"Integratie is essentieel voor een succesvolle webshop. Van betalings- en verzenddiensten tot het integreren met ERP/CRM-systemen, wij zorgen ervoor dat alle essentiële elementen goed samenwerken.",
+				icon: "/icon.svg",
+			},
+			{
+				title: "Ontwikeling",
+				description:
+					"Op maat gemaakte modules en plugins zijn de bouwstenen van een goede webshopervaring. Wij creëren op maat gemaakte extensies die naadloos in jouw webshop integreren.",
+				icon: "/icon.svg",
+			},
+		]}
+	/>
+	<MediaText image="/icon.svg" imageProps={{ position: "after" }}>
+		<h2>reubhreuyh</h2>
+		<p>eiuhbre3ioub</p>
+		<!-- List with icon -->
+	</MediaText>
+</Layout>

@@ -1,0 +1,14 @@
+---
+import Layout from "@layouts/PageLayout.astro";
+const title = "Fylgja";
+---
+
+<Layout title={title} hideSearch={true}>
+	<h1>{title}</h1>
+</Layout>
+
+<style is:global>
+	.page-header {
+		--page-header-bg: transparent;
+	}
+</style>

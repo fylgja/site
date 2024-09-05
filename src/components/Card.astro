@@ -1,0 +1,21 @@
+---
+import "fylgja/components/card/index.css";
+
+interface Props {
+  title: string;
+  body: string;
+  href: string;
+}
+
+const { href, title, body } = Astro.props;
+---
+
+<a href={href} class="card">
+  <h2>
+    {title}
+    <span>&rarr;</span>
+  </h2>
+  <p>
+    {body}
+  </p>
+</a>
