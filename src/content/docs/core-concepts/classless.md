@@ -1,5 +1,5 @@
 ---
-title: "Classless"
+title: "Class-less"
 description: "Fylgja believes in a clean html.
 This done via single layered and purse classes.
 But it also ship's with many styles set directly on the html element,

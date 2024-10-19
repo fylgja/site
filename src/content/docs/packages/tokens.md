@@ -1,10 +1,10 @@
 ---
 title: "Tokens"
 pageTitle: "Fylgja Tokens"
-description: "Common defaults to make your body and typography look good
-and easy to change to your needs."
+description: "Common defaults to make your body and typography look good and easy to change to your needs."
 npm: "@fylgja/tokens"
 git: "tokens"
+sortOrder: 5
 ---
 
 Common defaults to make your body and typography look good
