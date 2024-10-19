@@ -18,16 +18,24 @@ interface Props {
 	}[];
 }
 
-async function getDocsCollection(path: string) {
-	return await getCollection("docs", ({ id, data }) => {
-		if (import.meta.env.PROD ? data.isDraft !== true : false) return;
-
-		if (path === "/") {
-			return !id.includes("/");
-		} else {
-			return id.startsWith(path);
-		}
+const sortByOrder = (collection: any[]) => {
+	return collection.sort((a, b) => {
+		return a.data.sortOrder - b.data.sortOrder;
 	});
+};
+
+async function getDocsCollection(path: string) {
+	return sortByOrder(
+		await getCollection("docs", ({ id, data }: { id: string; data: any }) => {
+			if (import.meta.env.PROD ? data.isDraft !== true : false) return;
+
+			if (path === "/") {
+				return !id.includes("/");
+			} else {
+				return id.startsWith(path);
+			}
+		})
+	);
 }
 
 const docsCollection = [
@@ -72,9 +80,13 @@ const { title, description, toc } = Astro.props;
 				<slot />
 			</div>
 		</article>
-		<div class="appbar sticky card xl:hidden">
-			<Toc isMobile toc={toc} label="On this Page" />
-		</div>
+		{
+			!!toc.length && (
+				<div class="appbar sticky card xl:hidden">
+					<Toc isMobile toc={toc} label="On this Page" />
+				</div>
+			)
+		}
 	</main>
 	<PageFooter />
 </Layout>
@@ -96,7 +108,9 @@ const { title, description, toc } = Astro.props;
 			position: relative;
 			display: grid;
 			grid-template-columns: 320px 1fr 320px;
-			grid-template-areas: "menu content content"
+			grid-template-rows: 1fr auto;
+			grid-template-areas:
+				"menu content content"
 				"menu appbar appbar";
 		}
 
@@ -114,16 +128,15 @@ const { title, description, toc } = Astro.props;
 			grid-area: appbar;
 		}
 
-
 		.docs-menu {
 			position: absolute;
 			inset: 0;
-			background-color: color-mix(
-				in oklab,
-				var(--root-bg) 94%,
-				var(--brand)
-			);
+			background-color: color-mix(in oklab, var(--root-bg) 94%, var(--brand));
 			grid-area: menu;
+
+			& > .sticky {
+				padding: 1rem 0.5rem;
+			}
 		}
 	}
 

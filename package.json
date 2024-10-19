@@ -4,6 +4,7 @@
 	"description": "The Fylgja site powered by eleventy",
 	"private": true,
 	"author": "fylgja",
+	"type": "module",
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",

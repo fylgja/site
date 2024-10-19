@@ -1,6 +1,7 @@
 ---
 import siteConfig from "site.config";
 import Logo from "@assets/logo.svg?raw";
+import Offcanvas from "@components/Offcanvas.astro";
 import DocSearch from "@components/DocSearch.astro";
 
 interface Props {
@@ -28,74 +29,52 @@ const menu = [
 ];
 ---
 
-<header
-	id="pageHeader"
-	class="page-header sticky"
-	style="--inset-t: -1px; --z: 6"
->
+<header id="pageHeader" class="page-header sticky" style="--inset-t: -1px; --z: 6">
 	<div class="container flex align gap" style="--py: 1rem">
-		<a
-			href="/"
-			title="Go back to the Fylgja Homepage"
-			aria-label={siteConfig.name}
-		>
+		<a href="/" title="Go back to the Fylgja Homepage" aria-label={siteConfig.name}>
 			<Fragment set:html={Logo} />
 		</a>
 		{
 			!hideSearch && (
-				<DocSearch
-					class="flex align"
-					style="--flex: 1 1 auto; --align: center;"
-				/>
+				<DocSearch style="--mx: auto 0; --md_mx: 0; --md_flex: 0 0 min(100%, 22rem);" />
 			)
 		}
-		<nav aria-label="Main Menu" class="menu hidden md:block" style="--menu-dir: row">
-			{
-				menu.map((item) => (
-					<a
-						href={item.path}
-						aria-current={isCurrentPage(item.path)}
-						class="btn"
-					>
-						{item.label}
-					</a>
-				))
-			}
-		</nav>
-		<button popovertarget="mobileMenu" class="lg:hidden">
-			=
-		</button>
-		<dialog id="mobileMenu" popover class="offcanvas">
-			<slot name="mobile-menu"/>
-			<hr style="--my: 0.5rem">
-			<div class="menu">
+		<div class="flex align gap">
+			<nav aria-label="Main Menu" class="menu hidden md:block" style="--menu-dir: row">
 				{
 					menu.map((item) => (
-						<a
-							href={item.path}
-							aria-current={isCurrentPage(item.path)}
-							class="btn"
-						>
+						<a href={item.path} aria-current={isCurrentPage(item.path)} class="btn">
 							{item.label}
 						</a>
 					))
 				}
-			</div>
-		</dialog>
+			</nav>
+			<Offcanvas label="Mobile Menu Drawer" btnClasses="lg:hidden">
+				<slot name="mobile-menu" />
+				<hr style="--my: 0.5rem" />
+				<div class="menu">
+					{
+						menu.map((item) => (
+							<a href={item.path} aria-current={isCurrentPage(item.path)} class="btn">
+								{item.label}
+							</a>
+						))
+					}
+				</div>
+			</Offcanvas>
+		</div>
 	</div>
 </header>
 
 <script>
 	const pageHeader = document.getElementById("pageHeader") as HTMLElement;
-
 	document.documentElement.style.setProperty(
 		"--page-header-height",
 		pageHeader.offsetHeight + "px"
 	);
 
 	const observer = new IntersectionObserver(
-		([e]) =>
-			e.target.setAttribute("data-sticky", `${e.intersectionRatio < 1}`),
+		([e]) => e.target.setAttribute("data-sticky", `${e.intersectionRatio < 1}`),
 		{ threshold: 1 }
 	);
 	observer.observe(pageHeader);

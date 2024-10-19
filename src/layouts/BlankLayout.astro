@@ -10,12 +10,7 @@ interface Props {
 }
 
 const { description: siteDescription, themeColor, themeColorDark } = siteConfig;
-const {
-	title,
-	description = siteDescription,
-	lang = "en",
-	dir = "ltr",
-} = Astro.props;
+const { title, description = siteDescription, lang = "en", dir = "ltr" } = Astro.props;
 ---
 
 <html lang={lang} dir={dir} data-theme="auto">
@@ -25,6 +20,7 @@ const {
 		themeColor={themeColor}
 		themeColorDark={themeColorDark}
 	>
+		<script src="../assets/main.js"></script>
 		<link
 			rel="alternate"
 			type="application/rss+xml"

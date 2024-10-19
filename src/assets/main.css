@@ -1,8 +1,8 @@
-@import "fylgja/base";
-@import "fylgja/base/theme";
-
 @import "fylgja/tokens";
 @import "fylgja/tokens/theme";
+
+@import "fylgja/base";
+@import "fylgja/base/theme";
 
 @import "fylgja/components/container";
 @import "fylgja/components/card";
@@ -20,34 +20,4 @@ pre .line:empty {
 
 .inset-header {
 	--inset-y: var(--page-header-height, 0px) auto;
-}
-
-:where(:open summary, [aria-expanded=true], [aria-selected=true], [aria-sort=ascending]) > .flip {
-	scale: -1;
-}
-
-:where(:open summary, [aria-expanded=true], [aria-selected=true], [aria-sort=ascending]) > .flip-rotate {
-	rotate: 180deg;
-}
-
-:is(.transistion, .transistion-color, .transistion-opacity, .transition-transform) {
-	--properties: border-color, background-color, color, opacity, box-shadow, transform, translate, scale, rotate, filter, backdrop-filter, display, overlay;
-	--ease: cubic-bezier(0.4, 0, 0.2, 1);
-	--duration: 150ms;
-	transition-property: var(--properties);
-	transition-timing-function: var(--ease);
-	transition-duration: var(--duration);
-	transition-behavior: allow-discrete;
-}
-
-.transistion-color {
-	--properties: border-color, background-color, color;
-}
-
-.transistion-opacity {
-	--properties: opacity;
-}
-
-.transition-transform {
-	--properties: transform, translate, scale, rotate;
 }

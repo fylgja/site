@@ -9,23 +9,34 @@ interface Props {
 const { item, startingDepth = 2 } = Astro.props;
 ---
 
-<li style={{ '--toc-depth': (item.depth - startingDepth) }}>
+<li style={{ "--toc-depth": item.depth - startingDepth }}>
 	<a href={"#" + item.slug}>
 		<span>{item.text}</span>
 	</a>
-	{item.children.length > 0 && (
-		<ul>
-			{
-				item.children.map((subItem: TocItemProps) => (
+	{
+		item.children.length > 0 && (
+			<ul>
+				{item.children.map((subItem: TocItemProps) => (
 					<Astro.self item={subItem} />
-				))
-			}
-		</ul>
-	)}
+				))}
+			</ul>
+		)
+	}
 </li>
 
 <style>
 	li {
 		padding-inline-start: calc(var(--toc-indent, 1rem) * var(--toc-depth));
+	}
+
+	a {
+		display: inline-block;
+		padding-block: 0.25em;
+		text-decoration: none;
+
+		&:hover {
+			color: var(--brand);
+			text-decoration: underline;
+		}
 	}
 </style>

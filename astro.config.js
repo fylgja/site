@@ -8,6 +8,17 @@ export default defineConfig({
 		"/guides": "/docs",
 	},
 	integrations: [sitemap()],
+	markdown: {
+		shikiConfig: {
+			theme: "github-dark",
+			langAlias: {
+				phtml: "php",
+			},
+		},
+	},
+	devToolbar: {
+		enabled: false,
+	},
 	vite: {
 		ssr: {
 			noExternal: ["fylgja"],
