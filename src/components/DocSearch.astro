@@ -93,11 +93,6 @@ const { ...attrs } = Astro.props;
 		stroke-width: 0.125rem;
 	}
 
-	.DocSearch-Button {
-		--btn-stroke: color-mix(in srgb, var(--root-fg), transparent 80%);
-		border-width: 1px;
-	}
-
 	.DocSearch-Button-Container {
 		display: contents;
 	}
@@ -109,9 +104,8 @@ const { ...attrs } = Astro.props;
 		background-color: color-mix(in srgb, var(--root-fg), transparent 90%);
 		border-radius: inherit;
 
-		& > kbd {
-			border-radius: 0;
-			border: 0;
+		& kbd {
+			padding: 0 0.125rem;
 		}
 	}
 
@@ -119,8 +113,10 @@ const { ...attrs } = Astro.props;
 		fill: currentcolor;
 	}
 
-	@media (width >= 640px) {
+	@media (width >= 768px) {
 		.DocSearch-Button {
+			--btn-stroke: color-mix(in srgb, var(--root-fg), transparent 80%);
+			border-width: 1px;
 			width: min(100%, 22rem);
 		}
 
@@ -130,9 +126,9 @@ const { ...attrs } = Astro.props;
 		}
 	}
 
-	@media (width < 640px) {
+	@media (width < 768px) {
 		.DocSearch-Button {
-			padding: 2px;
+			padding: 0.8em;
 		}
 
 		.DocSearch-Button-Placeholder,
