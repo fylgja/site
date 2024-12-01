@@ -57,7 +57,7 @@
     "html-minifier": "^4.0.0",
     "markdown-it-anchor": "^8.6.7",
     "markdown-it-external-anchor": "^1.0.0",
-    "postcss": "^8.4.32",
+    "postcss": "^8.4.49",
     "postcss-cli": "^10.1.0",
     "postcss-preset-env": "^9.3.0",
     "rollup": "^4.6.1",
