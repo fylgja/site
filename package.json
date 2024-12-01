@@ -41,7 +41,7 @@
     "@11ty/eleventy-img": "^3.1.8",
     "@11ty/eleventy-plugin-rss": "^1.1.2",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
-    "@fullhuman/postcss-purgecss": "^5.0.0",
+    "@fullhuman/postcss-purgecss": "^7.0.2",
     "@fylgja/sass": "^2.0.1",
     "@fylgja/stylelint-config": "^6.0.2",
     "@grimlink/eleventy-plugin-sass": "^1.0.3",
