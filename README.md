@@ -2,7 +2,7 @@
 
 The website and also the documentation for [Fylgja](https://fylgja.dev).
 
-The website is build with [11ty](https://www.11ty.dev/).
+The website is build with [Astro](https://astro.build/).
 
 See our main repo here -> https://github.com/fylgja/fylgja
 Any documentation found in each component there, is based on the documentation here.

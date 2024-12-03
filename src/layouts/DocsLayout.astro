@@ -1,0 +1,161 @@
+---
+import "@assets/main.css";
+import Layout from "./BlankLayout.astro";
+import PageHeader from "@components/PageHeader.astro";
+import PageFooter from "@components/PageFooter.astro";
+import DocsNav from "@components/DocsNav.astro";
+import SkipLink from "@components/SkipLink.astro";
+import Toc from "@components/Toc";
+import { getCollection } from "astro:content";
+
+interface Props {
+	title: string;
+	description?: string;
+	toc: {
+		depth: number;
+		slug: string;
+		text: string;
+	}[];
+}
+
+const sortByOrder = (collection: any[]) => {
+	return collection.sort((a, b) => {
+		return a.data.sortOrder - b.data.sortOrder;
+	});
+};
+
+async function getDocsCollection(path: string) {
+	return sortByOrder(
+		await getCollection("docs", ({ id, data }: { id: string; data: any }) => {
+			if (import.meta.env.PROD ? data.isDraft !== true : false) return;
+
+			if (path === "/") {
+				return !id.includes("/");
+			} else {
+				return id.startsWith(path);
+			}
+		})
+	);
+}
+
+const docsCollection = [
+	{
+		title: "Welcome",
+		items: await getDocsCollection("/"),
+	},
+	{
+		title: "Core Concepts",
+		items: await getDocsCollection("core-concepts/"),
+	},
+	{
+		title: "Packages",
+		items: await getDocsCollection("packages/"),
+	},
+	{
+		title: "Presets",
+		items: await getDocsCollection("presets/"),
+	},
+	{
+		title: "Plugins",
+		items: await getDocsCollection("plugins"),
+	},
+];
+const { title, description, toc } = Astro.props;
+---
+
+<Layout title={title} description={description}>
+	<SkipLink id="main-content" title="Skip to content" />
+	<PageHeader>
+		<DocsNav items={docsCollection} slot="mobile-menu" />
+	</PageHeader>
+	<main id="main-content" class="docs-layout gap">
+		<aside class="docs-menu hidden lg:block">
+			<div class="sticky inset-header scroll-y">
+				<DocsNav items={docsCollection} />
+			</div>
+		</aside>
+		<article class="docs-content container">
+			<Toc toc={toc} label="On this Page" class="sticky inset-header hidden xl:block" />
+			<div class="main-content">
+				<slot />
+			</div>
+		</article>
+		{
+			!!toc.length && (
+				<div class="appbar sticky card xl:hidden">
+					<Toc isMobile toc={toc} label="On this Page" />
+				</div>
+			)
+		}
+	</main>
+	<PageFooter />
+</Layout>
+
+<style>
+	.appbar {
+		--inset-y: auto 0;
+		--card-radius: var(--radius-conditional-4);
+		--card-padding: 0.5rem;
+		--btn-stroke: transparent;
+
+		details > :not(summary) {
+			padding: 0.5rem 1rem;
+		}
+	}
+
+	@media (width >= 1024px) {
+		.docs-layout {
+			position: relative;
+			display: grid;
+			grid-template-columns: 320px 1fr 320px;
+			grid-template-rows: 1fr auto;
+			grid-template-areas:
+				"menu content content"
+				"menu appbar appbar";
+		}
+
+		.sticky {
+			max-height: min((99vh - var(--page-header-height, 0px)), 100%);
+		}
+
+		.docs-content {
+			grid-area: content;
+		}
+
+		.appbar {
+			--inset-y: auto 1rem;
+			margin-inline-end: 1rem;
+			grid-area: appbar;
+		}
+
+		.docs-menu {
+			position: absolute;
+			inset: 0;
+			background-color: color-mix(in oklab, var(--root-bg) 94%, var(--brand));
+			grid-area: menu;
+
+			& > .sticky {
+				padding: 1rem 0.5rem;
+			}
+		}
+	}
+
+	@media (width >= 1440px) {
+		.docs-content {
+			display: grid;
+			grid-template-columns: minmax(0px, 1fr) 240px;
+			gap: 3rem;
+			align-items: start;
+
+			& .main-content {
+				order: -1;
+			}
+		}
+	}
+</style>
+
+<style is:global>
+	.page-header {
+		--container-size: 100%;
+	}
+</style>

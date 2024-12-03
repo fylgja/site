@@ -1,0 +1,39 @@
+---
+import Image from "astro/components/Image.astro";
+
+interface Props {
+	title: string;
+	description?: string;
+	tag?: "div" | "li";
+	icon?: string;
+	iconSize?: number;
+	iconPosition?: "default" | "top";
+	class?: string;
+}
+
+const {
+	title,
+	description,
+	tag: Tag = "li",
+	icon,
+	iconSize = 50,
+	iconPosition,
+	class: classes,
+} = Astro.props;
+
+const mediaCard = {
+	"--flex-dir": iconPosition === "top" ? "column" : null,
+	"--align": "start",
+	"--align-items": "start",
+};
+---
+
+<Tag class:list={["flex gap align", classes]} style={mediaCard}>
+	{icon && <Image src={icon} width={iconSize} height={iconSize} alt="" />}
+	<div>
+		<p style="--my: 0 1em">
+			<strong>{title}</strong>
+		</p>
+		{description && <p>{description}</p>}
+	</div>
+</Tag>

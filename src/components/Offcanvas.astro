@@ -1,0 +1,86 @@
+---
+const { label, btnLabel = `Open ${label}`, btnClasses = "" } = Astro.props;
+---
+
+<fylgja-astro-dialog>
+	<slot name="button-open">
+		<button disabled aria-expanded="false" class={btnClasses} aria-label={btnLabel}>
+			<slot name="button-open-content">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="24"
+					height="24"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<line x1="4" x2="20" y1="12" y2="12"></line>
+					<line x1="4" x2="20" y1="6" y2="6"></line>
+					<line x1="4" x2="20" y1="18" y2="18"></line>
+				</svg>
+			</slot>
+		</button>
+	</slot>
+	<dialog class="offcanvas" aria-label={label}>
+		<slot name="header" />
+		<slot />
+	</dialog>
+</fylgja-astro-dialog>
+
+<script>
+	class FylgjaAstroDialog extends HTMLElement {
+		connectedCallback() {
+			const button = this.querySelector("button") as HTMLButtonElement;
+			const dialog = this.querySelector("dialog") as HTMLDialogElement;
+			const closeButton = dialog.querySelector("button[data-close]") as HTMLButtonElement;
+
+			if (!button) {
+				return "No button found, for opening the offcanvas";
+			}
+
+			button.removeAttribute("disabled");
+			button.setAttribute("aria-expanded", "false");
+
+			button.addEventListener("click", (event) => {
+				button.setAttribute("aria-expanded", "true");
+				dialog.showModal();
+			});
+
+			if (closeButton) {
+				closeButton.addEventListener("click", () => {
+					button.setAttribute("aria-expanded", "false");
+					dialog.close();
+				});
+			}
+
+			function hasBackdropClick(event: MouseEvent, element: HTMLDialogElement) {
+				const rect = element.getBoundingClientRect();
+				const isInDialog =
+					rect.top <= event.clientY &&
+					event.clientY <= rect.top + rect.height &&
+					rect.left <= event.clientX &&
+					event.clientX <= rect.left + rect.width;
+
+				return !isInDialog;
+			}
+
+			dialog.addEventListener("close", () => {
+				button.setAttribute("aria-expanded", "false");
+			});
+
+			dialog.addEventListener("dismiss", () => {
+				button.setAttribute("aria-expanded", "false");
+			});
+
+			dialog.addEventListener("mouseup", (event) => {
+				if (!hasBackdropClick(event, dialog)) return;
+				dialog.close("dismiss");
+			});
+		}
+	}
+
+	customElements.define("fylgja-astro-dialog", FylgjaAstroDialog);
+</script>

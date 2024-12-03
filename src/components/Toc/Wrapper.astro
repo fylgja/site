@@ -1,0 +1,110 @@
+---
+import type { AstroTocProps, TocItemProps } from "./types.ts";
+import TocItem from "./Item.astro";
+
+interface Props {
+	toc: AstroTocProps[];
+	label: string;
+	isMobile?: boolean;
+	itemIndent?: number;
+	class?: string;
+	style?: {
+		[key: string]: string | number;
+	};
+}
+
+const {
+	toc,
+	label = "Table of Contents",
+	isMobile = false,
+	itemIndent = "1rem",
+	class: classlist,
+	style: styles,
+} = Astro.props;
+
+function createNestedArray(inputArray: AstroTocProps[]) {
+	const result = [] as TocItemProps[];
+	const stack = [] as TocItemProps[];
+
+	if (inputArray.length === 0) return result;
+	if (inputArray[0].depth > 2) return result;
+
+	inputArray.forEach((item) => {
+		const newItem = { ...item, children: [] };
+
+		// If stack is empty or item's depth is 2, add it to the result array
+		if (stack.length === 0 || item.depth === 2) {
+			result.push(newItem);
+			stack.push(newItem);
+		} else {
+			// Otherwise, pop from stack until we find the parent with depth - 1
+			while (
+				stack.length &&
+				stack[stack.length - 1].depth >= item.depth
+			) {
+				stack.pop();
+			}
+
+			// Add the new item as a child of the current top of the stack
+			stack[stack.length - 1].children.push(newItem);
+			stack.push(newItem);
+		}
+	});
+
+	return result;
+}
+
+const tocItems = createNestedArray(toc);
+const style = {
+	"--toc-indent": itemIndent,
+	...styles,
+};
+---
+
+{
+	tocItems.length > 0 && !isMobile && (
+		<nav aria-label={label} class:list={["toc", classlist]} style={style}>
+			<p>
+				<strong>{label}</strong>
+			</p>
+			<ul>
+				{tocItems.map((item) => (
+					<TocItem item={item} />
+				))}
+			</ul>
+		</nav>
+	)
+}
+
+{
+	tocItems.length > 0 && isMobile && (
+		<nav aria-label={label} class:list={["toc", classlist]} style={style}>
+			<details>
+				<summary class="list-none btn w-full align">
+					<span>{label}</span>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="flip-rotate transistion"
+						style="--duration: 300ms"
+						aria-hidden="true"
+					>
+						<path d="m6 9 6 6 6-6" />
+					</svg>
+				</summary>
+				<ul>
+					{tocItems.map((item) => (
+						<TocItem item={item} />
+					))}
+				</ul>
+			</details>
+		</nav>
+	)
+}

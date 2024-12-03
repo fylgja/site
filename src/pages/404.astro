@@ -1,0 +1,24 @@
+---
+import Layout from "@layouts/PageLayout.astro";
+
+const title = "404";
+---
+
+<Layout
+	title={title}
+	class="flex align"
+	style="--flex-dir: column; --align: center;"
+>
+	<h1>{title}</h1>
+	<p>
+		We couldn’t find that link. Check the address or <a href="/"
+			>head back home</a
+		>.
+	</p>
+</Layout>
+
+<style>
+	:root {
+		--page-header-bg: color-mix(in oklab, var(--root-bg) 80%, var(--brand));
+	}
+</style>

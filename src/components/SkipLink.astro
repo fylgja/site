@@ -1,0 +1,30 @@
+---
+interface Props {
+	id: string;
+	title: string;
+}
+
+const { id, title } = Astro.props;
+---
+
+<a href={`#${id}`}>{title}</a>
+
+<style>
+	a {
+		clip: rect(0, 0, 0, 0);
+		position: fixed;
+		top: 0.75rem;
+		inset-inline-start: 0.75rem;
+	}
+
+	a:focus {
+		clip: unset;
+		z-index: 9;
+		display: block;
+		padding: 0.5rem 1rem;
+		text-decoration: none;
+		color: var(--root-fg);
+		background-color: var(--root-bg);
+		box-shadow: var(--shadow-2);
+	}
+</style>

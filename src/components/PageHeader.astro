@@ -1,0 +1,91 @@
+---
+import siteConfig from "site.config";
+import Logo from "@assets/logo.svg?raw";
+import Offcanvas from "@components/Offcanvas.astro";
+import DocSearch from "@components/DocSearch.astro";
+
+interface Props {
+	hideSearch?: boolean;
+}
+
+const { socials } = siteConfig;
+const currentPath = Astro.url.pathname;
+const isCurrentPage = (href: string) => (currentPath === href ? "page" : null);
+const { hideSearch = false } = Astro.props;
+
+const menu = [
+	{
+		label: "Docs",
+		path: "/docs",
+	},
+	{
+		label: "Blog",
+		path: "/blog",
+	},
+	{
+		label: "Github",
+		path: socials.github,
+	},
+];
+---
+
+<header id="pageHeader" class="page-header sticky" style="--inset-t: -1px; --z: 6">
+	<div class="container flex align gap" style="--py: 1rem">
+		<a href="/" title="Go back to the Fylgja Homepage" aria-label={siteConfig.name}>
+			<Fragment set:html={Logo} />
+		</a>
+		{
+			!hideSearch && (
+				<DocSearch style="--mx: auto 0; --md_mx: 0; --md_flex: 0 0 min(100%, 22rem);" />
+			)
+		}
+		<div class="flex align gap">
+			<nav aria-label="Main Menu" class="menu hidden md:block" style="--menu-dir: row">
+				{
+					menu.map((item) => (
+						<a href={item.path} aria-current={isCurrentPage(item.path)} class="btn">
+							{item.label}
+						</a>
+					))
+				}
+			</nav>
+			<Offcanvas label="Mobile Menu Drawer" btnClasses="lg:hidden">
+				<slot name="mobile-menu" />
+				<hr style="--my: 0.5rem" />
+				<div class="menu">
+					{
+						menu.map((item) => (
+							<a href={item.path} aria-current={isCurrentPage(item.path)} class="btn">
+								{item.label}
+							</a>
+						))
+					}
+				</div>
+			</Offcanvas>
+		</div>
+	</div>
+</header>
+
+<script>
+	const pageHeader = document.getElementById("pageHeader") as HTMLElement;
+	document.documentElement.style.setProperty(
+		"--page-header-height",
+		pageHeader.offsetHeight + "px"
+	);
+
+	const observer = new IntersectionObserver(
+		([e]) => e.target.setAttribute("data-sticky", `${e.intersectionRatio < 1}`),
+		{ threshold: 1 }
+	);
+	observer.observe(pageHeader);
+</script>
+
+<style is:global>
+	.page-header {
+		background-color: var(
+			--page-header-bg,
+			color-mix(in oklab, var(--root-bg) 80%, var(--brand))
+		);
+		color: var(--page-header-color);
+	}
+</style>

@@ -1,0 +1,23 @@
+@import "fylgja/tokens";
+@import "fylgja/tokens/theme";
+
+@import "fylgja/base";
+@import "fylgja/base/theme";
+
+@import "fylgja/components/container";
+@import "fylgja/components/card";
+@import "fylgja/components/menu";
+@import "fylgja/utilities";
+
+:root {
+	--text-color: var(--root-fg);
+	--text-color-muted: color-mix(in srgb, var(--root-fg) 76%, transparent);
+}
+
+pre .line:empty {
+	display: none;
+}
+
+.inset-header {
+	--inset-y: var(--page-header-height, 0px) auto;
+}
