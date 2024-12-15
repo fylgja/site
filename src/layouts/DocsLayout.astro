@@ -18,6 +18,8 @@ interface Props {
 	}[];
 }
 
+const isProdMode = import.meta.env.PROD;
+
 const sortByOrder = (collection: any[]) => {
 	return collection.sort((a, b) => {
 		return a.data.sortOrder - b.data.sortOrder;
@@ -27,7 +29,7 @@ const sortByOrder = (collection: any[]) => {
 async function getDocsCollection(path: string) {
 	return sortByOrder(
 		await getCollection("docs", ({ id, data }: { id: string; data: any }) => {
-			if (import.meta.env.PROD ? data.isDraft !== true : false) return;
+			if (isProdMode ? data.isDraft : false) return;
 
 			if (path === "/") {
 				return !id.includes("/");
@@ -60,6 +62,7 @@ const docsCollection = [
 		items: await getDocsCollection("plugins"),
 	},
 ];
+
 const { title, description, toc } = Astro.props;
 ---
 
@@ -74,12 +77,12 @@ const { title, description, toc } = Astro.props;
 				<DocsNav items={docsCollection} />
 			</div>
 		</aside>
-		<article class="docs-content container">
+		<div class="docs-content container">
 			<Toc toc={toc} label="On this Page" class="sticky inset-header hidden xl:block" />
-			<div class="main-content">
+			<article class="main-content">
 				<slot />
-			</div>
-		</article>
+			</article>
+		</div>
 		{
 			!!toc.length && (
 				<div class="appbar sticky card xl:hidden">
@@ -101,6 +104,10 @@ const { title, description, toc } = Astro.props;
 		details > :not(summary) {
 			padding: 0.5rem 1rem;
 		}
+	}
+
+	.docs-content {
+		margin-bottom: 2rem;
 	}
 
 	@media (width >= 1024px) {
@@ -129,10 +136,13 @@ const { title, description, toc } = Astro.props;
 		}
 
 		.docs-menu {
+			grid-area: menu;
 			position: absolute;
 			inset: 0;
-			background-color: color-mix(in oklab, var(--root-bg) 94%, var(--brand));
-			grid-area: menu;
+			border-inline-end: 1px solid
+				var(--docs-menu-stroke, color-mix(in srgb, currentcolor 12%, transparent));
+			background-color: var(--docs-menu-bg);
+			color: var(--docs-menu-color);
 
 			& > .sticky {
 				padding: 1rem 0.5rem;
@@ -152,10 +162,21 @@ const { title, description, toc } = Astro.props;
 			}
 		}
 	}
+
+	@media (prefers-color-scheme: dark) {
+		html:not([data-theme="light"]) .docs-menu {
+			--docs-menu-stroke: transparent;
+			--docs-menu-bg: color-mix(in oklab, var(--root-bg) 94%, var(--brand));
+		}
+	}
 </style>
 
 <style is:global>
 	.page-header {
 		--container-size: 100%;
+
+		@media (width >= 1440px) {
+			--container-gap: 4rem;
+		}
 	}
 </style>

@@ -7,8 +7,9 @@ const siteConfig = {
 	themeColorDark: "#08274a",
 	socials: {
 		github: "https://github.com/fylgja",
-		twitter: "https://twitter.com/FylgjaDev",
+		bluesky: "https://bsky.app/profile/fylgja.dev",
 		mastodon: "https://fosstodon.org/@fylgja",
+		twitter: "https://twitter.com/FylgjaDev",
 		devto: "https://dev.to/fylgja",
 	},
 };

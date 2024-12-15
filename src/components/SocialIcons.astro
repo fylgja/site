@@ -1,4 +1,6 @@
 ---
+import SocialsIcons from "@assets/socials.svg?url";
+
 interface Props {
 	socials: {
 		[key: string]: string;
@@ -6,23 +8,28 @@ interface Props {
 }
 
 const { socials } = Astro.props;
-const links = Object.entries(socials || {}) as [
-	platform: string,
-	url: string,
-][];
+const links = Object.entries(socials || {});
 ---
 
 {
 	links.length > 0 && (
 		<div class="flex gap" style="--flex-wrap: wrap">
-			{links.map(([platform, url]) => (
-				<a href={url} rel="me">
-					<svg width="24" height="24" fill="currentcolor">
-						<title>{platform}</title>
-						<use href={`/socials.svg#${platform}`} />
-					</svg>
-				</a>
-			))}
+			{links.map(([platform, url]) => {
+				let label = `Follow us at ${platform}`;
+
+				if (platform === "github") {
+					label = `Star the Fylgja Repos on ${platform}`;
+				}
+
+				return (
+					<a href={url} rel="me">
+						<svg width="24" height="24" fill="currentcolor">
+							<title>{label}</title>
+							<use href={`${SocialsIcons}#${platform}`} />
+						</svg>
+					</a>
+				);
+			})}
 		</div>
 	)
 }

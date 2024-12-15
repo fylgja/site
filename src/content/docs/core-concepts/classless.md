@@ -1,17 +1,39 @@
 ---
-title: "Class-less"
-description: "Fylgja believes in a clean html.
-This done via single layered and purse classes.
-But it also ship's with many styles set directly on the html element,
-a.k.a. Native Elements."
+title: "Class-less CSS"
+description: "Class-less CSS lets you write pure HTML, with styling automatically applied based on the HTML elements themselves."
+sortOrder: 19
 ---
 
-Fylgja believes in clean HTML. We achieve this through single-layered and purpose-driven classes. However, we also ship with many styles set directly on the HTML element, known as Native Elements.
+**Class-less CSS** allows you to write HTML without needing to add CSS classes manually.
+Instead, styling is automatically applied to elements based on their HTML tags.
 
-Some elements, such as form fields, do not require different styles than the ones you use repeatedly throughout your site. Instead, we add flexibility through CSS variables, which allow you to change the style for a specific use case.
+This provides a refined starting point, better than the default browser styles, and can be easily customized to suit your needs.
 
-There is nothing wrong with having styles set directly on the HTML element, as long as they are foundational styles. The main advantage of Native Elements is that your HTML does not need to have any classes to have good defaults.
+With [Fylgja Base], we offer a complete package for this approach.
 
-To see this in action, check out our CodePen using only HTML and nothing more: [https://codepen.io/Fylgja/pen/ExGOZaE]
+## Benefits of Class-less CSS
 
-Or try it yourself using one of our Native Element components below.
+The key advantage of using class-less CSS is that it’s flexible.
+
+You’re not limited to predefined styles, and you can still apply your own custom CSS on top of it.
+
+This allows for quicker setup while maintaining the ability to fine-tune your design.
+
+## Why Choose Class-less Over Normalize or Reset?
+
+Class-less CSS provides a more polished default styling,
+so you can start designing immediately without having to build a foundation yourself. 
+
+Take form fields, for example. On most sites, forms come with common default styles—borders, padding, etc.
+Class-less CSS improves these defaults out of the box, while still allowing for further customization.
+
+## Customization with Fylgja Base
+
+If you want a different look, [Fylgja Base] makes it easy to adjust.
+
+You can modify the provided CSS variables or apply your own styles directly.
+
+Since Fylgja Base keeps CSS specificity low, you’ll have full control over customization without any hassle,
+allowing it to act as a true foundation for your unique design.
+
+[Fylgja Base]: ../packages/base

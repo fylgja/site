@@ -1,10 +1,10 @@
 ---
-const { label, btnLabel = `Open ${label}`, btnClasses = "" } = Astro.props;
+const { label, class: classes = "", btnLabel = `Open ${label}`, btnClasses = "" } = Astro.props;
 ---
 
 <fylgja-astro-dialog>
 	<slot name="button-open">
-		<button disabled aria-expanded="false" class={btnClasses} aria-label={btnLabel}>
+		<button data-open disabled aria-expanded="false" class={btnClasses} aria-label={btnLabel}>
 			<slot name="button-open-content">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -24,17 +24,21 @@ const { label, btnLabel = `Open ${label}`, btnClasses = "" } = Astro.props;
 			</slot>
 		</button>
 	</slot>
-	<dialog class="offcanvas" aria-label={label}>
-		<slot name="header" />
+	<dialog class:list={["offcanvas", classes]} aria-label={label}>
 		<slot />
 	</dialog>
 </fylgja-astro-dialog>
 
 <script>
+	// @ts-nocheck
 	class FylgjaAstroDialog extends HTMLElement {
+		constructor() {
+			self = super();
+		}
+
 		connectedCallback() {
-			const button = this.querySelector("button") as HTMLButtonElement;
-			const dialog = this.querySelector("dialog") as HTMLDialogElement;
+			const button = self.querySelector("button[data-open]") as HTMLButtonElement;
+			const dialog = self.querySelector("dialog") as HTMLDialogElement;
 			const closeButton = dialog.querySelector("button[data-close]") as HTMLButtonElement;
 
 			if (!button) {

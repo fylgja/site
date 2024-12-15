@@ -4,17 +4,26 @@
 @import "fylgja/base/theme";
 
 @import "fylgja/components/container";
-@import "fylgja/components/card";
+@import "fylgja/components/join";
 @import "fylgja/components/menu";
+@import "fylgja/components/card";
+@import "fylgja/components/breadcrumbs";
+
+@import "src/css/code-block";
+@import "src/css/markdown-alert";
+@import "src/css/color-scheme";
+
 @import "fylgja/utilities";
 
 :root {
 	--text-color: var(--root-fg);
 	--text-color-muted: color-mix(in srgb, var(--root-fg) 76%, transparent);
-}
+	--border-color-fade: color-mix(in srgb, var(--root-fg) 20%, transparent);
+	--code-stroke: color-mix(in srgb, currentcolor 20%, transparent);
 
-pre .line:empty {
-	display: none;
+	@media (width >= 1440px) {
+		--font-size: 1.125em;
+	}
 }
 
 .inset-header {

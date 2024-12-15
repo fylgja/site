@@ -3,7 +3,7 @@ title: "Utilities"
 pageTitle: "Fylgja Utilities"
 description: "Common defaults to make your body and typography look good and easy to change to your needs."
 npm: "@fylgja/utilities"
-git: "utilities"
+git: "https://github.com/fylgja/fylgja/tree/next/utilities"
 sortOrder: 5
 ---
 

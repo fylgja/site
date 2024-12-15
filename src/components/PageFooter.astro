@@ -7,7 +7,7 @@ import SocialIcons from "./SocialIcons.astro";
 <footer style="--py: 2rem">
 	<div class="container">
 		<div class="main-footer">
-			<div>
+			<div class="logo">
 				<Fragment set:html={Logo} />
 			</div>
 			<div class="grid" style="--sm_grid-cols: 2; --lg_grid-cols: 3">
@@ -28,9 +28,7 @@ import SocialIcons from "./SocialIcons.astro";
 					<nav aria-label="About">
 						<ul>
 							<li>
-								<a href="/docs/core-concepts/why-fylgja"
-									>Why Choose Fylgja</a
-								>
+								<a href="/docs/core-concepts/why-fylgja">Why Choose Fylgja</a>
 							</li>
 						</ul>
 					</nav>
@@ -40,8 +38,7 @@ import SocialIcons from "./SocialIcons.astro";
 					<nav aria-label="Community">
 						<ul>
 							<li>
-								<a
-									href="https://github.com/orgs/fylgja/discussions"
+								<a href="https://github.com/orgs/fylgja/discussions"
 									>Github Discussions</a
 								>
 							</li>
@@ -51,15 +48,8 @@ import SocialIcons from "./SocialIcons.astro";
 			</div>
 		</div>
 		<hr />
-		<div
-			class="sub-footer flex align gap"
-			style="--flex-dir: column; --md_flex-dir: row;"
-		>
-			<nav
-				aria-label="License and Contributors"
-				class="flex gap"
-				style="--flex-wrap: wrap"
-			>
+		<div class="sub-footer flex align gap" style="--flex-dir: column; --md_flex-dir: row;">
+			<nav aria-label="License and Contributors" class="flex gap" style="--flex-wrap: wrap">
 				<a
 					target="_blank"
 					href="https://github.com/fylgja/fylgja/blob/main/LICENSE"
@@ -82,11 +72,11 @@ import SocialIcons from "./SocialIcons.astro";
 
 <style>
 	footer {
-		border-block-start: 1px solid
-			color-mix(in srgb, currentcolor 20%, transparent);
+		border-block-start: 1px solid color-mix(in srgb, currentcolor 20%, transparent);
 
 		& h2 {
 			--h-size: 1em;
+			color: light-dark(var(--brand), currentcolor);
 		}
 	}
 

@@ -1,0 +1,17 @@
+.astro-code {
+	&,
+	& span {
+		background-color: var(--shiki-light-bg);
+		color: var(--shiki-light);
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	html:not([data-theme="light"]) .astro-code {
+		&,
+		& span {
+			background-color: var(--shiki-dark-bg);
+			color: var(--shiki-dark);
+		}
+	}
+}

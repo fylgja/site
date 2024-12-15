@@ -20,7 +20,6 @@ const { title, description = siteDescription, lang = "en", dir = "ltr" } = Astro
 		themeColor={themeColor}
 		themeColorDark={themeColorDark}
 	>
-		<script src="../assets/main.js"></script>
 		<link
 			rel="alternate"
 			type="application/rss+xml"
@@ -29,6 +28,24 @@ const { title, description = siteDescription, lang = "en", dir = "ltr" } = Astro
 		/>
 		<link rel="sitemap" href="/sitemap-index.xml" />
 		<slot name="head" />
+		<script is:inline>
+			function getColorScheme() {
+				const preference = localStorage.getItem("theme-preference");
+				return preference
+					? preference
+					: window.matchMedia("(prefers-color-scheme: dark)").matches
+						? "dark"
+						: "light";
+			}
+
+			document.documentElement.setAttribute("data-theme", getColorScheme());
+
+			window.addEventListener("load", () => {
+				if ("serviceWorker" in navigator) {
+					navigator.serviceWorker.register("/sw.js");
+				}
+			});
+		</script>
 	</Head>
 	<body>
 		<slot />

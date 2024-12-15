@@ -1,0 +1,72 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+	version?: string;
+	git?: string;
+	npm?: string;
+	changelog?: string;
+	iconSize?: number;
+}
+
+const { version, git, npm, changelog, iconSize = 16 } = Astro.props;
+const npmUrl = npm ? `https://npmjs.com/package/${npm}` : "";
+const changelogUrl = changelog || git ? `${git}/CHANGELOG.md` : "";
+---
+
+<div class="meta">
+	{version && <span>v{version}</span>}
+	{
+		git && (
+			<a href={git}>
+				<Icon name="git" width={iconSize} height={iconSize} aria-hidden="true" />{" "}
+				<span>GitHub</span>
+			</a>
+		)
+	}
+	{
+		npm && (
+			<a href={npmUrl}>
+				<Icon name="npm" width={iconSize} height={iconSize} aria-hidden="true" />{" "}
+				<span>npm</span>
+			</a>
+		)
+	}
+	{
+		changelogUrl && (
+			<a href={changelogUrl}>
+				<Icon name="logs" width={iconSize} height={iconSize} aria-hidden="true" />{" "}
+				<span>Changelog</span>
+			</a>
+		)
+	}
+</div>
+
+<style>
+	.meta {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem 1rem;
+		font-size: 0.875em;
+		color: var(--text-color-muted);
+		border-block-end: 2px solid var(--border-color-fade);
+		padding-block-end: 0.5em;
+	}
+
+	.meta a {
+		display: flex;
+		align-items: center;
+		gap: 0.375rem;
+		text-decoration: none;
+		color: color-mix(in srgb, var(--brand) 65%, var(--root-fg));
+
+		& svg {
+			color: var(--text-color-muted);
+		}
+
+		&:hover {
+			color: var(--text-color);
+		}
+	}
+</style>

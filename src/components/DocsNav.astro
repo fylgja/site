@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 interface Props {
 	items: {
 		title: string;
@@ -18,7 +20,7 @@ const { items, class: classes } = Astro.props;
 ---
 
 <nav aria-label="Docs Nav" class:list={["menu", classes]}>
-	<ul>
+	<ul class="flow">
 		{
 			items.map((group) => {
 				if (!group.items.length) return;
@@ -27,21 +29,13 @@ const { items, class: classes } = Astro.props;
 						<details open>
 							<summary class="list-none btn w-full">
 								<span>{group.title}</span>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
+								<Icon
+									name="chevron-down"
 									width="20"
 									height="20"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="2"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									class="flip-rotate transistion" style="--duration: 300ms"
-									aria-hidden="true"
-								>
-									<path d="m6 9 6 6 6-6"/>
-								</svg>
+									class="flip-rotate transition"
+									style="--duration: 300ms"
+								/>
 							</summary>
 							<ul style="--px: 1em 0">
 								{group.items.map((item) => (
@@ -49,9 +43,7 @@ const { items, class: classes } = Astro.props;
 										<a
 											class="btn w-full"
 											href={`/docs/${item.slug}`}
-											aria-current={isCurrentPage(
-												`/docs/${item.slug}`
-											)}
+											aria-current={isCurrentPage(`/docs/${item.slug}`)}
 										>
 											{item.data.title}
 										</a>
@@ -75,6 +67,12 @@ const { items, class: classes } = Astro.props;
 
 			&:hover {
 				color: var(--text-color);
+			}
+
+			&[aria-current="page"] {
+				--btn-bg: var(--brand);
+				--btn-color: var(--on-brand);
+				color: var(--btn-color);
 			}
 		}
 	}

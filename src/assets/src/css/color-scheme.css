@@ -1,0 +1,17 @@
+[data-theme="light"]:root {
+	--root-bg: hsl(0, 0%, 100%);
+	--root-fg: hsl(0, 0%, 8%);
+	--select-icon: var(--select-light-scheme);
+	--shadow-color: gray;
+	--shadow-strength: 1%;
+	color-scheme: light;
+}
+
+[data-theme="dark"]:root {
+	--root-bg: color-mix(in oklab, #000 82%, var(--brand));
+	--root-fg: hsl(0 0% 98%);
+	--select-icon: var(--select-dark-scheme);
+	--shadow-color: #030407;
+	--shadow-strength: 25%;
+	color-scheme: dark;
+}

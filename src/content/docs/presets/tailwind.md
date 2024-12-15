@@ -1,7 +1,9 @@
 ---
 title: "TailwindCSS"
-description: ""
-sortOrder: 12
+description: "Preset for TailwindCSS"
 ---
 
-Hello there!
+Preset for TailwindCSS.
+
+> [!Important]
+> Work in progress! If your have questions or idea's, feel free to open a [discussion](https://github.com/orgs/fylgja/discussions).

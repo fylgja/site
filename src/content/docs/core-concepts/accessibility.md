@@ -1,28 +1,29 @@
 ---
 title: "Accessibility"
-description: "Fylgja is out of the box fully accessible."
+description: "Fylgja is out of the box fully A11Y ready."
 ---
 
-Fylgja is out of the box fully accessible.
+All Fylgja Packages are out of the box fully accessible.
 
-We don't make color choices for you,
-and follow the base principles of good typography spacing.
+So any of the styling from Fylgja will not negatively impact the Accessible of your page,
+by providing good default for typography, focus management and respsecting the touch and click sizes.
 
-All of the Fylgja click based elements fit in to the minimum touch pixel size,
-and most even have the recommended w3c 44 pixel size.
+Next to this Fylgja tries to enforce the best practices in your HTML by using the HTML attributes for setting the state of specific CSS components and CSS utilities instead of using classes.
 
-Besides that, a good HTML structure solves most accessibility issues.
-and most of the Fylgja Components try to enforce this behavior.
+For example we use the `aria-current="page"` when building a pagination or breadcrumbs:
 
-For example Fylgja uses html attributes for specific states, instead a class.
+```html
+<nav aria-label="breadcrumbs">
+	<ol class="breadcrumbs">
+		<li><a href="/">Fylgja</a></li>
+		<li><a href="/docs">docs</a></li>
+		<li><a href="/docs/core-concepts">Core Concepts</a></li>
+		<li><a aria-current="page" href="/docs/core-concepts/accessibility">Accessibility</a></li>
+	</ol>
+<nav>
+```
 
-So in the Fylgja breadcrumbs component you will need the `aria-current="page"` attribute,
-for the current breadcrumb link style.
+Another advantage of this pattern is to reduce mental load,
+since you only need to remember the right HTML not all of the class names used by other frameworks for the same effect.
 
-Making it easier for you to create your component,
-by forcing a specific behavior,
-trough proper html,
-but you don't need to remember a CSS class for this state.
-
-That said, Fylgja also offers helpers that make it easier to build your site,
-without compromising on style in favour of accessibility.
+We have whole set of [Fylgja UI components](/ui) ready to be copypasted, that are made with Accessability in mind.

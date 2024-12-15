@@ -1,6 +1,9 @@
 ---
 title: "UnoCSS"
-description: ""
+description: "Preset for UnoCSS"
 ---
 
-Hello there!
+Preset for UnoCSS.
+
+> [!Important]
+> Work in progress! If your have questions or idea's, feel free to open a [discussion](https://github.com/orgs/fylgja/discussions).

@@ -1,0 +1,145 @@
+---
+interface Props {
+	options?: {
+		[key: string]: string;
+	};
+}
+
+const defaultOptions = {
+	light: "Light",
+	dark: "Dark",
+};
+const { options = defaultOptions } = Astro.props;
+---
+
+<theme-toggle>
+	<label class="theme-select btn stack">
+		<div class="theme-icon flex align">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				width="20"
+				height="20"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				aria-hidden="true"
+			>
+				<g class="theme-auto">
+					<path d="M12 17v4"></path>
+					<path d="m15.2 4.9-.9-.4"></path>
+					<path d="m15.2 7.1-.9.4"></path>
+					<path d="m16.9 3.2-.4-.9"></path>
+					<path d="m16.9 8.8-.4.9"></path>
+					<path d="m19.5 2.3-.4.9"></path>
+					<path d="m19.5 9.7-.4-.9"></path>
+					<path d="m21.7 4.5-.9.4"></path>
+					<path d="m21.7 7.5-.9-.4"></path>
+					<path d="M22 13v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"></path>
+					<path d="M8 21h8"></path>
+					<circle cx="18" cy="6" r="3"></circle>
+				</g>
+				<g class="theme-dark">
+					<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+				</g>
+				<g class="theme-light">
+					<circle cx="12" cy="12" r="4"></circle>
+					<path d="M12 2v2"></path>
+					<path d="M12 20v2"></path>
+					<path d="m4.93 4.93 1.41 1.41"></path>
+					<path d="m17.66 17.66 1.41 1.41"></path>
+					<path d="M2 12h2"></path>
+					<path d="M20 12h2"></path>
+					<path d="m6.34 17.66-1.41 1.41"></path>
+					<path d="m19.07 4.93-1.41 1.41"></path>
+				</g>
+			</svg>
+		</div>
+		<span class="sr-only">Color Scheme</span>
+		<select name="theme-select">
+			<option value="auto">Auto</option>
+			{
+				Object.entries(options).map((option) => (
+					<option value={option[0]}>{option[1]}</option>
+				))
+			}
+		</select>
+	</label>
+</theme-toggle>
+
+<style>
+	.theme-select {
+		display: inline-grid;
+		padding: 0;
+		gap: 0;
+
+		&:focus-within {
+			outline-offset: var(--outline-offset, 2px);
+			outline: var(--outline-size, 2px) solid var(--brand);
+		}
+
+		& select {
+			--form-bg: transparent;
+			padding-inline-start: calc(var(--icon-size) + var(--icon-offset) + 0.5ch);
+			border: none;
+			outline: none;
+		}
+	}
+
+	.theme-icon {
+		position: absolute;
+		padding-inline-start: var(--form-px, 0.8rem);
+		pointer-events: none;
+	}
+
+	html:not([data-theme="auto"]) .theme-auto {
+		display: none;
+	}
+
+	html:not([data-theme="dark"]) .theme-dark {
+		display: none;
+	}
+
+	html:not([data-theme="light"]) .theme-light {
+		display: none;
+	}
+</style>
+
+<script>
+	// @ts-nocheck
+	class ThemeToggle extends HTMLElement {
+		constructor() {
+			self = super();
+		}
+
+		connectedCallback() {
+			const colorSchemeInput = self.querySelector("select") as HTMLSelectElement;
+
+			function getColorScheme() {
+				const preference = localStorage.getItem("theme-preference");
+				return preference
+					? preference
+					: window.matchMedia("(prefers-color-scheme: dark)").matches
+						? "dark"
+						: "light";
+			}
+
+			colorSchemeInput.value = getColorScheme();
+
+			colorSchemeInput.addEventListener("change", (e: any) => {
+				const newValue = e.target.value;
+				localStorage.setItem("theme-preference", newValue);
+				document.documentElement.setAttribute("data-theme", newValue);
+				window.dispatchEvent(new Event("theme-change"));
+			});
+
+			window.addEventListener("theme-change", () => {
+				colorSchemeInput.value = getColorScheme();
+			});
+		}
+	}
+
+	customElements.define("theme-toggle", ThemeToggle);
+</script>
