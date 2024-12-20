@@ -3,7 +3,7 @@ title: "Container"
 pageTitle: "Fylgja Container"
 description: ""
 npm: "@fylgja/container"
-git: "https://github.com/fylgja/fylgja/tree/next/components/container"
+git: "https://github.com/fylgja/fylgja/tree/main/components/container"
 ---
 
 The container component is wrapper component,
