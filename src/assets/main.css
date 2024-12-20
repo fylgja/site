@@ -1,7 +1,5 @@
 @import "fylgja/tokens/css/index.css";
-
 @import "fylgja/base";
-@import "fylgja/base/theme";
 
 @import "fylgja/components/container";
 @import "fylgja/components/join";
@@ -11,7 +9,7 @@
 
 @import "src/css/code-block";
 @import "src/css/markdown-alert";
-@import "src/css/color-scheme";
+@import "src/css/theme";
 
 @import "fylgja/utilities";
 
@@ -31,7 +29,21 @@
 }
 
 .demo-box {
-	--hue: 100deg;
-	min-width: 100px;
-	background-color: var(--color-7);
+	display: grid;
+	place-content: center;
+	border-radius: var(--radius-2);
+	border: 1px solid var(--demo-box-stroke, var(--brand));
+	background-color: var(--demo-box-bg, var(--surface-color));
+	aspect-ratio: var(--ratio-box);
+	min-inline-size: var(--demo-box-width, clamp(3rem, 7vw, 7rem));
+	padding: 1rem;
+	line-height: 1.1;
+	transition: scale 0.3s ease-out;
+}
+
+@media (hover: hover) {
+	.hover\:scale:hover {
+		z-index: 1;
+		scale: 1.3;
+	}
 }
