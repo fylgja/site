@@ -58,8 +58,8 @@ const docsCollection = [
 		items: await getDocsCollection("presets/"),
 	},
 	{
-		title: "Plugins",
-		items: await getDocsCollection("plugins"),
+		title: "Extensions",
+		items: await getDocsCollection("extensions/"),
 	},
 ];
 
@@ -136,6 +136,7 @@ const { title, description, toc } = Astro.props;
 		}
 
 		.docs-menu {
+			--flow: 0.5em;
 			grid-area: menu;
 			position: absolute;
 			inset: 0;
@@ -145,7 +146,7 @@ const { title, description, toc } = Astro.props;
 			color: var(--docs-menu-color);
 
 			& > .sticky {
-				padding: 1rem 0.5rem;
+				padding: 1rem 0.5rem 2rem;
 			}
 		}
 	}
