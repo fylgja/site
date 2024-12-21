@@ -3,7 +3,7 @@ title: "Tokens"
 pageTitle: "Fylgja Tokens"
 description: ""
 npm: "@fylgja/tokens"
-git: "tokens"
+git: "https://github.com/fylgja/fylgja/tree/main/tokens"
 sortOrder: 5
 ---
 
@@ -40,17 +40,17 @@ Alternatively, if you only need specific parts of the tokens, you can import the
 
 | Import Path                    | CSS | SCSS | JS  | Description                                     |
 | ------------------------------ | --- | ---- | --- | ----------------------------------------------- |
-| `@fylgja/tokens/aspect-ratio`  | x   | x    | x   |                                                 |
-| `@fylgja/tokens/border-radius` | x   | x    | x   |                                                 |
-| `@fylgja/tokens/border-sizes`  | x   | x    | x   |                                                 |
-| `@fylgja/tokens/colors`        | x   | x    | x   | List of 14 colors in oklch format               |
-| `@fylgja/tokens/colors-static` |     | x    |     | Combination of colors and hues as a static list |
-| `@fylgja/tokens/hues`          | x   | x    |     | JS version is part of the colors import         |
-| `@fylgja/tokens/easing`        | x   | x    | x   |                                                 |
-| `@fylgja/tokens/fonts`         | x   | x    | x   |                                                 |
-| `@fylgja/tokens/shadows`       | x   | x    | x   |                                                 |
-| `@fylgja/tokens/sizes`         | x   | x    | x   |                                                 |
-| `@fylgja/tokens/z-layer`       | x   | x    | x   |                                                 |
+| `@fylgja/tokens/aspect-ratio`  | ✅   | ✅    | ✅   |                                                 |
+| `@fylgja/tokens/border-radius` | ✅   | ✅    | ✅   |                                                 |
+| `@fylgja/tokens/border-sizes`  | ✅   | ✅    | ✅   |                                                 |
+| `@fylgja/tokens/colors`        | ✅   | ✅    | ✅   | List of 14 colors in oklch format               |
+| `@fylgja/tokens/colors-static` |     | ✅    |     | Combination of colors and hues as a static list |
+| `@fylgja/tokens/hues`          | ✅   | ✅    |     | JS version is part of the colors import         |
+| `@fylgja/tokens/easing`        | ✅   | ✅    | ✅   |                                                 |
+| `@fylgja/tokens/fonts`         | ✅   | ✅    | ✅   |                                                 |
+| `@fylgja/tokens/shadows`       | ✅   | ✅    | ✅   |                                                 |
+| `@fylgja/tokens/sizes`         | ✅   | ✅    | ✅   |                                                 |
+| `@fylgja/tokens/z-layer`       | ✅   | ✅    | ✅   |                                                 |
 
 ### Shadow DOM support
 
@@ -69,12 +69,167 @@ This is great option if you want to use the Fylgja Tokens with your web componen
 
 ### Aspect-Ratio
 
-<figure class="flex-wrap align gap">
-<div class="demo-box" style="aspect-ratio: var(--ratio-box);"></div>
-<div class="demo-box" style="aspect-ratio: var(--ratio-landscape);"></div>
-<div class="demo-box" style="aspect-ratio: var(--ratio-portrait);"></div>
-<div class="demo-box" style="aspect-ratio: var(--ratio-widescreen);"></div>
-<div class="demo-box" style="aspect-ratio: var(--ratio-superwide);"></div>
-<div class="demo-box" style="aspect-ratio: var(--ratio-ultrawide);"></div>
-<div class="demo-box" style="aspect-ratio: var(--ratio-golden);"></div>
+<figure class="flex-wrap gap">
+<div class="demo-box" style="min-block-size: 8rem; aspect-ratio: var(--ratio-box);">Box</div>
+<div class="demo-box" style="min-block-size: 8rem; aspect-ratio: var(--ratio-landscape);">Landscape</div>
+<div class="demo-box" style="min-block-size: 8rem; aspect-ratio: var(--ratio-portrait);">Portrait</div>
+<div class="demo-box" style="min-block-size: 8rem; aspect-ratio: var(--ratio-widescreen);">Widescreen</div>
+<div class="demo-box" style="min-block-size: 8rem; aspect-ratio: var(--ratio-superwide);">Superwide</div>
+<div class="demo-box" style="min-block-size: 8rem; aspect-ratio: var(--ratio-ultrawide);">ultrawide</div>
+<div class="demo-box" style="min-block-size: 8rem; aspect-ratio: var(--ratio-golden);">Golden Ratio</div>
 </figure>
+
+### Border Radius
+
+<figure class="flex-wrap gap">
+<div class="demo-box" style="border-radius: var(--radius-1);">1</div>
+<div class="demo-box" style="border-radius: var(--radius-2);">2</div>
+<div class="demo-box" style="border-radius: var(--radius-3);">3</div>
+<div class="demo-box" style="border-radius: var(--radius-4);">4</div>
+<div class="demo-box" style="border-radius: var(--radius-5);">5</div>
+<div class="demo-box" style="border-radius: var(--radius-6);">6</div>
+<div class="demo-box" style="border-radius: var(--radius-full);">Full</div>
+</figure>
+
+#### Conditional
+
+Functions identically to the preceding numbered examples,
+except that this value reverts to 0 when the element's boundaries intersect with the screen edges.
+
+### Border Sizes
+
+<figure class="flex-wrap gap">
+<div class="demo-box" style="border-width: var(--border-size-1);">1</div>
+<div class="demo-box" style="border-width: var(--border-size-2);">2</div>
+<div class="demo-box" style="border-width: var(--border-size-3);">3</div>
+<div class="demo-box" style="border-width: var(--border-size-4);">4</div>
+<div class="demo-box" style="border-width: var(--border-size-5);">5</div>
+<div class="demo-box" style="border-width: var(--border-size-6);">6</div>
+</figure>
+
+### Colors
+
+Unlike other approaches where colors are predefined, we offer a dynamic color map.
+This map defines ranges of colors that can be modified using the `--hue` or `--chroma` variables.
+
+This approach minimizes the amount of CSS required for color definitions.
+It simplifies color implementation by defining only the color strength (`--color-{NUMBER}`) and a `--hue`.
+We also provide a set of predefined hues for convenience.
+
+<figure
+	id="demoColors"
+	class="flex-wrap align gap"
+	style="--align: start; --gap: 0.5em; --demo-box-stroke: transparent; --hue: var(--hue-teal)"
+>
+<div class="demo-box hover:scale" style="background-color: var(--color-0); color: var(--color-14)">0</div>
+<div class="demo-box hover:scale" style="background-color: var(--color-1); color: var(--color-14)">1</div>
+<div class="demo-box hover:scale" style="background-color: var(--color-2); color: var(--color-14)">2</div>
+<div class="demo-box hover:scale" style="background-color: var(--color-3); color: var(--color-14)">3</div>
+<div class="demo-box hover:scale" style="background-color: var(--color-4); color: var(--color-14)">4</div>
+<div class="demo-box hover:scale" style="background-color: var(--color-5); color: var(--color-14)">5</div>
+<div class="demo-box hover:scale" style="background-color: var(--color-6); color: var(--color-14)">6</div>
+<div class="demo-box hover:scale" style="background-color: var(--color-7); color: var(--color-14)">7</div>
+<div class="demo-box hover:scale" style="background-color: var(--color-8); color: var(--color-0)">8</div>
+<div class="demo-box hover:scale" style="background-color: var(--color-9); color: var(--color-0)">9</div>
+<div class="demo-box hover:scale" style="background-color: var(--color-10); color: var(--color-0)">10</div>
+<div class="demo-box hover:scale" style="background-color: var(--color-11); color: var(--color-0)">11</div>
+<div class="demo-box hover:scale" style="background-color: var(--color-12); color: var(--color-0)">12</div>
+<div class="demo-box hover:scale" style="background-color: var(--color-13); color: var(--color-0)">13</div>
+<div class="demo-box hover:scale" style="background-color: var(--color-14); color: var(--color-0)">14</div>
+</figure>
+
+<div class="flex-wrap gap">
+<label>
+	Hue
+	<select name="demo-hue-changer" onChange="demoColors.style.setProperty('--hue', event.target.value);">
+	<option value="var(--hue-pink)">Pink</option>
+	<option value="var(--hue-purple)">Purple</option>
+	<option value="var(--hue-violet)">Violet</option>
+	<option value="var(--hue-indigo)">Indigo</option>
+	<option value="var(--hue-blue)">Blue</option>
+	<option value="var(--hue-cyan)">Cyan</option>
+	<option value="var(--hue-teal)" selected>Teal</option>
+	<option value="var(--hue-green)">Green</option>
+	<option value="var(--hue-lime)">Lime</option>
+	<option value="var(--hue-yellow)">Yellow</option>
+	<option value="var(--hue-orange)">Orange</option>
+	<option value="var(--hue-red)">Red</option>
+	</select>
+</label>
+<label>
+	Chroma
+	<select name="demo-chroma-changer" onChange="demoColors.style.setProperty('--chroma', event.target.value);">
+	<option value="1" selected>1</option>
+	<option value="0.9">0.9</option>
+	<option value="0.8">0.8</option>
+	<option value="0.7">0.7</option>
+	<option value="0.6">0.6</option>
+	<option value="0.5">0.5</option>
+	<option value="0.4">0.4</option>
+	<option value="0.3">0.3</option>
+	<option value="0.2">0.2</option>
+	<option value="0.1">0.1</option>
+	<option value="0">0</option>
+	</select>
+</label>
+</div>
+
+### Easing
+
+> [!note]
+> TODO
+
+### Fonts
+
+#### Font Sizes
+
+<div class="flow" style="--flow: 0.25em">
+<p style="font-size: var(--font-size-1)"><code>--font-size-1</code> Hello there</p>
+<p style="font-size: var(--font-size-2)"><code>--font-size-2</code> Hello there</p>
+<p style="font-size: var(--font-size-3)"><code>--font-size-3</code> Hello there</p>
+<p style="font-size: var(--font-size-4)"><code>--font-size-4</code> Hello there</p>
+<p style="font-size: var(--font-size-5)"><code>--font-size-5</code> Hello there</p>
+<p style="font-size: var(--font-size-6)"><code>--font-size-6</code> Hello there</p>
+<p style="font-size: var(--font-size-7)"><code>--font-size-7</code> Hello there</p>
+<p style="font-size: var(--font-size-8)"><code>--font-size-8</code> Hello there</p>
+<p style="font-size: var(--font-size-9)"><code>--font-size-9</code> Hello there</p>
+</div>
+
+#### Fluid Font Sizes
+
+<div class="flow" style="--flow: 0.25em">
+<p style="font-size: var(--font-size-fluid-1)"><code>--font-size-fluid-1</code> Hello there</p>
+<p style="font-size: var(--font-size-fluid-2)"><code>--font-size-fluid-2</code> Hello there</p>
+<p style="font-size: var(--font-size-fluid-3)"><code>--font-size-fluid-3</code> Hello there</p>
+<p style="font-size: var(--font-size-fluid-4)"><code>--font-size-fluid-4</code> Hello there</p>
+<p style="font-size: var(--font-size-fluid-5)"><code>--font-size-fluid-5</code> Hello there</p>
+</div>
+
+#### Line Height
+
+### Shadows
+
+<figure class="flex-wrap gap" style="--gap: 1.25em">
+<div class="demo-box" style="box-shadow: var(--shadow-1);">1</div>
+<div class="demo-box" style="box-shadow: var(--shadow-2);">2</div>
+<div class="demo-box" style="box-shadow: var(--shadow-3);">3</div>
+<div class="demo-box" style="box-shadow: var(--shadow-4);">4</div>
+<div class="demo-box" style="box-shadow: var(--shadow-5);">5</div>
+<div class="demo-box" style="box-shadow: var(--shadow-6);">6</div>
+</figure>
+
+### Sizes
+
+### Z-Layer
+
+Z-indexes don't need high values, just a currated list of values.
+
+```css
+/* Options */
+--layer-{1-5};
+
+/* Example */
+.modal {
+	z-index: var(--layer-5);
+}
+```
