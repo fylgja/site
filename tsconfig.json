@@ -5,6 +5,7 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
+			"@utils": ["src/utilities.ts"],
 			"@assets/*": ["src/assets/*"],
 			"@components/*": ["src/components/*"],
 			"@layouts/*": ["src/layouts/*"]

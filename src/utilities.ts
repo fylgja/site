@@ -1,0 +1,14 @@
+/**
+ * Checks if the href is the same as the currentPath and returns the 'page' if true
+ */
+export const isCurrentPage = (href: string, currentPath: string) =>
+	currentPath === href ? "page" : null;
+
+/**
+ * Sort a Astro collection by sortOrder
+ */
+export const sortByOrder = (collection: any[]) => {
+	return collection.sort((a, b) => {
+		return a.data.sortOrder - b.data.sortOrder;
+	});
+};
