@@ -1,5 +1,4 @@
 ---
-import siteConfig from "site.config";
 import Logo from "@assets/logo.svg?raw";
 import Offcanvas from "@components/ui/Offcanvas.astro";
 import DocSearch from "@components/DocSearch.astro";
@@ -9,44 +8,26 @@ interface Props {
 	hideSearch?: boolean;
 }
 
-const { socials } = siteConfig;
 const currentPath = Astro.url.pathname;
 const isCurrentPage = (href: string) => (currentPath === href ? "page" : null);
 const { hideSearch = false } = Astro.props;
 
 const menu = [
 	{
+		label: "Library",
+		path: "/library",
+	},
+	{
 		label: "Docs",
 		path: "/docs",
 	},
 	{
-		label: "UI Libary",
-		path: "/ui",
-	},
-	{
 		label: "Blog",
 		path: "/blog",
-	},
-	{
-		label: "Github",
-		path: socials.github,
 	},
 ];
 
-const mobileMenu = [
-	{
-		label: "Docs",
-		path: "/docs",
-	},
-	{
-		label: "UI Libary",
-		path: "/ui",
-	},
-	{
-		label: "Blog",
-		path: "/blog",
-	},
-];
+const mobileMenu = menu;
 ---
 
 <header id="pageHeader" class="page-header sticky" style="--inset-t: -1px; --z: 6">
@@ -60,7 +41,12 @@ const mobileMenu = [
 			)
 		}
 		<div class="flex align">
-			<nav aria-label="Main Menu" class="menu hidden lg:block" style="--menu-dir: row">
+			<nav
+				id="desktop-menu"
+				aria-label="Main Menu"
+				class="menu hidden lg:block"
+				style="--menu-dir: row"
+			>
 				{
 					menu.map((item) => (
 						<a href={item.path} aria-current={isCurrentPage(item.path)} class="btn">
@@ -151,6 +137,12 @@ const mobileMenu = [
 	);
 	observer.observe(pageHeader);
 </script>
+
+<style>
+	#desktop-menu a[aria-current="page"] {
+		--btn-color: light-dark(var(--brand), #fff);
+	}
+</style>
 
 <style is:global>
 	.page-header {

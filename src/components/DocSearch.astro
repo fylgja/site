@@ -1,6 +1,5 @@
 ---
 import "@docsearch/css/dist/modal.css";
-import type docsearch from "@docsearch/js";
 
 const { ...attrs } = Astro.props;
 ---
@@ -110,7 +109,8 @@ const { ...attrs } = Astro.props;
 
 	@media (width < 768px) {
 		.DocSearch-Button {
-			padding: 0.8em;
+			border-color: transparent;
+			padding: 0.5rem;
 		}
 
 		.DocSearch-Button-Placeholder,

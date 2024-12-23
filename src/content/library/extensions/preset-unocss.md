@@ -1,9 +1,9 @@
 ---
-title: "TailwindCSS"
-description: "Preset for TailwindCSS"
+title: "Preset UnoCSS"
+description: "Preset for UnoCSS"
 ---
 
-Preset for TailwindCSS.
+Preset for UnoCSS.
 
 > [!Important]
 > Work in progress! If your have questions or idea's, feel free to open a [discussion](https://github.com/orgs/fylgja/discussions).

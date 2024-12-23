@@ -1,5 +1,6 @@
 ---
 interface Props {
+	siteName: string;
 	title: string;
 	description: string;
 	image?: string;
@@ -10,9 +11,10 @@ interface Props {
 }
 
 const {
+	siteName,
 	title,
 	description,
-	image = "/social.webp",
+	image,
 	canonical = Astro.url,
 	themeColor,
 	themeColorDark,
@@ -23,7 +25,7 @@ const {
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>{title}</title>
+	<title>{title} - {siteName}</title>
 	<link rel="canonical" href={canonical} />
 
 	<meta name="title" content={title} />
@@ -48,16 +50,15 @@ const {
 	<meta property="og:url" content={Astro.url} />
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
-	<meta property="og:image" content={new URL(image, Astro.url)} />
+	{image && <meta property="og:image" content={new URL(image, Astro.url)} />}
 
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:url" content={Astro.url} />
 	<meta property="twitter:title" content={title} />
 	<meta property="twitter:description" content={description} />
-	<meta property="twitter:image" content={new URL(image, Astro.url)} />
+	{image && <meta property="twitter:image" content={new URL(image, Astro.url)} />}
 
 	<meta name="generator" content={Astro.generator} />
-	<meta name="generator" content="Fylgja CSS" />
 
 	<slot />
 </head>

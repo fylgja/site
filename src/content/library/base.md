@@ -6,6 +6,9 @@ version: "2.0.0"
 npm: "@fylgja/base"
 git: "https://github.com/fylgja/fylgja/tree/main/base"
 sortOrder: 5
+announcement: {
+	message: "Hello there"
+}
 ---
 
 Fylgja Base provides a streamlined starting point for any web project.

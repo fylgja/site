@@ -2,6 +2,56 @@
 import siteConfig from "site.config";
 import Logo from "@assets/logo.svg?raw";
 import SocialIcons from "./SocialIcons.astro";
+
+const menus = [
+	{
+		title: "Library",
+		items: [
+			{
+				label: "Base",
+				href: "/library/base",
+			},
+			{
+				label: "Tokens",
+				href: "/library/tokens",
+			},
+			{
+				label: "Utilities",
+				href: "/library/utilities",
+			},
+			{
+				label: "UI components",
+				href: "/ui",
+			},
+		],
+	},
+	{
+		title: "About",
+		items: [
+			{
+				label: "About Us",
+				href: "/about-us",
+			},
+			{
+				label: "Getting Started",
+				href: "/getting-started",
+			},
+			{
+				label: "Why Fylgja",
+				href: "/docs/why-fylgja",
+			},
+		],
+	},
+	{
+		title: "Community",
+		items: [
+			{
+				label: "Github Discussions",
+				href: "https://github.com/orgs/fylgja/discussions",
+			},
+		],
+	},
+];
 ---
 
 <footer style="--py: 2rem">
@@ -11,40 +61,22 @@ import SocialIcons from "./SocialIcons.astro";
 				<Fragment set:html={Logo} />
 			</div>
 			<div class="grid" style="--sm_grid-cols: 2; --lg_grid-cols: 3">
-				<div>
-					<h2>Resources</h2>
-					<nav aria-label="Resources">
-						<ul>
-							<li><a href="/docs/packages/base">Base</a></li>
-							<li><a href="/docs/packages/tokens">Tokens</a></li>
-							<li>
-								<a href="/docs/packages/utilities">Utilities</a>
-							</li>
-						</ul>
-					</nav>
-				</div>
-				<div>
-					<h2>About</h2>
-					<nav aria-label="About">
-						<ul>
-							<li>
-								<a href="/docs/core-concepts/why-fylgja">Why Choose Fylgja</a>
-							</li>
-						</ul>
-					</nav>
-				</div>
-				<div>
-					<h2>Community</h2>
-					<nav aria-label="Community">
-						<ul>
-							<li>
-								<a href="https://github.com/orgs/fylgja/discussions"
-									>Github Discussions</a
-								>
-							</li>
-						</ul>
-					</nav>
-				</div>
+				{
+					menus.map((menu) => (
+						<div>
+							<h2>{menu.title}</h2>
+							<nav aria-label={menu.title}>
+								<ul>
+									{menu.items.map((item) => (
+										<li>
+											<a href={item.href}>{item.label}</a>
+										</li>
+									))}
+								</ul>
+							</nav>
+						</div>
+					))
+				}
 			</div>
 		</div>
 		<hr />
@@ -68,35 +100,35 @@ import SocialIcons from "./SocialIcons.astro";
 			<SocialIcons socials={siteConfig.socials} />
 		</div>
 	</div>
+
+	<style>
+		footer {
+			border-block-start: 1px solid color-mix(in srgb, currentcolor 20%, transparent);
+
+			& h2 {
+				--h-size: 1em;
+				color: light-dark(var(--brand), currentcolor);
+			}
+		}
+
+		.main-footer {
+			@media (width >= 640px) {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+			}
+
+			@media (width >= 1024px) {
+				grid-template-columns: 1.25fr 1fr;
+			}
+		}
+
+		nav a {
+			color: var(--text-color-muted);
+			text-decoration: none;
+
+			&:hover {
+				color: var(--text-color);
+			}
+		}
+	</style>
 </footer>
-
-<style>
-	footer {
-		border-block-start: 1px solid color-mix(in srgb, currentcolor 20%, transparent);
-
-		& h2 {
-			--h-size: 1em;
-			color: light-dark(var(--brand), currentcolor);
-		}
-	}
-
-	.main-footer {
-		@media (width >= 640px) {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-		}
-
-		@media (width >= 1024px) {
-			grid-template-columns: 1.25fr 1fr;
-		}
-	}
-
-	nav a {
-		color: var(--text-color-muted);
-		text-decoration: none;
-
-		&:hover {
-			color: var(--text-color);
-		}
-	}
-</style>

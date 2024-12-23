@@ -1,0 +1,32 @@
+---
+import Layout from "./PageLayout.astro";
+
+type pageProps = {
+	title: string;
+	description?: string;
+	publishDate?: string;
+	updateDate?: string;
+};
+
+interface Props extends pageProps {
+	frontmatter?: pageProps;
+}
+
+const { title, description, publishDate, updateDate, frontmatter } = Astro.props;
+const pageTitle = frontmatter?.title || title;
+const pageDescription = frontmatter?.description || description;
+const pagePublishDate = frontmatter?.publishDate || publishDate;
+const pageUpdateDate = frontmatter?.updateDate || updateDate;
+
+const parseDate = (date: string, format = "nl-NL") => {
+	const newDate = new Date(date);
+	return new Intl.DateTimeFormat(format).format(newDate);
+};
+---
+
+<Layout title={pageTitle} description={pageDescription} style="--container-size: 68ch">
+	<article>
+		<h1>{pageTitle}</h1>
+		<slot />
+	</article>
+</Layout>

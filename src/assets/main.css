@@ -35,8 +35,8 @@
 	border: 1px solid var(--demo-box-stroke, var(--brand));
 	background-color: var(--demo-box-bg, var(--surface-color));
 	aspect-ratio: var(--ratio-box);
-	min-inline-size: var(--demo-box-width, clamp(3rem, 7vw, 7rem));
-	padding: 1rem;
+	min-inline-size: var(--demo-box-width, clamp(var(--size-10), 9vw, var(--size-16)));
+	padding: var(--size-1);
 	line-height: 1.1;
 	transition: scale 0.3s ease-out;
 }
@@ -46,6 +46,15 @@
 		z-index: 1;
 		scale: 1.3;
 	}
+}
+
+.grid > * {
+	grid-row: var(--grid-row, auto);
+	grid-column: var(--grid-col, auto);
+}
+
+.col-full {
+	--grid-col: 1 / -1;
 }
 
 .markdown-content {

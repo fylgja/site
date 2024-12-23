@@ -1,8 +1,45 @@
 ---
 import Layout from "@layouts/DocsLayout.astro";
-const title = "Fylgja Docs";
+import Code from "@components/CodeBlock.astro";
 ---
 
-<Layout title={title} toc={[]}>
-	<h1>{title}</h1>
+<Layout title="Fylgja Docs">
+	<h1>Getting Started</h1>
+	<p>
+		If your not sure where to start or what packages to use, the best way to get started with
+		Fylgja is to use it as CSS Framework, Fylgja is at it's core a Library not a Framework but
+		can be used as one.
+	</p>
+	<p>Now there are multiple ways to get started with Fylgja</p>
+
+	<h2>Installation & quick start</h2>
+	<Code lang="sh" code="npm i fylgja" />
+	<p>Just want to get started or try all of Fylgja</p>
+
+	<div class="grid gap" style="--md_grid-cols: 2">
+		<div class="card">
+			<h2>Learn</h2>
+			<ul>
+				<li><a href="#">Using Fylgja</a></li>
+				<li><a href="#">Fylgja Base Docs</a></li>
+			</ul>
+		</div>
+
+		<div class="card">
+			<h2>Explore</h2>
+			<p>lorum</p>
+		</div>
+	</div>
 </Layout>
+
+<style>
+	.card {
+		--card-shadow: none;
+		--card-radius: 0.25em;
+		border: 2px solid var(--brand);
+
+		& h2 {
+			--h-size: 1.25em;
+		}
+	}
+</style>

@@ -181,31 +181,50 @@ We also provide a set of predefined hues for convenience.
 
 ### Fonts
 
-#### Font Sizes
+<p
+	id="demoFonts"
+	style="font-size: var(--font-size-6); line-height: var(--line-height-3);"
+>Easily customize your text with variable and static font sizes, intelligently adjusted line heights, modern font stacks, and a comprehensive set of typography variables.</p>
 
-<div class="flow" style="--flow: 0.25em">
-<p style="font-size: var(--font-size-1)"><code>--font-size-1</code> Hello there</p>
-<p style="font-size: var(--font-size-2)"><code>--font-size-2</code> Hello there</p>
-<p style="font-size: var(--font-size-3)"><code>--font-size-3</code> Hello there</p>
-<p style="font-size: var(--font-size-4)"><code>--font-size-4</code> Hello there</p>
-<p style="font-size: var(--font-size-5)"><code>--font-size-5</code> Hello there</p>
-<p style="font-size: var(--font-size-6)"><code>--font-size-6</code> Hello there</p>
-<p style="font-size: var(--font-size-7)"><code>--font-size-7</code> Hello there</p>
-<p style="font-size: var(--font-size-8)"><code>--font-size-8</code> Hello there</p>
-<p style="font-size: var(--font-size-9)"><code>--font-size-9</code> Hello there</p>
+<div class="flex-wrap gap">
+<label>
+	Font Size
+	<select name="demo-hue-changer" onChange="demoFonts.style.fontSize = event.target.value;">
+	<option value="var(--font-size-1)">Size 1</option>
+	<option value="var(--font-size-2)">Size 2</option>
+	<option value="var(--font-size-3)">Size 3</option>
+	<option value="var(--font-size-4)">Size 4</option>
+	<option value="var(--font-size-5)">Size 5</option>
+	<option value="var(--font-size-6)" selected>Size 6</option>
+	<option value="var(--font-size-7)">Size 7</option>
+	<option value="var(--font-size-8)">Size 8</option>
+	<option value="var(--font-size-9)">Size 9</option>
+	<optgroup label="Fluid">
+		<option value="var(--font-size-fluid-1)">Fluid 1</option>
+		<option value="var(--font-size-fluid-2)">Fluid 2</option>
+		<option value="var(--font-size-fluid-3)">Fluid 3</option>
+		<option value="var(--font-size-fluid-4)">Fluid 4</option>
+		<option value="var(--font-size-fluid-5)">Fluid 5</option>
+	</optgroup>
+	</select>
+</label>
+<label>
+	Line Height
+	<select name="demo-hue-changer" onChange="demoFonts.style.lineHeight = event.target.value;">
+	<option value="var(--line-height-1)">Height 1</option>
+	<option value="var(--line-height-2)">Height 2</option>
+	<option value="var(--line-height-3)" selected>Height 3</option>
+	<option value="var(--line-height-4)">Height 4</option>
+	<option value="var(--line-height-5)">Height 5</option>
+	</select>
+</label>
 </div>
 
-#### Fluid Font Sizes
-
-<div class="flow" style="--flow: 0.25em">
-<p style="font-size: var(--font-size-fluid-1)"><code>--font-size-fluid-1</code> Hello there</p>
-<p style="font-size: var(--font-size-fluid-2)"><code>--font-size-fluid-2</code> Hello there</p>
-<p style="font-size: var(--font-size-fluid-3)"><code>--font-size-fluid-3</code> Hello there</p>
-<p style="font-size: var(--font-size-fluid-4)"><code>--font-size-fluid-4</code> Hello there</p>
-<p style="font-size: var(--font-size-fluid-5)"><code>--font-size-fluid-5</code> Hello there</p>
-</div>
-
-#### Line Height
+```css
+--font-size-{1-9};
+--font-size-fluid-{1-5};
+--line-height-{1-5};
+```
 
 ### Shadows
 

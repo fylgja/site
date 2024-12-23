@@ -19,8 +19,10 @@ export default defineConfig({
 			},
 		},
 	},
-	// TODO: add more v1 pages
 	redirects: {
+		"/getting-started": "/docs",
+		"/library": "/library/base",
+		// TODO: add more v1 pages
 		"/guides": "/docs",
 	},
 	devToolbar: {

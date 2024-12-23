@@ -12,13 +12,7 @@ interface Props {
 	class?: string;
 	style?: string;
 }
-const {
-	title,
-	description,
-	hideSearch = false,
-	class: classes,
-	style,
-} = Astro.props;
+const { title, description, hideSearch = false, class: classes, style } = Astro.props;
 ---
 
 <Layout title={title} description={description}>

@@ -1,0 +1,21 @@
+---
+import { Code } from "astro:components";
+import type { BuiltinLanguage, LanguageRegistration, SpecialLanguage } from "shiki";
+
+interface Props {
+	code: string;
+	lang?: BuiltinLanguage | SpecialLanguage | LanguageRegistration;
+}
+
+const { lang, code } = Astro.props;
+---
+
+<Code
+	lang={lang}
+	code={code}
+	themes={{
+		light: "github-light",
+		dark: "github-dark",
+	}}
+	defaultColor={false}
+/>

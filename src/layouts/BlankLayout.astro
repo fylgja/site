@@ -9,17 +9,19 @@ interface Props {
 	dir?: "ltr" | "rtl";
 }
 
-const { description: siteDescription, themeColor, themeColorDark } = siteConfig;
+const { name, description: siteDescription, themeColor, themeColorDark } = siteConfig;
 const { title, description = siteDescription, lang = "en", dir = "ltr" } = Astro.props;
 ---
 
 <html lang={lang} dir={dir} data-theme="auto">
 	<Head
+		siteName={name}
 		title={title}
 		description={description}
 		themeColor={themeColor}
 		themeColorDark={themeColorDark}
 	>
+		<meta name="generator" content="Fylgja CSS" />
 		<link
 			rel="alternate"
 			type="application/rss+xml"

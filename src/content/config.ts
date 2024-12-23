@@ -36,4 +36,8 @@ export const collections = {
 		type: "content",
 		schema: docsSchema,
 	}),
+	library: defineCollection({
+		type: "content",
+		schema: docsSchema,
+	}),
 };

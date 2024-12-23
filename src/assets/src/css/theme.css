@@ -3,8 +3,8 @@
 }
 
 :root {
-	--brand: hsl(260, 84%, 56%);
-	--on-brand: hsl(260, 0%, 100%);
+	--brand: oklch(52% .2 260);
+	--on-brand: oklch(99% .03 260);
 	--form-active-color: var(--brand);
 	--form-error-color: #e00;
 	--control-checked-stroke: var(--brand);

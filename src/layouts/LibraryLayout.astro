@@ -23,7 +23,7 @@ const isProdMode = import.meta.env.PROD;
 
 async function filterCollection(path: string) {
 	return sortByOrder(
-		await getCollection("docs", ({ id, data }: { id: string; data: any }) => {
+		await getCollection("library", ({ id, data }: { id: string; data: any }) => {
 			if (isProdMode ? data.isDraft : false) return;
 
 			if (path === "/") {
@@ -37,19 +37,15 @@ async function filterCollection(path: string) {
 
 const collection = [
 	{
-		items: [
-			{
-				slug: "",
-				data: {
-					title: "Getting Started",
-				},
-			},
-			...(await filterCollection("/")),
-		],
+		items: await filterCollection("/"),
 	},
 	{
-		title: "Core Concepts",
-		items: await filterCollection("core-concepts/"),
+		title: "Components",
+		items: await filterCollection("components"),
+	},
+	{
+		title: "Extensions",
+		items: await filterCollection("extensions"),
 	},
 ];
 
@@ -59,12 +55,12 @@ const { title, description, toc = [] } = Astro.props;
 <Layout title={title} description={description}>
 	<SkipLink id="main-content" title="Skip to content" />
 	<PageHeader>
-		<Menu title="Docs" items={collection} urlPrefix="/docs" slot="mobile-menu" />
+		<Menu title="Library" items={collection} urlPrefix="/library" slot="mobile-menu" />
 	</PageHeader>
 	<main id="main-content" class="docs-layout">
 		<aside class="docs-menu hidden lg:block">
 			<div class="sticky inset-header scroll-y">
-				<Menu title="Docs" items={collection} urlPrefix="/docs" />
+				<Menu title="Library" items={collection} urlPrefix="/library" />
 			</div>
 		</aside>
 		<div class="docs-content">
@@ -92,7 +88,7 @@ const { title, description, toc = [] } = Astro.props;
 		--card-radius: var(--radius-conditional-4);
 		--card-padding: 0.5rem;
 		--btn-stroke: transparent;
-		--card-shadow: var(--shadow-5);
+		--card-shadow: none;
 
 		details > :not(summary) {
 			padding: 0.5rem 1rem;
