@@ -12,3 +12,11 @@ export const sortByOrder = (collection: any[]) => {
 		return a.data.sortOrder - b.data.sortOrder;
 	});
 };
+
+/**
+ * Convert Date to language format
+ */
+export const parseDate = (date: string, format = "en-US") => {
+	const newDate = new Date(date);
+	return new Intl.DateTimeFormat(format).format(newDate);
+};

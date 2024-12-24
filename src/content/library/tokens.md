@@ -121,27 +121,31 @@ We also provide a set of predefined hues for convenience.
 	class="flex-wrap align gap"
 	style="--align: start; --gap: 0.5em; --demo-box-stroke: transparent; --hue: var(--hue-teal)"
 >
-<div class="demo-box hover:scale" style="background-color: var(--color-0); color: var(--color-14)">0</div>
-<div class="demo-box hover:scale" style="background-color: var(--color-1); color: var(--color-14)">1</div>
-<div class="demo-box hover:scale" style="background-color: var(--color-2); color: var(--color-14)">2</div>
-<div class="demo-box hover:scale" style="background-color: var(--color-3); color: var(--color-14)">3</div>
-<div class="demo-box hover:scale" style="background-color: var(--color-4); color: var(--color-14)">4</div>
-<div class="demo-box hover:scale" style="background-color: var(--color-5); color: var(--color-14)">5</div>
-<div class="demo-box hover:scale" style="background-color: var(--color-6); color: var(--color-14)">6</div>
-<div class="demo-box hover:scale" style="background-color: var(--color-7); color: var(--color-14)">7</div>
-<div class="demo-box hover:scale" style="background-color: var(--color-8); color: var(--color-0)">8</div>
-<div class="demo-box hover:scale" style="background-color: var(--color-9); color: var(--color-0)">9</div>
-<div class="demo-box hover:scale" style="background-color: var(--color-10); color: var(--color-0)">10</div>
-<div class="demo-box hover:scale" style="background-color: var(--color-11); color: var(--color-0)">11</div>
-<div class="demo-box hover:scale" style="background-color: var(--color-12); color: var(--color-0)">12</div>
-<div class="demo-box hover:scale" style="background-color: var(--color-13); color: var(--color-0)">13</div>
-<div class="demo-box hover:scale" style="background-color: var(--color-14); color: var(--color-0)">14</div>
+<div class="demo-box -scaler" style="background-color: var(--color-0); color: var(--color-14)">0</div>
+<div class="demo-box -scaler" style="background-color: var(--color-1); color: var(--color-14)">1</div>
+<div class="demo-box -scaler" style="background-color: var(--color-2); color: var(--color-14)">2</div>
+<div class="demo-box -scaler" style="background-color: var(--color-3); color: var(--color-14)">3</div>
+<div class="demo-box -scaler" style="background-color: var(--color-4); color: var(--color-14)">4</div>
+<div class="demo-box -scaler" style="background-color: var(--color-5); color: var(--color-14)">5</div>
+<div class="demo-box -scaler" style="background-color: var(--color-6); color: var(--color-14)">6</div>
+<div class="demo-box -scaler" style="background-color: var(--color-7); color: var(--color-14)">7</div>
+<div class="demo-box -scaler" style="background-color: var(--color-8); color: var(--color-0)">8</div>
+<div class="demo-box -scaler" style="background-color: var(--color-9); color: var(--color-0)">9</div>
+<div class="demo-box -scaler" style="background-color: var(--color-10); color: var(--color-0)">10</div>
+<div class="demo-box -scaler" style="background-color: var(--color-11); color: var(--color-0)">11</div>
+<div class="demo-box -scaler" style="background-color: var(--color-12); color: var(--color-0)">12</div>
+<div class="demo-box -scaler" style="background-color: var(--color-13); color: var(--color-0)">13</div>
+<div class="demo-box -scaler" style="background-color: var(--color-14); color: var(--color-0)">14</div>
 </figure>
 
 <div class="flex-wrap gap">
 <label>
 	Hue
-	<select name="demo-hue-changer" onChange="demoColors.style.setProperty('--hue', event.target.value);">
+	<select name="demo-hue-changer" onChange="
+		demoColors.style.setProperty('--hue', event.target.value);
+		document.documentElement.style.setProperty('--hue', event.target.value);
+		document.documentElement.style.setProperty('--brand', 'var(--color-9)');
+	">
 	<option value="var(--hue-pink)">Pink</option>
 	<option value="var(--hue-purple)">Purple</option>
 	<option value="var(--hue-violet)">Violet</option>

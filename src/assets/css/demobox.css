@@ -1,0 +1,19 @@
+.demo-box {
+	display: grid;
+	place-content: center;
+	border-radius: var(--radius-2);
+	border: 1px solid var(--demo-box-stroke, var(--brand));
+	background-color: var(--demo-box-bg, var(--surface-color));
+	aspect-ratio: var(--ratio-box);
+	min-inline-size: var(--demo-box-width, clamp(var(--size-16), 10vw, var(--size-21)));
+	padding: var(--size-1);
+	line-height: 1.1;
+	transition: scale 0.3s ease-out;
+
+	@media (hover: hover) {
+		&.-scaler:hover {
+			z-index: 1;
+			scale: 1.3;
+		}
+	}
+}

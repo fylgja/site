@@ -4,6 +4,7 @@ import { sortByOrder } from "@utils";
 import Layout from "./BlankLayout.astro";
 import PageHeader from "@components/PageHeader.astro";
 import PageFooter from "@components/PageFooter.astro";
+import MainNav from "@components/MainNav.astro";
 import Menu from "@components/Menu.astro";
 import SkipLink from "@components/SkipLink.astro";
 import Toc from "@components/Toc";
@@ -64,6 +65,7 @@ const { title, description, toc = [] } = Astro.props;
 	<main id="main-content" class="docs-layout">
 		<aside class="docs-menu hidden lg:block">
 			<div class="sticky inset-header scroll-y">
+				<MainNav />
 				<Menu title="Docs" items={collection} urlPrefix="/docs" />
 			</div>
 		</aside>
@@ -103,13 +105,6 @@ const { title, description, toc = [] } = Astro.props;
 		margin-bottom: 2rem;
 	}
 
-	.announcement {
-		padding: 0.5rem 1rem;
-		background-color: var(--brand);
-		color: var(--on-brand);
-		text-align: center;
-	}
-
 	@media (width >= 1024px) {
 		.docs-layout {
 			position: relative;
@@ -145,7 +140,7 @@ const { title, description, toc = [] } = Astro.props;
 			color: var(--docs-menu-color);
 
 			& > .sticky {
-				padding: 1rem 0.5rem 2rem;
+				padding: 1.5rem 0.875rem 2.5rem;
 			}
 		}
 	}

@@ -1,9 +1,30 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "@layouts/PageLayout.astro";
-const title = "Blog";
+
+const title = "Fylgja Report";
+const collection = await getCollection("blog", ({ data }) => {
+	return !data.isDraft;
+});
 ---
 
 <Layout title={title}>
 	<h1>{title}</h1>
-	<a href="/blog/base">Base</a>
+	<div class="grid" style="--md_grid-cols: 2">
+		{
+			collection.map((item) => (
+				<div class="card">
+					<a href={`/blog/${item.slug}`}>{item.data.title}</a>
+				</div>
+			))
+		}
+	</div>
 </Layout>
+
+<style>
+	.grid {
+		& > :first-child {
+			grid-column: 1 / -1;
+		}
+	}
+</style>

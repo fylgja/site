@@ -55,7 +55,7 @@ const { title, items, urlPrefix, class: classes } = Astro.props;
 									style="--duration: 300ms"
 								/>
 							</summary>
-							<ul style="--px: 1em 0">
+							<ul>
 								{group.items.map((item) => (
 									<li>
 										<a
@@ -79,19 +79,16 @@ const { title, items, urlPrefix, class: classes } = Astro.props;
 </nav>
 
 <style>
-	nav details a {
-		color: var(--text-color-muted);
-		font-size: 0.875em;
-		text-decoration: none;
-
-		&:hover {
-			color: var(--text-color);
+	nav {
+		& details :where(a.btn) {
+			--btn-color: var(--text-color-muted);
+			--btn-hover-color: var(--text-color);
+			font-size: 0.875em;
 		}
 
-		&[aria-current="page"] {
+		& a[aria-current="page"] {
 			--btn-bg: var(--brand);
 			--btn-color: var(--on-brand);
-			color: var(--btn-color);
 		}
 	}
 </style>

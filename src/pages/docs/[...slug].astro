@@ -1,6 +1,5 @@
 ---
 import Layout from "@layouts/DocsLayout.astro";
-import DocMeta from "@components/DocMeta.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -12,13 +11,11 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { pageTitle, title, version, git, npm, changelog } = entry.data;
+const { pageTitle, title } = entry.data;
 const { Content, headings } = await entry.render();
-const hasMeta = !!git || !!npm;
 ---
 
 <Layout title={title} toc={headings}>
 	<h1>{pageTitle || title}</h1>
-	{hasMeta && <DocMeta version={version} git={git} npm={npm} changelog={changelog} />}
 	<Content />
 </Layout>

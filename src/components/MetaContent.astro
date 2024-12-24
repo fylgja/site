@@ -1,0 +1,44 @@
+---
+import { parseDate } from "@utils";
+
+interface Props {
+	published?: string;
+	updatedOn?: string;
+}
+
+const { published, updatedOn } = Astro.props;
+---
+
+<div class="meta">
+	{published && <time datetime={published}>{parseDate(published)}</time>}
+	{updatedOn && <time datetime={updatedOn}>{parseDate(updatedOn)}</time>}
+</div>
+
+<style>
+	.meta {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem 1rem;
+		font-size: 0.875em;
+		color: var(--text-color-muted);
+		border-block-end: 2px solid var(--border-color-fade);
+		padding-block-end: 0.5em;
+	}
+
+	.meta a {
+		display: flex;
+		align-items: center;
+		gap: 0.375rem;
+		text-decoration: none;
+		color: color-mix(in srgb, var(--brand) 65%, var(--root-fg));
+
+		& svg {
+			color: var(--text-color-muted);
+		}
+
+		&:hover {
+			color: var(--text-color);
+		}
+	}
+</style>

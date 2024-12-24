@@ -1,5 +1,6 @@
 ---
 import type { AstroTocProps, TocItemProps } from "./types.ts";
+import { Icon } from "astro-icon/components";
 import TocItem from "./Item.astro";
 
 interface Props {
@@ -38,10 +39,7 @@ function createNestedArray(inputArray: AstroTocProps[]) {
 			stack.push(newItem);
 		} else {
 			// Otherwise, pop from stack until we find the parent with depth - 1
-			while (
-				stack.length &&
-				stack[stack.length - 1].depth >= item.depth
-			) {
+			while (stack.length && stack[stack.length - 1].depth >= item.depth) {
 				stack.pop();
 			}
 
@@ -82,22 +80,10 @@ const style = {
 			<details>
 				<summary class="list-none btn w-full align">
 					<span>{label}</span>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="24"
-						height="24"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						class="flip-rotate transistion"
-						style="--duration: 300ms"
-						aria-hidden="true"
-					>
-						<path d="m6 9 6 6 6-6" />
-					</svg>
+					<span class="stack" aria-hidden="true">
+						<Icon name="expand" width="24" height="24" class="has-open:invisible" />
+						<Icon name="collapse" width="24" height="24" class="has-open:visible" />
+					</span>
 				</summary>
 				<ul>
 					{tocItems.map((item) => (

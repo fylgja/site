@@ -1,4 +1,5 @@
 ---
+import Meta from "@components/MetaContent.astro";
 import Layout from "./PageLayout.astro";
 
 type pageProps = {
@@ -17,16 +18,12 @@ const pageTitle = frontmatter?.title || title;
 const pageDescription = frontmatter?.description || description;
 const pagePublishDate = frontmatter?.publishDate || publishDate;
 const pageUpdateDate = frontmatter?.updateDate || updateDate;
-
-const parseDate = (date: string, format = "nl-NL") => {
-	const newDate = new Date(date);
-	return new Intl.DateTimeFormat(format).format(newDate);
-};
 ---
 
 <Layout title={pageTitle} description={pageDescription} style="--container-size: 68ch">
-	<article>
+	<article class="markdown-content">
 		<h1>{pageTitle}</h1>
+		<Meta published={pagePublishDate} updatedOn={pageUpdateDate} />
 		<slot />
 	</article>
 </Layout>

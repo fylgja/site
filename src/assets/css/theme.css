@@ -3,15 +3,16 @@
 }
 
 :root {
-	--brand: oklch(52% .2 260);
-	--on-brand: oklch(99% .03 260);
+	--brand: oklch(44% 0.18 220);
+	--brand-fade: color-mix(in srgb, var(--brand), #0000 78%);
+	--on-brand: oklch(99% 0 220);
 	--form-active-color: var(--brand);
 	--form-error-color: #e00;
 	--control-checked-stroke: var(--brand);
 	--control-checked-bg: var(--brand);
 	--control-checked-color: var(--on-brand);
 	color-scheme: light dark;
-	scrollbar-color: var(--scrollthumb-color, var(--brand)) var(--scrolltrack-color, transparent);
+	scrollbar-color: var(--scrollthumb-color, var(--brand)) var(--scrolltrack-color, #0000);
 	accent-color: var(--brand);
 	caret-color: var(--brand);
 	interpolate-size: allow-keywords;
