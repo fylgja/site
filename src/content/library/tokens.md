@@ -312,34 +312,6 @@ This ensures predictable and consistent spacing relationships within the design 
 
 </div>
 
-<style>
-	.demo-size-table {
-		--table-py: 0.25em;
-		--table-even-bg: var(--root-bg);
-		overflow-x: auto;
-
-		& table {
-			display: table;
-			inline-size: 100%;
-			font-size: 0.875em;
-		}
-
-		& tr :is(th, td):last-child {
-			display: none;
-			inline-size: 100%;
-
-			@media (width >= 768px) {
-				display: table-cell;
-			}
-
-			& > div {
-				block-size: 1.5em;
-				background: var(--brand);
-			}
-		}
-	}
-</style>
-
 ### Z-Layer
 
 Z-indexes don't need high values, just a currated list of values.
