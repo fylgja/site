@@ -193,7 +193,7 @@ We also provide a set of predefined hues for convenience.
 <div class="flex-wrap gap">
 <label>
 	Font Size
-	<select name="demo-hue-changer" onChange="demoFonts.style.fontSize = event.target.value;">
+	<select name="demo-font-size-changer" onChange="demoFonts.style.fontSize = event.target.value;">
 	<option value="var(--font-size-1)">Size 1</option>
 	<option value="var(--font-size-2)">Size 2</option>
 	<option value="var(--font-size-3)">Size 3</option>
@@ -214,7 +214,7 @@ We also provide a set of predefined hues for convenience.
 </label>
 <label>
 	Line Height
-	<select name="demo-hue-changer" onChange="demoFonts.style.lineHeight = event.target.value;">
+	<select name="demo-line-height-changer" onChange="demoFonts.style.lineHeight = event.target.value;">
 	<option value="var(--line-height-1)">Height 1</option>
 	<option value="var(--line-height-2)">Height 2</option>
 	<option value="var(--line-height-3)" selected>Height 3</option>
@@ -242,6 +242,103 @@ We also provide a set of predefined hues for convenience.
 </figure>
 
 ### Sizes
+
+Fylgja includes a comprehensive numeric spacing scale characterized by its proportional values.
+This ensures predictable and consistent spacing relationships within the design system.
+
+<div class="demo-size-table">
+
+| Name | Value    | Pixel |                                                 |
+| ---- | -------- | ----- | ----------------------------------------------- |
+| 1    | 0.125rem | 2px   | <div style="inline-size: var(--size-1)"></div>  |
+| 2    | 0.25rem  | 4px   | <div style="inline-size: var(--size-2)"></div>  |
+| 3    | 0.375rem | 6px   | <div style="inline-size: var(--size-3)"></div>  |
+| 4    | 0.5rem   | 8px   | <div style="inline-size: var(--size-4)"></div>  |
+| 5    | 0.625rem | 10px  | <div style="inline-size: var(--size-5)"></div>  |
+| 6    | 0.75rem  | 12px  | <div style="inline-size: var(--size-6)"></div>  |
+| 7    | 0.875rem | 14px  | <div style="inline-size: var(--size-7)"></div>  |
+| 8    | 1rem     | 16px  | <div style="inline-size: var(--size-8)"></div>  |
+| 9    | 1.25rem  | 20px  | <div style="inline-size: var(--size-9)"></div>  |
+| 10   | 1.5rem   | 24px  | <div style="inline-size: var(--size-10)"></div> |
+| 11   | 1.75rem  | 28px  | <div style="inline-size: var(--size-11)"></div> |
+| 12   | 2rem     | 32px  | <div style="inline-size: var(--size-12)"></div> |
+| 13   | 2.25rem  | 36px  | <div style="inline-size: var(--size-13)"></div> |
+| 14   | 2.5rem   | 40px  | <div style="inline-size: var(--size-14)"></div> |
+| 15   | 2.75rem  | 44px  | <div style="inline-size: var(--size-15)"></div> |
+| 16   | 3rem     | 48px  | <div style="inline-size: var(--size-16)"></div> |
+| 17   | 3.5rem   | 56px  | <div style="inline-size: var(--size-17)"></div> |
+| 18   | 4rem     | 64px  | <div style="inline-size: var(--size-18)"></div> |
+| 19   | 5rem     | 80px  | <div style="inline-size: var(--size-19)"></div> |
+| 20   | 6rem     | 96px  | <div style="inline-size: var(--size-20)"></div> |
+| 21   | 7rem     | 112px | <div style="inline-size: var(--size-21)"></div> |
+| 22   | 8rem     | 128px | <div style="inline-size: var(--size-22)"></div> |
+| 23   | 9rem     | 144px | <div style="inline-size: var(--size-23)"></div> |
+| 24   | 10rem    | 160px | <div style="inline-size: var(--size-24)"></div> |
+| 25   | 11rem    | 176px | <div style="inline-size: var(--size-25)"></div> |
+| 26   | 12rem    | 192px | <div style="inline-size: var(--size-26)"></div> |
+| 27   | 13rem    | 208px | <div style="inline-size: var(--size-27)"></div> |
+| 28   | 14rem    | 224px | <div style="inline-size: var(--size-28)"></div> |
+| 29   | 15rem    | 240px | <div style="inline-size: var(--size-29)"></div> |
+| 30   | 16rem    | 256px | <div style="inline-size: var(--size-30)"></div> |
+| 31   | 18rem    | 288px | <div style="inline-size: var(--size-31)"></div> |
+| 32   | 20rem    | 320px | <div style="inline-size: var(--size-32)"></div> |
+| 33   | 24rem    | 384px | <div style="inline-size: var(--size-33)"></div> |
+| 34   | 28rem    | 448px | <div style="inline-size: var(--size-34)"></div> |
+| 35   | 32rem    | 512px | <div style="inline-size: var(--size-35)"></div> |
+
+</div>
+
+#### Size Content
+
+<div class="demo-size-table">
+
+| Name | Value |                                                        |
+| ---- | ----- | ------------------------------------------------------ |
+| 1    | 24ch  | <div style="inline-size: var(--size-content-1)"></div> |
+| 2    | 45ch  | <div style="inline-size: var(--size-content-2)"></div> |
+| 3    | 68ch  | <div style="inline-size: var(--size-content-3)"></div> |
+
+</div>
+
+#### Size Heading
+
+<div class="demo-size-table">
+
+| Name | Value |                                                        |
+| ---- | ----- | ------------------------------------------------------ |
+| 1    | 20ch  | <div style="inline-size: var(--size-heading-1)"></div> |
+| 2    | 28ch  | <div style="inline-size: var(--size-heading-2)"></div> |
+| 3    | 36ch  | <div style="inline-size: var(--size-heading-3)"></div> |
+
+</div>
+
+<style>
+	.demo-size-table {
+		--table-py: 0.25em;
+		--table-even-bg: var(--root-bg);
+		overflow-x: auto;
+
+		& table {
+			display: table;
+			inline-size: 100%;
+			font-size: 0.875em;
+		}
+
+		& tr :is(th, td):last-child {
+			display: none;
+			inline-size: 100%;
+
+			@media (width >= 768px) {
+				display: table-cell;
+			}
+
+			& > div {
+				block-size: 1.5em;
+				background: var(--brand);
+			}
+		}
+	}
+</style>
 
 ### Z-Layer
 
