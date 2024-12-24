@@ -6,9 +6,6 @@ version: "2.0.0"
 npm: "@fylgja/base"
 git: "https://github.com/fylgja/fylgja/tree/main/base"
 sortOrder: 5
-announcement: {
-	message: "Hello there"
-}
 ---
 
 Fylgja Base provides a streamlined starting point for any web project.
@@ -57,13 +54,13 @@ Alternatively, if you only need specific parts of the base, you can import them 
 ### Theme Styles
 
 By default, Fylgja Base is a clean canvas, meaning no brand colors or additional extras are included.
-If you prefer to use predefined themes, we offer these as separate imports, or you can copy them directly into your project.
+If you prefer to use predefined theme, we offer one as a separate import, or you can copy them directly into your project.
 
 ```css
-@import "@fylgja/base/theme"; /* or use '@fylgja/base/theme/material' */
+@import "@fylgja/base/theme";
 ```
 
-With the brand color themes, we include styles for dark mode, view transitions, primary button styling, and offcanvas support for the dialog.
+With the brand color theme, we include styles for dark mode, view transitions, primary button styling, and offcanvas support for the dialog.
 
 ### Essentially class-less
 
