@@ -246,7 +246,7 @@ We also provide a set of predefined hues for convenience.
 Fylgja includes a comprehensive numeric spacing scale characterized by its proportional values.
 This ensures predictable and consistent spacing relationships within the design system.
 
-<div class="demo-size-table">
+<div class="demo-table">
 
 | Name | Value    | Pixel |                                                 |
 | ---- | -------- | ----- | ----------------------------------------------- |
@@ -290,7 +290,7 @@ This ensures predictable and consistent spacing relationships within the design 
 
 #### Size Content
 
-<div class="demo-size-table">
+<div class="demo-table">
 
 | Name | Value |                                                        |
 | ---- | ----- | ------------------------------------------------------ |
@@ -302,7 +302,7 @@ This ensures predictable and consistent spacing relationships within the design 
 
 #### Size Heading
 
-<div class="demo-size-table">
+<div class="demo-table">
 
 | Name | Value |                                                        |
 | ---- | ----- | ------------------------------------------------------ |

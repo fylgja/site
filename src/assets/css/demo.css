@@ -18,7 +18,7 @@
 	}
 }
 
-.demo-size-table {
+.demo-table {
 	--table-py: 0.25em;
 	--table-even-bg: var(--root-bg);
 	overflow-x: auto;
