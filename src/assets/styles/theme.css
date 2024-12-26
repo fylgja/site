@@ -3,19 +3,27 @@
 }
 
 :root {
-	--brand: oklch(44% 0.18 220);
+	--brand: rebeccapurple;
 	--brand-fade: color-mix(in srgb, var(--brand), #0000 78%);
-	--on-brand: oklch(99% 0 220);
+	--on-brand: oklch(99% 0 0);
 	--form-active-color: var(--brand);
 	--form-error-color: #e00;
 	--control-checked-stroke: var(--brand);
 	--control-checked-bg: var(--brand);
 	--control-checked-color: var(--on-brand);
+	--text-color: var(--root-fg);
+	--text-color-muted: color-mix(in srgb, var(--root-fg) 76%, transparent);
+	--border-color-fade: color-mix(in srgb, var(--root-fg) 20%, transparent);
+	--code-stroke: color-mix(in srgb, currentcolor 20%, transparent);
 	color-scheme: light dark;
 	scrollbar-color: var(--scrollthumb-color, var(--brand)) var(--scrolltrack-color, #0000);
 	accent-color: var(--brand);
 	caret-color: var(--brand);
 	interpolate-size: allow-keywords;
+
+	@media (width >= 1440px) {
+		--font-size: 1.125em;
+	}
 }
 
 ::marker {

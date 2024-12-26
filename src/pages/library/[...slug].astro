@@ -22,3 +22,101 @@ const hasMeta = !!git || !!npm;
 	{hasMeta && <MetaVersion version={version} git={git} npm={npm} changelog={changelog} />}
 	<Content />
 </Layout>
+
+<style is:global>
+	.demo-box {
+		display: grid;
+		place-content: center;
+		border-radius: var(--radius-2);
+		border: 1px solid var(--demo-box-stroke, var(--brand));
+		background-color: var(--demo-box-bg, var(--surface-color));
+		aspect-ratio: var(--ratio-box);
+		min-inline-size: var(--demo-box-min-size, clamp(var(--size-16), 10vw, var(--size-21)));
+		padding: var(--size-1);
+		line-height: 1.1;
+		transition: scale 0.3s ease-out;
+
+		@media (hover: hover) {
+			&.-scaler:hover {
+				z-index: 1;
+				scale: 1.3;
+			}
+		}
+
+		&.-inline {
+			display: inline-grid;
+			aspect-ratio: auto;
+			line-height: inherit;
+		}
+	}
+
+	.demo-table {
+		--table-py: 0.25em;
+		--table-even-bg: var(--root-bg);
+		overflow-x: auto;
+
+		& table {
+			display: table;
+			inline-size: 100%;
+
+			/* @media (width >= 768px) {
+				font-size: 0.875em;
+			} */
+		}
+
+		& tr :is(th, td):last-child {
+			display: none;
+			inline-size: 100%;
+
+			@media (width >= 768px) {
+				display: table-cell;
+			}
+
+			& > div {
+				block-size: 1.5em;
+				background: var(--brand);
+			}
+		}
+	}
+
+	@keyframes --demo-animate-easing {
+		40%,
+		50% {
+			translate: calc(var(--box-size) - (var(--item-size) + 2px)) 0%;
+		}
+
+		0%,
+		90% {
+			translate: 0%;
+		}
+	}
+
+	.demo-easing {
+		--box-size: min((100vw - var(--container-gap)), 500px);
+		--item-size: 50px;
+		position: relative;
+		gap: var(--size-2);
+		max-inline-size: var(--box-size);
+		margin-block: var(--size-4);
+		/* margin-inline: calc(var(--container-gap) * -1);
+	padding-inline: var(--container-gap); */
+		border-inline: 1px dashed var(--border-color-fade);
+		overflow: clip;
+
+		&::after {
+			content: "";
+			z-index: -1;
+			position: absolute;
+			inset-block: 0;
+			inset-inline-start: calc(50% - 1px);
+			border-inline-start: 1px dashed var(--border-color-fade);
+		}
+
+		& .demo-box {
+			--demo-box-min-size: 0px;
+			inline-size: var(--item-size);
+			position: relative;
+			animation: --demo-animate-easing 3s ease infinite;
+		}
+	}
+</style>

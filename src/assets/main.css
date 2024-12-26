@@ -7,31 +7,9 @@
 @import "fylgja/components/card";
 @import "fylgja/components/breadcrumbs";
 
-@import "css/code-block";
-@import "css/markdown-alert";
-@import "css/demo";
-@import "css/theme";
+@import "styles/content";
+@import "styles/markdown-alert";
+@import "styles/theme";
 
 @import "fylgja/utilities";
-
-:root {
-	--text-color: var(--root-fg);
-	--text-color-muted: color-mix(in srgb, var(--root-fg) 76%, transparent);
-	--border-color-fade: color-mix(in srgb, var(--root-fg) 20%, transparent);
-	--code-stroke: color-mix(in srgb, currentcolor 20%, transparent);
-
-	@media (width >= 1440px) {
-		--font-size: 1.125em;
-	}
-}
-
-.inset-header {
-	--inset-y: var(--page-header-height, 0px) auto;
-}
-
-.markdown-content {
-	& table {
-		display: block;
-		overflow: auto;
-	}
-}
+@import "styles/utilities";

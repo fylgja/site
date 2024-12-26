@@ -1,3 +1,10 @@
+.markdown-content {
+	& table {
+		display: block;
+		overflow: auto;
+	}
+}
+
 .astro-code {
 	&,
 	& span {
