@@ -32,8 +32,6 @@ Fylgja is designed to be compact. You only load what you need, so the overall si
 
 For example, the minified **Fylgja Base** Preflight is just 5kb, smaller than many other classless CSS libraries with similar features.
 
-On this website, we've used Fylgja to build the entire site with just 38KB of minified CSS. In other scenarios, you could combine Fylgja Base with utilities like TailwindCSS, using the best of both worlds.
-
 ## Easy to Customize
 
 Fylgja is built with low CSS specificity, allowing you to override styles easily. Even with **Fylgja Base**, specificity is kept at zero using the `:where` selector, meaning your custom styles won't be disrupted.

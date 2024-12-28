@@ -1,7 +1,8 @@
 ---
-import Layout from "@layouts/LibraryLayout.astro";
-import MetaVersion from "@components/MetaVersion.astro";
 import { getCollection } from "astro:content";
+import Layout from "@layouts/DocsLayout.astro";
+import MetaVersion from "@components/MetaVersion.astro";
+import collection from "./collection.ts";
 
 export async function getStaticPaths() {
 	const entries = await getCollection("library");
@@ -17,7 +18,7 @@ const { Content, headings } = await entry.render();
 const hasMeta = !!git || !!npm;
 ---
 
-<Layout title={title} toc={headings}>
+<Layout title={title} toc={headings} collectionName="Library" collection={collection}>
 	<h1>{pageTitle || title}</h1>
 	{hasMeta && <MetaVersion version={version} git={git} npm={npm} changelog={changelog} />}
 	<Content />
@@ -32,7 +33,7 @@ const hasMeta = !!git || !!npm;
 		background-color: var(--demo-box-bg, var(--surface-color));
 		aspect-ratio: var(--ratio-box);
 		min-inline-size: var(--demo-box-min-size, clamp(var(--size-16), 10vw, var(--size-21)));
-		padding: var(--size-1);
+		padding: var(--size-4);
 		line-height: 1.1;
 		transition: scale 0.3s ease-out;
 
@@ -50,6 +51,12 @@ const hasMeta = !!git || !!npm;
 		}
 	}
 
+	.demo-wrapper {
+		min-block-size: 200px;
+		padding: var(--size-4);
+		border: 1px dashed var(--border-color-fade);
+	}
+
 	.demo-table {
 		--table-py: 0.25em;
 		--table-even-bg: var(--root-bg);
@@ -59,14 +66,14 @@ const hasMeta = !!git || !!npm;
 			display: table;
 			inline-size: 100%;
 
-			/* @media (width >= 768px) {
+			@media (width >= 768px) {
 				font-size: 0.875em;
-			} */
+				white-space: nowrap;
+			}
 		}
 
 		& tr :is(th, td):last-child {
 			display: none;
-			inline-size: 100%;
 
 			@media (width >= 768px) {
 				display: table-cell;
@@ -75,6 +82,11 @@ const hasMeta = !!git || !!npm;
 			& > div {
 				block-size: 1.5em;
 				background: var(--brand);
+				background: linear-gradient(
+					to right,
+					var(--brand),
+					oklch(from var(--brand) l c calc(h + 20))
+				);
 			}
 		}
 	}
@@ -98,8 +110,7 @@ const hasMeta = !!git || !!npm;
 		gap: var(--size-2);
 		max-inline-size: var(--box-size);
 		margin-block: var(--size-4);
-		/* margin-inline: calc(var(--container-gap) * -1);
-	padding-inline: var(--container-gap); */
+		padding-block: var(--size-2);
 		border-inline: 1px dashed var(--border-color-fade);
 		overflow: clip;
 
@@ -117,6 +128,12 @@ const hasMeta = !!git || !!npm;
 			inline-size: var(--item-size);
 			position: relative;
 			animation: --demo-animate-easing 3s ease infinite;
+		}
+
+		&.is-paused {
+			& .demo-box {
+				animation-play-state: paused;
+			}
 		}
 	}
 </style>

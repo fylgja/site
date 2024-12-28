@@ -77,7 +77,7 @@ const style = {
 {
 	tocItems.length > 0 && isMobile && (
 		<nav aria-label={label} class:list={["toc", classlist]} style={style}>
-			<details>
+			<details id="mobileDetailsToc">
 				<summary class="list-none btn w-full align">
 					<span>{label}</span>
 					<span class="stack" aria-hidden="true">
@@ -85,7 +85,7 @@ const style = {
 						<Icon name="collapse" width="24" height="24" class="has-open:visible" />
 					</span>
 				</summary>
-				<ul>
+				<ul onclick="mobileDetailsToc.removeAttribute('open')">
 					{tocItems.map((item) => (
 						<TocItem item={item} />
 					))}
@@ -94,3 +94,27 @@ const style = {
 		</nav>
 	)
 }
+
+<style is:global>
+	.toc {
+		& a {
+			display: inline-block;
+			font-weight: inherit;
+			text-decoration: none;
+
+			&:hover {
+				color: var(--brand);
+				text-decoration: underline;
+			}
+		}
+
+		& li {
+			margin-block: 0.25rem;
+
+			& > ul {
+				padding-inline-start: var(--toc-indent, 1rem);
+				font-size: 1rem;
+			}
+		}
+	}
+</style>

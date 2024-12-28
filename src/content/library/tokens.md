@@ -40,17 +40,17 @@ Alternatively, if you only need specific parts of the tokens, you can import the
 
 | Import Path                    | CSS | SCSS | JS  | Description                                     |
 | ------------------------------ | --- | ---- | --- | ----------------------------------------------- |
-| `@fylgja/tokens/aspect-ratio`  | ✅   | ✅    | ✅   |                                                 |
-| `@fylgja/tokens/border-radius` | ✅   | ✅    | ✅   |                                                 |
-| `@fylgja/tokens/border-sizes`  | ✅   | ✅    | ✅   |                                                 |
-| `@fylgja/tokens/colors`        | ✅   | ✅    | ✅   | List of 14 colors in oklch format               |
-| `@fylgja/tokens/colors-static` |     | ✅    |     | Combination of colors and hues as a static list |
-| `@fylgja/tokens/hues`          | ✅   | ✅    |     | JS version is part of the colors import         |
-| `@fylgja/tokens/easing`        | ✅   | ✅    | ✅   |                                                 |
-| `@fylgja/tokens/fonts`         | ✅   | ✅    | ✅   |                                                 |
-| `@fylgja/tokens/shadows`       | ✅   | ✅    | ✅   |                                                 |
-| `@fylgja/tokens/sizes`         | ✅   | ✅    | ✅   |                                                 |
-| `@fylgja/tokens/z-layer`       | ✅   | ✅    | ✅   |                                                 |
+| `@fylgja/tokens/aspect-ratio`  | ✔   | ✔    | ✔   |                                                 |
+| `@fylgja/tokens/border-radius` | ✔   | ✔    | ✔   |                                                 |
+| `@fylgja/tokens/border-sizes`  | ✔   | ✔    | ✔   |                                                 |
+| `@fylgja/tokens/colors`        | ✔   | ✔    | ✔   | List of 14 colors in oklch format               |
+| `@fylgja/tokens/colors-static` |     | ✔    |     | Combination of colors and hues as a static list |
+| `@fylgja/tokens/hues`          | ✔   | ✔    |     | JS version is part of the colors import         |
+| `@fylgja/tokens/easing`        | ✔   | ✔    | ✔   |                                                 |
+| `@fylgja/tokens/fonts`         | ✔   | ✔    | ✔   |                                                 |
+| `@fylgja/tokens/shadows`       | ✔   | ✔    | ✔   |                                                 |
+| `@fylgja/tokens/sizes`         | ✔   | ✔    | ✔   |                                                 |
+| `@fylgja/tokens/z-layer`       | ✔   | ✔    | ✔   |                                                 |
 
 ### Shadow DOM support
 
@@ -180,8 +180,70 @@ We also provide a set of predefined hues for convenience.
 
 ### Easing
 
-> [!note]
-> TODO
+Achieve smooth and natural animations with five robust timing functions: ease, ease-out, ease-in, and ease-in-out.
+Go beyond the basics with advanced easing options with the elastic motion.
+
+<div id="demoEasing" class="demo-easing is-paused flex-col">
+<div
+	class="demo-box"
+	style="animation-timing-function: var(--ease-1)"
+	aria-label="Preview of easing weight of 1"
+>1</div>
+<div
+	class="demo-box"
+	style="animation-timing-function: var(--ease-2)"
+	aria-label="Preview of easing weight of 2"
+>2</div>
+<div
+	class="demo-box"
+	style="animation-timing-function: var(--ease-3)"
+	aria-label="Preview of easing weight of 3"
+>3</div>
+<div
+	class="demo-box"
+	style="animation-timing-function: var(--ease-4)"
+	aria-label="Preview of easing weight of 4"
+>4</div>
+<div
+	class="demo-box"
+	style="animation-timing-function: var(--ease-5)"
+	aria-label="Preview of easing weight of 5"
+>5</div>
+</div>
+
+<div class="flex-wrap gap">
+<label>
+	Play Animation<br>
+	<input
+		name="demo-play-easeing-state"
+		type="checkbox"
+		role="switch"
+		onChange="demoEasing.classList.toggle('is-paused');"
+	>
+</label>
+<label>
+	Easing Style
+	<select
+		name="demo-play-easeing-style"
+		onChange="
+			let easeItemIndex = 1;
+			for (const easeItem of demoEasing.children) {
+				easeItem.style.setProperty('animation-timing-function', `var(--${event.target.value}-${easeItemIndex})`);
+				easeItemIndex += 1;
+			}
+			demoEasingLabel.textContent = event.target.value;
+		"
+	>
+	<option value="ease" selected>Ease</option>
+	<option value="ease-in">Ease In</option>
+	<option value="ease-out">Ease Out</option>
+	<option value="ease-in-out">Ease In Out</option>
+	<option value="ease-elastic-in">Ease Elastic In</option>
+	<option value="ease-elastic-out">Ease Elastic Out</option>
+	<option value="ease-elastic-in-out">Ease Elastic In Out</option>
+	</select>
+</label>
+</div>
 
 ### Fonts
 
@@ -204,11 +266,11 @@ We also provide a set of predefined hues for convenience.
 	<option value="var(--font-size-8)">Size 8</option>
 	<option value="var(--font-size-9)">Size 9</option>
 	<optgroup label="Fluid">
-		<option value="var(--font-size-fluid-1)">Fluid 1</option>
-		<option value="var(--font-size-fluid-2)">Fluid 2</option>
-		<option value="var(--font-size-fluid-3)">Fluid 3</option>
-		<option value="var(--font-size-fluid-4)">Fluid 4</option>
-		<option value="var(--font-size-fluid-5)">Fluid 5</option>
+		<option value="var(--font-size-fluid-1)">Size Fluid 1</option>
+		<option value="var(--font-size-fluid-2)">Size Fluid 2</option>
+		<option value="var(--font-size-fluid-3)">Size Fluid 3</option>
+		<option value="var(--font-size-fluid-4)">Size Fluid 4</option>
+		<option value="var(--font-size-fluid-5)">Size Fluid 5</option>
 	</optgroup>
 	</select>
 </label>
@@ -223,12 +285,6 @@ We also provide a set of predefined hues for convenience.
 	</select>
 </label>
 </div>
-
-```css
---font-size-{1-9};
---font-size-fluid-{1-5};
---line-height-{1-5};
-```
 
 ### Shadows
 
@@ -248,80 +304,64 @@ This ensures predictable and consistent spacing relationships within the design 
 
 <div class="demo-table">
 
-| Name | Value    | Pixel |                                                 |
-| ---- | -------- | ----- | ----------------------------------------------- |
-| 1    | 0.125rem | 2px   | <div style="inline-size: var(--size-1)"></div>  |
-| 2    | 0.25rem  | 4px   | <div style="inline-size: var(--size-2)"></div>  |
-| 3    | 0.375rem | 6px   | <div style="inline-size: var(--size-3)"></div>  |
-| 4    | 0.5rem   | 8px   | <div style="inline-size: var(--size-4)"></div>  |
-| 5    | 0.625rem | 10px  | <div style="inline-size: var(--size-5)"></div>  |
-| 6    | 0.75rem  | 12px  | <div style="inline-size: var(--size-6)"></div>  |
-| 7    | 0.875rem | 14px  | <div style="inline-size: var(--size-7)"></div>  |
-| 8    | 1rem     | 16px  | <div style="inline-size: var(--size-8)"></div>  |
-| 9    | 1.25rem  | 20px  | <div style="inline-size: var(--size-9)"></div>  |
-| 10   | 1.5rem   | 24px  | <div style="inline-size: var(--size-10)"></div> |
-| 11   | 1.75rem  | 28px  | <div style="inline-size: var(--size-11)"></div> |
-| 12   | 2rem     | 32px  | <div style="inline-size: var(--size-12)"></div> |
-| 13   | 2.25rem  | 36px  | <div style="inline-size: var(--size-13)"></div> |
-| 14   | 2.5rem   | 40px  | <div style="inline-size: var(--size-14)"></div> |
-| 15   | 2.75rem  | 44px  | <div style="inline-size: var(--size-15)"></div> |
-| 16   | 3rem     | 48px  | <div style="inline-size: var(--size-16)"></div> |
-| 17   | 3.5rem   | 56px  | <div style="inline-size: var(--size-17)"></div> |
-| 18   | 4rem     | 64px  | <div style="inline-size: var(--size-18)"></div> |
-| 19   | 5rem     | 80px  | <div style="inline-size: var(--size-19)"></div> |
-| 20   | 6rem     | 96px  | <div style="inline-size: var(--size-20)"></div> |
-| 21   | 7rem     | 112px | <div style="inline-size: var(--size-21)"></div> |
-| 22   | 8rem     | 128px | <div style="inline-size: var(--size-22)"></div> |
-| 23   | 9rem     | 144px | <div style="inline-size: var(--size-23)"></div> |
-| 24   | 10rem    | 160px | <div style="inline-size: var(--size-24)"></div> |
-| 25   | 11rem    | 176px | <div style="inline-size: var(--size-25)"></div> |
-| 26   | 12rem    | 192px | <div style="inline-size: var(--size-26)"></div> |
-| 27   | 13rem    | 208px | <div style="inline-size: var(--size-27)"></div> |
-| 28   | 14rem    | 224px | <div style="inline-size: var(--size-28)"></div> |
-| 29   | 15rem    | 240px | <div style="inline-size: var(--size-29)"></div> |
-| 30   | 16rem    | 256px | <div style="inline-size: var(--size-30)"></div> |
-| 31   | 18rem    | 288px | <div style="inline-size: var(--size-31)"></div> |
-| 32   | 20rem    | 320px | <div style="inline-size: var(--size-32)"></div> |
-| 33   | 24rem    | 384px | <div style="inline-size: var(--size-33)"></div> |
-| 34   | 28rem    | 448px | <div style="inline-size: var(--size-34)"></div> |
-| 35   | 32rem    | 512px | <div style="inline-size: var(--size-35)"></div> |
-
-</div>
-
-#### Size Content
-
-<div class="demo-table">
-
-| Name | Value |                                                        |
-| ---- | ----- | ------------------------------------------------------ |
-| 1    | 24ch  | <div style="inline-size: var(--size-content-1)"></div> |
-| 2    | 45ch  | <div style="inline-size: var(--size-content-2)"></div> |
-| 3    | 68ch  | <div style="inline-size: var(--size-content-3)"></div> |
-
-</div>
-
-#### Size Heading
-
-<div class="demo-table">
-
-| Name | Value |                                                        |
-| ---- | ----- | ------------------------------------------------------ |
-| 1    | 20ch  | <div style="inline-size: var(--size-heading-1)"></div> |
-| 2    | 28ch  | <div style="inline-size: var(--size-heading-2)"></div> |
-| 3    | 36ch  | <div style="inline-size: var(--size-heading-3)"></div> |
+| Name    | Value    | in Pixel's | Preview                                                                                         |
+| ------- | -------- | ---------- | ----------------------------------------------------------------------------------------------- |
+| 1       | 0.125rem | 2px        | <div style="inline-size: var(--size-1)" role="img" aria-label="Size Token 1"></div>             |
+| 2       | 0.25rem  | 4px        | <div style="inline-size: var(--size-2)" role="img" aria-label="Size Token 2"></div>             |
+| 3       | 0.375rem | 6px        | <div style="inline-size: var(--size-3)" role="img" aria-label="Size Token 3"></div>             |
+| 4       | 0.5rem   | 8px        | <div style="inline-size: var(--size-4)" role="img" aria-label="Size Token 4"></div>             |
+| 5       | 0.625rem | 10px       | <div style="inline-size: var(--size-5)" role="img" aria-label="Size Token 5"></div>             |
+| 6       | 0.75rem  | 12px       | <div style="inline-size: var(--size-6)" role="img" aria-label="Size Token 6"></div>             |
+| 7       | 0.875rem | 14px       | <div style="inline-size: var(--size-7)" role="img" aria-label="Size Token 7"></div>             |
+| 8       | 1rem     | 16px       | <div style="inline-size: var(--size-8)" role="img" aria-label="Size Token 8"></div>             |
+| 9       | 1.25rem  | 20px       | <div style="inline-size: var(--size-9)" role="img" aria-label="Size Token 9"></div>             |
+| 10      | 1.5rem   | 24px       | <div style="inline-size: var(--size-10)" role="img" aria-label="Size Token 10"></div>           |
+| 11      | 1.75rem  | 28px       | <div style="inline-size: var(--size-11)" role="img" aria-label="Size Token 11"></div>           |
+| 12      | 2rem     | 32px       | <div style="inline-size: var(--size-12)" role="img" aria-label="Size Token 12"></div>           |
+| 13      | 2.25rem  | 36px       | <div style="inline-size: var(--size-13)" role="img" aria-label="Size Token 13"></div>           |
+| 14      | 2.5rem   | 40px       | <div style="inline-size: var(--size-14)" role="img" aria-label="Size Token 14"></div>           |
+| 15      | 2.75rem  | 44px       | <div style="inline-size: var(--size-15)" role="img" aria-label="Size Token 15"></div>           |
+| 16      | 3rem     | 48px       | <div style="inline-size: var(--size-16)" role="img" aria-label="Size Token 16"></div>           |
+| 17      | 3.5rem   | 56px       | <div style="inline-size: var(--size-17)" role="img" aria-label="Size Token 17"></div>           |
+| 18      | 4rem     | 64px       | <div style="inline-size: var(--size-18)" role="img" aria-label="Size Token 18"></div>           |
+| 19      | 5rem     | 80px       | <div style="inline-size: var(--size-19)" role="img" aria-label="Size Token 19"></div>           |
+| 20      | 6rem     | 96px       | <div style="inline-size: var(--size-20)" role="img" aria-label="Size Token 20"></div>           |
+| 21      | 7rem     | 112px      | <div style="inline-size: var(--size-21)" role="img" aria-label="Size Token 21"></div>           |
+| 22      | 8rem     | 128px      | <div style="inline-size: var(--size-22)" role="img" aria-label="Size Token 22"></div>           |
+| 23      | 9rem     | 144px      | <div style="inline-size: var(--size-23)" role="img" aria-label="Size Token 23"></div>           |
+| 24      | 10rem    | 160px      | <div style="inline-size: var(--size-24)" role="img" aria-label="Size Token 24"></div>           |
+| 25      | 11rem    | 176px      | <div style="inline-size: var(--size-25)" role="img" aria-label="Size Token 25"></div>           |
+| 26      | 12rem    | 192px      | <div style="inline-size: var(--size-26)" role="img" aria-label="Size Token 26"></div>           |
+| 27      | 13rem    | 208px      | <div style="inline-size: var(--size-27)" role="img" aria-label="Size Token 27"></div>           |
+| 28      | 14rem    | 224px      | <div style="inline-size: var(--size-28)" role="img" aria-label="Size Token 28"></div>           |
+| 29      | 15rem    | 240px      | <div style="inline-size: var(--size-29)" role="img" aria-label="Size Token 29"></div>           |
+| 30      | 16rem    | 256px      | <div style="inline-size: var(--size-30)" role="img" aria-label="Size Token 30"></div>           |
+| 31      | 18rem    | 288px      | <div style="inline-size: var(--size-31)" role="img" aria-label="Size Token 31"></div>           |
+| 32      | 20rem    | 320px      | <div style="inline-size: var(--size-32)" role="img" aria-label="Size Token 32"></div>           |
+| 33      | 24rem    | 384px      | <div style="inline-size: var(--size-33)" role="img" aria-label="Size Token 33"></div>           |
+| 34      | 28rem    | 448px      | <div style="inline-size: var(--size-34)" role="img" aria-label="Size Token 34"></div>           |
+| 35      | 32rem    | 512px      | <div style="inline-size: var(--size-35)" role="img" aria-label="Size Token 35"></div>           |
+| 36      | 36rem    | 576px      | <div style="inline-size: var(--size-36)" role="img" aria-label="Size Token 36"></div>           |
+| 37      | 42rem    | 672px      | <div style="inline-size: var(--size-37)" role="img" aria-label="Size Token 37"></div>           |
+| 38      | 48rem    | 768px      | <div style="inline-size: var(--size-38)" role="img" aria-label="Size Token 38"></div>           |
+| 39      | 56rem    | 896px      | <div style="inline-size: var(--size-39)" role="img" aria-label="Size Token 39"></div>           |
+| 40      | 64rem    | 1024px     | <div style="inline-size: var(--size-40)" role="img" aria-label="Size Token 40"></div>           |
+| 41      | 72rem    | 1152px     | <div style="inline-size: var(--size-41)" role="img" aria-label="Size Token 41"></div>           |
+| 42      | 80rem    | 1280px     | <div style="inline-size: var(--size-42)" role="img" aria-label="Size Token 42"></div>           |
+| heading | 36ch     | 288px      | <div style="inline-size: var(--size-heading)" role="img" aria-label="Size Token Heading"></div> |
+| content | 64ch     | 512px      | <div style="inline-size: var(--size-content)" role="img" aria-label="Size Token Content"></div> |
 
 </div>
 
 ### Z-Layer
 
 Z-indexes don't need high values, just a currated list of values.
+If you need a higher z-index then your probley trying to override an exciting behavior and should consider refactoring the z-index values or wrap the z-indexes inside a new stacking layer.
 
-```css
-/* Options */
---layer-{1-5};
-
-/* Example */
-.modal {
-	z-index: var(--layer-5);
-}
-```
+| Name        | Usage examples                             |
+| ----------- | ------------------------------------------ |
+| `--layer-1` | Visible Stack item or overlaping elements  |
+| `--layer-2` | 2de level of overlaping elements           |
+| `--layer-3` | Sticky elements, e.g. Back To Top Button   |
+| `--layer-4` | Fixed elements, e.g. Page Header or Appbar |
+| `--layer-5` | Top Layer elements, e.g. Dialogs or Modals |

@@ -1,7 +1,3 @@
 .inset-header {
 	--inset-y: var(--page-header-height, 0px) auto;
 }
-
-.animate-pause {
-	animation-play-state: paused;
-}

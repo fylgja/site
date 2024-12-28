@@ -1,6 +1,5 @@
 ---
 import "@assets/main.css";
-import { sortByOrder } from "@utils";
 import Layout from "./BlankLayout.astro";
 import PageHeader from "@components/PageHeader.astro";
 import PageFooter from "@components/PageFooter.astro";
@@ -8,11 +7,12 @@ import MainNav from "@components/MainNav.astro";
 import Menu from "@components/Menu.astro";
 import SkipLink from "@components/SkipLink.astro";
 import Toc from "@components/Toc";
-import { getCollection } from "astro:content";
 
 interface Props {
 	title: string;
 	description?: string;
+	collectionName: string;
+	collection: any[];
 	toc?: {
 		depth: number;
 		slug: string;
@@ -20,58 +20,27 @@ interface Props {
 	}[];
 }
 
-const isProdMode = import.meta.env.PROD;
-
-async function filterCollection(path: string) {
-	return sortByOrder(
-		await getCollection("docs", ({ id, data }: { id: string; data: any }) => {
-			if (isProdMode ? data.isDraft : false) return;
-
-			if (path === "/") {
-				return !id.includes("/");
-			} else {
-				return id.startsWith(path);
-			}
-		})
-	);
-}
-
-const collection = [
-	{
-		items: [
-			{
-				slug: "",
-				data: {
-					title: "Getting Started",
-				},
-			},
-			...(await filterCollection("/")),
-		],
-	},
-	{
-		title: "Core Concepts",
-		items: await filterCollection("core-concepts/"),
-	},
-];
-
-const { title, description, toc = [] } = Astro.props;
+const { title, description, collectionName = "", collection = [], toc = [] } = Astro.props;
+const urlPrefix = "/" + collectionName.toLowerCase();
 ---
 
 <Layout title={title} description={description}>
 	<SkipLink id="main-content" title="Skip to content" />
 	<PageHeader>
-		<Menu title="Docs" items={collection} urlPrefix="/docs" slot="mobile-menu" />
+		<Menu title={collectionName} items={collection} urlPrefix={urlPrefix} slot="mobile-menu" />
 	</PageHeader>
 	<main id="main-content" class="docs-layout">
 		<aside class="docs-menu hidden lg:block">
 			<div class="sticky inset-header scroll-y">
 				<MainNav />
-				<Menu title="Docs" items={collection} urlPrefix="/docs" />
+				<Menu title={collectionName} items={collection} urlPrefix={urlPrefix} />
 			</div>
 		</aside>
 		<div class="docs-content">
 			<div class="docs-content-body container">
-				<Toc toc={toc} label="On this Page" class="sticky inset-header hidden xl:block" />
+				<div class="sidebar-toc sticky inset-header scroll-y hidden xl:block">
+					<Toc toc={toc} label="On this Page" />
+				</div>
 				<article class="main-content markdown-content">
 					<slot />
 				</article>
@@ -90,19 +59,30 @@ const { title, description, toc = [] } = Astro.props;
 
 <style>
 	.appbar {
+		--z: var(--layer-3);
 		--inset-y: auto 0;
-		--card-radius: var(--radius-conditional-4);
+		--card-shadow: none;
+		--card-radius: 0;
 		--card-padding: 0.5rem;
+		--card-bg: var(--docs-menu-bg);
+		--card-color: var(--docs-menu-color);
 		--btn-stroke: transparent;
-		--card-shadow: var(--shadow-5);
+		border-block-start: 1px solid
+			var(--docs-menu-stroke, color-mix(in srgb, currentcolor 12%, transparent));
 
 		details > :not(summary) {
+			max-block-size: 42vh;
 			padding: 0.5rem 1rem;
+			overflow: auto;
 		}
 	}
 
 	.docs-content {
 		margin-bottom: 2rem;
+	}
+
+	.sidebar-toc {
+		max-height: min((99vh - var(--page-header-height, 0px)), 100%);
 	}
 
 	@media (width >= 1024px) {
@@ -116,17 +96,11 @@ const { title, description, toc = [] } = Astro.props;
 				"menu appbar appbar";
 		}
 
-		.sticky {
-			max-height: min((99vh - var(--page-header-height, 0px)), 100%);
-		}
-
 		.docs-content {
 			grid-area: content;
 		}
 
 		.appbar {
-			--inset-y: auto 1rem;
-			margin-inline-end: 1rem;
 			grid-area: appbar;
 		}
 
@@ -159,7 +133,7 @@ const { title, description, toc = [] } = Astro.props;
 	}
 
 	@media (prefers-color-scheme: dark) {
-		html:not([data-theme="light"]) .docs-menu {
+		html:not([data-theme="light"]) {
 			--docs-menu-stroke: transparent;
 			--docs-menu-bg: color-mix(in oklab, var(--root-bg) 94%, var(--brand));
 		}

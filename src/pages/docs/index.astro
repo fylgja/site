@@ -1,9 +1,10 @@
 ---
 import Layout from "@layouts/DocsLayout.astro";
 import Code from "@components/CodeBlock.astro";
+import collection from "./collection.ts";
 ---
 
-<Layout title="Fylgja Docs">
+<Layout title="Fylgja Docs" collectionName="Docs" collection={collection}>
 	<h1>Getting Started</h1>
 	<p>
 		If your not sure where to start or what packages to use, the best way to get started with

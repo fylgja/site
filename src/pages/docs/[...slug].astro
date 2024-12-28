@@ -1,6 +1,7 @@
 ---
-import Layout from "@layouts/DocsLayout.astro";
 import { getCollection } from "astro:content";
+import Layout from "@layouts/DocsLayout.astro";
+import collection from "./collection.ts";
 
 export async function getStaticPaths() {
 	const entries = await getCollection("docs");
@@ -15,7 +16,7 @@ const { pageTitle, title } = entry.data;
 const { Content, headings } = await entry.render();
 ---
 
-<Layout title={title} toc={headings}>
+<Layout title={title} toc={headings} collectionName="Docs" collection={collection}>
 	<h1>{pageTitle || title}</h1>
 	<Content />
 </Layout>
