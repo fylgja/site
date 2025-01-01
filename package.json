@@ -21,6 +21,6 @@
 		"astro-icon": "^1.1.4",
 		"fylgja": "github:fylgja/fylgja#main",
 		"remark-github-blockquote-alert": "^1.3.0",
-		"typescript": "^5.5.4"
+		"typescript": "^5.7.2"
 	}
 }
