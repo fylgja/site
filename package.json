@@ -16,7 +16,7 @@
 		"@astrojs/rss": "^4.0.10",
 		"@astrojs/sitemap": "^3.2.1",
 		"@docsearch/css": "^3.8.0",
-		"@docsearch/js": "^3.8.0",
+		"@docsearch/js": "^3.8.2",
 		"astro": "^5.1.1",
 		"astro-icon": "^1.1.4",
 		"fylgja": "github:fylgja/fylgja#main",
