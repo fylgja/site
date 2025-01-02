@@ -12,69 +12,221 @@ const title = "Fylgja";
 			class="snap scroll-x grid grid-flow gap flow-unset"
 			style="--md_grid-cols: 2; --md_gap: 4rem;"
 		>
-			<figure class="stack align" style="--align-items: end center;">
-				<img src="https://picsum.photos/id/19/2200/575" width="2200" height="575">
+			<figure id="slide-1" class="stack align" style="--align-items: end center;">
+				<img src="https://picsum.photos/id/19/1200/800" width="1200" height="800" />
 				<figcaption style="--px: var(--size-4)">Fylgja CSS Slider</figcaption>
 			</figure>
-			<img src="https://picsum.photos/id/34/2200/575" width="2200" height="575">
-			<img src="https://picsum.photos/id/42/2200/575" width="2200" height="575">
-			<img src="https://picsum.photos/id/72/2200/575" width="2200" height="575">
-			<img src="https://picsum.photos/id/94/2200/575" width="2200" height="575">
+			<img
+				id="slide-2"
+				src="https://picsum.photos/id/34/1200/800"
+				width="1200"
+				height="800"
+			/>
+			<img
+				id="slide-3"
+				src="https://picsum.photos/id/42/1200/800"
+				width="1200"
+				height="800"
+			/>
+			<img
+				id="slide-4"
+				src="https://picsum.photos/id/72/1200/800"
+				width="1200"
+				height="800"
+			/>
+			<img
+				id="slide-5"
+				src="https://picsum.photos/id/94/1200/800"
+				width="1200"
+				height="800"
+			/>
 		</div>
-		<button data-next hidden>➡️</button>
-		<button data-prev hidden>⬅️</button>
+		<button data-prev hidden>Previous</button>
+		<button data-next hidden>Next</button>
+		<nav
+			data-pager
+			class="align flex gap scroll-x snap"
+			style="--align: center; --my: var(--size-8););"
+		>
+			<a href="#slide-1"
+				><img src="https://picsum.photos/id/19/50/50" width="50" height="50" /></a
+			>
+			<a href="#slide-2"
+				><img src="https://picsum.photos/id/34/50/50" width="50" height="50" /></a
+			>
+			<a href="#slide-3"
+				><img src="https://picsum.photos/id/42/50/50" width="50" height="50" /></a
+			>
+			<a href="#slide-4"
+				><img src="https://picsum.photos/id/72/50/50" width="50" height="50" /></a
+			>
+			<a href="#slide-5"
+				><img src="https://picsum.photos/id/94/50/50" width="50" height="50" /></a
+			>
+		</nav>
 	</css-snap-slider>
 </Layout>
 
 <script>
 	// @ts-nocheck
+
 	class CssSnapSlider extends HTMLElement {
 		constructor() {
-			self = super();
+			super();
+			this.track = null;
+			this.prevBtn = null;
+			this.nextBtn = null;
+			this.pager = null;
+			this.slides = [];
 		}
 
 		connectedCallback() {
-			const track = self.querySelector('[data-track]');
-			const prevBtn = self.querySelector('[data-prev]');
-			const nextBtn = self.querySelector('[data-next]');
+			this.track = this.querySelector("[data-track]");
+			this.prevBtn = this.querySelector("[data-prev]");
+			this.nextBtn = this.querySelector("[data-next]");
+			this.pager = this.querySelector("[data-pager]");
+			this.slides = Array.from(this.track.children);
 
-			const activeSliderObserver = new IntersectionObserver((entries, observer) => {
-				entries.forEach(entry => {
-					const slide = entry.target;
-
-					if (entry.isIntersecting) {
-					// Add the `data-active` attribute when the slide is in view
-					slide.setAttribute('data-active', 'true');
-					} else {
-					// Remove the `data-active` attribute when the slide is out of view
-					slide.removeAttribute('data-active');
-					}
-				});
-			}, {
-				root: null, // Use the viewport as the root
-				threshold: 0.5, // Slide is considered "in view" when 50% of it is visible
-			});
-
-			if (!track) {
-				console.error('No Slider track defined');
+			if (!this.track) {
+				console.error("No Slider track defined");
 				return;
 			}
 
-			Array.from(track.children).forEach(slide => activeSliderObserver.observe(slide));
+			this.setupObservers();
 
-			if (prevBtn) {
-				prevBtn.removeAttribute('hidden');
+			if (this.prevBtn || this.nextBtn) {
+				this.setupNavigationButtons();
 			}
 
-			if (nextBtn) {
-				nextBtn.removeAttribute('hidden');
+			if (this.pager) {
+				this.setupPagerLinks();
 			}
+		}
+
+		setupObservers() {
+			const observerOptions = { root: null, threshold: 0.5 };
+			const inViewObserver = new IntersectionObserver(
+				this.handleInView.bind(this),
+				observerOptions
+			);
+
+			this.slides.forEach((slide) => inViewObserver.observe(slide));
+		}
+
+		handleInView(entries) {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					entry.target.setAttribute("data-in-view", "");
+				} else {
+					entry.target.removeAttribute("data-in-view");
+				}
+			});
+
+			if (this.pager) {
+				this.updatePager();
+			}
+
+			this.checkSliderBounds();
+		}
+
+		// Get all slides that are currently in view
+		getInViewItems() {
+			const inViewSlides = this.track.querySelectorAll("[data-in-view]");
+			return {
+				length: inViewSlides.length,
+				first: inViewSlides[0],
+				last: inViewSlides[inViewSlides.length - 1],
+				all: inViewSlides,
+			};
+		}
+
+		checkSliderBounds() {
+			const { first, last } = this.getInViewItems();
+			const firstSlide = this.slides[0];
+			const lastSlide = this.slides[this.slides.length - 1];
+
+			if (this.prevBtn) {
+				if (first === firstSlide) {
+					this.prevBtn.setAttribute("disabled", "");
+				} else {
+					this.prevBtn.removeAttribute("disabled");
+				}
+			}
+
+			if (this.nextBtn) {
+				if (last === lastSlide) {
+					this.nextBtn.setAttribute("disabled", "");
+				} else {
+					this.nextBtn.removeAttribute("disabled");
+				}
+			}
+		}
+
+		setupNavigationButtons() {
+			this.prevBtn.removeAttribute("hidden");
+			this.nextBtn.removeAttribute("hidden");
+			this.setupButton(this.prevBtn, "previous");
+			this.setupButton(this.nextBtn, "next");
+		}
+
+		setupButton(button, direction) {
+			button.addEventListener("click", () => {
+				const { first, last } = this.getInViewItems();
+				const targetSlide =
+					direction === "previous"
+						? first.previousElementSibling
+						: last.nextElementSibling;
+
+				if (!targetSlide) return;
+
+				targetSlide.scrollIntoView({
+					block: "nearest",
+					inline: "nearest",
+					behavior: "smooth",
+				});
+			});
+		}
+
+		updatePager() {
+			const inViewItems = this.getInViewItems().all;
+			const pagerLinks = Array.from(this.pager.querySelectorAll("a"));
+
+			pagerLinks.forEach((link) => link.removeAttribute("data-active"));
+
+			inViewItems.forEach((visibleSlide) => {
+				const slideId = visibleSlide.id;
+
+				pagerLinks.forEach((link) => {
+					const href = link.getAttribute("href").slice(1);
+
+					if (href === slideId) {
+						link.setAttribute("data-active", "true");
+					}
+				});
+			});
+		}
+
+		setupPagerLinks() {
+			this.pager.addEventListener("click", (e) => {
+				const clickedLink = e.target.closest("a");
+				if (!clickedLink) return;
+				e.preventDefault();
+
+				const slideId = clickedLink.getAttribute("href").slice(1);
+				const targetSlide = this.track.querySelector(`#${slideId}`);
+				if (!targetSlide) return;
+
+				targetSlide.scrollIntoView({
+					block: "nearest",
+					inline: "nearest",
+					behavior: "smooth",
+				});
+			});
 		}
 	}
 
 	customElements.define("css-snap-slider", CssSnapSlider);
 </script>
-
 
 <style is:global>
 	.page-header {
