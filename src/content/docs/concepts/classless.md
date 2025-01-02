@@ -1,7 +1,6 @@
 ---
 title: "Class-less CSS"
 description: "Class-less CSS lets you write pure HTML, with styling automatically applied based on the HTML elements themselves."
-sortOrder: 19
 ---
 
 **Class-less CSS** allows you to write HTML without needing to add CSS classes manually.
