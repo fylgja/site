@@ -31,11 +31,11 @@ Once installed, you can import the full package with:
 
 Alternatively, if you only need specific parts of the utilities.
 
-Since this is very long list of options, where not going to list all of them,
-but based on the titles in the Utilities section and the github package page,
-you can see all of the available options.
+You can import any utility mentioned below in this page.
 
-Indavidual import example:
+Now since this is very long list of options, where not going to list all of them down here in a table,
+but based on the titles in the Utilities section and the github package page,
+you can see all of the available options and how to import theme as seen in the example below.
 
 ```css
 @import "@fylgja/utilities/{UTILITY_NAME}";
@@ -67,11 +67,64 @@ The max column size and count can be customizes by using CSS variables.
 
 ### clip
 
+Clip is a better way to handle overflowing content compared to hidden value used by overflow.
+
+This utility easily allows to to prevent any overflow content by setting clip as the wrapper class,
+and this clipping can be set just to the axis thats needs it without introducing overflow auto to the other axis that has nothing set.
+
+When using `clip-y` it will only clip thge overflow on the y axis and the x axis can still overflow.
+
 ### content-lazy
+
+As the name states this allows you to load specific parts of the page lazy, using the power of CSS.
+
+[content-visibility] is now a baseline CSS property, so can be used in all browsers.
+
+But if some older version does not yet support this, it will have no effect, so this utility can be used a progressive enhancement.
+
+Do note [content-visibility] is best used for pages that are long and so have many elements to load, this utility has no effect on shorter pages.
+
+content-lazy is a [Dynamic CSS Utility] for the part to customize the reserved element size if not loaded.
+
+[content-visibility]: https://developer.mozilla.org/en-US/docs/Web/CSS/content-visibility
 
 ### display
 
+As the name states display sets the display value of an element, but unlike other utility systems this version only loads the parts that are commonly used in websites,
+so don't expect all version to work as seen with TailwindCSS or with other systems.
+
+Why not add all you ask.
+
+Simple to keep the CSS size small without introducing the need for tooling to make the CSS smaller.
+
+Display supports the following classes:
+
+| class                                        | value                          |
+| -------------------------------------------- | ------------------------------ |
+| `hidden`                                     | `display: none`                |
+| `block`                                      | `display: block`               |
+| `inline-block`                               | `display: inline flow-root`    |
+| `sm:{hidden,block,inline-block,table-cell}`  | All for the **sm** breakpoint  |
+| `md:{hidden,block,inline-block,table-cell}`  | All for the **md** breakpoint  |
+| `lg:{hidden,block,inline-block,table-cell}`  | All for the **lg** breakpoint  |
+| `xl:{hidden,block,inline-block,table-cell}`  | All for the **xl** breakpoint  |
+| `xxl:{hidden,block,inline-block,table-cell}` | All for the **xxl** breakpoint |
+
+For the breakpoint we use the same values as before,
+including table-cell as extra when you plan to hide the table cell on mobile,
+but show it on desktop screen sizes
+
 ### divide
+
+Divide 
+
+<figure>
+<ul role="list" class="divide-y divide-gap-y">
+<li>A better way to</li>
+<li>handle divides</li>
+<li>and supports a divide gap</li>
+</ul>
+</figure>
 
 ### flex
 
@@ -119,6 +172,6 @@ The max column size and count can be customizes by using CSS variables.
 
 ### visibility
 
-## Dynamic CSS Utility
 
-[Dynamic CSS Utility]: #dynamic-css-utility
+
+[Dynamic CSS Utility]: /docs/concepts/dynamic-css-utilities
