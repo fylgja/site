@@ -48,7 +48,7 @@ you can see all of the available options and how to import theme as seen in the 
 Align is a [Dynamic CSS Utility] which works together with any flex or grid based layout.
 This Utility will provide a default alignment for centering on the items axis and space between on the content axis and can be customize using CSS variables as explained in the section on [Dynamic CSS Utility]'s.
 
-<figure class="demo-wrapper flex align" style="--align: center">
+<figure class="demo-wrapper flex align" style="--align: center; --demo-wrapper-min-size: 200px">
 <code class="demo-box -inline">Align Center</code>
 </figure>
 
@@ -116,19 +116,64 @@ but show it on desktop screen sizes
 
 ### divide
 
-Divide 
+The `divide` utility is a popular feature,
+but it's often incomplete in most utility systems.
 
-<figure>
+With Fylgja, you get access to both `divide-y` and `divide-x`,
+which don't require preset values,
+as they inherit styles from the border utilities.
+
+As with all of Fylgja's utilities,
+you can modify the divider's width using CSS variables, making it highly flexible.
+
+To further enhance the divide utility,
+Fylgja introduces `divide-gap-y` and `divide-gap-x`.
+
+These utilities allow you to add flow-based spacing between dividers,
+offering more control over layout gaps.
+
+Like the border-width,
+these gaps can also be easily adjusted with CSS variables for complete customization.
+
+<figure class="demo-wrapper">
 <ul role="list" class="divide-y divide-gap-y">
 <li>A better way to</li>
 <li>handle divides</li>
-<li>and supports a divide gap</li>
+<li>and supports a gaps to!</li>
 </ul>
 </figure>
 
 ### flex
 
+Similar to the the display utilities, but also includes a lot of super powers.
+`flex` is a [Dynamic CSS Utility] that includes a lot of customization trough the power of CSS variables.
+
+We made sure to include few extra flex helper utilities that include the same as using the CSS variables.
+
 ### flip
+
+flip is a small utility to flip things based on a open state.
+
+This works great with the HTML details or a custom collapse.
+
+Next to flip you also get `flip-rotate` that will also rotate and not just flip, this version does require the `transition` utility of a CSS component that allready support CSS transitions for rotate values.
+
+<figure class="demo-wrapper flex flex-wrap gap" style="--demo-wrapper-min-size: 8rem">
+<details name="demo-flip-group" open>
+	<summary class="list-none btn">
+	<span>Click Me!</span>
+	<span class="flip">↓</span>
+	</summary>
+	<div style="--my: 0.5rem">Hello there.</div>
+</details>
+<details name="demo-flip-group">
+	<summary class="list-none btn">
+	<span>I will Rotate when toggling!</span>
+	<span class="flip-rotate transition">↓</span>
+	</summary>
+	<div style="--my: 0.5rem">Hello there.</div>
+</details>
+</figure>
 
 ### flow
 
@@ -137,6 +182,9 @@ Divide
 ### gradient
 
 ### grid
+
+Similar to the the display utilities, but also includes a lot of super powers.
+`grid` is a [Dynamic CSS Utility] that includes a lot of customization trough the power of CSS variables.
 
 ### line-clamp
 

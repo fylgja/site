@@ -1,5 +1,5 @@
 ---
-import SocialsIcons from "@assets/socials.svg?url";
+import SocialsIcons from "@/assets/socials.svg?url";
 
 interface Props {
 	socials: {
@@ -13,7 +13,7 @@ const links = Object.entries(socials || {});
 
 {
 	links.length > 0 && (
-		<div class="flex gap" style="--flex-wrap: wrap">
+		<div class="flex flex-wrap gap">
 			{links.map(([platform, url]) => {
 				let label = `Follow us at ${platform}`;
 

@@ -1,5 +1,5 @@
 @import "fylgja/tokens/css/index.css";
-@import "fylgja/base";
+@import "@fylgja/base";
 
 @import "fylgja/components/container";
 @import "fylgja/components/join";
@@ -13,3 +13,36 @@
 
 @import "fylgja/utilities";
 @import "styles/utilities";
+
+.pager {
+	--btn-py: 1ch;
+	--btn-px: 1ch;
+	--btn-active-stroke: var(--brand);
+	--btn-active-bg: var(--brand);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: var(--flex-wrap, nowrap);
+	gap: var(--pager-gap, 1ex);
+
+	& :where(a:not([class]), button, .btn) {
+		border-radius: var(--btn-radius, 0.5rem);
+		border-width: var(--btn-border-width, 2px);
+		border-color: var(--btn-stroke);
+		padding-block: var(--btn-py);
+		padding-inline: var(--btn-px);
+		overflow: clip;
+
+		&:is([aria-current="page"], [aria-current="true"]) {
+			border-color: var(--btn-active-stroke, var(--btn-stroke));
+		}
+	}
+
+	&.-dots {
+		--btn-radius: 50%;
+
+		& :where(a:not([class]), button, .btn):not([aria-current="page"], [aria-current="true"]) {
+			scale: 0.6;
+		}
+	}
+}

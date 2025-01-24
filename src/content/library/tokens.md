@@ -69,7 +69,7 @@ This is great option if you want to use the Fylgja Tokens with your web componen
 
 ### Aspect-Ratio
 
-<figure class="flex-wrap gap">
+<figure class="flex flex-wrap gap">
 <div class="demo-box" style="min-block-size: 8rem; aspect-ratio: var(--ratio-box);">Box</div>
 <div class="demo-box" style="min-block-size: 8rem; aspect-ratio: var(--ratio-landscape);">Landscape</div>
 <div class="demo-box" style="min-block-size: 8rem; aspect-ratio: var(--ratio-portrait);">Portrait</div>
@@ -81,7 +81,7 @@ This is great option if you want to use the Fylgja Tokens with your web componen
 
 ### Border Radius
 
-<figure class="flex-wrap gap">
+<figure class="flex flex-wrap gap">
 <div class="demo-box" style="border-radius: var(--radius-1);">1</div>
 <div class="demo-box" style="border-radius: var(--radius-2);">2</div>
 <div class="demo-box" style="border-radius: var(--radius-3);">3</div>
@@ -98,7 +98,7 @@ except that this value reverts to 0 when the element's boundaries intersect with
 
 ### Border Sizes
 
-<figure class="flex-wrap gap">
+<figure class="flex flex-wrap gap">
 <div class="demo-box" style="border-width: var(--border-size-1);">1</div>
 <div class="demo-box" style="border-width: var(--border-size-2);">2</div>
 <div class="demo-box" style="border-width: var(--border-size-3);">3</div>
@@ -118,7 +118,7 @@ We also provide a set of predefined hues for convenience.
 
 <figure
 	id="demoColors"
-	class="flex-wrap align gap"
+	class="flex flex-wrap align gap"
 	style="--align: start; --gap: 0.5em; --demo-box-stroke: transparent; --hue: var(--hue-teal)"
 >
 <div class="demo-box -scaler" style="background-color: var(--color-0); color: var(--color-14)">0</div>
@@ -138,7 +138,7 @@ We also provide a set of predefined hues for convenience.
 <div class="demo-box -scaler" style="background-color: var(--color-14); color: var(--color-0)">14</div>
 </figure>
 
-<div class="flex-wrap gap">
+<div class="flex flex-wrap gap">
 <label>
 	Hue
 	<select name="demo-hue-changer" onChange="
@@ -211,7 +211,7 @@ Go beyond the basics with advanced easing options with the elastic motion.
 >5</div>
 </div>
 
-<div class="flex-wrap gap">
+<div class="flex flex-wrap gap">
 <label>
 	Play Animation<br>
 	<input
@@ -252,7 +252,7 @@ Go beyond the basics with advanced easing options with the elastic motion.
 	style="font-size: var(--font-size-6); line-height: var(--line-height-3);"
 >Easily customize your text with variable and static font sizes, intelligently adjusted line heights, modern font stacks, and a comprehensive set of typography variables.</p>
 
-<div class="flex-wrap gap">
+<div class="flex flex-wrap gap">
 <label>
 	Font Size
 	<select name="demo-font-size-changer" onChange="demoFonts.style.fontSize = event.target.value;">
@@ -288,7 +288,7 @@ Go beyond the basics with advanced easing options with the elastic motion.
 
 ### Shadows
 
-<figure class="flex-wrap gap" style="--gap: 1.25em">
+<figure class="flex flex-wrap gap" style="--gap: 1.25em">
 <div class="demo-box" style="box-shadow: var(--shadow-1);">1</div>
 <div class="demo-box" style="box-shadow: var(--shadow-2);">2</div>
 <div class="demo-box" style="box-shadow: var(--shadow-3);">3</div>

@@ -1,5 +1,5 @@
 ---
-layout: "@layouts/ContentLayout.astro"
+layout: "@/layouts/ContentLayout.astro"
 title: "About us"
 description: "About Fylgja and how it was created"
 ---

@@ -1,5 +1,5 @@
 import { getCollection } from "astro:content";
-import { isProdMode, sortByOrder } from "@utils";
+import { isProdMode, sortByOrder } from "@/utils";
 
 async function filterCollection(path: string) {
 	return sortByOrder(

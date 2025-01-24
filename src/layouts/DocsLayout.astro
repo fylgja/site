@@ -1,12 +1,12 @@
 ---
-import "@assets/main.css";
+import "@/assets/main.css";
 import Layout from "./BlankLayout.astro";
-import PageHeader from "@components/PageHeader.astro";
-import PageFooter from "@components/PageFooter.astro";
-import MainNav from "@components/MainNav.astro";
-import Menu from "@components/Menu.astro";
-import SkipLink from "@components/SkipLink.astro";
-import Toc from "@components/Toc";
+import PageHeader from "@/components/PageHeader.astro";
+import PageFooter from "@/components/PageFooter.astro";
+import MainNav from "@/components/MainNav.astro";
+import Menu from "@/components/Menu.astro";
+import SkipLink from "@/components/SkipLink.astro";
+import Toc from "@/components/Toc";
 
 interface Props {
 	title: string;
@@ -31,7 +31,7 @@ const urlPrefix = "/" + collectionName.toLowerCase();
 	</PageHeader>
 	<main id="main-content" class="docs-layout">
 		<aside class="docs-menu hidden lg:block">
-			<div class="sticky inset-header scroll-y">
+			<div class="sticky inset-header scroll-y max-h-full">
 				<MainNav />
 				<Menu title={collectionName} items={collection} urlPrefix={urlPrefix} />
 			</div>
