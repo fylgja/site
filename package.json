@@ -15,7 +15,7 @@
 		"@astrojs/check": "^0.9.4",
 		"@astrojs/rss": "^4.0.10",
 		"@astrojs/sitemap": "^3.2.1",
-		"@docsearch/css": "^3.8.0",
+		"@docsearch/css": "^3.8.3",
 		"@docsearch/js": "^3.8.0",
 		"@fylgja/base": "^2.0.0-beta.1",
 		"astro": "^5.1.1",
