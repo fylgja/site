@@ -3,27 +3,42 @@ title: "Accessibility"
 description: "Fylgja is out of the box fully A11Y ready."
 ---
 
-All Fylgja Packages are out of the box fully accessible.
+All Fylgja packages are designed to be fully accessible right out of the box.
 
-So any of the styling from Fylgja will not negatively impact the Accessible of your page,
-by providing good default for typography, focus management and respsecting the touch and click sizes.
+The styling provided by Fylgja will not negatively impact the accessibility of your website,
+ensuring best practices for typography, focus management, and appropriate touch/click sizes.
 
-Next to this Fylgja tries to enforce the best practices in your HTML by using the HTML attributes for setting the state of specific CSS components and CSS utilities instead of using classes.
+In addition to offering accessible styles,
+Fylgja promotes the use of proper HTML attributes to manage state and behavior for CSS components and utilities,
+rather than relying solely on class names.
 
-For example we use the `aria-current="page"` when building a pagination or breadcrumbs:
+This helps enforce accessibility best practices directly in your markup.
+
+## Accessible HTML Patterns
+
+For example, when building a pagination or breadcrumb navigation,
+we use the `aria-current="page"` attribute to indicate the current page:
 
 ```html
 <nav aria-label="breadcrumbs">
 	<ol class="breadcrumbs">
 		<li><a href="/">Fylgja</a></li>
-		<li><a href="/docs">docs</a></li>
+		<li><a href="/docs">Docs</a></li>
 		<li><a href="/docs/core-concepts">Core Concepts</a></li>
 		<li><a aria-current="page" href="/docs/core-concepts/accessibility">Accessibility</a></li>
 	</ol>
-<nav>
+</nav>
 ```
 
-Another advantage of this pattern is to reduce mental load,
-since you only need to remember the right HTML not all of the class names used by other frameworks for the same effect.
+This approach not only improves accessibility but also simplifies your development process.
 
-We have whole set of [Fylgja UI components](/ui) ready to be copypasted, that are made with Accessability in mind.
+By using semantic HTML attributes,
+you reduce the mental load of remembering complex class names often required by other frameworks,
+allowing you to focus on proper HTML structure instead.
+
+## Ready-to-Use Accessible Components
+
+Fylgja offers a wide range of [UI components](/ui) that are built with accessibility in mind.
+
+These components are ready to be copied and pasted into your project,
+giving you both an accessible and efficient starting point for your user interface.

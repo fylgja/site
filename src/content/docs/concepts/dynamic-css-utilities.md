@@ -1,72 +1,94 @@
 ---
-title: "Dynamic CSS Utility"
-description: "Dynamic CSS Utilities are designed to be flexible and customizable through CSS variables"
+title: "Dynamic CSS Utilities"
+description: "Dynamic CSS Utilities in Fylgja are designed to be flexible and customizable through the use of CSS variables"
 ---
 
-Dynamic CSS Utilities are designed to be flexible and customizable through CSS variables.
+Dynamic CSS Utilities in Fylgja are designed to be flexible and customizable through the use of CSS variables.
 
-With Fylgja Utilities, our goal is to avoid creating separate utilities for every possible spacing size or variation.
-
-Instead, each utility is focused on performing one task, while the actual values can be customized through CSS variables,
+Instead of creating separate utilities for every possible variation (e.g., spacing sizes),
+each utility serves a single purpose,
+while the actual values are customizable via CSS variables
 or combined with other CSS Components and Utilities.
 
-### Benefits
+## Benefits
 
-This approach keeps your CSS lightweight and flexible, as you're not tied to specific, hard-coded values.
+This approach keeps your CSS lightweight and flexible,
+ensuring you're not tied to predefined, hard-coded values.
 
-You can easily adjust values without needing to create or import new classes for every scenario.
+It also allows you to adjust values easily without needing to create
+or import new classes for every possible scenario,
+making your styles reusable and adaptable.
 
-### Basic Example
+## Basic Example
 
-One of the simplest ways to use Dynamic CSS Utilities is by setting values directly with inline styles. For example:
+One of the simplest ways to use Dynamic CSS Utilities is by setting values directly via inline styles.
+
+Here's an example:
 
 ```html
-<div class="auto-grid" style="--max-cols-size: 15ch">..</div>
+<div class="auto-grid" style="--max-cols-size: 15ch">...</div>
 ```
 
-In this example, the `--max-cols-size` variable controls the max size of each column,
-and the value can be customized for each instance.
+In this example, the `--max-cols-size` variable controls the maximum size of each column,
+and the value can be customized on a per-instance basis.
 
-### Customizing with Predefined Utilities
+## Customizing with Predefined Utilities
 
-If you prefer to avoid inline styles and use predefined classes,
-you can also define your own utilities in your stylesheet. Here's an example:
+If you prefer not to use inline styles,
+you can define your own utilities in your stylesheet and apply them with predefined classes.
+
+For example:
 
 ```html
-<div class="auto-grid grid-size-lg">..</div>
+<div class="auto-grid grid-size-lg">...</div>
 ```
 
-In this case, the class `grid-size-lg` is linked to a predefined value in your stylesheet,
-making the grid size consistent and reusable throughout your project.
+Here, the class `grid-size-lg` corresponds to a predefined value in your stylesheet,
+allowing for consistent and reusable grid sizing throughout your project.
 
-### Flexibility and Scalability
+## Flexibility and Scalability
 
-In our experience, the inline style method scales well, as it scopes styles to specific content on the page.
+The inline style method scales well as it scopes styles to specific content.
 
-However, we recognize that styling preferences vary, and with Fylgja Utilities, the choice is yours.
+However, we understand that preferences vary,
+and Fylgja Utilities give you the flexibility to choose the method that best fits your needs.
 
-### Advanced Example: Margin Utilities
+## Advanced Examples
 
-Let's look at a more advanced example, comparing Fylgja's method for setting margins with the traditional CSS Utility approach.
+### Margin Utilities
+
+Let’s compare Fylgja’s approach to setting margins with the traditional CSS utility method:
 
 ```html
-<div style="--my: 1rem; --lg_my: 2rem">..</div>
+<div style="--my: 1rem; --lg_my: 2rem">...</div>
 <!-- vs -->
-<div class="my-4 lg:my-8">..</div>
+<div class="my-4 lg:my-8">...</div>
 ```
 
-With Fylgja's method,
-margin values for different breakpoints (e.g., `--my` for mobile and `--lg_my` for larger screens) are already set via CSS variables,
-without the need to generate specific utility classes for each value. 
+With Fylgja’s method, margin values for different breakpoints
+(e.g., `--my` for mobile and `--lg_my` for larger screens) are set using CSS variables,
+eliminating the need for specific utility classes for each size and breakpoint.
 
-In contrast, the traditional method requires generating separate classes like `my-4` and `lg:my-8` for each margin size and breakpoint,
-leading to larger CSS files.
+In contrast, the traditional method requires generating separate classes (e.g., `my-4` and `lg:my-8`),
+which can lead to larger CSS files.
 
-### Key Advantages
+### Integrating with PHP, JavaScript, or Other Languages
 
-- **No CSS Bloat**: The size of your CSS remains compact, as you're not generating a new class for every possible combination of values.
-- **Integration with CSS Tokens**: You can easily use these utilities with any CSS token system,
-  whether it's Fylgja's own tokens or popular ones like [Open Props](https://open-props.style/).
+Another advantage of Fylgja’s Dynamic CSS Utilities is that CSS values can be accessed
+and manipulated by server-side or client-side languages,
+like PHP or JavaScript. For example, setting a CSS variable dynamically via PHP:
 
-By using this dynamic approach, you gain all the benefits of traditional utilities,
-but with more flexibility and significantly less code overhead.
+```html
+<div class="auto-grid" style="--max-cols-size: <?= $productMaxGridSize ?>">...</div>
+```
+
+In other frameworks, you'd typically have to manually define such dynamic behavior,
+but with Fylgja,
+CSS variables provide built-in flexibility to interact with other languages without extra overhead.
+
+## Key Advantages
+
+- **No CSS Bloat**: Since you're not generating a new class for every combination of values, your CSS file remains compact and efficient.
+- **Integration with CSS Tokens**: Fylgja's utilities are fully compatible with any CSS token system, whether you use Fylgja's own tokens or popular ones like [Open Props](https://open-props.style/).
+
+By leveraging this dynamic approach, you get the power and convenience of traditional utilities, but with greater flexibility and significantly less code overhead.

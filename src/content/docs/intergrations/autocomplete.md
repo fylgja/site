@@ -3,57 +3,55 @@ title: "Autocomplete in your editor"
 description: "Tips to make it even easier to work with Fylgja in your editor"
 ---
 
-Fylgja is a CSS framework that makes it easy to create beautiful and responsive websites. But it can be even easier to use Fylgja if you have autocomplete in your editor.
+Fylgja is a CSS framework that simplifies the creation of beautiful and responsive websites. To make it even easier to work with, you can enable autocompletion for Fylgja's features in your editor. This will speed up your development process by suggesting CSS variables, SCSS syntax, and more as you type.
 
-Here are a few tips to get autocomplete working in your favorite editor:
+Below are a few tips to get autocomplete working in your favorite editor:
 
-> We use VSCode mainly for our own coding,
-> but if you have tips for other editors please share your tips,
-> by creating a pull request on [github.com/fylgja/site](https://github.com/fylgja/site)
+> [!Note]
+> We primarily use VSCode for our development. If you have tips for other editors, please contribute by creating a pull request on our [GitHub repository](https://github.com/fylgja/site).
 
 ## CSS Variable Autocompletion (VSCode)
 
-This extension adds autocompletion for CSS variables.
+To enable autocompletion for CSS variables in VSCode, you can use the **CSS Variable Autocomplete** extension.
 
-Install the extension [phoenisx.cssvar](https://marketplace.visualstudio.com/items?itemName=phoenisx.cssvar),
-and configure your editor to allow autocompletion from the node modules folder;
+1. Install the extension [phoenisx.cssvar](https://marketplace.visualstudio.com/items?itemName=phoenisx.cssvar).
+2. Configure your editor to include Fylgja's CSS variables from your `node_modules` folder:
 
 ```json
 // .vscode/settings.json
 {
   "cssvar.files": [
-    "./node_modules/fylgja/fylgja.css",
-    // Your styles folder
+    "./node_modules/@fylgja/**/*.css"
+    // Include your custom styles or variable files
     "./src/styles/variables.css"
   ],
-  // Do not ignore node_modules css files, which is ignored by default
+  // Ensure node_modules is not excluded by the autocomplete
   "cssvar.ignore": []
 }
 ```
 
-_Or use the specific Fylgja component path._
+You can also specify paths to individual Fylgja component files if preferred.
 
-[For more config options see the extension docs](https://marketplace.visualstudio.com/items?itemName=phoenisx.cssvar).
-
+For more configuration options, refer to the [extension documentation](https://marketplace.visualstudio.com/items?itemName=phoenisx.cssvar).
 
 ## SCSS IntelliSense (VSCode)
 
-This extension adds IntelliSense for SCSS with;
+If you're working with SCSS, the **SCSS IntelliSense** extension enhances your coding experience by offering:
 
-- Full support for `@use` and `@forward`, including aliases, prefixes and hiding.
+- Full support for `@use` and `@forward`, including aliases, prefixes, and hiding.
 - Rich documentation through SassDoc.
-- Suggestions and hover info for built-in Sass modules, when used with `@use`.
+- Suggestions and hover information for built-in Sass modules when used with `@use`.
 
-Install the extension [somewhatstationery.some-sass](https://marketplace.visualstudio.com/items?itemName=SomewhatStationery.some-sass),
-and configure your editor to allow IntelliSense from the node modules folder;
+1. Install the extension [somewhatstationery.some-sass](https://marketplace.visualstudio.com/items?itemName=SomewhatStationery.some-sass).
+2. Configure IntelliSense for SCSS in your editor by allowing it to scan the `node_modules` folder:
 
 ```json
 // .vscode/settings.json
 {
   "somesass.scannerExclude": [".git/**", "./node_modules/**!(@fylgja)"],
-  // Recommended if you don't rely on @import
+  // Recommended setting if you rely on @use instead of @import
   "somesass.suggestFromUseOnly": true
 }
 ```
 
-[For more config options see the extension docs](https://marketplace.visualstudio.com/items?itemName=SomewhatStationery.some-sass).
+For more configuration options, refer to the [extension documentation](https://marketplace.visualstudio.com/items?itemName=SomewhatStationery.some-sass).
