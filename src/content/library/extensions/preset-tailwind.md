@@ -1,6 +1,7 @@
 ---
 title: "Preset TailwindCSS"
 description: "Preset for TailwindCSS"
+draft: true
 ---
 
 Preset for TailwindCSS.

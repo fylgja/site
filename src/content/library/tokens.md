@@ -7,12 +7,18 @@ git: "https://github.com/fylgja/fylgja/tree/main/tokens"
 sortOrder: 5
 ---
 
-Start your projects with a predefined set of design tokens,
-to avoid creating multiple variantions of spacing and colors and follow consisten structure trough your project.
+Establish a consistent design language across your projects with Fylgja Design Tokens.
 
-If you don't require everything that Fylgja Tokens offers,
-you can import only the parts you need.
-For example, you can import just the spacing and provide your own colors as design tokens.
+This predefined set of tokens eliminates redundant variations in spacing, colors, and other design elements,
+ensuring a unified structure throughout your codebase.
+
+For projects with specific requirements,
+Fylgja offers granular imports.
+
+Select only the necessary token categories, such as spacing, and define your own custom color palettes.
+
+Furthermore, Fylgja seamlessly integrates with [PostCSS Jit Props],
+mirroring the functionality of [Open Props](https://open-props.style/) and other design token systems, for optimized CSS output.
 
 ## Installation
 
@@ -25,51 +31,85 @@ npm install @fylgja/tokens
 Alternatively, you can use it directly via a CDN:
 
 ```html
-<link href="https://cdn.jsdelivr.net/npm/@fylgja/tokens@2.0/index.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fylgja/tokens/css/index.min.css" rel="stylesheet">
 ```
 
 ## Usage
 
 Once installed, you can import the full package with:
 
-```css
-@import "@fylgja/tokens";
+```js
+import tokens from "@fylgja/tokens";
 ```
 
-Alternatively, if you only need specific parts of the tokens, you can import them individually:
+or as CSS with:
 
-| Import Path                    | CSS | SCSS | JS  | Description                                     |
-| ------------------------------ | --- | ---- | --- | ----------------------------------------------- |
-| `@fylgja/tokens/aspect-ratio`  | ✔   | ✔    | ✔   |                                                 |
-| `@fylgja/tokens/border-radius` | ✔   | ✔    | ✔   |                                                 |
-| `@fylgja/tokens/border-sizes`  | ✔   | ✔    | ✔   |                                                 |
-| `@fylgja/tokens/colors`        | ✔   | ✔    | ✔   | List of 14 colors in oklch format               |
-| `@fylgja/tokens/colors-static` |     | ✔    |     | Combination of colors and hues as a static list |
-| `@fylgja/tokens/hues`          | ✔   | ✔    |     | JS version is part of the colors import         |
-| `@fylgja/tokens/easing`        | ✔   | ✔    | ✔   |                                                 |
-| `@fylgja/tokens/fonts`         | ✔   | ✔    | ✔   |                                                 |
-| `@fylgja/tokens/shadows`       | ✔   | ✔    | ✔   |                                                 |
-| `@fylgja/tokens/sizes`         | ✔   | ✔    | ✔   |                                                 |
-| `@fylgja/tokens/z-layer`       | ✔   | ✔    | ✔   |                                                 |
+```css
+@import "@fylgja/tokens/css";
+```
 
-### Shadow DOM support
+Next to this we also offers imports for SCSS, JS and for design systems in a json format.
 
-The CSS version also support a [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM) import version which offer the design tokens on the host scope,
-the import paths will end with `.host`.
+Each option can be import for all tokens or just the part you need.
 
-This is great option if you want to use the Fylgja Tokens with your web components.
+<div class="scroll-x">
 
-**Example import:**
+| Import Path                                 | Description                                     |
+| ------------------------------------------- | ----------------------------------------------- |
+| `@fylgja/tokens/{css/scss}`                 | All tokens                                      |
+| `@fylgja/tokens/{css/scss/js}/aspect-ratio` | Aspect Ratios                                   |
+| `@fylgja/tokens/{css/scss/js}/borders`      | Border Widths and Radii                         |
+| `@fylgja/tokens/{css/scss/js}/colors`       | List of 14 colors in oklch format               |
+| `@fylgja/tokens/{css/scss}/hues`            | JS version is part of the colors import         |
+| `@fylgja/tokens/scss/colors-static`         | Combination of colors and hues as a static list |
+| `@fylgja/tokens/{css/scss/js}/easing`       | Easing Functions                                |
+| `@fylgja/tokens/{css/scss/js}/fonts`        | Font Size and Line Height                       |
+| `@fylgja/tokens/{css/scss/js}/mq`           | CSS Breakpoints and User preferences            |
+| `@fylgja/tokens/{css/scss/js}/shadows`      | Shadows                                         |
+| `@fylgja/tokens/{css/scss/js}/sizes`        | Sizes                                           |
+| `@fylgja/tokens/{css/scss/js}/z-layer`      | Z-Index's                                       |
+
+> [!Note]
+> Not all tokens can be represented in a design system format.
+
+| Import Path for design system     | Description                                      |
+| --------------------------------- | ------------------------------------------------ |
+| `@fylgja/tokens/tokens`           | Follows the [(draft) Design Tokens Spec]         |
+| `@fylgja/tokens/figma`            | Can be used with the Figma Plugin [Token Studio] |
+| `@fylgja/tokens/style-dictionary` | Follow the [Style Dictionary] format             |
+
+[(draft) Design Tokens Spec]: https://design-tokens.github.io/community-group/format/
+[Token Studio]: https://tokens.studio/
+[Style Dictionary]: https://styledictionary.com/
+
+</div>
+
+### Shadow DOM Support
+
+For web components utilizing Shadow DOM,
+import the `.host` variants to apply tokens within the host scope:
 
 ```css
 @import "@fylgja/tokens/aspect-ratio.host";
 ```
 
+This enables seamless integration of Fylgja Design Tokens within your custom web components.
+
+### PostCSS Jit Props Integration
+
+Leverage [PostCSS Jit Props] to optimize CSS output by including only the tokens used in your project.
+
+While Fylgja tokens are designed for minimal size,
+this integration further reduces file sizes,
+especially when combined with custom tokens.
+
+[PostCSS Jit Props]: https://github.com/GoogleChromeLabs/postcss-jit-props
+
 ## Previews
 
 ### Aspect-Ratio
 
-<figure class="flex flex-wrap gap">
+<figure class="flex-wrap gap">
 <div class="demo-box" style="min-block-size: 8rem; aspect-ratio: var(--ratio-box);">Box</div>
 <div class="demo-box" style="min-block-size: 8rem; aspect-ratio: var(--ratio-landscape);">Landscape</div>
 <div class="demo-box" style="min-block-size: 8rem; aspect-ratio: var(--ratio-portrait);">Portrait</div>
@@ -81,7 +121,7 @@ This is great option if you want to use the Fylgja Tokens with your web componen
 
 ### Border Radius
 
-<figure class="flex flex-wrap gap">
+<figure class="flex-wrap gap">
 <div class="demo-box" style="border-radius: var(--radius-1);">1</div>
 <div class="demo-box" style="border-radius: var(--radius-2);">2</div>
 <div class="demo-box" style="border-radius: var(--radius-3);">3</div>
@@ -98,7 +138,7 @@ except that this value reverts to 0 when the element's boundaries intersect with
 
 ### Border Sizes
 
-<figure class="flex flex-wrap gap">
+<figure class="flex-wrap gap">
 <div class="demo-box" style="border-width: var(--border-size-1);">1</div>
 <div class="demo-box" style="border-width: var(--border-size-2);">2</div>
 <div class="demo-box" style="border-width: var(--border-size-3);">3</div>
@@ -118,27 +158,27 @@ We also provide a set of predefined hues for convenience.
 
 <figure
 	id="demoColors"
-	class="flex flex-wrap align gap"
+	class="flex-wrap align gap"
 	style="--align: start; --gap: 0.5em; --demo-box-stroke: transparent; --hue: var(--hue-teal)"
 >
-<div class="demo-box -scaler" style="background-color: var(--color-0); color: var(--color-14)">0</div>
-<div class="demo-box -scaler" style="background-color: var(--color-1); color: var(--color-14)">1</div>
-<div class="demo-box -scaler" style="background-color: var(--color-2); color: var(--color-14)">2</div>
-<div class="demo-box -scaler" style="background-color: var(--color-3); color: var(--color-14)">3</div>
-<div class="demo-box -scaler" style="background-color: var(--color-4); color: var(--color-14)">4</div>
-<div class="demo-box -scaler" style="background-color: var(--color-5); color: var(--color-14)">5</div>
-<div class="demo-box -scaler" style="background-color: var(--color-6); color: var(--color-14)">6</div>
-<div class="demo-box -scaler" style="background-color: var(--color-7); color: var(--color-14)">7</div>
-<div class="demo-box -scaler" style="background-color: var(--color-8); color: var(--color-0)">8</div>
-<div class="demo-box -scaler" style="background-color: var(--color-9); color: var(--color-0)">9</div>
-<div class="demo-box -scaler" style="background-color: var(--color-10); color: var(--color-0)">10</div>
-<div class="demo-box -scaler" style="background-color: var(--color-11); color: var(--color-0)">11</div>
-<div class="demo-box -scaler" style="background-color: var(--color-12); color: var(--color-0)">12</div>
-<div class="demo-box -scaler" style="background-color: var(--color-13); color: var(--color-0)">13</div>
-<div class="demo-box -scaler" style="background-color: var(--color-14); color: var(--color-0)">14</div>
+<div class="demo-box --scaler" style="background-color: var(--color-0); color: var(--color-14)">0</div>
+<div class="demo-box --scaler" style="background-color: var(--color-1); color: var(--color-14)">1</div>
+<div class="demo-box --scaler" style="background-color: var(--color-2); color: var(--color-14)">2</div>
+<div class="demo-box --scaler" style="background-color: var(--color-3); color: var(--color-14)">3</div>
+<div class="demo-box --scaler" style="background-color: var(--color-4); color: var(--color-14)">4</div>
+<div class="demo-box --scaler" style="background-color: var(--color-5); color: var(--color-14)">5</div>
+<div class="demo-box --scaler" style="background-color: var(--color-6); color: var(--color-14)">6</div>
+<div class="demo-box --scaler" style="background-color: var(--color-7); color: var(--color-14)">7</div>
+<div class="demo-box --scaler" style="background-color: var(--color-8); color: var(--color-0)">8</div>
+<div class="demo-box --scaler" style="background-color: var(--color-9); color: var(--color-0)">9</div>
+<div class="demo-box --scaler" style="background-color: var(--color-10); color: var(--color-0)">10</div>
+<div class="demo-box --scaler" style="background-color: var(--color-11); color: var(--color-0)">11</div>
+<div class="demo-box --scaler" style="background-color: var(--color-12); color: var(--color-0)">12</div>
+<div class="demo-box --scaler" style="background-color: var(--color-13); color: var(--color-0)">13</div>
+<div class="demo-box --scaler" style="background-color: var(--color-14); color: var(--color-0)">14</div>
 </figure>
 
-<div class="flex flex-wrap gap">
+<div class="flex-wrap gap">
 <label>
 	Hue
 	<select name="demo-hue-changer" onChange="
@@ -211,16 +251,29 @@ Go beyond the basics with advanced easing options with the elastic motion.
 >5</div>
 </div>
 
-<div class="flex flex-wrap gap">
-<label>
-	Play Animation<br>
-	<input
-		name="demo-play-easeing-state"
-		type="checkbox"
-		role="switch"
-		onChange="demoEasing.classList.toggle('is-paused');"
-	>
-</label>
+<div class="flex-wrap gap">
+<fieldset>
+	<legend>Play Animation</legend>
+	<div class="input-group">
+		<label class="btn --primary">
+			<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Pause</title><rect x="14" y="4" width="4" height="16" rx="1"/><rect x="6" y="4" width="4" height="16" rx="1"/></svg>
+			<input
+				name="demo-play-easeing-state"
+				type="radio"
+				checked
+				onChange="demoEasing.classList.add('is-paused');"
+			>
+		</label>
+		<label class="btn --primary">
+			<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Play</title><polygon points="6 3 20 12 6 21 6 3"/></svg>
+			<input
+				name="demo-play-easeing-state"
+				type="radio"
+				onChange="demoEasing.classList.remove('is-paused');"
+			>
+		</label>
+	</div>
+</fieldset>
 <label>
 	Easing Style
 	<select
@@ -243,6 +296,23 @@ Go beyond the basics with advanced easing options with the elastic motion.
 	<option value="ease-elastic-in-out">Ease Elastic In Out</option>
 	</select>
 </label>
+<label>
+	<span class="sr-only">Animation</span>Speed<br>
+	<div class="input-group --merge">
+		<input
+			name="demo-play-easeing-speed"
+			type="number"
+			min="1"
+			max="25"
+			value="5"
+			onChange="demoEasing.style.setProperty('--demo-animate-speed', event.target.value + 's');"
+			style="padding-inline-end: 0"
+		>
+		<div aria-hidden="true" class="form-input" style="padding-inline-start: 0.3ex">
+			<span class="text-muted">S</span>
+		</div>
+	</div>
+</label>
 </div>
 
 ### Fonts
@@ -252,7 +322,7 @@ Go beyond the basics with advanced easing options with the elastic motion.
 	style="font-size: var(--font-size-6); line-height: var(--line-height-3);"
 >Easily customize your text with variable and static font sizes, intelligently adjusted line heights, modern font stacks, and a comprehensive set of typography variables.</p>
 
-<div class="flex flex-wrap gap">
+<div class="flex-wrap gap">
 <label>
 	Font Size
 	<select name="demo-font-size-changer" onChange="demoFonts.style.fontSize = event.target.value;">
@@ -288,7 +358,7 @@ Go beyond the basics with advanced easing options with the elastic motion.
 
 ### Shadows
 
-<figure class="flex flex-wrap gap" style="--gap: 1.25em">
+<figure class="flex-wrap gap" style="--gap: 1.25em">
 <div class="demo-box" style="box-shadow: var(--shadow-1);">1</div>
 <div class="demo-box" style="box-shadow: var(--shadow-2);">2</div>
 <div class="demo-box" style="box-shadow: var(--shadow-3);">3</div>
@@ -302,56 +372,13 @@ Go beyond the basics with advanced easing options with the elastic motion.
 Fylgja includes a comprehensive numeric spacing scale characterized by its proportional values.
 This ensures predictable and consistent spacing relationships within the design system.
 
-<div class="demo-table">
-
-| Name    | Value    | in Pixel's | Preview                                                                                         |
-| ------- | -------- | ---------- | ----------------------------------------------------------------------------------------------- |
-| 1       | 0.125rem | 2px        | <div style="inline-size: var(--size-1)" role="img" aria-label="Size Token 1"></div>             |
-| 2       | 0.25rem  | 4px        | <div style="inline-size: var(--size-2)" role="img" aria-label="Size Token 2"></div>             |
-| 3       | 0.375rem | 6px        | <div style="inline-size: var(--size-3)" role="img" aria-label="Size Token 3"></div>             |
-| 4       | 0.5rem   | 8px        | <div style="inline-size: var(--size-4)" role="img" aria-label="Size Token 4"></div>             |
-| 5       | 0.625rem | 10px       | <div style="inline-size: var(--size-5)" role="img" aria-label="Size Token 5"></div>             |
-| 6       | 0.75rem  | 12px       | <div style="inline-size: var(--size-6)" role="img" aria-label="Size Token 6"></div>             |
-| 7       | 0.875rem | 14px       | <div style="inline-size: var(--size-7)" role="img" aria-label="Size Token 7"></div>             |
-| 8       | 1rem     | 16px       | <div style="inline-size: var(--size-8)" role="img" aria-label="Size Token 8"></div>             |
-| 9       | 1.25rem  | 20px       | <div style="inline-size: var(--size-9)" role="img" aria-label="Size Token 9"></div>             |
-| 10      | 1.5rem   | 24px       | <div style="inline-size: var(--size-10)" role="img" aria-label="Size Token 10"></div>           |
-| 11      | 1.75rem  | 28px       | <div style="inline-size: var(--size-11)" role="img" aria-label="Size Token 11"></div>           |
-| 12      | 2rem     | 32px       | <div style="inline-size: var(--size-12)" role="img" aria-label="Size Token 12"></div>           |
-| 13      | 2.25rem  | 36px       | <div style="inline-size: var(--size-13)" role="img" aria-label="Size Token 13"></div>           |
-| 14      | 2.5rem   | 40px       | <div style="inline-size: var(--size-14)" role="img" aria-label="Size Token 14"></div>           |
-| 15      | 2.75rem  | 44px       | <div style="inline-size: var(--size-15)" role="img" aria-label="Size Token 15"></div>           |
-| 16      | 3rem     | 48px       | <div style="inline-size: var(--size-16)" role="img" aria-label="Size Token 16"></div>           |
-| 17      | 3.5rem   | 56px       | <div style="inline-size: var(--size-17)" role="img" aria-label="Size Token 17"></div>           |
-| 18      | 4rem     | 64px       | <div style="inline-size: var(--size-18)" role="img" aria-label="Size Token 18"></div>           |
-| 19      | 5rem     | 80px       | <div style="inline-size: var(--size-19)" role="img" aria-label="Size Token 19"></div>           |
-| 20      | 6rem     | 96px       | <div style="inline-size: var(--size-20)" role="img" aria-label="Size Token 20"></div>           |
-| 21      | 7rem     | 112px      | <div style="inline-size: var(--size-21)" role="img" aria-label="Size Token 21"></div>           |
-| 22      | 8rem     | 128px      | <div style="inline-size: var(--size-22)" role="img" aria-label="Size Token 22"></div>           |
-| 23      | 9rem     | 144px      | <div style="inline-size: var(--size-23)" role="img" aria-label="Size Token 23"></div>           |
-| 24      | 10rem    | 160px      | <div style="inline-size: var(--size-24)" role="img" aria-label="Size Token 24"></div>           |
-| 25      | 11rem    | 176px      | <div style="inline-size: var(--size-25)" role="img" aria-label="Size Token 25"></div>           |
-| 26      | 12rem    | 192px      | <div style="inline-size: var(--size-26)" role="img" aria-label="Size Token 26"></div>           |
-| 27      | 13rem    | 208px      | <div style="inline-size: var(--size-27)" role="img" aria-label="Size Token 27"></div>           |
-| 28      | 14rem    | 224px      | <div style="inline-size: var(--size-28)" role="img" aria-label="Size Token 28"></div>           |
-| 29      | 15rem    | 240px      | <div style="inline-size: var(--size-29)" role="img" aria-label="Size Token 29"></div>           |
-| 30      | 16rem    | 256px      | <div style="inline-size: var(--size-30)" role="img" aria-label="Size Token 30"></div>           |
-| 31      | 18rem    | 288px      | <div style="inline-size: var(--size-31)" role="img" aria-label="Size Token 31"></div>           |
-| 32      | 20rem    | 320px      | <div style="inline-size: var(--size-32)" role="img" aria-label="Size Token 32"></div>           |
-| 33      | 24rem    | 384px      | <div style="inline-size: var(--size-33)" role="img" aria-label="Size Token 33"></div>           |
-| 34      | 28rem    | 448px      | <div style="inline-size: var(--size-34)" role="img" aria-label="Size Token 34"></div>           |
-| 35      | 32rem    | 512px      | <div style="inline-size: var(--size-35)" role="img" aria-label="Size Token 35"></div>           |
-| 36      | 36rem    | 576px      | <div style="inline-size: var(--size-36)" role="img" aria-label="Size Token 36"></div>           |
-| 37      | 42rem    | 672px      | <div style="inline-size: var(--size-37)" role="img" aria-label="Size Token 37"></div>           |
-| 38      | 48rem    | 768px      | <div style="inline-size: var(--size-38)" role="img" aria-label="Size Token 38"></div>           |
-| 39      | 56rem    | 896px      | <div style="inline-size: var(--size-39)" role="img" aria-label="Size Token 39"></div>           |
-| 40      | 64rem    | 1024px     | <div style="inline-size: var(--size-40)" role="img" aria-label="Size Token 40"></div>           |
-| 41      | 72rem    | 1152px     | <div style="inline-size: var(--size-41)" role="img" aria-label="Size Token 41"></div>           |
-| 42      | 80rem    | 1280px     | <div style="inline-size: var(--size-42)" role="img" aria-label="Size Token 42"></div>           |
-| heading | 36ch     | 288px      | <div style="inline-size: var(--size-heading)" role="img" aria-label="Size Token Heading"></div> |
-| content | 64ch     | 512px      | <div style="inline-size: var(--size-content)" role="img" aria-label="Size Token Content"></div> |
-
-</div>
+```css
+--size-{1-10}
+--size-{12,14,16,18,20,24,28,32,36}
+--size-{40,50,60,70,80,90,100,120}
+--size-heading
+--size-content
+```
 
 ### Z-Layer
 

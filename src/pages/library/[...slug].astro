@@ -13,12 +13,18 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { pageTitle, title, version, git, npm, changelog } = entry.data;
+const { pageTitle, title, description, version, git, npm, changelog } = entry.data;
 const { Content, headings } = await entry.render();
 const hasMeta = !!git || !!npm;
 ---
 
-<Layout title={title} toc={headings} collectionName="Library" collection={collection}>
+<Layout
+	title={title}
+	description={description}
+	toc={headings}
+	collectionName="Library"
+	collection={collection}
+>
 	<h1>{pageTitle || title}</h1>
 	{hasMeta && <MetaVersion version={version} git={git} npm={npm} changelog={changelog} />}
 	<Content />
@@ -32,19 +38,19 @@ const hasMeta = !!git || !!npm;
 		border: 1px solid var(--demo-box-stroke, var(--brand));
 		background-color: var(--demo-box-bg, var(--surface-color));
 		aspect-ratio: var(--ratio-box);
-		min-inline-size: var(--demo-box-min-size, clamp(var(--size-16), 10vw, var(--size-21)));
-		padding: var(--size-4);
+		min-inline-size: var(--demo-box-min-size, clamp(var(--size-8), 10vw, var(--size-20)));
+		padding: var(--size-1);
 		line-height: 1.1;
 		transition: scale 0.3s ease-out;
 
 		@media (hover: hover) {
-			&.-scaler:hover {
+			&.--scaler:hover {
 				z-index: 1;
 				scale: 1.3;
 			}
 		}
 
-		&.-inline {
+		&.--inline {
 			display: inline-grid;
 			aspect-ratio: auto;
 			line-height: inherit;
@@ -57,41 +63,7 @@ const hasMeta = !!git || !!npm;
 		border: 1px dashed var(--border-color-fade);
 	}
 
-	.demo-table {
-		--table-py: 0.25em;
-		--table-even-bg: var(--root-bg);
-		overflow-x: auto;
-
-		& table {
-			display: table;
-			inline-size: 100%;
-
-			@media (width >= 768px) {
-				font-size: 0.875em;
-				white-space: nowrap;
-			}
-		}
-
-		& tr :is(th, td):last-child {
-			display: none;
-
-			@media (width >= 768px) {
-				display: table-cell;
-			}
-
-			& > div {
-				block-size: 1.5em;
-				background: var(--brand);
-				background: linear-gradient(
-					to right,
-					var(--brand),
-					oklch(from var(--brand) l c calc(h + 20))
-				);
-			}
-		}
-	}
-
-	@keyframes --demo-animate-easing {
+	@keyframes animate-demo-easing {
 		40%,
 		50% {
 			translate: calc(var(--box-size) - (var(--item-size) + 2px)) 0%;
@@ -127,7 +99,7 @@ const hasMeta = !!git || !!npm;
 			--demo-box-min-size: 0px;
 			inline-size: var(--item-size);
 			position: relative;
-			animation: --demo-animate-easing 3s ease infinite;
+			animation: animate-demo-easing var(--demo-animate-speed, 5s) ease infinite;
 		}
 
 		&.is-paused {

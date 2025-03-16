@@ -76,12 +76,16 @@ body > main {
 	outline: 1px solid var(--form-stroke);
 }
 
+.text-muted {
+	color: color-mix(in srgb, #0000, var(--root-fg) 64%);
+}
+
 :where(.field) {
 	display: block;
 	margin-block-start: 1em;
 }
 
-:where(.btn.-primary, [type="submit"], form button:not([type])),
+:where(.btn.--primary, [type="submit"], form button:not([type])),
 :where(input[type="file"])::file-selector-button {
 	--btn-stroke: transparent;
 	--btn-bg: var(--brand);

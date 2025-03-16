@@ -60,7 +60,7 @@ and Fylgja Utilities give you the flexibility to choose the method that best fit
 Let’s compare Fylgja’s approach to setting margins with the traditional CSS utility method:
 
 ```html
-<div style="--my: 1rem; --lg_my: 2rem">...</div>
+<div style="--my: 1rem; --lg_my: var(--size-4)">...</div>
 <!-- vs -->
 <div class="my-4 lg:my-8">...</div>
 ```

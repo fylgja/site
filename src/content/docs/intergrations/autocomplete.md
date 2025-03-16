@@ -3,12 +3,20 @@ title: "Autocomplete in your editor"
 description: "Tips to make it even easier to work with Fylgja in your editor"
 ---
 
-Fylgja is a CSS framework that simplifies the creation of beautiful and responsive websites. To make it even easier to work with, you can enable autocompletion for Fylgja's features in your editor. This will speed up your development process by suggesting CSS variables, SCSS syntax, and more as you type.
+Fylgja is a CSS Library that simplifies the creation of beautiful and responsive websites.
+
+To make it even easier to work with,
+you can enable autocompletion for Fylgja's features in your editor.
+
+This will speed up your development process by suggesting CSS variables,
+SCSS syntax, and more as you type.
 
 Below are a few tips to get autocomplete working in your favorite editor:
 
 > [!Note]
-> We primarily use VSCode for our development. If you have tips for other editors, please contribute by creating a pull request on our [GitHub repository](https://github.com/fylgja/site).
+> We primarily use VSCode for our development.
+> If you have tips for other editors,
+> please contribute by creating a pull request on our [GitHub repository](https://github.com/fylgja/site).
 
 ## CSS Variable Autocompletion (VSCode)
 

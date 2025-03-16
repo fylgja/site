@@ -1,11 +1,19 @@
 ---
 title: "Utilities"
 pageTitle: "Fylgja Utilities"
-description: ""
+description: "Fylgja utilities provides a curated set of CSS utilities"
 npm: "@fylgja/utilities"
 git: "https://github.com/fylgja/fylgja/tree/main/utilities"
 sortOrder: 5
 ---
+
+Fylgja Utilities offers a focused collection of production-ready CSS utilities.
+
+Designed for direct use without a build step,
+each utility is carefully selected for practical application.
+
+Fylgja Utilities integrates seamlessly as a standalone solution
+or alongside other utility frameworks like Tailwind CSS and UnoCSS.
 
 ## Installation
 
@@ -31,15 +39,13 @@ Once installed, you can import the full package with:
 
 Alternatively, if you only need specific parts of the utilities.
 
-You can import any utility mentioned below in this page.
-
-Now since this is very long list of options, where not going to list all of them down here in a table,
-but based on the titles in the Utilities section and the github package page,
-you can see all of the available options and how to import theme as seen in the example below.
+You can import any utility mentioned below, using:
 
 ```css
 @import "@fylgja/utilities/{UTILITY_NAME}";
 ```
+
+_align • auto-grid • clip • container • content-lazy • display • divide • flex • flow • gap • gradient • grid-cols • line-clamp • list • overlay • position • rounded • scroll • scrollbar • size • snap • spacing • sr-only • stack • stretched-link • toggle • transition • truncate • typography_
 
 ## Utilities
 
@@ -49,7 +55,7 @@ Align is a [Dynamic CSS Utility] which works together with any flex or grid base
 This Utility will provide a default alignment for centering on the items axis and space between on the content axis and can be customize using CSS variables as explained in the section on [Dynamic CSS Utility]'s.
 
 <figure class="demo-wrapper flex align" style="--align: center; --demo-wrapper-min-size: 200px">
-<code class="demo-box -inline">Align Center</code>
+<code class="demo-box --inline">Align Center</code>
 </figure>
 
 ### Auto Grid
@@ -58,11 +64,11 @@ Auto Grid is a [Dynamic CSS Utility] which creates a grid layout automatically b
 The max column size and count can be customizes by using CSS variables.
 
 <figure class="auto-grid gap">
-<div class="demo-box -inline">1</div>
-<div class="demo-box -inline">2</div>
-<div class="demo-box -inline">3</div>
-<div class="demo-box -inline">4</div>
-<div class="demo-box -inline">5</div>
+<div class="demo-box --inline">1</div>
+<div class="demo-box --inline">2</div>
+<div class="demo-box --inline">3</div>
+<div class="demo-box --inline">4</div>
+<div class="demo-box --inline">5</div>
 </figure>
 
 ### clip
@@ -72,7 +78,15 @@ Clip is a better way to handle overflowing content compared to hidden value used
 This utility easily allows to to prevent any overflow content by setting clip as the wrapper class,
 and this clipping can be set just to the axis thats needs it without introducing overflow auto to the other axis that has nothing set.
 
-When using `clip-y` it will only clip thge overflow on the y axis and the x axis can still overflow.
+When using `clip-y` it will only clip the overflow on the y axis and the x axis can still overflow.
+
+### container
+
+The classic method to center and to add a max-width to you content.
+
+Normally this class is considered a CSS Component, but these days this class is so small it is considered Utility instead.
+
+This do the fact that this CSS Utility only sets the inline margin and a max-width using CSS calc to include a page gap, previously know as container padding, from the sides when the screen is smaller then the set max-width.
 
 ### content-lazy
 
@@ -99,6 +113,8 @@ Simple to keep the CSS size small without introducing the need for tooling to ma
 
 Display supports the following classes:
 
+<div class="scroll-x">
+
 | class                                        | value                          |
 | -------------------------------------------- | ------------------------------ |
 | `hidden`                                     | `display: none`                |
@@ -109,6 +125,8 @@ Display supports the following classes:
 | `lg:{hidden,block,inline-block,table-cell}`  | All for the **lg** breakpoint  |
 | `xl:{hidden,block,inline-block,table-cell}`  | All for the **xl** breakpoint  |
 | `xxl:{hidden,block,inline-block,table-cell}` | All for the **xxl** breakpoint |
+
+</div>
 
 For the breakpoint we use the same values as before,
 including table-cell as extra when you plan to hide the table cell on mobile,
@@ -158,7 +176,7 @@ This works great with the HTML details or a custom collapse.
 
 Next to flip you also get `flip-rotate` that will also rotate and not just flip, this version does require the `transition` utility of a CSS component that allready support CSS transitions for rotate values.
 
-<figure class="demo-wrapper flex flex-wrap gap" style="--demo-wrapper-min-size: 8rem">
+<figure class="demo-wrapper flex-wrap gap" style="--demo-wrapper-min-size: 8rem">
 <details name="demo-flip-group" open>
 	<summary class="list-none btn">
 	<span>Click Me!</span>

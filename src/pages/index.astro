@@ -1,10 +1,34 @@
 ---
 import Layout from "@/layouts/PageLayout.astro";
-const title = "Fylgja";
+const title = "Fully use the power of CSS with you compainion and guide, Fylgja CSS";
 ---
 
 <Layout title={title} hideSearch={true}>
-	<h1>{title}</h1>
+	<section aria-labelledby="page-title">
+		<h1 id="page-title">{title}</h1>
+		<p>
+			Build with modularity in mind, Fylgja allows you to pick what you need and combine it
+			with other solutions.
+		</p>
+		<p>
+			Fylgja is your guide to make it easier to get started and to introduce complex UI's with
+			ease.
+		</p>
+		<p>
+			<a href="/docs" class="btn --primary">Get Started</a>
+			<a href="/library/base" class="btn">Explore Fylgja's Library</a>
+		</p>
+	</section>
+
+	<section>
+		<h2>Build it your way</h2>
+		<!-- Talks shortly about modularity -->
+	</section>
+
+	<section>
+		<h2>Build you page in mere minutes</h2>
+		<!-- Talks shortly about class-less -->
+	</section>
 </Layout>
 
 <style is:global>

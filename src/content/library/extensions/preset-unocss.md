@@ -1,6 +1,7 @@
 ---
 title: "Preset UnoCSS"
 description: "Preset for UnoCSS"
+draft: true
 ---
 
 Preset for UnoCSS.

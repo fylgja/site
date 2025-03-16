@@ -10,7 +10,7 @@ const collection = await getCollection("blog", ({ data }) => {
 
 <Layout title={title}>
 	<h1>{title}</h1>
-	<div class="grid" style="--md_grid-cols: 2">
+	<div class="grid-cols" style="--md_grid-cols: 2">
 		{
 			collection.map((item) => (
 				<div class="card">

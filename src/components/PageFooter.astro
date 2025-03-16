@@ -60,7 +60,7 @@ const menus = [
 			<div class="logo">
 				<Fragment set:html={Logo} />
 			</div>
-			<div class="grid" style="--sm_grid-cols: 2; --lg_grid-cols: 3">
+			<div class="grid-cols" style="--sm_grid-cols: 2; --lg_grid-cols: 3">
 				{
 					menus.map((menu) => (
 						<div>
@@ -81,7 +81,7 @@ const menus = [
 		</div>
 		<hr />
 		<div class="sub-footer flex align gap" style="--flex-dir: column; --md_flex-dir: row;">
-			<nav aria-label="License and Contributors" class="flex flex-wrap gap">
+			<nav aria-label="License and Contributors" class="flex-wrap gap">
 				<a
 					target="_blank"
 					href="https://github.com/fylgja/fylgja/blob/main/LICENSE"

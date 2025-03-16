@@ -26,7 +26,7 @@ const { title, description = siteDescription, lang = "en", dir = "ltr" } = Astro
 			rel="alternate"
 			type="application/rss+xml"
 			title=""
-			href={new URL("feed.xml", Astro.site)}
+			href={new URL("blog/feed.xml", Astro.site)}
 		/>
 		<link rel="sitemap" href="/sitemap-index.xml" />
 		<slot name="head" />

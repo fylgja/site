@@ -3,11 +3,16 @@ title: "RTL (Right to Left)"
 description: "Fylgja works out of the box for right-to-left (RTL) languages such as Arabic and Hebrew."
 ---
 
-Fylgja offers seamless support for right-to-left (RTL) languages like Arabic and Hebrew without requiring additional CSS or prefixed RTL utility classes. Our framework automatically applies the correct styles to ensure a proper RTL layout.
+Fylgja offers seamless support for right-to-left (RTL) languages like Arabic and Hebrew
+without requiring additional CSS or prefixed RTL utility classes.
 
-### RTL Language Layout
+Fylgja automatically applies the correct styles to ensure a proper RTL layout.
 
-When working with RTL languages, it's essential not only to translate text but also to mirror the layout to align with the text direction for a semantically correct presentation.
+## RTL Language Layout
+
+When working with RTL languages,
+it's essential not only to translate text but also to mirror the layout
+to align with the text direction for a semantically correct presentation.
 
 To enable RTL behavior, ensure the following HTML attributes are set:
 
@@ -27,7 +32,7 @@ This setup enables RTL functionality, eliminating the need for extra CSS or plug
   }
 </script>
 
-### Forcing a Specific Text Direction
+## Forcing a Specific Text Direction
 
 If you need to force a left-to-right (LTR) layout regardless of the language or text direction, apply one of the following:
 

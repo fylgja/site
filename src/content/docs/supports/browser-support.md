@@ -3,7 +3,7 @@ title: "Browser Support"
 description: "How Well Is Fylgja Supported in Which Browsers?"
 ---
 
-Fylgja is a CSS framework that is thoroughly tested and supported across all modern browsers,
+Fylgja is a CSS Library that is thoroughly tested and supported across all modern browsers,
 including Chrome, Firefox, Edge, and Safari.
 
 This ensures that you can use Fylgja with confidence,
