@@ -1,7 +1,7 @@
 import { z, defineCollection } from "astro:content";
 
 const baseSchema = {
-	isDraft: z.boolean().optional().default(false),
+	draft: z.boolean().optional().default(false),
 	sortOrder: z.number().optional().default(10),
 	title: z.string(),
 	pageTitle: z.string().optional(),
