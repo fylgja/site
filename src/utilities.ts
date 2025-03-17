@@ -1,5 +1,3 @@
-export const isProdMode = import.meta.env.PROD;
-
 /**
  * Checks if the href is the same as the currentPath and returns the 'page' if true
  */

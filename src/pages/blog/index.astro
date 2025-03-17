@@ -4,7 +4,7 @@ import Layout from "@/layouts/PageLayout.astro";
 
 const title = "Fylgja Report";
 const collection = await getCollection("blog", ({ data }) => {
-	return !data.isDraft;
+	return !data.draft;
 });
 ---
 

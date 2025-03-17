@@ -1,10 +1,13 @@
 import { getCollection } from "astro:content";
-import { isProdMode, sortByOrder } from "@/utils";
+import { sortByOrder } from "@/utils";
 
 async function filterCollection(path: string) {
 	return sortByOrder(
 		await getCollection("library", ({ id, data }: { id: string; data: any }) => {
-			if (isProdMode ? data.isDraft : false) return;
+			if (data.draft) {
+				console.log(data.title);
+				if (import.meta.env.PROD) return;
+			}
 
 			if (path === "/") {
 				return !id.includes("/");
