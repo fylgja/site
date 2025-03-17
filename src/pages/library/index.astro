@@ -1,3 +1,14 @@
 ---
-return Astro.redirect("/library/base");
+import Layout from "@/layouts/DocsLayout.astro";
+import collection from "./collection.ts";
+
+const url = new URL("/library/base", Astro.url);
+const title = `Redirecting to: ${url}`;
 ---
+
+<Layout title={title} collectionName="Library" collection={collection}>
+	<meta http-equiv="refresh" content={`0;url=${url}`} />
+	<meta name="robots" content="noindex" /><link rel="canonical" href={url} />
+	<h1>{title}</h1>
+	<a href={url}>Redirecting from <code>/library/</code> to <code>{url}</code> </a>
+</Layout>
