@@ -4,7 +4,7 @@ pageTitle: "Fylgja Tokens"
 description: ""
 npm: "@fylgja/tokens"
 git: "https://github.com/fylgja/fylgja/tree/main/tokens"
-sortOrder: 5
+sortOrder: 2
 ---
 
 Establish a consistent design language across your projects with Fylgja Design Tokens.
@@ -24,7 +24,7 @@ mirroring the functionality of [Open Props](https://open-props.style/) and other
 
 You can install Fylgja Tokens via npm or other Node-based package managers like pnpm or bun:
 
-```bash
+```sh
 npm install @fylgja/tokens
 ```
 

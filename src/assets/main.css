@@ -1,10 +1,10 @@
-@import "fylgja/tokens/css/index.css";
+@import "@fylgja/tokens/css";
 @import "@fylgja/base";
 
-@import "fylgja/components/input-group";
-@import "fylgja/components/menu";
-@import "fylgja/components/card";
-@import "fylgja/components/breadcrumbs";
+@import "@fylgja/input-group";
+@import "styles/menu";
+@import "styles/card";
+@import "styles/breadcrumbs";
 
 @import "styles/content";
 @import "styles/markdown-alert";

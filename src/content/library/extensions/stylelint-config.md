@@ -13,7 +13,7 @@ and helps to prevent errors and make the code easier to maintain.
 
 ## Installation
 
-```bash
+```sh
 npm install @fylgja/stylelint-config --save-dev
 ```
 

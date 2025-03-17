@@ -5,21 +5,28 @@ import siteConfig from "site.config";
 interface Props {
 	title: string;
 	description?: string;
+	pageType?: "website" | "article";
 	lang?: string;
 	dir?: "ltr" | "rtl";
 }
 
-const { name, description: siteDescription, themeColor, themeColorDark } = siteConfig;
-const { title, description = siteDescription, lang = "en", dir = "ltr" } = Astro.props;
+const {
+	title,
+	description = siteConfig.description,
+	pageType = "website",
+	lang = "en",
+	dir = "ltr",
+} = Astro.props;
 ---
 
 <html lang={lang} dir={dir} data-theme="auto">
 	<Head
-		siteName={name}
+		siteName={siteConfig.name}
 		title={title}
 		description={description}
-		themeColor={themeColor}
-		themeColorDark={themeColorDark}
+		themeColor={siteConfig.themeColor}
+		themeColorDark={siteConfig.themeColorDark}
+		ogType={pageType}
 	>
 		<meta name="generator" content="Fylgja CSS" />
 		<link

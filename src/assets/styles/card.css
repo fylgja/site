@@ -1,0 +1,69 @@
+:where(.card) {
+	position: relative;
+	box-shadow: var(--card-shadow);
+	border-width: var(--card-border-width, 1px);
+	border-color: var(--card-stroke, color-mix(in srgb, currentcolor 20%, transparent));
+	border-radius: var(--card-radius, 1rem);
+	background-color: var(--card-bg, color-mix(in oklab, var(--root-bg) 94%, white));
+	color: var(--card-color, var(--root-fg));
+	overflow: clip;
+}
+
+:where(
+	.card-content,
+	.card:not(
+			figure,
+			img,
+			picture,
+			video,
+			:has(.card-content, > :is(img, picture, video):only-child)
+		),
+	.card > figcaption
+) {
+	--card-py: 1.75rem;
+	--card-px: 1.75rem;
+	padding-block: var(--card-py);
+	padding-inline: var(--card-px);
+}
+
+:where(
+		.card-content,
+		.card:not(
+				figure,
+				img,
+				picture,
+				video,
+				:has(.card-content, > :is(img, picture, video):only-child)
+			),
+		.card > figcaption
+	)
+	> :first-child {
+	margin-block-start: 0;
+}
+
+:where(.card > figcaption) {
+	text-align: inherit;
+	font-style: inherit;
+}
+
+:where(.card.--elevated) {
+	--card-stroke: #0000;
+	--card-shadow: 0 3px 5px hsla(0, 0%, 0%, 0.18);
+}
+
+:where(.card:has(.stretched-link), .card.--link) {
+	transition: scale ease-in-out 150ms;
+
+	:any-link {
+		outline: none;
+		text-decoration: none;
+	}
+
+	&:hover {
+		scale: 1.02;
+	}
+
+	&:focus-within {
+		outline: 2px solid var(--brand);
+	}
+}

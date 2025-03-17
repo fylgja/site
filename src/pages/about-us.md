@@ -4,6 +4,8 @@ title: "About us"
 description: "About Fylgja and how it was created"
 ---
 
+> TODO rework text
+
 Fylgja is created by Sean van Zuidam ([@GrimLink](https://twitter.com/grimlink/)),
 with help from Ruud van Zuidam ([@Allrude](https://twitter.com/allrude/)).
 

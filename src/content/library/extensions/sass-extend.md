@@ -12,7 +12,7 @@ This repo will add more functions and adds options not found in the core sass pr
 
 ## Installation
 
-```bash
+```sh
 npm install @fylgja/sass
 ```
 

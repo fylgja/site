@@ -1,29 +1,28 @@
 ---
-import Meta from "@/components/MetaContent.astro";
 import Layout from "./PageLayout.astro";
 
 type pageProps = {
 	title: string;
-	description?: string;
-	publishDate?: string;
-	updateDate?: string;
+	description: string;
 };
 
 interface Props extends pageProps {
 	frontmatter?: pageProps;
 }
 
-const { title, description, publishDate, updateDate, frontmatter } = Astro.props;
+const { title, description, frontmatter } = Astro.props;
 const pageTitle = frontmatter?.title || title;
 const pageDescription = frontmatter?.description || description;
-const pagePublishDate = frontmatter?.publishDate || publishDate;
-const pageUpdateDate = frontmatter?.updateDate || updateDate;
 ---
 
-<Layout title={pageTitle} description={pageDescription} style="--container-size: 68ch">
-	<article class="markdown-content">
+<Layout
+	title={pageTitle}
+	description={pageDescription}
+	pageType="article"
+	style="--container-size: var(--size-content)"
+>
+	<article style="--my: 0 var(--size-12)">
 		<h1>{pageTitle}</h1>
-		<Meta published={pagePublishDate} updatedOn={pageUpdateDate} />
 		<slot />
 	</article>
 </Layout>

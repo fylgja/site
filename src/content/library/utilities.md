@@ -4,7 +4,7 @@ pageTitle: "Fylgja Utilities"
 description: "Fylgja utilities provides a curated set of CSS utilities"
 npm: "@fylgja/utilities"
 git: "https://github.com/fylgja/fylgja/tree/main/utilities"
-sortOrder: 5
+sortOrder: 3
 ---
 
 Fylgja Utilities offers a focused collection of production-ready CSS utilities.
@@ -19,7 +19,7 @@ or alongside other utility frameworks like Tailwind CSS and UnoCSS.
 
 You can install Fylgja Utilities via npm or other Node-based package managers like pnpm or bun:
 
-```bash
+```sh
 npm install @fylgja/utilities
 ```
 

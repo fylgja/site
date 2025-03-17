@@ -16,7 +16,7 @@ search bars, button groups, or rating systems using radio buttons.
 
 You can install Fylgja Input Group via npm or other Node-based package managers like pnpm or bun:
 
-```bash
+```sh
 npm install @fylgja/input-group
 ```
 

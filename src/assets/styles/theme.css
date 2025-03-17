@@ -41,6 +41,10 @@
 	outline-color: var(--brand);
 }
 
+:where(:not(h1, h2, h3, h4, h5, h6, strong) > a) {
+	font-weight: 500;
+}
+
 blockquote,
 hr {
 	border-color: var(--brand);
@@ -56,10 +60,6 @@ body {
 }
 body > main {
 	flex-grow: 1;
-}
-
-:where(body > :is(main, header, footer), article, section, aside) {
-	container-type: inline-size;
 }
 
 ::-webkit-calendar-picker-indicator {

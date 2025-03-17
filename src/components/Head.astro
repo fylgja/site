@@ -7,7 +7,7 @@ interface Props {
 	canonical?: string;
 	themeColor?: string;
 	themeColorDark?: string;
-	ogType?: string;
+	ogType?: "website" | "article";
 }
 
 const {
@@ -51,12 +51,6 @@ const {
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
 	{image && <meta property="og:image" content={new URL(image, Astro.url)} />}
-
-	<meta property="twitter:card" content="summary_large_image" />
-	<meta property="twitter:url" content={Astro.url} />
-	<meta property="twitter:title" content={title} />
-	<meta property="twitter:description" content={description} />
-	{image && <meta property="twitter:image" content={new URL(image, Astro.url)} />}
 
 	<meta name="generator" content={Astro.generator} />
 

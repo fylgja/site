@@ -16,7 +16,16 @@ export const sortByOrder = (collection: any[]) => {
 /**
  * Convert Date to language format
  */
-export const parseDate = (date: string, format = "en-US") => {
+export const parseDate = (
+	date: Date,
+	lang = "en-US",
+	options = {
+		weekday: "long",
+		year: "numeric",
+		month: "long",
+		day: "numeric",
+	} as Intl.DateTimeFormatOptions,
+) => {
 	const newDate = new Date(date);
-	return new Intl.DateTimeFormat(format).format(newDate);
+	return new Intl.DateTimeFormat(lang, options).format(newDate);
 };

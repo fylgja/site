@@ -18,7 +18,7 @@ You can use this plugin by either installing it using NPM or including it from a
 
 You can install it from NPM and include it in your bundle:
 
-```bash
+```sh
 npm install @fylgja/alpinejs-dialog
 ```
 

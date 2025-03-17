@@ -4,20 +4,18 @@ const baseSchema = {
 	draft: z.boolean().optional().default(false),
 	sortOrder: z.number().optional().default(10),
 	title: z.string(),
-	pageTitle: z.string().optional(),
 	description: z.string(),
-	// TODO meta data
+	image: z
+		.object({
+			src: z.string().default("/og/social.jpg"),
+			alt: z.string().default("Build the web you want"),
+		})
+		.default({}),
 };
-
-const blogSchema = z.object({
-	...baseSchema,
-	author: z.string().default("Anonymous"),
-	publishDate: z.date(),
-	tags: z.array(z.string()),
-});
 
 const docsSchema = z.object({
 	...baseSchema,
+	pageTitle: z.string().optional(),
 	git: z.string().url().optional(),
 	npm: z.string().optional(),
 	version: z
@@ -30,7 +28,16 @@ const docsSchema = z.object({
 export const collections = {
 	blog: defineCollection({
 		type: "content",
-		schema: blogSchema,
+		schema: ({ image }) =>
+			z.object({
+				...baseSchema,
+				socialImage: z.string().optional(),
+				coverImage: image().optional(),
+				author: z.string().default("Anonymous"),
+				publishDate: z.date(),
+				updateDate: z.date().optional(),
+				tags: z.array(z.string()),
+			}),
 	}),
 	docs: defineCollection({
 		type: "content",

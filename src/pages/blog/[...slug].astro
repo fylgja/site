@@ -1,6 +1,8 @@
 ---
-import Layout from "@/layouts/ContentLayout.astro";
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
+import Layout from "@/layouts/PageLayout.astro";
+import Meta from "@/components/MetaContent.astro";
 
 export async function getStaticPaths() {
 	const entries = await getCollection("blog");
@@ -11,9 +13,56 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
+const { title, description, publishDate, updateDate, coverImage } = entry.data;
 const { Content } = await entry.render();
 ---
 
-<Layout title={entry.data.title}>
-	<Content />
+<Layout
+	title={title}
+	description={description}
+	pageType="article"
+	class=""
+	style="--my: 0 var(--size-12)"
+>
+	<div class="banner bg-gradient rounded-conditional clip container" style="--container-gap: 0px">
+		{
+			coverImage && (
+				<Image
+					src={coverImage}
+					widths={[766, 1500]}
+					sizes="100vw"
+					loading="eager"
+					alt=""
+					class="rounded-conditional"
+				/>
+			)
+		}
+	</div>
+	<div
+		class="blog-title container flow text-center rounded-conditional"
+		style="--container-size: calc(var(--size-content) + var(--size-16)); --container-gap: 0px"
+	>
+		<h1>{title}</h1>
+		<Meta published={publishDate} updatedOn={updateDate} />
+	</div>
+	<div class="container" style="--container-size: var(--size-content)">
+		<Content />
+	</div>
 </Layout>
+
+<style>
+	.banner {
+		--gradient-from: hsl(157 50% 40%);
+		--gradient-to: var(--brand);
+		--gradient-angle: 337deg;
+		--radius-y: 0;
+		min-block-size: var(--size-80);
+	}
+
+	.blog-title {
+		position: relative;
+		background-color: var(--root-bg);
+		padding: var(--size-8);
+		margin-block-start: calc(var(--size-16) * -1);
+	}
+</style>

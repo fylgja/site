@@ -19,7 +19,7 @@ This tool empowers you to construct comprehensive Design Token sets with ease.
 
 You can install Fylgja Props Builder via npm or other Node-based package managers like pnpm or bun:
 
-```bash
+```sh
 npm install @fylgja/props-builder
 ```
 

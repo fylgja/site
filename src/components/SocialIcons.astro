@@ -5,9 +5,10 @@ interface Props {
 	socials: {
 		[key: string]: string;
 	};
+	linkClasses?: string;
 }
 
-const { socials } = Astro.props;
+const { socials, linkClasses = "social-link" } = Astro.props;
 const links = Object.entries(socials || {});
 ---
 
@@ -22,7 +23,7 @@ const links = Object.entries(socials || {});
 				}
 
 				return (
-					<a href={url} rel="me">
+					<a href={url} rel="me" class={linkClasses}>
 						<svg width="24" height="24" fill="currentcolor">
 							<title>{label}</title>
 							<use href={`${SocialsIcons}#${platform}`} />
@@ -34,8 +35,8 @@ const links = Object.entries(socials || {});
 	)
 }
 
-<style>
-	a:hover {
+<style is:global>
+	.social-link:hover {
 		opacity: 0.66;
 	}
 </style>

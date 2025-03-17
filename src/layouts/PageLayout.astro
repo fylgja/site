@@ -8,17 +8,36 @@ import SkipLink from "@/components/SkipLink.astro";
 interface Props {
 	title: string;
 	description?: string;
+	pageType?: "website" | "article";
 	hideSearch?: boolean;
 	class?: string;
 	style?: string;
+	redirect?: URL;
 }
-const { title, description, hideSearch = false, class: classes, style } = Astro.props;
+const {
+	title,
+	description,
+	pageType = "website",
+	hideSearch = false,
+	class: classes = "container",
+	style,
+	redirect,
+} = Astro.props;
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} pageType={pageType}>
+	{
+		redirect && (
+			<Fragment slot="head">
+				<meta http-equiv="refresh" content={`0;url=${redirect}`} />
+				<meta name="robots" content="noindex" />
+				<link rel="canonical" href={redirect} />
+			</Fragment>
+		)
+	}
 	<SkipLink id="main-content" title="Skip to content" />
 	<PageHeader hideSearch={hideSearch} />
-	<main id="main-content" class:list={["container", classes]} style={style}>
+	<main id="main-content" class={classes} style={style}>
 		<slot />
 	</main>
 	<PageFooter />

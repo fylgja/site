@@ -1,7 +1,7 @@
 ---
 import siteConfig from "site.config";
 import Logo from "@/assets/logo.svg?raw";
-import SocialIcons from "./SocialIcons.astro";
+import SocialIcons from "@/components/SocialIcons.astro";
 
 const menus = [
 	{
@@ -26,25 +26,25 @@ const menus = [
 		],
 	},
 	{
-		title: "About",
+		title: "Resources",
 		items: [
-			{
-				label: "About Us",
-				href: "/about-us",
-			},
-			{
-				label: "Getting Started",
-				href: "/getting-started",
-			},
 			{
 				label: "Why Fylgja",
 				href: "/docs/why-fylgja",
+			},
+			{
+				label: "Getting Started",
+				href: "/docs",
 			},
 		],
 	},
 	{
 		title: "Community",
 		items: [
+			{
+				label: "Contributing",
+				href: "https://github.com/fylgja/.github/blob/main/.github/contributing.md",
+			},
 			{
 				label: "Github Discussions",
 				href: "https://github.com/orgs/fylgja/discussions",
@@ -87,7 +87,7 @@ const menus = [
 					href="https://github.com/fylgja/fylgja/blob/main/LICENSE"
 					class="no-underline"
 				>
-					MIT License © 2024
+					MIT License © {new Date().getFullYear()}
 				</a>
 				<a
 					target="_blank"

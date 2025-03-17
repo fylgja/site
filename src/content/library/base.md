@@ -5,7 +5,7 @@ description: "Common defaults to make your body and typography look good and eas
 version: "2.0.0"
 npm: "@fylgja/base"
 git: "https://github.com/fylgja/fylgja/tree/main/base"
-sortOrder: 5
+sortOrder: 1
 ---
 
 Fylgja Base provides a streamlined starting point for any web project.
@@ -22,7 +22,7 @@ but excludes styles for forms, buttons, and the HTML dialog element.
 
 You can install Fylgja Base via npm or other Node-based package managers like pnpm or bun:
 
-```bash
+```sh
 npm install @fylgja/base
 ```
 
@@ -59,13 +59,13 @@ intentionally excluding brand colors and extra styling by default.
 
 To apply a pre-defined theme, import it separately:
 
-```CSS
+```css
 @import "@fylgja/base/theme";
 ```
 
 For theme customization, copy the styles to your project:
 
-```Bash
+```sh
 npx @fylgja/base
 ```
 

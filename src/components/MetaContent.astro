@@ -2,28 +2,26 @@
 import { parseDate } from "@/utils";
 
 interface Props {
-	published?: string;
-	updatedOn?: string;
+	published: Date;
+	updatedOn?: Date;
 }
 
 const { published, updatedOn } = Astro.props;
 ---
 
-<div class="meta">
-	{published && <time datetime={published}>{parseDate(published)}</time>}
-	{updatedOn && <time datetime={updatedOn}>{parseDate(updatedOn)}</time>}
-</div>
+<header class="meta">
+	{published && <time datetime={String(published)}>{parseDate(published)}</time>}
+	{updatedOn && <time datetime={String(updatedOn)}>{parseDate(updatedOn)}</time>}
+</header>
 
 <style>
 	.meta {
-		display: flex;
+		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;
 		gap: 0.5rem 1rem;
 		font-size: 0.875em;
 		color: var(--text-color-muted);
-		border-block-end: 2px solid var(--border-color-fade);
-		padding-block-end: 0.5em;
 	}
 
 	.meta a {
