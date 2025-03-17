@@ -1,6 +1,7 @@
 ---
 import type { AstroTocProps, TocItemProps } from "./types.ts";
-import { Icon } from "astro-icon/components";
+import Expand from "@/assets/icons/expand.svg";
+import Collapse from "@/assets/icons/collapse.svg";
 import TocItem from "./Item.astro";
 
 interface Props {
@@ -81,8 +82,8 @@ const style = {
 				<summary class="list-none btn w-full align">
 					<span>{label}</span>
 					<span class="stack" aria-hidden="true">
-						<Icon name="expand" width="24" height="24" class="has-open:invisible" />
-						<Icon name="collapse" width="24" height="24" class="has-open:visible" />
+						<Expand width="24" height="24" class="toggle-hide" />
+						<Collapse width="24" height="24" class="toggle-show" />
 					</span>
 				</summary>
 				<ul onclick="mobileDetailsToc.removeAttribute('open')">

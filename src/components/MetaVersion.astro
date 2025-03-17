@@ -1,5 +1,7 @@
 ---
-import { Icon } from "astro-icon/components";
+import GitIcon from "@/assets/icons/git.svg";
+import NpmIcon from "@/assets/icons/npm.svg";
+import LogsIcon from "@/assets/icons/logs.svg";
 
 interface Props {
 	version?: string;
@@ -19,7 +21,7 @@ const changelogUrl = changelog || git ? `${git}/CHANGELOG.md` : "";
 	{
 		git && (
 			<a href={git}>
-				<Icon name="git" width={iconSize} height={iconSize} aria-hidden="true" />{" "}
+				<GitIcon width={iconSize} height={iconSize} aria-hidden="true" />{" "}
 				<span>GitHub</span>
 			</a>
 		)
@@ -27,15 +29,14 @@ const changelogUrl = changelog || git ? `${git}/CHANGELOG.md` : "";
 	{
 		npm && (
 			<a href={npmUrl}>
-				<Icon name="npm" width={iconSize} height={iconSize} aria-hidden="true" />{" "}
-				<span>npm</span>
+				<NpmIcon width={iconSize} height={iconSize} aria-hidden="true" /> <span>npm</span>
 			</a>
 		)
 	}
 	{
 		changelogUrl && (
 			<a href={changelogUrl}>
-				<Icon name="logs" width={iconSize} height={iconSize} aria-hidden="true" />{" "}
+				<LogsIcon width={iconSize} height={iconSize} aria-hidden="true" />{" "}
 				<span>Changelog</span>
 			</a>
 		)

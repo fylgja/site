@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon/components";
+import ChevronDown from "@/assets/icons/chevron-down.svg";
 
 interface Props {
 	title: string;
@@ -47,12 +47,10 @@ const { title, items, urlPrefix, class: classes } = Astro.props;
 						<details open>
 							<summary class="list-none btn w-full">
 								<span>{group.title}</span>
-								<Icon
-									name="chevron-down"
+								<ChevronDown
 									width="20"
 									height="20"
 									class="flip-rotate transition"
-									style="--duration: 300ms"
 								/>
 							</summary>
 							<ul>
