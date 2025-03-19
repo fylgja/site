@@ -33,6 +33,7 @@ export const collections = {
 				...baseSchema,
 				socialImage: z.string().optional(),
 				coverImage: image().optional(),
+				coverColor: z.string().optional().default("hsl(157 50% 40%)"),
 				author: z.string().default("Anonymous"),
 				publishDate: z.date(),
 				updateDate: z.date().optional(),

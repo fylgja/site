@@ -48,7 +48,7 @@ const urlPrefix = "/" + collectionName.toLowerCase();
 		</div>
 		{
 			!!toc.length && (
-				<div class="appbar sticky card xl:hidden">
+				<div class="appbar sticky xl:hidden">
 					<Toc isMobile toc={toc} label="On this Page" />
 				</div>
 			)
@@ -61,14 +61,12 @@ const urlPrefix = "/" + collectionName.toLowerCase();
 	.appbar {
 		--z: var(--layer-3);
 		--inset-y: auto 0;
-		--card-shadow: none;
-		--card-radius: 0;
-		--card-padding: 0.5rem;
-		--card-bg: var(--docs-menu-bg);
-		--card-color: var(--docs-menu-color);
 		--btn-stroke: transparent;
 		border-block-start: 1px solid
 			var(--docs-menu-stroke, color-mix(in srgb, currentcolor 12%, transparent));
+		padding: 0.5rem;
+		background-color: color-mix(in oklab, #000 56%, var(--brand));
+		color: var(--on-brand);
 
 		details > :not(summary) {
 			max-block-size: 42vh;

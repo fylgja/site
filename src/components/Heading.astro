@@ -1,0 +1,29 @@
+---
+interface Props {
+	title: string;
+	tagline?: string;
+	body?: string;
+	class?: string;
+	style?: string;
+}
+
+const { title, tagline, body, class: classes, style } = Astro.props;
+---
+
+<hgroup class:list={["flow", classes]} style={`--flow: 0.25rem; ${style}`}>
+	{tagline && <p>{tagline}</p>}
+	<h2>{title}</h2>
+	{body && <p>{body}</p>}
+</hgroup>
+
+<style>
+	hgroup {
+		> :first-child {
+			font-weight: bolder;
+		}
+
+		> h2 ~ p {
+			color: var(--text-color-muted);
+		}
+	}
+</style>

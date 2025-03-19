@@ -1,0 +1,63 @@
+---
+import Card from "@/components/Card.astro";
+import Icon from "@/assets/icon.svg";
+---
+
+<section
+	class="hero-readmore flex-col align-center clip"
+	aria-label="Explore Fylgja"
+	style="--py: var(--size-36); --md_py: var(--size-50)"
+>
+	<div class="shape --top"></div>
+	<Card styleContent="--card-py: var(--size-4); --card-px: var(--size-4)">
+		<Icon width="80" height="80" aria-hidden="true" />
+	</Card>
+	<div class="text-center" style="--size-x: var(--size-heading)">
+		<h2>Start building with Fylgja</h2>
+		<p>
+			Prepare for a development environment that can finally keep pace with the speed of your
+			mind.
+		</p>
+		<p style="--my: var(--size-12) 0;">
+			<a href="/docs" class="btn">Get Started</a>
+		</p>
+	</div>
+	<div class="shape"></div>
+</section>
+
+<style>
+	.hero-readmore {
+		position: relative;
+		--hue: var(--hue-orange);
+		--main-color: var(--color-6);
+		--alt-color: color-mix(in oklab, var(--main-color), #fff);
+		--text-flow: 1.5rem 0;
+		border-block-start: 1px solid
+			var(--page-footer-stroke, color-mix(in srgb, currentcolor 12%, transparent));
+		color: var(--text-color-muted);
+
+		.shape {
+			--_size: clamp(192px, 50vw, 460px);
+			z-index: -1;
+			position: absolute;
+			top: 100%;
+			left: calc(50% - (var(--_size) / 2));
+			width: var(--_size);
+			height: var(--_size);
+			background-image: linear-gradient(0deg, var(--main-color) 30%, var(--alt-color));
+			filter: blur(120px);
+			border-radius: 50%;
+
+			&.--top {
+				--hue: var(--hue-blue);
+				--main-color: var(--color-6);
+				inset-block: auto 100%;
+			}
+		}
+
+		.btn {
+			--btn-py: var(--size-3);
+			--btn-px: var(--size-5);
+		}
+	}
+</style>

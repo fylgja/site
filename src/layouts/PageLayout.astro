@@ -9,7 +9,6 @@ interface Props {
 	title: string;
 	description?: string;
 	pageType?: "website" | "article";
-	hideSearch?: boolean;
 	class?: string;
 	style?: string;
 	redirect?: URL;
@@ -18,7 +17,6 @@ const {
 	title,
 	description,
 	pageType = "website",
-	hideSearch = false,
 	class: classes = "container",
 	style,
 	redirect,
@@ -36,7 +34,7 @@ const {
 		)
 	}
 	<SkipLink id="main-content" title="Skip to content" />
-	<PageHeader hideSearch={hideSearch} />
+	<PageHeader />
 	<main id="main-content" class={classes} style={style}>
 		<slot />
 	</main>

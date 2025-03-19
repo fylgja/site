@@ -1,8 +1,10 @@
 ---
+import siteConfig from "site.config";
 import Logo from "@/assets/logo.svg?raw";
 import Offcanvas from "@/components/Offcanvas.astro";
 import DocSearch from "@/components/DocSearch.astro";
 import ThemeToggle from "./ThemeToggle.astro";
+import IconGithub from "@/assets/icons/github.svg";
 
 interface Props {
 	hideSearch?: boolean;
@@ -30,7 +32,11 @@ const menu = [
 const mobileMenu = menu;
 ---
 
-<header id="pageHeader" class="page-header sticky" style="--inset-t: -1px; --z: var(--layer-4)">
+<header
+	id="pageHeader"
+	class="page-header sticky transition"
+	style="--inset-y: -1px auto; --z: var(--layer-4)"
+>
 	<div class="flex align gap" style="--p: 1rem var(--container-gap)">
 		<a href="/" class="logo" aria-label="Go back to the Fylgja Homepage">
 			<Fragment set:html={Logo} />
@@ -56,18 +62,19 @@ const mobileMenu = menu;
 				}
 				<ThemeToggle />
 			</nav>
-			<Offcanvas btnClasses="lg:hidden" style="--p: 0">
+			<Offcanvas
+				btnClasses="lg:hidden"
+				style="--p: 0; --dialog-bg: color-mix(in oklab, #000 56%, var(--brand)); --dialog-color: var(--on-brand); --select-icon: var(--select-dark-scheme);"
+			>
 				<div class="flex-col h-full">
-					<div
-						class="menu-header flex gap align flow-unset"
-						style="--p: 1rem 1rem 0.5rem"
-					>
-						<p>Expore More of Fylgja</p>
-						<button
-							data-close
-							aria-label="Close Mobile Menu Drawer"
-							style="--btn-stroke: transparent"
-						>
+					<div class="menu-header flex gap align flow-unset" style="--p: 1rem">
+						<div class="flex-wrap gap">
+							<a href={siteConfig.socials.github} class="btn">
+								<IconGithub aria-label="Checkout the Fylgja Github page" />
+							</a>
+							<ThemeToggle />
+						</div>
+						<button data-close aria-label="Close Mobile Menu Drawer">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="24"
@@ -101,27 +108,6 @@ const mobileMenu = menu;
 						</div>
 						<slot name="mobile-menu" />
 					</div>
-					<div class="flex align" style="--p: 1rem">
-						<a href="" class="btn" aria-label="Checkout the Fylgja Github page">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="24"
-								height="24"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							>
-								<path
-									d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
-								></path>
-								<path d="M9 18c-4.51 2-5-2-7-2"></path></svg
-							>
-						</a>
-						<ThemeToggle />
-					</div>
 				</div>
 			</Offcanvas>
 		</div>
@@ -148,6 +134,11 @@ const mobileMenu = menu;
 			var(--page-header-stroke, color-mix(in srgb, currentcolor 10%, transparent));
 		background-color: var(--page-header-bg, var(--surface-color));
 		color: var(--page-header-color);
+
+		&[data-sticky="true"] {
+			--page-header-stroke: #0000;
+			box-shadow: var(--shadow-4);
+		}
 	}
 
 	#desktop-menu a[aria-current="page"] {

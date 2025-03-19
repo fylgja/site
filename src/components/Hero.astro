@@ -1,0 +1,104 @@
+---
+import Icon from "@/assets/icon.svg";
+
+interface Props {
+	class: string;
+}
+
+const { class: classes } = Astro.props;
+---
+
+<section
+	class:list={["hero grid-cols", classes]}
+	aria-labelledby="page-title"
+	style="--md_grid-cols: 2; --my: var(--size-8) var(--size-20); --md_my: var(--size-24) var(--size-32)"
+>
+	<div class="logo flex-col align-center">
+		<div class="shape"></div>
+		<Icon width="320" height="320" fill="var(--alt-color)" aria-hidden="true" />
+	</div>
+	<div class="content">
+		<h1 id="page-title">
+			<span class="sr-only">Fylgja is</span> A Modular
+			<span class="text-gradient">CSS Library</span>
+			for Modern Web Design
+			<span class="text-gradient">Lean Maintainable</span> and
+			<span class="text-gradient">Scalable</span>
+			Empowers Developers to <span class="text-gradient">Effortlessly</span> Build Exactly What
+			They Need
+		</h1>
+		<p>
+			Build with modularity in mind, Fylgja allows you to pick what you need and combine it
+			with other solutions. Fylgja is your guide to make it easier to get started and to
+			introduce complex UI's with ease.
+		</p>
+		<p class="inline-flex flex-wrap gap" style="--my: var(--size-12) 0;">
+			<a href="/library/base" class="btn">Explore Fylgja's Library</a>
+			<a href="/docs" class="btn --primary">Get Started</a>
+		</p>
+	</div>
+</section>
+
+<style>
+	.hero {
+		--main-color: var(--brand);
+		--alt-color: color-mix(in oklab, var(--brand), #fff);
+		--text-flow: 1.5rem 0;
+		text-align: center;
+
+		@media (width >= 768px) {
+			text-align: start;
+		}
+
+		.text-gradient {
+			--gradient-from: var(--main-color);
+			--gradient-to: var(--alt-color);
+		}
+
+		.content p {
+			@media (width >= 768px) {
+				max-width: 42ch;
+			}
+		}
+
+		h1 {
+			--h-line: 1.2;
+			font-size: clamp(1.5rem, 3cqi, 2.5rem);
+
+			@media (width >= 768px) {
+				max-width: 18ch;
+			}
+		}
+
+		.btn {
+			--btn-py: var(--size-3);
+			--btn-px: var(--size-5);
+		}
+
+		.logo {
+			position: relative;
+
+			@media (width >= 768px) {
+				order: 9;
+			}
+
+			svg {
+				--_size: clamp(192px, 25cqi, 320px);
+				width: var(--_size);
+				height: var(--_size);
+			}
+
+			.shape {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: clamp(192px, 50vw, 460px);
+				height: clamp(192px, 50vw, 460px);
+				background-image: linear-gradient(0deg, var(--main-color) 30%, var(--alt-color));
+				filter: blur(120px);
+				transform: translate(-50%, -50%);
+				border-radius: 50%;
+			}
+		}
+	}
+</style>

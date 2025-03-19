@@ -4,9 +4,12 @@
 	border-width: var(--card-border-width, 1px);
 	border-color: var(--card-stroke, color-mix(in srgb, currentcolor 20%, transparent));
 	border-radius: var(--card-radius, 1rem);
+	overflow: clip;
+}
+
+:where(.card, .card-content) {
 	background-color: var(--card-bg, color-mix(in oklab, var(--root-bg) 94%, white));
 	color: var(--card-color, var(--root-fg));
-	overflow: clip;
 }
 
 :where(

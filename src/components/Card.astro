@@ -1,0 +1,46 @@
+---
+interface Props {
+	title?: string;
+	body?: string;
+	style?: string;
+	styleContent?: string;
+}
+
+const { title, body, style, styleContent } = Astro.props;
+---
+
+<div class="card" style={style}>
+	<div class="card-content" style={styleContent}>
+		<slot>
+			<h3>{title}</h3>
+			<p>{body}</p>
+		</slot>
+	</div>
+</div>
+
+<style>
+	.card {
+		--card-border-width: 2px;
+		--card-stroke: transparent;
+		--card-bg: var(--root-bg);
+		background-clip: padding-box;
+		overflow: visible;
+	}
+
+	.card-content {
+		border-radius: inherit;
+	}
+
+	.card::before {
+		content: "";
+		z-index: -1;
+		position: absolute;
+		inset: calc(var(--card-border-width) * -1);
+		background-image: linear-gradient(
+			-35deg,
+			color-mix(in oklab, var(--brand) 30%, #fff0),
+			var(--brand)
+		);
+		border-radius: inherit;
+	}
+</style>

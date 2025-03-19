@@ -20,7 +20,7 @@ const {
 	<slot name="button">
 		{
 			useDefaultBtn && (
-				<button data-open class={btnClasses}>
+				<button data-open class={btnClasses} style="--btn-stroke: #0000">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						width="24"
@@ -41,7 +41,7 @@ const {
 			)
 		}
 	</slot>
-	<dialog class:list={["offcanvas", classes]} style={style}>
+	<dialog class:list={["offcanvas", classes]} style={`border-radius: 0; ${style}`}>
 		<slot />
 	</dialog>
 </auto-dialog>

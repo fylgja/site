@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { title, description, publishDate, updateDate, coverImage } = entry.data;
+const { title, description, publishDate, updateDate, coverImage, coverColor } = entry.data;
 const { Content } = await entry.render();
 ---
 
@@ -24,13 +24,16 @@ const { Content } = await entry.render();
 	class=""
 	style="--my: 0 var(--size-12)"
 >
-	<div class="banner bg-gradient rounded-conditional clip container" style="--container-gap: 0px">
+	<div
+		class:list={["banner container", !coverImage && "bg-gradient rounded-conditional"]}
+		style="--container-gap: 0px; --rounded-y: 0"
+	>
 		{
 			coverImage && (
 				<Image
 					src={coverImage}
-					widths={[766, 1500]}
-					sizes="100vw"
+					width={1280}
+					height={350}
 					loading="eager"
 					alt=""
 					class="rounded-conditional"
@@ -50,13 +53,18 @@ const { Content } = await entry.render();
 	</div>
 </Layout>
 
-<style>
+<style define:vars={{ coverColor }}>
 	.banner {
-		--gradient-from: hsl(157 50% 40%);
+		--gradient-from: var(--coverColor);
 		--gradient-to: var(--brand);
 		--gradient-angle: 337deg;
 		--radius-y: 0;
 		min-block-size: var(--size-80);
+
+		img {
+			object-fit: cover;
+			max-height: 350px;
+		}
 	}
 
 	.blog-title {

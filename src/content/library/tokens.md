@@ -69,8 +69,12 @@ Each option can be import for all tokens or just the part you need.
 | `@fylgja/tokens/{css/scss/js}/sizes`        | Sizes                                           |
 | `@fylgja/tokens/{css/scss/js}/z-layer`      | Z-Index's                                       |
 
+</div>
+
 > [!Note]
 > Not all tokens can be represented in a design system format.
+
+<div class="scroll-x">
 
 | Import Path for design system     | Description                                      |
 | --------------------------------- | ------------------------------------------------ |

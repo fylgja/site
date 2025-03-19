@@ -1,38 +1,259 @@
 ---
-import Layout from "@/layouts/PageLayout.astro";
+import "@/assets/main.css";
+import Layout from "@/layouts/BlankLayout.astro";
+import PageHeader from "@/components/PageHeader.astro";
+import SkipLink from "@/components/SkipLink.astro";
+import Hero from "@/components/Hero.astro";
+import HeroReadmore from "@/components/HeroReadmore.astro";
+import Heading from "@/components/Heading.astro";
+import Card from "@/components/Card.astro";
+import IconBase from "@/assets/icons/base.svg";
+import IconPaintbrush from "@/assets/icons/paintbrush.svg";
+import IconPocketKnife from "@/assets/icons/pocket-knife.svg";
+import IconSquare from "@/assets/icons/square.svg";
+import IconSquareCheck from "@/assets/icons/square-check.svg";
+
 const title = "Fully use the power of CSS with you compainion and guide, Fylgja CSS";
 ---
 
-<Layout title={title} hideSearch={true}>
-	<section aria-labelledby="page-title">
-		<h1 id="page-title">{title}</h1>
-		<p>
-			Build with modularity in mind, Fylgja allows you to pick what you need and combine it
-			with other solutions.
-		</p>
-		<p>
-			Fylgja is your guide to make it easier to get started and to introduce complex UI's with
-			ease.
-		</p>
-		<p>
-			<a href="/docs" class="btn --primary">Get Started</a>
-			<a href="/library/base" class="btn">Explore Fylgja's Library</a>
-		</p>
-	</section>
+<Layout title={title}>
+	<SkipLink id="main-content" title="Skip to content" />
+	<PageHeader hideSearch={true} />
+	<main id="main-content">
+		<Hero class="container" />
 
-	<section>
-		<h2>Build it your way</h2>
-		<!-- Talks shortly about modularity -->
-	</section>
+		<section
+			class="container flow"
+			style="--flow: 2rem; --my: var(--size-12); --md_my: var(--size-24)"
+			aria-label="Redefining Frontend developer experience"
+		>
+			<Heading
+				title="Redefining Frontend developer experience"
+				body="Fylgja makes CSS development Modular Lightweight and Easy to Customize"
+			/>
+			<div class="grid-cols --bento-odd gap">
+				<Card
+					title="Modular Approach"
+					body="While Fylgja may sound like a framework, it is highly modular. This allows you to include only the parts you need for a specific project. For instance, with Fylgja Base, you can opt to include just the form styles without pulling in everything else. This modularity extends to all parts of the Fylgja library, ensuring that your project stays lean and efficient."
+				/>
+				<Card
+					title="Lightweight by Design"
+					body="Fylgja is designed to be compact. You only load what you need, so the overall size of your CSS is determined by your selections. For example, the minified Fylgja Base Preflight is just 6kb, smaller than many other classless CSS libraries and frameworks with similar features."
+				/>
+				<Card
+					title="Extendable"
+					body="Fylgja's modular nature is built for interoperability. It's designed to work harmoniously alongside your existing or preferred CSS frameworks, allowing you to leverage the strengths of both without conflict."
+				/>
+				<Card
+					title="Easy to Customize"
+					body="Fylgja is built with low CSS specificity, allowing you to override styles easily, and with Fylgja Base, specificity is kept at zero using the  :where selector, meaning your custom styles won’t be disrupted. In addition, Fylgja includes CSS variables where appropriate, making customization quick and straightforward with just a few lines of code."
+				/>
+			</div>
+		</section>
 
-	<section>
-		<h2>Build you page in mere minutes</h2>
-		<!-- Talks shortly about class-less -->
-	</section>
+		<section
+			class="container usp-list flow"
+			style="--flow: 3rem; --my: var(--size-16); --md_my: var(--size-32)"
+			aria-label="Fylgja is structured around three core packages"
+		>
+			<Heading
+				title="Fylgja is structured around three core packages"
+				tagline="What is Fylgja?"
+				style="--h-weight: normal"
+			/>
+			<ul
+				role="list"
+				class="grid-cols gap"
+				style="--md_grid-cols: 3; --gap: 3rem; --md_gap: 6rem"
+			>
+				<li>
+					<IconBase
+						width="64"
+						height="64"
+						stroke-width="1.5"
+						style="--my: 0 2rem; color: var(--color-5); --hue: var(--hue-cyan);"
+						aria-hidden="true"
+					/>
+					<h3 style="--h3-size: 1.125rem">Base</h3>
+					<p>
+						Base provides a streamlined starting point for any web project. It’s a
+						collection of class-less solutions, allowing you to focus on building your
+						site using plain HTML.
+					</p>
+				</li>
+				<li>
+					<IconPaintbrush
+						width="64"
+						height="64"
+						stroke-width="1.5"
+						style="--my: 0 2rem; color: var(--color-5); --hue: var(--hue-orange);"
+						aria-hidden="true"
+					/>
+					<h3 style="--h3-size: 1.125rem">Tokens</h3>
+					<p>
+						Establish a consistent design language across your projects with Design
+						Tokens. Tokens eliminant redundant variations in design elements, ensuring a
+						unified structure throughout your codebase.
+					</p>
+				</li>
+				<li>
+					<IconPocketKnife
+						width="64"
+						height="64"
+						stroke-width="1.5"
+						style="--my: 0 2rem; color: var(--color-5); --hue: var(--hue-lime);"
+						aria-hidden="true"
+					/>
+					<h3 style="--h3-size: 1.125rem">Utilities</h3>
+					<p>
+						Utilities a focused collection of production-ready CSS utilities, designed
+						for direct use without a build step, each utility is carefully selected for
+						practical application.
+					</p>
+				</li>
+			</ul>
+			<div
+				class="shape absolute"
+				style="--hue: var(--hue-blue); --main-color: var(--color-9); --inset-y: -12rem auto; --inset-x: -12rem auto"
+			>
+			</div>
+			<div
+				class="shape absolute"
+				style="--hue: var(--hue-violet); --main-color: var(--color-9);--inset-y: auto -12rem; --inset-x: auto 0"
+			>
+			</div>
+		</section>
+		<style>
+			.usp-list {
+				--main-color: var(--brand);
+				--alt-color: color-mix(in oklab, var(--main-color), #fff);
+				position: relative;
+
+				li p {
+					color: var(--text-color-muted);
+				}
+
+				.shape {
+					z-index: -1;
+					position: absolute;
+					width: clamp(192px, 50vw, 460px);
+					height: clamp(192px, 50vw, 460px);
+					background-image: linear-gradient(
+						0deg,
+						var(--main-color) 30%,
+						var(--alt-color)
+					);
+					filter: blur(120px);
+					border-radius: 50%;
+				}
+			}
+		</style>
+
+		<section
+			class="container flow"
+			style="--flow: 2rem; --my: var(--size-12); --md_my: var(--size-24)"
+			aria-label="Whats Next"
+		>
+			<!-- <Heading
+				title="Build and Extend Your UI Faster with CSS Components"
+				body="Highlights of Fylgja CSS Components"
+			/> -->
+			<Heading
+				title="Whats Next"
+				body="We are continuously developing Fylgja, so expect regular updates."
+			/>
+			<div class="grid-cols --bento gap">
+				<Card>
+					<h3>More CSS Components</h3>
+					<ul role="list" class="divide-y divide-gap-y" style="--my: 2.5rem 0;">
+						<li class="flex align gap" style="--align: start">
+							<IconSquareCheck aria-label="Checked" />Input Group
+						</li>
+						<li class="flex align gap" style="--align: start">
+							<IconSquare aria-label="Not Checked" />Form Extend
+						</li>
+						<li class="flex align gap" style="--align: start">
+							<IconSquare aria-label="Not Checked" />Card
+						</li>
+						<li class="flex align gap" style="--align: start">
+							<IconSquare aria-label="Not Checked" />Badge
+						</li>
+						<li class="flex align gap" style="--align: start">
+							<IconSquare aria-label="Not Checked" />Breadcrumbs
+						</li>
+						<li class="flex align gap" style="--align: start">
+							<IconSquare aria-label="Not Checked" />Menu
+						</li>
+					</ul>
+				</Card>
+				<Card
+					title="UI Library"
+					body="Build your user interfaces quickly with our fully-featured library of UI components. We provide components in both HTML and JSX, readily available for use. You can easily copy the code directly from our website or streamline your workflow with our CLI tool."
+				/>
+				<Card
+					title="Framework Presets"
+					body="Seamlessly integrate with other CSS frameworks, including Tailwind CSS and UnoCSS, to add missing features or extend functionality."
+				/>
+				<Card
+					title="Starter kit for Astro JS"
+					body="Simplify your Astro and Fylgja development with our opinionated template and ready-to-use UI blocks."
+				/>
+			</div>
+		</section>
+
+		<HeroReadmore />
+	</main>
+	<footer class="page-footer">
+		<div class="container text-center" style="--py: var(--size-8)">
+			<nav aria-label="License" class="inline-flex flex-wrap gap">
+				<p>
+					<a
+						target="_blank"
+						href="https://github.com/fylgja/fylgja/blob/main/LICENSE"
+						class="no-underline"
+					>
+						Released under the MIT License - © 2021-present Fylgja
+					</a>
+				</p>
+			</nav>
+		</div>
+	</footer>
 </Layout>
 
+<style>
+	.page-footer {
+		border-block-start: 1px solid
+			var(--page-footer-stroke, color-mix(in srgb, currentcolor 12%, transparent));
+		background-color: var(--page-footer-bg, var(--root-bg));
+		color: var(--page-footer-color, var(--text-color-muted));
+
+		a {
+			text-decoration: none;
+		}
+	}
+</style>
+
 <style is:global>
-	.page-header {
+	.page-header[data-sticky="false"] {
 		--page-header-bg: transparent;
+		--page-header-color: var(--text-color-muted);
+	}
+
+	@media (width >= 768px) {
+		.grid-cols:is(.--bento, .--bento-odd) {
+			--grid-cols: 3;
+		}
+
+		.grid-cols.--bento > :nth-child(2) {
+			--col: span 2;
+		}
+
+		.grid-cols.--bento > :nth-child(1) {
+			--row: span 2;
+		}
+
+		.grid-cols.--bento-odd > :nth-child(3n + 1) {
+			--col: span 2;
+		}
 	}
 </style>
