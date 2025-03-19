@@ -16,7 +16,7 @@
 		"@astrojs/rss": "^4.0.11",
 		"@astrojs/sitemap": "^3.2.1",
 		"@docsearch/css": "^3.8.3",
-		"@docsearch/js": "^3.8.3",
+		"@docsearch/js": "^3.9.0",
 		"@fylgja/base": "^2.0.2",
 		"@fylgja/input-group": "^2.0.0",
 		"@fylgja/tokens": "^2.0.1",
