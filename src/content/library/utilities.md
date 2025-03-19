@@ -112,7 +112,7 @@ Fylgja provides both `divide-y` and `divide-x`, which seamlessly integrate with 
 Additionally, introduce `divide-gap-y` and `divide-gap-x` to add flow-based spacing between your dividers, providing greater flexibility in layout gaps.
 
 <figure class="demo-wrapper">
-<ul role="list" class="divide-y divide-gap-y flow-none">
+<ul role="list" class="divide-y divide-gap-y">
 <li>A better way to</li>
 <li>handle divides</li>
 <li>and supports a gaps to!</li>

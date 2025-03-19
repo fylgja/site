@@ -65,8 +65,8 @@ const urlPrefix = "/" + collectionName.toLowerCase();
 		border-block-start: 1px solid
 			var(--docs-menu-stroke, color-mix(in srgb, currentcolor 12%, transparent));
 		padding: 0.5rem;
-		background-color: color-mix(in oklab, #000 56%, var(--brand));
-		color: var(--on-brand);
+		background-color: var(--appbar-bg, var(--surface-color));
+		color: var(--appbar-color);
 
 		details > :not(summary) {
 			max-block-size: 42vh;
@@ -134,6 +134,8 @@ const urlPrefix = "/" + collectionName.toLowerCase();
 		html:not([data-theme="light"]) {
 			--docs-menu-stroke: transparent;
 			--docs-menu-bg: color-mix(in oklab, var(--root-bg) 94%, var(--brand));
+			--appbar-bg: color-mix(in oklab, #000 56%, var(--brand));
+			--appbar-color: var(--on-brand);
 		}
 	}
 </style>
