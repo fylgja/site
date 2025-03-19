@@ -47,12 +47,11 @@ You can import any utility mentioned below, using:
 
 _align • auto-grid • clip • container • content-lazy • display • divide • flex • flow • gap • gradient • grid-cols • line-clamp • list • overlay • position • rounded • scroll • scrollbar • size • snap • spacing • sr-only • stack • stretched-link • toggle • transition • truncate • typography_
 
-## Utilities
+## Preview
 
 ### Align
 
-Align is a [Dynamic CSS Utility] which works together with any flex or grid based layout.
-This Utility will provide a default alignment for centering on the items axis and space between on the content axis and can be customize using CSS variables as explained in the section on [Dynamic CSS Utility]'s.
+Effortlessly align content along both the Y and X axes for **flex** and **grid** layouts, and also for flow layouts. This utility leverages [Dynamic CSS Utilities].
 
 <figure class="demo-wrapper flex align" style="--align: center; --demo-wrapper-min-size: 200px">
 <code class="demo-box --inline">Align Center</code>
@@ -60,184 +59,234 @@ This Utility will provide a default alignment for centering on the items axis an
 
 ### Auto Grid
 
-Auto Grid is a [Dynamic CSS Utility] which creates a grid layout automatically based on the available space, same as seen with Container Queries.
-The max column size and count can be customizes by using CSS variables.
+Create responsive grid layouts that automatically generate columns based on the configured `--max-col-size`.
 
-<figure class="auto-grid gap">
+<figure class="demo-wrapper --resize">
+<div class="auto-grid gap">
 <div class="demo-box --inline">1</div>
 <div class="demo-box --inline">2</div>
 <div class="demo-box --inline">3</div>
 <div class="demo-box --inline">4</div>
-<div class="demo-box --inline">5</div>
+</div>
 </figure>
 
-### clip
+### Clip
 
-Clip is a better way to handle overflowing content compared to hidden value used by overflow.
+Hide overflowing content with ease. Use `clip` for all sides, or target specific axes with `clip-y` and `clip-x`.
 
-This utility easily allows to to prevent any overflow content by setting clip as the wrapper class,
-and this clipping can be set just to the axis thats needs it without introducing overflow auto to the other axis that has nothing set.
+### Container
 
-When using `clip-y` it will only clip the overflow on the y axis and the x axis can still overflow.
+The standard way to center content and apply a maximum width, often referred to as a wrapper.
 
-### container
+### Content Lazy
 
-The classic method to center and to add a max-width to you content.
+Implement lazy loading for sections of your page using `content-lazy`. Adjust the initial size with the `content-size` variable.
 
-Normally this class is considered a CSS Component, but these days this class is so small it is considered Utility instead.
+### Display
 
-This do the fact that this CSS Utility only sets the inline margin and a max-width using CSS calc to include a page gap, previously know as container padding, from the sides when the screen is smaller then the set max-width.
-
-### content-lazy
-
-As the name states this allows you to load specific parts of the page lazy, using the power of CSS.
-
-[content-visibility] is now a baseline CSS property, so can be used in all browsers.
-
-But if some older version does not yet support this, it will have no effect, so this utility can be used a progressive enhancement.
-
-Do note [content-visibility] is best used for pages that are long and so have many elements to load, this utility has no effect on shorter pages.
-
-content-lazy is a [Dynamic CSS Utility] for the part to customize the reserved element size if not loaded.
-
-[content-visibility]: https://developer.mozilla.org/en-US/docs/Web/CSS/content-visibility
-
-### display
-
-As the name states display sets the display value of an element, but unlike other utility systems this version only loads the parts that are commonly used in websites,
-so don't expect all version to work as seen with TailwindCSS or with other systems.
-
-Why not add all you ask.
-
-Simple to keep the CSS size small without introducing the need for tooling to make the CSS smaller.
-
-Display supports the following classes:
+Quickly set the `display` property of an element.
 
 <div class="scroll-x">
 
-| class                                        | value                          |
-| -------------------------------------------- | ------------------------------ |
-| `hidden`                                     | `display: none`                |
-| `block`                                      | `display: block`               |
-| `inline-block`                               | `display: inline flow-root`    |
-| `sm:{hidden,block,inline-block,table-cell}`  | All for the **sm** breakpoint  |
-| `md:{hidden,block,inline-block,table-cell}`  | All for the **md** breakpoint  |
-| `lg:{hidden,block,inline-block,table-cell}`  | All for the **lg** breakpoint  |
-| `xl:{hidden,block,inline-block,table-cell}`  | All for the **xl** breakpoint  |
-| `xxl:{hidden,block,inline-block,table-cell}` | All for the **xxl** breakpoint |
+| class                         | value                                                                                      |
+| ----------------------------- | ------------------------------------------------------------------------------------------ |
+| `hidden`                      | `display: none`                                                                            |
+| `block`                       | `display: block`                                                                           |
+| `inline-block`                | `display: inline flow-root`                                                                |
+| `flex`                        | `display: flex`                                                                            |
+| `inline-flex`                 | `display: inline flex`                                                                     |
+| `grid`                        | `display: grid`                                                                            |
+| `inline-grid`                 | `display: inline grid`                                                                     |
+| `table-cell`                  | `display: table-cell`                                                                      |
+| `open:{DISPLAY}`              | Open modifier for dialogs and popovers                                                     |
+| `{sm,md,lg,xl,xxl}:{DISPLAY}` | Apply display styles at specific breakpoints (**sm**, **md**, **lg**, **xl**, and **xxl**) |
 
 </div>
 
-For the breakpoint we use the same values as before,
-including table-cell as extra when you plan to hide the table cell on mobile,
-but show it on desktop screen sizes
+### Divide
 
-### divide
+The `divide` utility offers enhanced control over dividers, going beyond basic implementations.
 
-The `divide` utility is a popular feature,
-but it's often incomplete in most utility systems.
+Fylgja provides both `divide-y` and `divide-x`, which seamlessly integrate with your border utilities, eliminating the need for preset values.
 
-With Fylgja, you get access to both `divide-y` and `divide-x`,
-which don't require preset values,
-as they inherit styles from the border utilities.
-
-As with all of Fylgja's utilities,
-you can modify the divider's width using CSS variables, making it highly flexible.
-
-To further enhance the divide utility,
-Fylgja introduces `divide-gap-y` and `divide-gap-x`.
-
-These utilities allow you to add flow-based spacing between dividers,
-offering more control over layout gaps.
-
-Like the border-width,
-these gaps can also be easily adjusted with CSS variables for complete customization.
+Additionally, introduce `divide-gap-y` and `divide-gap-x` to add flow-based spacing between your dividers, providing greater flexibility in layout gaps.
 
 <figure class="demo-wrapper">
-<ul role="list" class="divide-y divide-gap-y">
+<ul role="list" class="divide-y divide-gap-y flow-none">
 <li>A better way to</li>
 <li>handle divides</li>
 <li>and supports a gaps to!</li>
 </ul>
 </figure>
 
-### flex
+### Flex
 
-Similar to the the display utilities, but also includes a lot of super powers.
-`flex` is a [Dynamic CSS Utility] that includes a lot of customization trough the power of CSS variables.
+Convenient shorthands for `display: flex`, including options for direction and wrapping. Utilize `flex-col` and `flex-wrap`, which are [Dynamic CSS Utilities] and can be customized with CSS variables.
 
-We made sure to include few extra flex helper utilities that include the same as using the CSS variables.
+### Flow
 
-### flip
+While Fylgja's base styles often include flow spacing, the `flow` utility allows you to explicitly force a new flow with `flow` or remove any flow with `flow-none`.
 
-flip is a small utility to flip things based on a open state.
+### Gap
 
-This works great with the HTML details or a custom collapse.
+Easily set gaps for Grid, Flex, or Column layouts.
 
-Next to flip you also get `flip-rotate` that will also rotate and not just flip, this version does require the `transition` utility of a CSS component that allready support CSS transitions for rotate values.
+### Gradient
+
+Provides three helpful utilities for applying border, background, and text gradients, all customizable with CSS variables.
+
+### Grid Cols
+
+Simplified way to set up grid layouts with columns using `grid-cols`.
+
+You can modify the column configuration using CSS variables, following the [Dynamic CSS Utility] pattern.
+
+Also includes `grid-flow`, ideal for creating a row of columns for sliders, and is compatible with the `gap` utility for consistent column spacing.
+
+### Line Clamp
+
+Limit the number of lines in your paragraphs to prevent text overflow.
+
+### List
+
+Offers the `list-none` utility, useful for removing default list markers, especially if you are not using Fylgja's base styles or when customizing HTML `<details>` elements.
+
+### Overlay
+
+Adds a subtle overlay shadow to an element, often effective in combination with the `stack` utility.
+
+<figure class="demo-wrapper">
+<div class="stack inline-grid">
+<img src="https://placecats.com/380/200" alt="Meow" width="380" height="200" loading="lazy">
+<div class="overlay align-self" style="--p: 1rem; --align-self: end auto">Meow</div>
+</div>
+</figure>
+
+### Position
+
+Set the `position` property with common default values. Each position can be further customized with CSS variables.
+
+| class      | value                     |
+| ---------- | ------------------------- |
+| `relative` | Sets `position: relative` |
+| `sticky`   | Sets `position: sticky`   |
+| `absolute` | Sets `position: absolute` |
+| `fixed`    | Sets `position: fixed`    |
+
+### Rounded
+
+A set of straightforward border radius utilities:
+
+- `rounded`: Applies a standard border radius.
+- `rounded-conditional`: Applies a border radius, but removes it if the element's size matches the page or container.
+- `rounded-none`: Removes any border radius.
+- `rounded-inherit`: Inherits the border radius from the parent.
+- `round`: Creates a perfectly round element.
+
+### Scroll
+
+Enable scrollable overflow on the X or Y axis with `scroll-x` and `scroll-y`.
+
+### Scrollbar
+
+Customize the appearance of the scrollbar, including hiding it or making it small.
+
+### Size
+
+Convenient shorthands for setting width and height using [Dynamic CSS Utilities]. Includes `w-full`, `h-full`, `max-w-full`, and `max-h-full`.
+
+For more detailed sizing options, refer to the Spacing utilities.
+
+### Snap
+
+Easily create interactive sliders. This utility works best in conjunction with other layout utilities like Grid Cols.
+
+<figure class="demo-wrapper">
+<div class="snap scroll-x grid-cols grid-flow gap" style="--sm_grid-cols: 2; --md_grid-cols: 3">
+<img src="https://placecats.com/neo_banana/380/200" alt="Meow" width="380" height="200" loading="lazy">
+<img src="https://placecats.com/neo/380/200" alt="Meow" width="380" height="200" loading="lazy">
+<img src="https://placecats.com/millie/380/200" alt="Meow" width="380" height="200" loading="lazy">
+<img src="https://placecats.com/bella/380/200" alt="Meow" width="380" height="200" loading="lazy">
+<img src="https://placecats.com/millie_neo/380/200" alt="Meow" width="380" height="200" loading="lazy">
+</div>
+</figure>
+
+```html
+<div
+    class="snap scroll-x grid-cols grid-flow gap"
+    style="--sm_grid-cols: 2; --md_grid-cols: 3"
+>
+    ... slides
+</div>
+```
+
+### Spacing
+
+[Dynamic CSS Utilities] for quickly setting padding and margin on an element.
+
+You don't need a specific class to use these [Dynamic CSS Utilities]; simply set the style with: `--size-y`, `--size-x`, `--my`, `--mx`, `--py`, and `--px` along with a valid CSS unit to apply the styles.
+
+The power of [Dynamic CSS Utilities] extends to breakpoint customization. For example, set a different margin for the **md** breakpoint using `--md_my: 1rem`.
+
+### Screen Reader Only
+
+Visually hide an element from the page while keeping it accessible for screen readers.
+
+Similar to the `display` utility, you can apply breakpoint-specific styles, e.g., `sm:sr-only`.
+
+### Stack
+
+Effortlessly stack multiple elements on top of each other without the need for manual positioning.
+
+### Stretched Link
+
+Make any element fully clickable without breaking link semantics. Use it with a `relative` class on the parent element to define the clickable area.
+
+### Toggle
+
+Create interactive toggle states for elements like `<details>` using the `toggle` utility.
 
 <figure class="demo-wrapper flex-wrap gap" style="--demo-wrapper-min-size: 8rem">
 <details name="demo-flip-group" open>
-	<summary class="list-none btn">
-	<span>Click Me!</span>
-	<span class="flip">↓</span>
-	</summary>
-	<div style="--my: 0.5rem">Hello there.</div>
+    <summary class="list-none btn">
+    <span>Click Me!</span>
+    <span class="toggle-flip">↓</span>
+    </summary>
+    <div style="--my: 0.5rem">Hello there.</div>
 </details>
 <details name="demo-flip-group">
-	<summary class="list-none btn">
-	<span>I will Rotate when toggling!</span>
-	<span class="flip-rotate transition">↓</span>
-	</summary>
-	<div style="--my: 0.5rem">Hello there.</div>
+    <summary class="list-none btn">
+    <span>I will Rotate when toggling!</span>
+    <span class="toggle-rotate transition">↓</span>
+    </summary>
+    <div style="--my: 0.5rem">Hello there.</div>
+</details>
+<details name="demo-flip-group">
+    <summary class="list-none btn stack">
+    <span class="toggle-hide">I will Hide when toggled!</span>
+    <span class="toggle-show">I will Show when toggled!</span>
+    </summary>
+    <div style="--my: 0.5rem">Hello there.</div>
 </details>
 </figure>
 
-### flow
+### Transition
 
-### gap
+Quickly add smooth transitions to elements using `transition`, `transition-display`, or `transition-color`. Also supports discrete transitions.
 
-### gradient
+### Truncate
 
-### grid
+Truncate text to a specified number of lines.
 
-Similar to the the display utilities, but also includes a lot of super powers.
-`grid` is a [Dynamic CSS Utility] that includes a lot of customization trough the power of CSS variables.
+### Typography
 
-### line-clamp
+Convenient shorthands for common text styles:
 
-### list
-
-### overlay
-
-### position
-
-### rounded
-
-### scroll
-
-### scrollbar
-
-### size
-
-### snap
-
-### spacing
-
-### sr-only
-
-### stack
-
-### stretched-link
-
-### transition
-
-### truncate
-
-### typography
-
-### visibility
-
-
+- `text-start`: Align text to the left.
+- `text-end`: Align text to the right.
+- `text-center`: Center text alignment.
+- `italic`: Apply italic styling.
+- `not-italic`: Remove italic styling.
 
 [Dynamic CSS Utility]: /docs/concepts/dynamic-css-utilities
+[Dynamic CSS Utilities]: /docs/concepts/dynamic-css-utilities

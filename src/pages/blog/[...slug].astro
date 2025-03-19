@@ -25,21 +25,10 @@ const { Content } = await entry.render();
 	style="--my: 0 var(--size-12)"
 >
 	<div
-		class:list={["banner container", !coverImage && "bg-gradient rounded-conditional"]}
-		style="--container-gap: 0px; --rounded-y: 0"
+		class:list={["banner container clip rounded-conditional", !coverImage && "bg-gradient"]}
+		style="--container-gap: 0px"
 	>
-		{
-			coverImage && (
-				<Image
-					src={coverImage}
-					width={1280}
-					height={350}
-					loading="eager"
-					alt=""
-					class="rounded-conditional"
-				/>
-			)
-		}
+		{coverImage && <Image src={coverImage} width={1280} height={350} loading="eager" alt="" />}
 	</div>
 	<div
 		class="blog-title container flow text-center rounded-conditional"
@@ -58,7 +47,7 @@ const { Content } = await entry.render();
 		--gradient-from: var(--coverColor);
 		--gradient-to: var(--brand);
 		--gradient-angle: 337deg;
-		--radius-y: 0;
+		--radius-t: 0;
 		min-block-size: var(--size-80);
 
 		img {
@@ -72,5 +61,29 @@ const { Content } = await entry.render();
 		background-color: var(--root-bg);
 		padding: var(--size-8);
 		margin-block-start: calc(var(--size-16) * -1);
+	}
+</style>
+
+<style is:global>
+	img[src^="https://img.shields.io"]
+	{
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	:is(h1, h2, h3) > em {
+		display: block;
+		font-size: 0.75em;
+		font-weight: normal;
+		margin-block-start: 0.375em;
+		text-wrap: pretty;
+	}
+
+	.lead {
+		font-size: 1.125em;
+	}
+
+	ul {
+		padding-inline-start: 1em;
 	}
 </style>

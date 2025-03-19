@@ -61,6 +61,12 @@ const hasMeta = !!git || !!npm;
 		min-block-size: var(--demo-wrapper-min-size);
 		padding: var(--size-6);
 		border: 1px dashed var(--border-color-fade);
+
+		&.--resize {
+			max-block-size: 100%;
+			resize: inline;
+			overflow: scroll;
+		}
 	}
 
 	@keyframes animate-demo-easing {

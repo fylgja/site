@@ -6,35 +6,47 @@ import collection from "./collection.ts";
 
 <Layout title="Fylgja Docs" collectionName="Docs" collection={collection}>
 	<h1>Getting Started</h1>
+	<p>New to Fylgja and not sure where to begin?</p>
+	<p>The most straightforward way to get started is by using Fylgja as your CSS foundation.</p>
 	<p>
-		If your not sure where to start or what packages to use, the best way to get started with
-		Fylgja is to use it as CSS Framework, Fylgja is at it's core a Library not a Framework but
-		can be used as one.
+		While Fylgja is technically a library at its core, it's designed to function seamlessly as a
+		CSS framework.
 	</p>
-	<p>Now there are multiple ways to get started with Fylgja</p>
+	<p>
+		There are several ways to integrate Fylgja into your project, but the easiest and most
+		recommended approach is using the meta package.
+	</p>
 
-	<h2>Installation & quick start</h2>
-	<Code lang="sh" code="npm i fylgja" />
-	<p>Just want to get started or try all of Fylgja</p>
+	<h2>Installation & Quick Start</h2>
+	<p>Install the meta package using npm:</p>
+	<Code lang="sh" code="npm install fylgja" />
+	<p>This single command installs the following essential packages:</p>
+	<ul>
+		<li><code>@fylgja/base</code>: Provides a solid foundation of base styles.</li>
+		<li><code>@fylgja/tokens</code>: Offers a set of design tokens for consistent styling.</li>
+		<li>
+			<code>@fylgja/utilities</code>: Includes a curated collection of helpful CSS utilities.
+		</li>
+	</ul>
+	<p>Once installed, you can import these packages into your project:</p>
+	<Code
+		lang="css"
+		code=`@import "@fylgja/base";\n@import "@fylgja/tokens";\n@import "@fylgja/utilities";`
+	/>
 
-	<div class="grid-cols gap" style="--md_grid-cols: 2">
-		<div class="card">
-			<h2>Learn</h2>
-			<ul>
-				<li><a href="#">Using Fylgja</a></li>
-				<li><a href="#">Fylgja Base Docs</a></li>
-			</ul>
-		</div>
-
-		<div class="card">
-			<h2>Explore</h2>
-			<p>lorum</p>
-		</div>
-	</div>
+	<h2>Using Fylgja</h2>
+	<ul>
+		<li>
+			<strong>Fylgja Base:</strong> The base styles are applied without the need to add specific
+			classes, providing a consistent starting point for your project.
+		</li>
+		<li>
+			<strong>Fylgja Tokens:</strong> You can inspect the available design tokens directly in your
+			browser's developer tools to understand the styling variables available to you.
+		</li>
+	</ul>
+	<p>
+		For more in-depth information and details about each package, be sure to explore the
+		comprehensive Fylgja Library documentation.
+	</p>
 </Layout>
-
-<style>
-	.card h2 {
-		--h-size: 1.25em;
-	}
-</style>
