@@ -58,14 +58,14 @@ These examples demonstrate how you can use the Input Group component with variou
 
 The flexibility of this component allows you to customize form elements easily.
 
-#### Search box
+### Search box
 
 Create a simple search bar by combining an input field with a button:
 
 <form action="./search/">
 	<label for="ui-search">Search</label>
 	<div class="input-group">
-		<input name="ui-search">
+		<input id="ui-search" name="ui-search">
 		<button>Search</button>
 	</div>
 </form>
@@ -74,13 +74,13 @@ Create a simple search bar by combining an input field with a button:
 <form action="./search/">
 	<label for="ui-search">Search</label>
 	<div class="input-group">
-		<input name="ui-search">
+		<input id="ui-search" name="ui-search">
 		<button>Search</button>
 	</div>
 </form>
 ```
 
-#### Button Group
+### Button Group
 
 Create a group of buttons with the `--merge` modifier for a seamless design:
 
@@ -114,7 +114,7 @@ The btn class hides the input and makes the label the interactive element:
 </div>
 ```
 
-#### Start Rating
+### Start Rating
 
 Use the `--steps` modifier to create a rating system with radio buttons,
 giving it the appearance of a step-by-step input:
