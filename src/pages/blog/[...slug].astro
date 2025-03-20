@@ -37,7 +37,7 @@ const { Content } = await entry.render();
 		<h1>{title}</h1>
 		<Meta published={publishDate} updatedOn={updateDate} />
 	</div>
-	<div class="container" style="--container-size: var(--size-content)">
+	<div class="blog-content container" style="--container-size: var(--size-content)">
 		<Content />
 	</div>
 </Layout>
@@ -62,28 +62,28 @@ const { Content } = await entry.render();
 		padding: var(--size-8);
 		margin-block-start: calc(var(--size-16) * -1);
 	}
-</style>
 
-<style is:global>
-	img[src^="https://img.shields.io"]
-	{
-		display: inline-block;
-		vertical-align: middle;
-	}
+	.blog-content {
+		img[src^="https://img.shields.io"]
+		{
+			display: inline-block;
+			vertical-align: middle;
+		}
 
-	:is(h1, h2, h3) > em {
-		display: block;
-		font-size: 0.75em;
-		font-weight: normal;
-		margin-block-start: 0.375em;
-		text-wrap: pretty;
-	}
+		:is(h1, h2, h3) > em {
+			display: block;
+			font-size: 0.75em;
+			font-weight: normal;
+			margin-block-start: 0.375em;
+			text-wrap: pretty;
+		}
 
-	.lead {
-		font-size: 1.125em;
-	}
+		.lead {
+			font-size: 1.125em;
+		}
 
-	ul {
-		padding-inline-start: 1em;
+		ul {
+			padding-inline-start: 1em;
+		}
 	}
 </style>
