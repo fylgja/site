@@ -2,9 +2,9 @@ const siteConfig = {
 	site: "https://fylgja.dev",
 	name: "Fylgja",
 	description:
-		"Fylgja is your CSS front-end framework for building your own websites or webapps using modular and customizable CSS components, by loading only what you need.",
-	themeColor: "#1565c0",
-	themeColorDark: "#08274a",
+		"The flexible and lightweight CSS library designed to streamline your web development.",
+	themeColor: "#663399",
+	themeColorDark: "#663399",
 	socials: {
 		github: "https://github.com/fylgja",
 		bluesky: "https://bsky.app/profile/fylgja.dev",

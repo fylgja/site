@@ -26,7 +26,18 @@ const webmanifest = {
 			purpose: "monochrome",
 		},
 	],
+	screenshots: [
+		{
+			src: "screenshots/desktop-home.webp",
+			sizes: "1920x1080",
+			form_factor: "wide",
+		},
+		{
+			src: "screenshots/mobile-home.webp",
+			sizes: "721x1440",
+			form_factor: "narrow",
+		},
+	],
 };
 
-export const GET: APIRoute = () =>
-	new Response(JSON.stringify(webmanifest, null, 2));
+export const GET: APIRoute = () => new Response(JSON.stringify(webmanifest, null, 2));
