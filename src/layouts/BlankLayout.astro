@@ -1,10 +1,12 @@
 ---
 import Head from "@/components/Head.astro";
 import siteConfig from "site.config";
+import defaultSocialImage from "@/assets/default-social-img.png";
 
 interface Props {
 	title: string;
 	description?: string;
+	image?: string;
 	pageType?: "website" | "article";
 	lang?: string;
 	dir?: "ltr" | "rtl";
@@ -13,6 +15,7 @@ interface Props {
 const {
 	title,
 	description = siteConfig.description,
+	image = defaultSocialImage.src,
 	pageType = "website",
 	lang = "en",
 	dir = "ltr",
@@ -24,6 +27,7 @@ const {
 		siteName={siteConfig.name}
 		title={title}
 		description={description}
+		image={image}
 		themeColor={siteConfig.themeColor}
 		themeColorDark={siteConfig.themeColorDark}
 		ogType={pageType}
