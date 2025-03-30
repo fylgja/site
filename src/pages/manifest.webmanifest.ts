@@ -3,6 +3,9 @@ import siteConfig from "site.config";
 
 const { name, description, themeColor } = siteConfig;
 
+const date = new Date();
+const dateHash = `v=${date.getMonth() + 1}-${date.getFullYear()}`;
+
 const webmanifest = {
 	id: "/",
 	name: name,
@@ -15,12 +18,12 @@ const webmanifest = {
 	background_color: themeColor,
 	icons: [
 		{
-			src: "/icon-filled.svg",
+			src: `/icon-filled.svg?${dateHash}`,
 			type: "image/svg+xml",
 			sizes: "any",
 		},
 		{
-			src: "/icon.svg",
+			src: `/icon.svg?${dateHash}`,
 			type: "image/svg+xml",
 			sizes: "any",
 			purpose: "monochrome",
@@ -28,12 +31,12 @@ const webmanifest = {
 	],
 	screenshots: [
 		{
-			src: "screenshots/desktop-home.webp",
+			src: `screenshots/desktop-home.webp?${dateHash}`,
 			sizes: "1920x1080",
 			form_factor: "wide",
 		},
 		{
-			src: "screenshots/mobile-home.webp",
+			src: `screenshots/mobile-home.webp?${dateHash}`,
 			sizes: "721x1440",
 			form_factor: "narrow",
 		},
