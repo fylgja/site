@@ -18,10 +18,6 @@ const docsSchema = z.object({
 	pageTitle: z.string().optional(),
 	git: z.string().url().optional(),
 	npm: z.string().optional(),
-	version: z
-		.string()
-		.regex(/^\d+\.\d+\.\d+$/, "Invalid Version format, use for example 1.0.0")
-		.optional(),
 	changelog: z.string().url().optional(),
 });
 

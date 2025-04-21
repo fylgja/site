@@ -2,7 +2,6 @@
 title: "Base"
 pageTitle: "Fylgja Base"
 description: "Common defaults to make your body and typography look good and easy to change to your needs."
-version: "2.0.0"
 npm: "@fylgja/base"
 git: "https://github.com/fylgja/fylgja/tree/main/base"
 sortOrder: 1

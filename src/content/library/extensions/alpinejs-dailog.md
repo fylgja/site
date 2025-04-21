@@ -1,7 +1,7 @@
 ---
 title: "AlpineJS Dialog"
 pageTitle: "Fylgja AlpineJS Dialog"
-description: "Bring the power of AlpineJs to the HTML dialog."
+description: "Bring the power and simplicity of Alpine.js to the native HTML Dialog"
 npm: "@fylgja/alpinejs-dialog"
 git: "https://github.com/fylgja/alpinejs-dialog"
 ---

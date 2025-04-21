@@ -1,7 +1,7 @@
 ---
 title: "Tokens"
 pageTitle: "Fylgja Tokens"
-description: ""
+description: "Establish a consistent design language across your projects with Fylgja Design Tokens"
 npm: "@fylgja/tokens"
 git: "https://github.com/fylgja/fylgja/tree/main/tokens"
 sortOrder: 2
