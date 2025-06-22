@@ -1,0 +1,7 @@
+---
+const { pathUrl } = Astro.props;
+const baseUrl = "https://github.com/fylgja/site/edit/main/";
+const url = baseUrl + pathUrl;
+---
+
+<p class="text-muted"><small><a href={url}>Edit page</a></small></p>

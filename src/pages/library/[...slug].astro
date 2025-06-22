@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/DocsLayout.astro";
 import MetaVersion from "@/components/MetaVersion.astro";
 import collection from "./collection.ts";
+import EditWithGithub from "@/components/EditWithGithub.astro";
 
 export async function getStaticPaths() {
 	const entries = await getCollection("library");
@@ -28,6 +29,7 @@ const hasMeta = !!git || !!npm;
 	<h1>{pageTitle || title}</h1>
 	{hasMeta && <MetaVersion version={version} git={git} npm={npm} changelog={changelog} />}
 	<Content />
+	<EditWithGithub pathUrl={entry.filePath} />
 </Layout>
 
 <style is:global>

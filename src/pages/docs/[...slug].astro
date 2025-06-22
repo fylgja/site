@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/DocsLayout.astro";
 import collection from "./collection.ts";
+import EditWithGithub from "@/components/EditWithGithub.astro";
 
 export async function getStaticPaths() {
 	const entries = await getCollection("docs");
@@ -19,4 +20,5 @@ const { Content, headings } = await entry.render();
 <Layout title={title} toc={headings} collectionName="Docs" collection={collection}>
 	<h1>{pageTitle || title}</h1>
 	<Content />
+	<EditWithGithub pathUrl={entry.filePath} />
 </Layout>
