@@ -1,7 +1,28 @@
 ---
+import { SquarePen } from "@lucide/astro";
+
+interface Props {
+	pathUrl: string;
+}
+
 const { pathUrl } = Astro.props;
 const baseUrl = "https://github.com/fylgja/site/edit/main/";
 const url = baseUrl + pathUrl;
 ---
 
-<p class="text-muted"><small><a href={url}>Edit page</a></small></p>
+<a href={url} class="edit-content-link inline-flex align gap">
+	<span>Edit page</span>
+	<SquarePen size={18} />
+</a>
+
+<style>
+	.edit-content-link {
+		--gap: 0.5em;
+		font-size: 0.875em;
+		text-decoration: none;
+
+		&:not(:hover) {
+			color: color-mix(in srgb, var(--root-fg) 68%, transparent);
+		}
+	}
+</style>

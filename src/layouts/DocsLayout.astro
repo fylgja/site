@@ -32,19 +32,17 @@ const urlPrefix = "/" + collectionName.toLowerCase();
 	<main id="main-content" class="docs-layout">
 		<aside class="docs-menu hidden lg:block">
 			<div class="sticky inset-header scroll-y max-h-full">
-				<MainNav />
+				<MainNav label="Docs MainNav" />
 				<Menu title={collectionName} items={collection} urlPrefix={urlPrefix} />
 			</div>
 		</aside>
-		<div class="docs-content">
-			<div class="docs-content-body container">
-				<div class="sidebar-toc sticky inset-header scroll-y hidden xl:block">
-					<Toc toc={toc} label="On this Page" />
-				</div>
-				<article class="main-content">
-					<slot />
-				</article>
+		<div class="docs-content container">
+			<div class="sidebar-toc sticky inset-header scroll-y hidden xl:block">
+				<Toc toc={toc} label="On this Page" />
 			</div>
+			<article class="main-content">
+				<slot />
+			</article>
 		</div>
 		{
 			!!toc.length && (
@@ -118,7 +116,7 @@ const urlPrefix = "/" + collectionName.toLowerCase();
 	}
 
 	@media (width >= 1440px) {
-		.docs-content-body {
+		.docs-content {
 			display: grid;
 			grid-template-columns: minmax(0px, 1fr) 240px;
 			gap: 3rem;

@@ -20,5 +20,11 @@ const { Content, headings } = await entry.render();
 <Layout title={title} toc={headings} collectionName="Docs" collection={collection}>
 	<h1>{pageTitle || title}</h1>
 	<Content />
-	<EditWithGithub pathUrl={entry.filePath} />
+	{
+		entry.filePath && (
+			<aside class="italic text-end" style="--my: 3rem 0" aria-label="Additional Meta">
+				<EditWithGithub pathUrl={entry.filePath} />
+			</aside>
+		)
+	}
 </Layout>

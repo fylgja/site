@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { pageTitle, title, description, version, git, npm, changelog } = entry.data;
+const { pageTitle, title, description, git, npm, changelog } = entry.data;
 const { Content, headings } = await entry.render();
 const hasMeta = !!git || !!npm;
 ---
@@ -27,9 +27,15 @@ const hasMeta = !!git || !!npm;
 	collection={collection}
 >
 	<h1>{pageTitle || title}</h1>
-	{hasMeta && <MetaVersion version={version} git={git} npm={npm} changelog={changelog} />}
+	{hasMeta && <MetaVersion git={git} npm={npm} changelog={changelog} />}
 	<Content />
-	<EditWithGithub pathUrl={entry.filePath} />
+	{
+		entry.filePath && (
+			<aside class="italic text-end" style="--my: 3rem 0" aria-label="Additional Meta">
+				<EditWithGithub pathUrl={entry.filePath} />
+			</aside>
+		)
+	}
 </Layout>
 
 <style is:global>

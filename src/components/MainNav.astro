@@ -1,9 +1,9 @@
 ---
-// interface Props {
-// 	active: "library" | "ui" | "docs";
-// }
+interface Props {
+	label: string;
+}
 
-// const { active } = Astro.props;
+const { label } = Astro.props;
 
 const isActive = (item: string) => {
 	return Astro.url.pathname.startsWith(item) ? "is-active" : "";
