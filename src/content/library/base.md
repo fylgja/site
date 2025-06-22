@@ -73,3 +73,15 @@ or the current directory if no folder is found.
 
 Beyond brand colors, the theme includes styles for dark mode, view transitions,
 primary buttons, and off-canvas dialog support.
+
+## Preview
+
+Fylgja Base is designed to work seamlessly with plain HTML, so most of what you see on this site uses just HTML, with a few CSS components and Utilities.
+
+Below is a CodePen demo showcasing Fylgja Base applied to a wide range of HTML elements. This preview highlights the default styles and improvements you get simply by using Fylgja Base.
+
+<iframe width="992" height="744" scrolling="no" title="Fylgja Base - Showcasing the power of classless styling" src="https://codepen.io/Fylgja/embed/preview/ExGOZaE?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/Fylgja/pen/ExGOZaE">
+  Fylgja Base - Showcasing the power of classless styling</a> by Fylgja (<a href="https://codepen.io/Fylgja">@Fylgja</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
