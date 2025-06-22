@@ -22,19 +22,17 @@ import Icon from "@/assets/icon.svg";
 			<a href="/docs" class="btn">Get Started</a>
 		</p>
 	</div>
-	<div class="shape"></div>
+	<div class="shape --theme"></div>
 </section>
 
 <style>
 	.hero-readmore {
 		position: relative;
-		--hue: var(--hue-orange);
 		--main-color: var(--color-6);
 		--alt-color: color-mix(in oklab, var(--main-color), #fff);
 		--text-flow: 1.5rem 0;
 		border-block-start: 1px solid
-			var(--page-footer-stroke, color-mix(in srgb, currentcolor 12%, transparent));
-		color: var(--text-color-muted);
+			var(--page-footer-stroke, color-mix(in srgb, currentcolor 20%, transparent));
 
 		.shape {
 			--_size: clamp(192px, 50vw, 460px);
@@ -49,10 +47,16 @@ import Icon from "@/assets/icon.svg";
 			border-radius: 50%;
 
 			&.--top {
-				--hue: var(--hue-blue);
-				--main-color: var(--color-6);
 				inset-block: auto 100%;
 			}
+
+			&.--theme {
+				--main-color: var(--brand);
+			}
+		}
+
+		.card {
+			--hue: var(--hue-orange);
 		}
 
 		.btn {

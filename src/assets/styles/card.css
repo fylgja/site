@@ -1,72 +1,35 @@
 :where(.card) {
-	position: relative;
-	box-shadow: var(--card-shadow);
-	border-width: var(--card-border-width, 1px);
-	border-color: var(--card-stroke, color-mix(in srgb, currentcolor 20%, transparent));
+	background-color: var(--card-bg, color-mix(in oklab, var(--root-bg) 88%, white));
+	color: var(--card-color, var(--root-fg));
+	border: 1px solid var(--card-stroke, color-mix(in oklab, var(--root-bg) 88%, black));
 	border-radius: var(--card-radius, 1rem);
+	box-shadow: var(--card-shadow, none);
 	overflow: clip;
 }
-
-:where(.card, .card-content) {
-	background-color: var(--card-bg, color-mix(in oklab, var(--root-bg) 94%, white));
-	color: var(--card-color, var(--root-fg));
+:where(.card).--elevated {
+	--card-shadow: var(--shadow-2);
+	--card-stroke: transparent;
 }
 
 :where(
 	.card-content,
-	.card:not(
-			figure,
-			img,
-			picture,
-			video,
-			:has(.card-content, > :is(img, picture, video):only-child)
-		),
+	.card:not(img, video, iframe, figure, picture),
+	.card :has(.card-content, > :is(img, video, iframe, figure, picture):only-child),
 	.card > figcaption
 ) {
-	--card-py: 1.75rem;
-	--card-px: 1.75rem;
-	padding-block: var(--card-py);
-	padding-inline: var(--card-px);
+	padding-block: var(--card-padding, var(--card-py, 1.25rem));
+	padding-inline: var(--card-padding, var(--card-px, 1.25rem));
 }
-
 :where(
 		.card-content,
-		.card:not(
-				figure,
-				img,
-				picture,
-				video,
-				:has(.card-content, > :is(img, picture, video):only-child)
-			),
+		.card:not(img, video, iframe, figure, picture),
+		.card > :has(.card-content, :is(img, video, iframe, figure, picture):only-child),
 		.card > figcaption
 	)
 	> :first-child {
 	margin-block-start: 0;
 }
 
-:where(.card > figcaption) {
-	text-align: inherit;
-	font-style: inherit;
-}
-
-:where(.card.--elevated) {
-	--card-stroke: #0000;
-	--card-shadow: 0 3px 5px hsla(0, 0%, 0%, 0.18);
-}
-
-:where(.card:has(.stretched-link), .card.--link) {
-	transition: scale ease-in-out 150ms;
-
-	:any-link {
-		outline: none;
-		text-decoration: none;
-	}
-
-	&:hover {
-		scale: 1.02;
-	}
-
-	&:focus-within {
-		outline: 2px solid var(--brand);
-	}
+:where(.card-content) {
+	margin-block: 0;
 }

@@ -1,3 +1,16 @@
 .inset-header {
 	--inset-y: var(--page-header-height, 0px) auto;
 }
+
+.border-gradient {
+	border-image-source: none;
+	--inner-bg: var(--root-bg, #fff);
+	background:
+		linear-gradient(var(--inner-bg, #0000) 0 0) padding-box,
+		var(--gradient) border-box;
+	border-color: #0000;
+}
+
+.text-muted {
+	color: var(--text-color-muted);
+}

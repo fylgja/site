@@ -2,7 +2,7 @@ const siteConfig = {
 	site: "https://fylgja.dev",
 	name: "Fylgja",
 	description:
-		"The flexible and lightweight CSS library designed to streamline your web development.",
+		"Fylgja is A Modular CSS Library for Modern Web Design Lean Maintainable and Scalable Empowers Developers to Effortlessly Build Exactly What They Need",
 	themeColor: "#663399",
 	themeColorDark: "#663399",
 	socials: {

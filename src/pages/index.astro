@@ -15,7 +15,7 @@ import {
 	SquareCheckBig as SquareCheck,
 } from "@lucide/astro";
 
-const title = "Fully use the power of CSS with you compainion and guide, Fylgja CSS";
+const title = "Your CSS Compainion";
 ---
 
 <Layout title={title}>
@@ -30,8 +30,8 @@ const title = "Fully use the power of CSS with you compainion and guide, Fylgja 
 			aria-label="Redefining Frontend developer experience"
 		>
 			<Heading
-				title="Redefining Frontend developer experience"
-				body="Fylgja makes CSS development Modular Lightweight and Easy to Customize"
+				title="Simplifying your CSS Experience"
+				body="Fylgja makes CSS development Modular, Lightweight and Easy to Customize"
 			/>
 			<div class="grid-cols --bento-odd gap">
 				<Card
@@ -116,12 +116,12 @@ const title = "Fully use the power of CSS with you compainion and guide, Fylgja 
 			</ul>
 			<div
 				class="shape absolute"
-				style="--hue: var(--hue-blue); --main-color: var(--color-9); --inset-y: -12rem auto; --inset-x: -12rem auto"
+				style="--main-color: var(--color-9); --inset-y: -25rem auto; --inset-x: -5rem auto"
 			>
 			</div>
 			<div
 				class="shape absolute"
-				style="--hue: var(--hue-violet); --main-color: var(--color-9);--inset-y: auto -12rem; --inset-x: auto 0"
+				style="--main-color: var(--color-12); --inset-y: auto -30rem; --inset-x: auto 8rem"
 			>
 			</div>
 		</section>
@@ -147,6 +147,7 @@ const title = "Fully use the power of CSS with you compainion and guide, Fylgja 
 					);
 					filter: blur(120px);
 					border-radius: 50%;
+					opacity: 60%;
 				}
 			}
 		</style>
@@ -222,20 +223,7 @@ const title = "Fully use the power of CSS with you compainion and guide, Fylgja 
 	</footer>
 </Layout>
 
-<style>
-	.page-footer {
-		border-block-start: 1px solid
-			var(--page-footer-stroke, color-mix(in srgb, currentcolor 12%, transparent));
-		background-color: var(--page-footer-bg, var(--root-bg));
-		color: var(--page-footer-color, var(--text-color-muted));
-
-		a {
-			text-decoration: none;
-		}
-	}
-</style>
-
-<style is:global>
+<style is:inline>
 	.page-header[data-sticky="false"] {
 		--page-header-bg: transparent;
 		--page-header-color: var(--text-color-muted);
@@ -257,5 +245,37 @@ const title = "Fully use the power of CSS with you compainion and guide, Fylgja 
 		.grid-cols.--bento-odd > :nth-child(3n + 1) {
 			--col: span 2;
 		}
+	}
+
+	.page-footer {
+		border-block-start: 1px solid
+			var(--page-footer-stroke, color-mix(in srgb, currentcolor 12%, transparent));
+		background-color: var(--page-footer-bg, var(--root-bg));
+		color: var(--page-footer-color, var(--text-color-muted));
+
+		a {
+			text-decoration: none;
+		}
+	}
+
+	@property --hue {
+		syntax: "<angle> | <number>";
+		inherits: true;
+		initial-value: 0;
+	}
+
+	@keyframes scroll-hue {
+		from {
+			--hue: var(--hue-orange);
+		}
+		to {
+			--hue: var(--hue-indigo);
+		}
+	}
+
+	html {
+		--hue: var(--hue-orange);
+		animation: scroll-hue;
+		animation-timeline: scroll();
 	}
 </style>

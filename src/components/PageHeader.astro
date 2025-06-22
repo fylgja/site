@@ -30,6 +30,20 @@ const menu = [
 ];
 
 const mobileMenu = menu;
+const mobileMenuHighlists = [
+	{
+		label: "Base",
+		path: "/library/base",
+	},
+	{
+		label: "Tokens",
+		path: "/library/tokens",
+	},
+	{
+		label: "Utilities",
+		path: "/library/utilities",
+	},
+];
 ---
 
 <header
@@ -61,6 +75,9 @@ const mobileMenu = menu;
 					))
 				}
 				<ThemeToggle />
+				<a href={siteConfig.socials.github} class="btn">
+					<IconGithub aria-label="Checkout the Fylgja Github page" />
+				</a>
 			</nav>
 			<Offcanvas
 				btnClasses="lg:hidden"
@@ -106,7 +123,21 @@ const mobileMenu = menu;
 								))
 							}
 						</div>
-						<slot name="mobile-menu" />
+						<slot name="mobile-menu">
+							<div class="menu">
+								{
+									mobileMenuHighlists.map((item) => (
+										<a
+											href={item.path}
+											aria-current={isCurrentPage(item.path)}
+											class="btn"
+										>
+											{item.label}
+										</a>
+									))
+								}
+							</div>
+						</slot>
 					</div>
 				</div>
 			</Offcanvas>
