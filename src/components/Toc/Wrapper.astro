@@ -1,7 +1,6 @@
 ---
 import type { AstroTocProps, TocItemProps } from "./types.ts";
-import Expand from "@/assets/icons/expand.svg";
-import Collapse from "@/assets/icons/collapse.svg";
+import { ChevronsUpDown, ChevronsDownUp } from "@lucide/astro";
 import TocItem from "./Item.astro";
 
 interface Props {
@@ -82,8 +81,8 @@ const style = {
 				<summary class="list-none btn w-full align">
 					<span>{label}</span>
 					<span class="stack" aria-hidden="true">
-						<Expand width="24" height="24" class="toggle-hide" />
-						<Collapse width="24" height="24" class="toggle-show" />
+						<ChevronsUpDown width="24" height="24" class="toggle-hide" />
+						<ChevronsDownUp width="24" height="24" class="toggle-show" />
 					</span>
 				</summary>
 				<ul onclick="mobileDetailsToc.removeAttribute('open')">
