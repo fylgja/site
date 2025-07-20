@@ -10,3 +10,25 @@
 		var(--gradient) border-box;
 	border-color: #0000;
 }
+
+.lead {
+	font-size: var(--lead-size, 1.125em);
+	line-height: inherit;
+	font-weight: bold;
+}
+
+.font-lighter {
+	font-weight: lighter;
+}
+
+.font-normal {
+	font-weight: normal;
+}
+
+.font-bolder {
+	font-weight: bolder;
+}
+
+.object-cover {
+	object-fit: cover;
+}
