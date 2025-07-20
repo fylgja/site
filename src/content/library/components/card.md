@@ -1,15 +1,15 @@
 ---
 title: "Card"
 pageTitle: "Fylgja Card"
-description: "Create grouped content with the Card for product items, Blog items or for a Dropdown Panels"
-npm: "@fylgja/input-group"
-git: "https://github.com/fylgja/fylgja/tree/main/components/input-group"
+description: "Create grouped content with the Card for product items, Blog items or for a Dropdown Panel"
+npm: "@fylgja/card"
+git: "https://github.com/fylgja/fylgja/tree/main/components/card"
 ---
 
 The Fylgja Card component allows you to group content together, for a more contained content element.
 
 This component is ideal for building various UI elements such as
-Product items, Blog items or for a Dropdown Panels.
+Product items, Blog items or for a Dropdown Panel.
 
 ## Installation
 
@@ -127,7 +127,7 @@ As you can see, with just a few CSS utilities, you can easily create a fully fun
 		/>
 		<p class="lead"><strong>Coffee Beans</strong></p>
 		<p>Dicta ea a, commodi reiciendis aut doloremque earum fugit ducimus officiis.</p>
-		<p class="font-bolder">€18.99</p>
+		<p class="font-bold">€18.99</p>
 		<form action="#" class="flex-wrap gap align">
 			<input type="hidden" name="product-id" value="demo-id">
 			<button>Add to Cart</button>
@@ -143,7 +143,7 @@ As you can see, with just a few CSS utilities, you can easily create a fully fun
 		/>
 		<p class="lead"><strong>Coffee Cup</strong></p>
 		<p>Dicta ea a, commodi reiciendis aut doloremque earum fugit ducimus officiis.</p>
-		<p class="font-bolder">€6.00</p>
+		<p class="font-bold">€6.00</p>
 		<form action="#" class="flex-wrap gap align">
 			<input type="hidden" name="product-id" value="demo-id">
 			<button>Add to Cart</button>
@@ -159,7 +159,7 @@ As you can see, with just a few CSS utilities, you can easily create a fully fun
 		/>
 		<p class="lead"><strong>Barista Training</strong></p>
 		<p>Dicta ea a, commodi reiciendis aut doloremque earum fugit ducimus officiis.</p>
-		<p class="font-bolder">€112.56</p>
+		<p class="font-bold">€112.56</p>
 		<form action="#" class="flex-wrap gap align">
 			<input type="hidden" name="product-id" value="demo-id">
 			<button>Add to Cart</button>
@@ -179,7 +179,7 @@ As you can see, with just a few CSS utilities, you can easily create a fully fun
 		>
 		<p class="lead"><strong>Coffee Beans</strong></p>
 		<p>Dicta ea a...</p>
-		<p class="font-bolder">€18.99</p>
+		<p class="font-bold">€18.99</p>
 		<form action="#" class="flex-wrap gap align">
 			<input type="hidden" name="product-id" value="demo-id">
 			<button>Add to Cart</button>
