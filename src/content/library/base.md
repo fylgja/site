@@ -80,7 +80,14 @@ Fylgja Base is designed to work seamlessly with plain HTML, so most of what you 
 
 Below is a CodePen demo showcasing Fylgja Base applied to a wide range of HTML elements. This preview highlights the default styles and improvements you get simply by using Fylgja Base.
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="Fylgja Base - Showcasing the power of classless styling" src="https://codepen.io/Fylgja/embed/preview/ExGOZaE?default-tab=result&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe
+	src="https://codepen.io/Fylgja/embed/preview/ExGOZaE?default-tab=result&theme-id=dark"
+	title="Fylgja Base - Showcasing the power of classless styling"
+	loading="lazy"
+	width="992"
+	height="744"
+	allow="fullscreen"
+>
   See the Pen <a href="https://codepen.io/Fylgja/pen/ExGOZaE">
   Fylgja Base - Showcasing the power of classless styling</a> by Fylgja (<a href="https://codepen.io/Fylgja">@Fylgja</a>)
   on <a href="https://codepen.io">CodePen</a>.
