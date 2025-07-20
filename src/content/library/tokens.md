@@ -321,10 +321,12 @@ Go beyond the basics with advanced easing options with the elastic motion.
 
 ### Fonts
 
+<div class="demo-wrapper --resize flow-none" style="--my: var(--text-flow)">
 <p
 	id="demoFonts"
 	style="font-size: var(--font-size-6); line-height: var(--line-height-3);"
 >Easily customize your text with variable and static font sizes, intelligently adjusted line heights, modern font stacks, and a comprehensive set of typography variables.</p>
+</div>
 
 <div class="flex-wrap gap">
 <label>
