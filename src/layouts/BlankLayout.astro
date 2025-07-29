@@ -87,6 +87,24 @@ if (paths.length) {
 			)
 		}
 		<slot name="head" />
+		<script type="speculationrules">
+			{
+				"prerender": [
+					{
+						"source": "document",
+						"where": {
+							"and": [
+								{ "href_matches": "/*" },
+								{ "not": { "selector_matches": ".do-not-prerender" } },
+								{ "not": { "selector_matches": "[download]" } },
+								{ "not": { "selector_matches": "[rel~=nofollow]" } }
+							]
+						},
+						"eagerness": "moderate"
+					}
+				]
+			}
+		</script>
 		<script is:inline>
 			function getColorScheme() {
 				const preference = localStorage.getItem("theme-preference");
