@@ -1,0 +1,7 @@
+---
+import Layout from "@/layouts/PageLayout.astro";
+const url = new URL("/docs/concepts/classless", Astro.url);
+const title = `Redirecting to: ${url}`;
+---
+
+<Layout title={title} redirect={url} />

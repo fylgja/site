@@ -3,6 +3,8 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/PageLayout.astro";
 import Meta from "@/components/MetaContent.astro";
+import Schema from "@/components/Schema.astro";
+import siteConfig from "site.config";
 
 export async function getStaticPaths() {
 	const entries = await getCollection("blog");
@@ -13,7 +15,7 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { title, description, publishDate, updateDate, coverImage, coverColor } = entry.data;
+const { title, description, tags, publishDate, updateDate, coverImage, coverColor } = entry.data;
 const { Content } = await entry.render();
 ---
 
@@ -24,6 +26,27 @@ const { Content } = await entry.render();
 	class=""
 	style="--my: 0 var(--size-12)"
 >
+	<Schema
+		data={{
+			"@context": "https://schema.org",
+			"@type": "BlogPosting",
+			headline: title,
+			description,
+			keywords: tags,
+			image: coverImage ? [coverImage.src] : [],
+			thumbnailUrl: coverImage?.src,
+			datePublished: publishDate,
+			dateModified: updateDate,
+			author: [
+				{
+					"@type": "Organization",
+					name: siteConfig.name,
+					url: Astro.site,
+				},
+			],
+		}}
+		slot="head"
+	/>
 	<div
 		class:list={["banner container clip rounded-conditional", !coverImage && "bg-gradient"]}
 		style="--container-gap: 0px"

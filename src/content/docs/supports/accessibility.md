@@ -1,6 +1,7 @@
 ---
 title: "Accessibility"
 description: "Fylgja is out of the box fully A11Y ready."
+sortOrder: 9
 ---
 
 All Fylgja packages are designed to be fully accessible right out of the box.

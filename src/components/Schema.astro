@@ -1,0 +1,11 @@
+---
+interface Props {
+	data: {
+		[key: string]: any;
+	};
+}
+
+const { data } = Astro.props;
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(data)} />

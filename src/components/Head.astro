@@ -8,6 +8,7 @@ interface Props {
 	themeColor?: string;
 	themeColorDark?: string;
 	ogType?: "website" | "article";
+	ogLocal?: string;
 }
 
 const {
@@ -19,6 +20,7 @@ const {
 	themeColor,
 	themeColorDark,
 	ogType = "website",
+	ogLocal = "en_US",
 } = Astro.props;
 
 const date = new Date();
@@ -50,11 +52,17 @@ const dateHash = `v=${date.getMonth() + 1}-${date.getFullYear()}`;
 	}
 	{themeColor && <meta name="theme-color" content={themeColor} />}
 
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta property="og:locale" content={ogLocal}>
 	<meta property="og:type" content={ogType} />
 	<meta property="og:url" content={Astro.url} />
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
-	{image && <meta property="og:image" content={new URL(image, Astro.url)} />}
+	{image && (
+		<meta property="og:image" content={new URL(image, Astro.url)} />
+		<meta property="og:image:width" content="1200">
+		<meta property="og:image:height" content="675">
+	)}
 
 	<meta name="generator" content={Astro.generator} />
 

@@ -87,6 +87,7 @@ Below is a CodePen demo showcasing Fylgja Base applied to a wide range of HTML e
 	width="992"
 	height="744"
 	allow="fullscreen"
+	credentialless
 >
   See the Pen <a href="https://codepen.io/Fylgja/pen/ExGOZaE">
   Fylgja Base - Showcasing the power of classless styling</a> by Fylgja (<a href="https://codepen.io/Fylgja">@Fylgja</a>)

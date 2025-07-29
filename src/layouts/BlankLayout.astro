@@ -1,7 +1,9 @@
 ---
 import Head from "@/components/Head.astro";
+import Schema from "@/components/Schema.astro";
 import siteConfig from "site.config";
 import defaultSocialImage from "@/assets/default-social-img.png";
+import siteLogo from "@/assets/logo.svg";
 
 interface Props {
 	title: string;
@@ -20,6 +22,24 @@ const {
 	lang = "en",
 	dir = "ltr",
 } = Astro.props;
+
+const currentUrl = Astro.url.pathname;
+const paths = currentUrl.split("/").filter((crumb: any) => crumb);
+const itemListElement: {}[] = [];
+
+// TODO get real title for each path
+if (paths.length) {
+	paths.forEach((path, index) => {
+		itemListElement.push({
+			"@type": "ListItem",
+			position: index + 1,
+			item: {
+				"@id": `${Astro.site}${paths.slice(0, index + 1).join("/")}/`,
+				name: index + 1 === paths.length ? title : path,
+			},
+		});
+	});
+}
 ---
 
 <html lang={lang} dir={dir} data-theme="auto">
@@ -34,6 +54,7 @@ const {
 	>
 		<meta name="generator" content="Fylgja CSS" />
 		<meta name="fediverse:creator" content="@fylgja@fosstodon.org" />
+		{Object.values(siteConfig.socials).map((item) => <link href={item} rel="me" />)}
 		<link
 			rel="alternate"
 			type="application/rss+xml"
@@ -41,6 +62,30 @@ const {
 			href={new URL("blog/feed.xml", Astro.site)}
 		/>
 		<link rel="sitemap" href="/sitemap-index.xml" />
+		<Schema
+			data={{
+				"@context": "https://schema.org",
+				"@type": "Organization",
+				url: Astro.site,
+				logo: siteLogo.src,
+				name: siteConfig.name,
+				alternateName: "Fylgja CSS",
+				description: siteConfig.description,
+				foundingDate: siteConfig.foundingDate,
+				sameAs: Object.values(siteConfig.socials),
+			}}
+		/>
+		{
+			itemListElement.length && (
+				<Schema
+					data={{
+						"@context": "https://schema.org",
+						"@type": "BreadcrumbList",
+						itemListElement,
+					}}
+				/>
+			)
+		}
 		<slot name="head" />
 		<script is:inline>
 			function getColorScheme() {

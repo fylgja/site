@@ -25,6 +25,7 @@ const urlPrefix = "/" + collectionName.toLowerCase();
 ---
 
 <Layout title={title} description={description}>
+	<slot name="head" slot="head" />
 	<SkipLink id="main-content" title="Skip to content" />
 	<PageHeader>
 		<Menu title={collectionName} items={collection} urlPrefix={urlPrefix} slot="mobile-menu" />

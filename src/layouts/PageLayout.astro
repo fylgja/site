@@ -25,12 +25,15 @@ const {
 
 <Layout title={title} description={description} pageType={pageType}>
 	{
-		redirect && (
+		redirect ? (
 			<Fragment slot="head">
 				<meta http-equiv="refresh" content={`0;url=${redirect}`} />
 				<meta name="robots" content="noindex" />
 				<link rel="canonical" href={redirect} />
+				<slot name="head" />
 			</Fragment>
+		) : (
+			<slot name="head" slot="head" />
 		)
 	}
 	<SkipLink id="main-content" title="Skip to content" />
