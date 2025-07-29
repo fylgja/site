@@ -12,20 +12,16 @@
 }
 
 .lead {
-	font-size: var(--lead-size, 1.125em);
+	font-size: var(--lead-size, large);
 	line-height: inherit;
 	font-weight: bold;
-}
-
-.font-lighter {
-	font-weight: lighter;
 }
 
 .font-normal {
 	font-weight: normal;
 }
 
-.font-bolder {
+.font-bold {
 	font-weight: bolder;
 }
 
