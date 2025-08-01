@@ -1,0 +1,393 @@
+---
+interface Props {
+	class?: string;
+	style?: string;
+}
+
+const { class: classes, style } = Astro.props;
+---
+
+<tab-list class:list={["block", classes]} style={style}>
+	<div id="tab-list" role="tablist" class="flex gap align" style="--align: normal end">
+		<slot name="tablist" />
+	</div>
+	<slot />
+</tab-list>
+
+<script>
+	// Reworked copy from https://github.com/zachleat/seven-minute-tabs/blob/master/seven-minute-tabs.js
+	// TODO: rework to something more flexable
+	// @ts-nocheck
+	class TabList extends HTMLElement {
+		static attrs = {
+			persist: "persist",
+			persistGroupKey: "data-tabs-persist",
+			prune: "prune",
+			sync: "sync",
+		};
+
+		static props = {
+			groupStorageKey: "tabs-persist-tab",
+		};
+
+		static keys = {
+			end: 35,
+			home: 36,
+			left: 37,
+			up: 38,
+			right: 39,
+			down: 40,
+		};
+
+		static direction = {
+			37: -1,
+			38: -1,
+			39: 1,
+			40: 1,
+		};
+
+		constructor() {
+			super();
+
+			this._init = this._init.bind(this);
+			this._observer = new MutationObserver(this._init);
+		}
+
+		get storage() {
+			if (this.persistSelection === "session") {
+				return sessionStorage;
+			} else if (this.persistSelection) {
+				return localStorage;
+			}
+
+			return {
+				getItem() {},
+				setItem() {},
+			};
+		}
+
+		get persistSelection() {
+			if (!("_persist" in this)) {
+				this._persist = false;
+				if (this.hasAttribute(TabList.attrs.persist)) {
+					this._persist = this.getAttribute(TabList.attrs.persist) || true;
+				}
+			}
+			return this._persist;
+		}
+
+		connectedCallback() {
+			if (this.children.length) {
+				this._init();
+			}
+			this._observer.observe(this, { childList: true });
+		}
+
+		_init() {
+			this.tablist = this.querySelector('[role="tablist"]');
+			this.buttons = this.querySelectorAll('[role="tab"]');
+			this.panels = this.querySelectorAll('[role="tabpanel"]');
+			this.delay = this.determineDelay();
+
+			if (this.hasAttribute(TabList.attrs.prune)) {
+				for (let button of this.buttons) {
+					if (!this.querySelector(button.getAttribute("href"))) {
+						(button.closest("li") || button)?.remove();
+					}
+				}
+			}
+
+			if (!this.tablist || !this.buttons.length || !this.panels.length) {
+				return;
+			}
+
+			this.initButtons();
+			this.initPanels();
+		}
+
+		getTabIdFromHref(hash) {
+			let index = hash.indexOf("#");
+			if (index > -1) {
+				return hash.substr(index + 1);
+			}
+			return hash;
+		}
+
+		getButtonIdFromTabId(tabId) {
+			return `${tabId}-btn`;
+		}
+
+		initButtons() {
+			let count = 0;
+			let hasASelectedButton = false;
+
+			if (this.persistSelection) {
+				let persisted = JSON.parse(this.storage.getItem(TabList.props.groupStorageKey));
+				if (persisted) {
+					for (let button of this.buttons) {
+						let [key, value] = this.getStorageValues(button);
+						if (key && value && value == persisted[key]) {
+							button.setAttribute("aria-selected", "true");
+							hasASelectedButton = true;
+							break;
+						}
+					}
+				}
+			}
+
+			if (!hasASelectedButton) {
+				hasASelectedButton =
+					Array.from(this.buttons).filter(
+						(btn) => btn.getAttribute("aria-selected") === "true"
+					).length > 0;
+			}
+
+			for (let button of this.buttons) {
+				let isSelected = button.getAttribute("aria-selected") === "true";
+				if (!hasASelectedButton && count === 0) {
+					isSelected = true;
+				}
+
+				if (!button.hasAttribute("aria-selected")) {
+					button.setAttribute("aria-selected", isSelected);
+				}
+				button.setAttribute("tabindex", isSelected ? "0" : "-1");
+
+				let tabId = this.getTabIdFromHref(button.getAttribute("href"));
+				if (!button.hasAttribute("aria-controls")) {
+					button.setAttribute("aria-controls", tabId);
+				}
+				if (!button.hasAttribute("id")) {
+					button.setAttribute("id", this.getButtonIdFromTabId(tabId));
+				}
+
+				button.addEventListener("click", this.clickEventListener.bind(this));
+				button.addEventListener("keydown", this.keydownEventListener.bind(this));
+				button.addEventListener("keyup", this.keyupEventListener.bind(this));
+
+				button.index = count++;
+			}
+		}
+
+		initPanels() {
+			let selectedPanelId = this.querySelector(
+				'[role="tab"][aria-selected="true"]'
+			).getAttribute("aria-controls");
+			for (let panel of this.panels) {
+				if (panel.getAttribute("id") !== selectedPanelId) {
+					panel.setAttribute("hidden", "");
+				}
+				panel.setAttribute("tabindex", "0");
+
+				if (!panel.hasAttribute("aria-labelledby")) {
+					let tabId = panel.getAttribute("id");
+					panel.setAttribute("aria-labelledby", this.getButtonIdFromTabId(tabId));
+				}
+			}
+		}
+
+		clickEventListener(event) {
+			let button = event.target;
+			if (
+				button.tagName === "A" ||
+				(button.tagName === "BUTTON" && button.getAttribute("type") === "submit")
+			) {
+				event.preventDefault();
+			}
+
+			this.activateTab(button, false);
+		}
+
+		keydownEventListener(event) {
+			var key = event.keyCode;
+
+			switch (key) {
+				case TabList.keys.end:
+					event.preventDefault();
+					// Activate last tab
+					this.activateTab(this.buttons[this.buttons.length - 1]);
+					break;
+				case TabList.keys.home:
+					event.preventDefault();
+					// Activate first tab
+					this.activateTab(this.buttons[0]);
+					break;
+
+				case TabList.keys.up:
+				case TabList.keys.down:
+					this.determineOrientation(event);
+					break;
+			}
+		}
+
+		keyupEventListener(event) {
+			var key = event.keyCode;
+
+			switch (key) {
+				case TabList.keys.left:
+				case TabList.keys.right:
+					this.determineOrientation(event);
+					break;
+			}
+		}
+
+		determineOrientation(event) {
+			var key = event.keyCode;
+			var vertical = this.tablist.getAttribute("aria-orientation") == "vertical";
+			var proceed = false;
+
+			if (vertical) {
+				if (key === TabList.keys.up || key === TabList.keys.down) {
+					event.preventDefault();
+					proceed = true;
+				}
+			} else {
+				if (key === TabList.keys.left || key === TabList.keys.right) {
+					proceed = true;
+				}
+			}
+
+			if (proceed) {
+				this.switchTabOnArrowPress(event);
+			}
+		}
+
+		switchTabOnArrowPress(event) {
+			var pressed = event.keyCode;
+
+			for (let button of this.buttons) {
+				button.addEventListener("focus", this.focusEventHandler.bind(this));
+			}
+
+			if (TabList.direction[pressed]) {
+				var target = event.target;
+				if (target.index !== undefined) {
+					if (this.buttons[target.index + TabList.direction[pressed]]) {
+						this.buttons[target.index + TabList.direction[pressed]].focus();
+					} else if (pressed === TabList.keys.left || pressed === TabList.keys.up) {
+						this.focusLastTab();
+					} else if (pressed === TabList.keys.right || pressed == TabList.keys.down) {
+						this.focusFirstTab();
+					}
+				}
+			}
+		}
+
+		getStorageValues(tab) {
+			let [key, value] = (tab.getAttribute(TabList.attrs.persistGroupKey) || "").split(":");
+			if (key && value) {
+				return [key, value];
+			}
+			if (key) {
+				return ["__global", key];
+			}
+			return [,];
+		}
+
+		syncRelatedTabs(activatedTab) {
+			if (!this.hasAttribute(TabList.attrs.sync)) {
+				return;
+			}
+
+			let persistGroupKey = activatedTab.getAttribute(TabList.attrs.persistGroupKey);
+			let tabs = Array.from(
+				document.querySelectorAll(`[${TabList.attrs.persistGroupKey}="${persistGroupKey}"]`)
+			).filter((tab) => tab !== activatedTab);
+			for (let tab of tabs) {
+				let tabGroup = tab.closest(`[${TabList.attrs.sync}]:defined`);
+				if (tabGroup) {
+					tabGroup.activateTab(tab, false, true);
+				}
+			}
+		}
+
+		activateTab(tab, setFocus = true, viaSync = false) {
+			if (tab.getAttribute("role") !== "tab") {
+				tab = tab.closest('[role="tab"]');
+			}
+
+			if (!viaSync) {
+				this.syncRelatedTabs(tab);
+			}
+
+			this.deactivateTabs();
+			tab.removeAttribute("tabindex");
+			tab.setAttribute("aria-selected", "true");
+			var controls = tab.getAttribute("aria-controls");
+			var panel = document.getElementById(controls);
+			if (panel) {
+				panel.removeAttribute("hidden");
+
+				if (this.persistSelection) {
+					let obj = JSON.parse(this.storage.getItem(TabList.props.groupStorageKey));
+					if (!obj) {
+						obj = {};
+					}
+
+					let [key, value] = this.getStorageValues(tab);
+					if (key && value) {
+						obj[key] = value;
+					}
+
+					this.storage.setItem(TabList.props.groupStorageKey, JSON.stringify(obj));
+				}
+			}
+
+			if (setFocus) {
+				tab.focus();
+			}
+		}
+
+		deactivateTabs() {
+			for (let button of this.buttons) {
+				button.setAttribute("tabindex", "-1");
+				button.setAttribute("aria-selected", "false");
+				button.removeEventListener("focus", this.focusEventHandler.bind(this));
+			}
+
+			for (let panel of this.panels) {
+				panel.setAttribute("hidden", "hidden");
+			}
+		}
+
+		focusFirstTab() {
+			this.buttons[0].focus();
+		}
+
+		focusLastTab() {
+			this.buttons[this.buttons.length - 1].focus();
+		}
+
+		determineDelay() {
+			var hasDelay = this.tablist.hasAttribute("data-delay");
+			var delay = 0;
+
+			if (hasDelay) {
+				var delayValue = this.tablist.getAttribute("data-delay");
+				if (delayValue) {
+					delay = delayValue;
+				} else {
+					delay = 300;
+				}
+			}
+
+			return delay;
+		}
+
+		focusEventHandler(event) {
+			var target = event.target;
+
+			setTimeout(this.checkTabFocus.bind(this), this.delay, target);
+		}
+
+		checkTabFocus(target) {
+			let focused = document.activeElement;
+
+			if (target === focused) {
+				this.activateTab(target, false);
+			}
+		}
+	}
+
+	window.customElements.define("tab-list", TabList);
+</script>

@@ -16,11 +16,6 @@
 	}
 }
 
-iframe[src^="https://codepen.io"]
-{
-	--aspect-ratio: 4 /3;
-}
-
 :where(h1, h2, h3, h4, h5, h6):target {
 	&:before {
 		content: "# " / "";

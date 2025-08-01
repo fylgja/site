@@ -1,0 +1,14 @@
+[
+	{
+		"id": "button",
+		"title": "Button",
+		"description": "Lorum ipsim",
+		"dependencies": ["@fylgja/base"]
+	},
+	{
+		"id": "compare",
+		"title": "Compare",
+		"description": "",
+		"dependencies": ["@fylgja/form-extend"]
+	}
+]

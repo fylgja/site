@@ -1,4 +1,7 @@
+import fs from "fs";
+import path from "path";
 import { z, defineCollection } from "astro:content";
+import { file } from "astro/loaders";
 
 const baseSchema = {
 	draft: z.boolean().optional().default(false),
@@ -43,5 +46,29 @@ export const collections = {
 	library: defineCollection({
 		type: "content",
 		schema: docsSchema,
+	}),
+	ui: defineCollection({
+		loader: file("src/data/ui-library.json", {
+			parser: (input) => {
+				const rawJson = JSON.parse(input);
+				const snippetsDir = path.join(process.cwd(), "src/data/ui-snippets");
+
+				return rawJson.map((item: { id: string; [key: string]: any }) => {
+					const htmlPath = path.join(snippetsDir, `${item.id}.html`);
+					let snippet = "";
+					try {
+						snippet = fs.readFileSync(htmlPath, "utf8");
+					} catch (e) {
+						// File not found, leave snippet empty
+					}
+					return { ...item, snippet };
+				});
+			},
+		}),
+		schema: z.object({
+			...baseSchema,
+			dependencies: z.array(z.string()),
+			snippet: z.string().default(""),
+		}),
 	}),
 };
