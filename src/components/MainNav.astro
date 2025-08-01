@@ -3,8 +3,6 @@ interface Props {
 	label: string;
 }
 
-const { label } = Astro.props;
-
 const isActive = (item: string) => {
 	return Astro.url.pathname.startsWith(item) ? "is-active" : "";
 };
