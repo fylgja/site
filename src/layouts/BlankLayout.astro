@@ -12,6 +12,7 @@ interface Props {
 	pageType?: "website" | "article";
 	lang?: string;
 	dir?: "ltr" | "rtl";
+	speculationrules?: Object | false;
 }
 
 const {
@@ -21,6 +22,22 @@ const {
 	pageType = "website",
 	lang = "en",
 	dir = "ltr",
+	speculationrules = {
+		prerender: [
+			{
+				source: "document",
+				where: {
+					and: [
+						{ href_matches: "/*" },
+						{ not: { selector_matches: ".do-not-prerender" } },
+						{ not: { selector_matches: "[download]" } },
+						{ not: { selector_matches: "[rel~=nofollow]" } },
+					],
+				},
+				eagerness: "moderate",
+			},
+		],
+	},
 } = Astro.props;
 
 const currentUrl = Astro.url.pathname;
@@ -76,7 +93,7 @@ if (paths.length) {
 			}}
 		/>
 		{
-			!!itemListElement.length && (
+			itemListElement.length > 0 && (
 				<Schema
 					data={{
 						"@context": "https://schema.org",
@@ -87,24 +104,15 @@ if (paths.length) {
 			)
 		}
 		<slot name="head" />
-		<script type="speculationrules">
-			{
-				"prerender": [
-					{
-						"source": "document",
-						"where": {
-							"and": [
-								{ "href_matches": "/*" },
-								{ "not": { "selector_matches": ".do-not-prerender" } },
-								{ "not": { "selector_matches": "[download]" } },
-								{ "not": { "selector_matches": "[rel~=nofollow]" } }
-							]
-						},
-						"eagerness": "moderate"
-					}
-				]
-			}
-		</script>
+		{
+			speculationrules && (
+				<script
+					type="speculationrules"
+					is:inline
+					set:html={JSON.stringify(speculationrules)}
+				/>
+			)
+		}
 		<script is:inline>
 			function getColorScheme() {
 				const preference = localStorage.getItem("theme-preference");

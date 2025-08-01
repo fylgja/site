@@ -2,7 +2,8 @@
 	position: relative;
 	background-color: var(--card-bg, color-mix(in oklab, var(--root-bg) 88%, white));
 	color: var(--card-color, var(--root-fg));
-	border: 1px solid var(--card-stroke, color-mix(in oklab, var(--root-bg) 88%, black));
+	border: var(--card-stroke-size, 1px) solid
+		var(--card-stroke, color-mix(in oklab, var(--root-bg) 88%, var(--root-fg)));
 	border-radius: var(--card-radius, 1rem);
 	box-shadow: var(--card-shadow, none);
 	transition:
@@ -42,10 +43,6 @@
 	)
 	> :last-child {
 	margin-block-end: 0;
-}
-
-.card:where(img, video, iframe, picture) {
-	border-width: 0;
 }
 
 .card:where(.--elevated) {

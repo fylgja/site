@@ -78,18 +78,19 @@ primary buttons, and off-canvas dialog support.
 
 Fylgja Base is designed to work seamlessly with plain HTML, so most of what you see on this site uses just HTML, with a few CSS components and Utilities.
 
-Below is a CodePen demo showcasing Fylgja Base applied to a wide range of HTML elements. This preview highlights the default styles and improvements you get simply by using Fylgja Base.
+Below is a demo showcasing Fylgja Base applied to a wide range of HTML elements.
+This preview highlights the default styles and improvements you get simply by using Fylgja Base.
 
+<figure class="flow">
 <iframe
-	src="https://codepen.io/Fylgja/embed/preview/ExGOZaE?default-tab=result&theme-id=dark"
+	src="/library/base/demo"
 	title="Fylgja Base - Showcasing the power of classless styling"
 	loading="lazy"
 	width="992"
 	height="744"
-	allow="fullscreen"
-	credentialless
->
-  See the Pen <a href="https://codepen.io/Fylgja/pen/ExGOZaE">
-  Fylgja Base - Showcasing the power of classless styling</a> by Fylgja (<a href="https://codepen.io/Fylgja">@Fylgja</a>)
-  on <a href="https://codepen.io">CodePen</a>.
-</iframe>
+	class="card"
+></iframe>
+<fircaption class="block text-center italic text-muted">
+<a href="/library/base/demo">View the Fylgja Base Demo in Fullscreen</a>
+</figcaption>
+</figure>

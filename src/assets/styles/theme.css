@@ -17,7 +17,8 @@
 	--code-stroke: color-mix(in srgb, currentcolor 20%, transparent);
 	--anchor-offset: 10ex;
 	color-scheme: light dark;
-	scrollbar-color: var(--scrollthumb-color, var(--brand)) var(--scrolltrack-color, #0000);
+	scrollbar-color: var(--scrollthumb-color, var(--brand))
+		var(--scrolltrack-color, var(--surface-color));
 	accent-color: var(--brand);
 	caret-color: var(--brand);
 	interpolate-size: allow-keywords;
