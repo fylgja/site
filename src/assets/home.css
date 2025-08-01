@@ -2,7 +2,7 @@
 @import "@fylgja/base";
 
 @import "styles/menu";
-@import "styles/card";
+@import "@fylgja/card";
 
 @import "styles/content";
 @import "styles/theme";

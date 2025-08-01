@@ -3,7 +3,7 @@
 
 @import "@fylgja/input-group";
 @import "styles/menu";
-@import "styles/card";
+@import "@fylgja/card";
 @import "styles/breadcrumbs";
 
 @import "styles/content";
