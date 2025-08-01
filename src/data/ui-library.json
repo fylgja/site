@@ -3,12 +3,14 @@
 		"id": "button",
 		"title": "Button",
 		"description": "Lorum ipsim",
-		"dependencies": ["@fylgja/base"]
+		"dependencies": ["@fylgja/base"],
+		"draft": true
 	},
 	{
 		"id": "compare",
 		"title": "Compare",
 		"description": "",
-		"dependencies": ["@fylgja/form-extend"]
+		"dependencies": ["@fylgja/form-extend"],
+		"draft": true
 	}
 ]
