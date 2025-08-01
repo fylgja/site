@@ -1,13 +1,14 @@
 ---
+import type { HTMLAttributes } from "astro/types";
 import { Code } from "astro:components";
 import type { BuiltinLanguage, LanguageRegistration, SpecialLanguage } from "shiki";
 
-interface Props {
+interface Props extends Omit<HTMLAttributes<"pre">, "lang"> {
 	code: string;
 	lang?: BuiltinLanguage | SpecialLanguage | LanguageRegistration;
 }
 
-const { lang, code } = Astro.props;
+const { lang, code, ...attr } = Astro.props;
 ---
 
 <Code
@@ -18,4 +19,5 @@ const { lang, code } = Astro.props;
 		dark: "github-dark",
 	}}
 	defaultColor={false}
+	{...attr}
 />
