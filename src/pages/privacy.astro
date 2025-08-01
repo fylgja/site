@@ -1,0 +1,47 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import site from "../../site.config";
+---
+
+<PageLayout
+	title="Privacy and Cookie Policy"
+	description="Privacy and cookie policy for Fylgja.dev"
+	style="--container-size: var(--size-content);"
+>
+	<article style="--my: var(--size-12)">
+		<hgroup>
+			<h1>Privacy and Cookie Policy</h1>
+			<p>Last updated: August 1, 2025</p>
+		</hgroup>
+		<p>
+			This website, <a href={site.site}>{site.name}</a>, does not collect any personal data
+			and does not use cookies.
+		</p>
+		<p>
+			We respect your privacy and are committed to a transparent online experience. Therefore,
+			we have designed our website to function fully without the need to collect any personal
+			information from our visitors or use cookies.
+		</p>
+		<h2>Information We Don't Collect</h2>
+		<p>
+			We do not collect any personal information, such as your name, email address, or IP
+			address. We do not use any tracking technologies, such as cookies or analytics services.
+		</p>
+		<h2>What are cookies?</h2>
+		<p>
+			Cookies are small text files that are stored on your computer or mobile device when you
+			visit a website. They are used to remember your preferences and to help the website
+			owner understand how you use their site. Since we do not use them, there is nothing to
+			worry about.
+		</p>
+		<h2>Third-Party Links</h2>
+		<p>
+			Our website may contain links to other websites. We are not responsible for the privacy
+			practices of these other sites. We encourage you to be aware when you leave our site and
+			to read the privacy statements of each and every website that collects personally
+			identifiable information.
+		</p>
+		<h2>Changes to this policy</h2>
+		<p>We may update this policy from time to time. Any changes will be posted on this page.</p>
+	</article>
+</PageLayout>

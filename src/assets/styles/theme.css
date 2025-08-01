@@ -25,6 +25,7 @@
 
 	@media (width >= 1440px) {
 		--font-size: 1.125em;
+		--line-height: 1.8;
 	}
 }
 

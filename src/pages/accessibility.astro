@@ -1,0 +1,40 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import siteConfig from "site.config";
+
+const { name, socials } = siteConfig;
+---
+
+<PageLayout
+	title="Accessibility Statement"
+	description={`Accessibility Statement for ${name}`}
+	style="--container-size: var(--size-content);"
+>
+	<article style="--my: var(--size-12)">
+		<h1>Accessibility Statement</h1>
+
+		<p>
+			The {name} project recognizes that Accessibility is an incredibly important baseline to developing
+			inclusive and quality software. On
+			{name} web properties specifically, we aim to meet <a
+				href="https://www.w3.org/TR/WCAG21/">WCAG 2.1 AA standards</a
+			> and to support our development community to do the same.
+		</p>
+
+		<p>
+			If you’ve encountered an issue with our web site—accessibility or otherwise—please let
+			us know! The best way to do this is by filing a new <a
+				href={`${socials.github}/site/issues`}>GitHub issue</a
+			>.
+		</p>
+
+		<p>
+			We are also available on <a href={socials.bluesky}>Bluesky</a>.
+		</p>
+
+		<p>
+			It’s very important that we take responsibility for the code we publish and deliver and
+			strive to correct accessibility issues with the same veracity as a full service outage.
+		</p>
+	</article>
+</PageLayout>
