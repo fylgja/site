@@ -40,6 +40,7 @@ const {
 	},
 } = Astro.props;
 
+const isProd = import.meta.env.PROD;
 const currentUrl = Astro.url.pathname;
 const paths = currentUrl.split("/").filter((crumb: any) => crumb);
 const itemListElement: {}[] = [];
@@ -105,7 +106,7 @@ if (paths.length) {
 		}
 		<slot name="head" />
 		{
-			speculationrules && (
+			isProd && speculationrules && (
 				<script
 					type="speculationrules"
 					is:inline
