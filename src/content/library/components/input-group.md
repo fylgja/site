@@ -4,6 +4,7 @@ pageTitle: "Fylgja Input Group"
 description: "Create smarter, more intuitive form controls by grouping inputs and buttons together"
 npm: "@fylgja/input-group"
 git: "https://github.com/fylgja/fylgja/tree/main/components/input-group"
+sortOrder: 11
 ---
 
 The Fylgja Input Group component allows you to group inputs and buttons together

@@ -12,7 +12,7 @@ by converting JavaScript objects into CSS variables or JSON-based token systems.
 This tool empowers you to construct comprehensive Design Token sets with ease.
 
 > [!Note]
-> Originally developed for the [Fylgja Tokens](https://fylgja.dev/library/tokens) package,
+> Originally developed for the [Fylgja Tokens](https://fylgja.dev/library/tokens/) package,
 > this utility is also adaptable for use with other design systems.
 
 ## Installation

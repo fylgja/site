@@ -83,7 +83,7 @@ This preview highlights the default styles and improvements you get simply by us
 
 <figure class="flow">
 <iframe
-	src="/library/base/demo"
+	src="/library/base/demo/"
 	title="Fylgja Base - Showcasing the power of classless styling"
 	loading="lazy"
 	width="992"
@@ -91,6 +91,6 @@ This preview highlights the default styles and improvements you get simply by us
 	class="card"
 ></iframe>
 <fircaption class="block text-center italic text-muted">
-<a href="/library/base/demo">View the Fylgja Base Demo in Fullscreen</a>
+<a href="/library/base/demo/">View the Fylgja Base Demo in Fullscreen</a>
 </figcaption>
 </figure>

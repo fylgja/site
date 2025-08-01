@@ -102,7 +102,7 @@ Our journey doesn't stop here! We're already working on expanding the Fylgja eco
 
 Since Fylgja 2 represents a complete rebuild, there isn't a direct automated upgrade path or script, however, due to the modular nature of even v1, you can gradually replace features from v1 with the new version.
 
-For detailed information, please refer to our extensive [Library](/library) and [Documentation](/docs).
+For detailed information, please refer to our extensive [Library](/library/) and [Documentation](/docs).
 
 ## Share Your Thoughts and Support Fylgja!
 
