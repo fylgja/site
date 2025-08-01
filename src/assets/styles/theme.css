@@ -129,7 +129,7 @@ body > main {
 @media (prefers-color-scheme: dark) {
 	html:not([data-theme="light"]) {
 		--root-bg: color-mix(in oklab, hsl(0 15% 5%) 92%, var(--brand));
-		--root-fg: hsl(0 0% 96%);
+		--root-fg: hsl(0 0% 92%);
 		--select-icon: var(--select-dark-scheme);
 		--shadow-color: #030407;
 		--shadow-strength: 25%;

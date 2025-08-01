@@ -2,6 +2,7 @@
 @import "@fylgja/base";
 
 @import "@fylgja/input-group";
+@import "@fylgja/form-extend";
 @import "styles/menu";
 @import "@fylgja/card";
 @import "styles/breadcrumbs";
