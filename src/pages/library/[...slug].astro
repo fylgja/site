@@ -39,11 +39,11 @@ const hasMeta = !!git || !!npm;
 </Layout>
 
 <style is:global>
-	.demo-box {
+	:where(.demo-box) {
 		display: grid;
 		place-content: center;
 		border-radius: var(--radius-2);
-		border: 1px solid var(--demo-box-stroke, var(--brand));
+		border: var(--demo-box-stroke-size, 1px) solid var(--demo-box-stroke, var(--brand));
 		background-color: var(--demo-box-bg, var(--surface-color));
 		aspect-ratio: var(--ratio-box);
 		min-inline-size: var(--demo-box-min-size, clamp(var(--size-8), 10vw, var(--size-20)));
