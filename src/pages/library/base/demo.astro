@@ -591,8 +591,8 @@ p q r s t u v w x y z { } ~ </code>
 							oninput="setRangeValue(this)"
 						/>
 					</label>
-					<script>
-						function setRangeValue(el: HTMLInputElement) {
+					<script is:inline>
+						function setRangeValue(el) {
 							if (CSS.supports("timeline-scope", "--foo")) return;
 							el.style.setProperty("--range-value", el.value);
 						}

@@ -1,7 +1,4 @@
-import fs from "fs";
-import path from "path";
 import { z, defineCollection } from "astro:content";
-import { file } from "astro/loaders";
 
 const baseSchema = {
 	draft: z.boolean().optional().default(false),
