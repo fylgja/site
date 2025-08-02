@@ -127,9 +127,12 @@ Quickly set the `display` property of an element.
 
 The `divide` utility offers enhanced control over dividers, going beyond basic implementations.
 
-Fylgja provides both `divide-y` (vertical) and `divide-x` (horizontal), which seamlessly integrate with your border utilities, eliminating the need for preset values.
+Fylgja provides both `divide-y` (vertical) and `divide-x` (horizontal),
+which seamlessly integrate with your border utilities, eliminating the need for preset values.
 
-Additionally, it work together with the `flow` utility, to add flow-based spacing between your dividers, providing greater flexibility in layout gaps.
+Additionally, it works together with the `flow` utility,
+to add flow-based spacing between your dividers,
+providing greater flexibility in layout gaps.
 
 <figure class="demo-wrapper">
 <ul role="list" class="divide-y flow">
