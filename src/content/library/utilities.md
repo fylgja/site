@@ -5,6 +5,9 @@ description: "Fylgja utilities provides a curated set of CSS utilities"
 npm: "@fylgja/utilities"
 git: "https://github.com/fylgja/fylgja/tree/main/utilities"
 sortOrder: 3
+preconnect: [
+	"https://placecats.com/"
+]
 ---
 
 Fylgja Utilities offers a focused collection of production-ready CSS utilities.
@@ -47,19 +50,32 @@ You can import any utility mentioned below, using:
 
 _align • auto-grid • clip • container • content-lazy • display • divide • flex • flow • gap • gradient • grid-cols • line-clamp • list • overlay • position • rounded • scroll • scrollbar • size • snap • spacing • sr-only • stack • stretched-link • toggle • transition • truncate • typography_
 
-## Preview
+## Utilities Overview
 
 ### Align
 
-Effortlessly align content along both the Y and X axes for **flex** and **grid** layouts, and also for flow layouts. This utility leverages [Dynamic CSS Utilities].
+Effortlessly align content along both the Y and X axes for **flex** and **grid** layouts,
+as well as for flow layouts. This utility leverages [Dynamic CSS Utilities].
 
-<figure class="demo-wrapper flex align" style="--align: center; --demo-wrapper-min-size: 200px">
+<figure class="demo-wrapper flex align-center" style="--demo-wrapper-min-size: 200px">
 <code class="demo-box --inline">Align Center</code>
 </figure>
 
+<div class="scroll-x">
+
+| CSS Utility Name | Description                                                              |
+| ---------------- | ------------------------------------------------------------------------ |
+| `align`          | Main utility class, can be modified using CSS variables                  |
+| `align-center`   | Alias for `class="align" style="--align: center; --align-items: center"` |
+| `align-self`     | Main utility class, to apply to a child element                          |
+| `align-self-end` | Alias for `class="align-self" style="--align-self: end auto;"`           |
+
+</div>
+
 ### Auto Grid
 
-Create responsive grid layouts that automatically generate columns based on the configured `--max-col-size`.
+Create responsive grid layouts with the `auto-grid` utility.
+This class automatically generates columns based on the configured `--max-col-size` CSS variable.
 
 <figure class="demo-wrapper --resize">
 <div class="auto-grid gap">
@@ -72,11 +88,15 @@ Create responsive grid layouts that automatically generate columns based on the 
 
 ### Clip
 
-Hide overflowing content with ease. Use `clip` for all sides, or target specific axes with `clip-y` and `clip-x`.
+Hide overflowing content with ease. Use `clip` for all sides,
+or target specific axes with `clip-y` (vertical) and `clip-x` (horizontal).
 
 ### Container
 
-The standard way to center content and apply a maximum width, often referred to as a wrapper.
+The `container` utility provides a standard way to center content and apply a maximum width, often referred to as a wrapper.
+
+This container follows modern flow styles, applying a maximum width once without relying on media queries for each breakpoint.
+This allows for flexible styling per section using CSS variables to adjust `--container-size` and `--container-gap`.
 
 ### Content Lazy
 
@@ -88,7 +108,7 @@ Quickly set the `display` property of an element.
 
 <div class="scroll-x">
 
-| class                         | value                                                                                      |
+| CSS Utility Name              | value                                                                                      |
 | ----------------------------- | ------------------------------------------------------------------------------------------ |
 | `hidden`                      | `display: none`                                                                            |
 | `block`                       | `display: block`                                                                           |
@@ -107,7 +127,7 @@ Quickly set the `display` property of an element.
 
 The `divide` utility offers enhanced control over dividers, going beyond basic implementations.
 
-Fylgja provides both `divide-y` and `divide-x`, which seamlessly integrate with your border utilities, eliminating the need for preset values.
+Fylgja provides both `divide-y` (vertical) and `divide-x` (horizontal), which seamlessly integrate with your border utilities, eliminating the need for preset values.
 
 Additionally, introduce `divide-gap-y` and `divide-gap-x` to add flow-based spacing between your dividers, providing greater flexibility in layout gaps.
 
@@ -121,35 +141,64 @@ Additionally, introduce `divide-gap-y` and `divide-gap-x` to add flow-based spac
 
 ### Flex
 
-Convenient shorthands for `display: flex`, including options for direction and wrapping. Utilize `flex-col` and `flex-wrap`, which are [Dynamic CSS Utilities] and can be customized with CSS variables.
+Convenient shorthands for `display: flex`, including options for direction and wrapping,
+using CSS variables, following the [Dynamic CSS Utilities] approach.
+
+<div class="scroll-x">
+
+| CSS Utility Name | Description                                             |
+| ---------------- | ------------------------------------------------------- |
+| `flex`           | Main utility class, can be modified using CSS variables |
+| `flex-col`       | Alias for `class="flex" style="--flex-dir: column"`     |
+| `flex-wrap`      | Alias for `class="flex" style="--flex-wrap: wrap"`      |
+| `flex-none`      | Helper for child elements, Sets: `flex: 0 0 auto`       |
+| `flex-auto`      | Helper for child elements, Sets: `flex: 1 1 auto`       |
+
+</div>
 
 ### Flow
 
-While Fylgja's base styles often include flow spacing, the `flow` utility allows you to explicitly force a new flow with `flow` or remove any flow with `flow-none`.
+While Fylgja's base styles often include flow spacing,
+the `flow` utility allows you to explicitly force a new flow with `flow` or remove any flow with `flow-none`.
 
 ### Gap
 
-Easily set gaps for Grid, Flex, or Column layouts.
+Easily set gaps for Grid, Flex, or Column layouts using the `gap` class or its alias `gap-sm`.
+The default gap is `1em` (`0.5em` for `gap-sm`).
 
 ### Gradient
 
 Provides three helpful utilities for applying border, background, and text gradients, all customizable with CSS variables.
 
+<figure class="demo-wrapper">
+<div class="auto-grid gap" style="--demo-box-stroke-size: 0">
+<div class="demo-box --inline bg-gradient" style="--gradient-angle: 35deg; --gradient-stops: red, yellow">bg-gradient</div>
+<div class="demo-box --inline text-gradient" style="--gradient-angle: 35deg; --gradient-stops: red, yellow">text-gradient</div>
+<div class="demo-box --inline border-gradient" style="--demo-box-stroke-size: 2px; --gradient-angle: 35deg; --gradient-stops: red, yellow">border-gradient</div>
+</div>
+</figure>
+
 ### Grid Cols
 
 Simplified way to set up grid layouts with columns using `grid-cols`.
-
 You can modify the column configuration using CSS variables, following the [Dynamic CSS Utility] pattern.
 
-Also includes `grid-flow`, ideal for creating a row of columns for sliders, and is compatible with the `gap` utility for consistent column spacing.
+Also includes `grid-flow`, ideal for creating a row of columns for sliders,
+and is compatible with the `gap` utility for consistent column spacing.
 
 ### Line Clamp
 
-Limit the number of lines in your paragraphs to prevent text overflow.
+Limit the number of lines in your paragraphs to prevent text overflow. The default is 3 lines.
+
+<figure class="demo-wrapper --resize" style="width: 500px">
+	<p class="line-clamp">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde aliquam nisi ea! Et veniam delectus voluptates. Architecto consectetur placeat eius quaerat voluptas tempore id maiores, suscipit dolore, nihil qui voluptatum.</p>
+	<figcaption class="text-center italic text-muted">Resize this to see the max lines in effect</figcaption>
+</figure>
 
 ### List
 
-Offers the `list-none` utility, useful for removing default list markers, especially if you are not using Fylgja's base styles or when customizing HTML `<details>` elements.
+Offers the `list-none` utility, useful for removing default list markers,
+especially if you are not using Fylgja's base styles or when customizing HTML `<details>` elements.
 
 ### Overlay
 
@@ -185,7 +234,7 @@ A set of straightforward border radius utilities:
 
 ### Scroll
 
-Enable scrollable overflow on the X or Y axis with `scroll-x` and `scroll-y`.
+Enable scrollable overflow on the X or Y axis with `scroll-x` (horizontal) and `scroll-y` (vertical).
 
 ### Scrollbar
 
@@ -195,7 +244,7 @@ Customize the appearance of the scrollbar, including hiding it or making it smal
 
 Convenient shorthands for setting width and height using [Dynamic CSS Utilities]. Includes `w-full`, `h-full`, `max-w-full`, and `max-h-full`.
 
-For more detailed sizing options, refer to the Spacing utilities.
+For more detailed sizing options, refer to the [Spacing utilities](#spacing).
 
 ### Snap
 
@@ -222,49 +271,77 @@ Easily create interactive sliders. This utility works best in conjunction with o
 
 ### Spacing
 
-[Dynamic CSS Utilities] for quickly setting padding and margin on an element.
+[Dynamic CSS Utilities] for quickly setting width, height, margin, or padding on an element.
 
-You don't need a specific class to use these [Dynamic CSS Utilities]; simply set the style with: `--size-y`, `--size-x`, `--my`, `--mx`, `--py`, and `--px` along with a valid CSS unit to apply the styles.
+You don't need a specific class to use these [Dynamic CSS Utilities]; simply set the style with:
 
-The power of [Dynamic CSS Utilities] extends to breakpoint customization. For example, set a different margin for the **md** breakpoint using `--md_my: 1rem`.
+- `--size-y` (block-size / height)
+- `--size-x` (inline-size / width)
+- `--my` (margin-block)
+- `--mx` (margin-inline)
+- `--py` (padding-block)
+- `--px` (padding-inline)
+
+along with a valid CSS unit to apply the styles.
+
+The power of [Dynamic CSS Utilities] extends to breakpoint customization.
+For example, set a different margin for the **md** breakpoint using `--md_my: 1rem`.
+
+This also includes a few shortcuts (but without breakpoints):
+
+- `--size` (same as setting `--size-y` and `--size-x`)
+- `--m` (same as setting `--my` and `--mx`)
+- `--p` (same as setting `--py` and `--px`)
 
 ### Screen Reader Only
 
-Visually hide an element from the page while keeping it accessible for screen readers.
+Visually hide an element from the page using `sr-only`, while keeping it accessible for screen readers.
 
 Similar to the `display` utility, you can apply breakpoint-specific styles, e.g., `sm:sr-only`.
 
 ### Stack
 
 Effortlessly stack multiple elements on top of each other without the need for manual positioning.
+This allows you to stack without using `position: absolute`.
 
 ### Stretched Link
 
-Make any element fully clickable without breaking link semantics. Use it with a `relative` class on the parent element to define the clickable area.
+Make any element fully clickable without breaking link semantics.
+Use it with a `card` or with `relative` class on the parent element to define the clickable area.
+
+<figure class="demo-wrapper">
+<div class="card --hover inline-block">
+	<img src="https://placecats.com/neo_banana/540/200" alt="Meow" width="540" height="200" loading="lazy">
+	<div class="card-content">
+	<p>This is the body text that should not be part of the link</p>
+	<a class="stretched-link btn --primary" href="#stretched-link">This is a accessible link text</a>
+	</div>
+</div>
+</figure>
 
 ### Toggle
 
 Create interactive toggle states for elements like `<details>` using the `toggle` utility.
 
 <figure class="demo-wrapper flex-wrap gap" style="--demo-wrapper-min-size: 8rem">
-<details name="demo-flip-group" open>
+<details open>
     <summary class="list-none btn">
     <span>Click Me!</span>
     <span class="toggle-flip">↓</span>
     </summary>
     <div style="--my: 0.5rem">Hello there.</div>
 </details>
-<details name="demo-flip-group">
+<details open>
     <summary class="list-none btn">
     <span>I will Rotate when toggling!</span>
     <span class="toggle-rotate transition">↓</span>
     </summary>
     <div style="--my: 0.5rem">Hello there.</div>
 </details>
-<details name="demo-flip-group">
+<details open>
     <summary class="list-none btn stack">
-    <span class="toggle-hide">I will Hide when toggled!</span>
-    <span class="toggle-show">I will Show when toggled!</span>
+    <span class="toggle-hide">Content is Closed!</span>
+    <span class="toggle-show">Content is Open!</span>
     </summary>
     <div style="--my: 0.5rem">Hello there.</div>
 </details>
@@ -272,16 +349,24 @@ Create interactive toggle states for elements like `<details>` using the `toggle
 
 ### Transition
 
-Quickly add smooth transitions to elements using `transition`, `transition-display`, or `transition-color`. Also supports discrete transitions.
+Quickly add smooth transitions to elements using `transition`, `transition-display`, or `transition-color`.
+Also supports discrete transitions.
 
 ### Truncate
 
-Truncate text to a specified number of lines.
+Truncate text to a single line with `truncate`.
+
+<figure class="demo-wrapper --resize" style="width: 500px;">
+	<p class="truncate">This is very looooooooooooooooooooooooooooong text that can not fit on one line!</p>
+</figure>
 
 ### Typography
 
 Convenient shorthands for common text styles:
 
+- `lead`: Makes text a bit larger and bold.
+- `font-normal`: Uses a normal font weight.
+- `font-bold`: Uses a bold font weight.
 - `text-start`: Align text to the left.
 - `text-end`: Align text to the right.
 - `text-center`: Center text alignment.
@@ -290,3 +375,16 @@ Convenient shorthands for common text styles:
 
 [Dynamic CSS Utility]: /docs/concepts/dynamic-css-utilities
 [Dynamic CSS Utilities]: /docs/concepts/dynamic-css-utilities
+
+## Support with other CSS Utility Systems
+
+Fylgja Utilities are designed to complement, rather than replace,
+other CSS Utility Systems like Tailwind CSS.
+
+Most Fylgja utilities are interchangeable with those found in other CSS Utility Systems.
+
+If a similar utility is already present in your chosen system,
+it's generally best to use that system's utility or vice versa.
+
+However, some Fylgja Utilities are unique and can be an excellent addition to any CSS Utility System,
+providing specialized functionality not commonly found elsewhere.

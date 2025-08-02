@@ -22,6 +22,7 @@ const docsSchema = z.object({
 	git: z.string().url().optional(),
 	npm: z.string().optional(),
 	changelog: z.string().url().optional(),
+	preconnect: z.array(z.string().url()).optional().default([]),
 });
 
 export const collections = {

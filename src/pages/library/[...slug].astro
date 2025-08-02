@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { pageTitle, title, description, git, npm, changelog } = entry.data;
+const { pageTitle, title, description, git, npm, changelog, preconnect } = entry.data;
 const { Content, headings } = await entry.render();
 const hasMeta = !!git || !!npm;
 ---
@@ -26,6 +26,9 @@ const hasMeta = !!git || !!npm;
 	collectionName="Library"
 	collection={collection}
 >
+	<Fragment slot="head">
+		{preconnect.map((url) => <link rel="preconnect" href={url} />)}
+	</Fragment>
 	<h1>{pageTitle || title}</h1>
 	{hasMeta && <MetaVersion git={git} npm={npm} changelog={changelog} />}
 	<Content />
@@ -66,6 +69,7 @@ const hasMeta = !!git || !!npm;
 	}
 
 	.demo-wrapper {
+		--separator-flow: 1em;
 		min-block-size: var(--demo-wrapper-min-size);
 		padding: var(--size-6);
 		border: 1px dashed var(--border-color-fade);
