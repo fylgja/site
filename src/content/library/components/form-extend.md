@@ -39,6 +39,7 @@ Alternatively, if you only need specific parts, you can import them individually
 | `@fylgja/form-extend/meter-progress` | Styles for `<meter>` and `<progress>` elements      |
 | `@fylgja/form-extend/range`          | Styles for the `<input type="range">` element       |
 | `@fylgja/form-extend/range-fill`     | Adds a CSS-only value fill to the `<range>` element |
+| `@fylgja/form-extend/range-vertical` | Adds `.range-vertical` modifier                     |
 
 ### Form Validation
 
@@ -92,6 +93,10 @@ eliminating the need for JavaScript.
 > As of now, Safari support is not fully available,
 > but you can continue to use the JavaScript solution alongside this CSS-only method.
 
+#### Vertical Modifier
+
+To change the orientation of a range slider to vertical, add the `.range-vertical` class to the input element.
+
 ## Examples
 
 Below are examples showcasing each part of the Fylgja Form Extend in action.
@@ -120,5 +125,14 @@ Below are examples showcasing each part of the Fylgja Form Extend in action.
 
 ### Range element
 
-<label for="input-range">Power Level</label><br>
+<label for="input-range" class="flex gap-sm">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m11 7-3 5h4l-3 5"/><path d="M14.856 6H16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.935"/><path d="M22 14v-4"/><path d="M5.14 18H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2.936"/></svg>
+<span>Power Level</span>
+</label>
 <input type="range" name="input-range" id="input-range" value="40" style="--range-value: 40" oninput="this.style.setProperty('--range-value', this.value)">
+
+<label for="input-range-volume" class="flex gap-sm">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/><path d="M16 9a5 5 0 0 1 0 6"/><path d="M19.364 18.364a9 9 0 0 0 0-12.728"/></svg>
+<span>Volume</span>
+</label>
+<input type="range" name="input-range-volume" id="input-range-volume" value="40" step="10" style="--range-value: 40" class="range-vertical" oninput="this.style.setProperty('--range-value', this.value)">

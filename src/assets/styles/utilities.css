@@ -28,3 +28,8 @@
 .object-cover {
 	object-fit: cover;
 }
+
+.gap-sm {
+	--gap: 0.5em;
+	gap: var(--gap);
+}

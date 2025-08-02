@@ -162,8 +162,8 @@ We also provide a set of predefined hues for convenience.
 
 <figure
 	id="demoColors"
-	class="flex-wrap align gap"
-	style="--align: start; --gap: 0.5em; --demo-box-stroke: transparent; --hue: var(--hue-teal)"
+	class="flex-wrap align gap-sm"
+	style="--align: start; --demo-box-stroke: transparent; --hue: var(--hue-teal)"
 >
 <div class="demo-box --scaler" style="background-color: var(--color-0); color: var(--color-14)">0</div>
 <div class="demo-box --scaler" style="background-color: var(--color-1); color: var(--color-14)">1</div>
