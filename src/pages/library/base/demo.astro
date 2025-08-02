@@ -591,44 +591,11 @@ p q r s t u v w x y z { } ~ </code>
 							oninput="setRangeValue(this)"
 						/>
 					</label>
-					<label>
-						<span>Range (same size as thumb)</span>
-						<input
-							id="input-range"
-							type="range"
-							name="range"
-							value="20"
-							max="100"
-							min="0"
-							style="
-                                    --track-size: var(--thumb-size-y);
-                                    --thumb-radius: 0;
-                                    --thumb-stroke-size: 0 2px;
-                                "
-							oninput="setRangeValue(this)"
-						/>
-					</label>
-					<label>
-						<span>Range Vertical</span>
-						<input
-							type="range"
-							name="range"
-							value="20"
-							max="100"
-							min="0"
-							class="vertical"
-							oninput="setRangeValue(this)"
-						/>
-					</label>
 					<script>
 						function setRangeValue(el: HTMLInputElement) {
 							if (CSS.supports("timeline-scope", "--foo")) return;
-							el.style.setProperty(
-								"--range-value",
-								`calc(${el.value} / ${el.max} * 100%)`
-							);
+							el.style.setProperty("--range-value", el.value);
 						}
-						setRangeValue(document.getElementById("input-range") as HTMLInputElement);
 					</script>
 				</div>
 				<div id="form-meter">
