@@ -6,13 +6,9 @@ import DocSearch from "@/components/DocSearch.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 import IconGithub from "@/assets/icons/github.svg";
 
-interface Props {
-	hideSearch?: boolean;
-}
-
+const { ...attr } = Astro.props;
 const currentPath = Astro.url.pathname;
 const isCurrentPage = (href: string) => (currentPath === href ? "page" : null);
-const { hideSearch = false } = Astro.props;
 
 const menu = [
 	{
@@ -55,11 +51,7 @@ const mobileMenuHighlists = [
 		<a href="/" class="logo" aria-label="Go back to the Fylgja Homepage">
 			<Fragment set:html={Logo} />
 		</a>
-		{
-			!hideSearch && (
-				<DocSearch style="--mx: auto 0; --md_mx: 0; --md_size-x: min(100%, 22rem);" />
-			)
-		}
+		<DocSearch style="--mx: auto 0; --md_mx: 0; --md_size-x: min(100%, 22rem);" />
 		<div class="flex align">
 			<nav
 				id="desktop-menu"
