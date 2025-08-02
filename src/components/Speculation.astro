@@ -1,0 +1,44 @@
+---
+export type SpeculationType = {
+	source?: string;
+	where: Object;
+	eagerness?: "immediate" | "eager" | "moderate" | "conservative";
+};
+
+interface Props {
+	rules?: {
+		prerender?: SpeculationType[];
+		prefetch?: SpeculationType[];
+	};
+}
+
+const { rules } = Astro.props;
+
+const isProd = import.meta.env.PROD;
+const defaultRules = {
+	prerender: [
+		{
+			source: "document",
+			where: {
+				and: [
+					{ href_matches: "/*" },
+					{ not: { selector_matches: ".do-not-prerender" } },
+					{ not: { selector_matches: "[download]" } },
+					{ not: { selector_matches: "[rel~=nofollow]" } },
+				],
+			},
+			eagerness: "moderate",
+		},
+	],
+};
+
+// Only apply speculationrules when in production
+// Using them in development creates extra overhead in loading making Astro slow
+const speculationrules = isProd ? rules || defaultRules : {};
+---
+
+{
+	speculationrules && (
+		<script type="speculationrules" is:inline set:html={JSON.stringify(speculationrules)} />
+	)
+}

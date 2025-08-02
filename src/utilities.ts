@@ -29,3 +29,10 @@ export const parseDate = (
 	const newDate = new Date(date);
 	return new Intl.DateTimeFormat(lang, options).format(newDate);
 };
+
+export const capitalized = (string: string) => {
+	return string
+		.split(' ')
+		.map(word => word.charAt(0).toUpperCase() + word.slice(1))
+		.join(' ');
+};

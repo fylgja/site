@@ -1,0 +1,32 @@
+---
+import { capitalized } from "@/utils";
+
+const currentUrl = Astro.url.pathname;
+const paths = currentUrl.split("/").filter((crumb: any) => crumb);
+const itemListElement: {}[] = [];
+
+// TODO get real title for each path
+if (paths.length) {
+	paths.forEach((path, index) => {
+		itemListElement.push({
+			"@type": "ListItem",
+			position: index + 1,
+			item: {
+				"@id": `${Astro.site}${paths.slice(0, index + 1).join("/")}/`,
+				name: capitalized(path.replace(/-/g, " ")),
+			},
+		});
+	});
+}
+
+const schema =
+	paths.length > 0
+		? {
+				"@context": "https://schema.org",
+				"@type": "BreadcrumbList",
+				itemListElement,
+			}
+		: {};
+---
+
+{schema && <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />}

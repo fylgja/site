@@ -1,9 +1,13 @@
 ---
-import Head from "@/components/Head.astro";
-import Schema from "@/components/Schema.astro";
+import "@/assets/main.css";
 import siteConfig from "site.config";
 import defaultSocialImage from "@/assets/default-social-img.png";
 import siteLogo from "@/assets/logo.svg";
+import Head from "@/components/Head.astro";
+import Schema from "@/components/Schema.astro";
+import SchemaCrumbs from "@/components/SchemaCrumbs.astro";
+import Speculation from "@/components/Speculation.astro";
+import type { SpeculationType } from "@/components/Speculation.astro";
 
 interface Props {
 	title: string;
@@ -12,7 +16,10 @@ interface Props {
 	pageType?: "website" | "article";
 	lang?: string;
 	dir?: "ltr" | "rtl";
-	speculationrules?: Object | false;
+	speculationrules?: {
+		prerender?: SpeculationType[];
+		prefetch?: SpeculationType[];
+	};
 }
 
 const {
@@ -22,42 +29,8 @@ const {
 	pageType = "website",
 	lang = "en",
 	dir = "ltr",
-	speculationrules = {
-		prerender: [
-			{
-				source: "document",
-				where: {
-					and: [
-						{ href_matches: "/*" },
-						{ not: { selector_matches: ".do-not-prerender" } },
-						{ not: { selector_matches: "[download]" } },
-						{ not: { selector_matches: "[rel~=nofollow]" } },
-					],
-				},
-				eagerness: "moderate",
-			},
-		],
-	},
+	speculationrules,
 } = Astro.props;
-
-const isProd = import.meta.env.PROD;
-const currentUrl = Astro.url.pathname;
-const paths = currentUrl.split("/").filter((crumb: any) => crumb);
-const itemListElement: {}[] = [];
-
-// TODO get real title for each path
-if (paths.length) {
-	paths.forEach((path, index) => {
-		itemListElement.push({
-			"@type": "ListItem",
-			position: index + 1,
-			item: {
-				"@id": `${Astro.site}${paths.slice(0, index + 1).join("/")}/`,
-				name: index + 1 === paths.length ? title : path,
-			},
-		});
-	});
-}
 ---
 
 <html lang={lang} dir={dir} data-theme="auto">
@@ -93,27 +66,9 @@ if (paths.length) {
 				sameAs: Object.values(siteConfig.socials),
 			}}
 		/>
-		{
-			itemListElement.length > 0 && (
-				<Schema
-					data={{
-						"@context": "https://schema.org",
-						"@type": "BreadcrumbList",
-						itemListElement,
-					}}
-				/>
-			)
-		}
+		<SchemaCrumbs />
 		<slot name="head" />
-		{
-			isProd && speculationrules && (
-				<script
-					type="speculationrules"
-					is:inline
-					set:html={JSON.stringify(speculationrules)}
-				/>
-			)
-		}
+		<Speculation rules={speculationrules} />
 		<script is:inline>
 			function getColorScheme() {
 				const preference = localStorage.getItem("theme-preference");
