@@ -13,6 +13,7 @@ import {
 	Square,
 	SquareCheckBig as SquareCheck,
 } from "@lucide/astro";
+import PageFooter from "@/components/PageFooter.astro";
 
 const title = "Your CSS Compainion";
 ---
@@ -205,21 +206,7 @@ const title = "Your CSS Compainion";
 
 		<HeroReadmore />
 	</main>
-	<footer class="page-footer">
-		<div class="container text-center" style="--py: var(--size-8)">
-			<nav aria-label="License" class="inline-flex flex-wrap gap">
-				<p>
-					<a
-						target="_blank"
-						href="https://github.com/fylgja/fylgja/blob/main/LICENSE"
-						class="no-underline"
-					>
-						Released under the MIT License <wbr />© 2021-present Fylgja
-					</a>
-				</p>
-			</nav>
-		</div>
-	</footer>
+	<PageFooter />
 </Layout>
 
 <style is:inline>
@@ -244,23 +231,6 @@ const title = "Your CSS Compainion";
 		.grid-cols.--bento-odd > :nth-child(3n + 1) {
 			--col: span 2;
 		}
-	}
-
-	.page-footer {
-		border-block-start: 1px solid
-			var(--page-footer-stroke, color-mix(in srgb, currentcolor 12%, transparent));
-		background-color: var(--page-footer-bg, var(--root-bg));
-		color: var(--page-footer-color, var(--text-color-muted));
-
-		a {
-			text-decoration: none;
-		}
-	}
-
-	@property --hue {
-		syntax: "<angle> | <number>";
-		inherits: true;
-		initial-value: 0;
 	}
 
 	@keyframes scroll-hue {
