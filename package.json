@@ -23,7 +23,7 @@
 		"@fylgja/input-group": "^2.0.0",
 		"@fylgja/tokens": "^2.1.0",
 		"@fylgja/utilities": "^2.0.8",
-		"@lucide/astro": "^0.522.0",
+		"@lucide/astro": "^0.536.0",
 		"astro": "^5.12.8",
 		"prettier": "^3.6.2",
 		"remark-github-blockquote-alert": "^2.0.0",
