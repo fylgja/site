@@ -23,7 +23,7 @@ that require additional tooling or polyfills for full compatibility in older bro
 
 ## Supporting Older Browsers
 
-Fylgja aims to support at least two major browser versions back.
+Fylgja aims to support at least three major browser versions back.
 
 If you need to support older browsers beyond that, you can:
 

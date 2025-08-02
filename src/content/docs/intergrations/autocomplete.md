@@ -13,7 +13,7 @@ SCSS syntax, and more as you type.
 
 Below are a few tips to get autocomplete working in your favorite editor:
 
-> [!Note]
+> [!Tip]
 > We primarily use VSCode for our development.
 > If you have tips for other editors,
 > please contribute by creating a pull request on our [GitHub repository](https://github.com/fylgja/site).

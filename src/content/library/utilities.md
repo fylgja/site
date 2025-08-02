@@ -48,7 +48,7 @@ You can import any utility mentioned below, using:
 @import "@fylgja/utilities/{UTILITY_NAME}";
 ```
 
-_align • auto-grid • clip • container • content-lazy • display • divide • flex • flow • gap • gradient • grid-cols • line-clamp • list • overlay • position • rounded • scroll • scrollbar • size • snap • spacing • sr-only • stack • stretched-link • toggle • transition • truncate • typography_
+_align • auto-grid • clip • container • content-lazy • display • divide • flex • flow • gap • gradient • grid-cols • line-clamp • list • overlay • position • rounded • scroll • scroll-mask • scrollbar • size • snap • spacing • sr-only • stack • stretched-link • toggle • transition • truncate • typography_
 
 ## Utilities Overview
 
@@ -132,7 +132,7 @@ Fylgja provides both `divide-y` (vertical) and `divide-x` (horizontal), which se
 Additionally, introduce `divide-gap-y` and `divide-gap-x` to add flow-based spacing between your dividers, providing greater flexibility in layout gaps.
 
 <figure class="demo-wrapper">
-<ul role="list" class="divide-y divide-gap-y">
+<ul role="list" class="divide-y flow">
 <li>A better way to</li>
 <li>handle divides</li>
 <li>and supports a gaps to!</li>
@@ -171,10 +171,35 @@ The default gap is `1em` (`0.5em` for `gap-sm`).
 Provides three helpful utilities for applying border, background, and text gradients, all customizable with CSS variables.
 
 <figure class="demo-wrapper">
-<div class="auto-grid gap" style="--demo-box-stroke-size: 0">
-<div class="demo-box --inline bg-gradient" style="--gradient-angle: 35deg; --gradient-stops: red, yellow">bg-gradient</div>
-<div class="demo-box --inline text-gradient" style="--gradient-angle: 35deg; --gradient-stops: red, yellow">text-gradient</div>
-<div class="demo-box --inline border-gradient" style="--demo-box-stroke-size: 2px; --gradient-angle: 35deg; --gradient-stops: red, yellow">border-gradient</div>
+<div class="auto-grid gap">
+	<div
+		class="card bg-gradient"
+		style="
+			--card-color: #111;
+			--gradient-angle: 35deg;
+			--gradient-stops: red, yellow;
+		"
+	>
+		background Gradient
+	</div>
+	<div
+		class="card text-gradient"
+		style="--gradient-angle: 35deg; --gradient-stops: red, yellow"
+	>
+		Text Gradient
+	</div>
+	<div
+		class="card border-gradient"
+		style="--gradient-angle: 35deg; --gradient-stops: red, yellow"
+	>
+		Border Gradient
+	</div>
+	<div
+		class="card text-gradient border-gradient"
+		style="--gradient-angle: 35deg; --gradient-stops: red, yellow"
+	>
+		Text & Border Gradient
+	</div>
 </div>
 </figure>
 
@@ -206,7 +231,7 @@ Adds a subtle overlay shadow to an element, often effective in combination with 
 
 <figure class="demo-wrapper">
 <div class="stack inline-grid">
-<img src="https://placecats.com/380/200" alt="Meow" width="380" height="200" loading="lazy">
+<img src="https://placecats.com/480/300" alt="Meow" width="480" height="300" loading="lazy">
 <div class="overlay align-self" style="--p: 1rem; --align-self: end auto">Meow</div>
 </div>
 </figure>
@@ -236,6 +261,13 @@ A set of straightforward border radius utilities:
 
 Enable scrollable overflow on the X or Y axis with `scroll-x` (horizontal) and `scroll-y` (vertical).
 
+### Scroll Mask
+
+Enable Overflow Mask to any overflowing content.
+Making it more clear to that there is overflowing content.
+
+Usefull in combination with `scroll-x` and `scroll-y`.
+
 ### Scrollbar
 
 Customize the appearance of the scrollbar, including hiding it or making it small.
@@ -248,22 +280,22 @@ For more detailed sizing options, refer to the [Spacing utilities](#spacing).
 
 ### Snap
 
-Easily create interactive sliders. This utility works best in conjunction with other layout utilities like Grid Cols.
+Easily create interactive sliders. This utility works best in conjunction with other layout utilities like Grid Cols and Scroll.
 
 <figure class="demo-wrapper">
-<div class="snap scroll-x grid-cols grid-flow gap" style="--sm_grid-cols: 2; --md_grid-cols: 3">
-<img src="https://placecats.com/neo_banana/380/200" alt="Meow" width="380" height="200" loading="lazy">
-<img src="https://placecats.com/neo/380/200" alt="Meow" width="380" height="200" loading="lazy">
-<img src="https://placecats.com/millie/380/200" alt="Meow" width="380" height="200" loading="lazy">
-<img src="https://placecats.com/bella/380/200" alt="Meow" width="380" height="200" loading="lazy">
-<img src="https://placecats.com/millie_neo/380/200" alt="Meow" width="380" height="200" loading="lazy">
+<div class="snap scroll-x scroll-mask grid-cols grid-flow gap" style="--sm_grid-cols: 2">
+<img src="https://placecats.com/neo_banana/480/300" alt="Meow" width="480" height="300" loading="lazy">
+<img src="https://placecats.com/neo/480/300" alt="Meow" width="480" height="300" loading="lazy">
+<img src="https://placecats.com/millie/480/300" alt="Meow" width="480" height="300" loading="lazy">
+<img src="https://placecats.com/bella/480/300" alt="Meow" width="480" height="300" loading="lazy">
+<img src="https://placecats.com/millie_neo/480/300" alt="Meow" width="480" height="300" loading="lazy">
 </div>
 </figure>
 
 ```html
 <div
-    class="snap scroll-x grid-cols grid-flow gap"
-    style="--sm_grid-cols: 2; --md_grid-cols: 3"
+    class="snap scroll-x scroll-mask grid-cols grid-flow gap"
+    style="--sm_grid-cols: 2"
 >
     ... slides
 </div>
@@ -311,7 +343,7 @@ Use it with a `card` or with `relative` class on the parent element to define th
 
 <figure class="demo-wrapper">
 <div class="card --hover inline-block">
-	<img src="https://placecats.com/neo_banana/540/200" alt="Meow" width="540" height="200" loading="lazy">
+	<img src="https://placecats.com/neo_banana/480/300" alt="Meow" width="480" height="300" loading="lazy">
 	<div class="card-content">
 	<p>This is the body text that should not be part of the link</p>
 	<a class="stretched-link btn --primary" href="#stretched-link">This is a accessible link text</a>
@@ -372,6 +404,7 @@ Convenient shorthands for common text styles:
 - `text-center`: Center text alignment.
 - `italic`: Apply italic styling.
 - `not-italic`: Remove italic styling.
+- `nowrap`: Prevent text break.
 
 [Dynamic CSS Utility]: /docs/concepts/dynamic-css-utilities
 [Dynamic CSS Utilities]: /docs/concepts/dynamic-css-utilities
