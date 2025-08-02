@@ -5,10 +5,10 @@ import Offcanvas from "@/components/Offcanvas.astro";
 import DocSearch from "@/components/DocSearch.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 import IconGithub from "@/assets/icons/github.svg";
+import { isCurrentPage } from "@/utils";
 
 const { ...attr } = Astro.props;
 const currentPath = Astro.url.pathname;
-const isCurrentPage = (href: string) => (currentPath === href ? "page" : null);
 
 const menu = [
 	{
@@ -46,6 +46,7 @@ const mobileMenuHighlists = [
 	id="pageHeader"
 	class="page-header sticky transition"
 	style="--inset-y: -1px auto; --z: var(--layer-4)"
+	{...attr}
 >
 	<div class="flex align gap" style="--p: 1rem var(--container-gap)">
 		<a href="/" class="logo" aria-label="Go back to the Fylgja Homepage">
@@ -61,7 +62,11 @@ const mobileMenuHighlists = [
 			>
 				{
 					menu.map((item) => (
-						<a href={item.path} aria-current={isCurrentPage(item.path)} class="btn">
+						<a
+							href={item.path}
+							aria-current={isCurrentPage(item.path, currentPath)}
+							class="btn"
+						>
 							{item.label}
 						</a>
 					))
@@ -104,7 +109,7 @@ const mobileMenuHighlists = [
 								mobileMenu.map((item) => (
 									<a
 										href={item.path}
-										aria-current={isCurrentPage(item.path)}
+										aria-current={isCurrentPage(item.path, currentPath)}
 										class="btn"
 									>
 										{item.label}
@@ -118,7 +123,7 @@ const mobileMenuHighlists = [
 									mobileMenuHighlists.map((item) => (
 										<a
 											href={item.path}
-											aria-current={isCurrentPage(item.path)}
+											aria-current={isCurrentPage(item.path, currentPath)}
 											class="btn"
 										>
 											{item.label}

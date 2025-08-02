@@ -3,6 +3,8 @@ import siteConfig from "site.config";
 import Logo from "@/assets/logo.svg?raw";
 import SocialIcons from "@/components/SocialIcons.astro";
 
+const { ...attr } = Astro.props;
+
 const menus = [
 	{
 		title: "Library",
@@ -66,7 +68,7 @@ const menus = [
 ];
 ---
 
-<footer style="--py: 2rem">
+<footer style="--py: 2rem" {...attr}>
 	<div class="container">
 		<div class="main-footer">
 			<div class="logo">
