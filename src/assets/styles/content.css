@@ -1,24 +1,13 @@
 .astro-code {
-	&,
 	& span {
-		background-color: var(--shiki-light-bg);
 		color: var(--shiki-light);
 	}
 }
 
 @media (prefers-color-scheme: dark) {
 	html:not([data-theme="light"]) .astro-code {
-		&,
 		& span {
-			background-color: var(--shiki-dark-bg);
 			color: var(--shiki-dark);
 		}
-	}
-}
-
-:where(h1, h2, h3, h4, h5, h6):target {
-	&:before {
-		content: "# " / "";
-		color: var(--brand);
 	}
 }
