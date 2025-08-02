@@ -108,18 +108,18 @@ Quickly set the `display` property of an element.
 
 <div class="scroll-x">
 
-| CSS Utility Name              | value                                                                                      |
-| ----------------------------- | ------------------------------------------------------------------------------------------ |
-| `hidden`                      | `display: none`                                                                            |
-| `block`                       | `display: block`                                                                           |
-| `inline-block`                | `display: inline flow-root`                                                                |
-| `flex`                        | `display: flex`                                                                            |
-| `inline-flex`                 | `display: inline flex`                                                                     |
-| `grid`                        | `display: grid`                                                                            |
-| `inline-grid`                 | `display: inline grid`                                                                     |
-| `table-cell`                  | `display: table-cell`                                                                      |
-| `open:{DISPLAY}`              | Open modifier for dialogs and popovers                                                     |
-| `{sm,md,lg,xl,xxl}:{DISPLAY}` | Apply display styles at specific breakpoints (**sm**, **md**, **lg**, **xl**, and **xxl**) |
+| CSS Utility Name              | value                                        |
+| ----------------------------- | -------------------------------------------- |
+| `hidden`                      | `display: none`                              |
+| `block`                       | `display: block`                             |
+| `inline-block`                | `display: inline flow-root`                  |
+| `flex`                        | `display: flex`                              |
+| `inline-flex`                 | `display: inline flex`                       |
+| `grid`                        | `display: grid`                              |
+| `inline-grid`                 | `display: inline grid`                       |
+| `table-cell`                  | `display: table-cell`                        |
+| `open:{DISPLAY}`              | Open modifier for dialogs and popovers       |
+| `{sm,md,lg,xl,xxl}:{DISPLAY}` | Apply display styles at specific breakpoints |
 
 </div>
 
@@ -129,7 +129,7 @@ The `divide` utility offers enhanced control over dividers, going beyond basic i
 
 Fylgja provides both `divide-y` (vertical) and `divide-x` (horizontal), which seamlessly integrate with your border utilities, eliminating the need for preset values.
 
-Additionally, introduce `divide-gap-y` and `divide-gap-x` to add flow-based spacing between your dividers, providing greater flexibility in layout gaps.
+Additionally, it work together with the `flow` utility, to add flow-based spacing between your dividers, providing greater flexibility in layout gaps.
 
 <figure class="demo-wrapper">
 <ul role="list" class="divide-y flow">
