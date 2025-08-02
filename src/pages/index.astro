@@ -125,32 +125,6 @@ const title = "Your CSS Compainion";
 			>
 			</div>
 		</section>
-		<style>
-			.usp-list {
-				--main-color: var(--brand);
-				--alt-color: color-mix(in oklab, var(--main-color), #fff);
-				position: relative;
-
-				li p {
-					color: var(--text-color-muted);
-				}
-
-				.shape {
-					z-index: -1;
-					position: absolute;
-					width: clamp(192px, 50vw, 460px);
-					height: clamp(192px, 50vw, 460px);
-					background-image: linear-gradient(
-						0deg,
-						var(--main-color) 30%,
-						var(--alt-color)
-					);
-					filter: blur(120px);
-					border-radius: 50%;
-					opacity: 60%;
-				}
-			}
-		</style>
 
 		<section
 			class="container flow"
@@ -213,6 +187,31 @@ const title = "Your CSS Compainion";
 	.page-header[data-sticky="false"] {
 		--page-header-bg: transparent;
 		--page-header-color: var(--text-color-muted);
+
+		.DocSearch-Button {
+			display: none;
+		}
+	}
+
+	.usp-list {
+		--main-color: var(--brand);
+		--alt-color: color-mix(in oklab, var(--main-color), #fff);
+		position: relative;
+
+		li p {
+			color: var(--text-color-muted);
+		}
+
+		.shape {
+			z-index: -1;
+			position: absolute;
+			width: clamp(192px, 50vw, 460px);
+			height: clamp(192px, 50vw, 460px);
+			background-image: linear-gradient(0deg, var(--main-color) 30%, var(--alt-color));
+			filter: blur(120px);
+			border-radius: 50%;
+			opacity: 60%;
+		}
 	}
 
 	@media (width >= 768px) {
