@@ -105,7 +105,7 @@ Below are examples showcasing each part of the Fylgja Form Extend in action.
 
 <div class="field">
 	<label for="email-validate">Email</label>
-	<input type="email" name="email" id="email" aria-errormessage="err1" autocomplete="off">
+	<input type="email" name="email" id="email" placeholder="Fill in a invalid email to see me work" aria-errormessage="err1" autocomplete="off">
 	<div id="err1" class="field-error-message">
 		Invalid Email Address, please use a email in the format
 		<code>me@example.com</code>
@@ -114,14 +114,18 @@ Below are examples showcasing each part of the Fylgja Form Extend in action.
 
 ### Meter and Progress element
 
-<label for="fuel">Fuel level:</label>
-<meter id="fuel" min="0" max="100" low="33" high="66" optimum="80" value="50">at 50/100</meter>
-
-<label for="file">File progress:</label>
-<progress id="file" max="100" value="70" class="show-value"></progress>
-
-<label for="updating">Updating..</label>
-<progress id="updating">Loading</progress>
+<label>
+	Danger
+	<meter min="0" max="100" low="33" high="66" optimum="80" value="32"></meter>
+</label>
+<label>
+	Warning
+	<meter min="0" max="100" low="33" high="66" optimum="80" value="50"></meter>
+</label>
+<label>
+	success
+	<meter min="0" max="100" low="33" high="66" optimum="80" value="80"></meter>
+</label>
 
 ### Range element
 
@@ -129,10 +133,19 @@ Below are examples showcasing each part of the Fylgja Form Extend in action.
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m11 7-3 5h4l-3 5"/><path d="M14.856 6H16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.935"/><path d="M22 14v-4"/><path d="M5.14 18H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2.936"/></svg>
 <span>Power Level</span>
 </label>
-<input type="range" name="input-range" id="input-range" value="40" style="--range-value: 40" oninput="this.style.setProperty('--range-value', this.value)">
+<input type="range" name="input-range" id="input-range" value="40" style="--range-value: 40" oninput="setRangeValue(this)">
 
-<label for="input-range-volume" class="flex gap-sm">
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/><path d="M16 9a5 5 0 0 1 0 6"/><path d="M19.364 18.364a9 9 0 0 0 0-12.728"/></svg>
-<span>Volume</span>
-</label>
-<input type="range" name="input-range-volume" id="input-range-volume" value="40" step="10" style="--range-value: 40" class="range-vertical" oninput="this.style.setProperty('--range-value', this.value)">
+<div class="flex align gap" style="--align: start">
+	<label for="input-range-volume" class="flex gap-sm">
+	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/><path d="M16 9a5 5 0 0 1 0 6"/><path d="M19.364 18.364a9 9 0 0 0 0-12.728"/></svg>
+	<span>Volume</span>
+	</label>
+	<input type="range" name="input-range-volume" id="input-range-volume" value="40" step="10" style="--range-value: 40" class="range-vertical" oninput="setRangeValue(this)">
+</div>
+
+<script>
+	function setRangeValue(el: HTMLInputElement) {
+		if (CSS.supports("timeline-scope", "--foo")) return;
+		el.style.setProperty("--range-value", el.value);
+	}
+</script>
