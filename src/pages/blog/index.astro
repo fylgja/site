@@ -33,7 +33,22 @@ const blogSocials = {
 			{
 				collection.map((item) => (
 					<li>
-						<article class="card --hover flex-col h-full" style="--sm_flex-dir: row">
+						<article
+							class="card --hover flex-col h-full"
+							style="--sm_flex-dir: row-reverse"
+						>
+							{item.data.coverImage && (
+								<Picture
+									src={item.data.coverImage}
+									width={440}
+									height={220}
+									alt=""
+									loading="lazy"
+									pictureAttributes={{
+										class: "flex-none",
+									}}
+								/>
+							)}
 							<div class="card-content">
 								<hgroup>
 									<h2>
@@ -45,19 +60,6 @@ const blogSocials = {
 								</hgroup>
 								<p>{item.data.description}</p>
 							</div>
-							{item.data.coverImage && (
-								<Picture
-									src={item.data.coverImage}
-									width={440}
-									height={220}
-									alt=""
-									loading="lazy"
-									class="aspect-square h-full"
-									pictureAttributes={{
-										class: "flex-none",
-									}}
-								/>
-							)}
 						</article>
 					</li>
 				))
@@ -92,6 +94,12 @@ const blogSocials = {
 			@media (width >= 480px) {
 				max-block-size: 100%;
 				max-inline-size: 28%;
+
+				img {
+					object-fit: cover;
+					aspect-ratio: 1;
+					height: 100%;
+				}
 			}
 		}
 	}
