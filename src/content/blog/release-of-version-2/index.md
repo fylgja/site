@@ -5,7 +5,6 @@ description: "Introducing Core Package Separation and Streamlined Architecture f
 publishDate: 2025-03-19
 tags: ["releases", "css", "library"]
 coverImage: "cover.jpg"
-coverColor: "hsl(90 50% 40%)"
 ---
 
 <p class="lead">Get ready for a significant evolution in Fylgja!</p>
