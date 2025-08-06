@@ -4,12 +4,17 @@ import Layout from "@/layouts/PageLayout.astro";
 import Meta from "@/components/MetaContent.astro";
 import siteConfig from "site.config";
 import SocialIcons from "@/components/SocialIcons.astro";
+import { Picture } from "astro:assets";
 
 const title = "What's New with Fylgja CSS?";
 const description = "The latest news and developments from the Fylgja CSS team.";
-const collection = await getCollection("blog", ({ data }) => {
+const allBlogPosts = await getCollection("blog", ({ data }) => {
 	return !data.draft;
 });
+
+const collection = allBlogPosts.sort(
+	(a, b) => Date.parse(b.data.publishDate.toString()) - Date.parse(a.data.publishDate.toString())
+);
 
 const blogSocials = {
 	rss: "/rss.xml",
@@ -28,14 +33,31 @@ const blogSocials = {
 			{
 				collection.map((item) => (
 					<li>
-						<article class="card --elevated flow h-full" aria-labelledby={item.slug}>
-							<h2>
-								<a href={`/blog/${item.slug}/`} class="stretched-link">
-									{item.data.title}
-								</a>
-							</h2>
-							<Meta published={item.data.publishDate} />
-							<p>{item.data.description}</p>
+						<article class="card --hover flex-col h-full" style="--sm_flex-dir: row">
+							<div class="card-content">
+								<hgroup>
+									<h2>
+										<a href={`/blog/${item.slug}/`} class="stretched-link">
+											{item.data.title}
+										</a>
+									</h2>
+									<Meta published={item.data.publishDate} />
+								</hgroup>
+								<p>{item.data.description}</p>
+							</div>
+							{item.data.coverImage && (
+								<Picture
+									src={item.data.coverImage}
+									width={440}
+									height={220}
+									alt=""
+									loading="lazy"
+									class="aspect-square h-full"
+									pictureAttributes={{
+										class: "flex-none",
+									}}
+								/>
+							)}
 						</article>
 					</li>
 				))
@@ -59,11 +81,31 @@ const blogSocials = {
 		}
 	}
 
-	.card h2 {
-		--h-size: 1.5em;
+	.card {
+		h2 {
+			--h-size: 1.5em;
+
+			a {
+				text-decoration: none;
+			}
+		}
+
+		picture {
+			max-block-size: 220px;
+
+			@media (width >= 480px) {
+				max-block-size: 100%;
+				max-inline-size: 25%;
+			}
+		}
 	}
 
 	aside h2 {
 		--h-size: 1.25em;
+	}
+
+	.aspect-square {
+		aspect-ratio: 1;
+		object-fit: cover;
 	}
 </style>

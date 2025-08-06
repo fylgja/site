@@ -9,10 +9,10 @@ interface Props {
 const { published, updatedOn } = Astro.props;
 ---
 
-<header class="meta">
+<p class="meta">
 	{published && <time datetime={String(published)}>{parseDate(published)}</time>}
 	{updatedOn && <time datetime={String(updatedOn)}>{parseDate(updatedOn)}</time>}
-</header>
+</p>
 
 <style>
 	.meta {

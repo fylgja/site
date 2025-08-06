@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/PageLayout.astro";
 import Meta from "@/components/MetaContent.astro";
@@ -51,7 +51,11 @@ const { Content } = await entry.render();
 		class:list={["banner container clip rounded-conditional", !coverImage && "bg-gradient"]}
 		style="--container-gap: 0px"
 	>
-		{coverImage && <Image src={coverImage} width={1280} height={350} loading="eager" alt="" />}
+		{
+			coverImage && (
+				<Picture src={coverImage} width={1280} height={350} loading="eager" alt="" />
+			)
+		}
 	</div>
 	<div
 		class="blog-title container flow text-center rounded-conditional"
@@ -71,11 +75,11 @@ const { Content } = await entry.render();
 		--gradient-to: var(--brand);
 		--gradient-angle: 337deg;
 		--radius-t: 0;
-		min-block-size: var(--size-80);
+		block-size: max(var(--size-80), 32svh);
 
 		img {
+			block-size: 100%;
 			object-fit: cover;
-			max-height: 350px;
 		}
 	}
 
