@@ -13,3 +13,13 @@
 
 @import "@fylgja/utilities";
 @import "styles/utilities";
+
+/* TODO: add this as a default? */
+.stretched-link {
+	text-decoration: none;
+}
+
+/* TODO: make this a default to match surface */
+:root {
+	--card-bg: color-mix(in oklab, var(--root-bg) 94%, white);
+}
