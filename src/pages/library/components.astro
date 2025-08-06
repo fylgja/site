@@ -1,0 +1,39 @@
+---
+import Layout from "@/layouts/DocsLayout.astro";
+import { componentsCollection, collection } from "./_collection.ts";
+const title = "Fylgja Components";
+const description =
+	"A collection of versatile and lightweight components designed to accelerate your workflow.";
+---
+
+<Layout title={title} description={description} collectionName="Library" collection={collection}>
+	<h1>{title}</h1>
+	<p>{description}</p>
+	<ul role="list" class="auto-grid gap" style="--max-col-size: 16rem">
+		{
+			componentsCollection.map((item) => {
+				const { slug, data } = item;
+				const pathName = slug.split("/").pop();
+
+				return (
+					<li class="card --hover flow">
+						<h2>
+							<a href={pathName} class="stretched-link">
+								{data.title}
+							</a>
+						</h2>
+						<p class="line-clamp">{data.description}</p>
+					</li>
+				);
+			})
+		}
+	</ul>
+</Layout>
+
+<style>
+	.card {
+		h2 {
+			--h-size: 1.5em;
+		}
+	}
+</style>

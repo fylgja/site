@@ -18,16 +18,27 @@ async function filterCollection(path: string) {
 	);
 }
 
-export default [
+const baseCollection = await filterCollection("/");
+const componentsCollection = await filterCollection("components");
+const extensionsCollection = await filterCollection("extensions");
+const collection = [
 	{
-		items: await filterCollection("/"),
+		items: baseCollection,
 	},
 	{
 		title: "Components",
-		items: await filterCollection("components"),
+		items: componentsCollection,
 	},
 	{
 		title: "Extensions",
-		items: await filterCollection("extensions"),
+		items: extensionsCollection,
 	},
 ];
+
+export {
+	baseCollection,
+	componentsCollection,
+	extensionsCollection,
+	collection,
+	collection as default,
+};
