@@ -143,8 +143,8 @@ Below are examples showcasing each part of the Fylgja Form Extend in action.
 	<input type="range" name="input-range-volume" id="input-range-volume" value="40" step="10" style="--range-value: 40" class="range-vertical" oninput="setRangeValue(this)">
 </div>
 
-<script>
-	function setRangeValue(el: HTMLInputElement) {
+<script is:inline>
+	function setRangeValue(el) {
 		if (CSS.supports("timeline-scope", "--foo")) return;
 		el.style.setProperty("--range-value", el.value);
 	}
