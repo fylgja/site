@@ -6,15 +6,36 @@ import collection from "./_collection.ts";
 
 <Layout title="Fylgja Docs" collectionName="Docs" collection={collection}>
 	<h1>Getting Started</h1>
-	<p>New to Fylgja and not sure where to begin?</p>
-	<p>The most straightforward way to get started is by using Fylgja as your CSS foundation.</p>
+	<p>New to Fylgja? Here’s how to get started.</p>
 	<p>
-		While Fylgja is technically a library at its core, it's designed to function seamlessly as a
-		CSS framework.
+		The most straightforward way to begin is by using Fylgja as your CSS foundation. Although
+		it's a library at its core, it’s designed to work like a framework out of the box.
 	</p>
 	<p>
-		There are several ways to integrate Fylgja into your project, but the easiest and most
-		recommended approach is using the meta package.
+		You can integrate Fylgja in several ways, but the easiest and most recommended approach is to
+		use the meta package.
+	</p>
+
+	<h2>Using Fylgja</h2>
+	<p>
+		Fylgja is an HTML-first UI library that focuses on offering classless styling through Fylgja
+		Base.
+	</p>
+	<p>
+		This provides a solid starting point for any HTML element and is easily extendable with our
+		other core packages:
+	</p>
+	<ul>
+		<li>
+			<strong>Fylgja Tokens:</strong> A design library that provides sensible defaults and
+			consistency through CSS Props (Design Tokens).
+		</li>
+		<li>
+			<strong>Fylgja Utilities:</strong> A curated list of CSS utilities.
+		</li>
+	</ul>
+	<p>
+		For more in-depth information about each package, explore the Fylgja Library documentation.
 	</p>
 
 	<h2>Installation & Quick Start</h2>
@@ -33,20 +54,4 @@ import collection from "./_collection.ts";
 		lang="css"
 		code=`@import "@fylgja/base";\n@import "@fylgja/tokens";\n@import "@fylgja/utilities";`
 	/>
-
-	<h2>Using Fylgja</h2>
-	<ul>
-		<li>
-			<strong>Fylgja Base:</strong> The base styles are applied without the need to add specific
-			classes, providing a consistent starting point for your project.
-		</li>
-		<li>
-			<strong>Fylgja Tokens:</strong> You can inspect the available design tokens directly in your
-			browser's developer tools to understand the styling variables available to you.
-		</li>
-	</ul>
-	<p>
-		For more in-depth information and details about each package, be sure to explore the
-		comprehensive Fylgja Library documentation.
-	</p>
 </Layout>
