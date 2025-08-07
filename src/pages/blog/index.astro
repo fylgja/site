@@ -16,11 +16,11 @@ const collection = allBlogPosts.sort(
 	(a, b) => Date.parse(b.data.publishDate.toString()) - Date.parse(a.data.publishDate.toString())
 );
 
+const { github, devto, ...allSocials } = siteConfig.socials;
 const blogSocials = {
 	rss: "/rss.xml",
-	bluesky: siteConfig.socials.bluesky,
-	mastodon: siteConfig.socials.mastodon,
-	twitter: siteConfig.socials.twitter,
+	devto,
+	...allSocials,
 };
 ---
 

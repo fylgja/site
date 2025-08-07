@@ -15,8 +15,30 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { title, description, tags, publishDate, updateDate, coverImage, coverColor } = entry.data;
+const { title, description, tags, author, publishDate, updateDate, coverImage, coverColor } =
+	entry.data;
 const { Content } = await entry.render();
+
+const blogAuthor = author
+	? [
+			{
+				"@type": "Person",
+				name: author.name,
+				url: author.url,
+			},
+			{
+				"@type": "Organization",
+				name: siteConfig.name,
+				url: Astro.site,
+			},
+		]
+	: [
+			{
+				"@type": "Organization",
+				name: siteConfig.name,
+				url: Astro.site,
+			},
+		];
 ---
 
 <Layout
@@ -38,13 +60,7 @@ const { Content } = await entry.render();
 			thumbnailUrl: coverImage?.src,
 			datePublished: publishDate,
 			dateModified: updateDate,
-			author: [
-				{
-					"@type": "Organization",
-					name: siteConfig.name,
-					url: Astro.site,
-				},
-			],
+			author: blogAuthor,
 		}}
 		slot="head"
 	/>
