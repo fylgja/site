@@ -1,4 +1,7 @@
+import siteConfig from "site.config";
 import { z, defineCollection } from "astro:content";
+
+const { themeColor, author } = siteConfig;
 
 const baseSchema = {
 	draft: z.boolean().optional().default(false),
@@ -30,8 +33,14 @@ export const collections = {
 				...baseSchema,
 				socialImage: z.string().optional(),
 				coverImage: image().optional(),
-				coverColor: z.string().optional().default("hsl(157 50% 40%)"),
-				author: z.string().default("Anonymous"),
+				coverColor: z.string().optional().default(themeColor),
+				author: z
+					.object({
+						name: z.string(),
+						url: z.string().url(),
+					})
+					.optional()
+					.default(author),
 				publishDate: z.date(),
 				updateDate: z.date().optional(),
 				tags: z.array(z.string()),
