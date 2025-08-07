@@ -22,6 +22,8 @@ interface Props {
 	};
 }
 
+const { name, foundingDate, socials, twitterUser, themeColor, themeColorDark } = siteConfig;
+
 const {
 	title,
 	description = siteConfig.description,
@@ -35,17 +37,18 @@ const {
 
 <html lang={lang} dir={dir} data-theme="auto">
 	<Head
-		siteName={siteConfig.name}
+		siteName={name}
 		title={title}
 		description={description}
 		image={image}
-		themeColor={siteConfig.themeColor}
-		themeColorDark={siteConfig.themeColorDark}
+		themeColor={themeColor}
+		themeColorDark={themeColorDark}
 		ogType={pageType}
+		twitterUser={twitterUser}
 	>
 		<meta name="generator" content="Fylgja CSS" />
 		<meta name="fediverse:creator" content="@fylgja@fosstodon.org" />
-		{Object.values(siteConfig.socials).map((item) => <link href={item} rel="me" />)}
+		{Object.values(socials).map((item) => <link href={item} rel="me" />)}
 		<link
 			rel="alternate"
 			type="application/rss+xml"
@@ -59,11 +62,11 @@ const {
 				"@type": "Organization",
 				url: Astro.site,
 				logo: siteLogo.src,
-				name: siteConfig.name,
+				name,
 				alternateName: "Fylgja CSS",
-				description: siteConfig.description,
-				foundingDate: siteConfig.foundingDate,
-				sameAs: Object.values(siteConfig.socials),
+				description,
+				foundingDate,
+				sameAs: Object.values(socials),
 			}}
 		/>
 		<SchemaCrumbs />

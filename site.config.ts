@@ -1,4 +1,4 @@
-const siteConfig = {
+export default {
 	site: "https://fylgja.dev",
 	name: "Fylgja",
 	description:
@@ -13,6 +13,9 @@ const siteConfig = {
 		twitter: "https://twitter.com/FylgjaDev",
 		devto: "https://dev.to/fylgja",
 	},
+	twitterUser: "FylgjaDev",
+	author: {
+		name: "Sean van Zuidam",
+		url: "https://grimlink.com",
+	},
 };
-
-export default siteConfig;
