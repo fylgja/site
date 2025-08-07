@@ -1,7 +1,7 @@
 {
 	"name": "fylgja-site",
-	"version": "1.3.5",
-	"description": "The Fylgja site powered by eleventy",
+	"version": "2.0.0",
+	"description": "The Fylgja site powered by Astro",
 	"private": true,
 	"author": "fylgja",
 	"type": "module",
