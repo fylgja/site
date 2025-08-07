@@ -1,9 +1,9 @@
 ---
 import Layout from "@/layouts/DocsLayout.astro";
-import { componentsCollection, collection } from "./_collection.ts";
-const title = "Fylgja Components";
+import { extensionsCollection, collection } from "./_collection.ts";
+const title = "Fylgja Extensions";
 const description =
-	"A collection of versatile and lightweight components designed to accelerate your workflow.";
+	"A collection of extensions, that improve the use of certain features or intergations with other Framewoks";
 ---
 
 <Layout title={title} description={description} collectionName="Library" collection={collection}>
@@ -11,7 +11,7 @@ const description =
 	<p>{description}</p>
 	<ul role="list" class="auto-grid gap" style="--max-col-size: 16rem">
 		{
-			componentsCollection.map((item) => {
+			extensionsCollection.map((item) => {
 				if (item.data.draft) return;
 				const { slug, data } = item;
 				const pathName = slug.split("/").pop();
