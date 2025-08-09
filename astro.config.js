@@ -5,9 +5,6 @@ import { remarkAlert } from "remark-github-blockquote-alert";
 export default defineConfig({
 	site: "https://fylgja.dev",
 	integrations: [sitemap()],
-	prefetch: {
-		prefetchAll: true,
-	},
 	markdown: {
 		remarkPlugins: [remarkAlert],
 		shikiConfig: {

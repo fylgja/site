@@ -13,8 +13,6 @@ interface Props {
 }
 
 const { rules } = Astro.props;
-
-const isProd = import.meta.env.PROD;
 const defaultRules = {
 	prerender: [
 		{
@@ -32,9 +30,7 @@ const defaultRules = {
 	],
 };
 
-// Only apply speculationrules when in production
-// Using them in development creates extra overhead in loading making Astro slow
-const speculationrules = isProd ? rules || defaultRules : {};
+const speculationrules = rules || defaultRules;
 ---
 
 {
