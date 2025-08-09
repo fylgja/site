@@ -68,9 +68,9 @@ It's especially useful for highlighting featured blog posts or banners.
 
 <article class="card md:flex">
 	<picture class="flex-none">
-		<source srcset="https://picsum.photos/id/15/320/240" media="(width >= 768px)">
+		<source srcset="https://picsum.photos/id/15/320/240.webp" media="(width >= 768px)">
 		<img
-			src="https://picsum.photos/id/18/740/280"
+			src="https://picsum.photos/id/18/740/280.webp"
 			alt="Exploring Fylgja in the Wilds"
 			width="740"
 			height="240"
@@ -91,9 +91,9 @@ It's especially useful for highlighting featured blog posts or banners.
 ```html
 <article class="card md:flex">
 	<picture class="flex-none">
-		<source srcset="https://picsum.photos/id/15/320/240" media="(width >= 768px)">
+		<source srcset="https://picsum.photos/id/15/320/240.webp" media="(width >= 768px)">
 		<img
-			src="https://picsum.photos/id/18/740/280"
+			src="https://picsum.photos/id/18/740/280.webp"
 			alt="Exploring Fylgja in the Wilds"
 			width="740"
 			height="240"
@@ -119,7 +119,7 @@ As you can see, with just a few CSS utilities, you can easily create a fully fun
 <div class="auto-grid gap" style="--max-col-size: 16rem">
 	<article class="card --hover">
 		<img
-			src="https://picsum.photos/id/425/500/300"
+			src="https://picsum.photos/id/425/500/300.webp"
 			alt="Coffee Beans"
 			width="500"
 			height="300"
@@ -135,7 +135,7 @@ As you can see, with just a few CSS utilities, you can easily create a fully fun
 	</article>
 	<article class="card --hover">
 		<img
-			src="https://picsum.photos/id/30/500/300"
+			src="https://picsum.photos/id/30/500/300.webp"
 			alt="Coffee Cup"
 			width="500"
 			height="300"
@@ -151,7 +151,7 @@ As you can see, with just a few CSS utilities, you can easily create a fully fun
 	</article>
 	<article class="card --hover">
 		<img
-			src="https://picsum.photos/id/42/500/300"
+			src="https://picsum.photos/id/42/500/300.webp"
 			alt="Barista Training"
 			width="500"
 			height="300"
@@ -171,7 +171,7 @@ As you can see, with just a few CSS utilities, you can easily create a fully fun
 <div class="auto-grid gap" style="--max-col-size: 16rem">
 	<article class="card --hover">
 		<img
-			src="https://picsum.photos/id/425/500/300"
+			src="https://picsum.photos/id/425/500/300.webp"
 			alt="Coffee Beans"
 			width="500"
 			height="300"
