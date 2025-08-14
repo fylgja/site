@@ -227,7 +227,7 @@ We also provide a set of predefined hues for convenience.
 Achieve smooth and natural animations with five robust timing functions: ease, ease-out, ease-in, and ease-in-out.
 Go beyond the basics with advanced easing options with the elastic motion.
 
-<div id="demoEasing" class="demo-easing is-paused flex-col">
+<div id="demoEasing" class="demo-wrapper demo-easing is-paused flex-col gap-sm">
 <div
 	class="demo-box"
 	style="animation-timing-function: var(--ease-1)"

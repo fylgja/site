@@ -77,8 +77,9 @@ const hasMeta = !!git || !!npm;
 			linear-gradient(to right, var(--surface-color) var(--_dbs), transparent var(--_dbs)),
 			linear-gradient(to bottom, var(--surface-color) var(--_dbs), transparent var(--_dbs));
 		background-size: var(--demo-raster-size) var(--demo-raster-size);
-		background-position: calc(var(--demo-raster-size) / 2) calc(var(--demo-raster-size) / 2);
+		background-position: -1px -1px;
 		background-clip: padding-box;
+		overflow: clip;
 
 		&.--resize {
 			container-type: inline-size;
@@ -91,7 +92,7 @@ const hasMeta = !!git || !!npm;
 	@keyframes animate-demo-easing {
 		40%,
 		50% {
-			translate: calc(var(--box-size) - (var(--item-size) + 2px)) 0%;
+			translate: calc(100cqi - var(--item-size)) 0%;
 		}
 
 		0%,
@@ -104,12 +105,9 @@ const hasMeta = !!git || !!npm;
 		--box-size: min((100vw - var(--container-gap)), 500px);
 		--item-size: 50px;
 		position: relative;
-		gap: var(--size-2);
-		max-inline-size: var(--box-size);
 		margin-block: var(--size-4);
-		padding-block: var(--size-2);
-		border-inline: 1px dashed var(--border-color-fade);
-		overflow: clip;
+		padding: var(--size-2);
+		container-type: inline-size;
 
 		&::after {
 			content: "";
