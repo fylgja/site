@@ -68,9 +68,9 @@ It's especially useful for highlighting featured blog posts or banners.
 
 <article class="card md:flex">
 	<picture class="flex-none">
-		<source srcset="https://picsum.photos/id/15/320/240.webp" media="(width >= 768px)">
+		<source srcset="/images/placeholders/deer.webp" media="(width >= 768px)">
 		<img
-			src="https://picsum.photos/id/18/740/280.webp"
+			src="/images/placeholders/deer-wide.webp"
 			alt="Exploring Fylgja in the Wilds"
 			width="740"
 			height="240"
@@ -91,9 +91,9 @@ It's especially useful for highlighting featured blog posts or banners.
 ```html
 <article class="card md:flex">
 	<picture class="flex-none">
-		<source srcset="https://picsum.photos/id/15/320/240.webp" media="(width >= 768px)">
+		<source srcset="/images/placeholders/deer.webp" media="(width >= 768px)">
 		<img
-			src="https://picsum.photos/id/18/740/280.webp"
+			src="/images/placeholders/deer-wide.webp"
 			alt="Exploring Fylgja in the Wilds"
 			width="740"
 			height="240"
@@ -119,13 +119,13 @@ As you can see, with just a few CSS utilities, you can easily create a fully fun
 <div class="auto-grid gap" style="--max-col-size: 16rem">
 	<article class="card --hover">
 		<img
-			src="https://picsum.photos/id/425/500/300.webp"
-			alt="Coffee Beans"
+			src="/images/placeholders/cat.webp"
+			alt="Sunny Cat Wallpaper"
 			width="500"
 			height="300"
 			loading="lazy"
 		/>
-		<p class="lead"><strong>Coffee Beans</strong></p>
+		<p class="lead"><strong>Sunny Cat Wallpaper</strong></p>
 		<p>Dicta ea a, commodi reiciendis aut doloremque earum fugit ducimus officiis.</p>
 		<p class="font-bold">€18.99</p>
 		<form action="#" class="flex-wrap gap align">
@@ -135,13 +135,13 @@ As you can see, with just a few CSS utilities, you can easily create a fully fun
 	</article>
 	<article class="card --hover">
 		<img
-			src="https://picsum.photos/id/30/500/300.webp"
-			alt="Coffee Cup"
+			src="/images/placeholders/fox.webp"
+			alt="Orange Fox Wallpaper"
 			width="500"
 			height="300"
 			loading="lazy"
 		/>
-		<p class="lead"><strong>Coffee Cup</strong></p>
+		<p class="lead"><strong>Orange Fox Wallpaper</strong></p>
 		<p>Dicta ea a, commodi reiciendis aut doloremque earum fugit ducimus officiis.</p>
 		<p class="font-bold">€6.00</p>
 		<form action="#" class="flex-wrap gap align">
@@ -151,13 +151,13 @@ As you can see, with just a few CSS utilities, you can easily create a fully fun
 	</article>
 	<article class="card --hover">
 		<img
-			src="https://picsum.photos/id/42/500/300.webp"
-			alt="Barista Training"
+			src="/images/placeholders/dog.webp"
+			alt="Dog keep Watch Wallpaper"
 			width="500"
 			height="300"
 			loading="lazy"
 		/>
-		<p class="lead"><strong>Barista Training</strong></p>
+		<p class="lead"><strong>Dog keep Watch Wallpaper</strong></p>
 		<p>Dicta ea a, commodi reiciendis aut doloremque earum fugit ducimus officiis.</p>
 		<p class="font-bold">€112.56</p>
 		<form action="#" class="flex-wrap gap align">
@@ -171,14 +171,14 @@ As you can see, with just a few CSS utilities, you can easily create a fully fun
 <div class="auto-grid gap" style="--max-col-size: 16rem">
 	<article class="card --hover">
 		<img
-			src="https://picsum.photos/id/425/500/300.webp"
-			alt="Coffee Beans"
+			src="/images/placeholders/cat.webp"
+			alt="Sunny Cat Wallpaper"
 			width="500"
 			height="300"
 			loading="lazy"
-		>
-		<p class="lead"><strong>Coffee Beans</strong></p>
-		<p>Dicta ea a...</p>
+		/>
+		<p class="lead"><strong>Sunny Cat Wallpaper</strong></p>
+		<p>Dicta ea a, commodi reiciendis aut doloremque earum fugit ducimus officiis.</p>
 		<p class="font-bold">€18.99</p>
 		<form action="#" class="flex-wrap gap align">
 			<input type="hidden" name="product-id" value="demo-id">

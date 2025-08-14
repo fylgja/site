@@ -231,7 +231,7 @@ Adds a subtle overlay shadow to an element, often effective in combination with 
 
 <figure class="demo-wrapper">
 <div class="stack inline-grid">
-<img src="https://picsum.photos/id/275/480/300.webp" alt="Seagull, Got fish?" width="480" height="300" loading="lazy">
+<img src="/images/placeholders/seagull.webp" alt="Seagull, Got fish?" width="480" height="320" loading="lazy">
 <div class="overlay align-self" style="--p: 1rem; --align-self: end auto">Got fish?</div>
 </div>
 </figure>
@@ -284,11 +284,11 @@ Easily create interactive sliders. This utility works best in conjunction with o
 
 <figure class="demo-wrapper">
 <div class="snap scroll-x scroll-mask grid-cols grid-flow gap" style="--sm_grid-cols: 2">
-<img src="https://picsum.photos/id/10/480/300.webp" alt="" width="480" height="300" loading="lazy">
-<img src="https://picsum.photos/id/12/480/300.webp" alt="" width="480" height="300" loading="lazy">
-<img src="https://picsum.photos/id/14/480/300.webp" alt="" width="480" height="300" loading="lazy">
-<img src="https://picsum.photos/id/16/480/300.webp" alt="" width="480" height="300" loading="lazy">
-<img src="https://picsum.photos/id/18/480/300.webp" alt="" width="480" height="300" loading="lazy">
+<img src="/images/placeholders/cat.webp" alt="" width="480" height="320" loading="lazy">
+<img src="/images/placeholders/dog.webp" alt="" width="480" height="320" loading="lazy">
+<img src="/images/placeholders/bear.webp" alt="" width="480" height="320" loading="lazy">
+<img src="/images/placeholders/fox.webp" alt="" width="480" height="320" loading="lazy">
+<img src="/images/placeholders/hare.webp" alt="" width="480" height="320" loading="lazy">
 </div>
 </figure>
 
@@ -343,7 +343,7 @@ Use it with a `card` or with `relative` class on the parent element to define th
 
 <figure class="demo-wrapper">
 <div class="card --hover inline-block">
-	<img src="https://picsum.photos/id/8/480/300.webp" alt="" width="480" height="300" loading="lazy">
+	<img src="/images/placeholders/frog.webp" alt="" width="480" height="320" loading="lazy">
 	<div class="card-content">
 	<p>This is the body text that should not be part of the link</p>
 	<a class="stretched-link btn --primary" href="#stretched-link">This is a accessible link text</a>
