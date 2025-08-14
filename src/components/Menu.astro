@@ -31,9 +31,9 @@ const { title, items, urlPrefix, class: classes } = Astro.props;
 						<li>
 							<a
 								class="btn w-full"
-								href={item.slug ? `${urlPrefix}/${item.slug}/` : urlPrefix}
+								href={item.slug ? `${urlPrefix}/${item.slug}/` : `${urlPrefix}/`}
 								aria-current={isCurrentPage(
-									`${item.slug ? `${urlPrefix}/${item.slug}/` : urlPrefix}`
+									`${item.slug ? `${urlPrefix}/${item.slug}/` : `${urlPrefix}/`}`
 								)}
 							>
 								{item.data.title}
