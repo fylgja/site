@@ -135,7 +135,7 @@ providing greater flexibility in layout gaps.
 <ul role="list" class="divide-y flow">
 <li>A better way to</li>
 <li>handle divides</li>
-<li>and supports a gaps to!</li>
+<li>and supports gaps to!</li>
 </ul>
 </figure>
 
