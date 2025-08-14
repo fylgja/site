@@ -18,6 +18,12 @@ import Layout from "@/layouts/BlankLayout.astro";
 	}}
 >
 	<style is:inline>
+		@keyframes fade-on-scroll {
+			to {
+				opacity: 0;
+			}
+		}
+
 		@keyframes add-shadow {
 			to {
 				box-shadow: var(--shadow-2);
@@ -44,6 +50,47 @@ import Layout from "@/layouts/BlankLayout.astro";
 			padding-block: 1rem;
 			text-align: center;
 			background-color: var(--surface-color);
+		}
+
+		/* For Iframe */
+		.mouse-icon {
+			display: inline-flex;
+			justify-content: center;
+			width: 1.8rem;
+			height: 2.8rem;
+			border: 2px solid;
+			border-radius: 25px;
+			background-color: canvas;
+			opacity: 68%;
+			vertical-align: middle;
+			animation: fade-on-scroll linear both;
+			animation-timeline: scroll();
+			animation-range: 0 10rem;
+		}
+
+		.mouse-icon::after {
+			content: "";
+			display: block;
+			margin-block-start: 0.5rem;
+			width: 3px;
+			height: 10px;
+			border-radius: 25%;
+			background-color: currentColor;
+			animation: mouse-icon-scroll 2.2s cubic-bezier(0.15, 0.41, 0.69, 0.94) infinite;
+		}
+
+		@keyframes mouse-icon-scroll {
+			0% {
+				opacity: 0;
+			}
+			10% {
+				transform: translateY(0);
+				opacity: 1;
+			}
+			100% {
+				transform: translateY(0.8rem);
+				opacity: 0;
+			}
 		}
 	</style>
 	<header class="page-header sticky">
@@ -773,6 +820,14 @@ p q r s t u v w x y z { } ~ </code>
 			</div>
 		</section>
 	</main>
+	<div
+		id="page-scroller"
+		class="sticky text-end"
+		style="--mx: 1rem; --inset-y: auto 1rem;"
+		hidden
+	>
+		<div class="mouse-icon"></div>
+	</div>
 	<footer class="page-footer">
 		<div class="container md:flex align gap">
 			<p><a href="/library/base">Go Back to the Fylgja Base Page</a></p>
@@ -812,6 +867,7 @@ p q r s t u v w x y z { } ~ </code>
 			document.querySelector(".page-header").setAttribute("hidden", "");
 			document.querySelector(".page-footer").setAttribute("hidden", "");
 			document.getElementById("page-intro").setAttribute("hidden", "");
+			document.getElementById("page-scroller").removeAttribute("hidden");
 		}
 	</script>
 </Layout>
