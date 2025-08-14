@@ -66,10 +66,19 @@ const hasMeta = !!git || !!npm;
 	}
 
 	.demo-wrapper {
+		--demo-raster-size: 1.5rem;
+		--demo-stroke-size: 1px;
 		--separator-flow: 1em;
+		--_dbs: var(--demo-stroke-size);
 		min-block-size: var(--demo-wrapper-min-size);
 		padding: var(--size-6);
-		border: 1px dashed var(--border-color-fade);
+		border: var(--_dbs) dashed var(--border-color-fade);
+		background-image:
+			linear-gradient(to right, var(--surface-color) var(--_dbs), transparent var(--_dbs)),
+			linear-gradient(to bottom, var(--surface-color) var(--_dbs), transparent var(--_dbs));
+		background-size: var(--demo-raster-size) var(--demo-raster-size);
+		background-position: calc(var(--demo-raster-size) / 2) calc(var(--demo-raster-size) / 2);
+		background-clip: padding-box;
 
 		&.--resize {
 			container-type: inline-size;
