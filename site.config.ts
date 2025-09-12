@@ -10,7 +10,6 @@ export default {
 		github: "https://github.com/fylgja",
 		bluesky: "https://bsky.app/profile/fylgja.dev",
 		mastodon: "https://fosstodon.org/@fylgja",
-		twitter: "https://twitter.com/FylgjaDev",
 		devto: "https://dev.to/fylgja",
 	},
 	twitterUser: "FylgjaDev",
