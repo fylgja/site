@@ -94,9 +94,8 @@ Your JSON file can be a simple key-value object, or it can follow a standard for
 Create a Node.js script (e.g., `build.js`) to read your tokens file and run the builder.
 
 ```js
-// build.js
+import { readFileSync } from "node:fs";
 import { propsBuilder } from "@fylgja/props-builder";
-import { readFileSync } from "fs";
 
 // Read and parse the JSON file
 const tokens = JSON.parse(readFileSync("path/to/your/tokens.json", "utf-8"));
@@ -117,19 +116,19 @@ console.log("Successfully built tokens.css!");
 
 The key step is to configure the `options` object based on your JSON file's format.
 
-*   **For a simple, key-value JSON file:**
+* **For a simple, key-value JSON file:**
     You don't need any special options. The builder handles it by default.
     ```js
     const options = {};
     ```
 
-*   **For a W3C Design Tokens spec file:**
+* **For a W3C Design Tokens spec file:**
     Set `inputTypeTokens` to `true`.
     ```js
     const options = { inputTypeTokens: true };
     ```
 
-*   **For a Figma Tokens file:**
+* **For a Figma Tokens file:**
     Set `inputTypeTokens` to `true` and `inputTypeSyntax` to `'figma'`.
     ```js
     const options = {
@@ -141,9 +140,11 @@ The key step is to configure the `options` object based on your JSON file's form
 #### 4. Run the build script
 
 Finally, run your script from the terminal:
+
 ```sh
 node build.js
 ```
+
 This will generate a `tokens.css` file with your design tokens converted to CSS Custom Properties.
 
 ## Also used in
