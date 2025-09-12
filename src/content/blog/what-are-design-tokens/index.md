@@ -1,9 +1,10 @@
 ---
 title: "What Are Design Tokens, and Why Should You Care?"
-tagline: "TODO"
-description: "TODO"
-publishDate: 2025-01-01
+tagline: "The single source of truth for your design system."
+description: "Learn what design tokens are, why they are essential for building scalable and consistent user interfaces, and how to use them with tools like the Fylgja Props Builder."
+publishDate: 2025-09-12
 tags: ["design-tokens", "css props", "css variables", "css", "props-builder"]
+coverImage: "cover.jpg"
 ---
 
 As developers and designers, we've all been there. You're working on a new feature, and you need to use the brand's primary color. You open the inspector, find a button that looks right, and copy the hex code: `#3B82F6`. A week later, another developer does the same but samples it from a slightly different banner and gets `#3B83F7`.
@@ -18,7 +19,7 @@ At their core, **design tokens are a methodology for managing your design decisi
 
 Think of them as variables for your design. Instead of hard-coding a value like `#3B82F6` directly in your CSS or UI component, you reference a token, for example, `color-brand-primary`.
 
-These tokens are typically stored in a technology-agnostic format like JSON or YAML. A simple token file might look like this:
+These tokens are stored in a technology-agnostic format like JSON, so they can be used anywhere. Here's a simple example:
 
 ```json
 {
@@ -78,8 +79,8 @@ The `theme` object in your `tailwind.config.js` file is essentially a design tok
 module.exports = {
   theme: {
     colors: {
-      'blue': '#1fb6ff',
-      'purple': '#7e5bef',
+      'blue': '#3B82F6',
+      'purple': '#EC4899',
     },
     spacing: {
       '1': '8px',
@@ -92,14 +93,12 @@ module.exports = {
 
 When you use a class like `bg-blue` or `p-1`, you are referencing a design token. The power of a dedicated design token system is that it decouples these decisions from a specific framework, allowing you to use them across any platform or technology you need.
 
-## Bringing Tokens to Life with the Fylgja Props Builder
+## Bringing Your Tokens to Life with Fylgja
 
 So, you have your beautiful JSON file with all your design decisions. How do you turn that into usable CSS?
 
-That's where a tool like the **[Fylgja Props Builder](https://fylgja.dev/library/extensions/props-builder/)** comes in.
+We built the **[@fylgja/props-builder](https://fylgja.dev/library/extensions/props-builder/)** to solve this exact problem. It's a powerful NPM package that takes your design token files and compiles them into a variety of formats, including CSS Custom Properties, Sass variables, and JavaScript objects.
 
-The Props Builder is a powerful NPM package that takes your design token files as input and compiles them into a variety of formats. Whether you need CSS Custom Properties, Sass variables, or even JavaScript objects, the builder handles the conversion for you.
+This allows you to maintain a single source of truth and use your design decisions in whatever format your project needs.
 
-This allows you to maintain a single, canonical source for your design system while empowering developers to use those values in the format that makes the most sense for their work. It's the final, critical step in making your design tokens a truly integrated part of your development workflow.
-
-By embracing design tokens, you're not just organizing your styles; you're investing in a more consistent, scalable, and collaborative future for your user interface.
+The Props Builder is the final, critical step in making your design tokens a truly integrated part of your development workflow. By embracing design tokens with Fylgja, you're not just organizing your styles; you're investing in a more consistent, scalable, and collaborative future for your UI.
