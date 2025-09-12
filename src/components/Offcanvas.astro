@@ -1,4 +1,6 @@
 ---
+// Replace with command invokers pollyfill
+
 interface Props {
 	class?: string;
 	style?: string;
@@ -80,6 +82,12 @@ const {
 			dialog.addEventListener("click", (event) => {
 				if (!event.target.closest("button[data-close]")) return;
 				dialog.close("dismiss");
+			});
+
+			window.addEventListener("pageshow", (event) => {
+				if (event.persisted) {
+					dialog.close("dismiss");
+				}
 			});
 		}
 	}
