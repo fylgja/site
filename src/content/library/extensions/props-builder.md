@@ -150,4 +150,4 @@ This will generate a `tokens.css` file with your design tokens converted to CSS 
 
 - [Hyvä Themes Tailwind Utilities](https://github.com/hyva-themes/hyva-modules-tailwind-js)
 
-_Have you also used the Fylgja Props Builder in your package? if so feel free to share it with us, using github or any of your social channels_
+_Have you used the Fylgja Props Builder in your own package? Let us know on GitHub or social media, and we might feature it here!_
