@@ -13,7 +13,12 @@ interface Props {
 
 const { version, git, npm, changelog, iconSize = 16 } = Astro.props;
 const npmUrl = npm ? `https://npmjs.com/package/${npm}` : "";
-const changelogUrl = changelog || git ? `${git}/CHANGELOG.md` : "";
+const changelogUrl =
+	changelog || git
+		? git?.includes("/tree/main")
+			? `${git}/CHANGELOG.md`
+			: `${git}/tree/main/CHANGELOG.md`
+		: "";
 ---
 
 <div class="meta">
