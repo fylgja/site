@@ -4,7 +4,7 @@ pageTitle: "Fylgja Sass Extend"
 description: "Add more super powers to your Sass project."
 npm: "@fylgja/sass"
 git: "https://github.com/fylgja/fylgja-sass"
-sortOrder: 12
+sortOrder: 30
 ---
 
 Add more super powers to your Sass project.

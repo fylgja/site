@@ -4,6 +4,7 @@ pageTitle: "Fylgja AlpineJS Dialog"
 description: "Bring the power and simplicity of Alpine.js to the native HTML Dialog"
 npm: "@fylgja/alpinejs-dialog"
 git: "https://github.com/fylgja/alpinejs-dialog"
+sortOrder: 12
 ---
 
 Bring the power and simplicity of Alpine.js to the native HTML `<dialog>` element.

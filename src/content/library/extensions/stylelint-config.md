@@ -4,7 +4,7 @@ pageTitle: "Fylgja Stylelint Config"
 description: "Fylgja uses an opinionated Stylelint config to enforce its CSS rules across all of its projects."
 npm: "@fylgja/stylelint-config"
 git: "https://github.com/fylgja/stylelint-config"
-sortOrder: 14
+sortOrder: 40
 ---
 
 Fylgja uses an opinionated Stylelint config to enforce its CSS rules across all of its projects.

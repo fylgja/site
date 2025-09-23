@@ -2,6 +2,7 @@
 title: "Preset TailwindCSS"
 description: "Preset for TailwindCSS"
 draft: true
+sortOrder: 20
 ---
 
 Preset for TailwindCSS.
