@@ -32,7 +32,7 @@ const urlPrefix = "/" + collectionName.toLowerCase();
 	</PageHeader>
 	<main id="main-content" class="docs-layout">
 		<aside class="docs-menu hidden lg:block">
-			<div class="sticky inset-header scroll-y max-h-full">
+			<div class="sticky inset-header scroll-y">
 				<MainNav label="Docs MainNav" />
 				<Menu title={collectionName} items={collection} urlPrefix={urlPrefix} />
 			</div>
@@ -78,6 +78,7 @@ const urlPrefix = "/" + collectionName.toLowerCase();
 		margin-bottom: 2rem;
 	}
 
+	.docs-menu > div,
 	.sidebar-toc {
 		max-height: min((99vh - var(--page-header-height, 0px)), 100%);
 	}
