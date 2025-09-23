@@ -11,7 +11,7 @@ A CSS-powered slider/carousel, enhanced with JavaScript for improved functionali
 The Snap Slider is available as a Custom Element (the primary and recommended way) or as an AlpineJS component.
 
 - **Custom Element Live Demo:** [https://fylgja-snap-slider.netlify.app/](https://fylgja-snap-slider.netlify.app/)
-- **AlpineJS Live Demo:** [https://fylgja-snap-slider.netlify.app/alpine.html](https://fylgja-snap-slider.netlify.app/alpine.html)
+- **AlpineJS Live Demo:** [https://fylgja-snap-slider.netlify.app/alpine](https://fylgja-snap-slider.netlify.app/alpine)
 
 ## Installation
 
