@@ -5,6 +5,8 @@
 @import "@fylgja/form-extend";
 @import "styles/menu";
 @import "@fylgja/card";
+@import "@fylgja/toast";
+@import "@fylgja/badge";
 @import "styles/breadcrumbs";
 
 @import "styles/content";
