@@ -27,6 +27,6 @@
 		"astro": "^5.13.5",
 		"prettier": "^3.6.2",
 		"remark-github-blockquote-alert": "^2.0.0",
-		"typescript": "^5.9.2"
+		"typescript": "^5.9.3"
 	}
 }
