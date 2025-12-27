@@ -33,6 +33,9 @@ const dateHash = `v=${date.getMonth() + 1}-${date.getFullYear()}`;
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>{title} - {siteName}</title>
+
+	<slot />
+
 	<link rel="canonical" href={canonical} />
 
 	<meta name="title" content={title} />
@@ -67,6 +70,4 @@ const dateHash = `v=${date.getMonth() + 1}-${date.getFullYear()}`;
 	{twitterUser && <meta name="twitter:site" content={twitterUser} />}
 
 	<meta name="generator" content={Astro.generator} />
-
-	<slot />
 </head>
