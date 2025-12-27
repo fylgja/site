@@ -119,17 +119,28 @@ body > main {
 	border-end-end-radius: 0;
 }
 
-[data-theme="light"]:root {
-	--root-bg: hsl(0, 0%, 100%);
-	--root-fg: hsl(0, 0%, 8%);
-	--select-icon: var(--select-light-scheme);
-	--shadow-color: gray;
-	--shadow-strength: 1%;
-	color-scheme: light;
+@media (prefers-color-scheme: dark) {
+	:root:where([data-theme="auto"]) {
+		--root-bg: color-mix(in oklab, hsl(0 15% 5%) 92%, var(--brand));
+		--root-fg: hsl(0 0% 92%);
+		--select-icon: var(--select-dark-scheme);
+		--shadow-color: #030407;
+		--shadow-strength: 25%;
+		color-scheme: dark;
+	}
 }
 
-@media (prefers-color-scheme: dark) {
-	html:not([data-theme="light"]) {
+@media (prefers-color-scheme: light) or (prefers-color-scheme: dark) {
+	:root:where([data-theme="light"]) {
+		--root-bg: hsl(0, 0%, 100%);
+		--root-fg: hsl(0, 0%, 8%);
+		--select-icon: var(--select-light-scheme);
+		--shadow-color: gray;
+		--shadow-strength: 1%;
+		color-scheme: light;
+	}
+
+	:root:where([data-theme="dark"]) {
 		--root-bg: color-mix(in oklab, hsl(0 15% 5%) 92%, var(--brand));
 		--root-fg: hsl(0 0% 92%);
 		--select-icon: var(--select-dark-scheme);
