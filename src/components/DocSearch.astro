@@ -25,42 +25,62 @@ const { ...attrs } = Astro.props;
 <style is:global>
 	.DocSearch {
 		--docsearch-primary-color: var(--brand);
-		--docsearch-text-color: var(--root-fg);
-		--docsearch-spacing: 1rem;
+		--docsearch-soft-primary-color: oklch(from var(--brand) l c h / 10%);
+		--docsearch-subtle-color: oklch(from var(--text-color) l c h / 30%);
+		--docsearch-text-color: var(--text-color);
+		--docsearch-error-color: #ef5350;
+		--docsearch-success-color: #e8f5e9;
+		--docsearch-secondary-text-color: var(--text-color-muted);
+		--docsearch-background-color: var(--surface-color);
+		--docsearch-spacing: 12px;
 		--docsearch-icon-stroke-width: 1.4;
+		--docsearch-focus-color: var(--brand);
 		--docsearch-highlight-color: var(--brand);
-		--docsearch-muted-color: color-mix(in srgb, var(--root-fg), transparent 33%);
-		--docsearch-container-background: hsla(0, 0%, 0%, 0.3);
-
-		--docsearch-modal-width: 560px;
+		--docsearch-muted-color: oklch(from var(--text-color) l c h / 50%);
+		--docsearch-muted-color-darker: oklch(from var(--text-color) l c h / 30%);
+		--docsearch-icon-color: var(--text-color-muted);
+		--docsearch-container-background: var(--backdrop, hsla(0 0 0 / 30%));
+		--docsearch-logo-color: var(--text-color-muted);
+		--docsearch-border-radius: 4px;
+		--docsearch-search-button-background: var(--root-bg);
+		--docsearch-search-button-text-color: var(--docsearch-secondary-text-color);
+		--docsearch-modal-width: 800px;
 		--docsearch-modal-height: 600px;
-		--docsearch-modal-background: color-mix(in oklab, var(--root-bg) 90%, #fff);
-		--docsearch-modal-shadow: var(--shadow-2);
-
+		--docsearch-modal-variable-height: 60dvh;
+		--docsearch-modal-background: var(--surface-color);
+		--docsearch-modal-shadow:
+			rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+			hsla(0, 0%, 100%, 0.05) 0px 0px 0px 1px inset;
 		--docsearch-searchbox-height: 56px;
-		--docsearch-searchbox-background: color-mix(in oklab, var(--root-bg) 90%, var(--brand));
-		--docsearch-searchbox-focus-background: var(--form-bg, var(--root-bg));
-		--docsearch-searchbox-shadow: inset 0 0 0 1px currentcolor;
-
+		--docsearch-searchbox-initial-height: 56px;
+		--docsearch-searchbox-background: oklch(from var(--brand) l c h / 10%);
+		--docsearch-searchbox-focus-background: oklch(from var(--brand) l c h / 10%);
+		--docsearch-actions-width: 99px;
+		--docsearch-actions-height: 44px;
 		--docsearch-hit-height: 56px;
-		--docsearch-hit-color: var(--roof-fg);
-		--docsearch-hit-active-color: var(--on-brand);
+		--docsearch-hit-color: var(--text-color-muted);
+		--docsearch-hit-highlight-color: oklch(from var(--brand) l calc(c / 2) h / 20%);
 		--docsearch-hit-background: var(--root-bg);
-
-		--docsearch-key-gradient: linear-gradient(
-			var(--sl-color-bg-inline-code) 0%,
-			var(--sl-color-bg-inline-code) 100%
+		--docsearch-key-background: var(--surface-color);
+		--docsearch-key-color: #5a5e9a;
+		--docsearch-key-pressed-shadow: inset 0 2px 4px rgba(120, 122, 165, 0.25);
+		--docsearch-footer-height: 52px;
+		--docsearch-footer-background: oklch(from var(--brand) l c h / 10%);
+		--docsearch-footer-shadow: 0 -1px 0 0 #e0e3e8, 0 -3px 6px 0 rgba(69, 98, 155, 0.12);
+		--fav-out-dur: 160ms;
+		--del-dur: 150ms;
+		--ease-smooth: cubic-bezier(0.25, 0.8, 0.4, 1);
+		--ease-fast: cubic-bezier(0.45, 0.15, 0.6, 0.9);
+		--shadow-pop: 0 4px 12px rgba(0, 0, 0, 0.06);
+		--shimmer-bg: linear-gradient(
+			90deg,
+			#e0e3e8 0%,
+			var(--docsearch-muted-color) 20%,
+			var(--docsearch-muted-color) 60%,
+			#e0e3e8 95%
 		);
-		--docsearch-footer-height: 44px;
-		--docsearch-footer-background: color-mix(in oklab, var(--root-bg) 90%, var(--brand));
-		--docsearch-footer-shadow: 0 -1px 0 0 var(--brand);
-		--docsearch-logo-color: var(--docsearch-muted-color);
-	}
-
-	.DocSearch-Form:focus-within {
-		--docsearch-searchbox-shadow: inset 0 0 0 1px var(--form-active-color, currentcolor);
-		outline: 1px solid var(--form-active-color, currentcolor);
-		outline-offset: calc((var(--form-border-width, 1px) + 1px) * -1);
+		--docsearch-dropdown-menu-background: var(--docsearch-hit-background);
+		--docsearch-dropdown-menu-item-hover-background: var(--docsearch-modal-background);
 	}
 
 	.DocSearch-Search-Icon {
@@ -73,15 +93,15 @@ const { ...attrs } = Astro.props;
 
 	.DocSearch-Button-Keys {
 		display: inline-flex;
+		gap: 0.5em;
 		margin-inline-start: auto;
-		padding: 0 0.25rem;
-		font-size: 0.875rem;
-		background-color: color-mix(in srgb, var(--root-fg), transparent 88%);
-		border-radius: inherit;
 
 		& kbd {
+			font-size: 0.875rem;
 			font-family: inherit;
 			padding: 0 0.125rem;
+			border-radius: 4px;
+			background-color: color-mix(in srgb, var(--root-fg), transparent 88%);
 		}
 	}
 
@@ -89,10 +109,15 @@ const { ...attrs } = Astro.props;
 		fill: currentcolor;
 	}
 
+	.DocSearch-Commands li {
+		margin-block: 0;
+	}
+
 	@media (width >= 768px) {
 		.DocSearch-Button {
 			--btn-stroke: color-mix(in srgb, var(--root-fg), transparent 80%);
 			--btn-bg: var(--root-bg);
+			--btn-px: 0.875em;
 			border-width: 1px;
 			width: min(100%, 22rem);
 			opacity: 0.7;
