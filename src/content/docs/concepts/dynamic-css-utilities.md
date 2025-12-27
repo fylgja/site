@@ -1,9 +1,9 @@
 ---
 title: "Dynamic CSS Utilities"
-description: "Dynamic CSS Utilities in Fylgja are designed to be flexible and customizable through the use of CSS variables"
+description: "Dynamic CSS Utilities in Fylgja CSS are designed to be flexible and customizable through the use of CSS variables"
 ---
 
-Dynamic CSS Utilities in Fylgja are designed to be flexible and customizable through the use of CSS variables.
+Dynamic CSS Utilities in Fylgja CSS are designed to be flexible and customizable through the use of CSS variables.
 
 Instead of creating separate utilities for every possible variation (e.g., spacing sizes),
 each utility serves a single purpose,
@@ -57,7 +57,7 @@ and Fylgja Utilities give you the flexibility to choose the method that best fit
 
 ### Margin Utilities
 
-Let’s compare Fylgja’s approach to setting margins with the traditional CSS utility method:
+Let’s compare Fylgja CSS’s approach to setting margins with the traditional CSS utility method:
 
 ```html
 <div style="--my: 1rem; --lg_my: var(--size-4)">...</div>
@@ -74,7 +74,7 @@ which can lead to larger CSS files.
 
 ### Integrating with PHP, JavaScript, or Other Languages
 
-Another advantage of Fylgja’s Dynamic CSS Utilities is that CSS values can be accessed
+Another advantage of Fylgja CSS’s Dynamic CSS Utilities is that CSS values can be accessed
 and manipulated by server-side or client-side languages,
 like PHP or JavaScript. For example, setting a CSS variable dynamically via PHP:
 
@@ -83,12 +83,12 @@ like PHP or JavaScript. For example, setting a CSS variable dynamically via PHP:
 ```
 
 In other frameworks, you'd typically have to manually define such dynamic behavior,
-but with Fylgja,
+but with Fylgja CSS,
 CSS variables provide built-in flexibility to interact with other languages without extra overhead.
 
 ## Key Advantages
 
 - **No CSS Bloat**: Since you're not generating a new class for every combination of values, your CSS file remains compact and efficient.
-- **Integration with CSS Tokens**: Fylgja's utilities are fully compatible with any CSS token system, whether you use Fylgja's own tokens or popular ones like [Open Props](https://open-props.style/).
+- **Integration with CSS Tokens**: Fylgja CSS's utilities are fully compatible with any CSS token system, whether you use Fylgja's own tokens or popular ones like [Open Props](https://open-props.style/).
 
 By leveraging this dynamic approach, you get the power and convenience of traditional utilities, but with greater flexibility and significantly less code overhead.

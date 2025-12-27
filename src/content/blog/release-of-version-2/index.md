@@ -1,5 +1,5 @@
 ---
-title: "Fylgja 2.0 is Live"
+title: "Fylgja CSS 2.0 is Live"
 tagline: ""
 description: "Introducing Core Package Separation and Streamlined Architecture for a Better CSS Experience"
 publishDate: 2025-03-19
@@ -7,19 +7,19 @@ tags: ["releases", "css", "library"]
 coverImage: "cover.jpg"
 ---
 
-<p class="lead">Get ready for a significant evolution in Fylgja!</p>
+<p class="lead">Get ready for a significant evolution in Fylgja CSS!</p>
 
-We're excited to release Fylgja 2, a fundamental shift in our CSS library's architecture.
+We're excited to release Fylgja CSS 2, a fundamental shift in our CSS library's architecture.
 
 This new version is built from the ground up with a focus on _modularity_, enhanced performance, and a streamlined _development experience_. We've improved all facets, resulting in a more powerful and user-friendly CSS solution.
 
-This release represents a complete rebuild of our core, making Fylgja 2 a solid foundation for your projects.
+This release represents a complete rebuild of our core, making Fylgja CSS 2 a solid foundation for your projects.
 
 ## Why a New Foundation? _Addressing V1's Challenges and Enhancing Developer Experience_
 
-In our journey working with Fylgja v1, we learned a lot. While its modularity was a strength, managing numerous npm dependencies became a maintenance burden. We recognized the need to simplify this aspect and enhance the overall developer experience.
+In our journey working with Fylgja CSS v1, we learned a lot. While its modularity was a strength, managing numerous npm dependencies became a maintenance burden. We recognized the need to simplify this aspect and enhance the overall developer experience.
 
-Fylgja 2 tackles this by introducing a more streamlined package structure. We've bundled our three core concepts into three dedicated packages.
+Fylgja CSS 2 tackles this by introducing a more streamlined package structure. We've bundled our three core concepts into three dedicated packages.
 
 * **Fylgja Base**  
   Encompasses the classless styles, including components like forms and buttons.
@@ -97,14 +97,14 @@ This makes CSS utilities truly dynamic, ensuring that each value doesn't contrib
 
 Our journey doesn't stop here! We're already working on expanding the Fylgja ecosystem with new _CSS Components_, the Input and Button Groups are already available.
 
-### Updating from Fylgja v1.x
+### Updating from Fylgja CSS v1.x
 
-Since Fylgja 2 represents a complete rebuild, there isn't a direct automated upgrade path or script, however, due to the modular nature of even v1, you can gradually replace features from v1 with the new version.
+Since Fylgja CSS 2 represents a complete rebuild, there isn't a direct automated upgrade path or script, however, due to the modular nature of even v1, you can gradually replace features from v1 with the new version.
 
 For detailed information, please refer to our extensive [Library](/library/) and [Documentation](/docs).
 
-## Share Your Thoughts and Support Fylgja!
+## Share Your Thoughts and Support Fylgja CSS!
 
-If you're as excited about Fylgja 2 as we are, please take a moment to **star our Github Repository** ![GitHub Repo stars](https://img.shields.io/github/stars/fylgja/fylgja?style=social). Your support helps us grow and reach more developers!
+If you're as excited about Fylgja CSS 2 as we are, please take a moment to **star our Github Repository** ![GitHub Repo stars](https://img.shields.io/github/stars/fylgja/fylgja?style=social). Your support helps us grow and reach more developers!
 
-We'd also love to hear your feedback! Share your suggestions and opinions on our [Github Discussions](https://github.com/orgs/fylgja/discussions). If you write a blog post about Fylgja 2, please share it with us on your favorite social media platform using our social media handle. We're eager to see what you build with Fylgja 2!
+We'd also love to hear your feedback! Share your suggestions and opinions on our [Github Discussions](https://github.com/orgs/fylgja/discussions). If you write a blog post about Fylgja CSS 2, please share it with us on your favorite social media platform using our social media handle. We're eager to see what you build with Fylgja CSS 2!

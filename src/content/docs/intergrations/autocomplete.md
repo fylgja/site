@@ -1,12 +1,12 @@
 ---
 title: "Autocomplete in your editor"
-description: "Tips to make it even easier to work with Fylgja in your editor"
+description: "Tips to make it even easier to work with Fylgja CSS in your editor"
 ---
 
-Fylgja is a CSS Library that simplifies the creation of beautiful and responsive websites.
+Fylgja CSS is a CSS Library that simplifies the creation of beautiful and responsive websites.
 
 To make it even easier to work with,
-you can enable autocompletion for Fylgja's features in your editor.
+you can enable autocompletion for Fylgja CSS's features in your editor.
 
 This will speed up your development process by suggesting CSS variables,
 SCSS syntax, and more as you type.
@@ -23,7 +23,7 @@ Below are a few tips to get autocomplete working in your favorite editor:
 To enable autocompletion for CSS variables in VSCode, you can use the **CSS Variable Autocomplete** extension.
 
 1. Install the extension [phoenisx.cssvar](https://marketplace.visualstudio.com/items?itemName=phoenisx.cssvar).
-2. Configure your editor to include Fylgja's CSS variables from your `node_modules` folder:
+2. Configure your editor to include Fylgja CSS's CSS variables from your `node_modules` folder:
 
 ```json
 // .vscode/settings.json
@@ -38,7 +38,7 @@ To enable autocompletion for CSS variables in VSCode, you can use the **CSS Vari
 }
 ```
 
-You can also specify paths to individual Fylgja component files if preferred.
+You can also specify paths to individual Fylgja CSS component files if preferred.
 
 For more configuration options, refer to the [extension documentation](https://marketplace.visualstudio.com/items?itemName=phoenisx.cssvar).
 

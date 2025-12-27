@@ -1,12 +1,12 @@
 ---
 title: "RTL (Right to Left)"
-description: "Fylgja works out of the box for right-to-left (RTL) languages such as Arabic and Hebrew."
+description: "Fylgja CSS works out of the box for right-to-left (RTL) languages such as Arabic and Hebrew."
 ---
 
-Fylgja offers seamless support for right-to-left (RTL) languages like Arabic and Hebrew
+Fylgja CSS offers seamless support for right-to-left (RTL) languages like Arabic and Hebrew
 without requiring additional CSS or prefixed RTL utility classes.
 
-Fylgja automatically applies the correct styles to ensure a proper RTL layout.
+Fylgja CSS automatically applies the correct styles to ensure a proper RTL layout.
 
 ## RTL Language Layout
 

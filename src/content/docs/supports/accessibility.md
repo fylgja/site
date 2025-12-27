@@ -1,16 +1,16 @@
 ---
 title: "Accessibility"
-description: "Fylgja is out of the box fully A11Y ready."
+description: "Fylgja CSS is out of the box fully A11Y ready."
 sortOrder: 9
 ---
 
-All Fylgja packages are designed to be fully accessible right out of the box.
+All Fylgja CSS packages are designed to be fully accessible right out of the box.
 
-The styling provided by Fylgja will not negatively impact the accessibility of your website,
+The styling provided by Fylgja CSS will not negatively impact the accessibility of your website,
 ensuring best practices for typography, focus management, and appropriate touch/click sizes.
 
 In addition to offering accessible styles,
-Fylgja promotes the use of proper HTML attributes to manage state and behavior for CSS components and utilities,
+Fylgja CSS promotes the use of proper HTML attributes to manage state and behavior for CSS components and utilities,
 rather than relying solely on class names.
 
 This helps enforce accessibility best practices directly in your markup.
@@ -39,7 +39,7 @@ allowing you to focus on proper HTML structure instead.
 
 ## Ready-to-Use Accessible Components
 
-Fylgja offers a wide range of [UI components](/ui) that are built with accessibility in mind.
+Fylgja CSS offers a wide range of [UI components](/ui) that are built with accessibility in mind.
 
 These components are ready to be copied and pasted into your project,
 giving you both an accessible and efficient starting point for your user interface.

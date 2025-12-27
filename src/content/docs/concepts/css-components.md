@@ -11,12 +11,12 @@ This approach makes it easy to create attractive elements with little effort.
 However, a common downside is that these components often look the same across different projects
 and can be difficult to customize.
 
-At Fylgja, we aim to improve the concept of CSS Components by addressing these limitations.
+At Fylgja CSS, we aim to improve the concept of CSS Components by addressing these limitations.
 
 We combine the principles of **CSS Utilities** and **Class-less CSS** to offer more flexible
 and customizable components without compromising simplicity or efficiency.
 
-## Fylgja's Approach to CSS Components
+## Fylgja CSS's Approach to CSS Components
 
 We follow key guidelines to make our CSS Components more versatile and easy to work with:
 
@@ -30,6 +30,6 @@ We follow key guidelines to make our CSS Components more versatile and easy to w
 - **Easy Customization**: While CSS Components can contain complex styles,
   they remain customizable via CSS variables, making modifications straightforward.
 
-By following these principles, Fylgja's CSS Components strike a balance between simplicity,
+By following these principles, Fylgja CSS's CSS Components strike a balance between simplicity,
 flexibility, and customization, making it easy to build unique,
 well-designed UI elements without repetitive patterns or excessive specificity.

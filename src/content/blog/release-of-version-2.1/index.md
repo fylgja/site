@@ -1,14 +1,14 @@
 ---
-title: "Fylgja 2.1 is Live: New Utilities, Performance Boosts, and More"
-tagline: "Discover what's new in the latest version of Fylgja"
-description: "This release brings a host of improvements across the Fylgja library, focusing on new features, performance enhancements."
+title: "Fylgja CSS 2.1 is Live: New Utilities, Performance Boosts, and More"
+tagline: "Discover what's new in the latest version of Fylgja CSS"
+description: "This release brings a host of improvements across the Fylgja CSS library, focusing on new features, performance enhancements."
 publishDate: 2025-08-06
 tags: ["releases", "css", "library"]
 coverImage: "cover.jpg"
 ---
 
-We're excited to announce the release of Fylgja 2.1!
-This update is packed with improvements across the Fylgja library,
+We're excited to announce the release of Fylgja CSS 2.1!
+This update is packed with improvements across the Fylgja CSS library,
 focusing on new features, performance enhancements.
 
 Let's dive into what's new.
@@ -42,7 +42,7 @@ We've also added several new utilities for text and the all-new `scroll-mask` ut
 
 For more details, see the [@fylgja/utilities] changelog.
 
-We're confident that Fylgja 2.1 will help you build better, faster, and more accessible websites. Update to the latest version today to take advantage of all these new features and improvements! We welcome your feedback and look forward to seeing what you create.
+We're confident that Fylgja CSS 2.1 will help you build better, faster, and more accessible websites. Update to the latest version today to take advantage of all these new features and improvements! We welcome your feedback and look forward to seeing what you create.
 
 Happy coding!
 
