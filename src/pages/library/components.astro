@@ -14,12 +14,11 @@ const description =
 			componentsCollection.map((item) => {
 				if (item.data.draft) return;
 				const { slug, data } = item;
-				const pathName = slug.split("/").pop();
 
 				return (
 					<li class="card --hover flow">
 						<h2>
-							<a href={pathName} class="stretched-link">
+							<a href={slug} class="stretched-link">
 								{data.title}
 							</a>
 						</h2>
