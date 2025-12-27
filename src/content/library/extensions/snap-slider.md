@@ -1,7 +1,7 @@
 ---
 title: "Snap Slider"
 pageTitle: "Fylgja Snap Slider"
-description: ""
+description: "A CSS-powered slider/carousel, enhanced with JavaScript for improved functionality and accessibility."
 npm: "@fylgja/snap-slider"
 git: "https://github.com/fylgja/snap-slider"
 ---
