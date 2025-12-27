@@ -5,6 +5,7 @@ import Offcanvas from "@/components/Offcanvas.astro";
 import DocSearch from "@/components/DocSearch.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 import IconGithub from "@/assets/icons/github.svg";
+import IconBluesky from "@/assets/icons/bluesky.svg";
 import { isCurrentPage } from "@/utils";
 
 const { ...attr } = Astro.props;
@@ -39,6 +40,10 @@ const mobileMenuHighlists = [
 		label: "Utilities",
 		path: "/library/utilities",
 	},
+	{
+		label: "Components",
+		path: "/library/components",
+	},
 ];
 ---
 
@@ -53,7 +58,7 @@ const mobileMenuHighlists = [
 			<Fragment set:html={Logo} />
 		</a>
 		<DocSearch style="--mx: auto 0; --md_mx: 0; --md_size-x: min(100%, 22rem);" />
-		<div class="flex align">
+		<div class="flex gap align">
 			<nav
 				id="desktop-menu"
 				aria-label="Main Menu"
@@ -71,21 +76,15 @@ const mobileMenuHighlists = [
 						</a>
 					))
 				}
-				<ThemeToggle />
-				<a href={siteConfig.socials.github} class="btn">
-					<IconGithub aria-label="Checkout the Fylgja CSS Github page" />
-				</a>
 			</nav>
-			<Offcanvas btnClasses="lg:hidden" style="--p: 0">
+			<Offcanvas style="--p: 0">
 				<div class="flex-col h-full">
-					<div class="menu-header flex gap align flow-unset" style="--p: 1rem">
-						<div class="flex-wrap gap">
-							<a href={siteConfig.socials.github} class="btn">
-								<IconGithub aria-label="Checkout the Fylgja CSS Github page" />
-							</a>
-							<ThemeToggle />
-						</div>
-						<button data-close aria-label="Close Mobile Menu Drawer">
+					<div class="menu-header flow-unset text-end" style="--py: 1rem 0; --px: 1rem">
+						<button
+							data-close
+							aria-label="Close Mobile Menu Drawer"
+							style="--btn-stroke: #0000"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="24"
@@ -96,11 +95,16 @@ const mobileMenuHighlists = [
 								stroke-width="2"
 								stroke-linecap="round"
 								stroke-linejoin="round"
-								><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg
 							>
+								<path d="M18 6 6 18"></path>
+								<path d="m6 6 12 12"></path>
+							</svg>
 						</button>
 					</div>
-					<div class="flex-col divide-y flow scroll-y" style="--p: 0.5rem; --grow: 1">
+					<div
+						class="flex-col flex-auto divide-y flow scroll-y scroll-mask"
+						style="--p: 0.5rem"
+					>
 						<div class="menu">
 							{
 								mobileMenu.map((item) => (
@@ -129,6 +133,17 @@ const mobileMenuHighlists = [
 								}
 							</div>
 						</slot>
+					</div>
+					<div class="flex-wrap align gap" style="--py: 0 1rem; --px: 1rem">
+						<div class="inline-flex align gap-sm">
+							<a href={siteConfig.socials.github} class="btn">
+								<IconGithub aria-label="Checkout the Fylgja CSS Github page" />
+							</a>
+							<a href={siteConfig.socials.bluesky} class="btn">
+								<IconBluesky aria-label="Checkout the Fylgja CSS Bluesky page" />
+							</a>
+						</div>
+						<ThemeToggle />
 					</div>
 				</div>
 			</Offcanvas>

@@ -16,6 +16,7 @@
 	--link-color: color-mix(in srgb, var(--brand) 65%, var(--root-fg));
 	--border-color-fade: color-mix(in srgb, var(--root-fg) 20%, transparent);
 	--code-stroke: color-mix(in srgb, currentcolor 20%, transparent);
+	--dialog-bg: var(--root-bg);
 	--anchor-offset: 10ex;
 	color-scheme: light dark;
 	scrollbar-color: var(--scrollthumb-color, var(--brand))
