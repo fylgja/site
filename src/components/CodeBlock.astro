@@ -1,11 +1,10 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 import { Code } from "astro:components";
-import type { BuiltinLanguage, LanguageRegistration, SpecialLanguage } from "shiki";
 
 interface Props extends Omit<HTMLAttributes<"pre">, "lang"> {
 	code: string;
-	lang?: BuiltinLanguage | SpecialLanguage | LanguageRegistration;
+	lang?: any;
 }
 
 const { lang, code, ...attr } = Astro.props;
