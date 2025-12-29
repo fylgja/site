@@ -92,7 +92,11 @@ const blogAuthor = author
 		--gradient-to: var(--brand);
 		--gradient-angle: 337deg;
 		--radius-t: 0;
-		block-size: max(var(--size-80), 34svh);
+		block-size: clamp(var(--size-40), 100vw, var(--size-60));
+
+		&:has(img) {
+			block-size: clamp(var(--size-40), 100vw, var(--size-100));
+		}
 
 		img {
 			block-size: 100%;
