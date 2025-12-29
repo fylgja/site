@@ -14,11 +14,12 @@ const description =
 			extensionsCollection.map((item) => {
 				if (item.data.draft) return;
 				const { slug, data } = item;
+				const url = `/library/${slug}`;
 
 				return (
 					<li class="card --hover flow">
 						<h2>
-							<a href={slug} class="stretched-link">
+							<a href={url} class="stretched-link">
 								{data.title}
 							</a>
 						</h2>
