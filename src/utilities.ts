@@ -5,6 +5,17 @@ export const isCurrentPage = (href: string, currentPath: string) =>
 	currentPath === href ? "page" : null;
 
 /**
+ * Checks if the href contains a trailingSlash and add one if configured
+ */
+export function parseUrl(path: string, trailingSlash: string) {
+	if (trailingSlash === "never") {
+		return path;
+	} else {
+		return path.endsWith("/") ? path : path + "/";
+	}
+}
+
+/**
  * Sort a Astro collection by sortOrder
  */
 export const sortByOrder = (collection: any[]) => {

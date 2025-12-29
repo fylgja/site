@@ -2,6 +2,8 @@
 import Layout from "@/layouts/DocsLayout.astro";
 import Code from "@/components/CodeBlock.astro";
 import collection from "./_collection.ts";
+import BreadCrumbs from "@/components/BreadCrumbs.astro";
+import EditWithGithub from "@/components/EditWithGithub.astro";
 ---
 
 <Layout title="Fylgja Docs" collectionName="Docs" collection={collection}>
@@ -12,8 +14,8 @@ import collection from "./_collection.ts";
 		it's a library at its core, it’s designed to work like a framework out of the box.
 	</p>
 	<p>
-		You can integrate Fylgja in several ways, but the easiest and most recommended approach is to
-		use the meta package.
+		You can integrate Fylgja in several ways, but the easiest and most recommended approach is
+		to use the meta package.
 	</p>
 
 	<h2>Using Fylgja</h2>
@@ -27,8 +29,8 @@ import collection from "./_collection.ts";
 	</p>
 	<ul>
 		<li>
-			<strong>Fylgja Tokens:</strong> A design library that provides sensible defaults and
-			consistency through CSS Props (Design Tokens).
+			<strong>Fylgja Tokens:</strong> A design library that provides sensible defaults and consistency
+			through CSS Props (Design Tokens).
 		</li>
 		<li>
 			<strong>Fylgja Utilities:</strong> A curated list of CSS utilities.
@@ -54,4 +56,8 @@ import collection from "./_collection.ts";
 		lang="css"
 		code=`@import "@fylgja/base";\n@import "@fylgja/tokens";\n@import "@fylgja/utilities";`
 	/>
+	<aside class="flex-wrap align gap text-muted" style="--my: 3rem 0" aria-label="Additional Meta">
+		<BreadCrumbs class="hidden md:flex" />
+		<EditWithGithub pathUrl="src/pages/docs/index.astro" class="italic" />
+	</aside>
 </Layout>

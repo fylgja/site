@@ -1,0 +1,60 @@
+---
+import { trailingSlash } from "astro:config/client";
+import { capitalized, parseUrl } from "@/utils";
+
+type BreadCrumbs = {
+	label: string;
+	url: string;
+};
+
+interface Props {
+	items?: BreadCrumbs[];
+	label?: string;
+	class?: string;
+}
+
+const { items, label = "breadcrumbs", class: classes } = Astro.props;
+
+const currentUrl = Astro.url.pathname;
+const paths = currentUrl.split("/").filter((crumb: any) => crumb);
+const itemListElement: BreadCrumbs[] = items || [];
+
+if (!items) {
+	itemListElement.push({
+		label: "Home",
+		url: parseUrl(Astro.url.origin, trailingSlash),
+	});
+
+	paths.forEach((path, index) => {
+		const url = `${new URL(paths.slice(0, index + 1).join("/"), Astro.url.origin)}`;
+		itemListElement.push({
+			label: capitalized(path.replace(/-/g, " ")),
+			url: parseUrl(url, trailingSlash),
+		});
+	});
+}
+---
+
+<nav class:list={[classes, "breadcrumbs"]} aria-label={label}>
+	<ol>
+		{
+			itemListElement.map((item, index) => {
+				if (itemListElement.length - 1 === index) {
+					return (
+						<li>
+							<a aria-current="page" href={item.url}>
+								{item.label}
+							</a>
+						</li>
+					);
+				} else {
+					return (
+						<li>
+							<a href={item.url}>{item.label}</a>
+						</li>
+					);
+				}
+			})
+		}
+	</ol>
+</nav>

@@ -1,5 +1,6 @@
 ---
-import { capitalized } from "@/utils";
+import { trailingSlash } from "astro:config/client";
+import { capitalized, parseUrl } from "@/utils";
 
 const currentUrl = Astro.url.pathname;
 const paths = currentUrl.split("/").filter((crumb: any) => crumb);
@@ -7,12 +8,22 @@ const itemListElement: {}[] = [];
 
 // TODO get real title for each path
 if (paths.length) {
+	itemListElement.push({
+		"@type": "ListItem",
+		position: 0,
+		item: {
+			"@id": parseUrl(Astro.url.origin, trailingSlash),
+			name: "Home",
+		},
+	});
+
 	paths.forEach((path, index) => {
+		const url = `${new URL(paths.slice(0, index + 1).join("/"), Astro.url.origin)}`;
 		itemListElement.push({
 			"@type": "ListItem",
 			position: index + 1,
 			item: {
-				"@id": `${Astro.site}${paths.slice(0, index + 1).join("/")}/`,
+				"@id": parseUrl(url, trailingSlash),
 				name: capitalized(path.replace(/-/g, " ")),
 			},
 		});

@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/DocsLayout.astro";
 import collection from "./_collection.ts";
 import EditWithGithub from "@/components/EditWithGithub.astro";
+import BreadCrumbs from "@/components/BreadCrumbs.astro";
 
 export async function getStaticPaths() {
 	const entries = await getCollection("docs");
@@ -20,11 +21,8 @@ const { Content, headings } = await entry.render();
 <Layout title={title} toc={headings} collectionName="Docs" collection={collection}>
 	<h1>{pageTitle || title}</h1>
 	<Content />
-	{
-		entry.filePath && (
-			<aside class="italic text-end" style="--my: 3rem 0" aria-label="Additional Meta">
-				<EditWithGithub pathUrl={entry.filePath} />
-			</aside>
-		)
-	}
+	<aside class="flex-wrap align gap text-muted" style="--my: 3rem 0" aria-label="Additional Meta">
+		<BreadCrumbs class="hidden md:flex" />
+		{entry.filePath && <EditWithGithub pathUrl={entry.filePath} class="italic" />}
+	</aside>
 </Layout>
