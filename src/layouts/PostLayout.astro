@@ -1,8 +1,6 @@
 ---
 import Layout from "./PageLayout.astro";
 
-console.log(Astro.props);
-
 const { frontmatter, compiledContent } = Astro.props;
 const { title = "", description = "", image = "", pageType = "article" } = frontmatter;
 const content = await compiledContent();
