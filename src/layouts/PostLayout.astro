@@ -1,0 +1,22 @@
+---
+import Layout from "./PageLayout.astro";
+
+console.log(Astro.props);
+
+const { frontmatter, compiledContent } = Astro.props;
+const { title = "", description = "", image = "", pageType = "article" } = frontmatter;
+const content = await compiledContent();
+---
+
+<Layout
+	title={title}
+	description={description}
+	image={image}
+	pageType={pageType}
+	style="--container-size: var(--size-content)"
+>
+	<article style="--my: var(--size-12)">
+		<h1>{title}</h1>
+		<Fragment set:html={content} />
+	</article>
+</Layout>

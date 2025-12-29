@@ -18,44 +18,76 @@ import EditWithGithub from "@/components/EditWithGithub.astro";
 		to use the meta package.
 	</p>
 
-	<h2>Using Fylgja</h2>
+	<h2>Our Core Packages</h2>
 	<p>
-		Fylgja is an HTML-first UI library that focuses on offering classless styling through Fylgja
-		Base.
-	</p>
-	<p>
-		This provides a solid starting point for any HTML element and is easily extendable with our
-		other core packages:
+		Fylgja is built around three core packages, each designed to embody our goals: simplifying
+		development, promoting maintainability, and giving you control. You can use them together
+		for a complete solution or pick only what you need.
 	</p>
 	<ul>
 		<li>
-			<strong>Fylgja Tokens:</strong> A design library that provides sensible defaults and consistency
-			through CSS Props (Design Tokens).
+			<a href="/library/base"><strong>Fylgja Base:</strong></a> A classless CSS foundation that
+			provides smart, consistent styling for all standard HTML elements. It’s the perfect starting
+			point to avoid boilerplate code.
 		</li>
 		<li>
-			<strong>Fylgja Utilities:</strong> A curated list of CSS utilities.
+			<a href="/library/tokens"><strong>Fylgja Tokens:</strong></a> Standardize your design with
+			a flexible set of CSS Custom Properties (Design Tokens) for consistency in colors, spacing,
+			and typography.
+		</li>
+		<li>
+			<a href="/library/utilities"><strong>Fylgja Utilities:</strong></a> A curated collection
+			of utility classes to speed up your styling workflow, complementing any methodology.
 		</li>
 	</ul>
 	<p>
-		For more in-depth information about each package, explore the Fylgja Library documentation.
+		Together, these packages create a powerful toolkit. For more information, explore the
+		<a href="/library">Fylgja Library documentation</a>.
 	</p>
 
 	<h2>Installation & Quick Start</h2>
 	<p>Install the meta package using npm:</p>
 	<Code lang="sh" code="npm install fylgja" />
-	<p>This single command installs the following essential packages:</p>
-	<ul>
-		<li><code>@fylgja/base</code>: Provides a solid foundation of base styles.</li>
-		<li><code>@fylgja/tokens</code>: Offers a set of design tokens for consistent styling.</li>
-		<li>
-			<code>@fylgja/utilities</code>: Includes a curated collection of helpful CSS utilities.
-		</li>
-	</ul>
-	<p>Once installed, you can import these packages into your project:</p>
+	<p>
+		This single command installs the core packages: <code>@fylgja/base</code>, <code
+			>@fylgja/tokens</code
+		>, and <code>@fylgja/utilities</code>.
+	</p>
+	<p>Once installed, import them into your main CSS file:</p>
 	<Code
 		lang="css"
-		code=`@import "@fylgja/base";\n@import "@fylgja/tokens";\n@import "@fylgja/utilities";`
+		code=`@import "@fylgja/base";
+@import "@fylgja/tokens";
+@import "@fylgja/utilities";`
 	/>
+
+	<h3>What does this do?</h3>
+	<p>
+		By importing <code>@fylgja/base</code>, your project now has a "classless" foundation. This
+		means all standard HTML elements, like buttons, forms, and typography, will have a clean,
+		modern style out of the box—no need to add CSS classes everywhere. This approach is perfect
+		for getting started quickly, especially for content-heavy sites.
+	</p>
+	<p>
+		For a deeper dive into this concept, see our documentation on
+		<a href="/docs/concepts/classless">classless CSS</a>.
+	</p>
+	<p>
+		For example, the following HTML markup will be automatically styled without any extra CSS:
+	</p>
+	<Code
+		lang="html"
+		code=`<article>
+  <h2>My First Fylgja Article</h2>
+  <p>This content is styled by the classless <b>@fylgja/base</b> package.</p>
+  <button>Click Me</button>
+</article>`
+	/>
+	<p>
+		From here, you can use <a href="/library/utilities">utility classes</a> for quick adjustments
+		or dive into
+		<a href="/library/components">CSS Components</a> to build more complex UI.
+	</p>
 	<aside class="flex-wrap align gap text-muted" style="--my: 3rem 0" aria-label="Additional Meta">
 		<BreadCrumbs class="hidden md:flex" />
 		<EditWithGithub pathUrl="src/pages/docs/index.astro" class="italic" />
