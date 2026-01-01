@@ -28,7 +28,7 @@
 		"@lucide/astro": "^0.552.0",
 		"astro": "^5.15.3",
 		"prettier": "^3.7.4",
-		"remark-github-blockquote-alert": "^2.0.0",
+		"remark-github-blockquote-alert": "^2.0.1",
 		"typescript": "^5.9.3"
 	}
 }
