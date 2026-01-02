@@ -15,6 +15,16 @@ export default defineConfig({
 			},
 		},
 	},
+	redirects: {
+		// Handy links
+		"/git/": "https://github.com/fylgja",
+		"/cdn/": "https://cdn.jsdelivr.net/npm/@fylgja/base/index.min.css",
+		// Common used urls, to redirect
+		"/download/": "/docs/",
+		"/tailwind/": "/library/extensions/preset-tailwind/",
+		"/colors/": "/library/tokens/",
+		"/tokens/": "/library/tokens/",
+	},
 	devToolbar: {
 		enabled: false,
 	},
