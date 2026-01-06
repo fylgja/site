@@ -11,3 +11,9 @@
 		}
 	}
 }
+
+.scroll-x {
+	td:has(code) + td {
+		min-inline-size: 20ch;
+	}
+}
