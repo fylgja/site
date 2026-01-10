@@ -12,9 +12,9 @@
 		"preview": "astro preview"
 	},
 	"dependencies": {
-		"@astrojs/check": "^0.9.5",
-		"@astrojs/rss": "^4.0.13",
-		"@astrojs/sitemap": "^3.6.0",
+		"@astrojs/check": "^0.9.6",
+		"@astrojs/rss": "^4.0.14",
+		"@astrojs/sitemap": "^3.6.1",
 		"@docsearch/css": "^3.9.0",
 		"@docsearch/js": "^3.9.0",
 		"@fylgja/badge": "^2.0.0",
@@ -25,8 +25,8 @@
 		"@fylgja/toast": "^1.0.0",
 		"@fylgja/tokens": "^2.1.0",
 		"@fylgja/utilities": "^2.1.2",
-		"@lucide/astro": "^0.552.0",
-		"astro": "^5.15.3",
+		"@lucide/astro": "^0.562.0",
+		"astro": "^5.16.8",
 		"prettier": "^3.7.4",
 		"remark-github-blockquote-alert": "^2.0.1",
 		"typescript": "^5.9.3"
