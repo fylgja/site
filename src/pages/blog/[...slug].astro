@@ -5,6 +5,9 @@ import Layout from "@/layouts/PageLayout.astro";
 import Meta from "@/components/MetaContent.astro";
 import Schema from "@/components/Schema.astro";
 import siteConfig from "site.config";
+import Share from "@/components/Share.astro";
+import { ChevronLeft } from "@lucide/astro";
+import ShareBluesky from "@/components/ShareBluesky.astro";
 
 export async function getStaticPaths() {
 	const entries = await getCollection("blog");
@@ -83,6 +86,17 @@ const blogAuthor = author
 	</div>
 	<div class="blog-content container" style="--container-size: var(--size-content)">
 		<Content />
+		<hr />
+		<div class="flex-wrap align gap-sm">
+			<a href="/blog/" class="btn">
+				<ChevronLeft />
+				<span>Back to Blog Overview</span>
+			</a>
+			<span>
+				<ShareBluesky url={Astro.url} text={`Read More about ${Astro.url} #FylgjaCSS`} />
+				<Share url={Astro.url} title={title} />
+			</span>
+		</div>
 	</div>
 </Layout>
 
@@ -112,8 +126,7 @@ const blogAuthor = author
 	}
 
 	.blog-content {
-		img[src^="https://img.shields.io"]
-		{
+		img[src^="https://img.shields.io"] {
 			display: inline-block;
 			vertical-align: middle;
 		}

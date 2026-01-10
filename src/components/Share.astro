@@ -1,0 +1,63 @@
+---
+interface Props {
+	url: URL | string;
+	title: string;
+	text?: string;
+}
+
+const { url, title, text } = Astro.props;
+---
+
+<button
+	data-share={url}
+	data-share-title={title}
+	data-share-text={text}
+	type="button"
+	aria-label={`Share ${title}`}
+>
+	<slot>
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width="24"
+			height="24"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="2"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+		>
+			<path d="M12 2v13"></path>
+			<path d="m16 6-4-4-4 4"></path>
+			<path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+		</svg>
+	</slot>
+</button>
+
+<script>
+	document.addEventListener("click", async (e) => {
+		if (!(e.target instanceof Element)) return;
+		const el = e.target.closest<HTMLElement>("[data-share]");
+		if (!el) return;
+
+		const title = el.dataset.shareTitle || document.title;
+		const desc =
+			el.dataset.shareText ||
+			document.querySelector('meta[name="description"]')?.getAttribute("content");
+		const url = el.dataset.share || window.location.href;
+		const shareData = {
+			title: title,
+			text: desc || undefined,
+			url: url + "?title=",
+		};
+
+		if (navigator.canShare(shareData)) {
+			try {
+				await navigator.share(shareData);
+			} catch (err) {
+				console.warn("Error sharing", err);
+			}
+			return;
+		}
+	});
+</script>
