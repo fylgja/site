@@ -11,8 +11,9 @@ let shareText = text || url;
 
 <a
 	href={`https://bsky.app/intent/compose?text=${shareText}`}
-	aria-label={title ? `Share ${title} on BlueSky` : "Share on BlueSky"}
 	class="btn"
+	title={title ? `Share ${title} on BlueSky` : "Share on BlueSky"}
+	aria-label={title ? `Share ${title} on BlueSky` : "Share on BlueSky"}
 >
 	<slot>
 		<svg

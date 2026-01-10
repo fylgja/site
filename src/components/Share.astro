@@ -13,6 +13,7 @@ const { url, title, text } = Astro.props;
 	data-share-title={title}
 	data-share-text={text}
 	type="button"
+	title={`Share ${title}`}
 	aria-label={`Share ${title}`}
 >
 	<slot>
