@@ -3,7 +3,7 @@ title: "What Are Design Tokens, and Why Should You Care?"
 tagline: "The single source of truth for your design system."
 description: "Learn what design tokens are, why they are essential for building scalable and consistent user interfaces, and how to use them with tools like the Fylgja Props Builder."
 publishDate: 2025-09-12
-tags: ["design-tokens", "css props", "css variables", "css", "props-builder"]
+tags: ["Design Tokens", "CSS Props", "Props Builder"]
 coverImage: "cover.jpg"
 ---
 

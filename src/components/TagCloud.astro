@@ -1,0 +1,44 @@
+---
+interface Props {
+	tags: string[];
+	active?: string;
+	class?: string;
+	tagClass?: string;
+	allUrl?: string;
+}
+
+const {
+	tags,
+	active = "",
+	class: classes,
+	tagClass = "btn btn-active-primary text-sm",
+	allUrl = "/blog/",
+} = Astro.props;
+---
+
+<ul role="list" class:list={["tags", "flex-wrap gap", classes]}>
+	<li>
+		<a
+			href={allUrl}
+			class={tagClass}
+			aria-current={active === "All" ? "page" : undefined}
+			aria-label="Show All Posts"
+		>
+			All
+		</a>
+	</li>
+	{
+		tags.map((tag) => (
+			<li>
+				<a
+					href={`/blog/tags/${tag}/`}
+					class={tagClass}
+					aria-current={tag === active ? "page" : undefined}
+					aria-label={`Show ${tag} Posts`}
+				>
+					{tag}
+				</a>
+			</li>
+		))
+	}
+</ul>

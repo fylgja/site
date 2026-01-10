@@ -3,7 +3,7 @@ title: "Fylgja CSS 2.0 is Live"
 tagline: ""
 description: "Introducing Core Package Separation and Streamlined Architecture for a Better CSS Experience"
 publishDate: 2025-03-19
-tags: ["releases", "css", "library"]
+tags: ["Releases"]
 coverImage: "cover.jpg"
 ---
 

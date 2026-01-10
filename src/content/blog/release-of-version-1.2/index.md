@@ -2,7 +2,7 @@
 title: "Fylgja v1.2 is here!!"
 description: "The second minor version of Fylgja has been released, and it includes some significant updates."
 publishDate: 2022-06-25
-tags: ["releases", "css", "framework"]
+tags: ["Releases"]
 coverImage: "cover.jpg"
 ---
 

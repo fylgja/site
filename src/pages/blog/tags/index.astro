@@ -1,0 +1,18 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/PageLayout.astro";
+import TagCloud from "@/components/TagCloud.astro";
+
+const allBlogPosts = await getCollection("blog", ({ data }) => !data.draft);
+const allTags = allBlogPosts.flatMap((post) => post.data.tags).filter(Boolean);
+const uniqueTags = [...new Set(allTags)].sort();
+
+const title = "All FylgjaCSS Blog Tags";
+const description = "Browse all tags used in our blog posts to find articles that matter to you.";
+---
+
+<Layout {title} {description}>
+	<h1>{title}</h1>
+	<p>{description}</p>
+	<TagCloud tags={uniqueTags} />
+</Layout>

@@ -3,7 +3,7 @@ title: "Fylgja CSS 2.1 is Live: New Utilities, Performance Boosts, and More"
 tagline: "Discover what's new in the latest version of Fylgja CSS"
 description: "This release brings a host of improvements across the Fylgja CSS library, focusing on new features, performance enhancements."
 publishDate: 2025-08-06
-tags: ["releases", "css", "library"]
+tags: ["Releases"]
 coverImage: "cover.jpg"
 ---
 

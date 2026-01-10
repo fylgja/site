@@ -6,18 +6,34 @@ import siteConfig from "site.config";
 import SocialIcons from "@/components/SocialIcons.astro";
 import TagCloud from "@/components/TagCloud.astro";
 
-const title = "What's New with Fylgja CSS?";
-const description = "The latest news and developments from the Fylgja CSS team.";
-const allBlogPosts = await getCollection("blog", ({ data }) => {
-	return !data.draft;
-});
+export async function getStaticPaths() {
+	const allBlogPosts = await getCollection("blog", ({ data }) => !data.draft);
+	const allTags = allBlogPosts.flatMap((post) => post.data.tags).filter(Boolean);
+	const uniqueTags = [...new Set(allTags)];
 
-const collection = allBlogPosts.sort(
-	(a, b) => Date.parse(b.data.publishDate.toString()) - Date.parse(a.data.publishDate.toString())
-);
+	return uniqueTags.map((tag) => ({
+		params: { tag },
+		props: { tag },
+	}));
+}
 
-const allTags = collection.flatMap((post) => post.data.tags).filter(Boolean);
+const { tag } = Astro.props;
+
+// Fetch all posts, then filter
+const allBlogPosts = await getCollection("blog", ({ data }) => !data.draft);
+
+const collection = allBlogPosts
+	.filter((post) => post.data.tags.includes(tag))
+	.sort(
+		(a, b) =>
+			Date.parse(b.data.publishDate.toString()) - Date.parse(a.data.publishDate.toString())
+	);
+
+const allTags = allBlogPosts.flatMap((post) => post.data.tags).filter(Boolean);
 const uniqueTags = [...new Set(allTags)].sort();
+
+const title = `Posts tagged with "${tag}"`;
+const description = `Find all posts tagged with "${tag}"`;
 
 const { github, devto, ...allSocials } = siteConfig.socials;
 const blogSocials = {
@@ -27,7 +43,7 @@ const blogSocials = {
 };
 ---
 
-<Layout title={title} description={description}>
+<Layout {title} {description}>
 	<h1>{title}</h1>
 	<p>{description}</p>
 
@@ -61,14 +77,13 @@ const blogSocials = {
 				uniqueTags.length > 0 && (
 					<div>
 						<h2>Tags</h2>
-						<TagCloud tags={uniqueTags} active="All" />
+						<TagCloud tags={uniqueTags} active={tag} />
 					</div>
 				)
 			}
 		</aside>
 	</div>
 </Layout>
-
 <style>
 	@media (width >= 768px) {
 		.grid {

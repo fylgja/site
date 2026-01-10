@@ -1,3 +1,18 @@
 .inset-header {
 	--inset-y: var(--page-header-height, 0px) auto;
 }
+
+.aspect-square {
+	aspect-ratio: 1;
+	object-fit: cover;
+}
+
+.text-sm {
+	font-size: 0.875em;
+}
+
+.btn-active-primary {
+	--btn-active-stroke: var(--brand);
+	--btn-active-bg: var(--brand);
+	--btn-active-color: var(--on-brand);
+}

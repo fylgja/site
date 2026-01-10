@@ -2,7 +2,7 @@
 title: "How to use Fylgja CSS with another exciting framework"
 description: "Fylgja CSS is component based framework, meaning you can use each CSS component separately"
 publishDate: 2021-09-21
-tags: ["framework", "css", "library", "TailwindCSS", "Bootstrap"]
+tags: ["TailwindCSS", "Bootstrap", "Guides"]
 coverColor: "#051424"
 ---
 
