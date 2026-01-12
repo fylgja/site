@@ -358,6 +358,45 @@ Go beyond the basics with advanced easing options with the elastic motion.
 </label>
 </div>
 
+### Mq (Media Queries)
+
+Stay ahead of the curve with FylgjaCSS's named media queries
+leveraging the `@custom-media` syntax even before its official [CSS specification] adoption.
+
+This powerful feature is implemented for CSS through the [PostCSS plugin Custom Media] and is also available as SCSS variables.
+
+[PostCSS plugin Custom Media]: https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media
+[CSS specification]: https://drafts.csswg.org/mediaqueries-5/#at-ruledef-custom-media
+
+#### Viewport Size / Orientation
+
+```css
+--{sm,md,lg,xl,xxl}: (width >= *);
+--{sm,md,lg,xl,xxl}-max: (width < *);
+--portrait: (orientation: portrait);
+--landscape: (orientation: landscape);
+```
+
+#### Capabilities / Input
+
+```
+--touch: (hover: none) and (pointer: coarse);
+--stylus: (hover: none) and (pointer: fine);
+--pointer: (hover) and (pointer: coarse);
+--mouse: (hover) and (pointer: fine);
+```
+
+#### System Preferences
+
+```css
+--hd-color: (dynamic-range: high);
+--scheme-{dark,light}: (prefers-color-scheme: *);
+--motion-{safe,reduce}: (prefers-reduced-motion: *);
+--opacity-{safe,reduce}: (prefers-reduced-transparency: *);
+--data-{safe,reduce}: (prefers-reduced-data: *);
+--contrast-{more,less}: (prefers-contrast: *);
+```
+
 ### Shadows
 
 <figure class="flex-wrap gap" style="--gap: 1.25em">
