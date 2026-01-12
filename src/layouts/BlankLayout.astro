@@ -8,6 +8,7 @@ import Schema from "@/components/Schema.astro";
 import SchemaCrumbs from "@/components/SchemaCrumbs.astro";
 import Speculation from "@/components/Speculation.astro";
 import type { SpeculationType } from "@/components/Speculation.astro";
+import ServiceWorker from "@/components/ServiceWorker.astro";
 
 interface Props {
 	title: string;
@@ -23,6 +24,7 @@ interface Props {
 }
 
 const { name, foundingDate, socials, twitterUser, themeColor, themeColorDark } = siteConfig;
+const isProd = import.meta.env.PROD;
 
 const {
 	title,
@@ -83,13 +85,8 @@ const {
 			}
 
 			document.documentElement.setAttribute("data-theme", getColorScheme());
-
-			window.addEventListener("load", () => {
-				if ("serviceWorker" in navigator) {
-					navigator.serviceWorker.register("/sw.js");
-				}
-			});
 		</script>
+		{isProd && <ServiceWorker />}
 	</Head>
 	<body>
 		<slot />
