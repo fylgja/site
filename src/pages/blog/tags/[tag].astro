@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "@/layouts/PageLayout.astro";
-import BlogCard from "@/components/Blog/Card.astro";
 import siteConfig from "site.config";
+import BlogCard from "@/components/Blog/Card.astro";
+import Layout from "@/layouts/PageLayout.astro";
 import SocialIcons from "@/components/SocialIcons.astro";
 import TagCloud from "@/components/TagCloud.astro";
 
@@ -18,8 +18,6 @@ export async function getStaticPaths() {
 }
 
 const { tag } = Astro.props;
-
-// Fetch all posts, then filter
 const allBlogPosts = await getCollection("blog", ({ data }) => !data.draft);
 
 const collection = allBlogPosts
@@ -35,10 +33,9 @@ const uniqueTags = [...new Set(allTags)].sort();
 const title = `Posts tagged with "${tag}"`;
 const description = `Find all posts tagged with "${tag}"`;
 
-const { github, devto, ...allSocials } = siteConfig.socials;
+const { github, ...allSocials } = siteConfig.socials;
 const blogSocials = {
 	rss: "/rss.xml",
-	devto,
 	...allSocials,
 };
 ---
@@ -76,7 +73,7 @@ const blogSocials = {
 			{
 				uniqueTags.length > 0 && (
 					<div>
-						<h2>Tags</h2>
+						<h2>Filter by Tag</h2>
 						<TagCloud tags={uniqueTags} active={tag} />
 					</div>
 				)

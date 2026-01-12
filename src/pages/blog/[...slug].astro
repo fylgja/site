@@ -8,6 +8,7 @@ import siteConfig from "site.config";
 import Share from "@/components/Share.astro";
 import { ChevronLeft } from "@lucide/astro";
 import ShareBluesky from "@/components/ShareBluesky.astro";
+import TagCloud from "@/components/TagCloud.astro";
 
 export async function getStaticPaths() {
 	const entries = await getCollection("blog");
@@ -79,16 +80,23 @@ const blogAuthor = author
 	</div>
 	<div
 		class="blog-title container flow text-center rounded-conditional"
-		style="--container-size: calc(var(--size-content) + var(--size-16)); --container-gap: 0px"
+		style={{
+			viewTransitionName: entry.slug,
+			"--container-size": "calc(var(--size-content) + var(--size-16))",
+			"--container-gap": "0px",
+		}}
 	>
 		<h1>{title}</h1>
-		<Meta published={publishDate} updatedOn={updateDate} />
+		<div class="inline-flex flex-col gap-sm flow-none text-muted align-center">
+			<Meta published={publishDate} updatedOn={updateDate} />
+			<TagCloud tags={tags} class="inline-flex" tagClass="text-sm" allUrl={false} />
+		</div>
 	</div>
 	<div class="blog-content container" style="--container-size: var(--size-content)">
 		<Content />
 		<hr />
 		<div class="flex-wrap align gap-sm">
-			<a href="/blog/" class="btn">
+			<a href={`/blog#${entry.slug}`} class="btn">
 				<ChevronLeft />
 				<span>Back to Blog Overview</span>
 			</a>

@@ -4,12 +4,14 @@ import { parseDate } from "@/utils";
 interface Props {
 	published: Date;
 	updatedOn?: Date;
+	class?: string;
+	style?: { [key: string]: string };
 }
 
-const { published, updatedOn } = Astro.props;
+const { published, updatedOn, class: classes, style } = Astro.props;
 ---
 
-<p class="meta">
+<p class:list={["meta", classes]} style={style}>
 	{published && <time datetime={String(published)}>{parseDate(published)}</time>}
 	{updatedOn && <time datetime={String(updatedOn)}>{parseDate(updatedOn)}</time>}
 </p>

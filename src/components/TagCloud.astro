@@ -4,7 +4,7 @@ interface Props {
 	active?: string;
 	class?: string;
 	tagClass?: string;
-	allUrl?: string;
+	allUrl?: string | false;
 }
 
 const {
@@ -17,16 +17,20 @@ const {
 ---
 
 <ul role="list" class:list={["tags", "flex-wrap gap", classes]}>
-	<li>
-		<a
-			href={allUrl}
-			class={tagClass}
-			aria-current={active === "All" ? "page" : undefined}
-			aria-label="Show All Posts"
-		>
-			All
-		</a>
-	</li>
+	{
+		allUrl && (
+			<li>
+				<a
+					href={allUrl}
+					class={tagClass}
+					aria-current={active === "All" ? "page" : undefined}
+					aria-label="Show All Posts"
+				>
+					All
+				</a>
+			</li>
+		)
+	}
 	{
 		tags.map((tag) => (
 			<li>

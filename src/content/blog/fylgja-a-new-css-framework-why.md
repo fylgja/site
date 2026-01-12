@@ -2,7 +2,7 @@
 title: "Fylgja a new CSS framework, WHY!"
 description: "Time to introduce Fylgja a new CSS framework"
 publishDate: 2021-08-29
-tags: ["Releases"]
+tags: ["FylgjaCSS", "Release"]
 coverColor: "#fba100"
 ---
 

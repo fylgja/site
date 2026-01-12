@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "@/layouts/PageLayout.astro";
-import BlogCard from "@/components/Blog/Card.astro";
 import siteConfig from "site.config";
+import BlogCard from "@/components/Blog/Card.astro";
+import Layout from "@/layouts/PageLayout.astro";
 import SocialIcons from "@/components/SocialIcons.astro";
 import TagCloud from "@/components/TagCloud.astro";
 
@@ -19,10 +19,9 @@ const collection = allBlogPosts.sort(
 const allTags = collection.flatMap((post) => post.data.tags).filter(Boolean);
 const uniqueTags = [...new Set(allTags)].sort();
 
-const { github, devto, ...allSocials } = siteConfig.socials;
+const { github, ...allSocials } = siteConfig.socials;
 const blogSocials = {
 	rss: "/rss.xml",
-	devto,
 	...allSocials,
 };
 ---
@@ -38,10 +37,11 @@ const blogSocials = {
 					<li>
 						<BlogCard
 							href={item.slug}
-							coverImage={item.data.coverImage}
 							title={item.data.title}
 							description={item.data.description}
 							publishDate={item.data.publishDate}
+							tags={item.data.tags}
+							coverImage={item.data.coverImage}
 						/>
 					</li>
 				))
@@ -60,7 +60,7 @@ const blogSocials = {
 			{
 				uniqueTags.length > 0 && (
 					<div>
-						<h2>Tags</h2>
+						<h2>Filter by Tag</h2>
 						<TagCloud tags={uniqueTags} active="All" />
 					</div>
 				)
