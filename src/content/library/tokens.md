@@ -52,8 +52,6 @@ Next to this we also offers imports for SCSS, JS and for design systems in a jso
 
 Each option can be import for all tokens or just the part you need.
 
-<div class="scroll-x">
-
 | Import Path                                          | Description                                     |
 | ---------------------------------------------------- | ----------------------------------------------- |
 | `@fylgja/tokens/{css/scss/tailwind}`                 | All tokens                                      |
@@ -80,8 +78,6 @@ Each option can be import for all tokens or just the part you need.
 
 [(draft) Design Tokens Spec]: https://design-tokens.github.io/community-group/format/
 [Token Studio]: https://tokens.studio/
-
-</div>
 
 ### Shadow DOM Support
 

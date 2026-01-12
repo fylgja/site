@@ -58,16 +58,12 @@ as well as for flow layouts. This utility leverages [Dynamic CSS Utilities].
 <code class="demo-box --inline">Align Center</code>
 </figure>
 
-<div class="scroll-x">
-
 | CSS Utility Name | Description                                                              |
 | ---------------- | ------------------------------------------------------------------------ |
 | `align`          | Main utility class, can be modified using CSS variables                  |
 | `align-center`   | Alias for `class="align" style="--align: center; --align-items: center"` |
 | `align-self`     | Main utility class, to apply to a child element                          |
 | `align-self-end` | Alias for `class="align-self" style="--align-self: end auto;"`           |
-
-</div>
 
 ### Auto Grid
 
@@ -103,8 +99,6 @@ Implement lazy loading for sections of your page using `content-lazy`. Adjust th
 
 Quickly set the `display` property of an element.
 
-<div class="scroll-x">
-
 | CSS Utility Name              | value                                        |
 | ----------------------------- | -------------------------------------------- |
 | `hidden`                      | `display: none`                              |
@@ -117,8 +111,6 @@ Quickly set the `display` property of an element.
 | `table-cell`                  | `display: table-cell`                        |
 | `open:{DISPLAY}`              | Open modifier for dialogs and popovers       |
 | `{sm,md,lg,xl,xxl}:{DISPLAY}` | Apply display styles at specific breakpoints |
-
-</div>
 
 ### Divide
 
@@ -144,8 +136,6 @@ providing greater flexibility in layout gaps.
 Convenient shorthands for `display: flex`, including options for direction and wrapping,
 using CSS variables, following the [Dynamic CSS Utilities] approach.
 
-<div class="scroll-x">
-
 | CSS Utility Name | Description                                             |
 | ---------------- | ------------------------------------------------------- |
 | `flex`           | Main utility class, can be modified using CSS variables |
@@ -153,8 +143,6 @@ using CSS variables, following the [Dynamic CSS Utilities] approach.
 | `flex-wrap`      | Alias for `class="flex" style="--flex-wrap: wrap"`      |
 | `flex-none`      | Helper for child elements, Sets: `flex: 0 0 auto`       |
 | `flex-auto`      | Helper for child elements, Sets: `flex: 1 1 auto`       |
-
-</div>
 
 ### Flow
 

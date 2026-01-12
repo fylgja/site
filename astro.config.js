@@ -1,12 +1,13 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import { remarkAlert } from "remark-github-blockquote-alert";
+import { remarkWrapTables } from "./remarkPlugins";
 
 export default defineConfig({
 	site: "https://fylgja.dev",
 	integrations: [sitemap()],
 	markdown: {
-		remarkPlugins: [remarkAlert],
+		remarkPlugins: [remarkAlert, remarkWrapTables],
 		shikiConfig: {
 			defaultColor: false,
 			themes: {

@@ -43,15 +43,11 @@ Once installed, you can import the full package with:
 
 Alternatively, if you only need specific parts of the base, you can import them individually:
 
-<div class="scroll-x">
-
 | Import Path                     | Description                                                   |
 | ------------------------------- | ------------------------------------------------------------- |
 | `@fylgja/tailwindcss/theme`     | Replaces Tailwind's default theme with Fylgja's design tokens |
 | `@fylgja/tailwindcss/base`      | Provides sensible defaults for common HTML elements           |
 | `@fylgja/tailwindcss/utilities` | Extends Tailwind CSS with Fylgja's utility classes            |
-
-</div>
 
 ## What's Included
 
