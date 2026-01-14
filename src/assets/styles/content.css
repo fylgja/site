@@ -1,3 +1,7 @@
+:root {
+	--size-content-blog: 78ch;
+}
+
 .astro-code {
 	& span {
 		color: var(--shiki-light);
@@ -16,4 +20,8 @@
 	td:has(code) + td {
 		min-inline-size: 20ch;
 	}
+}
+
+img[src^="https://baseline.js.org"] {
+	inline-size: 100%;
 }

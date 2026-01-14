@@ -82,7 +82,7 @@ const blogAuthor = author
 		class="blog-title container flow text-center rounded-conditional"
 		style={{
 			viewTransitionName: entry.slug,
-			"--container-size": "calc(var(--size-content) + var(--size-16))",
+			"--container-size": "calc(var(--size-content-blog) + var(--size-16))",
 			"--container-gap": "0px",
 		}}
 	>
@@ -92,7 +92,7 @@ const blogAuthor = author
 			<TagCloud tags={tags} class="inline-flex" tagClass="text-sm" allUrl={false} />
 		</div>
 	</div>
-	<div class="blog-content container" style="--container-size: var(--size-content)">
+	<div class="blog-content container" style="--container-size: var(--size-content-blog)">
 		<Content />
 		<hr />
 		<div class="flex-wrap align gap-sm">
