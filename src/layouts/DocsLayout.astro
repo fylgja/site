@@ -7,6 +7,7 @@ import MainNav from "@/components/MainNav.astro";
 import Menu from "@/components/Menu.astro";
 import SkipLink from "@/components/SkipLink.astro";
 import Toc from "@/components/Toc";
+import CopyCode from "@/components/CopyCode.astro";
 
 interface Props {
 	title: string;
@@ -54,6 +55,7 @@ const urlPrefix = "/" + collectionName.toLowerCase();
 		}
 	</main>
 	<PageFooter />
+	<CopyCode />
 </Layout>
 
 <style>

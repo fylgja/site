@@ -5,6 +5,7 @@ import MetaVersion from "@/components/MetaVersion.astro";
 import collection from "./_collection.ts";
 import EditWithGithub from "@/components/EditWithGithub.astro";
 import BreadCrumbs from "@/components/BreadCrumbs.astro";
+import ViewMarkdown from "@/components/ViewMarkdown.astro";
 
 export async function getStaticPaths() {
 	const entries = await getCollection("library");
@@ -28,11 +29,11 @@ const hasMeta = !!git || !!npm;
 	collection={collection}
 >
 	<h1>{pageTitle || title}</h1>
-	{hasMeta && <MetaVersion git={git} npm={npm} changelog={changelog} />}
+	{hasMeta && <MetaVersion git={git} npm={npm} changelog={changelog} pathUrl={entry.filePath} />}
 	<Content />
 	<aside class="flex-wrap align gap text-muted" style="--my: 3rem 0" aria-label="Additional Meta">
 		<BreadCrumbs class="hidden md:flex" />
-		{entry.filePath && <EditWithGithub pathUrl={entry.filePath} class="italic" />}
+		{entry.filePath && <EditWithGithub pathUrl={entry.filePath} class="text-sm italic" />}
 	</aside>
 </Layout>
 

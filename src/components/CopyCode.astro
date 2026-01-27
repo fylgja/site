@@ -1,0 +1,95 @@
+---
+
+---
+
+<template id="copyButton">
+	<button class="copy-code" data-copied="false">
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width="20"
+			height="20"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="2"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+		>
+			<g class="hide-if-copied">
+				<rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect>
+				<path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"
+				></path>
+			</g>
+			<g class="show-if-copied">
+				<path d="M20 6 9 17l-5-5"></path>
+			</g>
+		</svg>
+	</button>
+</template>
+
+<script>
+	for (let codeBlock of Array.from(document.querySelectorAll("pre"))) {
+		const wrapper = document.createElement("figure");
+		wrapper.classList.add("copy-code-wrapper", "relative");
+
+		const copyButtonTemplate = document.getElementById("copyButton") as HTMLTemplateElement;
+		const copyButton = document.importNode(copyButtonTemplate.content, true);
+
+		codeBlock.parentNode?.insertBefore(wrapper, codeBlock);
+		wrapper.appendChild(codeBlock);
+		wrapper.appendChild(copyButton);
+	}
+
+	document.addEventListener("click", async (e: any) => {
+		const target = e.target.closest("[data-copied]");
+		if (!target) return;
+		const codeBlock = target.parentNode.querySelector("pre");
+		await copyCode(codeBlock, target);
+	});
+
+	async function copyCode(block: HTMLPreElement, button: HTMLButtonElement) {
+		const code = block.querySelector("code");
+		if (!code) return;
+		await navigator.clipboard.writeText(code.innerText);
+		button.setAttribute("data-copied", "true");
+		setTimeout(() => button.setAttribute("data-copied", "false"), 1000);
+	}
+</script>
+
+<style is:global>
+	.copy-code-wrapper {
+		--_show: initial;
+
+		&:hover {
+			--_show: /* */;
+		}
+	}
+
+	.copy-code {
+		--btn-stroke: var(--text-muted);
+		--btn-bg: var(--surface-color);
+		--btn-border-width: 1px;
+		--btn-py: 0.25em;
+		position: absolute;
+		inset-block-start: 0.25em;
+		inset-inline-end: 0.25em;
+		visibility: var(--_show, hidden);
+
+		&[data-copied="false"] {
+			.show-if-copied {
+				display: none;
+			}
+		}
+
+		&[data-copied="true"] {
+			--_show: /* */;
+			--btn-stroke: var(--brand);
+			--btn-bg: var(--brand);
+			--btn-color: var(--on-brand);
+
+			.hide-if-copied {
+				display: none;
+			}
+		}
+	}
+</style>

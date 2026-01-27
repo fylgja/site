@@ -1,18 +1,20 @@
 ---
 import GitIcon from "@/assets/icons/github.svg";
 import NpmIcon from "@/assets/icons/npm.svg";
-import LogsIcon from "@/assets/icons/logs.svg";
+import { ScrollText, FileCode } from "@lucide/astro";
 
 interface Props {
 	version?: string;
 	git?: string;
 	npm?: string;
 	changelog?: string;
+	pathUrl?: string;
 	iconSize?: number;
 }
 
-const { version, git, npm, changelog, iconSize = 16 } = Astro.props;
+const { version, git, npm, changelog, pathUrl, iconSize = 16 } = Astro.props;
 const npmUrl = npm ? `https://npmjs.com/package/${npm}` : "";
+const gitRaw = "https://raw.githubusercontent.com/fylgja/site/refs/heads/main/";
 const changelogUrl =
 	changelog || git
 		? git?.includes("/tree/main")
@@ -25,7 +27,7 @@ const changelogUrl =
 	{version && <span>v{version}</span>}
 	{
 		git && (
-			<a href={git}>
+			<a href={git} target="_blank" rel="noopener noreferrer">
 				<GitIcon width={iconSize} height={iconSize} aria-hidden="true" />{" "}
 				<span>GitHub</span>
 			</a>
@@ -33,16 +35,29 @@ const changelogUrl =
 	}
 	{
 		npm && (
-			<a href={npmUrl}>
+			<a href={npmUrl} target="_blank" rel="noopener noreferrer">
 				<NpmIcon width={iconSize} height={iconSize} aria-hidden="true" /> <span>npm</span>
 			</a>
 		)
 	}
 	{
 		changelogUrl && (
-			<a href={changelogUrl}>
-				<LogsIcon width={iconSize} height={iconSize} aria-hidden="true" />{" "}
+			<a href={changelogUrl} target="_blank" rel="noopener noreferrer">
+				<ScrollText width={iconSize} height={iconSize} aria-hidden="true" />{" "}
 				<span>Changelog</span>
+			</a>
+		)
+	}
+	{
+		pathUrl && (
+			<a
+				href={gitRaw + pathUrl}
+				aria-label="View the current page as Markdown"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<FileCode width={iconSize} height={iconSize} aria-hidden="true" />{" "}
+				<span>View Markdown</span>
 			</a>
 		)
 	}

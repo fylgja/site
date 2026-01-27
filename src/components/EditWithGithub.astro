@@ -11,13 +11,7 @@ const baseUrl = "https://github.com/fylgja/site/edit/main/";
 const url = baseUrl + pathUrl;
 ---
 
-<a href={url} class:list={[classes, "edit-content-link inline-flex align gap-sm"]}>
+<a href={url} class:list={[classes, "inline-flex align gap-sm"]}>
 	<span>Suggest changes to this page</span>
 	<SquarePen size={18} />
 </a>
-
-<style>
-	.edit-content-link {
-		font-size: 0.875em;
-	}
-</style>
