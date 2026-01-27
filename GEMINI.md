@@ -29,6 +29,7 @@ The Fylgja website is built with [Astro](https://astro.build/) and serves as the
 *   **Site Configuration**: The site configuration is stored in `site.config.ts`. When you need to access site-wide information, import it from this file.
 *   **Styling**: The site uses the Fylgja CSS library. When adding new styles, try to use Fylgja's utility classes and components as much as possible.
 *   **Components**: Create reusable components for any UI elements that are used in multiple places.
+*   **Markdown Content**: When creating or editing Markdown files (`.md`), if the file includes a `title` in its frontmatter, do not add a separate H1 heading (e.g., `# My Title`) in the body of the document. The layout templates will automatically render the title from the frontmatter.
 *   **Deadlines**: Avoid adding any time-based commitments, such as response times, to the content.
 
 ## Available Scripts
