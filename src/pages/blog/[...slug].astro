@@ -81,12 +81,11 @@ const blogAuthor = author
 	<div
 		class="blog-title container flow text-center rounded-conditional"
 		style={{
-			viewTransitionName: entry.slug,
 			"--container-size": "calc(var(--size-content-blog) + var(--size-16))",
 			"--container-gap": "0px",
 		}}
 	>
-		<h1>{title}</h1>
+		<h1 style={{ viewTransitionName: `${entry.slug}-title` }}>{title}</h1>
 		<div class="inline-flex flex-col gap-sm flow-none text-muted align-center">
 			<Meta published={publishDate} updatedOn={updateDate} />
 			<TagCloud tags={tags} class="inline-flex" tagClass="text-sm" allUrl={false} />

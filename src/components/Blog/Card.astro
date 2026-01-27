@@ -1,14 +1,12 @@
 ---
 import Meta from "@/components/MetaContent.astro";
 import { Picture } from "astro:assets";
-import TagCloud from "../TagCloud.astro";
 
 interface Props {
 	href: string;
 	title: string;
 	publishDate: Date;
 	description: string;
-	tags?: string[];
 	coverImage?:
 		| {
 				height: number;
@@ -19,16 +17,13 @@ interface Props {
 		| undefined;
 }
 
-const { href, title, publishDate, description, tags, coverImage } = Astro.props;
+const { href, title, publishDate, description, coverImage } = Astro.props;
 ---
 
 <article
 	id={href}
 	class="card --hover flex-col h-full"
-	style={{
-		"--sm_flex-dir": "row-reverse",
-		viewTransitionName: href,
-	}}
+	style={{ viewTransitionName: href, "--sm_flex-dir": "row-reverse" }}
 >
 	{
 		coverImage && (
@@ -47,16 +42,17 @@ const { href, title, publishDate, description, tags, coverImage } = Astro.props;
 	<div class="card-content">
 		<hgroup>
 			<h2>
-				<a href={`/blog/${href}/`} class="stretched-link">
+				<a
+					href={`/blog/${href}/`}
+					class="stretched-link"
+					style={{ viewTransitionName: `${href}-title` }}
+				>
 					{title}
 				</a>
 			</h2>
 			<Meta published={publishDate} />
 		</hgroup>
 		<p>{description}</p>
-		<div class="text-muted text-sm">
-			{tags && tags.length > 0 && <TagCloud tags={tags} tagClass="text-sm" allUrl={false} />}
-		</div>
 	</div>
 </article>
 
