@@ -48,7 +48,7 @@ If an invalid value is provided (e.g., `#fff`), the browser will use our fallbac
 
 ## The Evolution of CSS Utilities
 
-So, how does this change the way we build utilities? Let's look at the evolution of a simple padding utility.
+So, how does this change the way we build CSS Utilities? Let's look at the evolution of a simple padding utility.
 
 ### Step 1: Static, Generated Classes
 
