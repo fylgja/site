@@ -29,7 +29,7 @@
 
 <script>
 	for (let codeBlock of Array.from(document.querySelectorAll("pre"))) {
-		const wrapper = document.createElement("figure");
+		const wrapper = document.createElement("div");
 		wrapper.classList.add("copy-code-wrapper", "relative");
 
 		const copyButtonTemplate = document.getElementById("copyButton") as HTMLTemplateElement;
