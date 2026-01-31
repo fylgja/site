@@ -178,4 +178,4 @@ We especially loved the approach to CSS Anchors in Una's article.
 If you want to dive deeper into `attr()`, we highly recommend giving their posts a read.
 
 For the most detailed technical information,
-the MDN Web Docs are always the best place to check: [MDN `attr()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/attr)
+the MDN Web Docs are always the best place to check: [MDN `attr()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/attr).
