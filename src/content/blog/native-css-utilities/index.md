@@ -153,9 +153,7 @@ making the component system both flexible and readable.
 ## What's Next?
 
 This new way of defining CSS utilities is exciting, but it's still on the horizon.
-As of this writing, the typed `attr()` function is only supported in Chrome and Edge.
-
-[![Baseline Status: attr()](https://baseline.js.org/features/attr/responsive-adaptive.svg)](https://webstatus.dev/features/attr)
+As of this writing, the typed `attr()` function is [only supported in Chrome and Edge](https://webstatus.dev/features/attr).
 
 While we wait for broader browser support, you can experiment with this approach today.
 We are exploring it for `@fylgja/utilities`,

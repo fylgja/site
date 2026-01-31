@@ -21,7 +21,3 @@
 		min-inline-size: 20ch;
 	}
 }
-
-img[src^="https://baseline.js.org"] {
-	inline-size: 100%;
-}
