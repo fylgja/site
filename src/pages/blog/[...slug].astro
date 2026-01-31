@@ -113,6 +113,7 @@ const blogAuthor = author
 		--gradient-to: var(--brand);
 		--gradient-angle: 337deg;
 		--radius-t: 0;
+		--radius-b: 2rem;
 		block-size: clamp(var(--size-40), 100vw, var(--size-60));
 
 		&:has(img) {
@@ -126,6 +127,7 @@ const blogAuthor = author
 	}
 
 	.blog-title {
+		--radius-t: 2rem;
 		position: relative;
 		background-color: var(--root-bg);
 		padding: var(--size-8);
