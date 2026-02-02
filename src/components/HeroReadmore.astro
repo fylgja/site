@@ -29,7 +29,6 @@ import Icon from "@/assets/icon.svg";
 	.hero-readmore {
 		position: relative;
 		--main-color: var(--color-6);
-		--alt-color: color-mix(in oklab, var(--main-color), #fff);
 		--text-flow: 1.5rem 0;
 		border-block-start: 1px solid
 			var(--page-footer-stroke, color-mix(in srgb, currentcolor 20%, transparent));
@@ -42,7 +41,7 @@ import Icon from "@/assets/icon.svg";
 			left: calc(50% - (var(--_size) / 2));
 			width: var(--_size);
 			height: var(--_size);
-			background-image: linear-gradient(0deg, var(--main-color) 30%, var(--alt-color));
+			background-image: linear-gradient(0deg, var(--main-color) 30%, var(--color-5));
 			filter: blur(120px);
 			border-radius: 50%;
 

@@ -121,7 +121,7 @@ const title = "Your CSS Compainion";
 			</div>
 			<div
 				class="shape absolute"
-				style="--main-color: var(--color-12); --inset-y: auto -30rem; --inset-x: auto 8rem"
+				style="--main-color: light-dark(var(--color-2), var(--color-12)); --inset-y: auto -30rem; --inset-x: auto 8rem"
 			>
 			</div>
 		</section>
@@ -199,7 +199,6 @@ const title = "Your CSS Compainion";
 
 	.usp-list {
 		--main-color: var(--brand);
-		--alt-color: color-mix(in oklab, var(--main-color), #fff);
 		position: relative;
 
 		li p {
@@ -211,7 +210,7 @@ const title = "Your CSS Compainion";
 			position: absolute;
 			width: clamp(192px, 50vw, 460px);
 			height: clamp(192px, 50vw, 460px);
-			background-image: linear-gradient(0deg, var(--main-color) 30%, var(--alt-color));
+			background-image: linear-gradient(121deg, var(--main-color) 20%, var(--color-5));
 			filter: blur(120px);
 			border-radius: 50%;
 			opacity: 60%;
@@ -238,16 +237,37 @@ const title = "Your CSS Compainion";
 
 	@keyframes scroll-hue {
 		from {
-			--hue: var(--hue-orange);
+			--hue: var(--hue-start);
 		}
 		to {
-			--hue: var(--hue-indigo);
+			--hue: var(--hue-end);
 		}
 	}
 
 	html {
-		--hue: var(--hue-orange);
+		--hue-indent: 0;
+		--hue-start: var(--hue-blue);
+		--hue-end: var(--hue-orange);
 		animation: scroll-hue;
 		animation-timeline: scroll();
+	}
+
+	@media (prefers-color-scheme: dark) {
+		:root {
+			--hue-start: var(--hue-orange);
+			--hue-end: var(--hue-indigo);
+		}
+	}
+
+	@media (prefers-color-scheme: light) or (prefers-color-scheme: dark) {
+		:root:where([data-theme="light"]) {
+			--hue-start: var(--hue-blue);
+			--hue-end: var(--hue-orange);
+		}
+
+		:root:where([data-theme="dark"]) {
+			--hue-start: var(--hue-orange);
+			--hue-end: var(--hue-indigo);
+		}
 	}
 </style>

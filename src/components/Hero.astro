@@ -37,8 +37,6 @@ const { class: classes } = Astro.props;
 
 <style>
 	.hero {
-		--main-color: var(--brand);
-		--alt-color: color-mix(in oklab, var(--brand), #fff);
 		--text-flow: 1.5rem 0;
 		text-align: center;
 
@@ -47,8 +45,9 @@ const { class: classes } = Astro.props;
 		}
 
 		.text-gradient {
-			--gradient-from: var(--main-color);
-			--gradient-to: var(--alt-color);
+			--gradient-angle: 15deg;
+			--gradient-from: var(--brand);
+			--gradient-to: var(--color-5);
 		}
 
 		.content p {
@@ -90,7 +89,7 @@ const { class: classes } = Astro.props;
 				left: 50%;
 				width: clamp(192px, 50vw, 460px);
 				height: clamp(192px, 50vw, 460px);
-				background-image: linear-gradient(0deg, var(--main-color) 30%, var(--alt-color));
+				background-image: linear-gradient(45deg, var(--brand) 30%, var(--color-5));
 				filter: blur(120px) opacity(0.7);
 				transform: translate(-50%, -50%);
 				border-radius: 50%;
