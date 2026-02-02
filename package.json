@@ -28,6 +28,7 @@
 		"@lucide/astro": "^0.563.0",
 		"astro": "^5.17.1",
 		"prettier": "^3.8.1",
+		"rehype-external-links": "^3.0.0",
 		"remark-github-blockquote-alert": "^2.0.1",
 		"typescript": "^5.9.3"
 	}
