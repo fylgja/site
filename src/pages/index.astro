@@ -140,33 +140,17 @@ const title = "Your CSS Compainion";
 				body="We are continuously developing Fylgja CSS, so expect regular updates."
 			/>
 			<div class="grid-cols --bento gap">
-				<Card>
-					<h3>More CSS Components</h3>
-					<ul role="list" class="divide-y flow" style="--my: 2.5rem 0;">
-						<li class="flex align gap" style="--align: start">
-							<SquareCheck aria-label="Checked" />Input Group
-						</li>
-						<li class="flex align gap" style="--align: start">
-							<SquareCheck aria-label="Checked" />Form Extend
-						</li>
-						<li class="flex align gap" style="--align: start">
-							<SquareCheck aria-label="Checked" />Card
-						</li>
-						<li class="flex align gap" style="--align: start">
-							<SquareCheck aria-label="Checked" />Toast
-						</li>
-						<li class="flex align gap" style="--align: start">
-							<SquareCheck aria-label="Checked" />Badge
-						</li>
-						<li class="flex align gap" style="--align: start">
-							<SquareCheck aria-label="Not Checked" />Breadcrumbs
-						</li>
-					</ul>
-				</Card>
 				<Card
 					title="UI Library"
 					body="Build your user interfaces quickly with our fully-featured library of UI components. We provide components in both HTML and JSX, readily available for use. You can easily copy the code directly from our website or streamline your workflow with our CLI tool."
 				/>
+				<Card>
+					<h3 class="flex align gap-sm">
+						<span>More CSS Components</span>
+						<SquareCheck aria-hidden={true}/>
+					</h3>
+					<p>Explore all available options and components in our <a href="/library/components/">component library</a>.</p>
+				</Card>
 				<Card
 					title="Framework Presets"
 					body="Seamlessly integrate with other CSS frameworks, including Tailwind CSS and UnoCSS, to add missing features or extend functionality."
