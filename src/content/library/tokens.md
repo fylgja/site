@@ -144,7 +144,6 @@ except that this value reverts to 0 when the element's boundaries intersect with
 <div class="demo-box" style="border-width: var(--border-size-3);">3</div>
 <div class="demo-box" style="border-width: var(--border-size-4);">4</div>
 <div class="demo-box" style="border-width: var(--border-size-5);">5</div>
-<div class="demo-box" style="border-width: var(--border-size-6);">6</div>
 </figure>
 
 ### Colors
