@@ -52,21 +52,21 @@ Next to this we also offers imports for SCSS, JS and for design systems in a jso
 
 Each option can be import for all tokens or just the part you need.
 
-| Import Path                                          | Description                                     |
-| ---------------------------------------------------- | ----------------------------------------------- |
-| `@fylgja/tokens/{css/scss/tailwind}`                 | All tokens                                      |
-| `@fylgja/tokens/{css/scss/tailwind/js}/aspect-ratio` | Aspect Ratios                                   |
-| `@fylgja/tokens/{css/scss/js}/borders`               | Border Widths and Radii                         |
-| `@fylgja/tokens/{css/scss/js}/colors`                | List of 14 colors in oklch format               |
-| `@fylgja/tokens/{css/scss}/hues`                     | JS version is part of the colors import         |
-| `@fylgja/tokens/{css/scss}/colors-static`            | Combination of colors and hues as a static list |
-| `@fylgja/tokens/tailwind/colors`                     | Same as `colors-static`                         |
-| `@fylgja/tokens/{css/scss/tailwind/js}/easing`       | Easing Functions                                |
-| `@fylgja/tokens/{css/scss/js}/fonts`                 | Font Size and Line Height                       |
-| `@fylgja/tokens/{css/scss/tailwind/js}/mq`           | CSS Breakpoints and User preferences            |
-| `@fylgja/tokens/{css/scss/tailwind/js}/shadows`      | Shadows                                         |
-| `@fylgja/tokens/{css/scss/tailwind/js}/sizes`        | Sizes                                           |
-| `@fylgja/tokens/{css/scss/js}/z-layer`               | Z-Index's                                       |
+| Import Path                                                          | Description                                     |
+| -------------------------------------------------------------------- | ----------------------------------------------- |
+| `@fylgja/tokens/{css/scss/tailwind}/index.{css/scss}`                | All tokens                                      |
+| `@fylgja/tokens/{css/scss/tailwind/js}/aspect-ratio.{css/scss/js}`   | Aspect Ratios                                   |
+| `@fylgja/tokens/{css/scss/js}/borders.{css/scss/js}`                 | Border Widths and Radii                         |
+| `@fylgja/tokens/{css/scss/js}/colors.{css/scss/js}`                  | List of 14 colors in oklch format               |
+| `@fylgja/tokens/{css/scss}/hues.{css/scss}`                          | JS version is part of the colors import         |
+| `@fylgja/tokens/{css/scss}/colors.static.{css/scss}`                 | Combination of colors and hues as a static list |
+| `@fylgja/tokens/tailwind/colors.css`                                 | Same as `colors-static`                         |
+| `@fylgja/tokens/{css/scss/tailwind/js}/easing.{css/scss/js}`         | Easing Functions                                |
+| `@fylgja/tokens/{css/scss/js}/fonts.{css/scss/js}`                   | Font Size and Line Height                       |
+| `@fylgja/tokens/{css/scss/tailwind/js}/mq.{css/scss/js}`             | CSS Breakpoints and User preferences            |
+| `@fylgja/tokens/{css/scss/tailwind/js}/shadows.{css/scss/js}`        | Shadows                                         |
+| `@fylgja/tokens/{css/scss/tailwind/js}/sizes.{css/scss/js}`          | Sizes                                           |
+| `@fylgja/tokens/{css/scss/js}/z-layer.{css/scss/js}`                 | Z-Index's                                       |
 
 > [!Note]
 > Not all tokens can be represented in a design system format.
@@ -85,7 +85,7 @@ For web components utilizing Shadow DOM,
 import the `.host` variants to apply tokens within the host scope:
 
 ```css
-@import "@fylgja/tokens/css/aspect-ratio.host";
+@import "@fylgja/tokens/css/aspect-ratio.host.css";
 ```
 
 This enables seamless integration of Fylgja Design Tokens within your custom web components.

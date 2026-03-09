@@ -41,15 +41,15 @@ Once installed, you can import the full package with:
 
 Alternatively, if you only need specific parts of the base, you can import them individually:
 
-| Import Path                     | Description                                           |
-| ------------------------------- | ----------------------------------------------------- |
-| `@fylgja/base/preflight`        | Global defaults, typography and table defaults        |
-| `@fylgja/base/preflight-scoped` | Global defaults, scoped typography and table defaults |
-| `@fylgja/base/btn`              | HTML Button styles + `.btn` class for links           |
-| `@fylgja/base/btn-class-only`   | Just the `.btn` class for adding btn styles           |
-| `@fylgja/base/btn-class-less`   | Just the HTML Button styles                           |
-| `@fylgja/base/form`             | Comprehensive form styles                             |
-| `@fylgja/base/dialog`           | Dialog styles, including support for popovers         |
+| Import Path                         | Description                                           |
+| ----------------------------------- | ----------------------------------------------------- |
+| `@fylgja/base/preflight.css`        | Global defaults, typography and table defaults        |
+| `@fylgja/base/preflight-scoped.css` | Global defaults, scoped typography and table defaults |
+| `@fylgja/base/btn.css`              | HTML Button styles + `.btn` class for links           |
+| `@fylgja/base/btn-class-only.css`   | Just the `.btn` class for adding btn styles           |
+| `@fylgja/base/btn-class-less.css`   | Just the HTML Button styles                           |
+| `@fylgja/base/form.css`             | Comprehensive form styles                             |
+| `@fylgja/base/dialog.css`           | Dialog styles, including support for popovers         |
 
 ### Theme Styles
 
@@ -59,7 +59,7 @@ intentionally excluding brand colors and extra styling by default.
 To apply a pre-defined theme, import it separately:
 
 ```css
-@import "@fylgja/base/theme";
+@import "@fylgja/base/theme.css";
 ```
 
 For theme customization, copy the styles to your project:
