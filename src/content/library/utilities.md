@@ -26,7 +26,10 @@ npm install @fylgja/utilities
 Alternatively, you can use it directly via a CDN:
 
 ```html
-<link href="https://cdn.jsdelivr.net/npm/@fylgja/utilities/index.min.css" rel="stylesheet">
+<link
+  href="https://cdn.jsdelivr.net/npm/@fylgja/utilities/index.min.css"
+  rel="stylesheet"
+/>
 ```
 
 ## Usage
@@ -131,6 +134,14 @@ providing greater flexibility in layout gaps.
 </ul>
 </figure>
 
+```html
+<ul class="divide-y flow">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+```
+
 ### Flex
 
 Convenient shorthands for `display: flex`, including options for direction and wrapping,
@@ -156,7 +167,17 @@ The default gap is `1em` (`0.5em` for `gap-sm`).
 
 ### Gradient
 
-Provides three helpful utilities for applying border, background, and text gradients, all customizable with CSS variables.
+Provides specific utility classes for applying border, background, and text gradients, all customizable with CSS variables. 
+
+There is no general `gradient` class; instead, you use one or a combination of the following classes:
+
+| CSS Utility Name | Description |
+| --- | --- |
+| `bg-gradient` | Applies a background gradient |
+| `text-gradient` | Applies a text gradient (clips background to text) |
+| `border-gradient` | Applies a border gradient using `padding-box` and `border-box` clipping |
+
+You can also combine them, like using `text-gradient border-gradient` together on the same element.
 
 <figure class="demo-wrapper">
 <div class="auto-grid gap">
@@ -199,6 +220,26 @@ You can modify the column configuration using CSS variables, following the [Dyna
 Also includes `grid-flow`, ideal for creating a row of columns for sliders,
 and is compatible with the `gap` utility for consistent column spacing.
 
+<figure class="demo-wrapper">
+<div class="grid-cols gap" style="--sm_grid-cols: 2; --lg_grid-cols: 3">
+    <div class="demo-box --inline" style="--col: 1 / -1">Full width (col-span-full)</div>
+    <div class="demo-box --inline">Column 1</div>
+    <div class="demo-box --inline">Column 2</div>
+    <div class="demo-box --inline">Column 3</div>
+    <div class="demo-box --inline" style="--sm_col: span 2">Spans 2 columns</div>
+</div>
+</figure>
+
+```html
+<div class="grid-cols gap" style="--sm_grid-cols: 2; --lg_grid-cols: 3">
+    <div class="col-span-full">Full width</div>
+    <div>Column 1</div>
+    <div>Column 2</div>
+    <div>Column 3</div>
+    <div style="--sm_col: span 2">Spans 2 columns</div>
+</div>
+```
+
 ### Line Clamp
 
 Limit the number of lines in your paragraphs to prevent text overflow. The default is 3 lines.
@@ -211,7 +252,7 @@ Limit the number of lines in your paragraphs to prevent text overflow. The defau
 ### List
 
 Offers the `list-none` utility, useful for removing default list markers,
-especially if you are not using Fylgja's base styles or when customizing HTML `<details>` elements.
+especially if you are not using Fylgja's base styles or when customizing HTML `<details>` elements (as it also removes the `::-webkit-details-marker`).
 
 ### Overlay
 
@@ -249,6 +290,12 @@ A set of straightforward border radius utilities:
 
 Enable scrollable overflow on the X or Y axis with `scroll-x` (horizontal) and `scroll-y` (vertical).
 
+```html
+<div class="scroll-y" style="max-block-size: 300px">
+    <!-- Tall content that will scroll vertically -->
+</div>
+```
+
 ### Scroll Mask
 
 Enable Overflow Mask to any overflowing content.
@@ -259,6 +306,11 @@ Usefull in combination with `scroll-x` and `scroll-y`.
 ### Scrollbar
 
 Customize the appearance of the scrollbar, including hiding it or making it small.
+
+| CSS Utility Name | Description |
+| --- | --- |
+| `scrollbar-none` | Completely hides the scrollbar |
+| `scrollbar-thin` | Makes the scrollbar visually thinner |
 
 ### Size
 
@@ -282,10 +334,10 @@ Easily create interactive sliders. This utility works best in conjunction with o
 
 ```html
 <div
-    class="snap scroll-x scroll-mask grid-cols grid-flow gap"
-    style="--sm_grid-cols: 2"
+  class="snap scroll-x scroll-mask grid-cols grid-flow gap"
+  style="--sm_grid-cols: 2"
 >
-    ... slides
+  ... slides
 </div>
 ```
 
@@ -321,7 +373,7 @@ Similar to the `display` utility, you can apply breakpoint-specific styles, e.g.
 
 ### Stack
 
-Effortlessly stack multiple elements on top of each other without the need for manual positioning.
+Effortlessly `stack` multiple elements on top of each other without the need for manual positioning.
 This allows you to stack without using `position: absolute`.
 
 ### Stretched Link
@@ -342,6 +394,13 @@ Use it with a `card` or with `relative` class on the parent element to define th
 ### Toggle
 
 Create interactive toggle states for elements like `<details>` using the `toggle` utility.
+
+| CSS Utility Name | Description                                          |
+| ---------------- | ---------------------------------------------------- |
+| `toggle-flip`    | Flips the element when toggled                       |
+| `toggle-rotate`  | Rotates the element when toggled                     |
+| `toggle-hide`    | Hides the element when the state is open/active      |
+| `toggle-show`    | Shows the element only when the state is open/active |
 
 <figure class="demo-wrapper flex-wrap gap" style="--demo-wrapper-min-size: 8rem">
 <details open>
@@ -369,8 +428,11 @@ Create interactive toggle states for elements like `<details>` using the `toggle
 
 ### Transition
 
-Quickly add smooth transitions to elements using `transition`, `transition-display`, or `transition-color`.
-Also supports discrete transitions.
+Quickly add smooth transitions to elements using the transition utilities. These natively support discrete transitions (like animating `display: none`).
+
+- `transition`: Applies a transition to common properties (transform, opacity, color, etc.)
+- `transition-color`: Scopes the transition only to color properties (background, border, text color)
+- `transition-display`: Scopes the transition to display and visibility properties (opacity, transform, display, overlay)
 
 ### Truncate
 
