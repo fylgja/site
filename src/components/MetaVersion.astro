@@ -1,7 +1,7 @@
 ---
 import GitIcon from "@/assets/icons/github.svg";
-import NpmIcon from "@/assets/icons/npm.svg";
-import { ScrollText, FileCode } from "@lucide/astro";
+import { ScrollText, Package } from "@lucide/astro";
+import AskAiButton from "./AskAiButton.astro";
 
 interface Props {
 	version?: string;
@@ -23,68 +23,59 @@ const changelogUrl =
 		: "";
 ---
 
-<div class="meta">
-	{version && <span>v{version}</span>}
-	{
-		git && (
-			<a href={git} target="_blank" rel="noopener noreferrer">
-				<GitIcon width={iconSize} height={iconSize} aria-hidden="true" />{" "}
-				<span>GitHub</span>
-			</a>
-		)
-	}
-	{
-		npm && (
-			<a href={npmUrl} target="_blank" rel="noopener noreferrer">
-				<NpmIcon width={iconSize} height={iconSize} aria-hidden="true" /> <span>npm</span>
-			</a>
-		)
-	}
-	{
-		changelogUrl && (
-			<a href={changelogUrl} target="_blank" rel="noopener noreferrer">
-				<ScrollText width={iconSize} height={iconSize} aria-hidden="true" />{" "}
-				<span>Changelog</span>
-			</a>
-		)
-	}
+<div class="meta flex gap-sm align">
+	<div class="flex-wrap gap-sm">
+		{version && <span>v{version}</span>}
+		{
+			git && (
+				<a href={git} target="_blank" rel="noopener noreferrer" class="meta-link">
+					<GitIcon width={iconSize} height={iconSize} aria-hidden="true" />{" "}
+					<span>GitHub</span>
+				</a>
+			)
+		}
+		{
+			npm && (
+				<a href={npmUrl} target="_blank" rel="noopener noreferrer" class="meta-link">
+					<Package width={iconSize} height={iconSize} aria-hidden="true" /> <span>npm</span>
+				</a>
+			)
+		}
+		{
+			changelogUrl && (
+				<a href={changelogUrl} target="_blank" rel="noopener noreferrer" class="meta-link">
+					<ScrollText width={iconSize} height={iconSize} aria-hidden="true" />{" "}
+					<span>Changelog</span>
+				</a>
+			)
+		}
+	</div>
 	{
 		pathUrl && (
-			<a
-				href={gitRaw + pathUrl}
-				aria-label="View the current page as Markdown"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				<FileCode width={iconSize} height={iconSize} aria-hidden="true" />{" "}
-				<span>View Markdown</span>
-			</a>
+			<AskAiButton url={gitRaw + pathUrl} iconSize={iconSize} class="flex-none" />
 		)
 	}
 </div>
 
 <style>
 	.meta {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		gap: 0.5rem 1rem;
 		font-size: 0.875em;
 		color: var(--text-color-muted);
-		border-block-end: 2px solid var(--border-color-fade);
+		border-block-end: 2px solid light-dark(var(--border-color-fade), var(--brand));
 		padding-block-end: 0.5em;
 	}
 
-	.meta a {
-		display: flex;
+	.meta-link {
+		display: inline-flex;
 		align-items: center;
 		gap: 0.375rem;
 		text-decoration: none;
-		color: color-mix(in srgb, var(--brand) 65%, var(--root-fg));
-
-		& svg {
-			color: var(--text-color-muted);
-		}
+		color: light-dark(var(--brand), var(--text-color-muted));
+		background: none;
+		border: none;
+		padding: 0;
+		font-weight: 500;
+		cursor: pointer;
 
 		&:hover {
 			color: var(--text-color);
