@@ -27,7 +27,7 @@ const hasMeta = !!git || !!npm;
 	collectionName="Library"
 	collection={collection}
 >
-	<h1>{pageTitle || title}</h1>
+	<h1 id={title}>{pageTitle || title}</h1>
 	{hasMeta && <MetaVersion git={git} npm={npm} changelog={changelog} pathUrl={entry.filePath} />}
 	<Content />
 	<aside class="flex-wrap align gap text-muted" style="--my: 3rem 0" aria-label="Additional Meta">

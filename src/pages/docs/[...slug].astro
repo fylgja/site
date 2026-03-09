@@ -19,7 +19,7 @@ const { Content, headings } = await entry.render();
 ---
 
 <Layout title={title} toc={headings} collectionName="Docs" collection={collection}>
-	<h1>{pageTitle || title}</h1>
+	<h1 id={title}>{pageTitle || title}</h1>
 	<Content />
 	<aside class="flex-wrap align gap text-muted" style="--my: 3rem 0" aria-label="Additional Meta">
 		<BreadCrumbs class="hidden md:flex" />
