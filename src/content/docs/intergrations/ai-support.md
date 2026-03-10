@@ -1,7 +1,6 @@
 ---
 title: "AI & LLM Support"
 description: "How Fylgja integrates with AI tools and provides context for Large Language Models"
-draft: true
 ---
 
 Fylgja CSS is designed to be easily readable and understandable not just by human developers, but also by AI agents and Large Language Models (LLMs).
