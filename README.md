@@ -1,5 +1,7 @@
 # Fylgja.dev Website
 
+[![Fylgja](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Ffylgja%2F.github%2Frefs%2Fheads%2Fmain%2Fassets%2Fbadge%2Fv1.0.0.json)](https://fylgja.dev/)
+
 This repository contains the source code for the official Fylgja website and documentation,
 available at [fylgja.dev](https://fylgja.dev).
 
