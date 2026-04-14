@@ -157,7 +157,9 @@
                 Published on <xsl:value-of select="pubDate"/>
               </div>
 
-              <p><xsl:value-of select="description"/></p>
+              <div class="content">
+                <xsl:value-of select="content:encoded" xmlns:content="http://purl.org/rss/1.0/modules/content/" disable-output-escaping="yes"/>
+              </div>
 
               <xsl:if test="category">
                 <div class="badge-list">
