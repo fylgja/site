@@ -1,6 +1,6 @@
 ---
 import { Picture } from "astro:assets";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Layout from "@/layouts/PageLayout.astro";
 import Meta from "@/components/MetaContent.astro";
 import Schema from "@/components/Schema.astro";
@@ -13,7 +13,7 @@ import TagCloud from "@/components/TagCloud.astro";
 export async function getStaticPaths() {
 	const entries = await getCollection("blog");
 	return entries.map((entry) => ({
-		params: { slug: entry.slug },
+		params: { slug: entry.id },
 		props: { entry },
 	}));
 }
@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { title, description, tags, author, publishDate, updateDate, coverImage, coverColor } =
 	entry.data;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 
 const blogAuthor = author
 	? [
@@ -85,7 +85,7 @@ const blogAuthor = author
 			"--container-gap": "0px",
 		}}
 	>
-		<h1 id={title} style={{ viewTransitionName: `${entry.slug}-title` }}>{title}</h1>
+		<h1 id={title} style={{ viewTransitionName: `${entry.id}-title` }}>{title}</h1>
 		<div class="inline-flex flex-col gap-sm flow-none text-muted align-center">
 			<Meta published={publishDate} updatedOn={updateDate} />
 			<TagCloud tags={tags} class="inline-flex" tagClass="text-sm" allUrl={false} />
@@ -95,7 +95,7 @@ const blogAuthor = author
 		<Content />
 		<hr />
 		<div class="flex-wrap align gap-sm">
-			<a href={`/blog#${entry.slug}`} class="btn">
+			<a href={`/blog#${entry.id}`} class="btn">
 				<ChevronLeft />
 				<span>Back to Blog Overview</span>
 			</a>

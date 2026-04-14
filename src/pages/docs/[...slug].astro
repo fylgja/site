@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Layout from "@/layouts/DocsLayout.astro";
 import collection from "./_collection.ts";
 import EditWithGithub from "@/components/EditWithGithub.astro";
@@ -8,14 +8,14 @@ import BreadCrumbs from "@/components/BreadCrumbs.astro";
 export async function getStaticPaths() {
 	const entries = await getCollection("docs");
 	return entries.map((entry) => ({
-		params: { slug: entry.slug },
+		params: { slug: entry.id },
 		props: { entry },
 	}));
 }
 
 const { entry } = Astro.props;
 const { pageTitle, title } = entry.data;
-const { Content, headings } = await entry.render();
+const { Content, headings } = await render(entry);
 ---
 
 <Layout title={title} toc={headings} collectionName="Docs" collection={collection}>

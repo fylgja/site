@@ -1,5 +1,6 @@
 import siteConfig from "site.config";
-import { z, defineCollection } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 
 const { themeColor, author } = siteConfig;
 
@@ -13,15 +14,15 @@ const baseSchema = {
 			src: z.string().default("/og/social.jpg"),
 			alt: z.string().default("Build the web you want"),
 		})
-		.default({}),
+		.default({ src: "", alt: "" }),
 };
 
 const docsSchema = z.object({
 	...baseSchema,
 	pageTitle: z.string().optional(),
-	git: z.string().url().optional(),
+	git: z.url().optional(),
 	npm: z.string().optional(),
-	changelog: z.string().url().optional(),
+	changelog: z.url().optional(),
 });
 
 export const collections = {
@@ -36,7 +37,7 @@ export const collections = {
 				author: z
 					.object({
 						name: z.string(),
-						url: z.string().url(),
+						url: z.url(),
 					})
 					.optional()
 					.default(author),
