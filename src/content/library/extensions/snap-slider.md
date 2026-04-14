@@ -91,24 +91,25 @@ Then, apply the `x-snap-slider` directive to your slider element.
 
 The `snap-slider` supports the following data attributes for configuration:
 
-| Data Attribute                | Description                                                                | Default      |
-| ----------------------------- | -------------------------------------------------------------------------- | ------------ |
-| `data-track`                  | **Required.** Identifies the container for the slider's slides.            |              |
-| `data-next`                   | Designates a button to navigate to the next slide.                         |              |
-| `data-prev`                   | Designates a button to navigate to the previous slide.                     |              |
-| `data-pager`                  | Designates the container for pagination markers.                           |              |
-| `data-auto-pager`             | Automatically generates pagination markers.                                | `false`      |
-| `data-group-pager`            | Groups pager markers based on the number of visible slides.                | `false`      |
-| `data-slide-label-sepparator` | Customizes the separator in the `aria-label` for slides (e.g., "1 of 12"). | `of`         |
-| `data-pager-class`            | Sets custom classes for the pager container.                               | `pager`      |
-| `data-marker-class`           | Sets custom classes for the pager markers.                                 | `pager-item` |
+| Data Attribute                | Description                                                                | Default       |
+| ----------------------------- | -------------------------------------------------------------------------- | ------------- |
+| `data-track`                  | **Required.** Identifies the container for the slider's slides.            |               |
+| `data-next`                   | Designates a button to navigate to the next slide.                         |               |
+| `data-prev`                   | Designates a button to navigate to the previous slide.                     |               |
+| `data-pager`                  | Designates the container for pagination markers.                           |               |
+| `data-auto-pager`             | Automatically generates pagination markers.                                | `false`       |
+| `data-group-pager`            | Groups pager markers based on the number of visible slides.                | `false`       |
+| `data-loop`                   | Enables looping. Navigation wraps around and buttons are never disabled.   | `false`       |
+| `data-slide-label-sepparator` | Customizes the separator in the `aria-label` for slides (e.g., "1 of 12"). | `of`          |
+| `data-pager-class`            | Sets custom classes for the pager container.                               | `snap-pager`  |
+| `data-marker-class`           | Sets custom classes for the pager markers.                                 | `snap-marker` |
 
 ### AlpineJS Configuration
 
-For the AlpineJS version, boolean options like `auto-pager` and `group-pager` are passed as modifiers to the `x-snap-slider` directive:
+For the AlpineJS version, boolean options like `auto-pager`, `group-pager`, and `loop` are passed as modifiers to the `x-snap-slider` directive:
 
 ```html
-<div x-data x-snap-slider.auto-pager.group-pager>
+<div x-data x-snap-slider.auto-pager.group-pager.loop>
     ...
 </div>
 ```
