@@ -32,9 +32,5 @@
 		"prettier": "^3.8.2",
 		"rehype-external-links": "^3.0.0",
 		"remark-github-blockquote-alert": "^2.1.0"
-	},
-	"devDependencies": {
-		"@types/markdown-it": "^14.1.2",
-		"@types/sanitize-html": "^2.16.1"
 	}
 }
