@@ -22,7 +22,7 @@ export default [
 	{
 		items: [
 			{
-				slug: "",
+				id: "",
 				data: {
 					title: "Getting Started",
 				},

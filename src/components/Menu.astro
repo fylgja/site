@@ -6,7 +6,7 @@ interface Props {
 	items: {
 		title?: string;
 		items: {
-			slug: string;
+			id: string;
 			data: {
 				title: string;
 			};
@@ -31,9 +31,9 @@ const { title, items, urlPrefix, class: classes } = Astro.props;
 						<li>
 							<a
 								class="btn w-full"
-								href={item.slug ? `${urlPrefix}/${item.slug}/` : `${urlPrefix}/`}
+								href={item.id ? `${urlPrefix}/${item.id}/` : `${urlPrefix}/`}
 								aria-current={isCurrentPage(
-									`${item.slug ? `${urlPrefix}/${item.slug}/` : `${urlPrefix}/`}`
+									`${item.id ? `${urlPrefix}/${item.id}/` : `${urlPrefix}/`}`
 								)}
 							>
 								{item.data.title}
@@ -58,9 +58,9 @@ const { title, items, urlPrefix, class: classes } = Astro.props;
 									<li>
 										<a
 											class="btn w-full"
-											href={`${urlPrefix}/${item.slug}/`}
+											href={`${urlPrefix}/${item.id}/`}
 											aria-current={isCurrentPage(
-												`${urlPrefix}/${item.slug}/`
+												`${urlPrefix}/${item.id}/`
 											)}
 										>
 											{item.data.title}
