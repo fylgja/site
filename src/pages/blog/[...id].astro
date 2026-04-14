@@ -1,0 +1,159 @@
+---
+import { Picture } from "astro:assets";
+import { getCollection, render } from "astro:content";
+import Layout from "@/layouts/PageLayout.astro";
+import Meta from "@/components/MetaContent.astro";
+import Schema from "@/components/Schema.astro";
+import siteConfig from "site.config";
+import Share from "@/components/Share.astro";
+import { ChevronLeft } from "@lucide/astro";
+import ShareBluesky from "@/components/ShareBluesky.astro";
+import TagCloud from "@/components/TagCloud.astro";
+
+export async function getStaticPaths() {
+	const entries = await getCollection("blog");
+	return entries.map((entry) => ({
+		params: { id: entry.id },
+		props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+const { title, description, tags, author, publishDate, updateDate, coverImage, coverColor } =
+	entry.data;
+const { Content } = await render(entry);
+
+const blogAuthor = author
+	? [
+			{
+				"@type": "Person",
+				name: author.name,
+				url: author.url,
+			},
+			{
+				"@type": "Organization",
+				name: siteConfig.name,
+				url: Astro.site,
+			},
+		]
+	: [
+			{
+				"@type": "Organization",
+				name: siteConfig.name,
+				url: Astro.site,
+			},
+		];
+---
+
+<Layout
+	title={title}
+	description={description}
+	image={coverImage?.src}
+	pageType="article"
+	class=""
+	style="--my: 0 var(--size-12)"
+>
+	<Schema
+		data={{
+			"@context": "https://schema.org",
+			"@type": "BlogPosting",
+			headline: title,
+			description,
+			keywords: tags,
+			image: coverImage ? [coverImage.src] : [],
+			thumbnailUrl: coverImage?.src,
+			datePublished: publishDate,
+			dateModified: updateDate,
+			author: blogAuthor,
+		}}
+		slot="head"
+	/>
+	<div
+		class:list={["banner container clip rounded-conditional", !coverImage && "bg-gradient"]}
+		style="--container-gap: 0px"
+	>
+		{
+			coverImage && (
+				<Picture src={coverImage} width={1280} height={350} loading="eager" alt="" />
+			)
+		}
+	</div>
+	<div
+		class="blog-title container flow text-center rounded-conditional"
+		style={{
+			"--container-size": "calc(var(--size-content-blog) + var(--size-16))",
+			"--container-gap": "0px",
+		}}
+	>
+		<h1 id={title} style={{ viewTransitionName: `${entry.id}-title` }}>{title}</h1>
+		<div class="inline-flex flex-col gap-sm flow-none text-muted align-center">
+			<Meta published={publishDate} updatedOn={updateDate} />
+			<TagCloud tags={tags} class="inline-flex" tagClass="text-sm" allUrl={false} />
+		</div>
+	</div>
+	<div class="blog-content container" style="--container-size: var(--size-content-blog)">
+		<Content />
+		<hr />
+		<div class="flex-wrap align gap-sm">
+			<a href={`/blog#${entry.id}`} class="btn">
+				<ChevronLeft />
+				<span>Back to Blog Overview</span>
+			</a>
+			<span>
+				<ShareBluesky url={Astro.url} text={`Read More about ${Astro.url} #FylgjaCSS`} />
+				<Share url={Astro.url} title={title} />
+			</span>
+		</div>
+	</div>
+</Layout>
+
+<style define:vars={{ coverColor }}>
+	.banner {
+		--gradient-from: var(--coverColor);
+		--gradient-to: var(--brand);
+		--gradient-angle: 337deg;
+		--radius-t: 0;
+		--radius-b: 2rem;
+		block-size: clamp(var(--size-40), 100vw, var(--size-60));
+
+		&:has(img) {
+			block-size: clamp(var(--size-40), 100vw, var(--size-100));
+		}
+
+		img {
+			block-size: 100%;
+			object-fit: cover;
+		}
+	}
+
+	.blog-title {
+		--radius-t: 2rem;
+		position: relative;
+		background-color: var(--root-bg);
+		padding: var(--size-8);
+		margin-block-start: calc(var(--size-16) * -1);
+	}
+
+	.blog-content {
+		img[src^="https://img.shields.io"] {
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		:is(h1, h2, h3) > em {
+			display: block;
+			font-size: 0.75em;
+			font-weight: normal;
+			margin-block-start: 0.375em;
+			text-wrap: pretty;
+		}
+
+		.lead {
+			font-size: 1.125em;
+		}
+
+		ul {
+			padding-inline-start: 1em;
+		}
+	}
+</style>
