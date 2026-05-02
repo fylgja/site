@@ -28,7 +28,7 @@
 		"@fylgja/utilities": "^2.1.2",
 		"@lucide/astro": "^1.8.0",
 		"astro": "^6.1.6",
-		"marked": "^18.0.0",
+		"marked": "^18.0.3",
 		"prettier": "^3.8.2",
 		"rehype-external-links": "^3.0.0",
 		"remark-github-blockquote-alert": "^2.1.0"
