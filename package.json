@@ -12,7 +12,7 @@
 		"preview": "astro preview"
 	},
 	"dependencies": {
-		"@astrojs/check": "^0.9.8",
+		"@astrojs/check": "^0.9.9",
 		"@astrojs/rss": "^4.0.18",
 		"@astrojs/sitemap": "^3.7.2",
 		"@docsearch/css": "^3.9.0",
@@ -26,8 +26,8 @@
 		"@fylgja/toast": "^1.0.0",
 		"@fylgja/tokens": "^2.2.0",
 		"@fylgja/utilities": "^2.1.2",
-		"@lucide/astro": "^1.8.0",
-		"astro": "^6.1.6",
+		"@lucide/astro": "^1.14.0",
+		"astro": "^6.2.1",
 		"marked": "^18.0.0",
 		"prettier": "^3.8.2",
 		"rehype-external-links": "^3.0.0",
