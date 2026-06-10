@@ -28,6 +28,7 @@ const tabId = pkg.replace(/[@/]/g, "-").replaceAll("-", "");
     {npx && (
         <div id={`${tabId}-npx`} role="tabpanel">
             <CodeBlock lang="sh" code={`npx fylgja@latest add ${npx}`} />
+            <p><em>This copies the file directly into your project. The import path will differ from the one shown in the usage section below.</em></p>
         </div>
     )}
     {cdn && (
