@@ -22,17 +22,17 @@ const tabId = pkg.replace(/[@/]/g, "-").replaceAll("-", "");
     <div id={`${tabId}-npm`} role="tabpanel">
         <CodeBlock lang="sh" code={`npm install ${pkg}`} />
     </div>
-    <div id={`${tabId}-pnpm`} role="tabpanel">
+    <div id={`${tabId}-pnpm`} role="tabpanel" hidden>
         <CodeBlock lang="sh" code={`pnpm add ${pkg}`} />
     </div>
     {npx && (
-        <div id={`${tabId}-npx`} role="tabpanel">
+        <div id={`${tabId}-npx`} role="tabpanel" hidden>
             <CodeBlock lang="sh" code={`npx fylgja@latest add ${npx}`} />
             <p><em>This copies the file directly into your project. The import path will differ from the one shown in the usage section below.</em></p>
         </div>
     )}
     {cdn && (
-        <div id={`${tabId}-cdn`} role="tabpanel">
+        <div id={`${tabId}-cdn`} role="tabpanel" hidden>
             <CodeBlock lang="html" code={`<link href="${cdn}" rel="stylesheet">`} />
         </div>
     )}

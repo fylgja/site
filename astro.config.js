@@ -12,15 +12,23 @@ export default defineConfig({
 	markdown: {
 		processor: unified({
 			remarkPlugins: [remarkAlert, remarkWrapTables],
-			rehypePlugins: [[rehypeExternalLinks, { target: "_blank", rel: "noopener noreferrer" }]],
-			shikiConfig: {
-				defaultColor: false,
-				themes: {
-					light: "github-light-default",
-					dark: "github-dark-default",
-				},
-			},
+			rehypePlugins: [
+				[
+					rehypeExternalLinks,
+					{
+						target: "_blank",
+						rel: "noopener noreferrer",
+					},
+				],
+			],
 		}),
+		shikiConfig: {
+			defaultColor: false,
+			themes: {
+				light: "github-light-default",
+				dark: "github-dark-default",
+			},
+		},
 	},
 	redirects: {
 		// Handy links
