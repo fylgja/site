@@ -7,6 +7,8 @@ git: "https://github.com/fylgja/fylgja/tree/main/utilities"
 sortOrder: 3
 ---
 
+import InstallTabs from "@/components/InstallTabs.astro";
+
 Fylgja Utilities offers a focused collection of production-ready CSS utilities.
 
 Designed for direct use without a build step,
@@ -17,20 +19,7 @@ or alongside other utility frameworks like Tailwind CSS and UnoCSS.
 
 ## Installation
 
-You can install Fylgja Utilities via npm or other Node-based package managers like pnpm or bun:
-
-```sh
-npm install @fylgja/utilities
-```
-
-Alternatively, you can use it directly via a CDN:
-
-```html
-<link
-  href="https://cdn.jsdelivr.net/npm/@fylgja/utilities/index.min.css"
-  rel="stylesheet"
-/>
-```
+<InstallTabs pkg="@fylgja/utilities" npx="utilities" cdn="https://cdn.jsdelivr.net/npm/@fylgja/utilities/index.min.css" />
 
 ## Usage
 
@@ -260,7 +249,7 @@ Adds a subtle overlay shadow to an element, often effective in combination with 
 
 <figure class="demo-wrapper">
 <div class="stack inline-grid">
-<img src="/images/placeholders/seagull.webp" alt="Seagull, Got fish?" width="480" height="320" loading="lazy">
+<img src="/images/placeholders/seagull.webp" alt="Seagull, Got fish?" width="480" height="320" loading="lazy" />
 <div class="overlay align-self" style="--p: 1rem; --align-self: end auto">Got fish?</div>
 </div>
 </figure>
@@ -324,11 +313,11 @@ Easily create interactive sliders. This utility works best in conjunction with o
 
 <figure class="demo-wrapper">
 <div class="snap scroll-x scroll-mask grid-cols grid-flow gap" style="--sm_grid-cols: 2">
-<img src="/images/placeholders/cat.webp" alt="" width="480" height="320" loading="lazy">
-<img src="/images/placeholders/dog.webp" alt="" width="480" height="320" loading="lazy">
-<img src="/images/placeholders/bear.webp" alt="" width="480" height="320" loading="lazy">
-<img src="/images/placeholders/fox.webp" alt="" width="480" height="320" loading="lazy">
-<img src="/images/placeholders/hare.webp" alt="" width="480" height="320" loading="lazy">
+<img src="/images/placeholders/cat.webp" alt="" width="480" height="320" loading="lazy" />
+<img src="/images/placeholders/dog.webp" alt="" width="480" height="320" loading="lazy" />
+<img src="/images/placeholders/bear.webp" alt="" width="480" height="320" loading="lazy" />
+<img src="/images/placeholders/fox.webp" alt="" width="480" height="320" loading="lazy" />
+<img src="/images/placeholders/hare.webp" alt="" width="480" height="320" loading="lazy" />
 </div>
 </figure>
 
@@ -383,7 +372,7 @@ Use it with a `card` or with `relative` class on the parent element to define th
 
 <figure class="demo-wrapper">
 <div class="card --hover inline-block">
-	<img src="/images/placeholders/frog.webp" alt="" width="480" height="320" loading="lazy">
+	<img src="/images/placeholders/frog.webp" alt="" width="480" height="320" loading="lazy" />
 	<div class="card-content">
 	<p>This is the body text that should not be part of the link</p>
 	<a class="stretched-link btn --primary" href="#stretched-link">This is a accessible link text</a>

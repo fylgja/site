@@ -7,6 +7,8 @@ git: "https://github.com/fylgja/fylgja/tree/main/base"
 sortOrder: 1
 ---
 
+import InstallTabs from "@/components/InstallTabs.astro";
+
 Fylgja Base provides a streamlined starting point for any web project.
 It’s a collection of class-less solutions,
 allowing you to focus on building your site using plain HTML or your preferred frontend language,
@@ -19,17 +21,7 @@ but excludes styles for forms, buttons, and the HTML dialog element.
 
 ## Installation
 
-You can install Fylgja Base via npm or other Node-based package managers like pnpm or bun:
-
-```sh
-npm install @fylgja/base
-```
-
-Alternatively, you can use it directly via a CDN:
-
-```html
-<link href="https://cdn.jsdelivr.net/npm/@fylgja/base/index.min.css" rel="stylesheet">
-```
+<InstallTabs pkg="@fylgja/base" npx="theme" cdn="https://cdn.jsdelivr.net/npm/@fylgja/base/index.min.css" />
 
 ## Usage
 
@@ -65,7 +57,7 @@ To apply a pre-defined theme, import it separately:
 For theme customization, copy the styles to your project:
 
 ```sh
-npx @fylgja/base
+npx fylgja@latest add theme
 ```
 
 This command will add the theme styles to `src/css`, `src/styles`, or `src/assets` (if present),
@@ -90,7 +82,7 @@ This preview highlights the default styles and improvements you get simply by us
 	height="744"
 	class="card"
 ></iframe>
-<fircaption class="block text-center italic text-muted">
+<figcaption class="block text-center italic text-muted">
 <a href="/library/base/demo/">View the Fylgja Base Demo in Fullscreen</a>
 </figcaption>
 </figure>

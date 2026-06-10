@@ -7,6 +7,8 @@ git: "https://github.com/fylgja/fylgja/tree/main/tokens"
 sortOrder: 2
 ---
 
+import InstallTabs from "@/components/InstallTabs.astro";
+
 Establish a consistent design language across your projects with Fylgja Design Tokens.
 
 This predefined set of tokens eliminates redundant variations in spacing, colors, and other design elements,
@@ -22,17 +24,7 @@ mirroring the functionality of [Open Props](https://open-props.style/) and other
 
 ## Installation
 
-You can install Fylgja Tokens via npm or other Node-based package managers like pnpm or bun:
-
-```bash
-npm install @fylgja/tokens
-```
-
-Alternatively, you can use it directly via a CDN:
-
-```html
-<link href="https://cdn.jsdelivr.net/npm/@fylgja/tokens/css/index.min.css" rel="stylesheet">
-```
+<InstallTabs pkg="@fylgja/tokens" npx="tokens" cdn="https://cdn.jsdelivr.net/npm/@fylgja/tokens/css/index.min.css" />
 
 ## Usage
 
@@ -261,7 +253,7 @@ Go beyond the basics with advanced easing options with the elastic motion.
 				type="radio"
 				checked
 				onChange="demoEasing.classList.add('is-paused');"
-			>
+			/>
 		</label>
 		<label class="btn --primary">
 			<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Play</title><polygon points="6 3 20 12 6 21 6 3"/></svg>
@@ -269,7 +261,7 @@ Go beyond the basics with advanced easing options with the elastic motion.
 				name="demo-play-easeing-state"
 				type="radio"
 				onChange="demoEasing.classList.remove('is-paused');"
-			>
+			/>
 		</label>
 	</div>
 </fieldset>
@@ -296,7 +288,7 @@ Go beyond the basics with advanced easing options with the elastic motion.
 	</select>
 </label>
 <label>
-	<span class="sr-only">Animation</span>Speed<br>
+	<span class="sr-only">Animation</span>Speed<br />
 	<div class="input-group --merge">
 		<input
 			name="demo-play-easeing-speed"
@@ -306,7 +298,7 @@ Go beyond the basics with advanced easing options with the elastic motion.
 			value="5"
 			onChange="demoEasing.style.setProperty('--demo-animate-speed', event.target.value + 's');"
 			style="padding-inline-end: 0"
-		>
+		/>
 		<div aria-hidden="true" class="form-input" style="padding-inline-start: 0.3ex">
 			<span class="text-muted">S</span>
 		</div>

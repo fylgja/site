@@ -1,0 +1,38 @@
+---
+import Tabs from "./Tabs.astro";
+import CodeBlock from "./CodeBlock.astro";
+
+interface Props {
+    pkg: string;
+    npx?: string;
+    cdn?: string;
+}
+
+const { pkg, npx, cdn } = Astro.props;
+const tabId = pkg.replace(/[@/]/g, "-").replaceAll("-", "");
+---
+
+<Tabs persist sync>
+    <Fragment slot="tablist">
+        <button type="button" role="tab" aria-controls={`${tabId}-npm`} data-tabs-persist="pkg-manager:npm">npm</button>
+        <button type="button" role="tab" aria-controls={`${tabId}-pnpm`} data-tabs-persist="pkg-manager:pnpm">pnpm</button>
+        {npx && <button type="button" role="tab" aria-controls={`${tabId}-npx`} data-tabs-persist="pkg-manager:npx">npx</button>}
+        {cdn && <button type="button" role="tab" aria-controls={`${tabId}-cdn`} data-tabs-persist="pkg-manager:cdn">cdn</button>}
+    </Fragment>
+    <div id={`${tabId}-npm`} role="tabpanel">
+        <CodeBlock lang="sh" code={`npm install ${pkg}`} />
+    </div>
+    <div id={`${tabId}-pnpm`} role="tabpanel">
+        <CodeBlock lang="sh" code={`pnpm add ${pkg}`} />
+    </div>
+    {npx && (
+        <div id={`${tabId}-npx`} role="tabpanel">
+            <CodeBlock lang="sh" code={`npx fylgja@latest add ${npx}`} />
+        </div>
+    )}
+    {cdn && (
+        <div id={`${tabId}-cdn`} role="tabpanel">
+            <CodeBlock lang="html" code={`<link href="${cdn}" rel="stylesheet">`} />
+        </div>
+    )}
+</Tabs>

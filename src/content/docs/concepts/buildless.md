@@ -15,6 +15,32 @@ This approach offers several advantages:
 *   **Perfect for Prototyping:** Ideal for quick demos, proof-of-concepts, or small projects where a build process would be overkill.
 *   **Focus on Creativity:** Spend your time designing and building your page, not configuring tools.
 
+## Getting files without installing
+
+You can copy individual Fylgja CSS files directly into your project using npx, without needing to install anything permanently:
+
+```sh
+npx fylgja@latest add tokens
+```
+
+This copies the file into `src/css`, `src/styles`, or `src/assets` if any of those exist, or falls back to the current directory. Run `npx fylgja@latest help` to see all available files.
+
+## Downloading from GitHub
+
+You can also download a pre-built release directly from GitHub and include the CSS files in your project manually. This requires no Node.js or package manager at all.
+
+The latest release is always available at [github.com/fylgja/fylgja/releases/latest](https://github.com/fylgja/fylgja/releases/latest).
+
+## Using a CDN
+
+The fastest way to get started is to link the CSS files directly from a CDN, with no installation or download required:
+
+```html
+<link href="https://cdn.jsdelivr.net/npm/@fylgja/base/index.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fylgja/tokens/css/index.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fylgja/utilities/index.min.css" rel="stylesheet">
+```
+
 ## Does this mean I shouldn't use build tools?
 
 Not at all! While Fylgja is proud to be buildless, we also embrace the power and efficiency that build tools offer for larger, more complex projects.

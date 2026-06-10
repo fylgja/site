@@ -61,6 +61,17 @@ import EditWithGithub from "@/components/EditWithGithub.astro";
 @import "@fylgja/utilities";`
 	/>
 
+	<h3>No install needed</h3>
+	<p>
+		Prefer not to install anything? You can copy individual Fylgja CSS files directly into your
+		project using npx:
+	</p>
+	<Code lang="sh" code="npx fylgja@latest add theme" />
+	<p>
+		Run <code>npx fylgja@latest help</code> to see all available files, or read more about the
+		<a href="/docs/concepts/buildless">buildless approach</a>.
+	</p>
+
 	<h3>What does this do?</h3>
 	<p>
 		By importing <code>@fylgja/base</code>, your project now has a "classless" foundation. This
