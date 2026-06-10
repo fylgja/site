@@ -23,7 +23,7 @@ interface Props {
 	};
 }
 
-const { name, foundingDate, socials, twitterUser, themeColor, themeColorDark } = siteConfig;
+const { name, description: siteDescription, foundingDate, socials, twitterUser, themeColor, themeColorDark, author } = siteConfig;
 const isProd = import.meta.env.PROD;
 
 const {
@@ -61,6 +61,38 @@ const {
 		<Schema
 			data={{
 				"@context": "https://schema.org",
+				"@type": "Person",
+				"@id": `${author.url}/#person`,
+				name: author.name,
+				url: author.url,
+				jobTitle: author.jobTitle,
+				description: author.description,
+				sameAs: author.sameAs,
+				brand: {
+					"@type": "Brand",
+					name,
+					url: Astro.site,
+				},
+				knowsAbout: author.knowsAbout,
+			}}
+		/>
+		<Schema
+			data={{
+				"@context": "https://schema.org",
+				"@type": "WebSite",
+				name,
+				url: Astro.site,
+				description,
+				author: {
+					"@type": "Person",
+					"@id": `${author.url}/#person`,
+					name: author.name,
+				},
+			}}
+		/>
+		<Schema
+			data={{
+				"@context": "https://schema.org",
 				"@type": "Organization",
 				url: Astro.site,
 				logo: siteLogo.src,
@@ -68,6 +100,12 @@ const {
 				alternateName: "Fylgja CSS",
 				description,
 				foundingDate,
+				founder: {
+					"@type": "Person",
+					"@id": `${author.url}/#person`,
+					name: author.name,
+					url: author.url,
+				},
 				sameAs: Object.values(socials),
 			}}
 		/>

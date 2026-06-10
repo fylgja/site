@@ -16,5 +16,26 @@ export default {
   author: {
     name: "Sean van Zuidam",
     url: "https://grimlink.com",
+    jobTitle: "CSS Wizard",
+    description: "Frontend Developer, CSS maniac, Gamer and also the creator of Fylgja CSS",
+    sameAs: [
+      "https://github.com/GrimLink",
+      "https://bsky.app/profile/grimlink.com",
+      "https://mastodon.social/@GrimLink",
+      "https://www.linkedin.com/in/seanvanzuidam",
+    ],
+    knowsAbout: [
+      "CSS",
+      "Web Development",
+      "JavaScript",
+      "HTML",
+      "Web Design",
+      "UX",
+      "Accessibility",
+      "Performance",
+      "Design Systems",
+      "Web Standards",
+      "E-Commerce",
+    ],
   },
 };
