@@ -6,23 +6,15 @@ npm: "@fylgja/badge"
 git: "https://github.com/fylgja/fylgja/tree/main/components/badge"
 ---
 
+import InstallTabs from "@/components/InstallTabs.astro";
+
 The Fylgja Badge component allows you to display compact labels or status indicators alongside other UI elements.
 
 This component is ideal for showing counts, status chips, or small tags — for example: unread counts, state indicators (active/inactive), or categorical markers.
 
 ## Installation
 
-You can install Fylgja Badge via npm or other Node-based package managers like pnpm or bun:
-
-```bash
-npm install @fylgja/badge
-```
-
-Alternatively, you can use it directly via a CDN:
-
-```html
-<link href="https://cdn.jsdelivr.net/npm/@fylgja/badge/index.min.css" rel="stylesheet">
-```
+<InstallTabs pkg="@fylgja/badge" cdn="https://cdn.jsdelivr.net/npm/@fylgja/badge/index.min.css" />
 
 ## Usage
 
@@ -70,7 +62,7 @@ These examples demonstrate how you can use the Badge component with various layo
 		<p>Dicta ea a, commodi reiciendis aut doloremque earum fugit ducimus officiis.</p>
 		<p class="font-bold">€18.99</p>
 		<form action="#" class="flex-wrap gap align">
-			<input type="hidden" name="product-id" value="demo-id">
+			<input type="hidden" name="product-id" value="demo-id"/>
 			<button>Add to Cart</button>
 		</form>
 	</div>
@@ -92,7 +84,7 @@ These examples demonstrate how you can use the Badge component with various layo
 		<p>Dicta ea a, commodi reiciendis aut doloremque earum fugit ducimus officiis.</p>
 		<p class="font-bold">€6.00</p>
 		<form action="#" class="flex-wrap gap align">
-			<input type="hidden" name="product-id" value="demo-id">
+			<input type="hidden" name="product-id" value="demo-id"/>
 			<button>Add to Cart</button>
 		</form>
 	</div>

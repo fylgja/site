@@ -6,6 +6,8 @@ npm: "@fylgja/card"
 git: "https://github.com/fylgja/fylgja/tree/main/components/card"
 ---
 
+import InstallTabs from "@/components/InstallTabs.astro";
+
 The Fylgja Card component allows you to group content together, for a more contained content element.
 
 This component is ideal for building various UI elements such as
@@ -13,17 +15,7 @@ Product items, Blog items or for a Dropdown Panel.
 
 ## Installation
 
-You can install Fylgja Card via npm or other Node-based package managers like pnpm or bun:
-
-```bash
-npm install @fylgja/card
-```
-
-Alternatively, you can use it directly via a CDN:
-
-```html
-<link href="https://cdn.jsdelivr.net/npm/@fylgja/card/index.min.css" rel="stylesheet">
-```
+<InstallTabs pkg="@fylgja/card" cdn="https://cdn.jsdelivr.net/npm/@fylgja/card/index.min.css" />
 
 ## Usage
 
@@ -68,7 +60,7 @@ It's especially useful for highlighting featured blog posts or banners.
 
 <article class="card md:flex">
 	<picture class="flex-none">
-		<source srcset="/images/placeholders/deer.webp" media="(width >= 768px)">
+		<source srcset="/images/placeholders/deer.webp" media="(width />= 768px)"/>
 		<img
 			src="/images/placeholders/deer-wide.webp"
 			alt="Exploring Fylgja in the Wilds"
@@ -77,13 +69,11 @@ It's especially useful for highlighting featured blog posts or banners.
 			loading="lazy"
 			class="object-cover"
 			style="--size-y: 240px; --md_size-x: 320px"
-		>
+		/>
 	</picture>
 	<div class="card-content">
 		<h3 class="lead">Exploring Fylgja in the Wilds</h3>
-		<p class="line-clamp">
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto eius repellendus, eaque repellat esse rem repudiandae deserunt dicta excepturi exercitationem quod porro cumque id. Expedita iste vel illum libero quasi? Error quos illum soluta dolor pariatur doloremque aperiam ea amet, ad iusto expedita dolorum id fuga tenetur quasi suscipit reiciendis?
-		</p>
+		<p class="line-clamp">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto eius repellendus, eaque repellat esse rem repudiandae deserunt dicta excepturi exercitationem quod porro cumque id. Expedita iste vel illum libero quasi? Error quos illum soluta dolor pariatur doloremque aperiam ea amet, ad iusto expedita dolorum id fuga tenetur quasi suscipit reiciendis?</p>
 		<p><a href="#">Read More</a></p>
 	</div>
 </article>
@@ -91,7 +81,7 @@ It's especially useful for highlighting featured blog posts or banners.
 ```html
 <article class="card md:flex">
 	<picture class="flex-none">
-		<source srcset="/images/placeholders/deer.webp" media="(width >= 768px)">
+		<source srcset="/images/placeholders/deer.webp" media="(width />= 768px)"/>
 		<img
 			src="/images/placeholders/deer-wide.webp"
 			alt="Exploring Fylgja in the Wilds"
@@ -100,7 +90,7 @@ It's especially useful for highlighting featured blog posts or banners.
 			loading="lazy"
 			class="object-cover"
 			style="--size-y: 240px; --md_size-x: 320px"
-		>
+		/>
 	</picture>
 	<div class="card-content">
 		<h3 class="lead">Exploring Fylgja in the Wilds</h3>
@@ -129,7 +119,7 @@ As you can see, with just a few CSS utilities, you can easily create a fully fun
 		<p>Dicta ea a, commodi reiciendis aut doloremque earum fugit ducimus officiis.</p>
 		<p class="font-bold">€18.99</p>
 		<form action="#" class="flex-wrap gap align">
-			<input type="hidden" name="product-id" value="demo-id">
+			<input type="hidden" name="product-id" value="demo-id"/>
 			<button>Add to Cart</button>
 		</form>
 	</article>
@@ -145,7 +135,7 @@ As you can see, with just a few CSS utilities, you can easily create a fully fun
 		<p>Dicta ea a, commodi reiciendis aut doloremque earum fugit ducimus officiis.</p>
 		<p class="font-bold">€6.00</p>
 		<form action="#" class="flex-wrap gap align">
-			<input type="hidden" name="product-id" value="demo-id">
+			<input type="hidden" name="product-id" value="demo-id"/>
 			<button>Add to Cart</button>
 		</form>
 	</article>
@@ -161,7 +151,7 @@ As you can see, with just a few CSS utilities, you can easily create a fully fun
 		<p>Dicta ea a, commodi reiciendis aut doloremque earum fugit ducimus officiis.</p>
 		<p class="font-bold">€112.56</p>
 		<form action="#" class="flex-wrap gap align">
-			<input type="hidden" name="product-id" value="demo-id">
+			<input type="hidden" name="product-id" value="demo-id"/>
 			<button>Add to Cart</button>
 		</form>
 	</article>
@@ -181,7 +171,7 @@ As you can see, with just a few CSS utilities, you can easily create a fully fun
 		<p>Dicta ea a, commodi reiciendis aut doloremque earum fugit ducimus officiis.</p>
 		<p class="font-bold">€18.99</p>
 		<form action="#" class="flex-wrap gap align">
-			<input type="hidden" name="product-id" value="demo-id">
+			<input type="hidden" name="product-id" value="demo-id"/>
 			<button>Add to Cart</button>
 		</form>
 	</article>

@@ -6,23 +6,15 @@ npm: "@fylgja/toast"
 git: "https://github.com/fylgja/fylgja/tree/main/components/toast"
 ---
 
+import InstallTabs from "@/components/InstallTabs.astro";
+
 The Fylgja Toast component allows you to display brief, transient messages and notifications across your UI.
 
 This component is ideal for building UI elements such as toasts, banners, alerts, or short inline messages that provide quick feedback (confirmations, warnings, or errors).
 
 ## Installation
 
-You can install Fylgja Toast via npm or other Node-based package managers like pnpm or bun:
-
-```bash
-npm install @fylgja/toast
-```
-
-Alternatively, you can use it directly via a CDN:
-
-```html
-<link href="https://cdn.jsdelivr.net/npm/@fylgja/toast/index.min.css" rel="stylesheet">
-```
+<InstallTabs pkg="@fylgja/toast" cdn="https://cdn.jsdelivr.net/npm/@fylgja/toast/index.min.css" />
 
 ## Usage
 
@@ -101,7 +93,7 @@ These examples demonstrate how you can use the Toast component with various styl
 		oninput="toastWithColor.style.setProperty('--toast-style', event.target.value)"
 		class="round"
 		style="--block-size: 2rem; --inline-size: 2rem"
-	>
+	/>
 </div>
 
 ```html
