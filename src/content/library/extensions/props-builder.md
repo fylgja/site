@@ -42,8 +42,11 @@ propsBuilder(
         writeToFile: true, // Optional: If false, outputs the generated content to the console. Defaults to true.
         selector: ":where(:root)", // Optional: CSS selector for custom property declarations (CSS output only).
         wrapper: "", // Optional: Wrapper for design system-specific formatting (e.g., Figma).
+        banner: "", // Optional: Prepended to the output as-is, e.g. for a license header.
         inputTypeTokens: false, // Optional: Set to true if the input `props` are in a design token format. Defaults to false.
         inputTypeSyntax: "default", // Optional: Specifies the syntax of the input tokens if `inputTypeTokens` is true.
+        stripPrefix: "", // Optional: Dot/dash separated key path (or array of keys) to unwrap, dropping wrapping keys (e.g. "tokens.values").
+        rename: null, // Optional: Map of `{ [currentKey]: newKey }` applied recursively, to align naming (e.g. `{ colors: "color" }`).
     }
 )
 ```
@@ -87,7 +90,7 @@ Using the Props Builder with a JSON file is a common use case. The process is st
 
 #### 1. Create your Design Tokens file
 
-Your JSON file can be a simple key-value object, or it can follow a standard format like the W3C Design Tokens spec or the format exported by the Figma Tokens plugin.
+Your JSON file can be a simple key-value object, or it can follow a standard format like the W3C Design Tokens spec, the format exported by the Figma Tokens plugin, or a Markdown export from [Google Stitch](https://stitch.withgoogle.com/). Exports from other AI design tools, such as [Claude Design](https://claude.com/product/design), tend to work too, as long as they're reduced to a plain key-value JSON or one of the formats above.
 
 #### 2. Create a build script
 
@@ -134,6 +137,21 @@ The key step is to configure the `options` object based on your JSON file's form
     const options = {
         inputTypeTokens: true,
         inputTypeSyntax: "figma"
+    };
+    ```
+    Figma exports commonly wrap tokens in nested structural groups. Only a top-level `other` group and a
+    redundant nested color group are unwrapped automatically; for any other group, use the `stripPrefix`
+    and `rename` options to unwrap and rename keys to your own naming convention.
+
+* **For a [Google Stitch](https://stitch.withgoogle.com/) Markdown export:**
+    Set `inputTypeTokens` to `true` and `inputTypeSyntax` to `'stitch'`, and pass the raw Markdown file
+    content (a string) as `props` rather than a parsed object. Only the YAML frontmatter is used, and
+    every key in it is converted to tokens, except for known metadata keys (`name`, `description`). The
+    `colors` group is automatically renamed to the singular `color` (unless a `color` group already exists).
+    ```js
+    const options = {
+        inputTypeTokens: true,
+        inputTypeSyntax: "stitch"
     };
     ```
 
