@@ -11,15 +11,15 @@ While browsing the Fylgja documentation, you may notice an **"Ask AI"** button o
 
 This feature is completely static and operates entirely in your browser. We don't run any backend AI models; instead, this tool bridges the gap by preparing the necessary context so you can get the most accurate answers from your preferred AI tools.
 
-## AI Context File (`llm.txt`)
+## AI Context File (`llms.txt`)
 
 Because Fylgja takes a unique approach to styling—focusing on classless base styles, modular design tokens, and Dynamic CSS Utilities—standard AIs might occasionally assume it works like traditional utility frameworks (like Tailwind).
 
 To solve this, we provide a dedicated, machine-readable context file. If you are using an AI coding assistant (like Cursor or GitHub Copilot) or working with a web-based LLM, you can feed it this file to instantly give the AI the core rules, conventions, and concepts of the Fylgja library.
 
-**[View the Fylgja LLM Context File (`/llm.txt`)](/llm.txt)**
+**[View the Fylgja LLM Context File (`/llms.txt`)](/llms.txt)**
 
-You can simply provide the link `https://fylgja.dev/llm.txt` to any AI agent capable of browsing the web, and it will immediately understand how to write code for your Fylgja project!
+You can simply provide the link `https://fylgja.dev/llms.txt` to any AI agent capable of browsing the web, and it will immediately understand how to write code for your Fylgja project!
 
 ## Model Context Protocol (MCP)
 

@@ -9,7 +9,7 @@ interface Props {
 
 const { url, iconSize = 16, class: classlist } = Astro.props;
 
-const prompt = `Can you explain this documentation page from the Fylgja CSS library? Here is the raw markdown content: ${url}\n\nFor additional context on how Fylgja works, refer to this LLM guide: https://fylgja.dev/llm.txt`;
+const prompt = `Can you explain this documentation page from the Fylgja CSS library? Here is the raw markdown content: ${url}\n\nFor additional context on how Fylgja works, refer to this LLM guide: https://fylgja.dev/llms.txt`;
 const claudeUrl = `https://claude.ai/new?q=${encodeURIComponent(prompt)}`;
 ---
 

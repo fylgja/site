@@ -2,13 +2,14 @@
 
 This document provides context for LLMs working with the Fylgja CSS library, a modular CSS library that emphasizes native HTML, design tokens, and dynamic utilities.
 
-**GitHub Repository:** https://github.com/fylgja/fylgja
+**GitHub Repository:** [https://github.com/fylgja/fylgja](https://github.com/fylgja/fylgja)
 
 ## Fylgja Base
 
 Fylgja Base provides a streamlined starting point for any web project. It is a collection of class-less solutions, allowing you to focus on building your site using plain HTML without needing additional classes.
 
-- **GitHub**: https://github.com/fylgja/fylgja/tree/main/base
+- **Docs**: [https://fylgja.dev/library/base](https://fylgja.dev/library/base)
+- **GitHub**: [https://github.com/fylgja/fylgja/tree/main/base](https://github.com/fylgja/fylgja/tree/main/base)
 - **Installation**: `npm install @fylgja/base`
 - **Full Import**: `@import "@fylgja/base";`
 - **Granular Imports**:
@@ -22,7 +23,8 @@ Fylgja Base provides a streamlined starting point for any web project. It is a c
 
 Fylgja Tokens establish a consistent design language using a predefined set of design tokens (variables) for spacing, colors, typography, etc.
 
-- **GitHub**: https://github.com/fylgja/fylgja/tree/main/tokens
+- **Docs**: [https://fylgja.dev/library/tokens](https://fylgja.dev/library/tokens)
+- **GitHub**: [https://github.com/fylgja/fylgja/tree/main/tokens](https://github.com/fylgja/fylgja/tree/main/tokens)
 - **Installation**: `npm install @fylgja/tokens`
 - **Full Import**: `@import "@fylgja/tokens/css";` (Also available in `scss`, `js`, and `tailwind` formats).
 - **Key Token Categories**:
@@ -36,7 +38,8 @@ Fylgja Tokens establish a consistent design language using a predefined set of d
 
 A focused collection of production-ready CSS utilities. Fylgja relies heavily on "Dynamic CSS Utilities" which use CSS variables to modify behavior, minimizing the number of classes.
 
-- **GitHub**: https://github.com/fylgja/fylgja/tree/main/utilities
+- **Docs**: [https://fylgja.dev/library/utilities](https://fylgja.dev/library/utilities)
+- **GitHub**: [https://github.com/fylgja/fylgja/tree/main/utilities](https://github.com/fylgja/fylgja/tree/main/utilities)
 - **Installation**: `npm install @fylgja/utilities`
 - **Full Import**: `@import "@fylgja/utilities";`
 - **Granular Imports**: Use specific utilities like `@import "@fylgja/utilities/flex.css";`.
@@ -49,13 +52,40 @@ A focused collection of production-ready CSS utilities. Fylgja relies heavily on
 
 Fylgja embraces native HTML over heavy, class-based component structures. Instead of relying on complex custom classes for every component, it leverages **Fylgja Base** styles applied to semantic HTML elements.
 
-- **GitHub**: https://github.com/fylgja/fylgja/tree/main/components
+- **GitHub**: [https://github.com/fylgja/fylgja/tree/main/components](https://github.com/fylgja/fylgja/tree/main/components)
 - **Native HTML First**: For example, a **Button** actually uses the Fylgja Base directly. By simply using the native `<button>` element or adding the `.btn` class to an `<a>` tag, you inherit the Fylgja Base styles without needing a dedicated component library import.
 - **Styling**: For visual styling of these components, you can reference the **Fylgja Base Theme** import (`@fylgja/base/theme.css`). The theme provides the actual colors, dark mode support, and interactive states (like primary button styles) on top of the base HTML functionality.
-- **Custom Components**: For UI elements not covered by native HTML, Fylgja provides lightweight CSS components that follow the same token-driven design principles. The offered components include:
-  - **Badge**: Display compact labels or status indicators alongside other UI elements.
-  - **Breadcrumbs**: A simple, accessible way to render breadcrumb navigation.
-  - **Card**: Create grouped content for product items, blog items, or a dropdown panel.
-  - **Form Extend**: Enhance forms with advanced features, including native validation and flexible styling for a wide range of form fields.
-  - **Input Group**: Create smarter, intuitive form controls by grouping inputs and buttons together.
-  - **Toast**: Display brief, transient messages and notifications (such as alerts or inline messages) across your UI.
+- **Custom Components**: For UI elements not covered by native HTML, Fylgja provides lightweight CSS components that follow the same token-driven design principles:
+  - [Badge](https://fylgja.dev/library/components/badge): Display compact labels or status indicators alongside other UI elements.
+  - [Breadcrumbs](https://fylgja.dev/library/components/breadcrumbs): A simple, accessible way to render breadcrumb navigation.
+  - [Card](https://fylgja.dev/library/components/card): Create grouped content for product items, blog items, or a dropdown panel.
+  - [Form Extend](https://fylgja.dev/library/components/form-extend): Enhance forms with advanced features, including native validation and flexible styling for a wide range of form fields.
+  - [Input Group](https://fylgja.dev/library/components/input-group): Create smarter, intuitive form controls by grouping inputs and buttons together.
+  - [Toast](https://fylgja.dev/library/components/toast): Display brief, transient messages and notifications (such as alerts or inline messages) across your UI.
+
+## Extensions
+
+Optional integrations that connect Fylgja to other tools and workflows.
+
+- **GitHub**: [https://github.com/fylgja/fylgja/tree/main/extensions](https://github.com/fylgja/fylgja/tree/main/extensions)
+- [AlpineJS Dialog](https://fylgja.dev/library/extensions/alpinejs-dialog): Alpine.js directives for the native dialog and popover elements.
+- [Preset TailwindCSS](https://fylgja.dev/library/extensions/preset-tailwind): Integrate Fylgja's design tokens into a Tailwind CSS project.
+- [Preset UnoCSS](https://fylgja.dev/library/extensions/preset-unocss): Integrate Fylgja's design tokens into a UnoCSS project.
+- [Props Builder](https://fylgja.dev/library/extensions/props-builder): Generate CSS custom-property based component APIs.
+- [Sass Extend](https://fylgja.dev/library/extensions/sass-extend): Sass helpers and mixins for working with Fylgja tokens.
+- [Snap Slider](https://fylgja.dev/library/extensions/snap-slider): A lightweight, native CSS scroll-snap slider.
+- [Stylelint Config](https://fylgja.dev/library/extensions/stylelint-config): Shared Stylelint configuration for Fylgja projects.
+
+## Documentation
+
+- [Why Choose Fylgja CSS?](https://fylgja.dev/docs/why-fylgja): An overview of the problems Fylgja solves and how it compares to other approaches.
+- [Buildless](https://fylgja.dev/docs/concepts/buildless): Use Fylgja without any build tools.
+- [Class-less CSS](https://fylgja.dev/docs/concepts/classless): The simplified, class-less approach to styling.
+- [CSS Components](https://fylgja.dev/docs/concepts/css-components): The traditional, minimal-class approach to building UI elements.
+- [Dynamic CSS Utilities](https://fylgja.dev/docs/concepts/dynamic-css-utilities): How Fylgja utilities are configured through CSS variables.
+- [Accessibility](https://fylgja.dev/docs/supports/accessibility): Fylgja's out-of-the-box A11Y support.
+- [Browser Support](https://fylgja.dev/docs/supports/browser-support): Which browsers Fylgja CSS supports.
+- [RTL (Right to Left)](https://fylgja.dev/docs/supports/rtl): Support for right-to-left languages such as Arabic and Hebrew.
+- [AI & LLM Support](https://fylgja.dev/docs/intergrations/ai-support): How Fylgja integrates with AI tools and LLMs.
+- [Autocomplete in your editor](https://fylgja.dev/docs/intergrations/autocomplete): Editor tooling tips for working with Fylgja CSS.
+- [Tailwind CSS Integration](https://fylgja.dev/docs/intergrations/tailwindcss): Using Fylgja's design system inside a Tailwind CSS project.
