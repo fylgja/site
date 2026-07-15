@@ -7,9 +7,10 @@ interface Props {
 		question: string;
 		answer: string;
 	}[];
+	listOnly?: boolean;
 }
 
-const { faq = [] } = Astro.props;
+const { faq = [], listOnly = false } = Astro.props;
 
 const schema = faq.length
 	? {
@@ -28,25 +29,61 @@ const schema = faq.length
 ---
 
 {
-	faq.length > 0 && (
-		<section class="faq card" aria-labelledby="faq" style="--my: var(--size-12)">
+	faq.length > 0 && listOnly && (
+		<div class="faq divide-y">
+			{faq.map(({ question, answer }, index) => (
+				<details name="faq" open={index === 0} class="flow-none">
+					<summary class="list-none flex align italic">
+						<span>{question}</span>
+						<ChevronDown class="toggle-rotate transition" size={20} />
+					</summary>
+					<p class="faq-content">{answer}</p>
+				</details>
+			))}
+		</div>
+	)
+}
+
+{
+	faq.length > 0 && !listOnly && (
+		<section class="faq card" aria-labelledby="faq">
 			<h2 id="faq">FAQ</h2>
-			<div class="divide-y" style="border-color: color-mix(in oklab, var(--root-bg) 75%, var(--root-fg))">
+			<div class="divide-y">
 				{faq.map(({ question, answer }, index) => (
 					<details name="faq" open={index === 0} class="flow-none">
-						<summary
-							class="list-none flex align italic"
-							style="--py: var(--size-3)"
-						>
+						<summary class="list-none flex align italic">
 							<span>{question}</span>
 							<ChevronDown class="toggle-rotate transition" size={20} />
 						</summary>
-						<p style="--py: 0 var(--size-3)">{answer}</p>
+						<p class="faq-content">{answer}</p>
 					</details>
 				))}
 			</div>
 		</section>
 	)
 }
+
+<style>
+	.faq {
+		margin-block: var(--size-6);
+		border-color: color-mix(in oklab, var(--root-bg) 75%, var(--root-fg));
+
+		&.card {
+			margin-block: var(--size-12);
+		}
+
+		summary {
+			padding-block: var(--size-3);
+
+			svg {
+				flex-shrink: 0;
+			}
+		}
+
+		.faq-content {
+			padding-block: 0 var(--size-3);
+		}
+	}
+</style>
 
 {schema && <Schema data={schema} />}

@@ -1,0 +1,62 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import FaqSection from "@/components/Faq.astro";
+
+const faq = [
+	{
+		question: "Do I need to install every Fylgja package, or can I use just one?",
+		answer:
+			"You can use just one. Base, Tokens, Utilities, and Components are independent packages, install only the ones you need. The meta fylgja package is just a convenience for installing the three core ones together.",
+	},
+	{
+		question: "Is Fylgja a framework, or something else?",
+		answer:
+			"Fylgja is a library, a toolkit of independent packages (Base, Tokens, Utilities, and Components) that you assemble yourself, not a framework you opt into as one system.",
+	},
+	{
+		question: "What makes Fylgja different from frameworks like Tailwind CSS or Bootstrap?",
+		answer:
+			"Mainly three things: a classless base that styles plain HTML directly without adding classes, Dynamic CSS Utilities that use CSS variables instead of generating a new class for every value, and components built around native HTML and ARIA attributes rather than heavy class-based structures.",
+	},
+	{
+		question: "Do I need a build step to use Fylgja?",
+		answer:
+			"No, you can link the CSS from a CDN or copy files into your project with npx fylgja@latest add, no bundler required. A build step mainly helps with bundling and minifying your CSS, and unlocks easier token customization, but isn't required to get started.",
+	},
+	{
+		question: "Will Fylgja's styles conflict with my own custom CSS?",
+		answer:
+			"It's designed not to. Fylgja is built with low CSS specificity, and Base in particular uses :where() to keep specificity at zero, so your own styles override it without a fight.",
+	},
+	{
+		question: "Can I use Fylgja alongside Tailwind CSS or another utility framework?",
+		answer:
+			"Yes, Fylgja Utilities are designed to complement other utility systems rather than replace them. If a utility already exists in your system, use that one, Fylgja adds the utilities that are unique to it.",
+	},
+	{
+		question: "Is Fylgja accessible out of the box?",
+		answer:
+			"Yes. All Fylgja packages are built with accessibility in mind, and it favors semantic HTML attributes, like aria-current, for state instead of relying only on class names.",
+	},
+	{
+		question: "Does Fylgja support right-to-left languages?",
+		answer:
+			'Yes, automatically. Set dir="rtl" on your html element and Fylgja mirrors the layout, no extra CSS or RTL-prefixed classes needed.',
+	},
+];
+---
+
+<PageLayout
+	title="FAQ"
+	description="Frequently asked questions about Fylgja CSS: what it is, how it compares to other frameworks, and how it's meant to be used."
+	style="--container-size: var(--size-content);"
+>
+	<article>
+		<h1>Frequently Asked Questions</h1>
+		<p class="lead">
+			General questions about Fylgja as a whole. For questions about a specific package or
+			component, see that package's own docs page, each one has its own FAQ too.
+		</p>
+		<FaqSection faq={faq} listOnly />
+	</article>
+</PageLayout>

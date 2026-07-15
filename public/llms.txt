@@ -89,3 +89,10 @@ Optional integrations that connect Fylgja to other tools and workflows.
 - [AI & LLM Support](https://fylgja.dev/docs/intergrations/ai-support): How Fylgja integrates with AI tools and LLMs.
 - [Autocomplete in your editor](https://fylgja.dev/docs/intergrations/autocomplete): Editor tooling tips for working with Fylgja CSS.
 - [Tailwind CSS Integration](https://fylgja.dev/docs/intergrations/tailwindcss): Using Fylgja's design system inside a Tailwind CSS project.
+
+## FAQ
+
+Every package, component, and docs page has its own FAQ, present as a `faq` field in that
+page's frontmatter when reading the raw markdown source directly, so you don't need to fetch
+a separate page to get it. For general questions about Fylgja as a whole (not tied to a
+specific package), see [Frequently Asked Questions](https://fylgja.dev/faq).
