@@ -27,7 +27,3 @@ pnpm-debug.log*
 *.log
 *.pxd
 .htaccess
-
-# Local agent files (.claude symlinks to .agents), keep only shared skills
-.agents/*
-!.agents/skills/
