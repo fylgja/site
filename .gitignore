@@ -27,3 +27,6 @@ pnpm-debug.log*
 *.log
 *.pxd
 .htaccess
+
+# Local agent settings (.claude symlinks to .agents)
+.agents/settings.local.json
