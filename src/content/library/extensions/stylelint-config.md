@@ -5,6 +5,28 @@ description: "Fylgja uses an opinionated Stylelint config to enforce its CSS rul
 npm: "@fylgja/stylelint-config"
 git: "https://github.com/fylgja/stylelint-config"
 sortOrder: 40
+faq:
+  - question: Do I need to install Stylelint itself separately?
+    answer: Yes, this package only provides the ruleset. Install stylelint alongside
+      @fylgja/stylelint-config in your project.
+  - question: Does this config also format my code, like Prettier?
+    answer: No, Stylelint lints and can autofix violations with --fix, but it isn't
+      a code formatter. Pair it with a formatter like Prettier if you want that
+      too.
+  - question: Does this support Less?
+    answer: There's no dedicated Less syntax support, unlike SCSS. A .less file falls
+      back to the plain CSS rules with no awareness of Less-only syntax like
+      variables or mixins, so stick to the CSS or SCSS-compatible subset of Less
+      if you use this config on Less files.
+  - question: How do I disable a rule I disagree with?
+    answer: Add a "rules" key to your config with the rule set to null, as shown
+      above with selector-class-pattern. This overrides just that rule while
+      keeping the rest of the Fylgja config.
+  - question: Why is my camelCase CSS custom property being flagged?
+    answer: This config already special-cases Astro's camelCase CSS variables (used
+      for scoped styling), so no extra config should be needed there. If you're
+      seeing it flagged elsewhere, double check which file type Stylelint thinks
+      it's linting.
 ---
 
 Fylgja uses an opinionated Stylelint config to enforce its CSS rules across all of its projects.

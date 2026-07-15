@@ -4,6 +4,50 @@ pageTitle: "Fylgja Snap Slider"
 description: "A CSS-powered slider/carousel, enhanced with JavaScript for improved functionality and accessibility."
 npm: "@fylgja/snap-slider"
 git: "https://github.com/fylgja/snap-slider"
+faq:
+  - question: Do I need to import a separate CSS file for the slider to work?
+    answer: No, the package only ships JS. Styling comes from Fylgja Utilities
+      (snap, scroll-x, grid-cols, and similar), applied to your own markup. See
+      the UI Components section for full examples once they're published.
+  - question: Do I need to call customElements.define() myself?
+    answer: No, importing @fylgja/snap-slider/custom-element registers the
+      <snap-slider> tag automatically, so you can use it in your HTML right
+      after the import.
+  - question: What happens if I forget to add [data-track]?
+    answer: It logs a console warning and reverts to a plain CSS slider. Without
+      data-track to identify the scroll container, the JS never initializes, so
+      you lose the pager, keyboard navigation, and the other JS-powered
+      enhancements, but native CSS scroll-snap behavior still works if your
+      markup already relies on Fylgja Utilities for that.
+  - question: How do I navigate to a specific slide programmatically?
+    answer: There isn't a documented goToSlide() method. Navigation is driven by
+      data-next/data-prev buttons or pager markers that link to a slide's ID
+      (href="#slide-id" or data-target-id), so you trigger those instead of
+      calling JavaScript directly.
+  - question: What's the difference between data-auto-pager and data-group-pager?
+    answer: data-auto-pager generates the pager markers for you automatically.
+      data-group-pager changes how those markers are counted when multiple
+      slides are visible at once, showing one marker per visible group of slides
+      instead of one per slide.
+  - question: Does the pager support keyboard navigation?
+    answer: Yes, ArrowLeft/ArrowRight and ArrowUp/ArrowDown move to the next or
+      previous slide when a pager marker has focus, and the page itself won't
+      scroll from those key presses.
+  - question: Why did my pager disappear?
+    answer: By default the pager hides itself, and is marked inert so it can't be
+      focused, whenever the slider has no overflow to navigate. Add data-force-pager
+      (or the force-pager modifier for AlpineJS) if you want it visible anyway.
+  - question: Can I use the Custom Element and the AlpineJS version on the same page?
+    answer: On different sliders, yes, each is an independent instance. On the same
+      slider element, no. The package doesn't export a combined build, and
+      nothing guards against double-initializing the same element, so it would
+      need a manual setup rather than being something the package handles for
+      you.
+  - question: Can I get the SnapSlider instance from the AlpineJS integration, like
+      I can with the Custom Element?
+    answer: No, this is intentional. The AlpineJS integration manages the slider's
+      lifecycle internally through Alpine's own directive lifecycle instead of
+      exposing the instance on the element.
 ---
 
 A CSS-powered slider/carousel, enhanced with JavaScript for improved functionality and accessibility.
@@ -141,7 +185,9 @@ You can interact with the slider programmatically using the following methods an
 
 ### Methods
 
-First, get the `SnapSlider` instance:
+Instance access is only available for the Custom Element. The AlpineJS integration manages
+the slider's lifecycle internally through Alpine's own directive lifecycle, so the
+`SnapSlider` instance isn't exposed on the element.
 
 **For the Custom Element:**
 ```js
@@ -149,18 +195,11 @@ const snapSliderElement = document.querySelector('snap-slider');
 const snapSliderInstance = snapSliderElement.slider;
 ```
 
-**For the AlpineJS component:**
-
-```js
-const sliderEl = document.querySelector('[x-snap-slider]');
-const snapSliderInstance = sliderEl.snapSlider;
-```
-
 | Method            | Description                                                                     |
 | ----------------- | ------------------------------------------------------------------------------- |
 | `init()`          | Initializes the slider. This is called automatically.                           |
 | `destroy()`       | Removes all event listeners and observers.                                      |
-| `refreshSlides()` | Re-initializes the slider, useful when slides are added or removed dynamically. |
+| `refreshSlides()` | Re-initializes the slider, useful when slides are added or removed dynamically. A built-in MutationObserver already calls this automatically when slides are added or removed, so manual calls are rarely needed. |
 
 ### Events
 

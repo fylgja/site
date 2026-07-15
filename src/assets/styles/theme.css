@@ -151,3 +151,28 @@ body > main {
 		color-scheme: dark;
 	}
 }
+
+/* Add to Fylgja */
+summary {
+	font-weight: 500;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	details {
+		&::details-content {
+			transition:
+				block-size 200ms,
+				opacity 200ms,
+				content-visibility 200ms;
+			transition-behavior: allow-discrete;
+			block-size: 0px;
+			opacity: 0;
+			overflow: clip;
+		}
+
+		&[open]::details-content {
+			block-size: auto;
+			opacity: 1;
+		}
+	}
+}

@@ -4,6 +4,19 @@ pageTitle: "Fylgja Card"
 description: "Create grouped content with the Card for product items, Blog items or for a Dropdown Panel"
 npm: "@fylgja/card"
 git: "https://github.com/fylgja/fylgja/tree/main/components/card"
+faq:
+  - question: Do I need @fylgja/tokens to use the --elevated or --hover modifiers?
+    answer: You need the --shadow-2 (for elevated) or --shadow-4 (for hover)
+      design tokens available, but they don't have to come from @fylgja/tokens
+      specifically. Any token system that defines those variables, like Open
+      Props, works too, and you could also define them yourself.
+  - question: How do I make the whole card clickable, not just the "Read More" link?
+    answer: Pair the --hover modifier with the stretched-link utility on the link
+      inside the card, as recommended above.
+  - question: Can I use the Card component without any modifiers?
+    answer: Yes, use @fylgja/card/base on its own for the core card look with a
+      border, and add @fylgja/card/elevated or @fylgja/card/hover only if you
+      need those modifiers.
 ---
 
 import InstallTabs from "@/components/InstallTabs.astro";

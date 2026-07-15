@@ -47,3 +47,9 @@ export const capitalized = (string: string) => {
 		.map(word => word.charAt(0).toUpperCase() + word.slice(1))
 		.join(' ');
 };
+
+/**
+ * Builds the raw GitHub URL for a file path within the fylgja/site repo
+ */
+export const rawGithubUrl = (pathUrl: string) =>
+	`https://raw.githubusercontent.com/fylgja/site/refs/heads/main/${pathUrl}`;

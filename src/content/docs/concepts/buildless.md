@@ -1,6 +1,24 @@
 ---
 title: "Buildless"
 description: "Use Fylgja without any build tools, perfect for quick demos or simple projects."
+faq:
+  - question: Do I lose any features by using Fylgja without a build step?
+    answer: You lose build-time optimizations like unused-style purging and easy
+      design-token customization, but the CSS itself works exactly the same
+      either way.
+  - question: Can I switch from the CDN/buildless setup to npm later without
+      rewriting my HTML?
+    answer: Yes, the class names and CSS variables are identical between the CDN
+      files and the npm packages, so you can swap the <link> tags for an
+      @import-based build later without changing your markup.
+  - question: What does npx fylgja@latest add <name> actually do?
+    answer: It copies the requested CSS file into your project (src/css, src/styles,
+      or src/assets if one exists, otherwise the current directory) so you have
+      a local, editable copy without adding it as an npm dependency.
+  - question: Is jsDelivr required, or can I use a different CDN?
+    answer: The examples use jsDelivr, but since these are just static CSS files,
+      any CDN that can serve npm packages (or the GitHub release download) will
+      work.
 ---
 
 At Fylgja, we believe in flexibility and freedom of choice. That's why one of our core concepts is being "buildless." This means you can start using Fylgja's CSS components and styles without needing any complex build tools or setup.

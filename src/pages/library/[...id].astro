@@ -5,6 +5,7 @@ import MetaVersion from "@/components/MetaVersion.astro";
 import collection from "./_collection.ts";
 import EditWithGithub from "@/components/EditWithGithub.astro";
 import BreadCrumbs from "@/components/BreadCrumbs.astro";
+import Faq from "@/components/Faq.astro";
 
 export async function getStaticPaths() {
 	const entries = await getCollection("library");
@@ -15,21 +16,23 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { pageTitle, title, description, git, npm, changelog } = entry.data;
+const { pageTitle, title, description, git, npm, changelog, faq } = entry.data;
 const { Content, headings } = await render(entry);
 const hasMeta = !!git || !!npm;
+const toc = faq?.length ? [...headings, { depth: 2, slug: "faq", text: "FAQ" }] : headings;
 ---
 
 <Layout
 	title={title}
 	description={description}
-	toc={headings}
+	toc={toc}
 	collectionName="Library"
 	collection={collection}
 >
 	<h1 id={title}>{pageTitle || title}</h1>
 	{hasMeta && <MetaVersion git={git} npm={npm} changelog={changelog} pathUrl={entry.filePath} />}
 	<Content />
+	<Faq faq={faq} />
 	<aside class="flex-wrap align gap text-muted" style="--my: 3rem 0" aria-label="Additional Meta">
 		<BreadCrumbs class="hidden md:flex" />
 		{entry.filePath && <EditWithGithub pathUrl={entry.filePath} class="text-sm italic" />}

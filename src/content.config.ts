@@ -24,6 +24,14 @@ const docsSchema = z.object({
 	git: z.url().optional(),
 	npm: z.string().optional(),
 	changelog: z.url().optional(),
+	faq: z
+		.array(
+			z.object({
+				question: z.string(),
+				answer: z.string(),
+			})
+		)
+		.optional(),
 });
 
 export const collections = {

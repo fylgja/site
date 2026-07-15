@@ -18,16 +18,19 @@ async function filterCollection(path: string) {
 	);
 }
 
+const topLevel = await filterCollection("/");
+const indexEntry = topLevel.find(({ id }) => id === "index");
+
 export default [
 	{
 		items: [
 			{
 				id: "",
 				data: {
-					title: "Getting Started",
+					title: indexEntry?.data.title ?? "Getting Started",
 				},
 			},
-			...(await filterCollection("/")),
+			...topLevel.filter(({ id }) => id !== "index"),
 		],
 	},
 	{

@@ -4,6 +4,31 @@ description: "Tailwind CSS preset to use the Fylgja Design System, with its desi
 npm: "@fylgja/tailwindcss"
 git: "https://github.com/fylgja/tailwindcss"
 sortOrder: 20
+faq:
+  - question: Do I need to install @fylgja/base, @fylgja/tokens, and
+      @fylgja/utilities separately?
+    answer: They're recommended peer dependencies rather than bundled ones, so you
+      control which versions you use, but they're only required if you use the
+      full @import "@fylgja/tailwindcss" import. If you import a specific part
+      instead, you only need its matching package, @fylgja/tailwindcss/theme
+      needs @fylgja/tokens, /base needs @fylgja/base, and /utilities needs
+      @fylgja/utilities.
+  - question: Does this work with Tailwind CSS v3?
+    answer: No, this preset is built for Tailwind CSS v4+ and its @utility/CSS-first
+      configuration approach.
+  - question: Can I use just the theme, without the base styles or utilities?
+    answer: Yes, import @fylgja/tailwindcss/theme, @fylgja/tailwindcss/base, or
+      @fylgja/tailwindcss/utilities individually instead of the full package.
+  - question: Does this replace all of Tailwind's default colors, or add to them?
+    answer: It replaces Tailwind's default theme (colors, shadows, easings,
+      breakpoints, aspect ratios) with Fylgja's design tokens, renamed to the
+      color-shade format (e.g. bg-blue-500).
+  - question: Will this conflict with Tailwind's built-in utilities that share a
+      name, like container?
+    answer: They merge rather than conflict. If both define the same CSS property
+      for a utility, whichever is defined last wins for that property, but
+      neither version can remove the other's declaration outright, only
+      override it.
 ---
 
 The Fylgja CSS Tailwind package is a preset for Tailwind CSS v4+,

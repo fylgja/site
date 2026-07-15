@@ -2,6 +2,20 @@
 title: "CSS Components"
 description: "CSS Components are a traditional method for building UI elements using a minimal number of classes"
 sortOrder: 20
+faq:
+  - question: What does "No Overlapping Child Classes" mean in practice?
+    answer: It means a component like .card won't rely on separate child classes
+      such as .card__body or .card-header that duplicate naming across
+      components. Fewer, more predictable class names to remember.
+  - question: If components have low specificity, can utilities always override them?
+    answer: Yes, that's the intent. CSS Components are kept close to single-class
+      specificity so that CSS Utilities (like those in @fylgja/utilities) or
+      your own custom classes can modify or extend them without needing
+      !important.
+  - question: Are Fylgja's CSS Components the same as component libraries in React/Vue?
+    answer: No, these are pure CSS components (a class or a couple of classes plus
+      markup conventions), not JavaScript UI components. You can use them with
+      any framework, or with no framework at all.
 ---
 
 CSS Components are a traditional method for building UI elements using a minimal number of classes.

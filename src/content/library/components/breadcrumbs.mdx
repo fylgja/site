@@ -4,6 +4,20 @@ pageTitle: "Fylgja Breadcrumbs"
 description: "The Fylgja breadcrumbs component provides a simple, accessible way to render breadcrumb navigation"
 npm: "@fylgja/breadcrumbs"
 git: "https://github.com/fylgja/fylgja/tree/main/components/breadcrumbs"
+faq:
+  - question: How do I mark the current page?
+    answer: Add aria-current="page" to the current item's link, as shown in the
+      usage examples. This is also how the Accessibility guide recommends
+      handling "current page" state across Fylgja components.
+  - question: Can I use a custom separator like an icon instead of a character?
+    answer: The --breadcrumbs-separator variable expects a CSS content value (a
+      string, as in ">"), so you can use any string-based separator, but not
+      directly reference an SVG element through it.
+  - question: Does this component require a <ol>, or can I use a <ul>?
+    answer: The styling targets the list itself, so a <ul> would be styled the
+      same way, but it isn't recommended. Breadcrumbs are an ordered sequence,
+      and only <ol> conveys that order to assistive technology; a <ul> doesn't
+      express the order at all.
 ---
 
 import InstallTabs from "@/components/InstallTabs.astro";
@@ -24,32 +38,17 @@ Once installed, you can import the full package with:
 
 ### Basic Usage
 
-The breadcrumbs component can be used with a utility class or completely classless by relying on standard HTML5 accessibility attributes.
-
-#### Classless (Recommended)
-
-To use the breadcrumbs without adding specific CSS classes, simply wrap your list in a `<nav>` element with `aria-label="breadcrumbs"`. This approach promotes semantic HTML and automatic accessibility.
+Add the `.breadcrumbs` class to your list. Wrap it in a `<nav>` element with a descriptive
+`aria-label` (its exact wording doesn't matter, it's only for accessibility, not styling).
 
 ```html
-<nav aria-label="breadcrumbs">
-  <ol>
+<nav aria-label="Breadcrumb">
+  <ol class="breadcrumbs">
     <li><a href="#">Home</a></li>
     <li><a href="#">Category</a></li>
     <li><a href="#" aria-current="page">Current Page</a></li>
   </ol>
 </nav>
-```
-
-#### Class-based
-
-If you prefer using classes or need to style a list that isn't inside a navigation landmark, you can use the `.breadcrumbs` class.
-
-```html
-<ol class="breadcrumbs">
-  <li><a href="#">Home</a></li>
-  <li><a href="#">Category</a></li>
-  <li><a href="#" aria-current="page">Current Page</a></li>
-</ol>
 ```
 
 ## Customization
@@ -64,8 +63,7 @@ The breadcrumbs component uses CSS variables for easy customization. You can ove
 ### Example
 
 ```css
-.breadcrumbs,
-nav[aria-label="breadcrumbs"] {
+.breadcrumbs {
     --breadcrumbs-gap: 1rem;
     --breadcrumbs-separator: ">";
 }

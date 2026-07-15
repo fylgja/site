@@ -4,6 +4,36 @@ pageTitle: "Fylgja Props Builder"
 description: "Effortlessly generate Design Tokens (CSS custom properties) from JavaScript objects or JSON files."
 npm: "@fylgja/props-builder"
 git: "https://github.com/fylgja/fylgja/tree/main/props-builder"
+faq:
+  - question: Do I need inputTypeTokens for a plain key-value JSON file?
+    answer: No. Plain key-value JSON/JS objects (like the color example above) work
+      with the default options; inputTypeTokens is only needed when your input
+      already follows a design-token spec format (W3C Design Tokens or Figma
+      Tokens).
+  - question: Can I generate SCSS or JS output instead of CSS?
+    answer: The filename argument's extension determines the output format when
+      parseAs is left as "auto". For an explicit format, set parseAs directly;
+      your editor's autocomplete (via the package's types) will show you the
+      full list of accepted values as you type.
+  - question: How are nested objects turned into variable names?
+    answer: 'Nested keys are joined with a dash, so { color: { red: "#f00" } }
+      becomes --color-red: #f00;. This applies recursively, so deeper nesting
+      follows the same dash-joined pattern.'
+  - question: What values can the wrapper option take?
+    answer: This page only describes what wrapper is for, not the full list of
+      accepted values. Your editor's autocomplete (via the package's types)
+      will show you the options as you type.
+  - question: Does propsBuilder overwrite an existing output file?
+    answer: Yes, silently. It writes with a default flag that creates or truncates
+      the file, with no check for whether it already exists.
+  - question: If I set both stripPrefix and rename, which one runs first?
+    answer: stripPrefix runs first, then rename is applied to whatever keys remain.
+  - question: What exactly does the Figma "redundant nested color group" unwrapping do?
+    answer: 'It only fires when a color or colors key directly contains another
+      color or colors key nested one level inside it, and it drops the inner
+      one. For example, { colors: { color: { primary: "#1d4ed8" } } } becomes
+      --colors-primary, not --colors-color-primary. Any other nested group
+      name is left as-is.'
 ---
 
 The Fylgja Props Builder simplifies the creation of Design Tokens (CSS custom properties)

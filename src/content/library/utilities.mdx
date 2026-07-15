@@ -5,6 +5,33 @@ description: "Fylgja utilities provides a curated set of CSS utilities"
 npm: "@fylgja/utilities"
 git: "https://github.com/fylgja/fylgja/tree/main/utilities"
 sortOrder: 3
+faq:
+  - question: Do I need Fylgja Tokens installed for these utilities to work?
+    answer: No. Fylgja Utilities work on their own; they don't require Fylgja Tokens
+      or any other design token package to function.
+  - question: Do I need a build step to use Fylgja Utilities?
+    answer: No, these are production-ready CSS classes designed for direct use
+      without a build step. You can link the compiled CSS directly or import
+      only the utilities you need.
+  - question: Will Fylgja Utilities conflict with Tailwind CSS or UnoCSS class names?
+    answer: Generally no. Fylgja Utilities are designed to complement rather than
+      replace other utility systems. If a class name overlaps with one you
+      already use (e.g. flex), it's best to keep using whichever system already
+      covers it and rely on Fylgja for the utilities that are unique to it.
+  - question: How do breakpoint variants work for utilities like flow or spacing
+      variables?
+    answer: Most Dynamic CSS Utilities support a breakpoint prefix on their CSS
+      variable, e.g. --md_my for margin-block at the md breakpoint, following
+      the same pattern as --my. See Dynamic CSS Utilities for the full
+      explanation.
+  - question: What's the difference between the size utility and the spacing variables?
+    answer: size provides class shorthands like w-full and h-full for common
+      width/height cases. The spacing variables (--size-x, --size-y, --my, --mx,
+      --py, --px) give you full control over width, height, margin, and padding
+      without needing a dedicated class for every value.
+  - question: Can I import a single utility instead of the whole package?
+    answer: Yes, every utility listed in the overview can be imported individually
+      with @import "@fylgja/utilities/{UTILITY_NAME}.css".
 ---
 
 import InstallTabs from "@/components/InstallTabs.astro";

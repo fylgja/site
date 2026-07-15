@@ -2,6 +2,23 @@
 title: "Why Choose Fylgja CSS?"
 description: "Discover how Fylgja CSS offers a modern, flexible, and lightweight solution for building web projects with ease."
 sortOrder: 0
+faq:
+  - question: Is Fylgja CSS a framework or a set of independent libraries?
+    answer: "It's modular by design: Base, Tokens, Utilities, and Components are
+      separate packages you can use individually or together. It's closer to a
+      toolkit than a monolithic framework."
+  - question: Do I have to use all four core packages together?
+    answer: No. For example, you can use just Fylgja Base for classless styling, or
+      just Fylgja Utilities alongside another framework like Tailwind CSS,
+      without pulling in the rest.
+  - question: How does Fylgja CSS compare in size to other classless/reset libraries?
+    answer: The minified Fylgja Base Preflight is around 5kb, which the project
+      positions as smaller than many other classless CSS libraries with similar
+      feature sets.
+  - question: Will using Fylgja CSS make my own custom styles harder to override?
+    answer: No, this is a deliberate design goal. Fylgja CSS keeps specificity low,
+      and Fylgja Base in particular uses :where() to keep specificity at zero,
+      so your own CSS overrides it without a fight.
 ---
 
 Fylgja CSS is a library designed to help developers streamline their work with HTML and CSS.

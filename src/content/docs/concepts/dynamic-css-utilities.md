@@ -1,6 +1,27 @@
 ---
 title: "Dynamic CSS Utilities"
 description: "Dynamic CSS Utilities in Fylgja CSS are designed to be flexible and customizable through the use of CSS variables"
+faq:
+  - question: Isn't using inline styles considered bad practice?
+    answer: Not in this context, since the values are CSS variables rather than
+      hardcoded style properties. They're just as overridable and
+      cascade-friendly as a regular class, while staying scoped to the element
+      you set them on.
+  - question: Can I still create reusable classes instead of inline styles?
+    answer: 'Yes, you can define your own classes in your stylesheet that set these
+      variables (e.g. .grid-size-lg { --max-cols-size: 15ch; }), as shown in the
+      "Customizing with Predefined Utilities" example, if you prefer that over
+      inline styles.'
+  - question: Do Dynamic CSS Utilities work with any design token system, or only
+      Fylgja Tokens?
+    answer: They work with any CSS variable-based token system, including Fylgja
+      Tokens or Open Props. The utility just reads whatever value is set on the
+      variable, regardless of where it comes from.
+  - question: How do breakpoint-specific variables like --lg_my work under the hood?
+    answer: They rely on the utility's CSS switching which variable it reads based
+      on the active media query, so setting --lg_my only takes effect once the
+      lg breakpoint is active; below that, Fylgja falls back to the unprefixed
+      variable (e.g. --my).
 ---
 
 Dynamic CSS Utilities in Fylgja CSS are designed to be flexible and customizable through the use of CSS variables.

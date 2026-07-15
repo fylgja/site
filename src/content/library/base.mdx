@@ -5,6 +5,29 @@ description: "Common defaults to make your body and typography look good and eas
 npm: "@fylgja/base"
 git: "https://github.com/fylgja/fylgja/tree/main/base"
 sortOrder: 1
+faq:
+  - question: Does Fylgja Base require Fylgja Tokens or Fylgja Utilities?
+    answer: No. Fylgja Base works standalone on plain HTML. Fylgja Tokens and Fylgja
+      Utilities are complementary packages you can add later, but neither is
+      required for Base's classless styles to work.
+  - question: Can I use Fylgja Base alongside Tailwind CSS or another utility framework?
+    answer: Yes. Since Fylgja Base is classless and kept at low specificity, it
+      styles bare HTML elements without competing with utility classes. Import
+      it before your utility layer so utility classes can still override the
+      defaults where needed.
+  - question: If I only import preflight.css, do buttons and forms still get styled?
+    answer: No. preflight.css only covers global defaults, typography, and table
+      styles. Buttons, forms, and the dialog element each have their own import
+      (btn.css, form.css, dialog.css) and need to be added separately if you
+      want them styled.
+  - question: How do I customize colors and other theme values?
+    answer: Import theme.css for a ready-made theme, or run npx
+      fylgja@latest add theme to copy the theme styles into your project
+      (src/css, src/styles, or src/assets) so you can edit them directly.
+  - question: Will Fylgja Base's styles override my own custom CSS?
+    answer: No. Fylgja Base keeps specificity at zero using the :where() selector,
+      so your own styles win without needing !important or extra specificity
+      tricks.
 ---
 
 import InstallTabs from "@/components/InstallTabs.astro";

@@ -4,25 +4,39 @@ import Layout from "@/layouts/DocsLayout.astro";
 import collection from "./_collection.ts";
 import EditWithGithub from "@/components/EditWithGithub.astro";
 import BreadCrumbs from "@/components/BreadCrumbs.astro";
+import Faq from "@/components/Faq.astro";
+import AskAiButton from "@/components/AskAiButton.astro";
+import { rawGithubUrl } from "@/utils";
 
 export async function getStaticPaths() {
 	const entries = await getCollection("docs");
 	return entries.map((entry) => ({
-		params: { id: entry.id },
+		params: { id: entry.id === "index" ? undefined : entry.id },
 		props: { entry },
 	}));
 }
 
 const { entry } = Astro.props;
-const { pageTitle, title } = entry.data;
+const { pageTitle, title, faq } = entry.data;
 const { Content, headings } = await render(entry);
+const toc = faq?.length ? [...headings, { depth: 2, slug: "faq", text: "FAQ" }] : headings;
 ---
 
-<Layout title={title} toc={headings} collectionName="Docs" collection={collection}>
-	<h1 id={title}>{pageTitle || title}</h1>
+<Layout title={title} toc={toc} collectionName="Docs" collection={collection}>
+	<div class="flex-col align gap-sm" style="--md_flex-dir: row; --align-items: baseline">
+		<h1 id={title}>{pageTitle || title}</h1>
+		{entry.filePath && <AskAiButton
+			url={rawGithubUrl(entry.filePath)}
+			class="float-end text-sm"
+		/>}
+	</div>
 	<Content />
+	<Faq faq={faq} />
 	<aside class="flex-wrap align gap text-muted" style="--my: 3rem 0" aria-label="Additional Meta">
 		<BreadCrumbs class="hidden md:flex" />
-		{entry.filePath && <EditWithGithub pathUrl={entry.filePath} class="italic" />}
+		{entry.filePath && <EditWithGithub
+			pathUrl={entry.filePath}
+			class="italic"
+		/>}
 	</aside>
 </Layout>

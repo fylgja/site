@@ -5,6 +5,30 @@ description: "Enhance your forms with advanced features, including native valida
 npm: "@fylgja/form-extend"
 git: "https://github.com/fylgja/fylgja/tree/main/components/form-extend"
 sortOrder: 11
+faq:
+  - question: Do I need JavaScript for range slider fills to work?
+    answer: Not necessarily. The default range styling needs a small JS snippet to
+      update --range-value on input, as shown above. The range-fill import
+      provides a CSS-only alternative using scroll-driven animations, supported
+      in Safari 26+. If you need to support older Safari versions (Fylgja's
+      baseline goes back to 17), use the JavaScript approach instead.
+  - question: Why isn't the value fill working in Safari?
+    answer: range-fill depends on scroll-driven animations, which Safari only
+      supports from version 26 onward. It works fine there, but if you still
+      need to support Safari 17 through 25, use the JavaScript-based approach
+      instead.
+  - question: How do I show a validation error message for a field?
+    answer: Add aria-errormessage on the input pointing to an element with the
+      field-error-message class, and wrap both in a common .field container. The
+      message stays hidden until the field is invalid or has aria-invalid="true"
+      set.
+  - question: Does field-error-message work if the message isn't right next to the input?
+    answer: Yes, as long as both the input and the message are inside the same
+      .field wrapper, the error message will show correctly even if it's not
+      placed directly next to the field.
+  - question: How do I make a range input vertical?
+    answer: Add the range-vertical class to the <input type="range"> element, as
+      shown in the "Volume" example above.
 ---
 
 import InstallTabs from "@/components/InstallTabs.astro";
@@ -82,8 +106,9 @@ eliminating the need for JavaScript.
 > [!note]
 > This feature relies on scroll animations, which may not be supported in all browsers.
 > Firefox uses a native fill method, while Chrome and Safari depend on scroll animations.
-> As of now, Safari support is not fully available,
-> but you can continue to use the JavaScript solution alongside this CSS-only method.
+> Safari only supports this from version 26 onward, so whether this CSS-only method
+> works for you depends on which Safari versions you need to support (Fylgja's baseline
+> goes back to 18). Use the JavaScript solution alongside it if you need to cover older versions.
 
 #### Vertical Modifier
 

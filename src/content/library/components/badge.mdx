@@ -4,6 +4,22 @@ pageTitle: "Fylgja Badge"
 description: "The Fylgja Badge component allows you to display compact labels or status indicators alongside other UI elements"
 npm: "@fylgja/badge"
 git: "https://github.com/fylgja/fylgja/tree/main/components/badge"
+faq:
+  - question: Does the Badge component require the card or other components to work?
+    answer: No, badge is a standalone component. It's shown paired with card in the
+      examples above, but it works fine on its own, on any element.
+  - question: How do I change the badge's colors?
+    answer: 'Use the --badge-bg and --badge-color CSS variables, as shown in the
+      "Orange" example above (style="--badge-bg: orange; --badge-color: #111").'
+  - question: How do I position a badge on the corner of another element, like a
+      cart icon?
+    answer: Give the parent a relative class, then add absolute to the badge along
+      with --inset-t/--inset-e (or --inset-s/--inset-b) to position it, as shown
+      in the "Cart Item" example.
+  - question: Is the Badge component accessible to screen readers on its own?
+    answer: The badge itself is just a visual label. For meaningful content like a
+      cart count, add an aria-label on the parent element (as in the Cart Item
+      example) so screen reader users get the full context, not just the number.
 ---
 
 import InstallTabs from "@/components/InstallTabs.astro";

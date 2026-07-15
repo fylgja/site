@@ -1,6 +1,12 @@
 ---
 title: "Tailwind CSS Integration"
 description: "Learn how to integrate Fylgja's design system into your Tailwind CSS projects using our official preset."
+faq:
+  - question: Does the Fylgja Tailwind preset work with Tailwind CSS v3?
+    answer: "No. See the Preset TailwindCSS page: it's built for Tailwind CSS v4+."
+  - question: Do I need to install Fylgja Base and Tokens separately from the preset?
+    answer: Yes, they're peer dependencies. Full details are on the Preset
+      TailwindCSS page.
 ---
 
 For developers who love the utility-first workflow of Tailwind CSS but want to leverage Fylgja's thoughtful design system, we offer an official Tailwind preset.

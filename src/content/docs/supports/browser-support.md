@@ -1,6 +1,23 @@
 ---
 title: "Browser Support"
 description: "How Well Is Fylgja CSS Supported in Which Browsers?"
+faq:
+  - question: How many browser versions back does Fylgja CSS support?
+    answer: Fylgja CSS aims to support at least three major browser versions back
+      for each of Chrome, Firefox, Edge, and Safari.
+  - question: Do I need PostCSS or a build tool to use Fylgja CSS?
+    answer: No, Fylgja CSS works even without extra tooling. Tools like
+      postcss-preset-env are only recommended if you need vendor prefixes or
+      polyfills for older browsers.
+  - question: What should I do if I need to support browsers older than Fylgja's
+      target range?
+    answer: Use a tool like PostCSS to transform newer CSS features for
+      compatibility, and pick only the Fylgja CSS Components that avoid features
+      unsupported in your target browsers, since components are modular.
+  - question: How do I check if a specific CSS feature Fylgja uses is supported in
+      my target browsers?
+    answer: Check Can I Use or the Mozilla Developer Docs for the specific CSS or
+      HTML feature in question.
 ---
 
 Fylgja CSS is a CSS Library that is thoroughly tested and supported across all modern browsers,

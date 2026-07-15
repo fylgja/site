@@ -5,6 +5,24 @@ description: "Create smarter, more intuitive form controls by grouping inputs an
 npm: "@fylgja/input-group"
 git: "https://github.com/fylgja/fylgja/tree/main/components/input-group"
 sortOrder: 11
+faq:
+  - question: What's the difference between merge and the default input-group?
+    answer: By default, input-group just groups elements together. The merge
+      modifier additionally collapses the borders between them so the group
+      reads as one unified control, as in the Button Group and Search box
+      examples.
+  - question: Can steps modifier be used with something other than radio buttons or checkboxes?
+    answer: The documented use case is radio buttons or checkboxes to build a
+      range-like or star-rating input, as shown in the "Start Rating" example.
+      It isn't documented for other input types.
+  - question: Do I need custom JavaScript to make the star rating example work?
+    answer: No, the rating example relies purely on native radio button behavior and
+      CSS (via the steps modifier and a shared name attribute). No JavaScript
+      is required for the visual state shown.
+  - question: Can I mix a text input and multiple buttons in the same input group?
+    answer: Yes, input-group doesn't restrict which elements you combine. The
+      Search box example pairs a single input with one button, and you can
+      extend that pattern with more inputs or buttons as needed.
 ---
 
 import InstallTabs from "@/components/InstallTabs.astro";

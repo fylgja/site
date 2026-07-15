@@ -1,6 +1,24 @@
 ---
 title: "AI & LLM Support"
 description: "How Fylgja integrates with AI tools and provides context for Large Language Models"
+faq:
+  - question: Why would a general-purpose AI need llms.txt for Fylgja?
+    answer: Fylgja's classless base styles, design tokens, and Dynamic CSS Utilities
+      differ from the utility-class conventions AI models are usually trained on
+      (like Tailwind), so without extra context an AI may suggest patterns that
+      don't match how Fylgja actually works.
+  - question: Does the "Ask AI" button send my data anywhere?
+    answer: No, it's entirely static and runs in your browser. It only copies a
+      pre-formatted prompt to your clipboard or opens a chat with an AI tool you
+      choose. Fylgja doesn't run or proxy any backend AI models.
+  - question: Is there an official Fylgja MCP server?
+    answer: Not yet, first-party. Third-party MCP servers such as Context7 already
+      index Fylgja's docs, so you can get MCP-based context today without Fylgja
+      needing to ship its own server.
+  - question: Which AI coding assistants can use the Fylgja Skill?
+    answer: The docs show install commands for Gemini CLI, Claude Code, Cursor, and
+      GitHub Copilot, plus a generic pattern for any other agent that reads
+      skills from a local folder (e.g. .codex or .opencode).
 ---
 
 Fylgja CSS is designed to be easily readable and understandable not just by human developers, but also by AI agents and Large Language Models (LLMs).

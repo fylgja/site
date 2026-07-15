@@ -1,6 +1,17 @@
 ---
 title: "RTL (Right to Left)"
 description: "Fylgja CSS works out of the box for right-to-left (RTL) languages such as Arabic and Hebrew."
+faq:
+  - question: Do I need a separate RTL stylesheet or RTL-prefixed utility classes?
+    answer: No, Fylgja CSS automatically mirrors the layout for RTL languages once
+      dir="rtl" is set. There's no separate RTL stylesheet or rtl:-prefixed
+      classes to add.
+  - question: What's the minimum setup needed to enable RTL?
+    answer: Add dir="rtl" and an appropriate lang attribute (e.g. lang="ar") to the
+      <html> element.
+  - question: Can I force part of a page to stay LTR inside an RTL page?
+    answer: 'Yes, add dir="ltr" to that specific element, or apply direction: ltr;
+      in CSS to enforce it locally.'
 ---
 
 Fylgja CSS offers seamless support for right-to-left (RTL) languages like Arabic and Hebrew

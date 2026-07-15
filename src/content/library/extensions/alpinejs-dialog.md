@@ -5,6 +5,30 @@ description: "Bring the power and simplicity of Alpine.js to the native HTML Dia
 npm: "@fylgja/alpinejs-dialog"
 git: "https://github.com/fylgja/alpinejs-dialog"
 sortOrder: 12
+faq:
+  - question: Does this plugin work without Alpine.js?
+    answer: No, it's an Alpine.js plugin and requires Alpine core to be installed
+      and started, as shown in the installation steps above.
+  - question: Why do I need x-htmldialog if I'm already using x-show?
+    answer: Alpine's x-show normally toggles the display style directly, which
+      doesn't give you the native modal behavior (focus trapping, top-layer
+      stacking, backdrop) of dialog. x-htmldialog intercepts that toggle and
+      calls showModal/close instead, while still letting you drive the open
+      state with Alpine.
+  - question: Can I combine noscroll and closeby on the same element?
+    answer: Yes, Alpine directive modifiers can be chained, e.g.
+      x-htmldialog.noscroll.closeby.any="open = false".
+  - question: Does closeby still close a modeless dialog on Escape or a backdrop click?
+    answer: Yes, that handling isn't currently gated on whether the dialog is modal, so
+      it applies the same way regardless of the modeless modifier.
+  - question: What happens in browsers that already support closedby natively?
+    answer: The plugin always manages closing itself, in every browser, regardless
+      of native support. It has to, so it can keep Alpine's own open state in
+      sync with the dialog. Native support is only checked to skip a redundant
+      preventDefault on backdrop clicks, not to hand control back to the browser.
+  - question: Can I use x-htmldialog on an element that isn't a dialog?
+    answer: No, it calls showModal or show unconditionally, which don't exist
+      on other elements, so it throws an error rather than failing silently.
 ---
 
 Bring the power and simplicity of Alpine.js to the native HTML `<dialog>` element.
@@ -97,3 +121,27 @@ You can set this option in two ways:
 * **`any`**: The dialog can be closed by any user action, such as pressing the `ESC` key or clicking on the backdrop.
 * **`closerequest`**: (Default) The dialog can be dismissed via the `ESC` key or a "close request" (e.g., a form submission with `method="dialog"`). It will not close when the backdrop is clicked.
 * **`none`**: The user cannot close the dialog. It must be closed programmatically.
+* **`auto`**: Currently behaves the same as `closerequest`.
+
+#### `modeless`
+
+The `modeless` modifier opens the dialog with `el.show()` instead of `el.showModal()`, so it
+doesn't block interaction with the rest of the page (no backdrop, no focus trapping). This is
+useful for things like a persistent side panel or a non-blocking notification tray, where the
+underlying page should stay interactive. Unlike `closeby`, this is modifier-only, there's no
+equivalent HTML attribute.
+
+```html
+<dialog x-show="open" x-htmldialog.modeless="open = false">..</dialog>
+```
+
+Escape-key and backdrop-based closing (via `closeby`) and the `noscroll` behavior still apply
+even in modeless mode, since those aren't currently gated on whether the dialog is modal.
+
+#### Combining Modifiers
+
+Modifiers can be chained together on the same `x-htmldialog` directive:
+
+```html
+<dialog x-show="open" x-htmldialog.noscroll.closeby.any="open = false">..</dialog>
+```

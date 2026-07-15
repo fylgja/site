@@ -2,6 +2,20 @@
 title: "Accessibility"
 description: "Fylgja CSS is out of the box fully A11Y ready."
 sortOrder: 9
+faq:
+  - question: Do I still need to write my own ARIA attributes when using Fylgja?
+    answer: Yes, Fylgja's CSS hooks into semantic attributes like
+      aria-current="page" rather than adding classes for state, but you still
+      need to add those attributes to your markup yourself; Fylgja doesn't
+      inject them for you.
+  - question: Does using Fylgja CSS guarantee my whole site is accessible?
+    answer: No. Fylgja's styling won't hurt accessibility and its ready-made
+      components follow accessible patterns, but overall site accessibility also
+      depends on your content, semantics, and interactions outside of what CSS
+      controls.
+  - question: Where can I find accessible, ready-to-use UI patterns?
+    answer: See the UI components page for components built with accessibility in
+      mind that you can copy directly into your project.
 ---
 
 All Fylgja CSS packages are designed to be fully accessible right out of the box.

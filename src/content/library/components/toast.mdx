@@ -4,6 +4,24 @@ pageTitle: "Fylgja Toast"
 description: "The Fylgja Toast component allows you to display compact labels or status indicators alongside other UI elements"
 npm: "@fylgja/toast"
 git: "https://github.com/fylgja/fylgja/tree/main/components/toast"
+faq:
+  - question: Does the Toast component auto-dismiss after a few seconds?
+    answer: No, there's no built-in JS timer. The component is CSS-only; showing,
+      hiding, and auto-dismiss timing are left up to you, e.g. by toggling the
+      hidden attribute as shown in the "Message with Action" example.
+  - question: How do I change a toast's color without using data-type?
+    answer: Set the --toast-style CSS variable directly to any color, as shown in
+      the "Custom Style Message" example. Background, border, and text colors
+      are then derived automatically using CSS Relative Colors.
+  - question: What's the difference between data-type="info" and setting
+      --toast-style manually?
+    answer: data-type="info", "warning", and "error" are preset style tokens that
+      set --toast-style for you. Setting --toast-style directly lets you use any
+      custom color instead of the three presets.
+  - question: Do I need @fylgja/toast/styles to use data-type?
+    answer: Yes, the base package only gives you the toast container styling. The
+      styles import adds the info/warning/error preset tokens that data-type
+      relies on.
 ---
 
 import InstallTabs from "@/components/InstallTabs.astro";

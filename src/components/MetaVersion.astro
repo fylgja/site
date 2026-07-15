@@ -2,6 +2,7 @@
 import GitIcon from "@/assets/icons/github.svg";
 import { ScrollText, Package } from "@lucide/astro";
 import AskAiButton from "./AskAiButton.astro";
+import { rawGithubUrl } from "@/utils";
 
 interface Props {
 	version?: string;
@@ -14,7 +15,6 @@ interface Props {
 
 const { version, git, npm, changelog, pathUrl, iconSize = 16 } = Astro.props;
 const npmUrl = npm ? `https://npmjs.com/package/${npm}` : "";
-const gitRaw = "https://raw.githubusercontent.com/fylgja/site/refs/heads/main/";
 const changelogUrl =
 	changelog || git
 		? git?.includes("/tree/main")
@@ -52,7 +52,7 @@ const changelogUrl =
 	</div>
 	{
 		pathUrl && (
-			<AskAiButton url={gitRaw + pathUrl} iconSize={iconSize} class="flex-none" />
+			<AskAiButton url={rawGithubUrl(pathUrl)} iconSize={iconSize} class="flex-none" />
 		)
 	}
 </div>

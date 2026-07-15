@@ -5,6 +5,35 @@ description: "Establish a consistent design language across your projects with F
 npm: "@fylgja/tokens"
 git: "https://github.com/fylgja/fylgja/tree/main/tokens"
 sortOrder: 2
+faq:
+  - question: Do I need to import all the tokens, or can I pick just what I need?
+    answer: You can import everything with the full package, or import only the
+      categories you need (e.g. just colors or sizes) using the granular import
+      paths listed above. Each category is available separately in CSS, SCSS,
+      and JS formats.
+  - question: Do Fylgja Utilities or Components require Fylgja Tokens to work?
+    answer: No, they're independent. Fylgja Utilities and Components use CSS
+      variables that Fylgja Tokens happen to provide sensible values for, but
+      you can supply your own values (or use a system like Open Props) instead.
+  - question: How do I change a color's hue or intensity?
+    answer: Colors are defined as a dynamic map rather than fixed swatches. Set the
+      --hue variable to one of the predefined hues (e.g. var(--hue-teal)) and
+      use --color-{0-14} for strength. You can also adjust --chroma to change
+      color intensity.
+  - question: What's the difference between colors.css and colors.static.css?
+    answer: colors.css is the dynamic map driven by --hue/--chroma.
+      colors.static.css (and the Tailwind colors.css import, which is the same
+      thing) is a fixed list combining colors and hues, useful when you don't
+      need the dynamic hue-switching behavior.
+  - question: What does the PostCSS Jit Props integration actually do?
+    answer: It scans your compiled CSS and only outputs the token variables you
+      actually use, instead of the full token set. This keeps your final CSS
+      smaller, especially useful if you're also defining a lot of your own
+      custom tokens.
+  - question: Do I need Fylgja Tokens if I'm already using Open Props?
+    answer: Not necessarily. Fylgja Tokens is designed to integrate with the same
+      tooling (PostCSS Jit Props) and follow the same conventions as Open Props,
+      so you can mix and match or pick whichever token source fits your project.
 ---
 
 import InstallTabs from "@/components/InstallTabs.astro";
@@ -81,6 +110,10 @@ import the `.host` variants to apply tokens within the host scope:
 ```
 
 This enables seamless integration of Fylgja Design Tokens within your custom web components.
+
+All token categories except `colors`, `colors.static`, `mq`, and `shadows` provide a `.host` variant.
+These four don't need one: they aren't scoped to `:root`, so they already apply everywhere,
+including inside the Shadow DOM, without a separate host-scoped import.
 
 ### PostCSS Jit Props Integration
 

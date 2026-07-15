@@ -1,0 +1,52 @@
+---
+import { ChevronDown } from "@lucide/astro";
+import Schema from "@/components/Schema.astro";
+
+interface Props {
+	faq?: {
+		question: string;
+		answer: string;
+	}[];
+}
+
+const { faq = [] } = Astro.props;
+
+const schema = faq.length
+	? {
+			"@context": "https://schema.org",
+			"@type": "FAQPage",
+			mainEntity: faq.map(({ question, answer }) => ({
+				"@type": "Question",
+				name: question,
+				acceptedAnswer: {
+					"@type": "Answer",
+					text: answer,
+				},
+			})),
+		}
+	: null;
+---
+
+{
+	faq.length > 0 && (
+		<section class="faq card" aria-labelledby="faq" style="--my: var(--size-12)">
+			<h2 id="faq">FAQ</h2>
+			<div class="divide-y" style="border-color: color-mix(in oklab, var(--root-bg) 75%, var(--root-fg))">
+				{faq.map(({ question, answer }, index) => (
+					<details name="faq" open={index === 0} class="flow-none">
+						<summary
+							class="list-none flex align italic"
+							style="--py: var(--size-3)"
+						>
+							<span>{question}</span>
+							<ChevronDown class="toggle-rotate transition" size={20} />
+						</summary>
+						<p style="--py: 0 var(--size-3)">{answer}</p>
+					</details>
+				))}
+			</div>
+		</section>
+	)
+}
+
+{schema && <Schema data={schema} />}
