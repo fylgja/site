@@ -16,7 +16,7 @@
 	--link-color: color-mix(in srgb, var(--brand) 65%, var(--root-fg));
 	--border-color-fade: color-mix(in srgb, var(--root-fg) 20%, transparent);
 	--code-stroke: color-mix(in srgb, currentcolor 20%, transparent);
-	--dialog-bg: var(--root-bg);
+	--dialog-bg: color-mix(in oklab, var(--root-bg) 96%, white);
 	--anchor-offset: 10ex;
 	--text-muted: color-mix(in srgb, #0000, var(--root-fg) 64%);
 	color-scheme: light dark;

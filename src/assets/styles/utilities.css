@@ -16,3 +16,11 @@
 	--btn-active-bg: var(--brand);
 	--btn-active-color: var(--on-brand);
 }
+
+.float-end {
+	float: inline-end;
+}
+
+.float-start {
+	float: inline-start;
+}
