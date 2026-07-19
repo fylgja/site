@@ -2,6 +2,7 @@ import siteConfig from "site.config";
 import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
+import { uiCategories } from "./ui-categories";
 
 const { themeColor, author } = siteConfig;
 
@@ -33,21 +34,6 @@ const docsSchema = z.object({
 		)
 		.optional(),
 });
-
-/**
- * Categories a UI component can belong to.
- * Drives both the sidebar grouping and the gallery filter chips.
- * Keep in sync with CATEGORIES in src/pages/ui/_collection.ts.
- */
-export const uiCategories = [
-	"actions",
-	"forms",
-	"navigation",
-	"overlays",
-	"feedback",
-	"data-display",
-	"layout",
-] as const;
 
 const uiSchema = docsSchema.extend({
 	// Which category the component is grouped and filtered under.
