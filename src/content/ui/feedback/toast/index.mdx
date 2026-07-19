@@ -1,0 +1,55 @@
+---
+title: "Toast"
+pageTitle: "Fylgja Toast"
+description: "A short notification message, with default, info, warning, and error styles."
+category: "feedback"
+tags: ["toast", "notification", "message", "alert", "snackbar"]
+status: "stable"
+languages: ["html"]
+requires:
+  - pkg: "@fylgja/toast"
+    level: required
+    reason: "Provides the .toast component and its data-type color variants."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the text inside the toast."
+  - pkg: "@fylgja/tokens"
+    level: recommended
+    reason: "Supplies the --shadow-3 token the toast uses for its elevation."
+sortOrder: 2
+faq:
+  - question: How do I color a toast for info, warning, or error?
+    answer: Add data-type="info", "warning", or "error" to the toast. Each sets an
+      accent color; pair it with a matching icon.
+  - question: How do toasts appear and dismiss?
+    answer: That is up to your app. The component only styles the message; show it in
+      a live region, position it with utilities, and remove it (or auto-dismiss it)
+      with your own script.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+
+A toast is a short notification message, such as a save confirmation or an error.
+It is a `<div class="toast">`, with `data-type` variants for info, warning, and
+error. The component styles the message; showing and dismissing it is your app's
+job.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- Use a `<div class="toast">` for a neutral message.
+- Add `data-type="info"`, `"warning"`, or `"error"` for an accented variant, and
+  pair it with a matching icon marked `aria-hidden="true"`.
+- Position and animate toasts with utilities and your own show/dismiss logic; the
+  component does not place or time them.
+
+## Accessibility
+
+- Render toasts inside a live region so screen readers announce them: `role="status"`
+  (with `aria-live="polite"`) for routine messages, or `role="alert"` for errors.
+- Do not convey meaning by color alone; keep the message text clear, and back the
+  `data-type` accent with an icon or wording.

@@ -1,0 +1,48 @@
+---
+title: "Table"
+pageTitle: "Fylgja Table"
+description: "A native HTML table styled by Fylgja, for presenting rows and columns of data."
+category: "data-display"
+tags: ["table", "data", "grid", "rows"]
+status: "stable"
+languages: ["html"]
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the table borders, spacing, and header cells."
+sortOrder: 2
+faq:
+  - question: How do I get striped (zebra) rows?
+    answer: Fylgja's theme.css gives even rows a surface background. It is one of the
+      copyable theme files, so include it (or copy that one rule) if you want zebra
+      striping. The base table styles look fine without it.
+  - question: When should I not use a table?
+    answer: Only use a <table> for genuinely tabular data. Do not use it for page
+      layout, and do not fake a table with stacked <div>s, since that loses the
+      row and column semantics assistive technology relies on.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+
+A table presents data in rows and columns. Use the native `<table>` with
+`<thead>`, `<tbody>`, and scoped `<th>` cells, and Fylgja styles it for you. Reach
+for a real table whenever the data is tabular, never a set of stacked `<div>`s.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- Put column headers in `<thead>` as `<th scope="col">`, and the data in `<tbody>`.
+- Use `<th scope="row">` for a row's leading header cell so it can be announced
+  with each data cell.
+- Add a `<caption>` as the first child to give the table a title.
+
+## Accessibility
+
+- `scope` on header cells ties them to their column or row for screen readers.
+- A `<caption>` gives the table an accessible name.
+- Native table semantics (rows, columns, headers) are what make the data
+  navigable; a `<div>` grid does not provide them.

@@ -1,0 +1,18 @@
+<button type="button" commandfor="welcome" command="show-modal">Open modal</button>
+
+<dialog id="welcome" closedby="any" aria-labelledby="welcome-title" class="flow">
+	<div class="flex align gap flow-none">
+		<h2 id="welcome-title">Welcome to Fylgja</h2>
+		<button type="button" commandfor="welcome" command="close" aria-label="Close">
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+				<path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+		</button>
+	</div>
+	<p>
+		Fylgja is a lightweight CSS library built on modern web standards, with no build step
+		required.
+	</p>
+	<p>You can pick what you need, and don't need to import everything!</p>
+</dialog>

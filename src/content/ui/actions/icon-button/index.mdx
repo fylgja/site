@@ -1,0 +1,65 @@
+---
+title: "Icon Button"
+pageTitle: "Fylgja Icon Button"
+description: "A button whose content is an icon, squared automatically and given an accessible name with aria-label."
+category: "actions"
+tags: ["button", "icon", "action", "toolbar"]
+status: "stable"
+languages: ["html"]
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the button and squares the padding automatically when its only child is an icon."
+sortOrder: 3
+faq:
+  - question: Why is an icon-only button square?
+    answer: When a button's only child is an <svg> or <img>, Fylgja sets its inline
+      padding equal to its block padding, so it becomes square with no extra classes.
+  - question: My icon + text button lost its side padding, why?
+    answer: A bare text label is a text node, so the icon still counts as the only
+      element child and the button squares. Wrap the label in a <span> so the icon
+      is no longer the only child and the horizontal padding returns.
+  - question: How do I name an icon-only button for screen readers?
+    answer: Use an aria-label on the button, or a <title> inside the svg with
+      role="img". Either gives the button an accessible name.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+import round from "./example-round.html?raw";
+
+An icon button is a [button](/ui/actions/button/) whose content is an icon. When the
+icon is the only child, Fylgja squares the padding automatically, so it needs no
+extra classes, just an accessible name from an `aria-label` or a `<title>` in the
+icon.
+
+## Preview
+
+<ComponentPreview center code={example} />
+
+## Usage
+
+- Put a single `<svg>` (or `<img>`) inside the button. When the icon is the only
+  child, Fylgja makes the padding square.
+- Name an icon-only button with either an `aria-label` on the button or a `<title>`
+  inside the `<svg>` (with `role="img"`).
+- For an icon + text button, wrap the label in a `<span>` so the icon is no longer
+  the only child and the button keeps its normal horizontal padding. `--btn-gap`
+  spaces the icon and text, and mark the icon `aria-hidden="true"` since the text
+  names the button.
+- It inherits every `--btn-*` variable, so color and shape work the same as a
+  [Button](/ui/actions/button/).
+
+## Round
+
+Set `--btn-radius` to a pill radius for a round icon button (here also a primary
+fill via `--btn-bg`).
+
+<ComponentPreview center code={round} />
+
+## Accessibility
+
+- An icon-only button must have a name: an `aria-label` on the button, or a
+  `<title>` in the `<svg>` with `role="img"`.
+- Mark a purely decorative icon `aria-hidden="true"` (as on the icon + text button).
+- Keep the target at least 24 by 24 CSS pixels for comfortable tapping.

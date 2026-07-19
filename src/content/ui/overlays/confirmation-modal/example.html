@@ -1,0 +1,17 @@
+<button type="button" commandfor="cookie-consent" command="show-modal">Cookie settings</button>
+
+<dialog
+	id="cookie-consent"
+	closedby="none"
+	aria-labelledby="cookie-consent-title"
+	style="--my: auto var(--size-4); --md_my: auto var(--size-8)"
+>
+	<form method="dialog" class="flow">
+		<h2 id="cookie-consent-title">Accept cookies?</h2>
+		<p>We use cookies to improve your experience and analyze site traffic. Do you accept?</p>
+		<div class="flex-wrap gap">
+			<button value="decline" class="flex-auto">Decline</button>
+			<button value="accept" class="flex-auto">Accept</button>
+		</div>
+	</form>
+</dialog>

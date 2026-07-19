@@ -1,10 +1,185 @@
 ---
-import Layout from "@/layouts/PageLayout.astro";
+import Layout from "@/layouts/DocsLayout.astro";
+import { entries, collection, CATEGORIES } from "./_collection.ts";
+import { capitalized } from "@/utils";
+
 const title = "Fylgja UI";
+const description =
+	"Copy-paste UI components built on plain, accessible HTML. Filter by category and drop them into any project.";
+
+// Categories that actually have components, in defined order, for the filter chips.
+const activeCategories = CATEGORIES.filter(({ key }) =>
+	entries.some((entry) => entry.data.category === key)
+);
+
+// Precompute a lowercase search haystack per component (title, description, tags, category).
+const cards = entries.map((entry) => {
+	const { title, description, category, tags, languages } = entry.data;
+	return {
+		id: entry.id,
+		title,
+		description,
+		category,
+		languages,
+		search: [title, description, category, ...tags].join(" ").toLowerCase(),
+	};
+});
 ---
 
-<Layout title={title} class="text-center align-center">
+<Layout title={title} description={description} collectionName="UI" collection={collection}>
 	<h1>{title}</h1>
-	<p class="lead">Soon...</p>
-	<p class="text-muted">We hard at work building the UI Components and this page.</p>
+	<p class="lead">{description}</p>
+
+	<ui-gallery class="block" style="--my: 2rem 0">
+		<div class="gallery-filters flow">
+			<div role="group" aria-label="Filter by category" class="chips flex-wrap gap-sm">
+				<button type="button" class="btn chip" data-category="all" aria-pressed="true">
+					All
+				</button>
+				{
+					activeCategories.map(({ key, label }) => (
+						<button type="button" class="btn chip" data-category={key} aria-pressed="false">
+							{label}
+						</button>
+					))
+				}
+			</div>
+			<div class="gallery-search">
+				<label for="ui-search" class="sr-only">Search components</label>
+				<input
+					type="search"
+					id="ui-search"
+					name="ui-search"
+					placeholder="Search components..."
+					autocomplete="off"
+					data-ui-search
+				/>
+			</div>
+		</div>
+
+		<p class="text-muted text-sm" data-ui-count aria-live="polite" style="--my: 1rem 0"></p>
+
+		<ul role="list" class="auto-grid gap" style="--max-col-size: 16rem" data-ui-list>
+			{
+				cards.map((card) => (
+					<li
+						class="card --hover flow"
+						data-category={card.category}
+						data-languages={card.languages.join(" ")}
+						data-search={card.search}
+					>
+						<h2>
+							<a href={`/ui/${card.id}/`} class="stretched-link">
+								{card.title}
+							</a>
+						</h2>
+						<p class="line-clamp">{card.description}</p>
+						<p class="flex-wrap gap-sm text-sm text-muted">
+							{card.languages.map((lang: string) => (
+								<span class="badge">{capitalized(lang)}</span>
+							))}
+						</p>
+					</li>
+				))
+			}
+		</ul>
+
+		<p class="text-muted" data-ui-empty hidden>
+			No components match your filters.
+		</p>
+	</ui-gallery>
 </Layout>
+
+<style>
+	.card h2 {
+		--h-size: 1.25em;
+	}
+
+	.chip[aria-pressed="true"] {
+		--btn-stroke: var(--brand);
+		--btn-bg: var(--brand);
+		--btn-color: var(--on-brand);
+	}
+
+	.gallery-search input {
+		inline-size: 100%;
+		max-inline-size: 28rem;
+	}
+</style>
+
+<script>
+	// @ts-nocheck
+	class UiGallery extends HTMLElement {
+		connectedCallback() {
+			this.list = this.querySelector("[data-ui-list]");
+			this.cards = [...this.querySelectorAll("[data-ui-list] > li")];
+			this.chips = [...this.querySelectorAll("[data-category]")];
+			this.search = this.querySelector("[data-ui-search]");
+			this.count = this.querySelector("[data-ui-count]");
+			this.empty = this.querySelector("[data-ui-empty]");
+
+			this.category = "all";
+			this.query = "";
+
+			// Restore category from the URL so filtered views are shareable.
+			const params = new URLSearchParams(window.location.search);
+			const initial = params.get("category");
+			if (initial && this.chips.some((c) => c.dataset.category === initial)) {
+				this.category = initial;
+			}
+
+			this.chips.forEach((chip) => {
+				chip.addEventListener("click", () => this.setCategory(chip.dataset.category));
+			});
+
+			this.search?.addEventListener("input", () => {
+				this.query = this.search.value.trim().toLowerCase();
+				this.apply();
+			});
+
+			this.apply();
+		}
+
+		setCategory(category) {
+			this.category = category;
+			const url = new URL(window.location.href);
+			if (category === "all") {
+				url.searchParams.delete("category");
+			} else {
+				url.searchParams.set("category", category);
+			}
+			window.history.replaceState({}, "", url);
+			this.apply();
+		}
+
+		apply() {
+			let visible = 0;
+			this.cards.forEach((card) => {
+				const matchCategory =
+					this.category === "all" || card.dataset.category === this.category;
+				const matchSearch = !this.query || card.dataset.search.includes(this.query);
+				const show = matchCategory && matchSearch;
+				card.hidden = !show;
+				if (show) visible++;
+			});
+
+			this.chips.forEach((chip) => {
+				chip.setAttribute(
+					"aria-pressed",
+					chip.dataset.category === this.category ? "true" : "false"
+				);
+			});
+
+			if (this.empty) this.empty.hidden = visible !== 0;
+			if (this.count) {
+				const total = this.cards.length;
+				this.count.textContent =
+					visible === total
+						? `${total} component${total === 1 ? "" : "s"}`
+						: `${visible} of ${total} components`;
+			}
+		}
+	}
+
+	customElements.define("ui-gallery", UiGallery);
+</script>

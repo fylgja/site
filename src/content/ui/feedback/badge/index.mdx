@@ -1,0 +1,64 @@
+---
+title: "Badge"
+pageTitle: "Fylgja Badge"
+description: "A small pill for labels, statuses, and counts, recolored through CSS variables."
+category: "feedback"
+tags: ["badge", "label", "status", "count", "pill", "notification"]
+status: "stable"
+languages: ["html"]
+requires:
+  - pkg: "@fylgja/badge"
+    level: required
+    reason: "Provides the .badge component and its --badge-* variables."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Provides the brand colors the badge uses by default."
+  - pkg: "@fylgja/tokens"
+    level: recommended
+    reason: "Supplies the --hue-* and --color-* tokens used to recolor badges."
+  - pkg: "@fylgja/utilities"
+    level: recommended
+    reason: "Provides relative / absolute / inset used to pin a badge to a button."
+sortOrder: 1
+faq:
+  - question: How do I change a badge's color?
+    answer: Set --badge-bg and --badge-color. They default to the brand colors and
+      accept any color, including Fylgja's --color-* token scale.
+  - question: Can a badge hold a number?
+    answer: Yes. The badge uses tabular figures and a minimum width, so single and
+      double-digit counts stay a consistent size.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+import colors from "./example-colors.html?raw";
+import notification from "./example-notification.html?raw";
+
+A badge is a small pill for a label, status, or count, such as "New", "Beta", or an
+unread count. It is a plain `<span class="badge">`, styled through `--badge-*`
+variables, so you recolor and resize it without new classes.
+
+## Preview
+
+<ComponentPreview center code={example} />
+
+## Colors
+
+Set `--badge-bg` and `--badge-color` to recolor a badge. They default to the brand
+colors and take any value, including Fylgja's `--color-*` token scale.
+
+<ComponentPreview center code={colors} />
+
+## Notification badge
+
+Pin a badge to the corner of another element by wrapping both in a `relative`
+container and giving the badge `absolute` with an inset. Keep the count out of the
+icon button's contents and state it in the button's `aria-label` instead.
+
+<ComponentPreview center code={notification} />
+
+## Accessibility
+
+- A badge is decorative text, so make sure its meaning also reaches assistive tech
+  through the surrounding content (here the button's `aria-label` states the count).
+- Do not rely on color alone to convey status; keep the label text meaningful.

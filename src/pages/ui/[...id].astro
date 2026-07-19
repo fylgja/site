@@ -1,0 +1,45 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "@/layouts/DocsLayout.astro";
+import MetaVersion from "@/components/MetaVersion.astro";
+import collection from "./_collection.ts";
+import EditWithGithub from "@/components/EditWithGithub.astro";
+import BreadCrumbs from "@/components/BreadCrumbs.astro";
+import Faq from "@/components/Faq.astro";
+import Requirements from "@/components/Requirements.astro";
+
+export async function getStaticPaths() {
+	const entries = await getCollection("ui");
+	return entries
+		// Skip internal entries like _template that must not be published.
+		.filter((entry) => !entry.id.startsWith("_"))
+		.map((entry) => ({
+			params: { id: entry.id },
+			props: { entry },
+		}));
+}
+
+const { entry } = Astro.props;
+const { pageTitle, title, description, git, npm, changelog, faq, requires } = entry.data;
+const { Content, headings } = await render(entry);
+const hasMeta = !!git || !!npm;
+const toc = faq?.length ? [...headings, { depth: 2, slug: "faq", text: "FAQ" }] : headings;
+---
+
+<Layout
+	title={title}
+	description={description}
+	toc={toc}
+	collectionName="UI"
+	collection={collection}
+>
+	<h1 id={title}>{pageTitle || title}</h1>
+	{hasMeta && <MetaVersion git={git} npm={npm} changelog={changelog} pathUrl={entry.filePath} />}
+	<Requirements requires={requires} />
+	<Content />
+	<Faq faq={faq} />
+	<aside class="flex-wrap align gap text-muted" style="--my: 3rem 0" aria-label="Additional Meta">
+		<BreadCrumbs class="hidden md:flex" />
+		{entry.filePath && <EditWithGithub pathUrl={entry.filePath} class="text-sm italic" />}
+	</aside>
+</Layout>

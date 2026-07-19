@@ -1,0 +1,53 @@
+---
+title: "Review Stars"
+pageTitle: "Fylgja Review Stars"
+description: "A star rating input built from radio buttons and the input-group --steps modifier, with no JavaScript."
+category: "forms"
+tags: ["rating", "stars", "review", "input", "radio"]
+status: "stable"
+languages: ["html"]
+requires:
+  - pkg: "@fylgja/input-group"
+    level: required
+    reason: "Provides the .input-group component and the --steps modifier that fills the stars up to the selected one."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the fieldset and legend and hides the native radios."
+sortOrder: 2
+faq:
+  - question: Does the star rating need JavaScript?
+    answer: No. It is radio buttons plus the input-group --steps modifier. Selecting a
+      star checks its radio, and CSS fills every star up to it.
+  - question: How does a star know whether to fill?
+    answer: The --steps modifier toggles --_is-checked / --_not-checked on each label,
+      and the star SVG's fill reads them, so stars up to the checked one fill and the
+      rest stay outlined.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+
+Review stars are a rating input: a row of stars where selecting one fills it and
+every star before it. Fylgja builds it from radio buttons and the
+[input group](/library/components/input-group/) `--steps` modifier, so it stays a
+real form control with no JavaScript.
+
+## Preview
+
+<ComponentPreview center code={example} />
+
+## Usage
+
+- Wrap the control in a `<fieldset>` with a `<legend>` naming what is being rated.
+- Put the stars in a `<div class="input-group --steps">`.
+- Each star is a `<label>` holding an SVG star and a radio `<input>` that shares one
+  `name`. The input group hides the radios; the labels stay clickable.
+- The star SVG fills via `--_is-checked` / `--_not-checked`, which `--steps` sets
+  per label, so every star up to the selected one appears filled.
+- Give each star a `<title>` ("Rating 1" … "Rating 5") for an accessible name.
+
+## Accessibility
+
+- Radios give real single-select rating semantics and arrow-key navigation.
+- The `<legend>` labels the group, and each star's `<title>` labels its option.
+- The control submits its value with a form, no scripting required.

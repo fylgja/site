@@ -1,0 +1,54 @@
+---
+title: "Button"
+pageTitle: "Fylgja Button"
+description: "The button styles Fylgja applies to native <button> elements and .btn links, driven by CSS variables."
+category: "actions"
+tags: ["button", "btn", "action", "cta"]
+status: "stable"
+languages: ["html"]
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Provides the button styling and the --btn-* variable API."
+sortOrder: 1
+faq:
+  - question: How do I make a link look like a button?
+    answer: Add the .btn class to the <a>. Fylgja styles buttons and .btn identically,
+      so a link and a button match.
+  - question: How do I make a primary (brand) button?
+    answer: Set --btn-bg to the brand color (or use the .--primary class from
+      theme.css). Submit buttons are primary by default.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+
+Fylgja styles native `<button>` elements, and any `.btn` including links, into a
+consistent button controlled entirely by CSS variables. Use a real `<button>` for
+actions and an `<a class="btn">` for navigation that should look like a button.
+
+## Preview
+
+<ComponentPreview center code={example} />
+
+## Usage
+
+Every button reads from `--btn-*` variables, so you restyle by setting them rather
+than adding modifier classes:
+
+- `--btn-bg`, `--btn-color`, `--btn-stroke` set the fill, text, and border colors.
+- `--btn-px`, `--btn-py` set the padding (size); `--btn-radius` the corner radius.
+
+A primary button sets `--btn-bg: var(--brand)` (the `.--primary` class from
+theme.css is a shortcut, and submit buttons are primary by default). Disable a
+button with the `disabled` attribute.
+
+Buttons take on an active style automatically for `:active`, `[aria-current="page"]`,
+`[aria-selected="true"]`, and when they wrap a checked input, which is what powers
+the [Button Group](/ui/actions/button-group/).
+
+## Accessibility
+
+- Use `<button type="button">` for in-page actions so it does not submit a form.
+- Give an icon-only button an `aria-label`.
+- Leave the native focus ring visible; do not remove the outline.

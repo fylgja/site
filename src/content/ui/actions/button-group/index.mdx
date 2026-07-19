@@ -1,0 +1,56 @@
+---
+title: "Button Group"
+pageTitle: "Fylgja Button Group"
+description: "A segmented control: a group of joined buttons where one option is selected, built from radios styled as buttons."
+category: "actions"
+tags: ["button", "btn", "segmented", "toggle", "group", "strip", "toolbar"]
+status: "stable"
+languages: ["html"]
+requires:
+  - pkg: "@fylgja/input-group"
+    level: required
+    reason: "Provides the .input-group container and the --merge modifier that joins the buttons into one group."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the buttons and gives the selected one its active state via :has(input:checked)."
+sortOrder: 2
+faq:
+  - question: Why radios instead of buttons?
+    answer: Radios give real single-select semantics for free, arrow-key navigation
+      between options, only one chosen, and it submits with a form. The visible
+      buttons are labels wrapping a visually hidden radio.
+  - question: How does the selected option get highlighted?
+    answer: Fylgja's button active style applies to a label that :has(input:checked),
+      so the checked radio's label shows the active background with no JavaScript.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+
+A button group is a segmented control: a row of joined buttons where exactly one is
+selected. It is built from radio inputs styled as [buttons](/ui/actions/button/)
+inside an [input group](/library/components/input-group/), so it keeps real
+single-select semantics and needs no JavaScript.
+
+## Preview
+
+<ComponentPreview center code={example} />
+
+## Usage
+
+- Wrap the options in a `<div class="input-group --merge">` with `role="group"` and
+  an `aria-label`. The `--merge` modifier collapses the doubled borders between the
+  buttons so they read as one unit, and rounds the outer ends.
+- Each option is a `<label class="btn">` containing an `<input type="radio">` that
+  shares one `name`. The input group hides the radios automatically, so no
+  `sr-only` is needed.
+- Mark the default option's radio `checked`. Fylgja's button active style targets
+  the label that `:has(input:checked)`, so the selection highlights itself.
+- Set `--rounded` on the group for the pill shape and `--btn-stroke` for the
+  border color.
+
+## Accessibility
+
+- Radios give arrow-key navigation and single-select for free; the input group
+  hides them from view but keeps them operable via their labels.
+- The `aria-label` on the group names the set of choices.

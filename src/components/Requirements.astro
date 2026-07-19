@@ -1,0 +1,111 @@
+---
+import { getCollection } from "astro:content";
+import { Package } from "@lucide/astro";
+
+/**
+ * Lists the Fylgja packages a UI component needs, from the `requires` frontmatter.
+ * `required` packages are needed for the component to look/behave correctly;
+ * `recommended` packages improve it but are optional (e.g. @fylgja/base).
+ */
+interface Requirement {
+	pkg: string;
+	level?: "required" | "recommended";
+	reason?: string;
+}
+interface Props {
+	requires?: Requirement[];
+}
+
+const { requires = [] } = Astro.props;
+
+const libraryEntries = await getCollection("library");
+const docByPkg = new Map(
+	libraryEntries
+		.filter((entry) => entry.data.npm)
+		.map((entry) => [entry.data.npm, `/library/${entry.id}/`])
+);
+---
+
+{
+	requires.length > 0 && (
+		<aside class="requirements" aria-label="Requirements">
+			<p class="requirements-title">
+				<Package width={16} height={16} aria-hidden="true" /> Requirements
+			</p>
+			<ul role="list" class="flow">
+				{requires.map((req) => {
+					const level = req.level ?? "required";
+					const doc = docByPkg.get(req.pkg);
+					const external = !doc;
+					return (
+						<li>
+							<a
+								href={doc ?? `https://www.npmjs.com/package/${req.pkg}`}
+								{...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+							>
+								<code>{req.pkg}</code>
+							</a>
+							<span class:list={["req-level", `req-level--${level}`]}>{level}</span>
+							{req.reason && <span class="req-reason">{req.reason}</span>}
+						</li>
+					);
+				})}
+			</ul>
+		</aside>
+	)
+}
+
+<style>
+	.requirements {
+		--flow: 0.3rem;
+		margin-block: 1rem;
+		padding: 0.6rem 0.85rem;
+		border-inline-start: 3px solid var(--brand);
+		border-radius: var(--radius-2, 0.5rem);
+		background-color: var(--surface-color);
+		font-size: 0.875em;
+	}
+
+	.requirements-title {
+		display: flex;
+		align-items: center;
+		gap: 0.3rem;
+		margin: 0 0 0.35rem;
+		font-weight: 600;
+	}
+
+	.requirements ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.requirements li {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 0.35rem;
+		line-height: 1.4;
+	}
+
+	.req-level {
+		font-size: 0.72em;
+		text-transform: uppercase;
+		letter-spacing: 0.03em;
+		padding: 0.05em 0.45em;
+		border-radius: 999px;
+		border: 1px solid currentcolor;
+	}
+
+	.req-level--required {
+		color: light-dark(var(--brand), currentColor);
+	}
+
+	.req-level--recommended {
+		color: var(--text-color-muted);
+	}
+
+	.req-reason {
+		color: var(--text-color-muted);
+	}
+</style>

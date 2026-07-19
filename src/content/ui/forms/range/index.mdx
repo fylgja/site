@@ -1,0 +1,50 @@
+---
+title: "Range"
+pageTitle: "Fylgja Range"
+description: "A styled native range slider with a CSS-only value fill, customized through CSS variables."
+category: "forms"
+tags: ["range", "slider", "form", "input", "volume"]
+status: "stable"
+languages: ["html"]
+requires:
+  - pkg: "@fylgja/form-extend"
+    level: required
+    reason: "Styles the native range track and thumb and adds the CSS-only value fill."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Blocks the label above the control."
+sortOrder: 3
+faq:
+  - question: Does the value fill need JavaScript?
+    answer: In browsers with scroll-driven animations the fill follows the thumb with
+      CSS only. For older browsers, mirror the value into --range-value on input, for
+      example oninput="this.style.setProperty('--range-value', this.value)".
+  - question: How do I make the slider vertical?
+    answer: Add the .range-vertical class from form-extend to the input.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+
+A range lets the reader pick a value along a track, such as a volume or a price.
+It is the native `<input type="range">`, which Fylgja styles into a consistent
+track and thumb with a value fill, so you do not need a custom slider.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- Pair the `<input type="range">` with a `<label for>`; Fylgja blocks the label
+  above it.
+- Set `min`, `max`, and `value` as usual.
+- Customize the track and thumb with the `--track-*` and `--thumb-*` variables.
+- The value fill is CSS-only where scroll-driven animations are supported; fall
+  back to setting `--range-value` on input for older browsers.
+
+## Accessibility
+
+- The `<label>` names the control; keyboard arrows adjust the value natively.
+- Add `aria-valuetext` when the raw number needs a unit or wording (for example
+  "60 percent").

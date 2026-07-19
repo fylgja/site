@@ -1,0 +1,76 @@
+---
+title: "Accordion"
+pageTitle: "Fylgja Accordion"
+description: "A stack of collapsible sections built on native <details> and <summary>, with single-open behavior handled by the browser."
+category: "data-display"
+tags: ["accordion", "disclosure", "collapse", "faq"]
+status: "stable"
+languages: ["html"]
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the native summary and disclosure toggle."
+  - pkg: "@fylgja/utilities"
+    level: recommended
+    reason: "Provides the divide-y, list-none, flex/align, and toggle-rotate classes used for the accordion look."
+sortOrder: 1
+faq:
+  - question: How do I make only one section open at a time?
+    answer: Give every <details> in the group the same name attribute. The browser
+      then treats them as an exclusive accordion and closes the others when one
+      opens, with no JavaScript.
+  - question: Do I need JavaScript for the open and close animation?
+    answer: No. Modern browsers can animate the disclosure with CSS using
+      interpolate-size and transitions on the details element, so the toggle
+      stays entirely native.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+
+An accordion is a set of stacked sections that each expand and collapse. Built on
+the native `<details>` and `<summary>` elements, it is keyboard accessible and
+toggleable without any JavaScript. Adding a shared `name` attribute turns the
+group into an exclusive accordion where opening one section closes the rest.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+Each section is a `<details>` with a `<summary>` as its label, and its content
+follows the summary. Give every `<details>` in the group the same `name` to make
+it an exclusive accordion, or omit `name` to let multiple sections stay open at
+once. Add `open` to the section that should start expanded.
+
+Fylgja keeps the bare `<details>` deliberately plain, so the accordion look comes
+entirely from Fylgja utilities, with no custom CSS:
+
+- `divide-y` on the wrapper draws a divider between each section. Give it a
+  theme-aware color from Fylgja tokens, e.g.
+  `style="border-color: color-mix(in oklab, var(--root-bg) 75%, var(--root-fg))"`.
+- `flow-none` on each `<details>` clears the default margins from its summary and
+  content so the padding stays even.
+- `list-none` on the summary hides the default disclosure triangle.
+- `flex align` on the summary pushes the label and chevron to opposite ends and
+  centers them; `flex-none` keeps the chevron from shrinking.
+- `toggle-rotate transition` on the chevron flips it when the section opens.
+- `--py` sets the vertical padding: `style="--py: 0.75rem"` on the summary and
+  `style="--py: 0 0.75rem"` on the content.
+
+## Anatomy
+
+| Part                        | Responsibility                                                     |
+| --------------------------- | ------------------------------------------------------------------ |
+| `<details>`                 | One collapsible section. Tracks its own open state.                |
+| `<summary>`                 | The always-visible label and toggle. Focusable and keyboard-operable. |
+| `name`                      | Shared across sections to enforce single-open (exclusive) behavior. |
+| `.divide-y` + `.toggle-rotate` | Fylgja utilities that add the dividers and the rotating chevron. |
+
+## Accessibility
+
+- `<summary>` is focusable and toggles on Enter or Space by default.
+- Open state is exposed to assistive technology natively; no `aria-expanded`
+  wiring is required.
+- Keep the summary text meaningful on its own, since it acts as the section label.

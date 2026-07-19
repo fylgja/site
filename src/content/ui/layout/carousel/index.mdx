@@ -1,0 +1,93 @@
+---
+title: "Carousel"
+pageTitle: "Fylgja Carousel"
+description: "A horizontal scroll-snap slider built from Fylgja utilities, optionally enhanced with the Snap Slider for a pager and keyboard control."
+category: "layout"
+tags: ["carousel", "slider", "gallery", "scroll", "snap"]
+status: "stable"
+languages: ["html", "js", "alpine"]
+requires:
+  - pkg: "@fylgja/utilities"
+    level: required
+    reason: "Provides grid-cols, grid-flow, snap, scroll-x, and gap that make the slider."
+  - pkg: "@fylgja/snap-slider"
+    level: recommended
+    reason: "Adds a JS pager, keyboard navigation, and prev/next controls on top of the CSS slider."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the media inside the slides."
+sortOrder: 4
+faq:
+  - question: Does the carousel need JavaScript?
+    answer: No. The scroll-snap slider is pure CSS via Fylgja utilities. The Snap
+      Slider package is optional and only adds a pager, keyboard navigation, and
+      prev/next buttons on top.
+  - question: How do I change how many slides are visible?
+    answer: Set --grid-cols. Use 1 for one slide at a time, a value like 1.15 to peek
+      the next slide, or 2 and up to show several at once.
+  - question: How do I install and set up the Snap Slider?
+    answer: The Snap Slider ships only JavaScript, so install the package and register
+      the custom element or Alpine plugin. The example markup here leaves that out on
+      purpose; the install and setup steps live in the
+      [Snap Slider docs](/library/extensions/snap-slider/).
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
+import Tabs from "@/components/Tabs.astro";
+import example from "./example.html?raw";
+import snapslider from "./example-snapslider.html?raw";
+import snapsliderAlpine from "./example-alpine.html?raw";
+
+A carousel is a horizontal, scroll-snapping strip of slides. The base version is
+pure CSS: a few Fylgja utilities turn a row of items into a snapping slider that
+works with touch, trackpad, and scrollbar, no JavaScript.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- `grid-cols grid-flow` lays the slides out in equal columns flowing horizontally;
+  `--grid-cols` sets how many are visible (`1.15` peeks the next one).
+- `snap` adds scroll-snap so each slide clicks into place, `scroll-x` makes the
+  strip scrollable, and `gap` spaces the slides.
+- Size each slide's media as you like (here `w-full object-cover` with a fixed
+  `--size-y` height and a `rounded` corner).
+
+## Enhanced with Snap Slider
+
+For keyboard navigation and prev/next buttons, upgrade the same markup with the
+Snap Slider. Install and register it (as a custom element or an Alpine plugin) from
+the [Snap Slider](/library/extensions/snap-slider/) docs, which also cover the pager
+and other options. The CSS slider still works if the JS never loads, and it ships as
+a custom element (recommended) and as an Alpine.js component, so use whichever fits
+your stack.
+
+Put the `data-prev` / `data-next` buttons before the track. The custom element
+needs `role="region"` and an `aria-label` to name the region; the Alpine version
+uses a `<section>` with an `aria-label`, which is a region landmark on its own.
+
+<Tabs>
+	<Fragment slot="tablist">
+		<button type="button" role="tab" aria-controls="snap-custom-element">Custom element</button>
+		<button type="button" role="tab" aria-controls="snap-alpine">Alpine.js</button>
+	</Fragment>
+	<div id="snap-custom-element" role="tabpanel">
+		<CodeBlock lang="html" code={snapslider.trim()} />
+	</div>
+	<div id="snap-alpine" role="tabpanel" hidden>
+		<CodeBlock lang="html" code={snapsliderAlpine.trim()} />
+	</div>
+</Tabs>
+
+## Accessibility
+
+- The strip is scrollable by keyboard; the Snap Slider adds arrow-key navigation
+  between slides.
+- Name the slider region with an `aria-label` (or a heading referenced by
+  `aria-labelledby`) so it is announced as a distinct region.
+- Give each slide's image a descriptive `alt`.
+- If the carousel auto-advances, provide a pause control and do not trap essential
+  content behind the auto-play.

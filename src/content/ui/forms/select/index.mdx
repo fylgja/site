@@ -1,0 +1,46 @@
+---
+title: "Select"
+pageTitle: "Fylgja Select"
+description: "A native <select> dropdown styled by Fylgja, with a custom arrow and consistent control sizing."
+category: "forms"
+tags: ["select", "dropdown", "form", "input", "menu"]
+status: "stable"
+languages: ["html"]
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the select control and its custom arrow, and blocks the label above it."
+sortOrder: 1
+faq:
+  - question: Why use a native <select> instead of a custom dropdown?
+    answer: The native <select> is keyboard accessible, works on touch, and opens the
+      platform's own picker, all for free. A custom div-based dropdown has to
+      reimplement every one of those and usually misses some.
+  - question: How do I group options?
+    answer: Wrap related options in an <optgroup label="..."> element. The browser
+      renders the group label and indents its options.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+
+A select lets the reader choose one option from a list. Use the native `<select>`
+with a `<label>`; Fylgja styles the control, including a custom arrow, and stacks
+the label above it, so you do not need a custom dropdown widget.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- Pair the `<select>` with a `<label for>` pointing at its `id` (Fylgja blocks the
+  label above the control automatically).
+- A first empty `<option value="">Choose one…</option>` acts as a prompt.
+- Group related options with `<optgroup label="…">`.
+
+## Accessibility
+
+- The `<label>` gives the control its accessible name; associate it with `for`/`id`.
+- Native selects are fully keyboard operable and use the platform picker on touch,
+  so avoid replacing them with a scripted `<div>` menu.

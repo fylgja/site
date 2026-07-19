@@ -1,0 +1,58 @@
+---
+title: "Avatar"
+pageTitle: "Fylgja Avatar"
+description: "A round image representing a user, with an initials fallback and a stacked group."
+category: "data-display"
+tags: ["avatar", "user", "profile", "image", "initials"]
+status: "stable"
+languages: ["html"]
+requires:
+  - pkg: "@fylgja/utilities"
+    level: required
+    reason: "Provides round, object-cover, flex, and align-center that shape the avatar."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Provides the brand colors used by the initials fallback."
+sortOrder: 3
+faq:
+  - question: How do I size an avatar?
+    answer: Set the --size variable, which sets both the width and height, to any
+      length such as 3rem. The round utility keeps it a circle at any size.
+  - question: What if there is no photo?
+    answer: Use a round element with the person's initials centered (round flex
+      align-center) as a fallback, colored however you like.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+import group from "./example-group.html?raw";
+
+An avatar is a small round image standing in for a user or entity, with an initials
+fallback when there is no photo. It is a plain `<img>` (or `<span>`) shaped with
+Fylgja utilities, no dedicated component needed.
+
+## Preview
+
+<ComponentPreview center code={example} />
+
+## Usage
+
+- Apply `round` to make the element a circle and `object-cover` so a photo fills it
+  without distortion. Set the size with `--size` (both width and height).
+- For a fallback, use a `<span class="round flex align-center">` with the initials
+  centered, and color it with `--brand` or any background.
+
+## Group
+
+Overlap several avatars into a stack with a negative `margin-inline-start` on each
+one after the first, and a ring (`box-shadow`) in the page background color so
+they stay distinct. End with a count for the overflow.
+
+<ComponentPreview center code={group} />
+
+## Accessibility
+
+- Give a photo avatar a descriptive `alt` (the person's name). For a decorative or
+  duplicated avatar, use `alt=""`.
+- The initials fallback is text, so it is read as-is; keep it to the person's
+  initials.

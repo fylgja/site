@@ -1,0 +1,86 @@
+---
+title: "Offcanvas"
+pageTitle: "Fylgja Offcanvas"
+description: "A panel that slides in from a screen edge, built on the native <dialog> element with Fylgja's small .offcanvas rule."
+category: "overlays"
+tags: ["offcanvas", "drawer", "panel", "sidebar", "menu", "overlay"]
+status: "stable"
+languages: ["html", "alpine"]
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Provides the dialog backdrop, slide animation, and scroll-lock the .offcanvas rule builds on."
+  - pkg: "@fylgja/utilities"
+    level: recommended
+    reason: "Provides the open:flex, flex-col, scroll-y, and button utilities used for the panel layout."
+sortOrder: 3
+faq:
+  - question: Do I need to write custom CSS for the drawer?
+    answer: Almost none. Fylgja's base dialog styles already provide the backdrop,
+      the slide animation, and the background scroll-lock. All a drawer adds is the
+      small .offcanvas rule shown below, which only retargets a few base variables.
+  - question: How is an offcanvas different from a modal?
+    answer: They are the same native <dialog> primitive. A modal sits centered on
+      the page, an offcanvas is pinned to an edge and fills the height. Use an
+      offcanvas for navigation, filters, or a side panel.
+  - question: Can I slide it in from the left instead of the right?
+    answer: Yes, by overriding the variables the .offcanvas rule sets (--tx, --mx)
+      and flattening the start-side corners instead. Check @fylgja/base/theme.css
+      for the exact values rather than guessing.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
+import example from "./example.html?raw";
+import exampleAlpine from "./example.alpine.html?raw";
+import exampleCss from "./example.css?raw";
+
+An offcanvas is a panel that slides in from a screen edge over a dimmed page, used
+for navigation, filters, or a side panel. It is the same native `<dialog>` as the
+[Modal](/ui/overlays/modal/), opened with an invoker command, just pinned to an
+edge instead of centered. Fylgja's base dialog styles do the heavy lifting, so the
+only addition is the small `.offcanvas` rule.
+
+## Preview
+
+<ComponentPreview center code={example} alpine={exampleAlpine} />
+
+## The `.offcanvas` rule
+
+The base `dialog` styles already provide the backdrop, the slide in and out (via
+the `--tx` / `--ty` translate with `@starting-style` and a reduced-motion-aware
+transition), and the background scroll-lock. Never redeclare those. All a drawer
+adds is this rule, which retargets those base variables and pins the panel to the
+inline-end (right) edge, full height, up to `25rem` wide:
+
+<CodeBlock lang="css" code={exampleCss.trim()} />
+
+Ship this rule with the component. Fylgja's `theme.css` already includes it, but
+`theme.css` is one of the files Fylgja lets you copy into a project and customize,
+so you cannot assume every project loads it. Only the Fylgja base styles are safe
+to rely on, so include the rule rather than depend on `theme.css` being there.
+
+## Usage
+
+1. A trigger button with `commandfor` and `command="show-modal"` opens the drawer,
+   no JavaScript required.
+2. The `<dialog class="offcanvas">` holds the panel content. `showModal()` (via the
+   command) puts it in the top layer with a backdrop and traps focus.
+3. `closedby="any"` lets the reader dismiss the drawer with Escape or a backdrop
+   click; a `command="close"` button gives an explicit control too.
+
+## Anatomy
+
+| Part                        | Responsibility                                                     |
+| --------------------------- | ------------------------------------------------------------------ |
+| Trigger `<button command>`  | Opens the drawer via `command="show-modal"` and `commandfor`.      |
+| `<dialog class="offcanvas">`| The panel. Base styles animate and back it; `.offcanvas` pins it.  |
+| `command="close"` button    | Explicit dismiss, alongside Escape and the backdrop.               |
+
+## Accessibility
+
+- Label the panel with `aria-labelledby` (or `aria-label` if there is no heading).
+- Opened as a modal, the drawer traps focus and makes the page inert; focus
+  returns to the trigger on close, natively.
+- With `closedby="any"` the reader can leave via Escape, the backdrop, or the
+  close button. Keep a visible close control as well.

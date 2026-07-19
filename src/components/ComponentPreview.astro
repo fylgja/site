@@ -1,0 +1,166 @@
+---
+import Tabs from "@/components/Tabs.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
+
+/**
+ * Renders a UI component demo as a live preview plus its copyable source.
+ *
+ * The `code` prop is the single source of truth: it is rendered live inside a
+ * `.demo-wrapper` (via set:html) and shown in the HTML code tab, so the preview
+ * and the snippet can never drift apart. Because set:html does not execute
+ * `<script>` tags, demos should rely on native, declarative behaviour
+ * (e.g. `<dialog>` + invoker commands, `<details>`, the Popover API) rather than
+ * custom scripting, which is exactly the pattern the UI library promotes.
+ * Style demos with Fylgja utilities (`--py`/`--my` spacing, `flow-none`,
+ * `flex-none`, `divide-y`, `toggle-rotate`, etc.). A `<style>` block in the
+ * snippet IS applied by set:html, but treat it as a last resort, not the default.
+ *
+ * The preview wrapper deliberately does not apply `flow`: a demo is usually a
+ * single trigger, and flow's sibling margin would override a modal dialog's
+ * `margin: auto` centering. Pass `previewClass="flow"` when a demo genuinely
+ * stacks multiple visible elements that need spacing.
+ *
+ * Pass `astro` and/or `alpine` to add alternative-language source tabs. These
+ * are shown for reference only; the live preview always uses the HTML `code`.
+ */
+interface Props {
+	/** HTML source, rendered live and shown in the HTML tab. */
+	code: string;
+	/** Optional Astro variant source, adds an "Astro" tab. */
+	astro?: string;
+	/** Optional Alpine.js variant source, adds an "Alpine" tab. */
+	alpine?: string;
+	/** Extra classes for the live preview wrapper. */
+	previewClass?: string;
+	/** Inline style for the live preview wrapper (e.g. sizing tokens). */
+	previewStyle?: string;
+	/** Center the preview contents instead of top-left flow. */
+	center?: boolean;
+}
+
+const { code, astro, alpine, previewClass, previewStyle, center } = Astro.props;
+
+// Snippets are often imported from .html files (via ?raw), which carry a trailing
+// newline; trim so the live preview and code tabs render cleanly.
+const codeSrc = code.trim();
+const astroSrc = astro?.trim();
+const alpineSrc = alpine?.trim();
+
+// Deterministic id from the source so tab panels stay stable across builds.
+function hash(str: string) {
+	let h = 0;
+	for (let i = 0; i < str.length; i++) {
+		h = (Math.imul(31, h) + str.charCodeAt(i)) | 0;
+	}
+	return (h >>> 0).toString(36);
+}
+const uid = "preview-" + hash(codeSrc + (astroSrc ?? "") + (alpineSrc ?? ""));
+const hasTabs = !!astroSrc || !!alpineSrc;
+---
+
+<div class="component-preview">
+	<div
+		class:list={["demo-wrapper", center && "--center", previewClass]}
+		style={previewStyle}
+		set:html={codeSrc}
+	/>
+	{
+		hasTabs ? (
+			<Tabs class="component-preview-code">
+				<Fragment slot="tablist">
+					<button type="button" role="tab" aria-controls={`${uid}-html`}>
+						HTML
+					</button>
+					{astroSrc && (
+						<button type="button" role="tab" aria-controls={`${uid}-astro`}>
+							Astro
+						</button>
+					)}
+					{alpineSrc && (
+						<button type="button" role="tab" aria-controls={`${uid}-alpine`}>
+							Alpine
+						</button>
+					)}
+				</Fragment>
+				<div id={`${uid}-html`} role="tabpanel">
+					<CodeBlock lang="html" code={codeSrc} />
+				</div>
+				{astroSrc && (
+					<div id={`${uid}-astro`} role="tabpanel" hidden>
+						<CodeBlock lang="astro" code={astroSrc} />
+					</div>
+				)}
+				{alpineSrc && (
+					<div id={`${uid}-alpine`} role="tabpanel" hidden>
+						<CodeBlock lang="html" code={alpineSrc} />
+					</div>
+				)}
+			</Tabs>
+		) : (
+			<div class="component-preview-code">
+				<CodeBlock lang="html" code={codeSrc} />
+			</div>
+		)
+	}
+</div>
+
+<style is:global>
+	/*
+	 * Base demo staging styles, kept here so ComponentPreview works on any page.
+	 * Mirrors the .demo-box / .demo-wrapper toolkit used by the library docs.
+	 */
+	:where(.demo-box) {
+		display: grid;
+		place-content: center;
+		border-radius: var(--radius-2);
+		border: var(--demo-box-stroke-size, 1px) solid var(--demo-box-stroke, var(--brand));
+		background-color: var(--demo-box-bg, var(--surface-color));
+		aspect-ratio: var(--ratio-box);
+		min-inline-size: var(--demo-box-min-size, clamp(var(--size-8), 10vw, var(--size-20)));
+		padding: var(--size-1) var(--size-2);
+		line-height: 1.1;
+
+		&.--inline {
+			display: inline-grid;
+			aspect-ratio: auto;
+			line-height: inherit;
+		}
+	}
+
+	:where(.demo-wrapper) {
+		--demo-raster-size: 1.5rem;
+		--demo-stroke-size: 1px;
+		--separator-flow: 1em;
+		--_dbs: var(--demo-stroke-size);
+		min-block-size: var(--demo-wrapper-min-size);
+		padding: var(--size-6);
+		border: var(--_dbs) dashed var(--border-color-fade);
+		background-image:
+			linear-gradient(to right, var(--surface-color) var(--_dbs), transparent var(--_dbs)),
+			linear-gradient(to bottom, var(--surface-color) var(--_dbs), transparent var(--_dbs));
+		background-size: var(--demo-raster-size) var(--demo-raster-size);
+		background-position: -1px -1px;
+		background-clip: padding-box;
+		overflow: clip;
+	}
+</style>
+
+<style>
+	.component-preview {
+		margin-block: var(--size-4);
+	}
+
+	.component-preview .demo-wrapper.--center {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--size-3);
+		align-items: center;
+		justify-content: center;
+	}
+
+	.component-preview-code :global(pre) {
+		margin-block-start: 0;
+		border-start-start-radius: 0;
+		border-start-end-radius: 0;
+	}
+</style>

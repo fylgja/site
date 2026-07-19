@@ -1,0 +1,51 @@
+---
+title: "Media Card"
+pageTitle: "Fylgja Media Card"
+description: "A card that pairs an image with text, laying out side by side on wider screens."
+category: "layout"
+tags: ["card", "media", "image", "horizontal", "surface"]
+status: "stable"
+languages: ["html"]
+requires:
+  - pkg: "@fylgja/card"
+    level: required
+    reason: "Provides the .card surface and the .card-content padding wrapper."
+  - pkg: "@fylgja/utilities"
+    level: recommended
+    reason: "Provides md:flex, flex-none, object-cover, and line-clamp used for the layout."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the typography inside the card."
+sortOrder: 2
+faq:
+  - question: Why does the image bleed to the edges here but not on a plain card?
+    answer: Fylgja moves the padding onto .card-content when a card contains one, so
+      any media outside it sits flush to the card edges. A plain card without a
+      .card-content pads its own content instead.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+
+A media card pairs an image with text in one surface, ideal for a featured post or
+banner. It builds on the [Card](/ui/layout/card/): the image goes in a `<picture>`
+and the text in a `.card-content` block, and `md:flex` lays them side by side once
+there is room.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- Put the media (a `<picture>` or `<img>`) as a direct child of the card, and the
+  text in a `<div class="card-content">`. With a `.card-content` present, Fylgja
+  moves the padding there so the media bleeds to the card edges.
+- Add `md:flex` to the card and `flex-none` to the media so they sit side by side
+  on wider screens and stack on small ones.
+- `object-cover` keeps the image filling its box; `line-clamp` trims long text.
+
+## Accessibility
+
+- Give the image a descriptive `alt`.
+- Use a real heading inside `.card-content` so the card appears in the outline.

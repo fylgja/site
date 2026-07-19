@@ -1,0 +1,51 @@
+---
+title: "Breadcrumbs"
+pageTitle: "Fylgja Breadcrumbs"
+description: "A trail of links showing where the current page sits in the site hierarchy."
+category: "navigation"
+tags: ["breadcrumbs", "navigation", "trail", "hierarchy"]
+status: "stable"
+languages: ["html"]
+requires:
+  - pkg: "@fylgja/breadcrumbs"
+    level: required
+    reason: "Provides the .breadcrumbs component, including the separators between items."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the links inside the trail."
+sortOrder: 1
+faq:
+  - question: How are the separators added?
+    answer: The .breadcrumbs component inserts them with CSS between list items, so you
+      only write the links, not the separators.
+  - question: Which item should be aria-current?
+    answer: The last one, the current page. Mark its link aria-current="page" so
+      assistive technology announces it as the current location.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+
+Breadcrumbs are a trail of links showing where the current page sits in the site
+hierarchy, giving the reader a quick way back up. It is an ordered list of links in
+a labeled `<nav>`, and Fylgja adds the separators for you.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- Wrap the trail in a `<nav aria-label="Breadcrumb">` so it is announced as a
+  distinct navigation landmark.
+- Use an `<ol class="breadcrumbs">` (ordered, since the sequence matters), with one
+  `<li>` per level, each holding an `<a>`.
+- Mark the last link `aria-current="page"`; it is the current page.
+- The separators are drawn by the component, so do not add your own.
+
+## Accessibility
+
+- The `aria-label` names the landmark, and `aria-current="page"` marks the reader's
+  location in the trail.
+- Keep the labels the same as the page titles they link to, so the trail is
+  predictable.

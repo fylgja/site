@@ -1,0 +1,72 @@
+---
+title: "Pagination"
+pageTitle: "Fylgja Pagination"
+description: "Numbered page links with previous and next controls for navigating paged content."
+category: "navigation"
+tags: ["pagination", "pager", "navigation", "pages"]
+status: "stable"
+languages: ["html"]
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the links as buttons and highlights the current page via [aria-current=page]."
+  - pkg: "@fylgja/utilities"
+    level: recommended
+    reason: "Provides flex, flex-wrap, gap-sm, and align used to lay out the row."
+sortOrder: 2
+faq:
+  - question: Why doesn't Fylgja ship a Pagination component?
+    answer: Pagination varies too much to bake into one component. It might have an
+      ellipsis or not, show only prev/next, only numbers, or both, or be a
+      checkout-style step pager. Fylgja gives the building blocks (buttons,
+      utilities, and the aria-current style) and leaves the shape and styling to you,
+      so you build exactly the pagination your case needs.
+  - question: Why do the list items have a value attribute?
+    answer: An ordered list numbers its items 1, 2, 3, and so on, and that ordinal is
+      exposed to assistive tech. Pagination often skips, like 1, 2, 3, …, 10, so
+      setting <li value="10"> makes the item's number match the real page instead of
+      its position in the list. You do not need value when every page is shown in
+      order with no gaps, since the numbers already line up.
+  - question: How is the current page marked?
+    answer: Give the current page's link aria-current="page". Fylgja's button active
+      style targets [aria-current=page], so it highlights with no extra class.
+  - question: How do I show skipped pages?
+    answer: Use an ellipsis between page ranges, in a <li aria-hidden="true"> so the
+      whole item is ignored by assistive tech. Keep the first, last, current, and
+      adjacent pages as links.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+
+Pagination is a row of numbered page links with previous and next controls, for
+moving through content split across pages. It is a labeled `<nav>` with the page
+numbers in a list and the previous/next controls beside it, all styled as
+[buttons](/ui/actions/button/), with the current page marked.
+
+## Preview
+
+<ComponentPreview center code={example} />
+
+## Usage
+
+- Wrap everything in a labeled
+  `<nav class="pagination flex gap-sm align" aria-label="Pagination">`, which also
+  lays the row out.
+- Place the previous and next controls as icon `<a class="btn">` (each with an
+  `aria-label`) directly in the nav, so they sit outside the page list.
+- List the numbered pages in an `<ol>` of `<li>`, each an `<a class="btn">`, and
+  mark the current page `aria-current="page"`. Set each `<li value="…">` to its page
+  number so the sequence stays correct where it skips.
+- Collapse long ranges with an ellipsis in a `<li aria-hidden="true">` (hide the
+  whole item, not just its text, so it is not a stray empty list item), keeping the
+  first, last, current, and adjacent pages.
+- The small `.pagination` style gives every link an equal, rounded target and
+  colors the current page with the brand via the `--btn-active-*` variables.
+
+## Accessibility
+
+- The `aria-label` names the navigation landmark, and `aria-current="page"` marks
+  the reader's location.
+- Give the previous/next icon controls an `aria-label` ("Previous page" / "Next
+  page"), and disable or omit them at the ends.

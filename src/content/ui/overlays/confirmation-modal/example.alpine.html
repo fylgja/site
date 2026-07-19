@@ -1,0 +1,18 @@
+<div x-data="{ open: false }">
+	<button type="button" @click="open = true">Cookie settings</button>
+
+	<dialog
+		x-show="open"
+		x-htmldialog.noscroll.closeby.none="open = false"
+		aria-labelledby="cookie-title"
+		class="flow"
+		style="--my: auto var(--size-4); --md_my: auto var(--size-8)"
+	>
+		<h2 id="cookie-title">Accept cookies?</h2>
+		<p>We use cookies to improve your experience and analyze site traffic. Do you accept?</p>
+		<div class="flex-wrap gap">
+			<button type="button" @click="open = false" class="flex-auto">Decline</button>
+			<button type="button" @click="open = false /* store consent here */" class="flex-auto">Accept</button>
+		</div>
+	</dialog>
+</div>

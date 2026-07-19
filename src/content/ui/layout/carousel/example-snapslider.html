@@ -1,0 +1,15 @@
+<snap-slider role="region" aria-label="Featured photos">
+	<div class="flex gap-sm" style="--my: 0 var(--size-3)">
+		<button type="button" data-prev aria-label="Previous slide">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+		</button>
+		<button type="button" data-next aria-label="Next slide">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+		</button>
+	</div>
+	<div data-track class="grid-cols grid-flow snap scroll-x gap" style="--grid-cols: 1.15">
+		<img class="rounded w-full object-cover" style="--size-y: 240px" src="/images/placeholders/deer-wide.webp" alt="A deer in a misty forest" width="740" height="240" />
+		<img class="rounded w-full object-cover" style="--size-y: 240px" src="/images/placeholders/fox.webp" alt="An orange fox in the grass" width="500" height="300" />
+		<img class="rounded w-full object-cover" style="--size-y: 240px" src="/images/placeholders/cat.webp" alt="A cat lounging in the sun" width="500" height="300" />
+	</div>
+</snap-slider>

@@ -1,0 +1,113 @@
+---
+title: "Modal"
+pageTitle: "Fylgja Modal"
+description: "A simple modal dialog for presenting content or a message, built on the native HTML <dialog> element and opened declaratively with invoker commands."
+category: "overlays"
+tags: ["modal", "dialog", "popup", "overlay"]
+status: "stable"
+languages: ["html", "alpine"]
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the native dialog and provides the backdrop and open/close animation."
+  - pkg: "@fylgja/utilities"
+    level: recommended
+    reason: "Provides the flex, align, gap, and flow utilities used to lay out the header and content."
+sortOrder: 1
+faq:
+  - question: When should I use a modal instead of a confirmation modal?
+    answer: Use a modal to show information or content the reader can simply
+      dismiss, like a welcome message or details panel. When you need the reader
+      to make a decision before an action proceeds, such as confirming a
+      deletion, reach for the Confirmation Modal instead.
+  - question: Why use <dialog> instead of a <div> with a custom overlay?
+    answer: The native <dialog> element gives you focus trapping, top-layer
+      rendering above every other element, a styleable ::backdrop, Escape-to-close,
+      and the correct dialog semantics for assistive technology. A div-based
+      modal has to reimplement every one of those, and usually gets focus
+      management or the top layer wrong.
+  - question: Do I need JavaScript to open the modal?
+    answer: No. The default here uses invoker commands, so a button with
+      commandfor and command="show-modal" opens the dialog with no script at all.
+      JavaScript is only needed as a fallback for older browsers, shown in the
+      Opening with JavaScript section.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+import exampleAlpine from "./example.alpine.html?raw";
+
+A modal is a dialog that opens above the page to show content or a message. It is
+built on the native `<dialog>` element and opened declaratively with an invoker
+command, so you get focus trapping, top-layer rendering, a styleable `::backdrop`,
+and Escape-to-close without writing any JavaScript. The markup is classless:
+Fylgja styles the bare elements for you.
+
+When you need the reader to confirm or cancel an action rather than just read and
+dismiss, use the [Confirmation Modal](/ui/overlays/confirmation-modal/) instead.
+
+## Preview
+
+<ComponentPreview center code={example} alpine={exampleAlpine} />
+
+## Usage
+
+A modal needs two things, both driven by invoker commands:
+
+1. A trigger button with `commandfor` pointing at the dialog's `id` and
+   `command="show-modal"`. This opens the dialog in the top layer with a backdrop,
+   with no JavaScript.
+2. The `<dialog>` element itself, labeled with `aria-labelledby` pointing at its
+   heading. A button inside it with `command="close"` (and the same `commandfor`)
+   closes it.
+
+The `closedby="any"` attribute lets the reader also dismiss the modal by pressing
+Escape or clicking the backdrop, which suits a simple content modal. Without it, a
+modal defaults to `closedby="closerequest"` (Escape closes, backdrop does not).
+
+## Opening with JavaScript
+
+Invoker commands are supported in current browsers. If you need to support older
+ones, or want to open the dialog programmatically, call `showModal()` from a
+`<script>` instead of an inline handler. `showModal()` (not `show()`) is what puts
+the dialog in the top layer and renders the backdrop.
+
+```html
+<button type="button" id="open-welcome">Open modal</button>
+
+<dialog id="welcome" closedby="any" aria-labelledby="welcome-title">
+  <h2 id="welcome-title">Welcome to Fylgja</h2>
+  <p>Fylgja is a lightweight CSS library built on modern web standards.</p>
+  <button type="button" id="close-welcome">Close</button>
+</dialog>
+
+<script>
+  const dialog = document.getElementById("welcome");
+  document
+    .getElementById("open-welcome")
+    .addEventListener("click", () => dialog.showModal());
+  document
+    .getElementById("close-welcome")
+    .addEventListener("click", () => dialog.close());
+</script>
+```
+
+## Anatomy
+
+| Part                              | Responsibility                                                     |
+| --------------------------------- | ------------------------------------------------------------------ |
+| Trigger `<button command>`        | Opens the dialog via `command="show-modal"` and `commandfor`.      |
+| `<dialog>`                        | The container. Hidden until opened, then rendered in the top layer. |
+| Close `<button command="close">`  | Dismisses the dialog, no script required.                          |
+| `::backdrop`                      | The dimmed layer behind the dialog. Style it with the `dialog::backdrop` selector. |
+
+## Accessibility
+
+- `<dialog>` carries the `dialog` role and, when opened as a modal, makes the rest
+  of the page inert.
+- Focus moves into the dialog on open and is trapped inside it. On close, focus
+  returns to the trigger automatically.
+- With `closedby="any"`, both Escape and a backdrop click dismiss the modal, which
+  is the expected behavior for a modal the reader can simply close.
+- Always label the dialog: `aria-labelledby` referencing the heading, or
+  `aria-label` when there is no visible title.

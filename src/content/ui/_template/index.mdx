@@ -1,0 +1,71 @@
+---
+# Canonical template for a Fylgja UI Component.
+# Copy this whole folder to src/content/ui/<category>/<name>/ (this file is the
+# component's index.mdx; the route becomes /ui/<category>/<name>/). Keep demo
+# markup beside it in example.html (+ example.alpine.html / example.css) and import
+# them as raw strings (see below), so the MDX stays readable. Keep the section
+# order below; remove sections that genuinely do not apply.
+title: "Component Name"
+pageTitle: "Fylgja Component Name" # optional, defaults to title
+description: "One sentence on what this component is and when to use it."
+category: "overlays" # actions | forms | navigation | overlays | feedback | data-display | layout
+tags: [] # free-form keywords for gallery search, e.g. ["modal", "popup"]
+status: "stable" # stable | beta | planned
+languages: ["html"] # add "js" / "alpine" / "astro" only when those variants exist below
+requires: # Fylgja packages this component needs (shown in a Requirements box)
+  - pkg: "@fylgja/base"
+    level: recommended # required = needs it to look/work right; recommended = optional but better
+    reason: "Styles the native element out of the box."
+sortOrder: 10
+# npm: "@fylgja/<pkg>" # only if a package backs this component
+# git: "https://github.com/fylgja/fylgja/tree/main/components/<pkg>"
+faq:
+  - question: "A common question about this component?"
+    answer: "A short, direct answer."
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import InstallTabs from "@/components/InstallTabs.astro";
+// Demo snippets live beside this file. Add example.alpine.html for an Alpine tab.
+import example from "./example.html?raw";
+// import exampleAlpine from "./example.alpine.html?raw";
+
+Intro paragraph: what the component is, the problem it solves, and the native
+element it is built on. State the accessibility win the primitive gives you for
+free (focus handling, top layer, semantics) so readers know why not to reach for
+a plain `<div>`.
+
+## Preview
+
+{/* code is rendered live (set:html) AND shown as source; add alpine={exampleAlpine} for a tab */}
+
+<ComponentPreview center code={example} />
+
+## Installation
+
+{/* Only if a package backs this component. Otherwise delete this section. */}
+
+<InstallTabs pkg="@fylgja/<pkg>" cdn="https://cdn.jsdelivr.net/npm/@fylgja/<pkg>/index.min.css" />
+
+## Usage
+
+Explain the required structure and the key attributes/handlers. Call out the
+native behaviors the primitive provides and anything an author must add.
+
+## Anatomy
+
+Break down the parts of the markup and what each is responsible for.
+
+## Accessibility
+
+- Which roles/semantics come from the native element.
+- Keyboard interactions that work out of the box, and any you must wire up.
+- Labelling requirements (`aria-label`, `aria-labelledby`, etc.).
+
+## Variants
+
+Show meaningful variations, each as its own `<ComponentPreview>`.
+
+## Examples
+
+Real-world compositions that combine this component with others.

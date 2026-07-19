@@ -1,0 +1,22 @@
+<div x-data="{ open: false }">
+	<button type="button" @click="open = true">Open menu</button>
+
+	<dialog x-show="open" x-htmldialog.closeby.any="open = false" class="offcanvas open:flex flex-col clip" aria-labelledby="menu-title" style="--p: 0">
+		<div class="flex align gap flow-none" style="--py: var(--size-6); --px: var(--size-6)">
+			<h2 id="menu-title">Menu</h2>
+			<button type="button" @click="open = false" aria-label="Close">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+					<path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+			</button>
+		</div>
+		<nav class="flex-auto scroll-y scroll-mask" style="--py: var(--size-2) var(--size-6); --px: var(--size-2)">
+			<ul style="--btn-stroke: transparent">
+				<li><a href="/" class="btn w-full align">Home</a></li>
+				<li><a href="/library/base/" class="btn w-full align">Library</a></li>
+				<li><a href="/ui/" class="btn w-full align">UI Components</a></li>
+			</ul>
+		</nav>
+	</dialog>
+</div>

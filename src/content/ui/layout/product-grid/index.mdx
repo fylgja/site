@@ -1,0 +1,49 @@
+---
+title: "Product Grid"
+pageTitle: "Fylgja Product Grid"
+description: "A responsive grid of product cards that reflows by available width, with no media queries."
+category: "layout"
+tags: ["card", "grid", "product", "shop", "listing"]
+status: "stable"
+languages: ["html"]
+requires:
+  - pkg: "@fylgja/card"
+    level: required
+    reason: "Provides the .card surface and the --hover modifier for each product."
+  - pkg: "@fylgja/utilities"
+    level: recommended
+    reason: "Provides auto-grid, gap, and the flex utilities that lay the grid out."
+  - pkg: "@fylgja/tokens"
+    level: recommended
+    reason: "Supplies the --shadow-4 token the --hover modifier uses."
+sortOrder: 3
+faq:
+  - question: How does the grid reflow without media queries?
+    answer: auto-grid uses CSS repeat(auto-fill, ...), so the number of columns follows
+      the container width. Set the minimum card width with the --max-col-size variable.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+
+A product grid arranges [cards](/ui/layout/card/) into a responsive listing. The
+`auto-grid` utility flows the cards into as many columns as fit, with no media
+queries, and each product is a list item so the grid stays a real `<ul>`.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- Wrap the products in a `<ul role="list" class="auto-grid gap">` and set the
+  minimum card width with `--max-col-size` (for example `14rem`).
+- Each product is a `<li class="card --hover">`; `--hover` gives feedback on
+  pointer devices and needs the `--shadow-4` token.
+- Put the buy action in a `<form>` so it works without JavaScript.
+
+## Accessibility
+
+- Keep the list semantics: a `<ul>` of `<li>` products, with `role="list"` so the
+  list role survives the `list-style: none` reset.
+- Give each product image a descriptive `alt` and a real heading.

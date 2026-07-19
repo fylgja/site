@@ -1,0 +1,106 @@
+---
+title: "Confirmation Modal"
+pageTitle: "Fylgja Confirmation Modal"
+description: "A modal that asks the reader to make a yes or no choice before continuing, built on <dialog> with a form that reports the choice."
+category: "overlays"
+tags: ["modal", "dialog", "confirm", "confirmation", "consent", "overlay"]
+status: "stable"
+languages: ["html", "alpine"]
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the native dialog and provides the backdrop and open/close animation."
+  - pkg: "@fylgja/utilities"
+    level: recommended
+    reason: "Provides the flex-wrap, gap, flow, and flex-auto utilities used to lay out the choices."
+sortOrder: 2
+faq:
+  - question: How is this different from a plain modal?
+    answer: A plain Modal shows content the reader simply dismisses. A confirmation
+      modal asks a yes or no question, such as a cookie consent, and reports which
+      choice was made. Use it when the reader has to decide before continuing.
+  - question: How does the modal know which button was pressed?
+    answer: The buttons live inside a <form method="dialog"> and each has a value.
+      Submitting the form closes the dialog and stores that value on the dialog's
+      returnValue, which you can read in a close event. See Reacting to the choice.
+  - question: Do I need JavaScript for the buttons to close the dialog?
+    answer: No. Buttons inside a <form method="dialog"> close the dialog when
+      pressed, with no script. JavaScript is only needed to react to the choice
+      after the dialog closes.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+import exampleAlpine from "./example.alpine.html?raw";
+
+A confirmation modal asks the reader to make a choice before something continues.
+It suits moments that need a clear yes or no, like a cookie consent prompt, where
+the reader should not drift past the question without answering.
+
+Like the [Modal](/ui/overlays/modal/), it is built on the native `<dialog>`
+element and opened with an invoker command. Two things set it apart: the buttons
+sit in a `<form method="dialog">`, so pressing one both closes the dialog and
+records the reader's choice, and `closedby="none"` disables casual dismissal, so
+neither Escape nor a backdrop click closes it. The content is classless, with the
+two choices sharing the row as equal-width buttons.
+
+## Preview
+
+<ComponentPreview center code={example} alpine={exampleAlpine} />
+
+## Usage
+
+1. A trigger button with `commandfor` and `command="show-modal"` opens the dialog,
+   no JavaScript required.
+2. Inside the dialog, a `<form method="dialog">` wraps the question and the two
+   choices. Each choice is a `<button>` with a `value`.
+3. Pressing either button submits the form, which closes the dialog and stores the
+   pressed button's `value` on `dialog.returnValue`.
+
+The two choices sit in a `<div class="flex-wrap gap">`, and each button gets
+`flex-auto` so they share the row as equal-width actions and wrap on narrow
+screens. Give each choice a clear, specific label ("Accept", "Decline") rather
+than a generic "OK", so the answer is unambiguous.
+
+`closedby="none"` stops the dialog closing on Escape or a backdrop click, so the
+reader cannot skip past the question without answering. Because you are removing
+the usual escape hatch, make sure one option is a safe, non-committal choice (here,
+Decline), and reserve this pattern for cases where a decision is genuinely
+required. For an everyday, freely dismissible dialog, use the plain
+[Modal](/ui/overlays/modal/).
+
+## Reacting to the choice
+
+Closing the dialog is declarative, but acting on the answer needs a small
+`<script>`. Listen for the `close` event and check `returnValue`.
+
+```html
+<script>
+  const dialog = document.getElementById("cookie-consent");
+  dialog.addEventListener("close", () => {
+    if (dialog.returnValue === "accept") {
+      // Enable analytics and store the consent cookie here.
+    }
+  });
+</script>
+```
+
+## Anatomy
+
+| Part                        | Responsibility                                                     |
+| --------------------------- | ------------------------------------------------------------------ |
+| Trigger `<button command>`  | Opens the dialog via `command="show-modal"` and `commandfor`.      |
+| `<dialog>`                  | The container, rendered in the top layer over an inert page.       |
+| `<form method="dialog">`    | Closes the dialog on submit and reports the chosen `value`.        |
+| `<button value>`            | One choice. Its `value` becomes `dialog.returnValue`.              |
+| `.flex-wrap.gap` + `.flex-auto` | Row wrapper; `flex-auto` makes the choices equal-width.        |
+
+## Accessibility
+
+- Opened as a modal, the dialog makes the rest of the page inert and traps focus.
+- On close, focus returns to the trigger automatically.
+- `closedby="none"` intentionally disables Escape and backdrop dismissal, so the
+  reader has to pick an option. Make sure one of them is a safe, non-committal
+  choice (here, Decline), since it is the only way to leave without opting in.
+- Label the dialog with `aria-labelledby` pointing at the heading, and make the
+  question state plainly what each choice does.

@@ -1,0 +1,78 @@
+---
+title: "Card"
+pageTitle: "Fylgja Card"
+description: "A surface that groups related content into one contained block, with optional shadow modifiers."
+category: "layout"
+tags: ["card", "surface", "panel"]
+status: "stable"
+languages: ["html"]
+requires:
+  - pkg: "@fylgja/card"
+    level: required
+    reason: "Provides the .card component and its --elevated / --hover modifiers."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the typography inside the card."
+  - pkg: "@fylgja/tokens"
+    level: recommended
+    reason: "Supplies the --shadow-2 / --shadow-4 tokens the --elevated and --hover modifiers use."
+sortOrder: 1
+faq:
+  - question: Do I need @fylgja/tokens for the --elevated or --hover modifiers?
+    answer: You need the --shadow-2 (elevated) or --shadow-4 (hover) tokens available.
+      They ship with @fylgja/tokens, but any token system that defines them, such as
+      Open Props, works too.
+  - question: How do I make the whole card clickable?
+    answer: Pair the --hover modifier with the stretched-link utility on a link inside
+      the card, as shown under the --hover modifier.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+import elevated from "./example-elevated.html?raw";
+import clickable from "./example-clickable.html?raw";
+
+A card is a surface that groups related content into one contained block, such as
+a post, product, or summary. It is a plain `<article class="card">`, so the markup
+stays semantic and you compose the inside with ordinary elements.
+
+For richer layouts built on the card, see the [Media Card](/ui/layout/media-card/)
+and the [Product Grid](/ui/layout/product-grid/).
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Modifiers
+
+Cards take two shadow modifiers. Both need a shadow token available.
+
+### `--elevated`
+
+Drops the border and lifts the card with a shadow (needs the `--shadow-2` token),
+for surfaces that should stand off the page.
+
+<ComponentPreview code={elevated} />
+
+### `--hover`
+
+Adds a shadow on hover (needs `--shadow-4`). Pair it with the `stretched-link`
+utility on a link inside the card to make the whole card a single click target.
+
+<ComponentPreview code={clickable} center />
+
+## Anatomy
+
+| Part                       | Responsibility                                              |
+| -------------------------- | ----------------------------------------------------------- |
+| `<article class="card">`   | The surface that groups the content.                        |
+| `.card-content`            | Padding wrapper for the text when the card also holds media. |
+| `.--elevated` / `.--hover` | Optional shadow modifiers.                                  |
+| `.stretched-link`          | Expands a link's hit area to the whole card.                |
+
+## Accessibility
+
+- Use a real heading inside the card so it appears in the document outline.
+- For a fully clickable card, keep one meaningful link with `stretched-link`
+  rather than wrapping everything in an anchor, so the accessible name stays clear.
+- Give every image a descriptive `alt` (or `alt=""` if it is purely decorative).

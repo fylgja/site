@@ -1,0 +1,10 @@
+:where(dialog).offcanvas {
+  --ty: 0;
+  --tx: 100%;
+  --screen-y: 0;
+  --mx: auto 0;
+  block-size: 100%;
+  inline-size: min(100%, 25rem);
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
