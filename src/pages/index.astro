@@ -139,10 +139,13 @@ const title = "Your CSS companion";
 				body="We are continuously developing Fylgja CSS, so expect regular updates."
 			/>
 			<div class="grid-cols --bento gap">
-				<Card
-					title="UI Library"
-					body="Build your user interfaces quickly with our fully-featured library of UI components. We provide components in both HTML and JSX, readily available for use. You can easily copy the code directly from our website or streamline your workflow with our CLI tool."
-				/>
+				<Card>
+					<h3 class="flex align gap-sm">
+						<span>Fylgja UI Library</span>
+						<SquareCheck aria-hidden={true}/>
+					</h3>
+					<p>Build your user interfaces quickly with our fully-featured library of UI components. We provide components in both HTML and JSX, readily available for use. You can easily copy the code directly from our website or streamline your workflow with our CLI tool.</p>
+				</Card>
 				<Card>
 					<h3 class="flex align gap-sm">
 						<span>More CSS Components</span>
