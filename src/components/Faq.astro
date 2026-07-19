@@ -12,6 +12,38 @@ interface Props {
 
 const { faq = [], listOnly = false } = Astro.props;
 
+// Frontmatter answers are plain text (no markdown). Turn `[text](url)` sugar and
+// bare https:// URLs into links; everything else stays literal text (so `<dialog>`,
+// `[aria-current=page]`, etc. are not treated as markup).
+type AnswerPart = { value?: string; href?: string; text?: string; external?: boolean };
+
+function parseAnswer(text: string): AnswerPart[] {
+	const parts: AnswerPart[] = [];
+	const re = /\[([^\]]+)\]\(([^)\s]+)\)|(https?:\/\/[^\s]+)/g;
+	let last = 0;
+	let m: RegExpExecArray | null;
+	while ((m = re.exec(text)) !== null) {
+		if (m.index > last) parts.push({ value: text.slice(last, m.index) });
+		if (m[1] !== undefined) {
+			const href = m[2];
+			parts.push({ href, text: m[1], external: /^(https?:)?\/\//.test(href) });
+		} else {
+			let url = m[3];
+			const trail = url.match(/[.,;:!?)\]]+$/);
+			const trailing = trail ? trail[0] : "";
+			if (trailing) url = url.slice(0, url.length - trailing.length);
+			parts.push({ href: url, text: url, external: true });
+			if (trailing) parts.push({ value: trailing });
+		}
+		last = re.lastIndex;
+	}
+	if (last < text.length) parts.push({ value: text.slice(last) });
+	return parts;
+}
+
+// Strip the link sugar to plain text for the JSON-LD, which wants readable prose.
+const plainAnswer = (text: string) => text.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, "$1");
+
 const schema = faq.length
 	? {
 			"@context": "https://schema.org",
@@ -21,7 +53,7 @@ const schema = faq.length
 				name: question,
 				acceptedAnswer: {
 					"@type": "Answer",
-					text: answer,
+					text: plainAnswer(answer),
 				},
 			})),
 		}
@@ -37,7 +69,22 @@ const schema = faq.length
 						<span>{question}</span>
 						<ChevronDown class="toggle-rotate transition" size={20} />
 					</summary>
-					<p class="faq-content">{answer}</p>
+					<p class="faq-content">
+						{parseAnswer(answer).map((part) =>
+							part.href ? (
+								<a
+									href={part.href}
+									{...(part.external
+										? { target: "_blank", rel: "noopener noreferrer" }
+										: {})}
+								>
+									{part.text}
+								</a>
+							) : (
+								part.value
+							)
+						)}
+					</p>
 				</details>
 			))}
 		</div>
@@ -55,7 +102,22 @@ const schema = faq.length
 							<span>{question}</span>
 							<ChevronDown class="toggle-rotate transition" size={20} />
 						</summary>
-						<p class="faq-content">{answer}</p>
+						<p class="faq-content">
+							{parseAnswer(answer).map((part) =>
+								part.href ? (
+									<a
+										href={part.href}
+										{...(part.external
+											? { target: "_blank", rel: "noopener noreferrer" }
+											: {})}
+									>
+										{part.text}
+									</a>
+								) : (
+									part.value
+								)
+							)}
+						</p>
 					</details>
 				))}
 			</div>
@@ -65,8 +127,13 @@ const schema = faq.length
 
 <style>
 	.faq {
+		--border-color: color-mix(in oklab, var(--root-bg) 75%, var(--root-fg));
 		margin-block: var(--size-6);
-		border-color: color-mix(in oklab, var(--root-bg) 75%, var(--root-fg));
+		border-color: var(--border-color);
+
+		.divide-y {
+			border-color: var(--border-color);
+		}
 
 		&.card {
 			margin-block: var(--size-12);
