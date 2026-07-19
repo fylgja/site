@@ -13,40 +13,62 @@ const currentPath = Astro.url.pathname;
 
 const menu = [
 	{
-		label: "Library",
-		path: "/library/base",
+		label: "Docs",
+		path: "/docs/",
 	},
 	{
-		label: "Docs",
-		path: "/docs",
+		label: "Library",
+		path: "/library/base/",
+	},
+	{
+		label: "UI",
+		path: "/ui/",
 	},
 	{
 		label: "Blog",
-		path: "/blog",
+		path: "/blog/",
 	},
 ];
 
-const mobileMenu = menu;
+const mobileMenu = [
+	{
+		label: "Docs",
+		path: "/docs/",
+	},
+	{
+		label: "Fylgja Library",
+		path: "/library/base/",
+	},
+	{
+		label: "Fylgja UI",
+		path: "/ui/",
+	},
+	{
+		label: "Blog",
+		path: "/blog/",
+	},
+];
+
 const mobileMenuHighlists = [
 	{
 		label: "Base",
-		path: "/library/base",
+		path: "/library/base/",
 	},
 	{
 		label: "Tokens",
-		path: "/library/tokens",
+		path: "/library/tokens/",
 	},
 	{
 		label: "Utilities",
-		path: "/library/utilities",
+		path: "/library/utilities/",
 	},
 	{
 		label: "Components",
-		path: "/library/components",
+		path: "/library/components/",
 	},
 	{
 		label: "Extensions",
-		path: "/library/extensions",
+		path: "/library/extensions/",
 	},
 ];
 ---
