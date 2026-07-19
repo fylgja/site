@@ -12,6 +12,12 @@ faq:
   - question: Can I force part of a page to stay LTR inside an RTL page?
     answer: 'Yes, add dir="ltr" to that specific element, or apply direction: ltr;
       in CSS to enforce it locally.'
+  - question: Do Fylgja's utilities work in RTL, or just the base styles?
+    answer: All of them. Fylgja only ships RTL-aware utilities; spacing,
+      alignment, and positioning are built on logical properties (e.g.
+      margin-inline, inset-inline, text-start) instead of physical left/right,
+      so they mirror automatically under dir="rtl" with no directional variants
+      to swap.
 ---
 
 Fylgja CSS offers seamless support for right-to-left (RTL) languages like Arabic and Hebrew
@@ -42,6 +48,20 @@ This setup enables RTL functionality, eliminating the need for extra CSS or plug
       : root.setAttribute('dir', 'ltr');
   }
 </script>
+
+## RTL-Aware Utilities
+
+This mirroring isn't limited to the base styles.
+Fylgja only ships RTL-aware utilities,
+so the [Utilities](/docs/library/utilities) package behaves the same way.
+
+Spacing, alignment, and positioning are built on logical properties
+(`margin-inline`, `inset-inline`, `text-start`, and so on)
+rather than physical `left`/`right` ones.
+
+As a result, there are no directional variants to swap:
+the same utility that adds inline-start spacing in LTR
+adds it on the opposite side in RTL, automatically.
 
 ## Forcing a Specific Text Direction
 

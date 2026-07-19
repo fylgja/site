@@ -32,6 +32,12 @@ faq:
   - question: Can I import a single utility instead of the whole package?
     answer: Yes, every utility listed in the overview can be imported individually
       with @import "@fylgja/utilities/{UTILITY_NAME}.css".
+  - question: How do I set only one side with spacing variables like --my or --mx?
+    answer: 'Pass two values to the logical shorthand; the first is the start side,
+      the second the end. For example --mx: 0 1rem only spaces the inline-end,
+      and --my: 1rem 0 only spaces the block-start. Set 0 (or your reset value)
+      for the side you want to leave flush. These stay RTL-aware, so the start
+      side follows the text direction.'
 ---
 
 import InstallTabs from "@/components/InstallTabs.astro";
@@ -371,6 +377,20 @@ You don't need a specific class to use these [Dynamic CSS Utilities]; simply set
 - `--px` (padding-inline)
 
 along with a valid CSS unit to apply the styles.
+
+Each of these maps to a logical shorthand (e.g. `--my` sets `margin-block`),
+so you can target a single direction by passing two values:
+the first is the start side, the second the end.
+
+```html
+<!-- margin only on the block-start (top in LTR) -->
+<div style="--my: 1rem 0">...</div>
+<!-- margin only on the inline-end (right in LTR, left in RTL) -->
+<div style="--mx: 0 1rem">...</div>
+```
+
+Because these are logical properties, the start and end sides follow the text
+direction, staying RTL-aware without any directional variants.
 
 The power of [Dynamic CSS Utilities] extends to breakpoint customization.
 For example, set a different margin for the **md** breakpoint using `--md_my: 1rem`.
