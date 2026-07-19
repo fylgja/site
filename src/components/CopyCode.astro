@@ -57,11 +57,11 @@
 </script>
 
 <style is:global>
-	.copy-code-wrapper {
-		--_show: initial;
-
-		&:hover {
-			--_show: /* */;
+	@media (hover: hover) {
+		.copy-code-wrapper:not(:hover) {
+			.copy-code {
+				opacity: 30%;
+			}
 		}
 	}
 
@@ -73,7 +73,7 @@
 		position: absolute;
 		inset-block-start: 0.25em;
 		inset-inline-end: 0.25em;
-		visibility: var(--_show, hidden);
+		transition: opacity 0.2s;
 
 		&[data-copied="false"] {
 			.show-if-copied {
