@@ -25,15 +25,32 @@ type SearchRecord = {
 	b?: number;
 };
 
+/** `weight` scales every record of a collection, to rank one above another. */
 const SOURCES = [
 	{
 		name: "docs",
 		label: "Docs",
 		url: (id: string) => (id === "index" ? "/docs/" : `/docs/${id}/`),
+		weight: 1,
 	},
-	{ name: "library", label: "Library", url: (id: string) => `/library/${id}/` },
-	{ name: "ui", label: "UI", url: (id: string) => `/ui/${id}/` },
-	{ name: "blog", label: "Blog", url: (id: string) => `/blog/${id}/` },
+	{
+		name: "library",
+		label: "Library",
+		url: (id: string) => `/library/${id}/`,
+		weight: 1,
+	},
+	{
+		name: "ui",
+		label: "UI",
+		url: (id: string) => `/ui/${id}/`,
+		weight: 1,
+	},
+	{
+		name: "blog",
+		label: "Blog",
+		url: (id: string) => `/blog/${id}/`,
+		weight: 0.6,
+	},
 ] as const;
 
 /** Pages outside the content collections, indexed on title and description only. */
@@ -90,9 +107,6 @@ const STATIC_PAGES: SearchRecord[] = [
 	},
 ];
 
-/** Long sections are split into chunks of roughly this many characters. */
-const CHUNK_SIZE = 1200;
-
 /** Skipped when harvesting custom properties: `--save-dev` is not one of ours. */
 const NON_STYLE_FENCES = new Set([
 	"sh",
@@ -139,85 +153,48 @@ function toPlainText(input: string) {
 	);
 }
 
-type Section = { title: string; text: string; props: Set<string> };
-
 /**
- * Splits a document body into one section per heading.
- *
- * Fenced code is dropped, since the examples repeat across pages and would bloat
- * the index. Their custom properties are kept, because a reader searching
- * "--btn-bg" expects the page documenting it and those names often appear nowhere
- * else. Anchors are not derived here; Astro knows what ids it rendered.
+ * Custom properties a page names, in prose or in a CSS example. The body itself
+ * is not indexed, but a reader searching "--btn-bg" still expects the page that
+ * documents it, and those names often appear nowhere else.
  */
-function toSections(body: string): Section[] {
-	const newSection = (title = ""): Section => ({ title, text: "", props: new Set() });
-	const sections = [newSection()];
+function toCustomProperties(body: string) {
+	const props = new Set<string>();
 	let inFence = false;
 	let fenceLang = "";
 
 	for (const line of body.split("\n")) {
-		const current = sections[sections.length - 1];
-
 		const fence = /^\s*(```|~~~)\s*([\w-]+)?/.exec(line);
 		if (fence) {
 			if (!inFence) fenceLang = (fence[2] ?? "").toLowerCase();
 			inFence = !inFence;
 			continue;
 		}
-		if (inFence) {
-			if (!NON_STYLE_FENCES.has(fenceLang)) {
-				for (const [prop] of line.matchAll(/--[a-z][\w-]*/gi)) current.props.add(prop);
-			}
-			continue;
-		}
-		// MDX import/export statements are code, not prose.
-		if (/^\s*(import|export)\s/.test(line)) continue;
+		// A long CLI option is spelled like a custom property, so skip those fences.
+		if (inFence && NON_STYLE_FENCES.has(fenceLang)) continue;
 
-		const heading = /^(#{2,4})\s+(.+?)\s*#*\s*$/.exec(line);
-		if (heading) {
-			sections.push(newSection(toInlineText(heading[2])));
-			continue;
-		}
-
-		const text = toPlainText(line);
-		if (text) current.text += `${text} `;
+		for (const [prop] of line.matchAll(/--[a-z][\w-]*/gi)) props.add(prop);
 	}
 
-	// Keywords trail the prose so the snippet still opens on a readable sentence.
-	for (const section of sections) {
-		section.text = `${section.text.trim()} ${[...section.props].join(" ")}`.trim();
-	}
-
-	return sections;
+	return [...props];
 }
 
-/** Strips casing and punctuation, to compare two strings on their words alone. */
-const normalize = (value: string) =>
-	value
-		.toLowerCase()
-		.replace(/[^a-z0-9]+/g, " ")
-		.trim();
-
-/** A description often restates the first sentence then diverges, so compare openings. */
-function sharesOpening(a: string, b: string, words = 8) {
-	const opening = (value: string) => normalize(value).split(" ").slice(0, words).join(" ");
-	return opening(a) === opening(b);
-}
-
-/** Splits text over CHUNK_SIZE on word boundaries, so no match falls off the end. */
-function toChunks(text: string) {
-	if (text.length <= CHUNK_SIZE) return [text];
-
-	const chunks: string[] = [];
-	let rest = text;
-	while (rest.length > CHUNK_SIZE) {
-		const cut = rest.lastIndexOf(" ", CHUNK_SIZE);
-		const at = cut > CHUNK_SIZE / 2 ? cut : CHUNK_SIZE;
-		chunks.push(rest.slice(0, at).trim());
-		rest = rest.slice(at).trim();
+/**
+ * Headings a collection repeats on most of its pages, such as the Preview and
+ * Accessibility sections every UI component carries. They say nothing about
+ * which page a reader wants, so indexing them turns those words into a wall of
+ * every component.
+ */
+function commonHeadings(rendered: { anchors: { text: string }[] }[]) {
+	const counts = new Map<string, number>();
+	for (const { anchors } of rendered) {
+		for (const text of new Set(anchors.map(({ text }) => text))) {
+			counts.set(text, (counts.get(text) ?? 0) + 1);
+		}
 	}
-	if (rest) chunks.push(rest);
-	return chunks;
+
+	const limit = Math.max(2, rendered.length / 3);
+	return new Set([...counts].filter(([, seen]) => seen > limit).map(([text]) => text));
 }
 
 export async function GET() {
@@ -229,47 +206,44 @@ export async function GET() {
 			return import.meta.env.PROD ? data.draft !== true : true;
 		});
 
-		for (const entry of entries) {
+		// Astro slugs headings as it renders, so reuse those rather than
+		// reimplementing the rule and drifting out of sync.
+		const rendered = await Promise.all(
+			entries.map(async (entry: any) => ({
+				entry,
+				anchors: (await render(entry)).headings.filter(({ depth }: any) => depth >= 2 && depth <= 4),
+			})),
+		);
+		const boilerplate = commonHeadings(rendered);
+
+		for (const { entry, anchors } of rendered) {
 			const { title, description, tags, category, keywords, searchBoost } = entry.data as any;
 			const url = source.url(entry.id);
 			// Authored importance travels with every record of the page, so its
 			// sections rank alongside it rather than being left behind.
-			const boost = searchBoost && searchBoost !== 1 ? { b: searchBoost } : {};
+			const weight = Math.round(source.weight * (searchBoost ?? 1) * 100) / 100;
+			const boost = weight !== 1 ? { b: weight } : {};
 			const push = (record: Omit<SearchRecord, "u" | "t" | "s">, anchor = "") => {
 				if (!record.c) return;
 				records.push({ u: url + anchor, t: title, s: source.label, ...boost, ...record });
 			};
 
-			// Astro slugs headings as it renders, so reuse those rather than
-			// reimplementing the rule and drifting out of sync.
-			const { headings } = await render(entry);
-			const anchors = headings.filter(({ depth }: any) => depth >= 2 && depth <= 4);
-
-			const [intro, ...sections] = toSections(entry.body ?? "");
-			// A description usually restates the opening paragraph, so only add it
-			// when it says something the body does not already say.
-			const lead = sharesOpening(intro.text, description) ? intro.text : `${description} ${intro.text}`.trim();
 			// `keywords` is a deliberate claim, so it carries a title's weight. `tags`
 			// and `category` are shared across pages and stay ordinary text: "card" is
 			// a tag on Media Card, which must not outrank the page called Card.
 			const declared = toTerms(keywords);
 			const loose = [category, ...(tags ?? [])].filter(Boolean).join(" ");
-			push({
-				c: `${toChunks(lead)[0]} ${loose}`.trim(),
-				...(declared.length ? { k: declared } : {}),
-			});
+			const meta = declared.length ? { k: declared } : {};
 
-			sections.forEach((section, index) => {
-				// Both lists come from the same headings in the same order. If they ever
-				// disagree, link to the page rather than to an anchor that goes nowhere.
-				const heading = anchors[index];
-				const matches = heading && normalize(heading.text) === normalize(section.title);
-				const anchor = matches ? `#${heading.slug}` : "";
-
-				for (const chunk of toChunks(section.text)) {
-					push({ h: section.title, c: chunk }, anchor);
-				}
-			});
+			// The headings are what the page covers, so they stand in for the body,
+			// and the custom properties keep "--btn-bg" pointing at the page that
+			// documents it. Both trail the description, which stays the snippet.
+			const outline = anchors
+				.map(({ text }: any) => text)
+				.filter((text: string) => !boilerplate.has(text))
+				.join(" ");
+			const props = toCustomProperties(entry.body ?? "").join(" ");
+			push({ c: `${description} ${loose} ${outline} ${props}`.replace(/\s+/g, " ").trim(), ...meta });
 
 			for (const { question, answer } of (entry.data as any).faq ?? []) {
 				push({ h: "FAQ", c: `${question} ${toPlainText(answer)}` }, "#faq");
