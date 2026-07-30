@@ -81,19 +81,22 @@ export class SiteSearch extends HTMLElement {
 
 	constructor() {
 		super();
-		// Bound here so the document listener can be removed by identity.
+		// Bound here so the listeners can be removed by identity.
 		this.onShortcut = this.onShortcut.bind(this);
+		this.onPageShow = this.onPageShow.bind(this);
 	}
 
 	connectedCallback() {
 		// Moving the element in the DOM reconnects it, and the light DOM is already
-		// wired by then; only the document listener needs registering again.
+		// wired by then; only the outside listeners need registering again.
 		if (!this.dialog) this.setup();
 		if (this.hasShortcut) document.addEventListener("keydown", this.onShortcut);
+		window.addEventListener("pageshow", this.onPageShow);
 	}
 
 	disconnectedCallback() {
 		document.removeEventListener("keydown", this.onShortcut);
+		window.removeEventListener("pageshow", this.onPageShow);
 	}
 
 	setup() {
@@ -109,11 +112,6 @@ export class SiteSearch extends HTMLElement {
 		this.querySelector("[data-search-open]")?.addEventListener("click", () => this.open());
 		this.querySelector("[data-search-close]")?.addEventListener("click", () => this.dialog.close());
 
-		this.dialog.addEventListener("close", () => {
-			// close() flips `open` at once but queues this event, by which time the
-			// dialog can be open again. Clearing then would wipe a fresh query.
-			if (!this.dialog.open) this.reset();
-		});
 		this.querySelector("form")?.addEventListener("submit", (event) => event.preventDefault());
 		this.input.addEventListener("input", () => this.render());
 		this.input.addEventListener("keydown", (event) => this.onKeydown(event));
@@ -155,15 +153,32 @@ export class SiteSearch extends HTMLElement {
 		return this.index;
 	}
 
+	/**
+	 * The query survives a close, so reopening picks up where the reader left off.
+	 * Selecting it means typing still replaces it in one go.
+	 */
 	open() {
 		if (!this.dialog.open) this.dialog.showModal();
 		this.input.focus();
 		this.input.select();
 	}
 
+	/** Clears the query and its results. */
 	reset() {
 		this.input.value = "";
 		this.render();
+	}
+
+	/**
+	 * A bfcache restore hands the page back exactly as it was left, so a reader who
+	 * followed a result would return into an open dialog holding a stale query.
+	 *
+	 * @param {PageTransitionEvent} event
+	 */
+	onPageShow(event) {
+		if (!event.persisted) return;
+		if (this.dialog.open) this.dialog.close();
+		this.reset();
 	}
 
 	/** @param {KeyboardEvent} event */
