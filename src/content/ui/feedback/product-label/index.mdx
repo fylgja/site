@@ -1,0 +1,84 @@
+---
+title: "Product Label"
+pageTitle: "Fylgja Product Label"
+description: "A badge pinned over a product image to flag a sale, a new arrival or any other status."
+category: "feedback"
+tags: ["product", "label", "sale", "badge", "ribbon", "tag", "ecommerce"]
+status: "stable"
+languages: ["html"]
+requires:
+  - pkg: "@fylgja/badge"
+    level: required
+    reason: "Provides the .badge pill and its --badge-* variables."
+  - pkg: "@fylgja/card"
+    level: required
+    reason: "Provides the card the label sits on."
+  - pkg: "@fylgja/utilities"
+    level: required
+    reason: "Provides relative / absolute and the inset variables that pin the label."
+  - pkg: "@fylgja/tokens"
+    level: recommended
+    reason: "Supplies the --color-* tokens used to recolor a label."
+sortOrder: 2
+faq:
+  - question: Why is the label inside its own wrapper instead of on the card?
+    answer: The label is pinned to the image, not to the card, so the relative
+      wrapper goes around the image. Putting it on the card would place the label
+      against the card's padding rather than the artwork.
+  - question: Can I drop the wrapper and use anchor positioning instead?
+    answer: Yes, and it is worth knowing. Give the image an anchor-name, then point
+      the badge at it with position-anchor and place it with position-area, and the
+      relative wrapper is no longer needed. [CSS anchor
+      positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning)
+      is still at limited availability across browsers, so this example uses the
+      wrapper for the widest support today.
+  - question: How do I recolor a label per status?
+    answer: Set --badge-bg and --badge-color on that badge. Keep contrast in mind,
+      since a label sits on top of an image and has to stay readable.
+  - question: Does the label need to be announced to screen readers?
+    answer: It is plain text in the reading order, so it is announced already. Make
+      sure it reads sensibly next to the product name, and never rely on its color
+      alone to convey the meaning.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+
+A product label is a [badge](/ui/feedback/badge/) pinned over a product image to
+flag a sale, a new arrival or a low stock warning. It is the badge and the
+[card](/ui/layout/card/) composed together, with no new component behind it.
+
+## Preview
+
+<ComponentPreview center code={example} />
+
+## Usage
+
+- Wrap the image in a `relative` container, and give the badge `absolute` with an
+  inset, so the label anchors to the artwork rather than the card.
+- Position it with `--inset-t` and `--inset-e`. Use `--inset-s` to move it to the
+  leading corner.
+- Recolor per status with `--badge-bg` and `--badge-color`.
+- Keep the label text short. It is a flag, not a description.
+
+## Anatomy
+
+- `.card` is the product itself.
+- `.relative` around the image is what the label is positioned against.
+- `.badge.absolute` is the label, offset by the inset variables.
+- `.card-content` holds the text, which is what lets the image sit flush to the
+  card's edges.
+
+## Accessibility
+
+- The label is real text, so it is read out in order with the product name.
+- Do not let color alone carry the meaning. "Sale" must say sale.
+- Check contrast against the image behind it. A busy photo can swallow a
+  translucent label.
+
+## Examples
+
+Drop the labelled card into [Product Grid](/ui/layout/product-grid/) to build a
+full listing, since the grid handles the layout and this component only handles
+the label. For the pill on its own, including the notification count pinned to a
+button, see [Badge](/ui/feedback/badge/).

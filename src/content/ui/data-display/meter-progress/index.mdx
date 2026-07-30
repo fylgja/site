@@ -1,0 +1,67 @@
+---
+title: "Meter and Progress"
+pageTitle: "Fylgja Meter and Progress"
+description: "Native meter and progress bars, styled consistently across browsers and colored by their own value."
+category: "data-display"
+tags: ["meter", "progress", "bar", "gauge", "loading", "strength", "usage"]
+status: "stable"
+languages: ["html"]
+requires:
+  - pkg: "@fylgja/form-extend"
+    level: required
+    reason: "Styles the meter and progress bars consistently across browsers."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Blocks the label above the bar."
+sortOrder: 4
+faq:
+  - question: When do I use meter instead of progress?
+    answer: A meter shows a measurement within a known range, such as disk usage or
+      password strength, where the value can go up or down. A progress bar shows how
+      far a task has run, and only moves forward.
+  - question: Why does my meter change color on its own?
+    answer: That is the point of the low, high and optimum attributes. The browser
+      compares the value to them and picks the good, average or poor state, so you
+      do not script the color yourself.
+  - question: How do I show a task with no known duration?
+    answer: Leave the value off the progress element. Without it the bar renders as
+      indeterminate and animates instead of filling to a point.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+
+`<meter>` and `<progress>` are the two native bars, and browsers style them
+inconsistently out of the box. Fylgja Form Extend gives both a consistent track
+and fill, while leaving the semantics and the color states to the browser.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- Use `<meter>` for a value inside a known range, and `<progress>` for how far a
+  task has run.
+- Give a meter `min`, `max` and `value`. Add `low`, `high` and `optimum` to let
+  the browser color it good, average or poor on its own.
+- Give a progress bar `max` and `value`, or leave `value` off entirely for an
+  indeterminate bar.
+- Put the text inside the element as a fallback, for example `82%`. Browsers that
+  render the bar ignore it.
+
+## Anatomy
+
+- `<label>` wraps the bar and its text, so no `for` is needed.
+- `min` / `max` set the range, `value` the current point.
+- `low` / `high` / `optimum` describe what a good value is, which is what drives
+  the color, not a class.
+
+## Accessibility
+
+- Both elements carry their role and value natively, so a screen reader announces
+  the number without any ARIA.
+- Color alone must not carry the meaning. Keep the label, and state the value in
+  text when it matters.
+- An indeterminate progress bar animates. Readers who prefer reduced motion get a
+  calmer version from Fylgja.
