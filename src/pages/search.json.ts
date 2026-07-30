@@ -4,9 +4,10 @@ import { getCollection, render } from "astro:content";
  * Static search index, built once at build time and fetched by <site-search>
  * the first time a reader opens the search dialog.
  *
- * Records are chunks, not pages: every heading in a document starts a new chunk
- * so a hit can deep link to the exact section. Keys are single letters to keep
- * the payload small, since the whole index is downloaded in one go.
+ * A page contributes one record for itself and one per heading, so a hit can
+ * deep link to the exact section. Body prose is not indexed, only what a page
+ * declares about itself. Keys are single letters to keep the payload small,
+ * since the whole index is downloaded in one go.
  */
 type SearchRecord = {
 	/** Page url, with the section anchor when the chunk sits under a heading */
@@ -235,15 +236,18 @@ export async function GET() {
 			const loose = [category, ...(tags ?? [])].filter(Boolean).join(" ");
 			const meta = declared.length ? { k: declared } : {};
 
-			// The headings are what the page covers, so they stand in for the body,
-			// and the custom properties keep "--btn-bg" pointing at the page that
-			// documents it. Both trail the description, which stays the snippet.
-			const outline = anchors
-				.map(({ text }: any) => text)
-				.filter((text: string) => !boilerplate.has(text))
-				.join(" ");
+			// The custom properties keep "--btn-bg" pointing at the page that documents
+			// it, trailing the description so that stays the snippet.
 			const props = toCustomProperties(entry.body ?? "").join(" ");
-			push({ c: `${description} ${loose} ${outline} ${props}`.replace(/\s+/g, " ").trim(), ...meta });
+			push({ c: `${description} ${loose} ${props}`.replace(/\s+/g, " ").trim(), ...meta });
+
+			// A heading is what its section is about, and the only part of the body
+			// worth a record of its own, since it is what a hit can link to. The
+			// description carries as the snippet, there being no prose to quote.
+			for (const { text, slug } of anchors) {
+				if (boilerplate.has(text)) continue;
+				push({ h: text, c: description }, `#${slug}`);
+			}
 
 			for (const { question, answer } of (entry.data as any).faq ?? []) {
 				push({ h: "FAQ", c: `${question} ${toPlainText(answer)}` }, "#faq");
