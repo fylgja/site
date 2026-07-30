@@ -1,6 +1,8 @@
 ---
 title: "Getting Started"
 description: "New to Fylgja? Here's how to get started using the CSS foundation, design tokens, and utilities."
+keywords: ["install", "installation", "setup", "quick start", "npm", "cdn", "getting started"]
+searchBoost: 1.2
 faq:
   - question: Do I need to install all three core packages, or can I use just one?
     answer: You can use just one. Fylgja is modular, so Base, Tokens, and Utilities
