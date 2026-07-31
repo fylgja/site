@@ -8,7 +8,7 @@ import { uiCategories } from "./src/ui-categories";
 // UI category folders (e.g. /ui/overlays/) are not real pages; send them to the
 // gallery filtered by that category.
 const uiCategoryRedirects = Object.fromEntries(
-	uiCategories.map((category) => [`/ui/${category}/`, `/ui/?category=${category}`])
+	uiCategories.map((category) => [`/ui/${category}/`, `/ui/?category=${category}`]),
 );
 
 export default defineConfig({
@@ -24,6 +24,15 @@ export default defineConfig({
 			themes: {
 				light: "github-light-default",
 				dark: "github-dark-default",
+			},
+		},
+	},
+	vite: {
+		customLogger: {
+			...globalThis.VITE_LOGGER,
+			warn(msg) {
+				if (msg.includes("target-current")) return;
+				console.warn(msg);
 			},
 		},
 	},
