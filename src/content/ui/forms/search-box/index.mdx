@@ -1,0 +1,79 @@
+---
+title: "Search Box"
+pageTitle: "Fylgja Search Box"
+description: "A search field and its submit button joined into one control, wrapped in the native search landmark."
+category: "forms"
+tags: ["search", "searchbox", "input group", "form", "filter", "query"]
+status: "stable"
+languages: ["html"]
+requires:
+  - pkg: "@fylgja/input-group"
+    level: required
+    reason: "Joins the input and button into a single control."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the native input and button out of the box."
+sortOrder: 4
+faq:
+  - question: Why use input type=search instead of type=text?
+    answer: It gives the field a clear button in most browsers, and tells assistive
+      technology and the browser's autofill what the field is for. Note that the
+      first Escape press clears the field rather than reaching your own handler.
+  - question: What does the search element add?
+    answer: It maps to the search landmark, so a screen reader user can jump straight
+      to it. Before it shipped you had to write role=search on the form by hand.
+  - question: Does the label have to be visible?
+    answer: No, but it has to exist. Hide it with the sr-only utility if the design
+      calls for a bare field, and never swap it for a placeholder, which disappears
+      as soon as the reader types.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+
+A search box pairs a query field with its submit button so they read as one
+control. It is built on the native [`<search>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/search)
+element and `<input type="search">`, so the search landmark and the field's clear
+button come for free.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- Wrap the form in `<search>`. That is what marks the region as search, so no
+  `role="search"` is needed.
+- Put the `<input>` and `<button>` in a `.input-group`, with `--merge` to drop
+  the seam between them so they read as one control.
+- Give the input a `<label for>`. This example hides it with `sr-only`, which is
+  what most search boxes want, but it still names the field. Drop the class to
+  show it.
+- Use `type="search"` so browsers offer the clear button and the right keyboard.
+
+## Anatomy
+
+- `<search>` marks the landmark.
+- `<form action>` decides where the query goes, so it keeps working without
+  JavaScript.
+- `--form-stroke` softens the field's border. It is a plain color, so mix it from
+  `--root-fg` to keep it working in both themes.
+- `.input-group.--merge` joins the field and the button, squaring off the inner
+  corners and removing the border between them.
+- `<button>` submits. It needs no `type`, since submit is the default in a form,
+  and it carries only the icon.
+
+## Accessibility
+
+- The `<search>` element carries the search landmark natively.
+- The `<label for>` names the field. A placeholder is not a label.
+- The icon button is named by its `sr-only` span, with the SVG hidden from
+  assistive tech. Drop the span and the button announces as unlabelled.
+- Both the field and the button are reachable and operable by keyboard with no
+  extra work.
+
+## Variants
+
+Drop the button when the field filters live as the reader types, and keep the
+`<search>` wrapper. For the joined look with a select or a second button, see the
+[Input Group](/library/components/input-group/) docs.

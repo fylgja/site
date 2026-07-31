@@ -1,0 +1,83 @@
+---
+title: "Meter"
+pageTitle: "Fylgja Meter"
+description: "A native meter for a measurement in a known range, coloring itself good, average or poor from its own value."
+category: "data-display"
+tags: ["meter", "gauge", "bar", "usage", "strength", "capacity", "rating"]
+status: "stable"
+languages: ["html"]
+requires:
+  - pkg: "@fylgja/form-extend"
+    level: required
+    reason: "Styles the meter track and its three states consistently across browsers."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Blocks the label above the bar."
+  - pkg: "@fylgja/tokens"
+    level: recommended
+    reason: "Supplies the --hue-* tokens used to recolor the states."
+sortOrder: 4
+faq:
+  - question: When do I use a meter instead of a progress bar?
+    answer: A meter shows a measurement within a known range, such as disk usage or
+      password strength, where the value can go up or down. Use
+      [Progress](/ui/data-display/progress/) for how far a task has run, which only
+      moves forward.
+  - question: Why does my meter change color on its own?
+    answer: The browser compares the value to low, high and optimum and decides
+      which of the three states applies, so you never script it. Fylgja then paints
+      that state with --success, --warning and --error, because left alone every
+      browser picks its own shades.
+  - question: Why does a lower value show as good here?
+    answer: Because optimum sits at the low end. In the disk usage example optimum
+      is 20, so filling the disk moves the meter away from good and it turns amber
+      then red. Move optimum to the high end and the states flip.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+import exampleColors from "./example-colors.html?raw";
+
+`<meter>` shows a value inside a known range, such as disk usage, a password
+strength score or remaining capacity. Browsers style it inconsistently, so Fylgja
+Form Extend turns the native rendering off and rebuilds it. The browser still
+decides which state a value is in; Fylgja only decides what that state looks like.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- Give the meter `min`, `max` and `value`.
+- Add `low`, `high` and `optimum` and the browser works out whether the value is
+  good, average or poor. Without them the bar is a single neutral fill.
+- `optimum` is which end is good, not a target. Put it at the low end for things
+  you want small, like disk usage.
+- Put the text inside the element as a fallback, for example `82%`. Browsers that
+  render the bar ignore it.
+- Size the track with `--track-height` and `--track-color`.
+
+## Anatomy
+
+- `<label>` wraps the bar and its text, so no `for` is needed.
+- `min` / `max` set the range, `value` the current point.
+- `low` / `high` / `optimum` describe what a good value is, which is what selects
+  the state, not a class.
+- `--success` / `--warning` / `--error` paint the selected state. Fylgja maps them
+  onto the WebKit pseudo elements and the Firefox meter states for you.
+
+## Variants
+
+The defaults are a plain green, amber and red. Point them at your own palette to
+match a theme. Set these on the `<meter>` itself, not on the wrapping label, since
+Form Extend declares them on the element and an inherited value loses to that.
+
+<ComponentPreview code={exampleColors} />
+
+## Accessibility
+
+- The element carries its role and value natively, so a screen reader announces
+  the number without any ARIA.
+- Color alone must not carry the meaning. Keep the label, and state the value in
+  text when it matters.

@@ -16,8 +16,6 @@
 		"@astrojs/mdx": "^7.0.5",
 		"@astrojs/rss": "^4.0.19",
 		"@astrojs/sitemap": "^3.7.3",
-		"@docsearch/css": "^3.9.0",
-		"@docsearch/js": "^3.9.0",
 		"@fylgja/badge": "^2.0.0",
 		"@fylgja/base": "^2.1.6",
 		"@fylgja/breadcrumbs": "^2.0.1",

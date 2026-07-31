@@ -18,6 +18,15 @@ interface Props {
 
 const isCurrentPage = (href: string) => (Astro.url.pathname === href ? "page" : null);
 const { title, items, urlPrefix, class: classes } = Astro.props;
+
+const groups = items.filter((group) => group.title && group.items.length);
+/**
+ * The group holding the current page, falling back to the first, so the menu
+ * never renders fully collapsed on a page that sits outside every group.
+ */
+const openGroup =
+	groups.find((group) => group.items.some((item) => isCurrentPage(`${urlPrefix}/${item.id}/`))) ??
+	groups[0];
 ---
 
 <nav aria-label={`${title} Nav`} class:list={["menu", classes]}>
@@ -27,24 +36,25 @@ const { title, items, urlPrefix, class: classes } = Astro.props;
 				if (!group.items.length) return;
 
 				if (!group.title) {
-					return group.items.map((item) => (
-						<li>
-							<a
-								class="btn w-full"
-								href={item.id ? `${urlPrefix}/${item.id}/` : `${urlPrefix}/`}
-								aria-current={isCurrentPage(
-									`${item.id ? `${urlPrefix}/${item.id}/` : `${urlPrefix}/`}`
-								)}
-							>
-								{item.data.title}
-							</a>
-						</li>
-					));
+					return group.items.map((item) => {
+						const itemUrl = item.id ? `${urlPrefix}/${item.id}/` : `${urlPrefix}/`;
+						return (
+							<li>
+								<a
+									class="btn w-full"
+									href={itemUrl}
+									aria-current={isCurrentPage(itemUrl)}
+								>
+									{item.data.title}
+								</a>
+							</li>
+						)
+					});
 				}
 
 				return (
 					<li>
-						<details open>
+						<details open={group === openGroup}>
 							<summary class="list-none btn w-full">
 								<span>{group.title}</span>
 								<ChevronDown
@@ -54,19 +64,20 @@ const { title, items, urlPrefix, class: classes } = Astro.props;
 								/>
 							</summary>
 							<ul>
-								{group.items.map((item) => (
-									<li>
-										<a
-											class="btn w-full"
-											href={`${urlPrefix}/${item.id}/`}
-											aria-current={isCurrentPage(
-												`${urlPrefix}/${item.id}/`
-											)}
-										>
-											{item.data.title}
-										</a>
-									</li>
-								))}
+								{group.items.map((item) => {
+									const itemUrl = `${urlPrefix}/${item.id}/`;
+									return (
+										<li>
+											<a
+												class="btn w-full"
+												href={itemUrl}
+												aria-current={isCurrentPage(itemUrl)}
+											>
+												{item.data.title}
+											</a>
+										</li>
+									)
+								})}
 							</ul>
 						</details>
 					</li>

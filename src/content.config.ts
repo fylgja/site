@@ -11,6 +11,15 @@ const baseSchema = {
 	sortOrder: z.number().optional().default(10),
 	title: z.string(),
 	description: z.string(),
+	// Terms this page should be found by, beyond the words already on it. Use for
+	// what a reader would type when they do not know your wording, e.g. "install"
+	// for Getting Started. A term matched here counts as much as a title match.
+	keywords: z.array(z.string()).optional().default([]),
+	// Multiplies this page's search score. Above 1 pushes it up when it matches,
+	// below 1 holds it back. Keep it near 1; this ranks pages, it does not pin them,
+	// and it cannot hide one, which is what `draft` is for. Must be positive: zero
+	// would silently drop the page from every result.
+	searchBoost: z.number().positive().optional().default(1),
 	image: z
 		.object({
 			src: z.string().default("/og/social.jpg"),
@@ -30,7 +39,7 @@ const docsSchema = z.object({
 			z.object({
 				question: z.string(),
 				answer: z.string(),
-			})
+			}),
 		)
 		.optional(),
 });
@@ -53,7 +62,7 @@ const uiSchema = docsSchema.extend({
 				pkg: z.string(),
 				level: z.enum(["required", "recommended"]).default("required"),
 				reason: z.string().optional(),
-			})
+			}),
 		)
 		.default([]),
 });

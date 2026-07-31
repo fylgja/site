@@ -1,0 +1,77 @@
+---
+title: "Progress"
+pageTitle: "Fylgja Progress"
+description: "A native progress bar for how far a task has run, determinate or indeterminate."
+category: "data-display"
+tags: ["progress", "bar", "loading", "upload", "task", "indeterminate", "spinner"]
+status: "stable"
+languages: ["html"]
+requires:
+  - pkg: "@fylgja/form-extend"
+    level: required
+    reason: "Styles the progress track and fill consistently across browsers."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Blocks the label above the bar."
+  - pkg: "@fylgja/tokens"
+    level: recommended
+    reason: "Supplies the --hue-* tokens used to recolor the fill."
+sortOrder: 5
+faq:
+  - question: How do I show a task with no known duration?
+    answer: Leave the value off. Without it the bar renders as indeterminate and
+      animates instead of filling to a point, which is the second example above.
+  - question: When do I use a progress bar instead of a meter?
+    answer: A progress bar shows how far a task has run and only moves forward. Use
+      [Meter](/ui/data-display/meter/) for a measurement in a known range, such as
+      disk usage, where the value can go up or down.
+  - question: Why is the fill the brand color?
+    answer: --fill defaults to --brand, so a progress bar matches your theme with no
+      setup. Set --fill on the element to change it.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+import exampleColors from "./example-colors.html?raw";
+
+`<progress>` shows how far a task has run, such as an upload or an import. It
+only moves forward, and it can run without a value at all when the duration is
+unknown. Fylgja Form Extend restyles it so the track and fill look the same
+across browsers.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- Give the bar `max` and `value` for a known amount of work.
+- Leave `value` off entirely for an indeterminate bar, which animates rather than
+  filling to a point.
+- Put the text inside the element as a fallback, for example `64%`. Browsers that
+  render the bar ignore it.
+- Recolor the fill with `--fill`, and size the track with `--track-height` and
+  `--track-color`.
+
+## Anatomy
+
+- `<label>` wraps the bar and its text, so no `for` is needed.
+- `max` and `value` set how much of the task is done. No `value` means unknown.
+- `--fill` is the filled portion, defaulting to `--brand`. There are no states
+  here, unlike [Meter](/ui/data-display/meter/).
+
+## Variants
+
+Set `--fill` on the `<progress>` itself, not on the wrapping label, since Form
+Extend declares it on the element and an inherited value loses to that.
+
+<ComponentPreview code={exampleColors} />
+
+## Accessibility
+
+- The element carries its role and value natively, so a screen reader announces
+  the progress without any ARIA.
+- Keep the label. A bare bar tells a screen reader user a percentage but not what
+  it measures.
+- An indeterminate bar animates. Readers who prefer reduced motion get a calmer
+  version from Fylgja.
