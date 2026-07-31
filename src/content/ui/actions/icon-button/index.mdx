@@ -10,6 +10,9 @@ requires:
   - pkg: "@fylgja/base"
     level: recommended
     reason: "Styles the button and squares the padding automatically when its only child is an icon."
+  - pkg: "@fylgja/utilities"
+    level: recommended
+    reason: "Provides the .round utility for a circular icon button."
 sortOrder: 3
 faq:
   - question: Why is an icon-only button square?
@@ -52,8 +55,11 @@ icon.
 
 ## Round
 
-Set `--btn-radius` to a pill radius for a round icon button (here also a primary
-fill via `--btn-bg`).
+Add the `.round` utility to turn the square button into a circle. It sets a full
+border radius and a 1:1 aspect ratio, so it builds on the square padding an
+icon-only button already has. It comes from
+[@fylgja/utilities](/library/utilities/), and works on any button, though a single
+centered icon is what suits a circle best.
 
 <ComponentPreview center code={round} />
 
