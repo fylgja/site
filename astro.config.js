@@ -1,10 +1,8 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
-import { unified } from "@astrojs/markdown-remark";
-import { remarkAlert } from "remark-github-blockquote-alert";
-import { remarkWrapTables } from "./remarkPlugins";
-import rehypeExternalLinks from "rehype-external-links";
+import { satteri } from "@astrojs/markdown-satteri";
+import { wrapTables, githubAlerts, externalLinks } from "./markdown-plugins";
 import { uiCategories } from "./src/ui-categories";
 
 // UI category folders (e.g. /ui/overlays/) are not real pages; send them to the
@@ -17,17 +15,9 @@ export default defineConfig({
 	site: "https://fylgja.dev",
 	integrations: [sitemap(), mdx()],
 	markdown: {
-		processor: unified({
-			remarkPlugins: [remarkAlert, remarkWrapTables],
-			rehypePlugins: [
-				[
-					rehypeExternalLinks,
-					{
-						target: "_blank",
-						rel: "noopener noreferrer",
-					},
-				],
-			],
+		processor: satteri({
+			mdastPlugins: [githubAlerts, wrapTables],
+			hastPlugins: [externalLinks],
 		}),
 		shikiConfig: {
 			defaultColor: false,
