@@ -130,32 +130,6 @@ const NON_STYLE_FENCES = new Set([
 /** Terms are matched against a lowercased query, so both sources come through here. */
 const toTerms = (list: string[] = []) => list.map((term) => term.trim().toLowerCase()).filter(Boolean);
 
-/** Strips inline markdown/JSX syntax, leaving the words a reader would see. */
-function toInlineText(input: string) {
-	return input
-		.replace(/\{\/\*[\s\S]*?\*\/\}/g, " ")
-		.replace(/<[^>]*>/g, " ")
-		.replace(/!\[([^\]]*)\]\([^)]*\)/g, "$1")
-		.replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
-		.replace(/`+/g, "")
-		.replace(/(\*\*|__)(?=\S)([\s\S]*?\S)\1/g, "$2")
-		.replace(/(\*|_)(?=\S)([^*_]*?\S)\1/g, "$2")
-		.replace(/~~(?=\S)([\s\S]*?\S)~~/g, "$1")
-		.replace(/\s+/g, " ")
-		.trim();
-}
-
-/** Reduces a line of body markdown to prose, so snippets read like sentences. */
-function toPlainText(input: string) {
-	return toInlineText(
-		input
-			.replace(/^\s{0,3}>\s?/gm, "")
-			.replace(/^\s*([-*+]|\d+\.)\s+/gm, "")
-			.replace(/^\s*\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)*\|?\s*$/gm, " ")
-			.replace(/\|/g, " "),
-	);
-}
-
 /**
  * Custom properties a page names, in prose or in a CSS example. The body itself
  * is not indexed, but a reader searching "--btn-bg" still expects the page that
@@ -255,8 +229,10 @@ export async function GET() {
 				push({ h: text, c: description }, `#${slug}`);
 			}
 
-			for (const { question, answer } of (entry.data as any).faq ?? []) {
-				push({ h: "FAQ", c: `${question} ${toPlainText(answer)}` }, "#faq");
+			// An FAQ entry is a section like any other, so it takes the same shape:
+			// the question labels it, the description carries as the snippet.
+			for (const { question } of (entry.data as any).faq ?? []) {
+				push({ h: question, c: description }, "#faq");
 			}
 		}
 	}
