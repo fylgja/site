@@ -46,17 +46,18 @@ button come for free.
   `role="search"` is needed.
 - Put the `<input>` and `<button>` in a `.input-group`, with `--merge` to drop
   the seam between them so they read as one control.
-- Give the input a `<label for>`. Add `sr-only` to the label when the design has
-  no room for it.
+- Give the input a `<label for>`. This example hides it with `sr-only`, which is
+  what most search boxes want, but it still names the field. Drop the class to
+  show it.
 - Use `type="search"` so browsers offer the clear button and the right keyboard.
-- If you use an icon only button, it still needs a name. A `<title>` inside the `role="img"`
-  SVG supplies it, so the button announces as "Search" or use `aria-label` to provide a custom name.
 
 ## Anatomy
 
 - `<search>` marks the landmark.
 - `<form action>` decides where the query goes, so it keeps working without
   JavaScript.
+- `--form-stroke` softens the field's border. It is a plain color, so mix it from
+  `--root-fg` to keep it working in both themes.
 - `.input-group.--merge` joins the field and the button, squaring off the inner
   corners and removing the border between them.
 - `<button>` submits. It needs no `type`, since submit is the default in a form,
@@ -66,8 +67,8 @@ button come for free.
 
 - The `<search>` element carries the search landmark natively.
 - The `<label for>` names the field. A placeholder is not a label.
-- The icon button is named by the `<title>` in its SVG. Drop that and the button
-  announces as an unlabelled button.
+- The icon button is named by its `sr-only` span, with the SVG hidden from
+  assistive tech. Drop the span and the button announces as unlabelled.
 - Both the field and the button are reachable and operable by keyboard with no
   extra work.
 
