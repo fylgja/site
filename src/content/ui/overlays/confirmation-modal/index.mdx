@@ -80,16 +80,10 @@ required. For an everyday, freely dismissible dialog, use the plain
 
 ## The Alpine version
 
-If your stack already runs Alpine.js, the Alpine tab above drives the same native
-`<dialog>` from Alpine state instead of an invoker command. It needs the
-[AlpineJS Dialog](/library/extensions/alpinejs-dialog/) plugin, which provides the
-`x-htmldialog` directive: without it, `x-show` would only toggle `display`, which
-skips `showModal()` and so loses the top layer, the backdrop and the focus trap.
-The plugin's docs cover installing and registering it.
-
-There the directive carries `closeby.none`, which does the same job as
-`closedby="none"` above, and adds `noscroll` so the page behind cannot be scrolled
-while the question is open. Modifiers chain, so both apply to the one directive.
+The Alpine tab above opens the same `<dialog>` from Alpine state with
+`x-htmldialog`. That directive comes from the
+[AlpineJS Dialog](/library/extensions/alpinejs-dialog/) plugin, whose docs cover
+installing it and the modifiers it takes.
 
 ## Reacting to the choice
 

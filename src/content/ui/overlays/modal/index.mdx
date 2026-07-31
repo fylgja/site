@@ -76,16 +76,10 @@ modal defaults to `closedby="closerequest"` (Escape closes, backdrop does not).
 
 ## The Alpine version
 
-If your stack already runs Alpine.js, the Alpine tab above drives the same native
-`<dialog>` from Alpine state instead of an invoker command. It needs the
-[AlpineJS Dialog](/library/extensions/alpinejs-dialog/) plugin, which provides the
-`x-htmldialog` directive: without it, `x-show` would only toggle `display`, which
-skips `showModal()` and so loses the top layer, the backdrop and the focus trap.
-The plugin's docs cover installing and registering it.
-
-The `closeby` modifier replaces the `closedby` attribute here, so
-`x-htmldialog.closeby.any` matches what `closedby="any"` does in the HTML version,
-and keeps Alpine's own `open` state in sync when the reader dismisses the dialog.
+The Alpine tab above opens the same `<dialog>` from Alpine state with
+`x-htmldialog`. That directive comes from the
+[AlpineJS Dialog](/library/extensions/alpinejs-dialog/) plugin, whose docs cover
+installing it and the modifiers it takes.
 
 ## Opening with JavaScript
 
