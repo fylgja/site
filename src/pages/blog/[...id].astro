@@ -4,7 +4,7 @@ import { getCollection, render } from "astro:content";
 import Layout from "@/layouts/PageLayout.astro";
 import Meta from "@/components/MetaContent.astro";
 import Schema from "@/components/Schema.astro";
-import siteConfig from "site.config";
+import siteConfig from "@/site.config";
 import Share from "@/components/Share.astro";
 import { ChevronLeft } from "@lucide/astro";
 import ShareBluesky from "@/components/ShareBluesky.astro";
@@ -102,7 +102,7 @@ const blogAuthor = [
 				<ChevronLeft />
 				<span>Back to Blog Overview</span>
 			</a>
-			<span>
+			<span class="flex gap-sm align-center">
 				<ShareBluesky url={Astro.url} text={`Read More about ${Astro.url} #FylgjaCSS`} />
 				<Share url={Astro.url} title={title} />
 			</span>

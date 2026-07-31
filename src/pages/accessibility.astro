@@ -1,6 +1,6 @@
 ---
 import PageLayout from "@/layouts/PageLayout.astro";
-import siteConfig from "site.config";
+import siteConfig from "@/site.config";
 
 const { name, socials } = siteConfig;
 ---
@@ -17,12 +17,12 @@ const { name, socials } = siteConfig;
 			The {name} project recognizes that Accessibility is an incredibly important baseline to developing
 			inclusive and quality software. On
 			{name} web properties specifically, we aim to meet <a
-				href="https://www.w3.org/TR/WCAG21/">WCAG 2.1 AA standards</a
+				href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer" >WCAG 2.2 AA standards</a
 			> and to support our development community to do the same.
 		</p>
 
 		<p>
-			If you’ve encountered an issue with our web site—accessibility or otherwise—please let
+			If you’ve encountered an issue with our web site—accessibility or otherwise, please let
 			us know! The best way to do this is by filing a new <a
 				href={`${socials.github}/site/issues`}>GitHub issue</a
 			>.

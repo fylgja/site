@@ -41,6 +41,7 @@ export default defineConfig({
 		"/git/": "https://github.com/fylgja",
 		"/cdn/": "https://cdn.jsdelivr.net/npm/@fylgja/base/index.min.css",
 		// Common used urls, to redirect
+		"/lore/": "/about-us/#the-name",
 		"/download/": "/docs/",
 		"/tailwind/": "/library/extensions/preset-tailwind/",
 		"/colors/": "/library/tokens/",

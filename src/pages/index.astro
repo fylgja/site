@@ -6,15 +6,35 @@ import Hero from "@/components/Hero.astro";
 import HeroReadmore from "@/components/HeroReadmore.astro";
 import Heading from "@/components/Heading.astro";
 import Card from "@/components/Card.astro";
+import { entries as uiEntries } from "@/pages/ui/_collection.ts";
+import avatarExample from "@/content/ui/data-display/avatar/example-group.html?raw";
+import buttonGroupExample from "@/content/ui/actions/button-group/example.html?raw";
+import reviewStarsExample from "@/content/ui/forms/review-stars/example.html?raw";
 import {
 	PanelsTopLeft,
 	Paintbrush,
 	PocketKnife,
 	SquareCheckBig as SquareCheck,
+	ArrowRight,
 } from "@lucide/astro";
 import PageFooter from "@/components/PageFooter.astro";
 
 const title = "Your CSS companion";
+
+// The same example markup the component's own page previews, so what the homepage
+// shows can never drift from the component. Title and description come from the
+// entry for the same reason. A renamed component drops out instead of breaking
+// the build.
+const featured = [
+	{ id: "data-display/avatar", example: avatarExample },
+	{ id: "actions/button-group", example: buttonGroupExample },
+	{ id: "forms/review-stars", example: reviewStarsExample },
+]
+	.map(({ id, example }) => {
+		const entry = uiEntries.find((item) => item.id === id);
+		return entry ? { href: `/ui/${id}/`, example, ...entry.data } : null;
+	})
+	.filter(Boolean);
 ---
 
 <Layout title={title}>
@@ -128,31 +148,46 @@ const title = "Your CSS companion";
 		<section
 			class="container flow"
 			style="--flow: 2rem; --my: var(--size-12); --md_my: var(--size-24)"
+			aria-label="Fylgja UI components"
+		>
+			<Heading
+				title="Components you copy, not dependencies you install"
+				tagline="Fylgja UI"
+				body={`${uiEntries.length} components built on plain, accessible HTML. Paste one into any project, in any framework, and style it with the tokens you already have.`}
+			/>
+			<ul role="list" class="ui-featured grid-cols gap" style="--md_grid-cols: 3">
+				{
+					featured.map(({ href, title: name, description, example }) => (
+						<li>
+							<figure>
+								<div class="preview" set:html={example} />
+								<figcaption class="flow" style="--flow: 0.25rem">
+									<a href={href}>{name}</a>
+									<p class="text-sm text-muted">{description}</p>
+								</figcaption>
+							</figure>
+						</li>
+					))
+				}
+			</ul>
+			<p>
+				<a href="/ui/" class="btn --primary">
+					<span>Explore more components</span>
+					<ArrowRight width="20" height="20" aria-hidden="true" />
+				</a>
+			</p>
+		</section>
+
+		<section
+			class="container flow"
+			style="--flow: 2rem; --my: var(--size-12); --md_my: var(--size-24)"
 			aria-label="Whats Next"
 		>
-			<!-- <Heading
-				title="Build and Extend Your UI Faster with CSS Components"
-				body="Highlights of Fylgja CSS Components"
-			/> -->
 			<Heading
 				title="Whats Next"
 				body="We are continuously developing Fylgja CSS, so expect regular updates."
 			/>
 			<div class="grid-cols --bento gap">
-				<Card>
-					<h3 class="flex align gap-sm">
-						<span>Fylgja UI Library</span>
-						<SquareCheck aria-hidden={true}/>
-					</h3>
-					<p>Build your user interfaces quickly with our fully-featured library of UI components. We provide components in both HTML and JSX, readily available for use. You can easily copy the code directly from our website or streamline your workflow with our CLI tool.</p>
-				</Card>
-				<Card>
-					<h3 class="flex align gap-sm">
-						<span>More CSS Components</span>
-						<SquareCheck aria-hidden={true}/>
-					</h3>
-					<p>Explore all available options and components in our <a href="/library/components/">component library</a>.</p>
-				</Card>
 				<Card
 					title="Framework Presets"
 					body="Seamlessly integrate with other CSS frameworks, including Tailwind CSS and UnoCSS, to add missing features or extend functionality."
@@ -161,6 +196,20 @@ const title = "Your CSS companion";
 					title="Starter kit for Astro JS"
 					body="Simplify your Astro and Fylgja development with our opinionated template and ready-to-use UI blocks."
 				/>
+				<Card>
+					<h3 class="flex align gap-sm">
+						<span>Fylgja UI Library</span>
+						<SquareCheck aria-hidden={true}/>
+					</h3>
+					<p>Build your user interfaces quickly with our fully-featured library of UI components.</p>
+				</Card>
+				<Card>
+					<h3 class="flex align gap-sm">
+						<span>More CSS Components</span>
+						<SquareCheck aria-hidden={true}/>
+					</h3>
+					<p>Explore all available options and components in our <a href="/library/components/">component library</a>.</p>
+				</Card>
 			</div>
 		</section>
 
@@ -197,6 +246,33 @@ const title = "Your CSS companion";
 			filter: blur(120px);
 			border-radius: 50%;
 			opacity: 60%;
+		}
+	}
+
+	.ui-featured {
+		figure {
+			margin: 0;
+		}
+
+		.preview {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			gap: 1rem;
+			min-height: 9rem;
+			padding: var(--size-6);
+			border: 1px solid var(--border-color-fade);
+			border-radius: var(--radius-4);
+			background-color: var(--card-bg);
+		}
+
+		figcaption {
+			margin-block-start: var(--size-3);
+
+			a {
+				font-weight: 500;
+			}
 		}
 	}
 

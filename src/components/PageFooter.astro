@@ -1,5 +1,5 @@
 ---
-import siteConfig from "site.config";
+import siteConfig from "@/site.config";
 import Logo from "@/assets/logo.svg?raw";
 import SocialIcons from "@/components/SocialIcons.astro";
 
@@ -69,11 +69,7 @@ const menus = [
 		items: [
 			{
 				label: "Contributing",
-				href: "https://github.com/fylgja/.github/blob/main/.github/contributing.md",
-			},
-			{
-				label: "Github Discussions",
-				href: "https://github.com/orgs/fylgja/discussions",
+				href: "/contributing/",
 			},
 			{
 				label: "Privacy",
@@ -82,6 +78,10 @@ const menus = [
 			{
 				label: "Accessibility",
 				href: "/accessibility/",
+			},
+			{
+				label: "Github Discussions",
+				href: "https://github.com/orgs/fylgja/discussions",
 			},
 		],
 	},
@@ -102,11 +102,21 @@ const menus = [
 							<h2>{menu.title}</h2>
 							<nav aria-label={menu.title}>
 								<ul>
-									{menu.items.map((item) => (
-										<li>
-											<a href={item.href}>{item.label}</a>
-										</li>
-									))}
+									{menu.items.map((item) => {
+										const isExternal = item.href.startsWith('http');
+										return (
+											<li>
+												<a
+													href={item.href}
+													target={isExternal ? "_blank" : undefined}
+													rel={isExternal ? "noopener noreferrer" : undefined}
+												>
+													<span>{item.label}</span>
+													{isExternal && <span aria-hidden="true"> ↗</span>}
+												</a>
+											</li>
+										)
+									})}
 								</ul>
 							</nav>
 						</div>
@@ -115,19 +125,19 @@ const menus = [
 			</div>
 		</div>
 		<hr />
-		<div class="sub-footer flex flex-col align gap" style="--lg_flex-dir: row;">
+		<div class="sub-footer flex flex-col align gap text-muted" style="--lg_flex-dir: row;">
 			<nav aria-label="License and Contributors">
-				<span>Released under</span>
+				<span>Released under</span>{" "}
 				<a
 					target="_blank"
 					href="https://github.com/fylgja/fylgja/blob/main/LICENSE"
 					class="no-underline"
 				>
 					MIT License
-				</a>
-				<span> - © 2021-present</span>
+				</a>{" "}
+				<span> - © 2021-present</span>{" "}
 				<wbr />
-				<span>Fylgja CSS and</span>
+				<span>Fylgja CSS and</span>{" "}
 				<a
 					target="_blank"
 					href="https://github.com/fylgja/fylgja/graphs/contributors"
@@ -162,7 +172,6 @@ const menus = [
 		}
 
 		nav a {
-			color: var(--text-color-muted);
 			text-decoration: none;
 
 			&:hover {

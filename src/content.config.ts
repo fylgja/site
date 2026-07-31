@@ -1,8 +1,8 @@
-import siteConfig from "site.config";
 import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
-import { uiCategories } from "./ui-categories";
+import siteConfig from "@/site.config";
+import { uiCategories } from "@/ui-categories";
 
 const { themeColor, author } = siteConfig;
 

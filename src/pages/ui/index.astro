@@ -46,22 +46,21 @@ const cards = entries.map((entry) => {
 					))
 				}
 			</div>
-			<div class="gallery-search">
-				<label for="ui-search" class="sr-only">Search components</label>
+			<div class="gallery-search flow-none">
+				<label for="ui-search" class="sr-only">Filter Components</label>
 				<input
 					type="search"
 					id="ui-search"
 					name="ui-search"
-					placeholder="Search components..."
+					placeholder="Filter components..."
 					autocomplete="off"
 					data-ui-search
 				/>
+				<p class="text-muted text-sm" data-ui-count aria-live="polite" style="--my: 1rem 0"></p>
 			</div>
 		</div>
 
-		<div class="container" style="--container-size: 1920px">
-			<p class="text-muted text-sm" data-ui-count aria-live="polite" style="--my: 1rem 0"></p>
-
+		<div class="container" style="--container-size: 1920px; --my: var(--size-8)">
 			<ul role="list" class="auto-grid gap" style="--max-col-size: 16rem" data-ui-list>
 				{
 					cards.map((card) => (

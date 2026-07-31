@@ -13,6 +13,9 @@ requires:
   - pkg: "@fylgja/utilities"
     level: recommended
     reason: "Provides the open:flex, flex-col, scroll-y, and button utilities used for the panel layout."
+  - pkg: "@fylgja/alpinejs-dialog"
+    level: recommended
+    reason: "Only for the Alpine version, where it provides the x-htmldialog directive. The HTML version needs no JavaScript."
 sortOrder: 3
 faq:
   - question: Do I need to write custom CSS for the drawer?
@@ -27,6 +30,12 @@ faq:
     answer: Yes, by overriding the variables the .offcanvas rule sets (--tx, --mx)
       and flattening the start-side corners instead. Check @fylgja/base/theme.css
       for the exact values rather than guessing.
+  - question: What does the Alpine version need to work?
+    answer: The x-htmldialog directive comes from the @fylgja/alpinejs-dialog
+      plugin, which makes x-show call showModal instead of toggling display, so
+      you keep the top layer, the backdrop and the focus trap. The example markup
+      leaves the setup out on purpose; install and registration live in the
+      [AlpineJS Dialog docs](/library/extensions/alpinejs-dialog/).
 ---
 
 import ComponentPreview from "@/components/ComponentPreview.astro";
@@ -68,6 +77,20 @@ to rely on, so include the rule rather than depend on `theme.css` being there.
    command) puts it in the top layer with a backdrop and traps focus.
 3. `closedby="any"` lets the reader dismiss the drawer with Escape or a backdrop
    click; a `command="close"` button gives an explicit control too.
+
+## The Alpine version
+
+If your stack already runs Alpine.js, the Alpine tab above drives the same native
+`<dialog>` from Alpine state instead of an invoker command. It needs the
+[AlpineJS Dialog](/library/extensions/alpinejs-dialog/) plugin, which provides the
+`x-htmldialog` directive: without it, `x-show` would only toggle `display`, which
+skips `showModal()` and so loses the top layer, the backdrop and the focus trap.
+The plugin's docs cover installing and registering it.
+
+The `closeby` modifier replaces the `closedby` attribute here, so
+`x-htmldialog.closeby.any` matches what `closedby="any"` does above, and keeps
+Alpine's own `open` state in sync when the reader dismisses the drawer. The
+`.offcanvas` rule is unchanged, since it styles the dialog either way.
 
 ## Anatomy
 

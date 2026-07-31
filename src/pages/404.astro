@@ -2,11 +2,153 @@
 import Layout from "@/layouts/PageLayout.astro";
 
 const title = "404";
+
+/** The pages a reader on a dead link is most likely to have wanted. */
+const trail = [
+	{ href: "/docs/", label: "Docs", body: "Install it, and the ideas behind it" },
+	{ href: "/library/", label: "Library", body: "Every package Fylgja CSS ships" },
+	{ href: "/ui/", label: "UI", body: "Copy paste components built on plain HTML" },
+	{ href: "/blog/", label: "Blog", body: "Releases, notes and the occasional deep dive" },
+];
 ---
 
-<Layout title={title} class="container flex-col align-center">
-	<h1>{title}</h1>
+<Layout
+	title={title}
+	description="This page could not be found."
+	class="container flex-col align-center"
+	style="--my: var(--size-12) var(--size-20)"
+>
+	<div class="relative">
+		<div class="shape"></div>
+		<hgroup class="lost-title">
+			<p class="lost-code">404</p>
+			<h1>Your fylgja wandered off</h1>
+		</hgroup>
+	</div>
+	<p class="lost-lead">
+		Even the best companion loses the scent now and then. Here is where everyone else is.
+	</p>
 	<p>
-		We couldn’t find that link. Check the address or <a href="/">head back home</a>.
+		<a href="/" class="btn --primary">Head back home</a>
+	</p>
+	<nav class="lost-trail" aria-label="Pick up the trail" style="--my: var(--size-12) 0">
+		<ul class="grid-cols gap" style="--sm_grid-cols: 2; --gap: var(--size-4)">
+			{
+				trail.map(({ href, label, body }) => (
+					<li>
+						<a href={href}>
+							<strong>{label}</strong>
+							<span class="text-sm text-muted">{body}</span>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</nav>
+	<p class="text-sm text-muted">
+		<em>
+			Followed a broken link to get here?{" "}
+			<a
+				href="https://github.com/fylgja/site/issues/new"
+				data-report-link
+			>Let us know</a>.
+		</em>
 	</p>
 </Layout>
+
+<style>
+	@keyframes lost-glow {
+		from {
+			--hue: var(--hue-start);
+		}
+		to {
+			--hue: var(--hue-end);
+		}
+	}
+
+	/* The color tokens resolve --hue where they are declared, on :root, so that is
+	   the only place shifting it reaches them. On this page --color-5 is read by
+	   the shape alone. */
+	:root {
+		--hue-start: var(--hue-blue);
+		--hue-end: var(--hue-orange);
+		--hue: var(--hue-start);
+
+		@media (prefers-color-scheme: dark) {
+			--hue-start: var(--hue-orange);
+			--hue-end: var(--hue-indigo);
+		}
+
+		@media (prefers-reduced-motion: no-preference) {
+			animation: lost-glow 6s ease-in-out infinite alternate;
+		}
+	}
+
+	.shape {
+		position: absolute;
+		z-index: -1;
+		top: 20%;
+		left: -10%;
+		width: min(90vw, 720px);
+		height: clamp(160px, 30vw, 320px);
+		background-image: linear-gradient(45deg, var(--brand) 30%, var(--color-5));
+		filter: blur(120px) opacity(0.5);
+		border-radius: 50%;
+	}
+
+	.lost-title {
+		text-align: center;
+
+		h1 {
+			--h-line: 1.2;
+			max-width: 20ch;
+		}
+	}
+
+	.lost-code {
+		font-size: clamp(4rem, 18vw, 8rem);
+		font-weight: 700;
+		line-height: 1.1;
+	}
+
+	.lost-lead {
+		max-width: 46ch;
+		text-align: center;
+	}
+
+	.lost-trail {
+		width: 100%;
+		max-width: 44rem;
+
+		a {
+			display: grid;
+			gap: var(--size-1);
+			height: 100%;
+			padding: var(--size-4);
+			border: 1px solid var(--border-color-fade);
+			border-radius: var(--radius-3);
+			text-decoration: none;
+
+			&:hover,
+			&:focus-visible {
+				border-color: var(--brand);
+			}
+		}
+	}
+</style>
+
+<script>
+	/**
+	 * The site is static, so the requested path is only known to the browser.
+	 * Without this the link still opens a blank issue, just without the details.
+	 */
+	const link = document.querySelector<HTMLAnchorElement>("[data-report-link]");
+
+	if (link) {
+		const from = document.referrer || "unknown";
+		const body = `Landed on a 404 at \`${location.pathname}\`\n\nFollowed a link from: ${from}`;
+		const params = new URLSearchParams({ title: `Broken link: ${location.pathname}`, body });
+
+		link.href = `${link.href}?${params}`;
+	}
+</script>

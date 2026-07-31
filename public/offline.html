@@ -1,217 +1,133 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="auto">
 	<head>
 		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Offline - Fylgja</title>
+		<meta name="theme-color" content="#663399" />
+		<!--
+			Served by the service worker when the network is gone, so it has to stand
+			on its own: no stylesheet, no font, no image request. Token values are
+			copied from the site theme rather than imported, so drift has to be fixed
+			here by hand.
+		-->
 		<style>
 			:root {
-				--item-spacer: 0 0 1em;
-				--color-theme: #1565c0;
-				--color-on-theme: #fff;
-				--color-bg: #fff;
-				--color-text: rgba(0, 0, 0, 0.87);
-				--family-main: system-ui, sans-serif;
-				--font-size: 1rem;
-				--line-height: 1.5;
-				--font-weight: 400;
-				--btn-bg: var(--color-theme, #1565c0);
-				--btn-color: var(--color-on-theme, #fff);
-				--btn-focus-bg: #1976e0;
-				--btn-focus-color: #fff;
-				--btn-active-bg: #2e85e8;
-				--btn-active-color: #fff;
-				color-scheme: var(--color-scheme, light);
+				--brand: rebeccapurple;
+				--on-brand: oklch(99% 0 0);
+				--root-bg: hsl(0 0% 100%);
+				--root-fg: hsl(0 0% 8%);
+				--family-system: system-ui, sans-serif;
+				color-scheme: light dark;
 			}
 
-			html {
-				box-sizing: border-box;
+			@media (prefers-color-scheme: dark) {
+				:root:where([data-theme="auto"], [data-theme="dark"]) {
+					--root-bg: color-mix(in oklab, hsl(0 15% 5%) 92%, var(--brand));
+					--root-fg: hsl(0 0% 92%);
+					color-scheme: dark;
+				}
+			}
+
+			:root:where([data-theme="dark"]) {
+				--root-bg: color-mix(in oklab, hsl(0 15% 5%) 92%, var(--brand));
+				--root-fg: hsl(0 0% 92%);
+				color-scheme: dark;
 			}
 
 			*,
 			::before,
 			::after {
-				box-sizing: inherit;
-				border: 0 solid currentcolor;
+				box-sizing: border-box;
 			}
 
 			body {
 				display: flex;
-				flex-direction: column;
-				min-height: 100vh;
+				min-height: 100svh;
 				margin: 0;
-				background-color: var(--color-bg, #fff);
-				color: var(--color-text);
-				font-family: var(--family-main);
-				font-size: var(--font-size);
-				line-height: var(--line-height);
-				font-weight: var(--font-weight);
+				background-color: var(--root-bg);
+				color: var(--root-fg);
+				font-family: var(--family-system);
+				line-height: 1.5;
 				-webkit-text-size-adjust: 100%;
 			}
 
 			main {
+				display: grid;
+				justify-items: center;
+				gap: 1rem;
 				margin: auto;
 				padding: 1.25rem;
+				max-width: 44ch;
 				text-align: center;
 			}
 
+			h1 {
+				margin: 0;
+				font-size: clamp(1.5rem, 6vw, 2rem);
+				line-height: 1.2;
+			}
+
+			p {
+				margin: 0;
+				color: color-mix(in srgb, var(--root-fg) 76%, transparent);
+			}
+
 			button {
-				display: inline-flex;
-				justify-content: center;
-				align-items: center;
-				margin: var(--btn-margin, 0);
-				padding: var(--btn-padding, 0.375rem 0.8rem);
-				border: 1px solid var(--btn-stroke, transparent);
-				border-radius: var(--btn-radius, 4px);
-				background-color: var(--btn-bg, transparent);
-				color: var(--btn-color, inherit);
-				font-size: var(--btn-font-size, inherit);
-				line-height: var(--btn-line-height, inherit);
-				font-weight: var(--btn-font-weight, 500);
-				vertical-align: middle;
-				text-decoration: none;
-				transition: 0.2s linear;
-				transition-property: color, background-color, border-color,
-					box-shadow;
-				user-select: none;
+				margin-block-start: 0.5rem;
+				padding: 0.375rem 0.8rem;
+				border: 2px solid transparent;
+				border-radius: 0.5rem;
+				background-color: var(--brand);
+				color: var(--on-brand);
+				font: inherit;
+				font-weight: 500;
 				cursor: pointer;
-				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-				-webkit-appearance: none;
+				transition: background-color 0.2s;
 			}
 
 			button:hover,
-			button:focus {
-				border-color: var(--btn-focus-stroke, transparent);
-				background-color: var(--btn-focus-bg, rgba(0, 0, 0, 0.05));
-				color: var(--btn-focus-color, inherit);
-				text-decoration: none;
+			button:focus-visible {
+				background-color: color-mix(in oklab, var(--brand) 80%, #000);
 			}
 
-			@keyframes svgwifibar3 {
-				0%,
-				70% {
-					opacity: var(--opacity);
-				}
-				80% {
-					opacity: 1;
-				}
-				90%,
-				100% {
-					opacity: var(--opacity);
-				}
+			svg {
+				width: min(50vw, 10rem);
+				height: auto;
+				color: var(--brand);
 			}
 
-			@keyframes svgwifibar2 {
-				0%,
+			@keyframes out-of-reach {
 				50% {
-					opacity: var(--opacity);
-				}
-				60% {
-					opacity: 1;
-				}
-				70%,
-				100% {
-					opacity: var(--opacity);
+					opacity: 0.3;
 				}
 			}
 
-			@keyframes svgwifibar1 {
-				0%,
-				30% {
-					opacity: var(--opacity);
-				}
-				40% {
-					opacity: 1;
-				}
-				50%,
-				100% {
-					opacity: var(--opacity);
-				}
-			}
-
-			@keyframes svgwifidot {
-				0%,
-				10% {
-					opacity: var(--opacity);
-				}
-				20% {
-					opacity: 1;
-				}
-				30%,
-				100% {
-					opacity: var(--opacity);
-				}
-			}
-
-			svg > * {
-				--opacity: 0.5;
-				color: var(--color-theme);
-				animation-duration: 3s;
-				animation-timing-function: linear;
-				animation-iteration-count: infinite;
-			}
-
-			svg > #wifibar3 {
-				animation-name: svgwifibar3;
-			}
-
-			svg > #wifibar2 {
-				animation-name: svgwifibar2;
-			}
-
-			svg > #wifibar1 {
-				animation-name: svgwifibar1;
-			}
-
-			svg > #wifidot {
-				animation-name: svgwifidot;
-			}
-
-			@media (prefers-color-scheme: dark) {
-				:root {
-					--color-scheme: dark;
-					--color-bg: #041325;
-					--color-text: #fff;
-					--color-text-alt: rgba(255, 255, 255, 0.8);
-					--color-text-muted: rgba(255, 255, 255, 0.67);
-					--link-color: #8cbcf2;
-					--link-color-state: #5ea1ed;
+			@media (prefers-reduced-motion: no-preference) {
+				svg {
+					animation: out-of-reach 4s ease-in-out infinite;
 				}
 			}
 		</style>
 	</head>
 	<body>
 		<main>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="200"
-				height="200"
-				viewbox="0 0 20 20"
-				fill="currentcolor"
-			>
+			<svg viewBox="0 0 152 152" fill="currentcolor" aria-hidden="true">
 				<path
-					id="wifibar3"
-					d="M9.9 5C6.8 5 4 6.4 2.2 8.7l1.1 1.1c1.6-2 4-3.2 6.7-3.2s5.1 1.3 6.7 3.2l1.1-1.1C15.8 6.4 13 5 9.9 5z"
-				/>
-				<path
-					id="wifibar2"
-					d="M9.9 8c-2.3 0-4.3 1.1-5.6 2.8l1.1 1.1c1-1.4 2.6-2.4 4.5-2.4s3.5.9 4.5 2.4l1.1-1.1C14.2 9.1 12.2 8 9.9 8z"
-				/>
-				<path
-					id="wifibar1"
-					d="M9.9 11c-1.5 0-2.7.8-3.4 2l1.1 1.1c.4-.9 1.3-1.6 2.3-1.6s2 .7 2.3 1.6l1.1-1.1c-.7-1.2-1.9-2-3.4-2z"
-				/>
-				<circle id="wifidot" cx="9.9" cy="15.3" r="1" />
+					d="M59.2 133.6c-.9 0-1.3-.5-1.3-1.4v-47c-1.8 0-3.3-1.3-4.7-3.8a16 16 0 0 1-2-8.5l2.2-.5c.7 0 1.5-.2 2.2-.4l2.3-.5a1276 1276 0 0 1 .6-36.6 241.1 241.1 0 0 1-8.4.9 6 6 0 0 1-1.3-2 18.1 18.1 0 0 1-1.2-7.5c0-1.6.3-2.7.9-3.5a352.1 352.1 0 0 0 7.4-1.4l4.4-.6a30.8 30.8 0 0 1 7.9-5.3c1.3-.6 2.2-.6 2.7 0s.8 1.9 1 3.8l7.9-.6a2962.8 2962.8 0 0 0 28.4-.7l6.9.2c.8.1 1.4.7 1.9 1.8.4 1 .6 2.4.4 4a16 16 0 0 1-1.6 5.4c-.9 2-2.2 3.8-4 5.6a336.4 336.4 0 0 0-15-2c-2.7-.1-5.2-.2-7.6 0a169.3 169.3 0 0 0-17.1.7l-.2 15.8-.3 19.9 4.1-.4 4.1-.2 10.6-.6c3.4-.2 6.4-.1 9 .2 2.6.4 4.5 1.1 5.8 2.4 1.3 1.2 1.6 3 1 5.7l-2.2 7.3c-.2-.5-.7-1-1.6-1.3a37.3 37.3 0 0 0-7-1.6c-3.5-.4-7.4-.5-11.7-.2-4.2.4-8.3.8-12.2 1.4A426.8 426.8 0 0 0 73 118l.4 5.9c.1.9 0 1.6-.3 2.1l-1.8 2.1a16.5 16.5 0 0 1-12 5.5zm54.6-25.5a26.4 26.4 0 0 0-.8-2 54.8 54.8 0 0 1-1.9-8.9c0-1 0-1.9.2-2.7a1030.3 1030.3 0 0 0 18.1-14.8c2.5-2 4.6-3.9 6.4-5.6a190.7 190.7 0 0 0-14.5-10.4L111 57c-.3-.7-.5-1.5-.5-2.3a39.2 39.2 0 0 1 0-5.1c.1-1 .3-1.8.6-2.6.2-.7.5-1.4.9-2 .3-.6.8-1 1.4-1.5 1 .7 2 1.6 3.4 2.5l3.9 3a637.8 637.8 0 0 1 23.6 19.3c.4.3.6 1 .7 2.2v3.8l-.7 4a7 7 0 0 1-1 2.6 153.6 153.6 0 0 1-16.5 16.3 225.5 225.5 0 0 1-13 10.9zM39 43.5c.5.4 1 1 1.3 1.5l.8 2c.3.8.5 1.7.6 2.6a24.7 24.7 0 0 1 0 5.1 15 15 0 0 1-.4 2.3 436.9 436.9 0 0 0-24.9 17A432 432 0 0 0 41 94.5c.3 1 .3 1.9.3 3 0 1-.2 2-.4 3a54.8 54.8 0 0 1-1.9 7.2c-.1.5-.3.6-.4.4A225.5 225.5 0 0 1 9.1 80.9a7 7 0 0 1-1-2.6 24.7 24.7 0 0 1-.7-7.8c0-1.1.2-1.9.7-2.2a131.2 131.2 0 0 1 9.3-8A203.9 203.9 0 0 1 31.7 49l3.8-3 3.6-2.5z" />
 			</svg>
-			<h1>You are offline</h1>
+			<h1>Your fylgja lost the trail</h1>
 			<p>
-				It seems there is a problem with your connection.<br />
-				We'll try to reload automatically once you're back online!
+				The connection dropped, so this page never arrived. We will load it the moment you
+				are back.
 			</p>
-			<button type="button" class="btn -theme">Force reload</button>
+			<button type="button">Try again</button>
 		</main>
 		<script>
+			// The theme is stored per visitor by the site, and is still readable offline.
+			const theme = localStorage.getItem("theme-preference");
+			if (theme) document.documentElement.setAttribute("data-theme", theme);
+
 			// Manual reload feature.
 			document.querySelector("button").addEventListener("click", () => {
 				window.location.reload();
@@ -221,12 +137,14 @@
 			window.addEventListener("online", () => {
 				window.location.reload();
 			});
-			// Check if the server is responding and reload the page if it is. This handles the case when the device is online, but
-			// the server is offline or misbehaving.
+			// Only the device being online but the server not is left, since the button and
+			// the online event cover the rest. Nobody is waiting on that, so it polls slowly
+			// rather than keeping the radio awake.
+			const RETRY_DELAY = 30000;
+
 			async function checkNetworkAndReload() {
 				try {
 					const response = await fetch(".");
-					// Verify we get a valid response from the server
 					if (response.status >= 200 && response.status < 500) {
 						window.location.reload();
 						return;
@@ -234,9 +152,10 @@
 				} catch {
 					// Unable to connect to the server, ignore.
 				}
-				window.setTimeout(checkNetworkAndReload, 2500);
+				window.setTimeout(checkNetworkAndReload, RETRY_DELAY);
 			}
-			checkNetworkAndReload();
+
+			window.setTimeout(checkNetworkAndReload, RETRY_DELAY);
 		</script>
 	</body>
 </html>

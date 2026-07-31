@@ -94,7 +94,22 @@ const STATIC_PAGES: SearchRecord[] = [
 		u: "/about-us/",
 		t: "About Fylgja",
 		s: "Site",
-		c: "About Fylgja and how it was created.",
+		c: "About Fylgja, what the name means and how it was created.",
+		k: ["about", "name", "origin"],
+	},
+	{
+		u: "/about-us/#the-name",
+		t: "About Fylgja",
+		s: "Site",
+		h: "The Name",
+		c: "What a fylgja is in Old Norse mythology, and why the library carries the name.",
+	},
+	{
+		u: "/contributing/",
+		t: "Contributing to Fylgja",
+		s: "Site",
+		c: "How to work in the Fylgja CSS monorepo: getting set up, building packages, code style, commit messages and changelogs.",
+		k: ["contributing", "contribute", "monorepo", "pr"],
 	},
 	{
 		u: "/accessibility/",

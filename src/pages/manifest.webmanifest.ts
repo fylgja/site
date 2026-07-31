@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import siteConfig from "site.config";
+import siteConfig from "@/site.config";
 
 const { name, description, themeColor } = siteConfig;
 
