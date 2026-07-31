@@ -19,9 +19,10 @@ interface Props {
 		slug: string;
 		text: string;
 	}[];
+	fullWidth?: boolean;
 }
 
-const { title, description, collectionName = "", collection = [], toc = [] } = Astro.props;
+const { title, description, collectionName = "", collection = [], toc = [], fullWidth } = Astro.props;
 const urlPrefix = "/" + collectionName.toLowerCase();
 ---
 
@@ -38,10 +39,14 @@ const urlPrefix = "/" + collectionName.toLowerCase();
 				<Menu title={collectionName} items={collection} urlPrefix={urlPrefix} />
 			</div>
 		</aside>
-		<div class="docs-content container">
-			<div class="sidebar-toc sticky inset-header scroll-y hidden xl:block">
-				<Toc toc={toc} label="On this Page" />
-			</div>
+		<div class:list={["docs-content", !fullWidth && "container", !!toc.length && "has-toc"]}>
+			{
+				!!toc.length && (
+					<div class="sidebar-toc sticky inset-header scroll-y hidden xl:block">
+						<Toc toc={toc} label="On this Page" />
+					</div>
+				)
+			}
 			<article class="main-content">
 				<slot />
 			</article>
@@ -120,7 +125,7 @@ const urlPrefix = "/" + collectionName.toLowerCase();
 	}
 
 	@media (width >= 1440px) {
-		.docs-content {
+		.docs-content.has-toc {
 			display: grid;
 			grid-template-columns: minmax(0px, 1fr) 240px;
 			gap: 3rem;

@@ -26,12 +26,14 @@ const cards = entries.map((entry) => {
 });
 ---
 
-<Layout title={title} description={description} collectionName="UI" collection={collection}>
-	<h1>{title}</h1>
-	<p class="lead">{description}</p>
+<Layout title={title} description={description} collectionName="UI" collection={collection} fullWidth>
+	<div class="container">
+		<h1>{title}</h1>
+		<p class="lead">{description}</p>
+	</div>
 
 	<ui-gallery class="block" style="--my: 2rem 0">
-		<div class="gallery-filters flow">
+		<div class="gallery-filters flow container">
 			<div role="group" aria-label="Filter by category" class="chips flex-wrap gap-sm">
 				<button type="button" class="btn chip" data-category="all" aria-pressed="true">
 					All
@@ -57,36 +59,38 @@ const cards = entries.map((entry) => {
 			</div>
 		</div>
 
-		<p class="text-muted text-sm" data-ui-count aria-live="polite" style="--my: 1rem 0"></p>
+		<div class="container" style="--container-size: 1920px">
+			<p class="text-muted text-sm" data-ui-count aria-live="polite" style="--my: 1rem 0"></p>
 
-		<ul role="list" class="auto-grid gap" style="--max-col-size: 16rem" data-ui-list>
-			{
-				cards.map((card) => (
-					<li
-						class="card --hover flow"
-						data-category={card.category}
-						data-languages={card.languages.join(" ")}
-						data-search={card.search}
-					>
-						<h2>
-							<a href={`/ui/${card.id}/`} class="stretched-link">
-								{card.title}
-							</a>
-						</h2>
-						<p class="line-clamp">{card.description}</p>
-						<p class="flex-wrap gap-sm text-sm text-muted">
-							{card.languages.map((lang: string) => (
-								<span class="badge">{capitalized(lang)}</span>
-							))}
-						</p>
-					</li>
-				))
-			}
-		</ul>
+			<ul role="list" class="auto-grid gap" style="--max-col-size: 16rem" data-ui-list>
+				{
+					cards.map((card) => (
+						<li
+							class="card --hover flow"
+							data-category={card.category}
+							data-languages={card.languages.join(" ")}
+							data-search={card.search}
+						>
+							<h2>
+								<a href={`/ui/${card.id}/`} class="stretched-link">
+									{card.title}
+								</a>
+							</h2>
+							<p class="line-clamp text-sm">{card.description}</p>
+							<p class="flex-wrap gap-sm text-sm text-muted">
+								{card.languages.map((lang: string) => (
+									<span class="badge">{capitalized(lang)}</span>
+								))}
+							</p>
+						</li>
+					))
+				}
+			</ul>
 
-		<p class="text-muted" data-ui-empty hidden>
-			No components match your filters.
-		</p>
+			<p class="text-muted" data-ui-empty hidden>
+				No components match your filters.
+			</p>
+		</div>
 	</ui-gallery>
 </Layout>
 
