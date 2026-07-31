@@ -22,6 +22,8 @@ type SearchRecord = {
 	c: string;
 	/** Lowercase terms from `keywords`, weighted like the title. Page level only. */
 	k?: string[];
+	/** Lowercase `tags`, weighted above prose but below the title. Page level only. */
+	g?: string[];
 	/** Score multiplier from `searchBoost`, omitted when it is the default 1 */
 	b?: number;
 };
@@ -229,17 +231,21 @@ export async function GET() {
 				records.push({ u: url + anchor, t: title, s: source.label, ...boost, ...record });
 			};
 
-			// `keywords` is a deliberate claim, so it carries a title's weight. `tags`
-			// and `category` are shared across pages and stay ordinary text: "card" is
-			// a tag on Media Card, which must not outrank the page called Card.
+			// `keywords` is a deliberate claim, so it carries a title's weight. A tag is
+			// a lighter claim, worth more than a passing mention in the prose but not
+			// enough to outrank a title: "card" is a tag on Media Card, which must not
+			// beat the page called Card. `category` is a bucket, so it stays prose.
 			const declared = toTerms(keywords);
-			const loose = [category, ...(tags ?? [])].filter(Boolean).join(" ");
-			const meta = declared.length ? { k: declared } : {};
+			const tagged = toTerms(tags);
+			const meta = {
+				...(declared.length ? { k: declared } : {}),
+				...(tagged.length ? { g: tagged } : {}),
+			};
 
 			// The custom properties keep "--btn-bg" pointing at the page that documents
 			// it, trailing the description so that stays the snippet.
 			const props = toCustomProperties(entry.body ?? "").join(" ");
-			push({ c: `${description} ${loose} ${props}`.replace(/\s+/g, " ").trim(), ...meta });
+			push({ c: `${description} ${category ?? ""} ${props}`.replace(/\s+/g, " ").trim(), ...meta });
 
 			// A heading is what its section is about, and the only part of the body
 			// worth a record of its own, since it is what a hit can link to. The

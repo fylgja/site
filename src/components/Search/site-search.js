@@ -22,6 +22,7 @@
  * @property {string} c Text searched against, and cut down to the snippet
  * @property {string} [h] Heading, absent on a page level record
  * @property {string[]} [k] Lowercase terms the page claims, weighted like its title
+ * @property {string[]} [g] Lowercase tags, weighted above prose but below the title
  * @property {number} [b] Score multiplier
  *
  * @typedef {object} Match
@@ -318,6 +319,7 @@ export class SiteSearch extends HTMLElement {
 		const heading = (record.h ?? "").toLowerCase();
 		const content = record.c.toLowerCase();
 		const declared = record.k ?? [];
+		const tags = record.g ?? [];
 		let total = 0;
 
 		for (const term of terms) {
@@ -325,11 +327,16 @@ export class SiteSearch extends HTMLElement {
 			const inHeading = heading.includes(term);
 			const inContent = content.includes(term);
 			const inDeclared = declared.some((keyword) => keyword.includes(term) || this.sameWord(term, keyword));
-			if (!inTitle && !inHeading && !inContent && !inDeclared) return 0;
+			const inTags = tags.some((tag) => tag.includes(term) || this.sameWord(term, tag));
+			if (!inTitle && !inHeading && !inContent && !inDeclared && !inTags) return 0;
 
 			if (inTitle) total += title.startsWith(term) ? 14 : 9;
 			if (inDeclared) total += 9;
 			if (inHeading) total += 5;
+			// A tag beats the same word sitting in the prose, but only when it adds
+			// something. Tagging a page with its own title says nothing, and would
+			// lift it above the page genuinely named for the term.
+			if (inTags && !inTitle) total += 5;
 			if (inContent) total += 2;
 		}
 
