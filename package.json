@@ -28,6 +28,6 @@
 		"@lucide/astro": "^1.23.0",
 		"astro": "^7.1.6",
 		"marked": "^18.0.5",
-		"prettier": "^3.9.4"
+		"prettier": "^3.9.6"
 	}
 }
