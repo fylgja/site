@@ -154,10 +154,8 @@ summary {
 @media (prefers-reduced-motion: no-preference) {
 	details {
 		&::details-content {
-			transition:
-				block-size 200ms,
-				opacity 200ms,
-				content-visibility 200ms;
+			transition-duration: 200ms;
+			transition-property: block-size, opacity, content-visibility;
 			transition-behavior: allow-discrete;
 			block-size: 0px;
 			opacity: 0;
