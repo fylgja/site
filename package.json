@@ -25,7 +25,7 @@
 		"@fylgja/toast": "^1.0.0",
 		"@fylgja/tokens": "^2.2.1",
 		"@fylgja/utilities": "^2.1.4",
-		"@lucide/astro": "^1.23.0",
+		"@lucide/astro": "^1.28.0",
 		"astro": "^7.1.6",
 		"marked": "^18.0.5",
 		"prettier": "^3.9.6"
