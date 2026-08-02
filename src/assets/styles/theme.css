@@ -3,7 +3,7 @@
 }
 
 :root {
-	--brand: rebeccapurple;
+	--brand: oklch(0.44 0.18 310);
 	--brand-fade: color-mix(in srgb, var(--brand), #0000 78%);
 	--on-brand: oklch(99% 0 0);
 	--form-active-color: var(--brand);
