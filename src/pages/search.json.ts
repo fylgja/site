@@ -123,6 +123,13 @@ const STATIC_PAGES: SearchRecord[] = [
 		s: "Site",
 		c: "Privacy and cookie policy for Fylgja.dev.",
 	},
+	{
+		u: "/branding/",
+		t: "Branding",
+		s: "Site",
+		c: "Download the Fylgja logo and icon in SVG and PNG, see the brand colors and read how to use them.",
+		k: ["brand", "logo", "icon", "press", "media kit", "assets", "colors"],
+	},
 ];
 
 /** Skipped when harvesting custom properties: `--save-dev` is not one of ours. */

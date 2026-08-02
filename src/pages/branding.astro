@@ -1,0 +1,255 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import siteConfig from "@/site.config";
+
+const { name } = siteConfig;
+
+const logos = [
+	{
+		title: "Logo, white",
+		description: "For dark backgrounds, photos and colored surfaces.",
+		file: "fylgja-logo-white",
+		theme: "dark",
+	},
+	{
+		title: "Logo, black",
+		description: "For light backgrounds and for print.",
+		file: "fylgja-logo-black",
+		theme: "light",
+	},
+];
+
+const icons = [
+	{
+		title: "Icon, white",
+		description: "The mark on its own, for dark backgrounds.",
+		file: "fylgja-icon-white",
+		theme: "dark",
+	},
+	{
+		title: "Icon, black",
+		description: "The mark on its own, for light backgrounds.",
+		file: "fylgja-icon-black",
+		theme: "light",
+	},
+	{
+		title: "App icon",
+		description: "The mark on its own background, for app tiles and avatars.",
+		file: "fylgja-app-icon",
+		theme: "light",
+	},
+];
+
+const colors = [
+	{
+		name: "Fylgja Purple",
+		token: "--brand",
+		value: "#70279A",
+		notes: "oklch(0.44 0.18 310)",
+	},
+	{
+		name: "On Brand",
+		token: "--on-brand",
+		value: "#FCFCFC",
+		notes: "Text and icons placed on top of the purple",
+	},
+];
+---
+
+<PageLayout
+	title="Branding"
+	description={`Download the ${name} logo and icon, and read how to use them.`}
+	style="--container-size: var(--size-content);"
+>
+	<article style="--my: var(--size-12)">
+		<h1>Branding</h1>
+
+		<p>
+			Everything you need to reference {name} in a blog post, a talk, a course or a
+			comparison page. The files below are free to use, no permission needed.
+		</p>
+
+		<p class="text-muted text-sm">
+			Tip: right click the logo in the header for a quick copy or download.
+		</p>
+
+		<h2>Logo</h2>
+		<p>
+			The wordmark is the primary form of the brand. Use it wherever there is room for it,
+			in whichever of the two reads best against your background.
+		</p>
+
+		<div class="grid-cols gap" style="--sm_grid-cols: 2; --gap: var(--size-4)">
+			{
+				logos.map((logo) => (
+					<figure class="asset" data-theme-preview={logo.theme}>
+						<div class="asset-preview">
+							<img
+								src={`/brand/${logo.file}.svg`}
+								alt={`${logo.title} of ${name}`}
+								width="700"
+								height="250"
+								loading="lazy"
+							/>
+						</div>
+						<figcaption>
+							<strong>{logo.title}</strong>
+							<span class="text-muted text-sm">{logo.description}</span>
+							<span class="inline-flex gap-sm">
+								<a class="btn" href={`/brand/${logo.file}.svg`} download>
+									SVG
+								</a>
+								<a class="btn" href={`/brand/${logo.file}.png`} download>
+									PNG
+								</a>
+							</span>
+						</figcaption>
+					</figure>
+				))
+			}
+		</div>
+
+		<h2>Icon</h2>
+		<p>
+			Use the icon when the wordmark does not fit, such as an avatar or a favicon. Do not
+			rebuild the wordmark by placing the icon next to the word Fylgja in another typeface.
+		</p>
+
+		<div class="grid-cols gap" style="--sm_grid-cols: 2; --lg_grid-cols: 3; --gap: var(--size-4)">
+			{
+				icons.map((icon) => (
+					<figure class="asset" data-theme-preview={icon.theme}>
+						<div class="asset-preview">
+							<img
+								class="asset-icon"
+								src={`/brand/${icon.file}.svg`}
+								alt={`${icon.title} of ${name}`}
+								width="152"
+								height="152"
+								loading="lazy"
+							/>
+						</div>
+						<figcaption>
+							<strong>{icon.title}</strong>
+							<span class="text-muted text-sm">{icon.description}</span>
+							<span class="inline-flex gap-sm">
+								<a class="btn" href={`/brand/${icon.file}.svg`} download>
+									SVG
+								</a>
+								<a class="btn" href={`/brand/${icon.file}.png`} download>
+									PNG
+								</a>
+							</span>
+						</figcaption>
+					</figure>
+				))
+			}
+		</div>
+
+		<h2>Colors</h2>
+		<p>
+			These are the theme colors. Use them when you want the logo to look the way it does
+			here, and pick your own when it suits your design better.
+		</p>
+
+		<div class="grid-cols gap" style="--sm_grid-cols: 2; --gap: var(--size-4)">
+			{
+				colors.map((color) => (
+					<div class="swatch">
+						<div class="swatch-color" style={`background-color: ${color.value}`} />
+						<strong>{color.name}</strong>
+						<span class="inline-flex flex-wrap gap-sm">
+							<code>{color.value}</code>
+							<code>{color.token}</code>
+						</span>
+						<span class="text-muted text-sm">{color.notes}</span>
+					</div>
+				))
+			}
+		</div>
+
+		<h2>How to use these</h2>
+		<p>
+			There is one rule that matters: keep the shape intact. Scale the logo as a whole, and
+			never stretch, squash, rotate or skew it. Everything else is up to you.
+		</p>
+		<ul>
+			<li>Recolor the logo to whatever fits your background or design.</li>
+			<li>Keep clear space around it, at least the height of the F on every side.</li>
+			<li>
+				Do not use the logo in a way that suggests {name} endorses your product, or as part
+				of your own logo or product name.
+			</li>
+			<li>The name is written Fylgja, or {name} in full. Not FYLGJA or fylgja.</li>
+		</ul>
+
+		<h2>Questions</h2>
+		<p>
+			Need a format that is not here, or unsure whether your use fits the guidelines? Ask in{" "}
+			<a href="https://github.com/orgs/fylgja/discussions">GitHub Discussions</a>.
+		</p>
+	</article>
+</PageLayout>
+
+<style>
+	.asset {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		margin: 0;
+		padding: 0.75rem;
+		border: 1px solid var(--border-color-fade);
+		border-radius: 1rem;
+	}
+
+	.asset-preview {
+		display: grid;
+		place-items: center;
+		padding: 1.5rem;
+		border-radius: 0.625rem;
+		background-color: var(--preview-bg);
+
+		img {
+			inline-size: 100%;
+			max-inline-size: 11rem;
+		}
+
+		.asset-icon {
+			max-inline-size: 5.5rem;
+		}
+	}
+
+	[data-theme-preview="light"] {
+		--preview-bg: #fff;
+	}
+
+	[data-theme-preview="dark"] {
+		--preview-bg: #141414;
+	}
+
+	figcaption {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		gap: 0.375rem;
+
+		:last-child {
+			margin-block-start: auto;
+			padding-block-start: 0.25rem;
+		}
+	}
+
+	.swatch {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		font-size: 0.9375em;
+	}
+
+	.swatch-color {
+		aspect-ratio: 5 / 2;
+		margin-block-end: 0.5rem;
+		border: 1px solid var(--border-color-fade);
+		border-radius: 0.625rem;
+	}
+</style>

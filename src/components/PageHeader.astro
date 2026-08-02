@@ -1,6 +1,7 @@
 ---
 import siteConfig from "@/site.config";
 import Logo from "@/assets/logo.svg?raw";
+import BrandMenu from "@/components/BrandMenu.astro";
 import Offcanvas from "@/components/Offcanvas.astro";
 import Search from "@/components/Search";
 import ThemeToggle from "./ThemeToggle.astro";
@@ -80,9 +81,16 @@ const mobileMenuHighlists = [
 	{...attr}
 >
 	<div class="flex align gap" style="--p: 1rem var(--container-gap)">
-		<a href="/" class="logo" aria-label="Go back to the Fylgja CSS Homepage">
-			<Fragment set:html={Logo} />
-		</a>
+		<BrandMenu>
+			<a
+				href="/"
+				class="logo"
+				aria-label="Go back to the Fylgja CSS Homepage"
+				data-brand-trigger
+			>
+				<Fragment set:html={Logo} />
+			</a>
+		</BrandMenu>
 		<Search style="--mx: auto 0; --md_mx: 0; --md_size-x: min(100%, 22rem);" />
 		<div class="flex gap align">
 			<nav

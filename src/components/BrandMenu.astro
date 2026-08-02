@@ -1,0 +1,202 @@
+---
+import { Check, Copy, Download, Palette } from "@lucide/astro";
+---
+
+<slot />
+<div
+	id="brandMenu"
+	class="brand-menu"
+	popover="manual"
+	aria-label="Fylgja logo options"
+	data-brand-menu
+>
+	<button type="button" class="btn" data-copied="false" data-brand-copy>
+		<Copy width="20" height="20" aria-hidden="true" data-copy-idle />
+		<Check width="20" height="20" aria-hidden="true" data-copy-done />
+		<span>Copy logo as SVG</span>
+	</button>
+	<a class="btn" href="/brand/fylgja-logo-black.png" download data-brand-download>
+		<Download width="20" height="20" aria-hidden="true" />
+		<span>Download logo as PNG</span>
+	</a>
+	<hr />
+	<a class="btn" href="/branding/">
+		<Palette width="20" height="20" aria-hidden="true" />
+		<span>
+			Branding
+			<small class="text-muted">Browse all logos and colors</small>
+		</span>
+	</a>
+</div>
+<p class="sr-only" role="status" data-brand-status></p>
+
+<script>
+	const menu = document.querySelector("[data-brand-menu]") as HTMLElement;
+	const trigger = document.querySelector("[data-brand-trigger]") as HTMLElement;
+	const status = document.querySelector("[data-brand-status]") as HTMLElement;
+	const copyButton = document.querySelector("[data-brand-copy]") as HTMLButtonElement;
+	const downloadLink = document.querySelector("[data-brand-download]") as HTMLAnchorElement;
+
+	/**
+	 * The logo ships in white and black, so the menu hands over the one that
+	 * matches the header the reader is looking at.
+	 */
+	function currentVariant() {
+		const theme = document.documentElement.dataset.theme;
+		const isDark =
+			theme === "dark" ||
+			(theme !== "light" && matchMedia("(prefers-color-scheme: dark)").matches);
+		return isDark ? "white" : "black";
+	}
+
+	/**
+	 * Popovers sit in the top layer, where a position is resolved against the
+	 * viewport instead of the logo, so the menu is placed by hand on open.
+	 */
+	function placeMenu() {
+		const rect = trigger.getBoundingClientRect();
+		const isRtl = getComputedStyle(document.documentElement).direction === "rtl";
+		const start = isRtl ? window.innerWidth - rect.right : rect.left;
+		menu.style.setProperty("--menu-y", `${rect.bottom}px`);
+		menu.style.setProperty("--menu-x", `${start}px`);
+	}
+
+	const isOpen = () => menu?.matches(":popover-open");
+
+	function closeMenu(returnFocus = false) {
+		menu.hidePopover();
+		if (returnFocus) trigger.focus();
+	}
+
+	/**
+	 * Opens the brand menu on right click, long press and the keyboard context
+	 * menu key, all of which fire a contextmenu event on the logo.
+	 */
+	trigger?.addEventListener("contextmenu", (event) => {
+		event.preventDefault();
+		placeMenu();
+		downloadLink.href = `/brand/fylgja-logo-${currentVariant()}.png`;
+		menu.showPopover();
+		copyButton.focus();
+	});
+
+	/**
+	 * A manual popover, since an auto one is dismissed by the pointerup that
+	 * ends the right click. Dismissing on the next press instead of that
+	 * release is what keeps the menu open long enough to use.
+	 */
+	document.addEventListener("pointerdown", (event) => {
+		if (!isOpen() || menu.contains(event.target as Node)) return;
+		closeMenu();
+	});
+
+	document.addEventListener("keydown", (event) => {
+		if (!isOpen() || event.key !== "Escape") return;
+		closeMenu(true);
+	});
+
+	menu?.addEventListener("focusout", (event) => {
+		const next = event.relatedTarget as Node | null;
+		if (isOpen() && !menu.contains(next)) closeMenu();
+	});
+
+	window.addEventListener("resize", () => {
+		if (isOpen()) placeMenu();
+	});
+
+	menu?.addEventListener("click", async (event) => {
+		const target = event.target as Element;
+		if (!target.closest("[data-brand-copy]")) return;
+
+		try {
+			const response = await fetch(`/brand/fylgja-logo-${currentVariant()}.svg`);
+			await navigator.clipboard.writeText(await response.text());
+			copyButton.setAttribute("data-copied", "true");
+			status.textContent = "Logo copied as SVG";
+			setTimeout(() => {
+				copyButton.setAttribute("data-copied", "false");
+				status.textContent = "";
+				menu.hidePopover();
+			}, 1200);
+		} catch {
+			status.textContent = "Copying the logo failed, use the branding page instead";
+		}
+	});
+</script>
+
+<style>
+	.brand-menu {
+		--btn-radius: 0.5rem;
+		--btn-py: 0.5rem;
+		--btn-stroke: transparent;
+		position: fixed;
+		inset: auto;
+		inset-block-start: calc(var(--menu-y, 0px) + 0.75rem);
+		inset-inline-start: var(--menu-x, 0px);
+		display: none;
+		flex-direction: column;
+		gap: 2px;
+		inline-size: max-content;
+		max-inline-size: min(100vw - 2rem, 20rem);
+		margin: 0;
+		padding: 0.5rem;
+		border: 1px solid var(--border-color-fade);
+		border-radius: 1rem;
+		background-color: var(--dialog-bg);
+		box-shadow: var(--shadow-4);
+
+		&:popover-open {
+			display: flex;
+		}
+
+		.btn {
+			justify-content: start;
+			text-align: start;
+		}
+
+		small {
+			display: block;
+			font-size: 0.8125em;
+			font-weight: 400;
+		}
+
+		hr {
+			margin-block: 0.375rem;
+			border-block-end-width: 1px;
+			border-color: var(--border-color-fade);
+		}
+
+		[data-copy-done],
+		[data-copied="true"] [data-copy-idle] {
+			display: none;
+		}
+
+		[data-copied="true"] {
+			--btn-color: var(--brand);
+
+			[data-copy-done] {
+				display: block;
+			}
+		}
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		.brand-menu {
+			transition-property: opacity, translate, display, overlay;
+			transition-duration: 0.2s;
+			transition-behavior: allow-discrete;
+			opacity: 0;
+			translate: 0 -0.5rem;
+
+			&:popover-open {
+				opacity: 1;
+				translate: 0;
+
+				@starting-style {
+					opacity: 0;
+					translate: 0 -0.5rem;
+				}
+			}
+		}
+	}
+</style>
