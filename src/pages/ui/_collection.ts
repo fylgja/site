@@ -33,4 +33,7 @@ const collection = CATEGORIES.map(({ key, label }) => ({
 	items: entries.filter((entry) => entry.data.category === key),
 })).filter((group) => group.items.length);
 
-export { entries, collection, collection as default };
+// Flattened sidebar order, so the pager walks components the way the menu lists them.
+const sequence = collection.flatMap((group) => group.items);
+
+export { entries, collection, sequence, collection as default };

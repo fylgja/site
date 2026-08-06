@@ -5,7 +5,6 @@ description: "A responsive grid of product cards that reflows by available width
 category: "layout"
 tags: ["card", "grid", "product", "shop", "listing"]
 status: "stable"
-languages: ["html"]
 requires:
   - pkg: "@fylgja/card"
     level: required
@@ -17,6 +16,7 @@ requires:
     level: recommended
     reason: "Supplies the --shadow-4 token the --hover modifier uses."
 sortOrder: 3
+previewZoom: 0.5
 faq:
   - question: How does the grid reflow without media queries?
     answer: auto-grid uses CSS repeat(auto-fill, ...), so the number of columns follows

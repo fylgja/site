@@ -27,7 +27,7 @@ The Fylgja website is built with [Astro](https://astro.build/) and serves as the
 
 *   **Imports**: Use path aliases defined in `tsconfig.json` for imports within the `src` directory. For example, use `@/components/MyComponent.astro` instead of `../components/MyComponent.astro`.
 *   **Site Configuration**: The site configuration is stored in `site.config.ts`. When you need to access site-wide information, import it from this file.
-*   **Styling**: The site uses the Fylgja CSS library. When adding new styles, try to use Fylgja's utility classes and components as much as possible.
+*   **Styling**: The site uses the Fylgja CSS library. When adding new styles, try to use Fylgja's utility classes and components as much as possible. Before writing a scoped CSS rule, read the class you are already using in `node_modules/@fylgja/` to check whether it or one of its `--vars` covers it. A `.btn` link needs no hand-written flex, padding, or hover rules, and picking the wrong class (`.align-center`, which sets `place-content`, where you meant `align-items`) is easier to catch from the source than from the name.
 *   **Components**: Create reusable components for any UI elements that are used in multiple places.
 *   **Markdown Content**: When creating or editing Markdown files (`.md`), if the file includes a `title` in its frontmatter, do not add a separate H1 heading (e.g., `# My Title`) in the body of the document. The layout templates will automatically render the title from the frontmatter.
 *   **Deadlines**: Avoid adding any time-based commitments, such as response times, to the content.

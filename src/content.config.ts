@@ -11,14 +11,11 @@ const baseSchema = {
 	sortOrder: z.number().optional().default(10),
 	title: z.string(),
 	description: z.string(),
-	// Terms this page should be found by, beyond the words already on it. Use for
-	// what a reader would type when they do not know your wording, e.g. "install"
-	// for Getting Started. A term matched here counts as much as a title match.
+	// Terms to find this page by that it does not already say, e.g. "install"
+	// for Getting Started. Weighted like a title match.
 	keywords: z.array(z.string()).optional().default([]),
-	// Multiplies this page's search score. Above 1 pushes it up when it matches,
-	// below 1 holds it back. Keep it near 1; this ranks pages, it does not pin them,
-	// and it cannot hide one, which is what `draft` is for. Must be positive: zero
-	// would silently drop the page from every result.
+	// Multiplies this page's search score, keep it near 1. Ranks, never hides:
+	// that is what `draft` is for.
 	searchBoost: z.number().positive().optional().default(1),
 	image: z
 		.object({
@@ -45,17 +42,12 @@ const docsSchema = z.object({
 });
 
 const uiSchema = docsSchema.extend({
-	// Which category the component is grouped and filtered under.
 	category: z.enum(uiCategories),
-	// Free-form tags for gallery search/filtering.
 	tags: z.array(z.string()).default([]),
-	// Publication state, also used to badge planned/beta components.
 	status: z.enum(["stable", "beta", "planned"]).default("stable"),
-	// Which implementation variants ship for this component. HTML is always present.
-	languages: z.array(z.enum(["html", "astro", "alpine", "js"])).default(["html"]),
-	// Fylgja packages this component needs or benefits from. `required` means it
-	// will not look/behave right without it; `recommended` means it works standalone
-	// but is better with it (e.g. @fylgja/base for native element styling).
+	// Scale of the demo in the gallery card, for demos that need more room.
+	previewZoom: z.number().positive().optional(),
+	// `recommended` means the component still works without the package, just better.
 	requires: z
 		.array(
 			z.object({

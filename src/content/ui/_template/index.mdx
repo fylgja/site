@@ -5,13 +5,17 @@
 # markup beside it in example.html (+ example.alpine.html / example.css) and import
 # them as raw strings (see below), so the MDX stays readable. Keep the section
 # order below; remove sections that genuinely do not apply.
+#
+# The /ui gallery card renders example.html as a miniature preview. If the example
+# shows nothing at rest (a closed <dialog>, say), add a preview.html beside it and
+# the card uses that instead. A demo too big for the card can set previewZoom below.
 title: "Component Name"
 pageTitle: "Fylgja Component Name" # optional, defaults to title
 description: "One sentence on what this component is and when to use it."
 category: "overlays" # actions | forms | navigation | overlays | feedback | data-display | layout
 tags: [] # free-form keywords for gallery search, e.g. ["modal", "popup"]
 status: "stable" # stable | beta | planned
-languages: ["html"] # add "js" / "alpine" / "astro" only when those variants exist below
+# previewZoom: 0.5 # only when the gallery thumbnail needs more room than the 0.8 default
 requires: # Fylgja packages this component needs (shown in a Requirements box)
   - pkg: "@fylgja/base"
     level: recommended # required = needs it to look/work right; recommended = optional but better

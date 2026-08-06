@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/DocsLayout.astro";
+import ComponentThumb from "@/components/ComponentThumb.astro";
 import { entries, collection, CATEGORIES } from "./_collection.ts";
-import { capitalized } from "@/utils";
 
 const title = "Fylgja UI";
 const description =
@@ -12,15 +12,29 @@ const activeCategories = CATEGORIES.filter(({ key }) =>
 	entries.some((entry) => entry.data.category === key)
 );
 
+// Raw demo markup per component, keyed by file path. `preview.html` is an opt-in
+// override for components whose example renders nothing at rest (a closed dialog);
+// otherwise the card shows the same example.html the detail page does.
+const demos = import.meta.glob<string>("/src/content/ui/**/{preview,example}.html", {
+	query: "?raw",
+	import: "default",
+	eager: true,
+});
+
 // Precompute a lowercase search haystack per component (title, description, tags, category).
 const cards = entries.map((entry) => {
-	const { title, description, category, tags, languages } = entry.data;
+	const { title, description, category, tags, previewZoom } = entry.data;
 	return {
 		id: entry.id,
 		title,
 		description,
 		category,
-		languages,
+		previewZoom,
+		// An id like "actions/button" is not a valid custom-ident on its own.
+		transition: `ui-${entry.id.replace(/[^a-z0-9]+/gi, "-")}`,
+		thumb:
+			demos[`/src/content/ui/${entry.id}/preview.html`] ??
+			demos[`/src/content/ui/${entry.id}/example.html`],
 		search: [title, description, category, ...tags].join(" ").toLowerCase(),
 	};
 });
@@ -66,22 +80,20 @@ const cards = entries.map((entry) => {
 					{
 						cards.map((card) => (
 							<li
-								class="card --hover flow"
+								class="card --hover"
+								style={`view-transition-name: ${card.transition}`}
 								data-category={card.category}
-								data-languages={card.languages.join(" ")}
 								data-search={card.search}
 							>
-								<h2>
-									<a href={`/ui/${card.id}/`} class="stretched-link">
-										{card.title}
-									</a>
-								</h2>
-								<p class="line-clamp text-sm">{card.description}</p>
-								<p class="flex-wrap gap-sm text-sm text-muted">
-									{card.languages.map((lang: string) => (
-										<span class="badge">{capitalized(lang)}</span>
-									))}
-								</p>
+								{card.thumb && <ComponentThumb code={card.thumb} zoom={card.previewZoom} />}
+								<div class="card-content flow">
+									<h2>
+										<a href={`/ui/${card.id}/`} class="stretched-link">
+											{card.title}
+										</a>
+									</h2>
+									<p class="line-clamp text-sm">{card.description}</p>
+								</div>
 							</li>
 						))
 					}
@@ -145,6 +157,13 @@ const cards = entries.map((entry) => {
 			this.apply();
 		}
 
+		// Typing keeps re-filtering, so only the chips are worth animating.
+		animate(update) {
+			const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+			if (still || !document.startViewTransition) return update();
+			document.startViewTransition(update);
+		}
+
 		setCategory(category) {
 			this.category = category;
 			const url = new URL(window.location.href);
@@ -154,7 +173,7 @@ const cards = entries.map((entry) => {
 				url.searchParams.set("category", category);
 			}
 			window.history.replaceState({}, "", url);
-			this.apply();
+			this.animate(() => this.apply());
 		}
 
 		apply() {

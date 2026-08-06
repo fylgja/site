@@ -2,7 +2,8 @@
 import { getCollection, render } from "astro:content";
 import Layout from "@/layouts/DocsLayout.astro";
 import MetaVersion from "@/components/MetaVersion.astro";
-import collection from "./_collection.ts";
+import collection, { sequence } from "./_collection.ts";
+import Pager from "@/components/Pager.astro";
 import EditWithGithub from "@/components/EditWithGithub.astro";
 import BreadCrumbs from "@/components/BreadCrumbs.astro";
 import Faq from "@/components/Faq.astro";
@@ -24,6 +25,10 @@ const { pageTitle, title, description, git, npm, changelog, faq, requires } = en
 const { Content, headings } = await render(entry);
 const hasMeta = !!git || !!npm;
 const toc = faq?.length ? [...headings, { depth: 2, slug: "faq", text: "FAQ" }] : headings;
+
+const position = sequence.findIndex((item: { id: string }) => item.id === entry.id);
+const step = (item?: { id: string; data: { title: string } }) =>
+	item && { href: `/ui/${item.id}/`, title: item.data.title };
 ---
 
 <Layout
@@ -38,6 +43,12 @@ const toc = faq?.length ? [...headings, { depth: 2, slug: "faq", text: "FAQ" }] 
 	<Requirements requires={requires} />
 	<Content />
 	<Faq faq={faq} />
+	<Pager
+		prev={step(sequence[position - 1])}
+		next={step(sequence[position + 1])}
+		overview={{ href: "/ui/", title: "All components" }}
+		label="UI components"
+	/>
 	<aside class="flex-wrap align gap text-muted" style="--my: 3rem 0" aria-label="Additional Meta">
 		<BreadCrumbs class="hidden md:flex" />
 		{entry.filePath && <EditWithGithub pathUrl={entry.filePath} class="text-sm italic" />}
