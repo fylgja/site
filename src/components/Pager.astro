@@ -1,0 +1,57 @@
+---
+import { ArrowLeft, ArrowRight } from "@lucide/astro";
+
+interface Props {
+	prev?: { href: string; title: string };
+	next?: { href: string; title: string };
+	overview?: { href: string; title: string };
+	label: string;
+}
+
+const { prev, next, overview, label } = Astro.props;
+const back = prev ?? overview;
+const forward = next ?? (prev && overview);
+const iconSize = 20;
+---
+
+{
+	(back || forward) && (
+		<nav class="pager flex-wrap gap" aria-label={label} style="--my: 3rem 0">
+			{back && (
+				<a href={back.href} rel={prev && "prev"} class="btn btn-prev flex-auto">
+					<ArrowLeft width={iconSize} height={iconSize} aria-hidden="true" />
+					<span>
+						<span class="sr-only">{prev ? "Previous:" : "Back to"} </span>
+						{back.title}
+					</span>
+				</a>
+			)}
+			{forward && (
+				<a href={forward.href} rel={next && "next"} class="btn btn-next flex-auto">
+					<span>
+						<span class="sr-only">{next ? "Next:" : "Back to"} </span>
+						{forward.title}
+					</span>
+					<ArrowRight width={iconSize} height={iconSize} aria-hidden="true" />
+				</a>
+			)}
+		</nav>
+	)
+}
+
+<style>
+	.pager {
+		--btn-stroke: color-mix(in srgb, currentcolor 20%, transparent);
+		--btn-hover-stroke: transparent;
+		--btn-hover-bg: var(--brand);
+		--btn-hover-color: var(--on-brand);
+	}
+
+	.btn-prev {
+		justify-content: start;
+	}
+
+	.btn-next {
+		justify-content: end;
+	}
+</style>

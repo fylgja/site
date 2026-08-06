@@ -1,0 +1,57 @@
+---
+/**
+ * Renders a UI component's example markup as a miniature preview for a gallery card.
+ *
+ * Lowering `zoom` widens the layout canvas by the same factor, so the preview keeps
+ * its rendered width and a large demo gets room to lay out instead of being cropped.
+ */
+interface Props {
+	code: string;
+	zoom?: number;
+}
+
+const { code, zoom } = Astro.props;
+---
+
+<div
+	class="component-thumb"
+	inert
+	style={zoom ? `--thumb-zoom: ${zoom}` : undefined}
+>
+	<div class="component-thumb-canvas" set:html={code.trim()} />
+</div>
+
+<style>
+	.component-thumb {
+		display: grid;
+    	justify-content: center;
+     	align-items: center;
+		block-size: var(--thumb-size, 10rem);
+		padding: var(--size-4);
+		border-block-end: 1px solid var(--border-color-fade);
+		background-color: var(--root-bg);
+		overflow: clip;
+		pointer-events: none;
+	}
+
+	.component-thumb-canvas {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--size-3);
+		align-items: center;
+		justify-content: center;
+		inline-size: calc(var(--thumb-canvas-size, 18rem) / var(--thumb-zoom, 0.8));
+		zoom: var(--thumb-zoom, 0.8);
+	}
+
+	.component-thumb-canvas > :global(*) {
+		margin-block: 0;
+	}
+
+	.component-thumb-canvas > :global(dialog[open]) {
+		position: static;
+		margin: 0;
+		overflow: auto;
+		transition: none;
+	}
+</style>
