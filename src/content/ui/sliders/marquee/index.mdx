@@ -1,0 +1,130 @@
+---
+title: "Marquee"
+pageTitle: "Fylgja Marquee"
+description: "A continuously scrolling strip of brand logos or text, pausing on hover and standing still under reduced motion."
+category: "sliders"
+tags: ["marquee", "ticker", "logo cloud", "brands", "scrolling", "animation", "infinite"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Resets the list and sizes the logo marks."
+  - pkg: "@fylgja/utilities"
+    level: required
+    reason: "Provides scroll-mask for the faded edges and flex for the track layout."
+sortOrder: 2
+faq:
+  - question: Why are the items duplicated?
+    answer: The loop works by translating the track exactly one track width plus one
+      gap, so the second copy has already taken the first one's place when the
+      animation restarts. Without the copy there would be a visible gap at the end of
+      every cycle.
+  - question: Why does the copy have aria-hidden?
+    answer: It is the same content twice, and a screen reader should read it once. The
+      copy exists only so the loop looks seamless, so it is hidden from assistive tech.
+  - question: What if the logos are links?
+    answer: Put inert on the duplicate track instead of aria-hidden. A focusable element
+      inside an aria-hidden subtree is still reachable by keyboard, which is a real
+      failure. inert removes the copy from both the tab order and the accessibility
+      tree.
+  - question: Why a sprite instead of an img per logo?
+    answer: An img cannot inherit the text color, so a light and a dark version of every
+      logo would be needed. A symbol pulled in with use is part of the document, so
+      fill="currentcolor" on the wrapping svg colors it, and one file serves every item
+      in both schemes.
+  - question: Does the marquee need JavaScript?
+    answer: No. The scroll is a CSS animation and the pause is a hover and focus rule.
+      Nothing here runs script.
+  - question: What happens with reduced motion?
+    answer: The animation is switched off, the duplicate copy is hidden, and the strip
+      becomes horizontally scrollable instead. The content stays reachable, it just
+      does not move on its own. That rule is written as .marquee.clip so it outweighs
+      the clip utility whichever order the two stylesheets load in.
+  - question: How do I change the speed?
+    answer: Set --marquee-duration. It is the time for one full pass, so a longer value
+      is slower. Adding items makes the track longer, so raise the duration to keep the
+      same apparent speed.
+  - question: Should I use the old marquee element?
+    answer: No. The HTML marquee element is obsolete, was never keyboard or screen
+      reader friendly, and has no way to stop. This builds the same effect from a list
+      and a CSS animation.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+
+A marquee is a strip of content that scrolls past continuously, most often a row of
+brand logos under a line like "trusted by". It is a list translated by a CSS
+animation, with a second copy behind it so the loop never shows a seam, and it stops
+while the pointer or the keyboard is inside it.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- Put the logos in a `<ul role="list">`, then repeat the whole list as a second
+  `<ul role="list" aria-hidden="true">`. The copy is what makes the loop seamless.
+- Lay it out with utilities throughout: `flex clip` on the strip,
+  `flex flex-none align` on each track, and `flex gap-sm align nowrap lead` on each
+  item. The only CSS left is the gap, which has to match the distance the keyframes
+  translate, and the animation itself.
+- Both tracks animate together, each translating one track width plus one gap, so
+  the copy lands exactly where the original started.
+- Keep the logo marks in one SVG sprite, each wrapped in a `<symbol id>`, and pull
+  them in with `<svg fill="currentcolor"><use href="sprite.svg#id" /></svg>`. The
+  mark inherits the text color, so one file covers light and dark and every item
+  reuses it instead of repeating the path.
+- Set the pace with `--marquee-duration` and the spacing with `--marquee-gap`.
+- The edge fade is the [`scroll-mask`](/library/utilities/#scroll-mask) utility, not
+  custom CSS. It normally reveals each edge as you scroll toward it, so setting
+  `--mask-color-start` and `--mask-color-end` to `transparent` holds both edges faded
+  for a strip that moves on its own. `--mask-size` sets how far the fade reaches.
+- The strip pauses on hover and on focus within, so a reader can stop it to read an
+  item or reach anything inside it.
+- Wrap the heading and the strip in a `<section>` named with `aria-labelledby`, so
+  the whole block is one region a reader can find and skip rather than a loose row
+  of logos. `flow` spaces the two without a leading margin.
+- Keep the heading a real heading and set its visual size with `--h-size`. A logo
+  cloud lead-in is small, but it still belongs in the page outline.
+
+## Anatomy
+
+| Part                     | Responsibility                                              |
+| ------------------------ | ----------------------------------------------------------- |
+| `<section aria-labelledby>` | Names the block, so it is one region in the outline.     |
+| Heading                  | The lead-in, sized down with `--h-size`.                     |
+| `.marquee`               | The gap and the animation, the only custom CSS left.        |
+| `.clip`                  | Keeps the second track from widening the page.              |
+| `.scroll-mask`           | Fades both edges, sized by `--mask-size`.                   |
+| `<ul role="list">`       | The logos, in one track that animates.                      |
+| `<ul aria-hidden="true">`| The duplicate track that closes the loop.                   |
+| `<use href="…#id">`      | The logo mark, pulled from the sprite in the text color.    |
+
+## Accessibility
+
+- The strip stops while the pointer is over it or the keyboard is inside it, so a
+  reader can hold it still to read an item.
+- That does not fully satisfy WCAG 2.2.2, which asks for a control to pause moving
+  content. There is no hover on touch. If the strip carries anything a reader has to
+  act on, add an explicit pause control, or do not move it at all.
+- With `prefers-reduced-motion: reduce` the animation is off, the duplicate is
+  hidden, and the strip becomes a scrollable region instead.
+- The duplicate track is `aria-hidden="true"` so the content is announced once. If
+  the logos are links, use `inert` on the duplicate instead, since a focusable
+  element inside `aria-hidden` is still reachable by keyboard.
+- Keep the speed slow enough to read. Text that outruns the reader is decoration,
+  not content.
+
+## Variants
+
+A ticker and a logo wall are the same component with different values.
+`--marquee-duration` sets the pace and `--marquee-gap` the space between items. The
+edges come from `scroll-mask`, so `--mask-size` sets how far they fade; drop the
+class for a hard edge.
+
+## Examples
+
+For a strip the reader drives rather than one that moves on its own, use the
+[Carousel](/ui/sliders/carousel/), which snaps and needs no animation at all.
