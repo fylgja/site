@@ -1,7 +1,7 @@
 ---
 title: "Introducing Fylgja UI"
 description: "A new section of the site with copy-paste UI components, built on plain accessible HTML and styled by Fylgja CSS. This is the first batch, and more are on the way."
-publishDate: 2026-08-01
+publishDate: 2026-08-11
 tags: ["FylgjaCSS", "UI", "Release"]
 coverImage: cover.webp
 ---
@@ -38,8 +38,8 @@ packages it needs and which ones simply make it better, so you know exactly what
 signing up for. A handful of components also ship a vanilla JavaScript or Alpine.js version
 for the cases where state is genuinely needed.
 
-The first batch covers twenty four components across actions, forms, navigation, overlays,
-feedback, data display, and layout.
+The first batch covers thirty components across actions, forms, navigation, overlays,
+feedback, data display, layout, and sliders.
 
 ### This is only the beginning
 
@@ -63,7 +63,7 @@ to keep the collection pointed at real problems instead of hypothetical ones.
 
 Fylgja UI exists in this form because [Anthropic] gave the project six months of [Claude] Max
 for free, through the program they run for open source projects. Fylgja is a passion project
-maintained in evenings and weekends, and writing two dozen components with documentation,
+maintained in evenings and weekends, and writing thirty components with documentation,
 examples, and previews is a lot of hours. Having Claude work through the drafts, the
 repetitive parts, and the review passes turned something that would have taken months into
 something that shipped. Thanks to Anthropic for making that possible.
