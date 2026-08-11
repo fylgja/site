@@ -1,0 +1,99 @@
+---
+title: "Image Banner"
+pageTitle: "Fylgja Image Banner"
+description: "A full-width image with a heading and call to action laid over it, darkened just enough to stay readable."
+category: "layout"
+tags: ["banner", "hero", "image", "overlay", "cover", "header"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/utilities"
+    level: required
+    reason: "Provides stack, overlay, object-cover, align, and the rounded and clip utilities."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the heading, the paragraph, and the button in the banner."
+sortOrder: 5
+faq:
+  - question: Why does the image have an empty alt?
+    answer: The heading over the banner already carries the message, so the photo is
+      decoration. An empty alt keeps a screen reader from reading the same thing
+      twice. Give the image real alt text when it carries information the text does
+      not.
+  - question: How do I stack the text over the image without absolute positioning?
+    answer: The stack utility puts every child in the same grid cell, so the overlay
+      lands on top of the image with no positioning and no z-index. The overlay stays
+      in flow, so it still sizes and wraps normally.
+  - question: What does the overlay utility do?
+    answer: It paints a gradient scrim over the element with border-image and sets the
+      text color to white, through --overlay-bg and --overlay-fg. For an even scrim
+      instead of a fade, replace the border-image with a two-stop gradient of the same
+      color.
+  - question: How do I control the banner height?
+    answer: Set --size-y on the image. It sizes the grid row, and the section and the
+      overlay follow, so that one value is enough. Use a breakpoint variant such as
+      --md_size-y for a taller banner on wide screens. Do not put the height on the
+      section instead, or the row can grow past it and push the overlay out of view.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+import exampleCenter from "./example-center.html?raw";
+
+An image banner is a photo with a heading and a call to action laid over it, used
+at the top of a landing page or a category. The image and the text share one grid
+cell through the `stack` utility, and `overlay` darkens the photo just enough for
+the text to hold contrast, so it needs no positioning and no custom CSS.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- Put the `<img>` and the text block as siblings inside a `stack`, which lays them
+  in the same grid cell. The one later in the source sits on top.
+- Set the banner height with `--size-y` on the image, not on the section. The
+  image sizes the grid row and the section follows, so the overlay is guaranteed to
+  stretch to the same height. A fixed height on the section instead lets the row
+  grow past it, which pushes a bottom-aligned overlay out of the clipped area.
+- Add `overlay` to the text block for the scrim and the light text color. Tune it
+  with `--overlay-bg` and `--overlay-fg`.
+- Place the text with `align`. `--align: end start` drops it to the bottom left;
+  `align-center` centers it instead.
+- `rounded clip` rounds the banner and keeps the image inside the corners.
+
+## Anatomy
+
+| Part            | Responsibility                                                    |
+| --------------- | ----------------------------------------------------------------- |
+| `.stack`        | Puts the image and the text in the same grid cell.                |
+| `<img>`         | The background photo, sized with `object-cover`.                  |
+| `.overlay`      | The scrim and the light text color over the photo.                |
+| `.align`        | Where the text sits inside the banner.                            |
+| `.flow`         | Spaces the heading, text, and button without a leading margin.    |
+
+## Accessibility
+
+- The image is decoration here, so it takes `alt=""`. If it carries information the
+  heading does not, describe it instead.
+- Name the banner with `aria-labelledby` pointing at its heading, so it is a region
+  a screen reader can find and skip.
+- Keep the scrim dark enough for the text to pass contrast at the busiest part of
+  the photo, not the calmest. Text over a photo is the easiest place to lose it.
+- Use a real heading level that fits the page outline. A banner at the top of a
+  page is usually the `<h1>`.
+
+## Variants
+
+### Centered content
+
+Swapping `align` for `align-center` centers the text, and replacing the scrim
+gradient with a flat one keeps contrast even across the whole image.
+
+<ComponentPreview code={exampleCenter} />
+
+## Examples
+
+For a banner that puts the image beside the text instead of behind it, use the
+[Split Banner](/ui/layout/split-banner/). For a banner with no image at all, use
+the [CTA Banner](/ui/layout/cta-banner/).

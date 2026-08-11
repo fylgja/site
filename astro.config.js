@@ -50,6 +50,8 @@ export default defineConfig({
 		"/tailwind/": "/library/extensions/preset-tailwind/",
 		"/colors/": "/library/tokens/",
 		"/tokens/": "/library/tokens/",
+		// Moved into the Sliders category
+		"/ui/layout/carousel/": "/ui/sliders/carousel/",
 		// UI category folders → filtered gallery
 		...uiCategoryRedirects,
 	},

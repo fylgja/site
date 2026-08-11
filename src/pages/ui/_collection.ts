@@ -14,6 +14,7 @@ export const CATEGORIES = [
 	{ key: "feedback", label: "Feedback" },
 	{ key: "data-display", label: "Data display" },
 	{ key: "layout", label: "Layout" },
+	{ key: "sliders", label: "Sliders" },
 ] as const;
 
 // All published UI entries, drafts hidden in production, sorted by sortOrder.

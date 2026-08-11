@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+	<symbol id="aurora" viewBox="0 0 24 24">
+		<path
+			d="M12 3a9 9 0 1 0 9 9h-4.5a4.5 4.5 0 1 1-4.5-4.5V3Z" />
+	</symbol>
+	<symbol id="basalt" viewBox="0 0 24 24">
+		<path
+			d="M4 4h6.5v16H4V4Zm9.5 5H20v11h-6.5V9Z" />
+	</symbol>
+	<symbol id="cinder" viewBox="0 0 24 24">
+		<path
+			d="M12 3 21 20H3L12 3Z" />
+	</symbol>
+	<symbol id="driftwood" viewBox="0 0 24 24">
+		<path
+			d="M12 2 21 7v10l-9 5-9-5V7l9-5Z" />
+	</symbol>
+	<symbol id="ember" viewBox="0 0 24 24">
+		<path
+			d="M12 2 22 12 12 22 2 12 12 2Z" />
+	</symbol>
+	<symbol id="fathom" viewBox="0 0 24 24">
+		<path
+			d="M12 2c5 5 5 15 0 20-5-5-5-15 0-20Z" />
+	</symbol>
+</svg>

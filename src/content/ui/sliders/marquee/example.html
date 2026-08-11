@@ -1,0 +1,58 @@
+<section class="flow" aria-labelledby="brands-title" style="--flow: 1.25rem">
+	<h2 id="brands-title" class="text-center" style="--h-size: 1rem">Trusted by</h2>
+	<div class="marquee flex clip scroll-mask" style="--marquee-duration: 30s; --mask-size: 3rem; --mask-color-start: transparent; --mask-color-end: transparent">
+		<ul role="list" class="flex flex-none align">
+			<li class="flex gap-sm align nowrap lead"><svg width="22" height="22" fill="currentcolor" aria-hidden="true"><use href="/images/placeholders/brands.svg#aurora" /></svg>Aurora</li>
+			<li class="flex gap-sm align nowrap lead"><svg width="22" height="22" fill="currentcolor" aria-hidden="true"><use href="/images/placeholders/brands.svg#basalt" /></svg>Basalt</li>
+			<li class="flex gap-sm align nowrap lead"><svg width="22" height="22" fill="currentcolor" aria-hidden="true"><use href="/images/placeholders/brands.svg#cinder" /></svg>Cinder</li>
+			<li class="flex gap-sm align nowrap lead"><svg width="22" height="22" fill="currentcolor" aria-hidden="true"><use href="/images/placeholders/brands.svg#driftwood" /></svg>Driftwood</li>
+			<li class="flex gap-sm align nowrap lead"><svg width="22" height="22" fill="currentcolor" aria-hidden="true"><use href="/images/placeholders/brands.svg#ember" /></svg>Ember</li>
+			<li class="flex gap-sm align nowrap lead"><svg width="22" height="22" fill="currentcolor" aria-hidden="true"><use href="/images/placeholders/brands.svg#fathom" /></svg>Fathom</li>
+		</ul>
+		<ul role="list" class="flex flex-none align" aria-hidden="true">
+			<li class="flex gap-sm align nowrap lead"><svg width="22" height="22" fill="currentcolor"><use href="/images/placeholders/brands.svg#aurora" /></svg>Aurora</li>
+			<li class="flex gap-sm align nowrap lead"><svg width="22" height="22" fill="currentcolor"><use href="/images/placeholders/brands.svg#basalt" /></svg>Basalt</li>
+			<li class="flex gap-sm align nowrap lead"><svg width="22" height="22" fill="currentcolor"><use href="/images/placeholders/brands.svg#cinder" /></svg>Cinder</li>
+			<li class="flex gap-sm align nowrap lead"><svg width="22" height="22" fill="currentcolor"><use href="/images/placeholders/brands.svg#driftwood" /></svg>Driftwood</li>
+			<li class="flex gap-sm align nowrap lead"><svg width="22" height="22" fill="currentcolor"><use href="/images/placeholders/brands.svg#ember" /></svg>Ember</li>
+			<li class="flex gap-sm align nowrap lead"><svg width="22" height="22" fill="currentcolor"><use href="/images/placeholders/brands.svg#fathom" /></svg>Fathom</li>
+		</ul>
+	</div>
+</section>
+
+<style>
+	.marquee {
+		--marquee-gap: 3rem;
+		--marquee-duration: 24s;
+		gap: var(--marquee-gap);
+
+		> * {
+			gap: var(--marquee-gap);
+			animation: marquee var(--marquee-duration) linear infinite;
+		}
+
+		&:where(:hover, :focus-within) > * {
+			animation-play-state: paused;
+		}
+	}
+
+	@keyframes marquee {
+		to {
+			translate: calc(-100% - var(--marquee-gap)) 0;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.marquee.clip {
+			overflow-x: auto;
+		}
+
+		.marquee > * {
+			animation: none;
+		}
+
+		.marquee > [aria-hidden="true"] {
+			display: none;
+		}
+	}
+</style>

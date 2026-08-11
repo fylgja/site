@@ -321,10 +321,50 @@ Enable scrollable overflow on the X or Y axis with `scroll-x` (horizontal) and `
 
 ### Scroll Mask
 
-Enable Overflow Mask to any overflowing content.
-Making it more clear to that there is overflowing content.
+Fades the edges of a scrolling area, so it reads as "there is more this way"
+instead of content stopping at a hard line. Pair it with `scroll-x`, or with
+`scroll-y` plus the `scroll-y` class on the mask, which turns the fade vertical.
 
-Usefull in combination with `scroll-x` and `scroll-y`.
+The fade follows the scroll position. At the very start only the end edge is faded,
+in the middle both are, and at the very end only the start edge is. Nothing is
+hidden when there is nothing more to scroll to. This runs on a scroll-driven
+animation, so no JavaScript and no scroll listener.
+
+<figure class="demo-wrapper">
+<div class="scroll-x scroll-mask flex gap" style="--gap: 1rem">
+<img src="/images/placeholders/cat.webp" alt="" width="480" height="320" loading="lazy" class="flex-none" style="--size-x: 240px" />
+<img src="/images/placeholders/dog.webp" alt="" width="480" height="320" loading="lazy" class="flex-none" style="--size-x: 240px" />
+<img src="/images/placeholders/bear.webp" alt="" width="480" height="320" loading="lazy" class="flex-none" style="--size-x: 240px" />
+<img src="/images/placeholders/fox.webp" alt="" width="480" height="320" loading="lazy" class="flex-none" style="--size-x: 240px" />
+</div>
+</figure>
+
+```html
+<div class="scroll-x scroll-mask flex gap">
+    <!-- Wide content that will scroll horizontally -->
+</div>
+```
+
+| CSS Variable         | Description                                                          |
+| -------------------- | -------------------------------------------------------------------- |
+| `--mask-size`        | How far each edge fades, `1.5rem` by default                         |
+| `--mask-dir`         | Gradient direction, set for you by the `scroll-y` class              |
+| `--mask-color-start` | Opacity of the start edge, normally driven by the scroll position    |
+| `--mask-color-end`   | Opacity of the end edge, normally driven by the scroll position      |
+
+On an element that does not scroll, the scroll timeline never becomes active, so
+both edges stay solid and you see no fade at all. To hold a fade on an element that
+moves on its own, such as a marquee, set both color variables yourself:
+
+```html
+<div class="scroll-mask" style="--mask-color-start: transparent; --mask-color-end: transparent">
+    <!-- Content that moves without scrolling -->
+</div>
+```
+
+Browsers without scroll-driven animations show the plain mask with both edges
+solid, so the content stays fully visible. The fade is an enhancement, never
+something content depends on.
 
 ### Scrollbar
 

@@ -1,0 +1,94 @@
+---
+title: "CTA Banner"
+pageTitle: "Fylgja CTA Banner"
+description: "A text banner with a heading and an action, for closing a page with one clear next step."
+category: "layout"
+tags: ["banner", "cta", "call to action", "text banner", "gradient", "section"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/utilities"
+    level: required
+    reason: "Provides bg-gradient, flow, align, and the spacing and rounded utilities."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the heading, the paragraph, and the buttons."
+sortOrder: 7
+faq:
+  - question: Why a gradient instead of a flat brand color?
+    answer: A soft gradient from a brand tint to the surface color separates the
+      banner from the page without turning it into a colored block that fights the
+      rest of the design. Set --gradient-from and --gradient-to to the same value for
+      a flat fill.
+  - question: How many actions should a CTA banner have?
+    answer: One primary action, and at most one secondary link beside it. The point of
+      the banner is a single next step, and a second equal-weight button undoes that.
+  - question: Why is the button row a paragraph?
+    answer: It keeps the banner as plain text content, so base styles handle the
+      spacing and nothing extra is needed. The flex utilities lay the buttons out
+      inside it.
+  - question: Can I use a brand background with light text?
+    answer: Yes, but check the buttons. On a brand background the primary button
+      disappears, so retarget --btn-bg and --btn-color, or swap the primary for a
+      plain one.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+import exampleInline from "./example-inline.html?raw";
+
+A CTA banner is a text-only banner with a heading and one clear action, used to
+close a page or break up a long one. It has no image, so it is a plain section with
+generous padding and a soft gradient behind it, all from Fylgja utilities.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- Use a `<section>` with `flow` so the heading, copy, and buttons space themselves
+  with no leading or trailing margin to fight.
+- Pad it generously with `--py` and `--px`. The padding is what makes it read as a
+  banner rather than another paragraph.
+- `bg-gradient` fills the background. `--gradient-from`, `--gradient-to`, and
+  `--gradient-angle` set the colors and direction; a brand tint mixed into
+  `--root-bg` keeps it subtle.
+- Put the actions in a `<p class="flex flex-wrap gap align-center">` so they wrap
+  on narrow screens instead of overflowing.
+- Mark the main action `.btn.--primary` and leave the secondary one plain, so the
+  weight difference is visible.
+
+## Anatomy
+
+| Part            | Responsibility                                                    |
+| --------------- | ----------------------------------------------------------------- |
+| `<section>`     | The banner region, named by its heading.                          |
+| `.bg-gradient`  | The background fill, driven by the `--gradient-*` variables.      |
+| `.flow`         | Vertical rhythm between the heading, copy, and actions.           |
+| Action row      | The primary action, and at most one secondary link.               |
+
+## Accessibility
+
+- Name the banner with `aria-labelledby` pointing at its heading, so it is a region
+  a screen reader can find and skip.
+- Use a heading level that fits the page outline, and set the visual size with
+  `--h-size` rather than picking a level for its size.
+- Write the action as what it does. "Get started" and "Read the docs" work,
+  "Click here" does not.
+- Check the text and the buttons against the lightest and darkest ends of the
+  gradient, not against an average.
+
+## Variants
+
+### Inline action
+
+With the action beside the text instead of under it, the banner takes less vertical
+space, which suits a mid-page break. It wraps to two rows on narrow screens.
+
+<ComponentPreview code={exampleInline} />
+
+## Examples
+
+For the same banner with a photo behind the text, use the
+[Image Banner](/ui/layout/image-banner/). For an image beside the text, use the
+[Split Banner](/ui/layout/split-banner/).
