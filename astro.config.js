@@ -3,6 +3,7 @@ import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
 import { satteri } from "@astrojs/markdown-satteri";
 import { wrapTables, githubAlerts, externalLinks } from "./markdown-plugins";
+import { animationTimelineFix } from "./lightningcss-fixes";
 import { uiCategories } from "./src/ui-categories";
 
 // UI category folders (e.g. /ui/overlays/) are not real pages; send them to the
@@ -28,6 +29,9 @@ export default defineConfig({
 		},
 	},
 	vite: {
+		css: {
+			lightningcss: { visitor: animationTimelineFix },
+		},
 		customLogger: {
 			...globalThis.VITE_LOGGER,
 			warn(msg) {
