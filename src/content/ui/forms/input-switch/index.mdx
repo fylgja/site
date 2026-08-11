@@ -1,0 +1,96 @@
+---
+title: "Input Switch"
+pageTitle: "Fylgja Input Switch"
+description: "A toggle switch for an on/off setting, built on a native checkbox with role=switch."
+category: "forms"
+tags: ["switch", "toggle", "checkbox", "form", "settings", "on off"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/base"
+    level: required
+    reason: "Styles the checkbox as a track and thumb when it carries role=switch."
+  - pkg: "@fylgja/utilities"
+    level: recommended
+    reason: "Provides flex, gap, and align used to sit the label next to the control."
+sortOrder: 5
+faq:
+  - question: Why a checkbox instead of a button?
+    answer: A switch is a two-state control that belongs to a form, so it should submit
+      a value and restore with the form. A checkbox does that natively. The
+      role=switch attribute only changes how it is announced, from "checked" to
+      "on/off".
+  - question: Does the switch need a submit button?
+    answer: That depends on your form. A switch inside a settings form that saves on
+      change needs script to send the value. A switch inside a normal form submits
+      like any other checkbox, so nothing extra is required.
+  - question: How do I make the switch bigger?
+    answer: Set --control-size for the height of the track and thumb, and --switch-size
+      for the width. Both take any length, so a value such as 1.75em and 3em gives a
+      larger control that still scales with the font size.
+  - question: Can I put a label on both sides, like Off and On?
+    answer: Avoid it. Two labels make it ambiguous which one names the control and
+      which one describes the state. Use one label for what the setting does and let
+      the switch itself communicate on or off.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+import exampleSettings from "./example-settings.html?raw";
+import exampleSize from "./example-size.html?raw";
+
+A switch turns a single setting on or off, and applies immediately rather than on
+submit. It is a native `<input type="checkbox">` with `role="switch"`, which Fylgja
+styles into a track and thumb. Because it is still a checkbox, it takes part in
+forms, restores on reload, and keeps its keyboard behavior for free.
+
+## Preview
+
+<ComponentPreview center code={example} />
+
+## Usage
+
+- Write a plain `<input type="checkbox" role="switch">` and give it a label. No
+  classes are needed; Fylgja styles the control from the attribute.
+- Wrapping the control in its `<label>` (as above) labels it without an `id`. Use a
+  separate `<label for>` when the label and the control sit apart in the layout.
+- `checked` sets the initial state, `disabled` greys the control out.
+- The track and thumb follow the same variables as a checkbox, so `--control-size`
+  sizes the height and thumb, and `--switch-size` sets the width.
+
+## Anatomy
+
+| Part                    | Responsibility                                            |
+| ----------------------- | --------------------------------------------------------- |
+| `<input type=checkbox>` | The control, its state, and the submitted value.          |
+| `role="switch"`         | Announces the state as on/off and triggers Fylgja's style. |
+| `<label>`               | Names the setting the switch controls.                     |
+
+## Accessibility
+
+- `role="switch"` changes how the state is announced, from "checked" to "on" or
+  "off". Everything else, the tab stop, the <kbd>Space</kbd> toggle, and the
+  form value, stays native.
+- Label the switch by what it turns on, not by its current state. "Email
+  notifications" works, "Notifications are on" does not.
+- Do not rely on color alone. The thumb also moves, so the state stays readable
+  without color.
+- If flipping the switch triggers a slow save, tell the reader the result in a
+  live region such as a [Toast](/ui/feedback/toast/), not with a hidden state
+  change.
+
+## Variants
+
+### Larger switch
+
+Both size variables cascade, so setting them on a wrapper sizes the control
+inside it.
+
+<ComponentPreview center code={exampleSize} />
+
+## Examples
+
+### Settings list
+
+A run of switches in a list, each label pushed against its control.
+
+<ComponentPreview center code={exampleSettings} />
