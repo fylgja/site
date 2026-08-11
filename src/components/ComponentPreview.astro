@@ -24,17 +24,11 @@ import CodeBlock from "@/components/CodeBlock.astro";
  * are shown for reference only; the live preview always uses the HTML `code`.
  */
 interface Props {
-	/** HTML source, rendered live and shown in the HTML tab. */
 	code: string;
-	/** Optional Astro variant source, adds an "Astro" tab. */
 	astro?: string;
-	/** Optional Alpine.js variant source, adds an "Alpine" tab. */
 	alpine?: string;
-	/** Extra classes for the live preview wrapper. */
 	previewClass?: string;
-	/** Inline style for the live preview wrapper (e.g. sizing tokens). */
 	previewStyle?: string;
-	/** Center the preview contents instead of top-left flow. */
 	center?: boolean;
 }
 
