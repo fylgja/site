@@ -1,0 +1,98 @@
+---
+title: "Split Banner"
+pageTitle: "Fylgja Split Banner"
+description: "A banner split into an image half and a text half, stacking into one column on small screens."
+category: "layout"
+tags: ["banner", "split", "hero", "image", "two column", "feature"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/utilities"
+    level: required
+    reason: "Provides grid-cols, align, object-cover, and the rounded and clip utilities."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the heading, the paragraph, and the button in the text half."
+sortOrder: 6
+faq:
+  - question: How is this different from a media card?
+    answer: A media card is one item in a list, sized to its content and framed as a
+      card. A split banner is a page section, so it runs full width, splits evenly,
+      and carries a heading and a call to action.
+  - question: How do I put the image on the left instead?
+    answer: Keep the text first in the source, since that is the order it should be
+      read in, and place both halves explicitly. Set --md_col to 1 on the image and 2
+      on the text block, and --md_row to 1 on both. Without the row, auto placement
+      only moves forward, so the image lands on a second row instead of beside the
+      text.
+  - question: Why does the image not stretch on small screens?
+    answer: It does not need to. Below the breakpoint the banner is one column, so the
+      image gets a fixed height through --size-y. From the breakpoint up, --md_size-y
+      of 100% makes it match the height of the text half.
+  - question: Can the halves be uneven?
+    answer: Not with grid-cols, which splits into equal columns. For a 2 to 1 split,
+      set grid-template-columns yourself on the section, or drop the image to a
+      background with the [Image Banner](/ui/layout/image-banner/) instead.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+import exampleReverse from "./example-reverse.html?raw";
+
+A split banner divides a page section into an image half and a text half, for
+introducing a feature or a story without the text sitting on top of the photo. It
+is a two-column grid that collapses to one column on small screens, so the text
+never has to compete with the image for space.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- Use `grid-cols` on the section with `--grid-cols: 1` and `--md_grid-cols: 2`, so
+  the halves stack on small screens and split from the breakpoint up.
+- Keep the text block first in the source. That is the order it should be read in,
+  regardless of which side it ends up on. To move it to the other side, place both
+  halves with `--md_col` and `--md_row` rather than reordering the markup.
+- Center the text in its half with `align` and `--align: center start`, and pad it
+  with `--p`.
+- Give the image `w-full object-cover`, a fixed `--size-y` for the stacked layout,
+  and `--md_size-y: 100%` so it matches the text half once side by side.
+- `rounded clip` rounds the banner and keeps the image inside the corners.
+
+## Anatomy
+
+| Part               | Responsibility                                                 |
+| ------------------ | -------------------------------------------------------------- |
+| `.grid-cols`       | The one-to-two column split and its breakpoint.                |
+| Text `<div>`       | The heading, copy, and call to action, centered in its half.   |
+| `<img>`            | The image half, cropped with `object-cover`.                   |
+| `--md_col` / `--md_row` | Where each half lands, when it differs from source order.  |
+
+## Accessibility
+
+- Give the image real `alt` text. Unlike an image banner, this photo sits beside
+  the text rather than behind it, so it is usually content, not decoration.
+- Name the banner with `aria-labelledby` pointing at its heading, so it is a region
+  a screen reader can find and skip.
+- Keep the text first in the source and move it visually with `--md_col` and
+  `--md_row`. Reordering the markup would put the reading order out of step with the
+  visual one.
+- Use a heading level that fits the page outline rather than picking one for size.
+  `--h-size` handles the size.
+
+## Variants
+
+### Image on the start side
+
+The text stays first in the source and moves to column 2 from the breakpoint up,
+with the image taking column 1. Both halves also set `--md_row: 1`, since auto
+placement alone would drop the image to a second row.
+
+<ComponentPreview code={exampleReverse} />
+
+## Examples
+
+For text over the image instead of beside it, use the
+[Image Banner](/ui/layout/image-banner/). For a banner with no image, use the
+[CTA Banner](/ui/layout/cta-banner/).

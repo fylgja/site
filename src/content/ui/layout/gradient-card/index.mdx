@@ -1,0 +1,91 @@
+---
+title: "Gradient Bordered Card"
+pageTitle: "Fylgja Gradient Bordered Card"
+description: "A card whose border is a gradient, for singling out one option in a row without changing its size."
+category: "layout"
+tags: ["card", "gradient", "border", "highlight", "pricing", "featured"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/card"
+    level: required
+    reason: "Provides the .card surface, padding, and radius the gradient border sits on."
+  - pkg: "@fylgja/utilities"
+    level: required
+    reason: "Provides .border-gradient, which paints the border with a gradient."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the typography and the button inside the card."
+sortOrder: 4
+faq:
+  - question: How does a gradient border work without an extra element?
+    answer: The .border-gradient utility paints two backgrounds on one element. A flat
+      fill clipped to the padding box, and the gradient clipped to the border box.
+      The border itself is transparent, so the gradient shows through only in the
+      border area.
+  - question: Why does the card look like it has no background?
+    answer: The utility replaces the card background with its own padding-box fill,
+      taken from --inner-bg. Set --inner-bg to the surface you want, such as
+      var(--surface-color), or the card will fall back to the page background.
+  - question: How do I make the border thicker?
+    answer: Set border-width on the card. The card ships with a 1px border, which is
+      thin for a gradient, so 2px or 3px reads much better.
+  - question: Can the heading use the same gradient?
+    answer: Yes. Add .text-gradient alongside .border-gradient and the same gradient is
+      clipped to the text as well. Keep it to one element and check the contrast, since
+      gradient text loses contrast at its lighter end.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+import exampleRow from "./example-row.html?raw";
+
+A gradient bordered card is a [Card](/ui/layout/card/) with a gradient painted in
+its border, used to single out one option in a row, a featured plan or a
+recommended article, without making it larger or louder than the rest. It needs no
+extra wrapper: Fylgja's `.border-gradient` utility does the whole thing with two
+backgrounds on the card itself.
+
+## Preview
+
+<ComponentPreview center code={example} />
+
+## Usage
+
+- Add `.border-gradient` to the `.card`. It clips a flat fill to the padding box
+  and the gradient to the border box, and makes the border color transparent.
+- Set `--inner-bg` to the fill you want inside the border, for example
+  `var(--surface-color)`. Without it the card falls back to the page background.
+- Set `border-width` on the card. A gradient in the card's default `1px` border is
+  barely visible, so `2px` upward works better.
+- The gradient comes from `--gradient-from` and `--gradient-to`, with
+  `--gradient-angle` for the direction. For more than two colors, set
+  `--gradient-stops` to the whole stop list instead.
+
+## Anatomy
+
+| Part                 | Responsibility                                              |
+| -------------------- | ----------------------------------------------------------- |
+| `.card`              | The surface, padding, and radius.                           |
+| `.border-gradient`   | Paints the gradient into the border area.                   |
+| `--inner-bg`         | The fill inside the border.                                 |
+| `--gradient-*`       | The colors, stops, and angle of the gradient.               |
+| `border-width`       | How much of the gradient is visible.                        |
+
+## Accessibility
+
+- The gradient is decoration. It must never be the only thing marking a card as
+  recommended, so say so in the card, for example with a
+  [Badge](/ui/feedback/badge/) or a line of text.
+- Check the contrast of the content against `--inner-bg`, not against the
+  gradient. The border does not sit behind the text.
+- If you also use `.text-gradient` on the heading, verify the lightest end of the
+  gradient still meets contrast against the card fill.
+
+## Examples
+
+### Highlighting one plan in a row
+
+Only the featured card carries the gradient, so the row keeps one rhythm and the
+eye still lands in the right place.
+
+<ComponentPreview code={exampleRow} />
