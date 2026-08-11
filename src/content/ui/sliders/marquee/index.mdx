@@ -33,11 +33,13 @@ faq:
       inside an aria-hidden subtree is still reachable by keyboard, which is a real
       failure. inert removes the copy from both the tab order and the accessibility
       tree.
-  - question: Why a sprite instead of an img per logo?
-    answer: An img cannot inherit the text color, so a light and a dark version of every
-      logo would be needed. A symbol pulled in with use is part of the document, so
-      fill="currentcolor" on the wrapping svg colors it, and one file serves every item
-      in both schemes.
+  - question: Should the logos be a sprite or an img?
+    answer: Either. An img is the straightforward choice when the logos keep their own
+      brand colors, which most real logo strips do. The sprite earns its place when you
+      want inline SVG, because pulling a symbol in with use keeps each item to two
+      nodes instead of repeating the whole path, and the duplicate track means every
+      logo is in the markup twice. Taking the page color through currentcolor is a
+      bonus of inline SVG, not the reason to reach for it.
   - question: Does the marquee need JavaScript?
     answer: No. The scroll is a CSS animation and the pause is a hover and focus rule.
       Nothing here runs script.
@@ -78,10 +80,14 @@ while the pointer or the keyboard is inside it.
   translate, and the animation itself.
 - Both tracks animate together, each translating one track width plus one gap, so
   the copy lands exactly where the original started.
-- Keep the logo marks in one SVG sprite, each wrapped in a `<symbol id>`, and pull
-  them in with `<svg fill="currentcolor"><use href="sprite.svg#id" /></svg>`. The
-  mark inherits the text color, so one file covers light and dark and every item
-  reuses it instead of repeating the path.
+- Use `<img>` for the logos when they keep their own brand colors. A logo strip in
+  full color is the normal case, and nothing here depends on the marks being
+  monochrome.
+- This example uses inline SVG instead, so the marks take the page color. Keeping
+  them in one sprite of `<symbol id>` elements and pulling each in with
+  `<svg fill="currentcolor"><use href="sprite.svg#id" /></svg>` holds every item to
+  two nodes rather than repeating the whole path, which counts twice over given the
+  duplicate track.
 - Set the pace with `--marquee-duration` and the spacing with `--marquee-gap`.
 - The edge fade is the [`scroll-mask`](/library/utilities/#scroll-mask) utility, not
   custom CSS. It normally reveals each edge as you scroll toward it, so setting
@@ -106,7 +112,7 @@ while the pointer or the keyboard is inside it.
 | `.scroll-mask`           | Fades both edges, sized by `--mask-size`.                   |
 | `<ul role="list">`       | The logos, in one track that animates.                      |
 | `<ul aria-hidden="true">`| The duplicate track that closes the loop.                   |
-| `<use href="…#id">`      | The logo mark, pulled from the sprite in the text color.    |
+| `<use href="…#id">`      | The logo mark, one sprite symbol per item. An `<img>` also fits. |
 
 ## Accessibility
 
