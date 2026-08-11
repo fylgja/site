@@ -22,6 +22,12 @@ faq:
   - question: Why does the copy have aria-hidden?
     answer: It is the same content twice, and a screen reader should read it once. The
       copy exists only so the loop looks seamless, so it is hidden from assistive tech.
+  - question: Does the marquee need a pause control?
+    answer: Not for a row of plain logos. It never moves for a reader who has reduced
+      motion turned on, and there is nothing in it to act on. Add a real control as
+      soon as the items become interactive, a link or a button, since a moving target
+      is hard to hit and there is no hover on touch. A checkbox the CSS reads with
+      :has is enough, no script needed.
   - question: What if the logos are links?
     answer: Put inert on the duplicate track instead of aria-hidden. A focusable element
       inside an aria-hidden subtree is still reachable by keyboard, which is a real
@@ -104,13 +110,14 @@ while the pointer or the keyboard is inside it.
 
 ## Accessibility
 
-- The strip stops while the pointer is over it or the keyboard is inside it, so a
-  reader can hold it still to read an item.
-- That does not fully satisfy WCAG 2.2.2, which asks for a control to pause moving
-  content. There is no hover on touch. If the strip carries anything a reader has to
-  act on, add an explicit pause control, or do not move it at all.
 - With `prefers-reduced-motion: reduce` the animation is off, the duplicate is
-  hidden, and the strip becomes a scrollable region instead.
+  hidden, and the strip becomes a scrollable region instead. A reader who is
+  affected by motion never sees it move.
+- The strip also stops while the pointer is over it or the keyboard is inside it, so
+  a reader can hold it still to read an item.
+- A row of logos is passive, so that is enough. The moment anything inside the strip
+  is interactive, add a real pause control, because a moving target is hard to hit
+  and there is no hover on touch.
 - The duplicate track is `aria-hidden="true"` so the content is announced once. If
   the logos are links, use `inert` on the duplicate instead, since a focusable
   element inside `aria-hidden` is still reachable by keyboard.
