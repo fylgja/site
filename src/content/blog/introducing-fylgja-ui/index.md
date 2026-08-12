@@ -1,7 +1,7 @@
 ---
 title: "Introducing Fylgja UI"
 description: "A new section of the site with copy-paste UI components, built on plain accessible HTML and styled by Fylgja CSS. This is the first batch, and more are on the way."
-publishDate: 2026-08-11
+publishDate: 2026-08-12
 tags: ["FylgjaCSS", "UI", "Release"]
 coverImage: cover.webp
 ---
