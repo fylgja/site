@@ -42,7 +42,7 @@ export default [
 		items: await filterCollection("supports/"),
 	},
 	{
-		title: "Intergrations",
-		items: await filterCollection("intergrations/"),
+		title: "Integrations",
+		items: await filterCollection("integrations/"),
 	},
 ];

@@ -44,7 +44,7 @@ that:
   would for any other JSDoc-documented package.
 - **AI coding assistants** read the same JSDoc and SassDoc comments, so a general-purpose AI
   tool in your editor can suggest accurate completions too, without Fylgja-specific training.
-  See [AI & LLM Support](/docs/intergrations/ai-support) for more on how Fylgja works with AI
+  See [AI & LLM Support](/docs/integrations/ai-support) for more on how Fylgja works with AI
   tools specifically.
 
 > [!Tip]

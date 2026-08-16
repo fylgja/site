@@ -86,9 +86,9 @@ Optional integrations that connect Fylgja to other tools and workflows.
 - [Accessibility](https://fylgja.dev/docs/supports/accessibility): Fylgja's out-of-the-box A11Y support.
 - [Browser Support](https://fylgja.dev/docs/supports/browser-support): Which browsers Fylgja CSS supports.
 - [RTL (Right to Left)](https://fylgja.dev/docs/supports/rtl): Support for right-to-left languages such as Arabic and Hebrew.
-- [AI & LLM Support](https://fylgja.dev/docs/intergrations/ai-support): How Fylgja integrates with AI tools and LLMs.
-- [Autocomplete in your editor](https://fylgja.dev/docs/intergrations/autocomplete): Editor tooling tips for working with Fylgja CSS.
-- [Tailwind CSS Integration](https://fylgja.dev/docs/intergrations/tailwindcss): Using Fylgja's design system inside a Tailwind CSS project.
+- [AI & LLM Support](https://fylgja.dev/docs/integrations/ai-support): How Fylgja integrates with AI tools and LLMs.
+- [Autocomplete in your editor](https://fylgja.dev/docs/integrations/autocomplete): Editor tooling tips for working with Fylgja CSS.
+- [Tailwind CSS Integration](https://fylgja.dev/docs/integrations/tailwindcss): Using Fylgja's design system inside a Tailwind CSS project.
 
 ## FAQ
 

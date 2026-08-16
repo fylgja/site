@@ -16,9 +16,9 @@ faq:
       index Fylgja's docs, so you can get MCP-based context today without Fylgja
       needing to ship its own server.
   - question: Which AI coding assistants can use the Fylgja Skill?
-    answer: The docs show install commands for Gemini CLI, Claude Code, Cursor, and
-      GitHub Copilot, plus a generic pattern for any other agent that reads
-      skills from a local folder (e.g. .codex or .opencode).
+    answer: The docs show an install command for Claude Code, plus a generic
+      pattern that works for any other agent reading skills from a local folder,
+      such as Cursor, GitHub Copilot, Codex or OpenCode.
 ---
 
 Fylgja CSS is designed to be easily readable and understandable not just by human developers, but also by AI agents and Large Language Models (LLMs).
@@ -31,7 +31,7 @@ This feature is completely static and operates entirely in your browser. We don'
 
 ## AI Context File (`llms.txt`)
 
-Because Fylgja takes a unique approach to styling—focusing on classless base styles, modular design tokens, and Dynamic CSS Utilities—standard AIs might occasionally assume it works like traditional utility frameworks (like Tailwind).
+Because Fylgja takes a unique approach to styling (focusing on classless base styles, modular design tokens, and Dynamic CSS Utilities), standard AIs might occasionally assume it works like traditional utility frameworks such as Tailwind.
 
 To solve this, we provide a dedicated, machine-readable context file. If you are using an AI coding assistant (like Cursor or GitHub Copilot) or working with a web-based LLM, you can feed it this file to instantly give the AI the core rules, conventions, and concepts of the Fylgja library.
 
@@ -51,13 +51,7 @@ For example, tools like **[Context7](https://context7.com/fylgja/fylgja)** offer
 
 If you use AI coding assistants or CLIs locally that support skills, you can install the official Fylgja CSS Skill to give your AI native knowledge of Fylgja's design tokens, classless base, and dynamic utility system.
 
-Run the corresponding command below to drop our `SKILL.md` file directly into your local skills directory for your specific AI agent:
-
-**Gemini CLI**
-
-```bash
-gemini skills install https://github.com/fylgja/fylgja --path ai-skill
-```
+Run the command below to drop our `SKILL.md` file directly into your local skills directory.
 
 **Claude Code**
 
@@ -66,25 +60,14 @@ mkdir -p .claude/skills/fylgja
 curl -o .claude/skills/fylgja/SKILL.md https://raw.githubusercontent.com/fylgja/fylgja/main/ai-skill/SKILL.md
 ```
 
-**Cursor**
-
-```bash
-mkdir -p .cursor/skills/fylgja
-curl -o .cursor/skills/fylgja/SKILL.md https://raw.githubusercontent.com/fylgja/fylgja/main/ai-skill/SKILL.md
-```
-
-**GitHub Copilot**
-
-```bash
-mkdir -p .github/skills/fylgja
-curl -o .github/skills/fylgja/SKILL.md https://raw.githubusercontent.com/fylgja/fylgja/main/ai-skill/SKILL.md
-```
-
 **Other AI Agents**
 
-If your CLI agent uses a different folder (like `.codex` or `.opencode`), just replace the folder name in the path:
+Agents that read skills from their own dot folder follow the same steps, only the folder name changes:
 
 ```bash
-mkdir -p .YOUR_AGENT_FOLDER/skills/fylgja
-curl -o .YOUR_AGENT_FOLDER/skills/fylgja/SKILL.md https://raw.githubusercontent.com/fylgja/fylgja/main/ai-skill/SKILL.md
+# Replace .agents with your AI agent folder, e.g. .cursor, .github or .codex
+mkdir -p .agents/skills/fylgja
+curl -o .agents/skills/fylgja/SKILL.md https://raw.githubusercontent.com/fylgja/fylgja/main/ai-skill/SKILL.md
 ```
+
+Some agents ship their own installer instead, so check their docs first if the folder layout differs.

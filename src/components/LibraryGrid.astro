@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+	items: CollectionEntry<"library">[];
+	/** Set to 3 when the grid sits under its own h2 section heading. */
+	headingLevel?: 2 | 3;
+}
+
+const { items, headingLevel = 2 } = Astro.props;
+const Heading = `h${headingLevel}` as "h2" | "h3";
+---
+
+<ul role="list" class="auto-grid gap" style="--max-col-size: 16rem">
+	{
+		items.map(({ id, data }) => {
+			if (data.draft) return;
+
+			return (
+				<li class="card --hover flow">
+					<Heading>
+						<a href={`/library/${id}/`} class="stretched-link">
+							{data.title}
+						</a>
+					</Heading>
+					<p class="line-clamp">{data.description}</p>
+				</li>
+			);
+		})
+	}
+</ul>
+
+<style>
+	.card :where(h2, h3) {
+		--h-size: 1.5em;
+	}
+</style>

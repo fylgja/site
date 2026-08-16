@@ -1,40 +1,14 @@
 ---
 import Layout from "@/layouts/DocsLayout.astro";
+import LibraryGrid from "@/components/LibraryGrid.astro";
 import { extensionsCollection, collection } from "./_collection.ts";
 const title = "Fylgja Extensions";
 const description =
-	"A collection of extensions, that improve the use of certain features or intergations with other Framewoks";
+	"A collection of extensions, that improve the use of certain features or integrations with other Frameworks";
 ---
 
 <Layout title={title} description={description} collectionName="Library" collection={collection}>
 	<h1>{title}</h1>
 	<p>{description}</p>
-	<ul role="list" class="auto-grid gap" style="--max-col-size: 16rem">
-		{
-			extensionsCollection.map((item) => {
-				if (item.data.draft) return;
-				const { slug, data } = item;
-				const url = `/library/${slug}`;
-
-				return (
-					<li class="card --hover flow">
-						<h2>
-							<a href={url} class="stretched-link">
-								{data.title}
-							</a>
-						</h2>
-						<p class="line-clamp">{data.description}</p>
-					</li>
-				);
-			})
-		}
-	</ul>
+	<LibraryGrid items={extensionsCollection} />
 </Layout>
-
-<style>
-	.card {
-		h2 {
-			--h-size: 1.5em;
-		}
-	}
-</style>

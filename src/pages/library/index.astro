@@ -1,7 +1,30 @@
 ---
-import Layout from "@/layouts/PageLayout.astro";
-const url = new URL("/library/base", Astro.url);
-const title = `Redirecting to: ${url}`;
+import Layout from "@/layouts/DocsLayout.astro";
+import LibraryGrid from "@/components/LibraryGrid.astro";
+import {
+	baseCollection,
+	componentsCollection,
+	extensionsCollection,
+	collection,
+} from "./_collection.ts";
+const title = "Fylgja Library";
+const description =
+	"Every package Fylgja ships, from the classless base and design tokens to the components and framework extensions.";
 ---
 
-<Layout title={title} redirect={url} />
+<Layout title={title} description={description} collectionName="Library" collection={collection}>
+	<h1>{title}</h1>
+	<p>{description}</p>
+	<h2>Core</h2>
+	<p>The packages that every Fylgja project builds on.</p>
+	<LibraryGrid items={baseCollection} headingLevel={3} />
+	<h2>Components</h2>
+	<p>A collection of versatile and lightweight components designed to accelerate your workflow.</p>
+	<LibraryGrid items={componentsCollection} headingLevel={3} />
+	<h2>Extensions</h2>
+	<p>
+		A collection of extensions, that improve the use of certain features or integrations with other
+		Frameworks
+	</p>
+	<LibraryGrid items={extensionsCollection} headingLevel={3} />
+</Layout>
