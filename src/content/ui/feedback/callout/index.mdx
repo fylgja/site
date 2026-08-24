@@ -1,0 +1,88 @@
+---
+title: "Callout"
+pageTitle: "Fylgja Callout"
+description: "A highlighted block for a note, tip, warning, or caution, built from a paragraph title and plain content."
+category: "feedback"
+tags: ["callout", "alert", "admonition", "note", "warning", "blockquote"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/callout"
+    level: required
+    reason: "Provides the .callout component and the accent color for each type."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Spaces the paragraphs inside the callout and styles the text."
+sortOrder: 1
+faq:
+  - question: How do I color a callout for a note, warning, or caution?
+    answer: Put the type in a data-callout attribute on the callout. Five types ship,
+      note, tip, important, warning, and caution. Anything else falls back to your
+      brand color.
+  - question: Does the component ship the icons?
+    answer: No, the icon comes from your markup or your markdown plugin, so any icon
+      set works. Give the svg a fill of currentcolor and it takes the accent color
+      of the callout.
+  - question: Why is the title wrapped in a strong tag?
+    answer: The component ships three classes and leaves the rest to HTML, so the
+      title takes its weight from strong rather than from CSS. A title without one
+      renders at normal weight.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+import exampleTypes from "./example-types.html?raw";
+import examplePlain from "./example-plain.html?raw";
+
+A callout is a highlighted block that sets a note, tip, or warning apart from the
+prose around it. It is a `<div class="callout">` holding a title paragraph and
+ordinary content, so the text inside behaves like any other text on the page.
+
+Markdown plugins generate this markup from blockquote syntax, which is where most
+callouts on a documentation site come from. The markup is plain enough to write by
+hand too.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- Wrap the callout in a `<div class="callout">` and put the type in `data-callout`.
+- Give it a `<p class="callout-title">` holding an optional `<svg>` icon and a
+  `<strong>` with the label.
+- Follow the title with ordinary content. Paragraphs, lists, and code blocks all
+  space themselves, so nothing else is needed.
+- Mark the icon `aria-hidden="true"` and give it `fill="currentcolor"`, so it takes
+  the accent color and stays out of the accessibility tree.
+
+For a callout the reader can fold away, see [Callout Collapse](/ui/feedback/callout-collapse/).
+
+## Anatomy
+
+- `.callout` is the container. It draws the accent border, sets the padding, and
+  holds the `data-callout` type.
+- `.callout-title` is the title row. It lays the icon and label out in a line and
+  takes the accent color.
+- `<strong>` inside the title carries the weight. The component does not set one.
+- Everything after the title is plain content, styled by Fylgja Base.
+
+## Accessibility
+
+- A callout is regular content, not a live region, so it needs no role. Reserve
+  `role="alert"` and `role="status"` for messages that appear after page load, such
+  as a [toast](/ui/feedback/toast/).
+- Do not rely on the accent color alone to carry the meaning. The title label is
+  what a screen reader announces, so keep it explicit.
+- Mark decorative icons `aria-hidden="true"`. The `<strong>` label already says
+  what the icon repeats.
+
+## Variants
+
+Five types ship, each with its own accent color that adapts to light and dark mode.
+
+<ComponentPreview code={exampleTypes} />
+
+The icon and the type are both optional. Without a `data-callout` type the callout
+falls back to your brand color, which makes it a neutral callout.
+
+<ComponentPreview code={examplePlain} />

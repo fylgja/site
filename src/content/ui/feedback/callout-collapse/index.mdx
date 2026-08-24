@@ -1,0 +1,72 @@
+---
+title: "Callout Collapse"
+pageTitle: "Fylgja Collapsible Callout"
+description: "A callout the reader can fold away, built on native details and summary with no JavaScript."
+category: "feedback"
+tags: ["callout", "alert", "admonition", "collapse", "disclosure", "details"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/callout"
+    level: required
+    reason: "Provides the .callout component, the accent colors, and the folding icon."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Spaces the paragraphs inside the callout and styles the text."
+sortOrder: 2
+faq:
+  - question: How do I make a callout start expanded?
+    answer: Add the open attribute to the details element. Without it the callout
+      starts folded.
+  - question: Does the folding need JavaScript?
+    answer: No. The details and summary elements handle the toggle, the keyboard, and
+      the semantics natively, and the icon turns with a CSS transition.
+  - question: Why does the disclosure triangle not show?
+    answer: The component hides it, because the callout supplies its own folding icon
+      in the title. Leave out the callout-fold-icon element and the title has no
+      indicator at all.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+
+A collapsible callout is a [callout](/ui/feedback/callout/) the reader can fold
+away, for a long remark that would otherwise break up the page. Swapping the `<div>`
+for a `<details>` and the title `<p>` for a `<summary>` is the whole change, so the
+browser handles the toggle, the keyboard, and the semantics.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- Use `<details class="callout">` as the container, with the type in `data-callout`.
+- Make the title a `<summary class="callout-title">` instead of a paragraph.
+- Add a second `<svg class="callout-fold-icon">` at the end of the title. It points
+  down when folded and turns as the callout opens.
+- Add `open` to the `<details>` for a callout that starts expanded.
+- Give every `<details>` in a group the same `name` to fold the others when one
+  opens, the same exclusive behavior the [accordion](/ui/data-display/accordion/)
+  uses.
+
+## Anatomy
+
+- `<details class="callout">` is the container and owns the open state.
+- `<summary class="callout-title">` is the title row and the control that toggles
+  it. The browser's own disclosure triangle is hidden, so the title reads as one
+  line.
+- `.callout-fold-icon` is the indicator. It is a plain `<svg>` in the title, turned
+  by CSS when the callout is open.
+- Everything after the summary is the folded content.
+
+## Accessibility
+
+- `<summary>` is already a button to assistive technology and reports whether the
+  callout is expanded, so it needs no `role` or `aria-expanded`.
+- It is focusable and toggles with <kbd>Enter</kbd> or <kbd>Space</kbd> out of the
+  box. Do not put another interactive element inside it.
+- Keep the `<strong>` label descriptive. It is the accessible name of the control,
+  so it should say what folding it reveals.
+- Mark both icons `aria-hidden="true"`. The folding state is already announced.
+- Content inside a closed `<details>` is hidden from find-in-page in some browsers,
+  so do not fold away anything a reader must not miss.

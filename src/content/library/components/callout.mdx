@@ -1,0 +1,191 @@
+---
+title: "Callout"
+pageTitle: "Fylgja Callout"
+description: "The Fylgja Callout component styles the highlighted blocks that markdown plugins generate from blockquote syntax"
+npm: "@fylgja/callout"
+git: "https://github.com/fylgja/fylgja/tree/main/components/callout"
+faq:
+  - question: Which callout types are built in?
+    answer: Five, note, tip, important, warning, and caution. Each has its own accent
+      color, set with light-dark() so it adapts to the color scheme. A callout with
+      an unrecognized type, or none at all, falls back to your brand color.
+  - question: Does the component ship the icons?
+    answer: No. The icon comes from your markup or your markdown plugin, so any icon
+      set works. The component only stops the svg from being squashed. Give it a
+      fill of currentcolor and it picks up the accent color of the callout.
+  - question: Why is the title wrapped in a strong tag?
+    answer: The component ships three classes and leaves the rest to HTML, so the
+      title takes its weight from strong rather than from CSS. A title without one
+      renders at normal weight.
+  - question: How do I make a callout collapsible?
+    answer: Swap the div for a details element and the title paragraph for a summary,
+      then add an svg with the callout-fold-icon class to the title. The browser
+      handles the toggle, so no JavaScript is needed.
+---
+
+import InstallTabs from "@/components/InstallTabs.astro";
+
+The Fylgja Callout component styles the highlighted blocks that markdown plugins generate from blockquote syntax, known as callouts, alerts, or admonitions.
+
+Use it for notes, tips, warnings, and other remarks that need to stand apart from the surrounding prose.
+
+## Installation
+
+<InstallTabs pkg="@fylgja/callout" cdn="https://cdn.jsdelivr.net/npm/@fylgja/callout/index.min.css" />
+
+## Usage
+
+Once installed, you can import the full package with:
+
+```css
+@import "@fylgja/callout";
+```
+
+Alternatively, if you only need specific parts, you can import them individually:
+
+| Import Path              | Description                                                                  |
+| ------------------------ | ---------------------------------------------------------------------------- |
+| `@fylgja/callout/base`   | Contains the core of the Callout                                             |
+| `@fylgja/callout/styles` | Contains the accent color for each callout type, for example tip and warning |
+
+The component expects the structure below, where `data-callout` carries the type.
+
+```html
+<div class="callout" data-callout="note">
+	<p class="callout-title">
+		<svg aria-hidden="true">...</svg>
+		<strong>Note</strong>
+	</p>
+	<p>Useful information that users should know.</p>
+</div>
+```
+
+Only three classes are shipped, `callout`, `callout-title`, and `callout-fold-icon`.
+Everything else is left to HTML, so the title takes its weight from `<strong>` rather than from CSS.
+
+For Astro, the `@fylgja/astro` integration ships a `callouts` markdown plugin that renders exactly this,
+from GitHub alert syntax with the collapse markers of Obsidian callouts.
+Any other plugin works too, as long as it emits these names.
+
+## Callout styles
+
+By default a callout is a bordered block with no background, so it sits quietly inside a body of text.
+A single CSS variable `--callout-style` drives the border and title color, and each type maps onto it.
+
+Five types are provided: `note`, `tip`, `important`, `warning`, and `caution`.
+Anything unrecognized falls back to your brand color.
+
+Icons are left to your markdown plugin. The component only keeps whatever `<svg>` it finds in the title
+from being squashed, so any icon set works. Give the icon `fill="currentcolor"`,
+or `stroke="currentcolor"` for an outline set, and it picks up the accent color.
+
+<div class="divide-y flow" style="--flow: 2rem; border-color: color-mix(in srgb, currentcolor 10%, #0000);">
+
+<div>
+<div class="callout" data-callout="note">
+	<p class="callout-title"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentcolor" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg><strong>Note</strong></p>
+	<p>Useful information that users should know, even when skimming the page.</p>
+</div>
+
+```html
+<div class="callout" data-callout="note">...</div>
+```
+</div>
+
+<div>
+<div class="callout" data-callout="tip">
+	<p class="callout-title"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentcolor" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg><strong>Tip</strong></p>
+	<p>Optional advice that helps a reader do the task better.</p>
+</div>
+
+```html
+<div class="callout" data-callout="tip">...</div>
+```
+</div>
+
+<div>
+<div class="callout" data-callout="important">
+	<p class="callout-title"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentcolor" aria-hidden="true"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg><strong>Important</strong></p>
+	<p>Key information a reader needs to reach their goal.</p>
+</div>
+
+```html
+<div class="callout" data-callout="important">...</div>
+```
+</div>
+
+<div>
+<div class="callout" data-callout="warning">
+	<p class="callout-title"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentcolor" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg><strong>Warning</strong></p>
+	<p>Urgent information that needs immediate attention to avoid problems.</p>
+</div>
+
+```html
+<div class="callout" data-callout="warning">...</div>
+```
+</div>
+
+<div>
+<div class="callout" data-callout="caution">
+	<p class="callout-title"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentcolor" aria-hidden="true"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg><strong>Caution</strong></p>
+	<p>Advises about risks or negative outcomes of an action.</p>
+</div>
+
+```html
+<div class="callout" data-callout="caution">...</div>
+```
+</div>
+
+<div>
+<div class="callout">
+	<p class="callout-title"><strong>No type</strong></p>
+	<p>Leave off the type and the callout uses your brand color, which makes it a neutral callout.</p>
+</div>
+
+```html
+<div class="callout">...</div>
+```
+</div>
+
+</div>
+
+## Collapsible callout
+
+For a callout the reader can fold away, swap the `<div>` for `<details>` and the title `<p>` for a `<summary>`.
+The marker the browser puts on a summary is hidden, and a `.callout-fold-icon` in the title turns as the callout opens.
+Add `open` to start it expanded.
+
+<details class="callout" data-callout="warning">
+	<summary class="callout-title"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentcolor" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg><strong>Read this before upgrading</strong><svg class="callout-fold-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentcolor" aria-hidden="true"><path d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z"></path></svg></summary>
+	<p>The v3 release drops Sass. Compile from the CSS files instead, and the output stays the same.</p>
+</details>
+
+```html
+<details class="callout" data-callout="warning">
+	<summary class="callout-title">
+		<svg aria-hidden="true">...</svg>
+		<strong>Read this before upgrading</strong>
+		<svg class="callout-fold-icon" aria-hidden="true">...</svg>
+	</summary>
+	<p>The v3 release drops Sass.</p>
+</details>
+```
+
+## Customization
+
+To restyle a type, override its color variable. Each type has one, `--callout-note` through `--callout-caution`, set with `light-dark()`.
+
+```css
+.callout {
+	--callout-tip: hotpink;
+}
+```
+
+To add a tinted background, or to change the spacing:
+
+```css
+.callout {
+	--callout-bg: color-mix(in oklab, var(--callout-style) 8%, transparent);
+	--callout-px: 1.5rem;
+}
+```
