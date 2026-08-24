@@ -1,3 +1,3 @@
 export { wrapTables } from "./wrap-tables.js";
-export { githubAlerts } from "./github-alerts.js";
+export { callouts } from "./callouts.js";
 export { externalLinks } from "./external-links.js";
