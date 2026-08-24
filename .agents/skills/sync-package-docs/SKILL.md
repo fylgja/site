@@ -25,6 +25,7 @@ option) and propagate whichever side is actually correct to the other side.
 | `src/content/library/extensions/props-builder.md` | `~/Developer/fylgja/fylgja/props-builder/README.md` |
 | `src/content/library/components/badge.mdx` | `~/Developer/fylgja/fylgja/components/badge/README.md` |
 | `src/content/library/components/breadcrumbs.mdx` | `~/Developer/fylgja/fylgja/components/breadcrumbs/README.md` |
+| `src/content/library/components/callout.mdx` | `~/Developer/fylgja/fylgja/components/callout/README.md` |
 | `src/content/library/components/card.mdx` | `~/Developer/fylgja/fylgja/components/card/README.md` |
 | `src/content/library/components/form-extend.mdx` | `~/Developer/fylgja/fylgja/components/form-extend/README.md` |
 | `src/content/library/components/input-group.mdx` | `~/Developer/fylgja/fylgja/components/input-group/README.md` |

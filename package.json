@@ -1,34 +1,40 @@
 {
-	"name": "fylgja-site",
-	"version": "2.0.0",
-	"description": "The Fylgja site powered by Astro",
-	"private": true,
-	"author": "fylgja",
-	"type": "module",
-	"scripts": {
-		"start": "astro dev",
-		"dev": "astro dev",
-		"build": "astro check && astro build",
-		"preview": "astro preview",
-		"deploy": "./scripts/deploy.sh"
-	},
-	"dependencies": {
-		"@astrojs/check": "^0.9.10",
-		"@astrojs/mdx": "^7.0.5",
-		"@astrojs/rss": "^4.0.19",
-		"@astrojs/sitemap": "^3.7.3",
-		"@fylgja/badge": "^2.0.0",
-		"@fylgja/base": "^2.1.6",
-		"@fylgja/breadcrumbs": "^2.0.1",
-		"@fylgja/card": "^2.0.2",
-		"@fylgja/form-extend": "^1.1.0",
-		"@fylgja/input-group": "^2.0.0",
-		"@fylgja/toast": "^1.0.0",
-		"@fylgja/tokens": "^2.2.1",
-		"@fylgja/utilities": "^2.1.4",
-		"@lucide/astro": "^1.28.0",
-		"astro": "^7.1.6",
-		"marked": "^18.0.7",
-		"prettier": "^3.9.6"
-	}
+  "name": "fylgja-site",
+  "version": "2.0.0",
+  "description": "The Fylgja site powered by Astro",
+  "private": true,
+  "author": "fylgja",
+  "type": "module",
+  "scripts": {
+    "start": "astro dev",
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "deploy": "./scripts/deploy.sh"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/mdx": "^7.0.5",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
+    "@fylgja/badge": "^2.0.0",
+    "@fylgja/base": "^2.1.6",
+    "@fylgja/breadcrumbs": "^2.0.1",
+    "@fylgja/callout": "^1.0.0",
+    "@fylgja/card": "^2.0.2",
+    "@fylgja/form-extend": "^1.1.0",
+    "@fylgja/input-group": "^2.0.0",
+    "@fylgja/toast": "^1.0.0",
+    "@fylgja/tokens": "^2.2.1",
+    "@fylgja/utilities": "^2.1.4",
+    "@lucide/astro": "^1.28.0",
+    "astro": "^7.1.6",
+    "marked": "^18.0.7",
+    "prettier": "^3.9.6"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true,
+    "fsevents@2.3.3": true,
+    "sharp@0.34.4": true
+  }
 }

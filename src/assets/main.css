@@ -8,9 +8,9 @@
 @import "@fylgja/toast";
 @import "@fylgja/badge";
 @import "@fylgja/breadcrumbs";
+@import "@fylgja/callout";
 
 @import "styles/content";
-@import "styles/markdown-alert";
 @import "styles/theme";
 
 @import "@fylgja/utilities";

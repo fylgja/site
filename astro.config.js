@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
 import { satteri } from "@astrojs/markdown-satteri";
-import { wrapTables, githubAlerts, externalLinks } from "./markdown-plugins";
+import { wrapTables, callouts, externalLinks } from "./markdown-plugins";
 import { animationTimelineFix } from "./lightningcss-fixes";
 import { uiCategories } from "./src/ui-categories";
 
@@ -17,7 +17,7 @@ export default defineConfig({
 	integrations: [sitemap(), mdx()],
 	markdown: {
 		processor: satteri({
-			mdastPlugins: [githubAlerts, wrapTables],
+			mdastPlugins: [callouts(), wrapTables],
 			hastPlugins: [externalLinks],
 		}),
 		shikiConfig: {
