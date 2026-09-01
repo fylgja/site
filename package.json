@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
-    "@astrojs/mdx": "^7.0.5",
+    "@astrojs/mdx": "^7.0.8",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
     "@fylgja/badge": "^2.0.0",
@@ -27,8 +27,8 @@
     "@fylgja/toast": "^1.0.0",
     "@fylgja/tokens": "^2.2.1",
     "@fylgja/utilities": "^2.1.4",
-    "@lucide/astro": "^1.28.0",
-    "astro": "^7.1.6",
+    "@lucide/astro": "^1.37.0",
+    "astro": "^7.2.9",
     "marked": "^18.0.7",
     "prettier": "^3.9.6"
   },
