@@ -2,6 +2,7 @@
 title: "Native CSS Utilities"
 description: "A look into how the new and improved CSS attr() function will change the way we write CSS utilities."
 publishDate: 2026-01-29
+updatedDate: 2026-09-08
 tags: ["FylgjaCSS", "TailwindCSS", "CSS Props", "CSS Utilities"]
 coverImage: new-utilities.jpg
 ---
@@ -161,6 +162,12 @@ and you can check out the [spacing utilities](https://github.com/fylgja/fylgja/b
 
 A build tool could be an option in the future to create the fallback values, but for now, using inline CSS variables,
 as shown in our [Dynamic CSS Utilities] concept, remains a great, cross-browser compatible solution.
+
+> [!important]
+> **Update on 8 September 26**: We launched the [CSS Attr v2 Polyfill](/library/extensions/css-attr-polyfill/) making that dream a reality.
+> So you can use CSS `attr()` in your projects today 🎉
+>
+> You can read more about that on our [release blog post](/blog/native-css-utilities/).
 
 [Dynamic CSS Utilities]: /docs/concepts/dynamic-css-utilities/
 
