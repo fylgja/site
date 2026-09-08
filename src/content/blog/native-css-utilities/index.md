@@ -2,7 +2,7 @@
 title: "Native CSS Utilities"
 description: "A look into how the new and improved CSS attr() function will change the way we write CSS utilities."
 publishDate: 2026-01-29
-tags: ["CSS Props", "FylgjaCSS", "TailwindCSS"]
+tags: ["FylgjaCSS", "TailwindCSS", "CSS Props", "CSS Utilities"]
 coverImage: new-utilities.jpg
 ---
 
