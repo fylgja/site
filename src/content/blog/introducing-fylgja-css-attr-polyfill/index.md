@@ -1,7 +1,7 @@
 ---
 title: "Introducing Fylgja CSS Attr v2 Polyfill"
 description: "A new Fylgja extension that lets you write attr() v2 today, generating static fallback values for browsers that do not support it yet."
-publishDate: 2026-10-08
+publishDate: 2026-09-08
 tags: ["FylgjaCSS", "CSS Utilities", "Release"]
 coverImage: cover.webp
 ---
