@@ -14,9 +14,9 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
-    "@astrojs/mdx": "^8.0.2",
+    "@astrojs/mdx": "^8.0.3",
     "@astrojs/rss": "^4.0.19",
-    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/sitemap": "^3.7.4",
     "@fylgja/badge": "^2.0.0",
     "@fylgja/base": "^2.1.6",
     "@fylgja/breadcrumbs": "^2.0.1",
@@ -27,8 +27,8 @@
     "@fylgja/toast": "^1.0.0",
     "@fylgja/tokens": "^2.2.1",
     "@fylgja/utilities": "^2.1.4",
-    "@lucide/astro": "^1.37.0",
-    "astro": "^7.2.9",
+    "@lucide/astro": "^1.52.0",
+    "astro": "^7.3.6",
     "marked": "^18.0.14",
     "prettier": "^3.9.9"
   },
