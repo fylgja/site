@@ -30,6 +30,7 @@ const docsSchema = z.object({
 	pageTitle: z.string().optional(),
 	git: z.url().optional(),
 	npm: z.string().optional(),
+	composer: z.string().optional(),
 	changelog: z.url().optional(),
 	faq: z
 		.array(

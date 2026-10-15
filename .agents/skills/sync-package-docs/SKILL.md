@@ -30,6 +30,7 @@ option) and propagate whichever side is actually correct to the other side.
 | `src/content/library/components/form-extend.mdx` | `~/Developer/fylgja/fylgja/components/form-extend/README.md` |
 | `src/content/library/components/input-group.mdx` | `~/Developer/fylgja/fylgja/components/input-group/README.md` |
 | `src/content/library/components/toast.mdx` | `~/Developer/fylgja/fylgja/components/toast/README.md` |
+| `src/content/library/extensions/php-props-builder.md` | `~/Developer/fylgja/php-props-builder/README.md` |
 | `src/content/library/extensions/snap-slider.md` | `~/Developer/fylgja/snap-slider/README.md` |
 | `src/content/library/extensions/stylelint-config.md` | `~/Developer/fylgja/stylelint-config/README.md` |
 | `src/content/library/extensions/alpinejs-dialog.md` | `~/Developer/fylgja/alpinejs-dialog/README.md` |

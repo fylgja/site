@@ -8,13 +8,15 @@ interface Props {
 	version?: string;
 	git?: string;
 	npm?: string;
+	composer?: string;
 	changelog?: string;
 	pathUrl?: string;
 	iconSize?: number;
 }
 
-const { version, git, npm, changelog, pathUrl, iconSize = 16 } = Astro.props;
+const { version, git, npm, composer, changelog, pathUrl, iconSize = 16 } = Astro.props;
 const npmUrl = npm ? `https://npmjs.com/package/${npm}` : "";
+const composerUrl = composer ? `https://packagist.org/packages/${composer}` : "";
 const changelogUrl =
 	changelog || git
 		? git?.includes("/tree/main")
@@ -38,6 +40,13 @@ const changelogUrl =
 			npm && (
 				<a href={npmUrl} target="_blank" rel="noopener noreferrer" class="meta-link">
 					<Package width={iconSize} height={iconSize} aria-hidden="true" /> <span>npm</span>
+				</a>
+			)
+		}
+		{
+			composer && (
+				<a href={composerUrl} target="_blank" rel="noopener noreferrer" class="meta-link">
+					<Package width={iconSize} height={iconSize} aria-hidden="true" /> <span>Packagist</span>
 				</a>
 			)
 		}
