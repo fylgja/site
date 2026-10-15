@@ -4,6 +4,7 @@ pageTitle: "Fylgja Props Builder"
 description: "Effortlessly generate Design Tokens (CSS custom properties) from JavaScript objects or JSON files."
 npm: "@fylgja/props-builder"
 git: "https://github.com/fylgja/fylgja/tree/main/props-builder"
+sortOrder: 8
 faq:
   - question: Do I need inputTypeTokens for a plain key-value JSON file?
     answer: No. Plain key-value JSON/JS objects (like the color example above) work
