@@ -4,7 +4,7 @@ pageTitle: "Fylgja Sass Extend"
 description: "Add more super powers to your Sass project."
 npm: "@fylgja/sass"
 git: "https://github.com/fylgja/fylgja-sass"
-sortOrder: 30
+sortOrder: 100
 faq:
   - question: How do I import just one function, like contrast-ratio?
     answer: 'Import the module named after its Type column, not the function itself.

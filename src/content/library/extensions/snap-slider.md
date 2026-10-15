@@ -4,6 +4,7 @@ pageTitle: "Fylgja Snap Slider"
 description: "A CSS-powered slider/carousel, enhanced with JavaScript for improved functionality and accessibility."
 npm: "@fylgja/snap-slider"
 git: "https://github.com/fylgja/snap-slider"
+sortOrder: 11
 faq:
   - question: Do I need to import a separate CSS file for the slider to work?
     answer: No, the package only ships JS. Styling comes from Fylgja Utilities

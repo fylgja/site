@@ -4,7 +4,7 @@ pageTitle: "Fylgja Props Builder for PHP"
 description: "Generate Design Tokens (CSS custom properties) from PHP arrays or JSON files, with the same output as the Node version."
 composer: "fylgja/props-builder"
 git: "https://github.com/fylgja/php-props-builder"
-sortOrder: 9
+sortOrder: 21
 keywords: ["php", "composer", "inline style", "magento", "laravel"]
 faq:
   - question: Is the output the same as the Node version?

@@ -4,7 +4,7 @@ pageTitle: "Fylgja Stylelint Config"
 description: "Fylgja uses an opinionated Stylelint config to enforce its CSS rules across all of its projects."
 npm: "@fylgja/stylelint-config"
 git: "https://github.com/fylgja/stylelint-config"
-sortOrder: 40
+sortOrder: 120
 faq:
   - question: Do I need to install Stylelint itself separately?
     answer: Yes, this package only provides the ruleset. Install stylelint alongside

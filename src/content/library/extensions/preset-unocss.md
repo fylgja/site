@@ -2,7 +2,7 @@
 title: "Preset UnoCSS"
 description: "Preset for UnoCSS"
 draft: true
-sortOrder: 20
+sortOrder: 30
 ---
 
 Preset for UnoCSS.

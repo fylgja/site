@@ -4,7 +4,7 @@ pageTitle: "Fylgja CSS attr() Polyfill"
 description: "Compile CSS attr() v2 into static fallback rules for browsers that do not support it."
 npm: "@fylgja/css-attr-polyfill"
 git: "https://github.com/fylgja/css-attr-polyfill"
-sortOrder: 15
+sortOrder: 8
 faq:
   - question: Do I still need this once every browser supports attr() v2?
     answer: No, and you can drop it without touching your stylesheet. The compiler

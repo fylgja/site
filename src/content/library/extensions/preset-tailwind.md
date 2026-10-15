@@ -3,7 +3,7 @@ title: "Preset TailwindCSS"
 description: "Tailwind CSS preset to use the Fylgja Design System, with its design tokens, base styles, and utilities."
 npm: "@fylgja/tailwindcss"
 git: "https://github.com/fylgja/tailwindcss"
-sortOrder: 20
+sortOrder: 30
 faq:
   - question: Do I need to install @fylgja/base, @fylgja/tokens, and
       @fylgja/utilities separately?
