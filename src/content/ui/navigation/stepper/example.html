@@ -1,0 +1,90 @@
+<ol class="stepper flex gap-sm" role="list" aria-label="Checkout progress">
+	<li>Cart <span class="sr-only">(completed)</span></li>
+	<li>Shipping <span class="sr-only">(completed)</span></li>
+	<li aria-current="step">Payment</li>
+	<li>Review</li>
+</ol>
+
+<style>
+	.stepper {
+		--stepper-size: 2em;
+		--stepper-stroke: color-mix(in oklab, var(--root-bg) 75%, var(--root-fg));
+		counter-reset: step;
+		padding: 0;
+
+		li {
+			counter-increment: step;
+			position: relative;
+			display: flex;
+			flex: 1;
+			align-items: center;
+			gap: 0.5em;
+		}
+
+		li:last-child {
+			flex: none;
+		}
+
+		li::before {
+			content: counter(step);
+			display: grid;
+			place-content: center;
+			flex: none;
+			inline-size: var(--stepper-size);
+			aspect-ratio: 1;
+			border: 2px solid var(--stepper-stroke);
+			border-radius: 50%;
+			font-variant-numeric: tabular-nums;
+		}
+
+		li:not(:last-child)::after {
+			content: "";
+			flex: 1;
+			min-inline-size: 1em;
+			block-size: 2px;
+			background: var(--stepper-stroke);
+		}
+
+		li:has(~ [aria-current="step"])::before {
+			content: "\2713" / "";
+			border-color: var(--brand);
+			background: var(--brand);
+			color: var(--on-brand);
+		}
+
+		li:has(~ [aria-current="step"])::after {
+			background: var(--brand);
+		}
+
+		[aria-current="step"] {
+			font-weight: 600;
+		}
+
+		button {
+			--btn-stroke: transparent;
+			--btn-px: 0.5em;
+		}
+
+		[aria-current="step"]::before {
+			border-color: var(--brand);
+		}
+
+		&.--vertical li {
+			flex: none;
+			padding-block-end: 1.5em;
+		}
+
+		&.--vertical li:last-child {
+			padding-block-end: 0;
+		}
+
+		&.--vertical li:not(:last-child)::after {
+			position: absolute;
+			inset-block: var(--stepper-size) 0;
+			inset-inline-start: calc(var(--stepper-size) / 2 - 1px);
+			inline-size: 2px;
+			block-size: auto;
+			min-inline-size: 0;
+		}
+	}
+</style>

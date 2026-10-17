@@ -1,0 +1,107 @@
+---
+title: "Stepper"
+pageTitle: "Fylgja Stepper"
+description: "A progress indicator for multi-step flows, built on an ordered list with the current step marked by aria-current."
+category: "navigation"
+tags: ["stepper", "step pager", "steps", "progress", "wizard", "checkout"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the list text and the buttons in the interactive version."
+  - pkg: "@fylgja/utilities"
+    level: recommended
+    reason: "Provides flex, flex-col, gap-sm, and sr-only used for the layout and hidden labels."
+sortOrder: 4
+faq:
+  - question: How do I mark which steps are done?
+    answer: You only mark the current step, with aria-current="step". The CSS treats
+      every step before it as completed and every step after it as upcoming, so
+      moving to the next step is a single attribute change.
+  - question: Why is there hidden "(completed)" text?
+    answer: The checkmark is drawn in CSS and hidden from assistive tech, so it carries
+      no meaning on its own. The visually hidden text tells screen reader users which
+      steps are done, while aria-current already announces the current one.
+  - question: Should the steps be links?
+    answer: No. A stepper navigates within one flow, not between pages, so links do
+      not fit. When users may go back to a completed step, make that step a button and
+      handle it in your flow, for example as a submit button with a name and value in the
+      wizard form. Upcoming steps stay plain text, since they cannot be skipped to.
+  - question: What about narrow screens?
+    answer: A horizontal stepper with more than three or four labeled steps gets
+      cramped on a phone. Switch to the vertical layout there, or shorten the labels.
+  - question: Why does the list have role="list"?
+    answer: Safari drops the list semantics of a list without markers. The role keeps
+      the "list, 4 items" announcement, which tells users how many steps there are.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+import exampleInteractive from "./example-interactive.html?raw";
+import exampleVertical from "./example-vertical.html?raw";
+
+A stepper, also called a step pager, shows where the user is in a multi-step flow
+such as a checkout or an onboarding wizard. It is a plain ordered list, so the step
+numbers and the total count come from the list itself, and `aria-current="step"` marks
+the current step for assistive tech.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- List the steps in an `<ol class="stepper flex gap-sm">`, one `<li>` per step, in
+  order.
+- Mark the current step with `aria-current="step"`. Steps before it are styled as
+  completed, with a brand checkmark, and steps after it as upcoming.
+- Name the list with `aria-label`, and add a visually hidden "(completed)" label to
+  every completed step.
+- The small `.stepper` style numbers the steps with a CSS counter, draws the round
+  markers, and connects them with a line that turns brand colored once a step is done.
+- Change the marker size with `--stepper-size` and the line color with
+  `--stepper-stroke`.
+
+## Anatomy
+
+| Part                       | Responsibility                                                      |
+| -------------------------- | ------------------------------------------------------------------- |
+| `<ol class="stepper">`     | The ordered list of steps. Provides the order and the total count.  |
+| `<li>`                     | One step. Its `::before` is the marker and `::after` the connector. |
+| `aria-current="step"`      | Marks the current step. Everything before it reads as completed.    |
+| `.sr-only` text            | Tells screen reader users a step is completed.                      |
+| `<button>`                 | Optional. Lets users return to a completed step.                    |
+
+## Accessibility
+
+- The ordered list announces the number of steps and each step's position.
+- `aria-current="step"` is announced as the current step, so the state does not rely
+  on color or the marker alone.
+- The checkmark uses empty alternative text in `content`, so it is not read out. The
+  hidden "(completed)" text carries that meaning instead.
+- A stepper navigates within one flow rather than across the site, so it needs no
+  `<nav>` landmark.
+  Move focus to the new step's heading when the user
+  advances, so they know the content changed.
+
+## Variants
+
+### Interactive
+
+When users may go back to a completed step, wrap its label in a `<button>`. The
+stepper CSS removes the button border, so it reads as a flat button that still shows
+its hover and focus states. Upcoming steps stay plain text. It uses the same CSS as
+the preview above.
+
+<ComponentPreview code={exampleInteractive} />
+
+### Vertical
+
+Add the `--vertical` modifier and swap `flex gap-sm` for `flex-col` to stack the steps,
+with the connector running down between the markers. This suits a sidebar or a narrow
+screen. It uses the same CSS as the preview above.
+
+<ComponentPreview code={exampleVertical} />
+
+Related: [Pagination](/ui/navigation/pagination/),
+[Progress](/ui/data-display/progress/), [Breadcrumbs](/ui/navigation/breadcrumbs/).
