@@ -1,0 +1,135 @@
+---
+title: "Tooltip"
+pageTitle: "Fylgja Tooltip"
+description: "A short text hint that appears on hover or keyboard focus, built on a hint popover opened with interestfor and placed with CSS anchor positioning."
+category: "overlays"
+tags: ["tooltip", "hint", "popover", "interestfor", "anchor positioning", "hover"]
+status: "beta"
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the trigger button and supplies the --root-bg and --root-fg colors the tooltip inverts."
+sortOrder: 4
+faq:
+  - question: Why not use the title attribute?
+    answer: A title tooltip only appears on mouse hover, never on keyboard focus or touch,
+      cannot be styled, and is announced inconsistently by screen readers. A hint popover
+      opened with interestfor shows on hover and focus, closes with Escape, and is linked
+      to its trigger as a description.
+  - question: Can I put a link or a button inside a tooltip?
+    answer: No. A tooltip disappears as soon as the pointer or focus leaves the trigger, so
+      nobody can reliably reach anything inside it. When the content needs to be
+      interactive, open a regular popover on click with command="toggle-popover" instead.
+  - question: How do I change how fast the tooltip appears?
+    answer: Set the interest-delay property on the trigger. It takes a delay for showing
+      and one for hiding, such as interest-delay 0.2s 0.5s. The browser default leaves a
+      short pause so tooltips do not flash while the pointer crosses the page.
+  - question: Why does nothing appear in my browser?
+    answer: interestfor is still new and not available in every engine yet. Without it the
+      tooltip stays hidden and the trigger keeps working as a plain button. Add the small
+      fallback script from the Browser support section if the hint matters to you.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
+import example from "./example.html?raw";
+import exampleIcon from "./example-icon.html?raw";
+import examplePlacement from "./example-placement.html?raw";
+import exampleFallback from "./example-fallback.html?raw";
+
+A tooltip is a short text hint tied to a control, shown when the reader hovers or
+focuses it. It is built from three native platform features: a `popover="hint"`
+element for the text, the `interestfor` attribute on the trigger to open it, and CSS
+anchor positioning to place it next to the trigger. The browser handles the hover
+delay, keyboard focus, Escape to close, and the description link for assistive
+technology, so there is no JavaScript involved.
+
+Use a tooltip only for supplementary text, like a keyboard shortcut or a longer
+explanation of a short label. Never put essential information in it: touch users
+rarely see it, and some readers never hover at all.
+
+## Preview
+
+Hover the button or move focus to it with the keyboard.
+
+<ComponentPreview center code={example} />
+
+## Usage
+
+1. Give the tooltip an `id` and `popover="hint"`. A hint popover sits in the top
+   layer, and opening it does not close other open popovers, such as a menu the
+   trigger lives in.
+2. Point the trigger's `interestfor` attribute at that `id`. The browser shows the
+   tooltip after a short hover or on keyboard focus, and hides it when interest
+   ends or the reader presses Escape.
+3. Add the small `<style>` rule. It resets the default popover placement and uses
+   `position-area` to place the tooltip above the trigger. `interestfor` makes the
+   trigger the tooltip's implicit anchor, so no `anchor-name` is needed.
+
+`position-try-fallbacks` flips the tooltip to the other side when there is no room,
+for example at the top of the viewport. The colors invert `--root-bg` and `--root-fg`,
+so the tooltip follows light and dark mode.
+
+## Anatomy
+
+| Part                     | Responsibility                                                       |
+| ------------------------ | -------------------------------------------------------------------- |
+| Trigger with `interestfor` | Opens the tooltip on hover or focus and becomes its anchor.          |
+| `[popover="hint"]`       | The tooltip text, rendered in the top layer while shown.             |
+| `position-area`          | Places the tooltip on a side of the trigger, above by default.       |
+| `--tooltip-position`     | Optional override for that side, set on the tooltip itself.          |
+
+## Accessibility
+
+- While the tooltip is shown, `interestfor` exposes its text as the trigger's
+  description, the same relationship `aria-describedby` creates. Do not add
+  `aria-describedby` yourself.
+- Keyboard users get the tooltip on focus, and Escape hides it without moving focus.
+- On touch screens the browser shows it on a long press, where supported. Many touch
+  users will still never see it, which is why it must stay optional.
+- Keep the text short and plain. No links, buttons, or form controls inside, since
+  the tooltip closes as soon as interest moves away from the trigger.
+- Use a focusable trigger, such as a `<button>` or a link. A tooltip on a plain
+  `<span>` cannot be reached with the keyboard.
+
+## Variants
+
+### Placement
+
+Set `--tooltip-position` on the tooltip to any `position-area` value, such as
+`block-end` (below) or `inline-end` (after the trigger). The fallbacks still flip it
+when it would overflow.
+
+<ComponentPreview center code={examplePlacement} />
+
+### Icon button
+
+An [Icon Button](/ui/actions/icon-button/) has no visible text, so a tooltip with
+its name helps sighted mouse and keyboard users. The tooltip is not the name,
+though: keep the `aria-label` on the button, so it stays named when the tooltip is
+closed or `interestfor` is not supported. Keep the `<svg>` as the only child, so
+the button stays square.
+
+<ComponentPreview center code={exampleIcon} />
+
+## Browser support
+
+Each of the three features ships on its own timeline, so check
+[Can I use](https://caniuse.com/?search=interestfor) before relying on them.
+
+- **`interestfor`** is the newest piece and is available in Chromium based browsers
+  first. Where it is missing, the trigger works as normal and the tooltip simply never
+  opens.
+- **`popover="hint"`** falls back to a manual popover in browsers that do not know the
+  hint value, which still works with the script below.
+- **Anchor positioning** is needed for the placement. Without it the tooltip opens at
+  the edge of the viewport instead of next to its trigger.
+
+Because a tooltip only carries extra information, letting it stay hidden is an
+acceptable fallback. When you do want it everywhere, add this script once per page.
+It only runs where `interestfor` is missing, opens the tooltip on hover and focus,
+and links the description with `aria-describedby`.
+
+<CodeBlock lang="html" code={exampleFallback.trim()} />
+
+Related: [Speed Dial](/ui/actions/speed-dial/), [Modal](/ui/overlays/modal/).

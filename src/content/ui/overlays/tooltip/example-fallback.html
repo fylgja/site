@@ -1,0 +1,24 @@
+<script>
+	if (!("interestForElement" in HTMLButtonElement.prototype)) {
+		for (const trigger of document.querySelectorAll("[interestfor]")) {
+			const tooltip = document.getElementById(trigger.getAttribute("interestfor"));
+			if (!tooltip) continue;
+
+			// Without interestfor there is no implicit anchor, so name one per pair.
+			const anchor = `--${tooltip.id}`;
+			trigger.style.anchorName = anchor;
+			tooltip.style.positionAnchor = anchor;
+			trigger.setAttribute("aria-describedby", tooltip.id);
+
+			const show = () => tooltip.togglePopover(true);
+			const hide = () => tooltip.togglePopover(false);
+			trigger.addEventListener("pointerenter", show);
+			trigger.addEventListener("pointerleave", hide);
+			trigger.addEventListener("focus", show);
+			trigger.addEventListener("blur", hide);
+			trigger.addEventListener("keydown", (event) => {
+				if (event.key === "Escape") hide();
+			});
+		}
+	}
+</script>
