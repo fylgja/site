@@ -1,0 +1,31 @@
+<button type="button" commandfor="row-menu" command="toggle-popover" aria-label="More actions">
+	<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+</button>
+
+<div id="row-menu" popover class="action-menu" style="--menu-position: block-end span-inline-start">
+	<ul role="list">
+		<li><a href="#" class="btn w-full align" style="--align: center start">View details</a></li>
+		<li><a href="#" class="btn w-full align" style="--align: center start">Edit</a></li>
+		<li><button type="button" commandfor="row-menu" command="hide-popover" class="w-full align" style="--align: center start">Duplicate</button></li>
+	</ul>
+</div>
+
+<style>
+	.action-menu {
+		--btn-stroke: transparent;
+		min-inline-size: 12rem;
+		padding: 0.25rem;
+		border: 1px solid color-mix(in oklab, var(--root-bg) 75%, var(--root-fg));
+		border-radius: 0.5rem;
+		background-color: color-mix(in oklab, var(--root-bg) 88%, white);
+		color: var(--root-fg);
+		box-shadow: 0 3px 5px hsl(0 0% 0% / 18%);
+
+		@supports (position-area: block-end) {
+			inset: auto;
+			margin: 0.25rem 0;
+			position-area: var(--menu-position, block-end span-inline-end);
+			position-try-fallbacks: flip-block, flip-inline;
+		}
+	}
+</style>

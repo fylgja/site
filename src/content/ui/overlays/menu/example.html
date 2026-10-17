@@ -1,0 +1,56 @@
+<button type="button" commandfor="file-menu" command="toggle-popover">
+	<span>File options</span>
+	<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+</button>
+
+<div id="file-menu" popover class="action-menu">
+	<ul role="list">
+		<li>
+			<button type="button" commandfor="file-menu" command="hide-popover" class="w-full align" style="--align: center start">
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+				<span>Copy link</span>
+			</button>
+		</li>
+		<li>
+			<button type="button" commandfor="file-menu" command="hide-popover" class="w-full align" style="--align: center start">
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/></svg>
+				<span>Rename</span>
+			</button>
+		</li>
+		<li>
+			<button type="button" commandfor="file-menu" command="hide-popover" class="w-full align" style="--align: center start">
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
+				<span>Download</span>
+			</button>
+		</li>
+	</ul>
+	<hr style="--my: 0.25rem; border-block-end-width: 1px; border-color: color-mix(in oklab, var(--root-bg) 75%, var(--root-fg))">
+	<ul role="list">
+		<li>
+			<button type="button" commandfor="file-menu" command="hide-popover" class="w-full align" style="--align: center start; --hue: var(--hue-red); --btn-color: color-mix(in oklab, var(--color-7) 80%, var(--root-fg))">
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+				<span>Delete file</span>
+			</button>
+		</li>
+	</ul>
+</div>
+
+<style>
+	.action-menu {
+		--btn-stroke: transparent;
+		min-inline-size: 12rem;
+		padding: 0.25rem;
+		border: 1px solid color-mix(in oklab, var(--root-bg) 75%, var(--root-fg));
+		border-radius: 0.5rem;
+		background-color: color-mix(in oklab, var(--root-bg) 88%, white);
+		color: var(--root-fg);
+		box-shadow: 0 3px 5px hsl(0 0% 0% / 18%);
+
+		@supports (position-area: block-end) {
+			inset: auto;
+			margin: 0.25rem 0;
+			position-area: var(--menu-position, block-end span-inline-end);
+			position-try-fallbacks: flip-block, flip-inline;
+		}
+	}
+</style>

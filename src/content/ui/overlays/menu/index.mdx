@@ -1,0 +1,108 @@
+---
+title: "Menu"
+pageTitle: "Fylgja Menu"
+description: "A dropdown of actions opened from a button, built on the native Popover API and CSS anchor positioning."
+category: "overlays"
+tags: ["menu", "dropdown", "popover", "actions", "context menu", "kebab", "overlay"]
+status: "beta"
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the trigger and menu items as buttons."
+  - pkg: "@fylgja/utilities"
+    level: recommended
+    reason: "Provides w-full, align, and the dynamic spacing variables used for the items."
+  - pkg: "@fylgja/tokens"
+    level: recommended
+    reason: "Only for the danger item, which tints its color with the hue tokens."
+sortOrder: 5
+faq:
+  - question: Does the menu need JavaScript?
+    answer: Not to open, close, or position it. The Popover API handles opening,
+      closing on Escape or an outside click, and the top layer, and CSS anchor
+      positioning places it under the trigger. You only need JavaScript for what the
+      items actually do, and for arrow key navigation if you want it.
+  - question: Why not role="menu" and role="menuitem"?
+    answer: Those roles promise application style keyboard handling, where arrow keys
+      move between items and Tab leaves the menu. Without a script that does exactly
+      that, the roles make the menu harder to use, not easier. Plain buttons and links
+      in a list work with Tab and Enter and are announced correctly. Add the menu roles
+      only together with the script that implements them.
+  - question: How is the menu positioned under its button?
+    answer: Opening a popover from an invoker button makes that button its implicit
+      anchor, so position-area can place the menu against it with no anchor names.
+      position-try-fallbacks flips it above or to the other side when there is no
+      room. If you open the popover from script instead, give the button an
+      anchor-name and the menu a matching position-anchor.
+  - question: What happens in browsers without anchor positioning?
+    answer: The positioning rules sit in an @supports block, so those browsers keep
+      the default popover placement, centered in the viewport. The menu still opens,
+      closes, and works, it is just not attached to the button.
+  - question: Should I use popovertarget or commandfor?
+    answer: Both work. The examples use commandfor with command="toggle-popover" to
+      match the invoker commands used for the [Modal](/ui/overlays/modal/) and
+      [Offcanvas](/ui/overlays/offcanvas/). popovertarget has been around longer, so
+      reach for it if you need to support older browsers.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+import exampleIcon from "./example-icon.html?raw";
+
+A menu is a short list of actions that drops down from a button, such as the
+options for a file or the actions for a table row. It is an
+[Action List](/ui/navigation/action-list/) inside a native popover. The Popover API
+puts it in the top layer and closes it on Escape or an outside click, and CSS anchor
+positioning keeps it attached to its button, so opening, closing, and placing the
+menu takes no JavaScript.
+
+## Preview
+
+<ComponentPreview center code={example} />
+
+## Usage
+
+1. A trigger `<button>` with `commandfor` and `command="toggle-popover"` opens and
+   closes the menu. The browser also exposes its expanded state to assistive
+   technology.
+2. The menu is a `<div popover>` with the `.action-menu` class. `popover` (the
+   `auto` state) gives light dismiss, so Escape or a click outside closes it, and
+   opening one menu closes any other.
+3. Inside it, an action list of buttons and links. A `command="hide-popover"` on
+   an item closes the menu once the action is picked. Links close it by navigating.
+4. The small `.action-menu` rule draws the panel and positions it. Set the
+   `--menu-position` variable to any `position-area` value to change where it
+   opens, such as `block-end span-inline-start` for a trigger at the end of a row.
+
+## Anatomy
+
+| Part                           | Responsibility                                                     |
+| ------------------------------ | ------------------------------------------------------------------ |
+| Trigger `<button command>`     | Toggles the menu and acts as its anchor.                           |
+| `<div popover class="action-menu">` | The panel. Top layer, light dismiss, anchored under the trigger. |
+| Action list                    | The items, as buttons for actions and links for navigation.        |
+| `command="hide-popover"`       | Closes the menu after an action is picked.                         |
+
+## Accessibility
+
+- The items are native buttons and links, so they are announced with their real role
+  and work with Enter and Space.
+- The popover follows its trigger in the focus order, so pressing Tab after opening
+  moves into the menu, and Escape closes it and returns focus to the trigger.
+- Arrow key navigation between items, as in a desktop app menu, is not built in. It
+  needs a script, and if you add one, add `role="menu"` and `role="menuitem"` with
+  it, not before.
+- An icon only trigger needs an `aria-label`, such as "More actions".
+
+## Variants
+
+### Icon trigger
+
+A compact trigger at the end of a row, as on a table row or a card. The menu opens
+toward the inline start, so it stays on screen, by setting `--menu-position` on the
+popover.
+
+<ComponentPreview center code={exampleIcon} />
+
+Related: [Action List](/ui/navigation/action-list/),
+[Tooltip](/ui/overlays/tooltip/), [Select](/ui/forms/select/).
