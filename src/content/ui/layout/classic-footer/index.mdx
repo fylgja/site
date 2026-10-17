@@ -5,10 +5,11 @@ description: "A footer with columns of grouped links above a subfooter holding t
 category: "layout"
 tags: ["footer", "site footer", "menu", "links", "social", "icons", "copyright", "subfooter"]
 status: "stable"
+previewZoom: 0.55
 requires:
   - pkg: "@fylgja/utilities"
     level: required
-    reason: "Provides grid-cols, divide-y, flow, align, and the spacing utilities that lay out the footer."
+    reason: "Provides auto-grid, divide-y, flow, align, and the spacing utilities that lay out the footer."
   - pkg: "@fylgja/base"
     level: recommended
     reason: "Styles the headings and links, and resets the lists inside each nav."
@@ -19,9 +20,11 @@ faq:
       and the --flow variable adds the space above it. The border color is set once
       on the footer and inherited.
   - question: How many columns does the menu use?
-    answer: Two on small screens and four from the md breakpoint up, set with the
-      --grid-cols and --md_grid-cols variables. Change those numbers to match the
-      number of groups you have.
+    answer: Up to four, and fewer when space runs out. The --max-col-size of
+      max(8rem, (100% - 4.5rem) / 4) keeps each column at least 8rem wide and at least a
+      quarter of the row, so the groups span the full width and wrap instead of
+      overlapping. Raise 8rem if your longest link is wider, and change the 4 to match
+      your number of groups.
   - question: Why one nav for all the groups instead of one per group?
     answer: Each nav is a landmark, and four landmarks in the footer make the
       landmark list noisy. One labeled nav with a heading per group keeps it short,
@@ -48,8 +51,9 @@ text links.
 
 - Give the `<footer>` the `divide-y` utility with a border color and a `--flow`.
   That draws the line above the subfooter and spaces it, with no extra rule.
-- The menu is one `<nav>` with `grid-cols`. `--grid-cols` sets the columns on small
-  screens and `--md_grid-cols` from the md breakpoint up.
+- The menu is one `<nav>` with `auto-grid`. It fits as many columns as the footer has
+  room for, each at least `--max-col-size` wide, so it adapts to the space it gets
+  instead of the screen size, and long links never run into the next group.
 - Each group is a heading and a `<ul>` wrapped in a `flow` container, so the title
   has no top margin and the columns line up. `--list-flow` on the list adds back the
   space between links that base removes inside a nav.

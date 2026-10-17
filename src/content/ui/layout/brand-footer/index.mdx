@@ -5,10 +5,11 @@ description: "A footer with a wide branding column on the left and the link grou
 category: "layout"
 tags: ["footer", "site footer", "brand", "logo", "menu", "links", "social", "subfooter"]
 status: "stable"
+previewZoom: 0.55
 requires:
   - pkg: "@fylgja/utilities"
     level: required
-    reason: "Provides grid-cols, divide-y, flow, align, and the spacing utilities that lay out the footer."
+    reason: "Provides grid-cols, auto-grid, divide-y, flow, align, and the spacing utilities that lay out the footer."
   - pkg: "@fylgja/base"
     level: recommended
     reason: "Styles the headings and links, and resets the lists inside each nav."
@@ -20,11 +21,11 @@ faq:
       which pushes the menus to the right.
   - question: Why is the nav a grid inside a grid?
     answer: It keeps all the link groups in one labeled nav, so the footer adds one
-      landmark instead of one per group. The inner grid then splits the nav into a
-      column per group.
+      landmark instead of one per group. The inner auto-grid then fits as many group
+      columns as the nav has room for.
   - question: What happens on a small screen?
     answer: The outer grid drops to one column, so the branding sits on top and the
-      menus follow in two columns below it.
+      menus follow below it, in as many columns as fit.
   - question: Can I use an image as the logo?
     answer: Yes. Swap the svg for an img, and give it an empty alt when the brand name
       sits beside it, so the name is not read twice.
@@ -49,8 +50,9 @@ stay in the same place across the footer family.
 - The top part is a `grid-cols` container with `--md_grid-cols` set to 5. The
   branding takes two columns with `--md_col`, and the `<nav>` takes the remaining
   three.
-- The nav is a `grid-cols` grid itself, with a column per link group from the md
-  breakpoint up and two columns below it.
+- The nav is an `auto-grid` itself, so it fits as many link group columns as its
+  own width allows, each at least `--max-col-size` wide. The groups wrap instead of
+  overlapping when the space gets tight.
 - The logo is a link home with a `lead` class for the larger, bold name. The icon is
   colored with `--brand` and hidden from assistive technology, since the name is
   already the link text.
