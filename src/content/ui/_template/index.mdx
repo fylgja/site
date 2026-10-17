@@ -29,7 +29,6 @@ faq:
 ---
 
 import ComponentPreview from "@/components/ComponentPreview.astro";
-import InstallTabs from "@/components/InstallTabs.astro";
 // Demo snippets live beside this file. Add example.alpine.html for an Alpine tab.
 import example from "./example.html?raw";
 // import exampleAlpine from "./example.alpine.html?raw";
@@ -44,12 +43,6 @@ a plain `<div>`.
 {/* code is rendered live (set:html) AND shown as source; add alpine={exampleAlpine} for a tab */}
 
 <ComponentPreview center code={example} />
-
-## Installation
-
-{/* Only if a package backs this component. Otherwise delete this section. */}
-
-<InstallTabs pkg="@fylgja/<pkg>" cdn="https://cdn.jsdelivr.net/npm/@fylgja/<pkg>/index.min.css" />
 
 ## Usage
 

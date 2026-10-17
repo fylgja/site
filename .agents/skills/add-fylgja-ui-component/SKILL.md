@@ -22,8 +22,9 @@ write example markup for one. The related component skills ([create-fylgja-modal
 
 Copy the whole `src/content/ui/_template/` folder to
 `src/content/ui/<category>/<name>/` and fill in `index.mdx`. Keep the section order
-(Preview, Installation only if a package backs it, Usage, Anatomy, Accessibility,
-Variants, Examples). Remove sections that genuinely do not apply.
+(Preview, Usage, Anatomy, Accessibility, Variants, Examples). Remove sections that
+genuinely do not apply. Never add an Installation section: packages a component
+needs go in `requires`, and install steps live in the library docs.
 
 Frontmatter fields (schema in `src/content.config.ts`):
 
@@ -140,10 +141,11 @@ container) to stack *non-text* elements that base does not margin, such as a run
 
 **Colors reference Fylgja, never the site.** A component is copy-pasted into other
 projects, so only use color vars Fylgja ships: base foundations (`--brand`,
-`--on-brand`, `--root-bg`, `--root-fg`, `--surface-color`, `--text-color-muted`) or
+`--on-brand`, `--root-bg`, `--root-fg`, `--surface-color`) or
 `@fylgja/tokens`. Derive subtle tones with `color-mix`, e.g. a divider color of
 `color-mix(in oklab, var(--root-bg) 75%, var(--root-fg))`. Never use a site-only
-variable such as `--border-color-fade` in a component snippet.
+variable such as `--border-color-fade` or `--text-color-muted` in a component
+snippet.
 
 **Interactivity is declarative.** Prefer invoker commands (`commandfor` +
 `command`), `<form method="dialog">`, `<details>`, and the Popover API. When JS is
