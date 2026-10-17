@@ -1,0 +1,82 @@
+---
+title: "Bento Grid"
+pageTitle: "Fylgja Bento Grid"
+description: "A grid of cards in mixed sizes for feature overviews and landing pages, stacking to one column on small screens."
+category: "layout"
+tags: ["bento", "grid", "card", "features", "landing", "mosaic"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/utilities"
+    level: required
+    reason: "Provides grid-cols with its responsive --grid-cols, --col, and --row variables."
+  - pkg: "@fylgja/card"
+    level: required
+    reason: "Provides the .card surface for each tile."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Resets the list and styles the typography inside the tiles."
+sortOrder: 20
+previewZoom: 0.5
+faq:
+  - question: How do I make a tile wider or taller?
+    answer: Set --col or --row on the tile to a grid span, such as span 2. Prefix the
+      variable with a breakpoint (--sm_col, --md_row) to apply the span only from
+      that screen size up, which keeps every tile full width on phones.
+  - question: Why does the grid start with one column?
+    answer: grid-cols defaults to a single column. The --sm_grid-cols and
+      --md_grid-cols variables add columns as the screen grows, so small screens get
+      a simple stack without any media queries in your markup.
+  - question: Why is there a gap in my grid?
+    answer: Grid places tiles in source order, so a wide tile that does not fit at the
+      end of a row moves down and leaves a hole. Make the spans in each row add up to
+      the column count, or reorder the tiles.
+  - question: Should I use auto-grid instead?
+    answer: Use [auto-grid](/ui/layout/product-grid/) when every item is the same size
+      and the column count should follow the width. A bento grid needs a fixed column
+      count, because spans only line up when you know how many columns there are.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+
+A bento grid arranges [cards](/ui/layout/card/) of different sizes into one tidy
+block, like the compartments of a bento box. It suits feature overviews and
+landing pages, where one tile leads and smaller ones support it. The grid is a
+plain `<ul>`, so the tiles stay a real list for assistive tech.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- Wrap the tiles in a `<ul role="list" class="grid-cols gap">`. The grid starts
+  at one column, and `--sm_grid-cols` and `--md_grid-cols` add columns from those
+  breakpoints up.
+- Make each tile a `<li class="card">`. Set `--col` or `--row` to a span (for
+  example `span 2`) to size it, with a breakpoint prefix such as `--md_row` so
+  the span only applies once there are enough columns.
+- Plan each row so its spans add up to the column count. Here the four column
+  grid has a lead tile two columns wide and two rows tall, and a full width tile
+  closes it off.
+- For a tile with an image, make the card `flex-col` and give the image
+  `flex-auto` and `object-cover`, so it fills whatever height the row span gives
+  it. Put the text in a `.card-content` wrapper.
+
+## Anatomy
+
+| Part                            | Responsibility                                        |
+| ------------------------------- | ----------------------------------------------------- |
+| `<ul class="grid-cols gap">`    | The grid, with the column count per breakpoint.       |
+| `<li class="card">`             | A tile, sized with `--col` and `--row` spans.         |
+| `.card-content`                 | Padding wrapper for the text when the tile has media. |
+
+## Accessibility
+
+- Keep the visual order and the source order the same. Reordering tiles with
+  grid placement makes keyboard and screen reader order jump around the page.
+- Give each tile a real heading so it shows up in the document outline.
+- Give images a descriptive `alt`, or `alt=""` when they are purely decorative.
+
+Related: [Card](/ui/layout/card/), [Gallery](/ui/data-display/gallery/),
+[Product Grid](/ui/layout/product-grid/).
