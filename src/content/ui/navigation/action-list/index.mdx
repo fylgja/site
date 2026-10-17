@@ -1,0 +1,98 @@
+---
+title: "Action List"
+pageTitle: "Fylgja Action List"
+description: "A vertical list of actions or links, with optional icons, descriptions, and dividers."
+category: "navigation"
+tags: ["action list", "list", "actions", "menu", "sidebar", "settings", "navigation"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the buttons and links, resets the list, and highlights the current item via [aria-current=page]."
+  - pkg: "@fylgja/utilities"
+    level: recommended
+    reason: "Provides w-full, align, flex-col, and the dynamic spacing variables used for the rows."
+  - pkg: "@fylgja/tokens"
+    level: recommended
+    reason: "Only for the danger item, which tints its color with the hue tokens."
+sortOrder: 6
+faq:
+  - question: Should I use buttons or links?
+    answer: It depends on what the row does. A row that goes somewhere is an <a href>,
+      a row that does something on the current page (copy, rename, delete) is a
+      <button type="button">. Both get the same look from Fylgja's .btn styles, so
+      you can mix them in one list.
+  - question: Why role="list" on the lists?
+    answer: Fylgja removes the bullets from a list with role="list", and the role
+      keeps the list semantics that some browsers drop once the bullets are gone.
+      Inside a <nav> the bullets are already removed and the list keeps its
+      semantics, so the navigation version needs no role.
+  - question: Why two lists and an <hr> instead of one list with a divider item?
+    answer: A <ul> may only contain <li> elements, so the divider cannot sit between
+      items. Splitting the actions into groups keeps the markup valid, and the <hr>
+      is announced as a separator, which is exactly what it is.
+  - question: Can I use it inside a dropdown?
+    answer: Yes. The [Menu](/ui/overlays/menu/) puts the same list inside a popover.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+import exampleDescription from "./example-description.html?raw";
+
+An action list is a vertical stack of actions or links, such as the options for a
+file, a settings sidebar, or the contents of a dropdown. It is a plain list of
+native `<button>` and `<a>` elements styled as full width
+[buttons](/ui/actions/button/), so every row is focusable, clickable across its
+whole width, and announced with its real role, without any extra ARIA.
+
+## Preview
+
+<ComponentPreview center code={example} />
+
+## Usage
+
+- Put the rows in a `<ul role="list">`, one `<li>` per action.
+- Make each row a `<button type="button">` for an action, or an `<a class="btn">`
+  for a link, with `w-full align` and `--align: center start` so the icon and label
+  start at the left edge.
+- Set `--btn-stroke: transparent` once on the wrapper. It inherits down to every
+  row, so the buttons lose their border but keep the hover and active backgrounds.
+- Separate groups of actions with an `<hr>` between two lists, and put destructive
+  actions in their own group at the end.
+- Color a danger row by setting `--hue` to `var(--hue-red)` and pointing
+  `--btn-color` at a tinted token, mixed with `--root-fg` so it stays readable in
+  light and dark mode.
+
+## Anatomy
+
+| Part                        | Responsibility                                                  |
+| --------------------------- | --------------------------------------------------------------- |
+| `<ul role="list">`          | Groups the rows and announces how many there are.               |
+| `<button>` or `<a class="btn">` | One row. Full width, with the hover and active styles of a button. |
+| Leading `<svg>`             | Optional icon, hidden from assistive technology.                |
+| `<span class="flex-col">`   | Optional, stacks a label above a `<small>` description.         |
+| `<hr>`                      | Optional divider between groups.                                |
+
+## Accessibility
+
+- Native buttons and links are in the tab order and work with Enter (and Space for
+  buttons) out of the box.
+- Mark icons `aria-hidden="true"`; the visible label names the row. An icon only
+  row needs an `aria-label`.
+- In a navigation list, wrap it in a labeled `<nav>` and mark the current page
+  `aria-current="page"`. Fylgja's button active style picks it up, so no extra class
+  is needed.
+- A description inside the row is read as part of its name. Keep it short, or move
+  it to `aria-describedby` if the label alone should be the name.
+
+## Variants
+
+### With descriptions
+
+A label with a short description under it, here as a settings navigation. The rows
+are links, so the list sits in a labeled `<nav>`, and the current page is marked
+with `aria-current="page"`.
+
+<ComponentPreview center code={exampleDescription} />
+
+Related: [Menu](/ui/overlays/menu/), [Navbar](/ui/navigation/navbar/).
