@@ -1,0 +1,35 @@
+<div class="grid align" style="--align: end; --size-y: 16rem">
+	<button type="button" class="btn --primary round" commandfor="speed-dial" command="toggle-popover" aria-label="Quick actions">
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+	</button>
+	<div id="speed-dial" popover class="speed-dial flex-col gap-sm open:flex">
+		<button type="button" class="round" aria-label="Share">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51 6.83 3.98"/><path d="m15.41 6.51-6.82 3.98"/></svg>
+		</button>
+		<button type="button" class="round" aria-label="Copy link">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+		</button>
+		<button type="button" class="round" aria-label="Bookmark">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+		</button>
+	</div>
+</div>
+
+<style>
+	.speed-dial {
+		--btn-bg: var(--root-bg);
+		--btn-hover-bg: color-mix(in oklab, var(--root-bg) 86%, var(--root-fg));
+		margin: 0 0 0.75rem;
+		inset: auto;
+		position-area: block-start span-inline-start;
+		position-try-fallbacks: flip-block, flip-inline;
+		padding: 0;
+		border: 0;
+		background: none;
+		overflow: visible;
+	}
+
+	[commandfor]:has(+ .speed-dial:popover-open) > svg {
+		rotate: 45deg;
+	}
+</style>

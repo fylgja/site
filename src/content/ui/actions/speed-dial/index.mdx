@@ -1,0 +1,122 @@
+---
+title: "Speed Dial"
+pageTitle: "Fylgja Speed Dial"
+description: "A floating action button that reveals a small set of related actions, built on the Popover API and opened with invoker commands."
+category: "actions"
+tags: ["speed dial", "fab", "floating action button", "popover", "actions", "menu"]
+status: "beta"
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the buttons, including the --primary trigger, and supplies the --root-bg and --root-fg colors."
+  - pkg: "@fylgja/utilities"
+    level: required
+    reason: "Provides the round, flex-col, gap-sm, open:flex, grid, align, and fixed utilities used for the layout."
+sortOrder: 4
+faq:
+  - question: How many actions should a speed dial hold?
+    answer: Three to five. It is a shortcut to a few closely related actions, not a
+      navigation menu. When the list grows longer, or the actions are unrelated, use a
+      regular menu or put the actions on the page itself.
+  - question: Does the speed dial close after I pick an action?
+    answer: Not on its own, since an action button only runs your code. Call
+      hidePopover() on the speed dial at the end of that code. Clicking outside, or
+      pressing Escape, already closes it.
+  - question: Why does the trigger not show the actions on hover?
+    answer: Hover does not exist on touch screens, and an opened state that depends on
+      where the pointer rests is hard to use with a keyboard. A click or tap opens it
+      everywhere, and the browser reports the open state to assistive technology.
+  - question: Do I need anchor positioning?
+    answer: Only to place the actions next to the trigger automatically. For a page
+      level speed dial you can drop position-area and the inset reset, and place the
+      popover with the fixed utility and --inset-b and --inset-e instead, which works
+      in every browser that supports popovers.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
+import example from "./example.html?raw";
+import exampleLabels from "./example-labels.html?raw";
+import exampleFixed from "./example-fixed.html?raw";
+
+A speed dial is a floating action button that opens a short stack of related actions.
+The actions live in a native popover, opened by the trigger with an invoker command,
+so the browser handles the open state, light dismiss, Escape to close, and the
+expanded state for assistive technology. CSS anchor positioning keeps the actions
+attached to the trigger.
+
+Reach for it when a screen has one main place to start from, like creating or sharing
+something, with a few variations. For a single action, a plain
+[Icon Button](/ui/actions/icon-button/) is enough.
+
+## Preview
+
+The demo sits in the corner of its own box. On a real page you would fix it to the
+viewport, as shown under [Fixed to the page](#fixed-to-the-page).
+
+<ComponentPreview code={example} />
+
+## Usage
+
+1. A trigger button with `commandfor` pointing at the popover's `id` and
+   `command="toggle-popover"`. Give it an `aria-label`, since it only shows an icon.
+2. A `popover` element right after the trigger, holding the action buttons. Being
+   next in the source keeps the tab order natural: the actions follow the trigger.
+3. The small `.speed-dial` rule. It removes the default popover box, and
+   `position-area` places the actions above the trigger, aligned to its end edge.
+   Opening a popover from an invoker makes that invoker its implicit anchor, so no
+   `anchor-name` is needed.
+
+The popover is an auto popover, so clicking outside or pressing Escape closes it, and
+opening another auto popover closes this one. `open:flex` only switches on the flex
+layout while it is open, which keeps the popover's own hidden state intact.
+
+## Anatomy
+
+| Part                                 | Responsibility                                                         |
+| ------------------------------------ | ---------------------------------------------------------------------- |
+| Trigger `<button command>`           | Toggles the actions with `command="toggle-popover"` and `commandfor`.   |
+| `<div popover class="speed-dial">`   | Holds the actions, rendered in the top layer while open.               |
+| Action `<button>`                    | One related action, round with an icon or labeled with text.           |
+| `position-area`                      | Places the actions above the trigger, and flips them when out of room. |
+
+## Accessibility
+
+- The trigger is exposed as a button with an expanded or collapsed state, set by the
+  browser from the popover. Do not add `aria-expanded` yourself.
+- Every icon only button needs a name: an `aria-label` on the trigger and on each
+  action. Prefer the labeled variant when there is room, since visible text helps
+  everyone.
+- Escape closes the actions and returns focus to the trigger when focus was inside
+  them. Clicking outside closes them as well.
+- Keep each target at least 24 by 24 CSS pixels, and give a fixed speed dial enough
+  space from the viewport edge so it does not cover content the reader needs.
+
+## Variants
+
+### With labels
+
+Wrap a text label in a `<span>` next to each icon, so the actions read as words.
+`--align-items` set to `end` lines them up against the trigger. This uses the same
+`.speed-dial` rule as the preview.
+
+<ComponentPreview code={exampleLabels} />
+
+### Fixed to the page
+
+On a real page the trigger stays in the corner of the viewport. Add the `fixed`
+utility with `--inset-b` and `--inset-e` to the trigger. The popover keeps following
+it through anchor positioning, so nothing else changes. Raise `--z` on the trigger if
+other positioned content covers it.
+
+<CodeBlock lang="html" code={exampleFixed.trim()} />
+
+## Browser support
+
+Popovers and invoker commands are supported in current browsers. Anchor positioning
+is newer, so check [Can I use](https://caniuse.com/css-anchor-positioning) for the
+browsers you support. Without it, the actions still open but land at the edge of the
+viewport. For a fixed speed dial you can avoid anchor positioning entirely by placing
+the popover with fixed insets, as described in the FAQ.
+
+Related: [Tooltip](/ui/overlays/tooltip/), [Icon Button](/ui/actions/icon-button/).
