@@ -156,7 +156,8 @@ unavoidable, put it in a `<script>` tag and wire listeners by id. Never inline
 semantics, so `role="list"` there is redundant. Only add `role="list"` to a list
 whose `list-style` is removed and that is not already inside a nav landmark.
 
-**Cross-link** related components with links like `/ui/overlays/modal/`.
+**Cross-link** related components with links like `/ui/overlays/modal/`, and end
+every doc with a `Related:` line listing two or three of them, as in the template.
 
 ## When done
 
