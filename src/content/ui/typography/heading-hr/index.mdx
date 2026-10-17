@@ -1,0 +1,78 @@
+---
+title: "Heading HR"
+pageTitle: "Fylgja Heading HR"
+description: "A heading set between horizontal lines, with variants for a line on one side only."
+category: "typography"
+tags: ["heading", "hr", "divider", "separator", "rule", "line"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Sizes the heading and provides the colors the lines mix from."
+sortOrder: 3
+faq:
+  - question: Why not use an hr element?
+    answer: An hr marks a thematic break, and the heading already starts a new section.
+      Drawing the lines in CSS keeps the markup a single heading and avoids announcing
+      a separator before every title.
+  - question: What happens with a long heading?
+    answer: The text wraps and the lines shrink, down to a minimum of 1rem each, so they
+      never disappear completely.
+  - question: How do I change the line?
+    answer: Set --hr-size for the thickness, --hr-color for the color, and --hr-gap for
+      the space between the text and the lines.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
+import example from "./example.html?raw";
+import exampleCss from "./example.css?raw";
+import exampleStart from "./example-start.html?raw";
+import exampleEnd from "./example-end.html?raw";
+
+<style is:inline set:html={exampleCss} />
+
+A heading HR places a heading between two horizontal lines, like a divider with a
+title. The lines are pseudo elements in a flex row, so the markup stays a single
+heading.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+<CodeBlock lang="css" code={exampleCss.trim()} />
+
+## Usage
+
+- Add the `heading-hr` class to any heading to center it between two lines.
+- Add `--start` to put the heading at the start with one line after it, or `--end` to
+  put it at the end with one line before it.
+- Change the lines with `--hr-size`, `--hr-color`, and `--hr-gap`.
+
+## Anatomy
+
+| Part                 | Responsibility                                              |
+| -------------------- | ----------------------------------------------------------- |
+| `.heading-hr`        | The heading, laid out as a flex row.                        |
+| `::before`           | The line before the text. Hidden by `--start`.              |
+| `::after`            | The line after the text. Hidden by `--end`.                 |
+
+## Accessibility
+
+- The lines are decorative pseudo elements, so screen readers only announce the
+  heading.
+- The default line color is a subtle mix of the page colors. Keep it subtle, since
+  the heading text carries the meaning.
+
+## Variants
+
+### Line after the heading
+
+<ComponentPreview code={exampleStart} />
+
+### Line before the heading
+
+<ComponentPreview code={exampleEnd} />
+
+Related: [Heading Underline](/ui/typography/heading-underline/),
+[Heading Group](/ui/typography/hgroup/).

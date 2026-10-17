@@ -1,0 +1,25 @@
+<h2 class="heading-hr">Featured work</h2>
+
+<style>
+	.heading-hr {
+		--hr-gap: 0.75em;
+		--hr-size: 2px;
+		--hr-color: color-mix(in oklab, var(--root-bg) 75%, var(--root-fg));
+		display: flex;
+		align-items: center;
+		gap: var(--hr-gap);
+
+		&::before,
+		&::after {
+			content: "";
+			flex: 1;
+			min-inline-size: 1rem;
+			border-block-end: var(--hr-size) solid var(--hr-color);
+		}
+
+		&.--start::before,
+		&.--end::after {
+			display: none;
+		}
+	}
+</style>
