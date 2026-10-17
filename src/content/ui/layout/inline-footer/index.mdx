@@ -1,0 +1,80 @@
+---
+title: "Inline Footer"
+pageTitle: "Fylgja Inline Footer"
+description: "A single row footer with the copyright and a few links, set off from the page by a thin border."
+category: "layout"
+tags: ["footer", "copyright", "legal", "links", "subfooter", "site footer"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/utilities"
+    level: required
+    reason: "Provides flex-wrap, gap, align, flow-none, and the spacing utilities that lay out the row."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the links and resets the list inside the nav."
+sortOrder: 8
+faq:
+  - question: Why is the border written as an inline style?
+    answer: Fylgja has no border utility, and base already resets every border to 0
+      solid. Setting only the top width and a color is the smallest rule that draws
+      the line, so it stays on the element instead of in a separate stylesheet.
+  - question: Why does the link list not need list-none?
+    answer: Base removes the bullets, margin, and padding from any list inside a nav,
+      so the nav is all the list needs.
+  - question: What happens on a narrow screen?
+    answer: The row wraps. The copyright stays first and the links drop below it,
+      with the row gap keeping the two lines apart.
+  - question: Can I center everything instead?
+    answer: Yes. Set the --align variable to center on the footer and both the
+      copyright and the links line up in the middle, on one row or two.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+
+An inline footer is the smallest site footer: the copyright and a few links on one
+row, with a thin border above it. It suits pages that need little more than the
+legal links, and it is the same row the [Classic Footer](/ui/layout/classic-footer/)
+and [Brand Footer](/ui/layout/brand-footer/) use as their subfooter.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- Use a `<footer>` with `flex-wrap gap align`. The default `--align` of `.align`
+  spaces its children apart, so the copyright sits at the start and the links at
+  the end.
+- `flow-none` clears the default margin on the paragraph, so the row height comes
+  from `--py` alone.
+- Draw the line with `border-block-start-width` and a border color mixed from
+  `--root-bg` and `--root-fg`, so it follows light and dark mode.
+- Put the links in a `<nav>` with a `<ul>`. Base already strips the list styles
+  inside a nav, and `flex-wrap gap` lays the items out in a row.
+- Wrap the copyright in `<small>`, the element for fine print.
+
+## Anatomy
+
+| Part              | Responsibility                                                  |
+| ----------------- | --------------------------------------------------------------- |
+| `<footer>`        | The row, its top border, and the spacing between the two parts. |
+| `<small>`         | The copyright line, set as fine print.                          |
+| `<nav>`           | The link list, named with `aria-label`.                         |
+
+## Accessibility
+
+- A `<footer>` that is a direct child of `<body>` is exposed as the
+  `contentinfo` landmark, so screen reader users can jump straight to it.
+- Name the nav with `aria-label` (here "Legal") so it is not confused with the
+  main navigation.
+- Keep the border color for decoration only. The links and copyright must reach
+  enough contrast against the page on their own.
+
+## Examples
+
+Add menu groups above this row for the [Classic Footer](/ui/layout/classic-footer/),
+or a branding column for the [Brand Footer](/ui/layout/brand-footer/).
+
+Related: [Classic Footer](/ui/layout/classic-footer/),
+[Brand Footer](/ui/layout/brand-footer/).
