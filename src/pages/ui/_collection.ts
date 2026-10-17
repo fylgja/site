@@ -14,6 +14,7 @@ export const CATEGORIES = [
 	{ key: "feedback", label: "Feedback" },
 	{ key: "data-display", label: "Data display" },
 	{ key: "layout", label: "Layout" },
+	{ key: "typography", label: "Typography" },
 	{ key: "sliders", label: "Sliders" },
 ] as const;
 

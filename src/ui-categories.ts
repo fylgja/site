@@ -9,5 +9,6 @@ export const uiCategories = [
 	"feedback",
 	"data-display",
 	"layout",
+	"typography",
 	"sliders",
 ] as const;

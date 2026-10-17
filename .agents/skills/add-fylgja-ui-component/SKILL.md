@@ -14,7 +14,8 @@ write example markup for one. The related component skills ([create-fylgja-modal
   demo snippets beside it. The glob loader strips `index`, so the route is
   `/ui/<category>/<name>/`. The category folder must match the `category` enum in
   `src/content.config.ts`: `actions`, `forms`, `navigation`, `overlays`,
-  `feedback`, `data-display`, `layout`.
+  `feedback`, `data-display`, `layout`, `typography`, `sliders` (the list lives in
+  `src/ui-categories.ts`).
 - Routing, the sidebar, and the gallery are automatic. Adding the folder is enough;
   do not touch `_collection.ts`, `[...id].astro`, or the index.
 
