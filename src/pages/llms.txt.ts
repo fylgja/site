@@ -8,11 +8,8 @@ type Entry = { id: string; data: { title: string; description?: string } };
 
 /**
  * Formats collection entries as a markdown link list.
- * @param {Entry[]} entries
- * @param {string} base Path prefix for the entry ids, e.g. "/library/".
- * @param {URL} site
- * @param {string} indent Prefix for each line, for lists nested under a bullet.
- * @returns {string}
+ * @param base Path prefix for the entry ids, e.g. "/library/".
+ * @param indent Prefix for each line, for lists nested under a bullet.
  */
 function linkList(entries: Entry[], base: string, site: URL, indent = ""): string {
 	return entries
