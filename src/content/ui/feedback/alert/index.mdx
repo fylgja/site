@@ -1,0 +1,103 @@
+---
+title: "Alert"
+pageTitle: "Fylgja Alert"
+description: "A toast style message in the top corner of the viewport for problems that need attention, built on a manual popover."
+category: "feedback"
+tags: ["alert", "error", "notice", "message", "notification", "popover", "toast"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/toast"
+    level: required
+    reason: "Provides the message box, its shadow, and the data-type color variants."
+  - pkg: "@fylgja/utilities"
+    level: recommended
+    reason: "Provides the fixed utility and the inset variables that place the alert."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the trigger and dismiss buttons."
+sortOrder: 4
+faq:
+  - question: How is an alert different from a toast?
+    answer: They share the same style. A [Toast](/ui/feedback/toast/) confirms
+      something the user just did, such as adding an item to the cart, and can stay
+      fixed or sticky on the page. An alert tells the user something needs their
+      attention, such as an error, and appears in the top corner until it is dismissed.
+  - question: How do I show an alert when the page loads?
+    answer: A manual popover starts hidden, so call showPopover() on it from a script,
+      for example after a failed request.
+  - question: Why a manual popover?
+    answer: A manual popover sits in the top layer above all other content, and it does
+      not close on Escape or an outside click. The user closes it on purpose with the
+      dismiss button, so an important message is not lost by accident.
+  - question: Why role="alert"?
+    answer: An alert reports a problem the user should know about right away, and
+      role="alert" makes screen readers announce it immediately. For a routine
+      confirmation, use a toast with role="status" instead, which is announced politely.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
+import example from "./example.html?raw";
+import exampleCss from "./example.css?raw";
+import exampleWarning from "./example-warning.html?raw";
+
+<style is:inline set:html={exampleCss} />
+
+An alert is a small message in the top corner of the viewport that tells the user
+something went wrong or needs their attention. It uses the [Toast](/ui/feedback/toast/)
+style, but floats above the page and stays until the user dismisses it. It is built on a `popover="manual"`, so the browser puts it in the
+top layer and invoker commands show and hide it without JavaScript.
+
+## Preview
+
+Press the button to show the alert in the top right corner of the screen.
+
+<ComponentPreview center code={example} />
+
+<CodeBlock lang="css" code={exampleCss.trim()} />
+
+## Usage
+
+- The alert is a `<div popover="manual" role="alert">` with the `toast alert`
+  classes. Set `data-type="error"`, `"warning"`, or `"info"` for its color, the same
+  as a toast.
+- A button with `commandfor` and `command="show-popover"` shows it. In a real app you
+  can also call `showPopover()` from a script, such as after a request fails.
+- The dismiss button inside it uses `command="hide-popover"`. A manual popover does not
+  close on Escape or an outside click, so always include one.
+- Place it with the `fixed` utility and its inset variables. `--inset-t` and
+  `--inset-e` put it in the top right corner. Swap in `--inset-s` for the top left.
+- The small `.alert` rule caps the width, drops the popover centering, keeps the
+  dismiss button at the end, and hides the alert while it is closed, since `.toast`
+  sets its own `display` and would otherwise override the hidden popover.
+
+## Anatomy
+
+| Part                              | Responsibility                                                |
+| --------------------------------- | ------------------------------------------------------------- |
+| `<div popover="manual">`          | The alert. Top layer, fixed to the viewport, hidden until shown. |
+| `.toast`                          | The message style: border, shadow, and the `data-type` colors. |
+| Icon and text                     | The message itself, with an icon that matches the type.       |
+| Dismiss `<button>`                | Hides the alert with `command="hide-popover"`.                |
+
+## Accessibility
+
+- `role="alert"` makes screen readers announce the message right away. Keep it for
+  problems, and use a toast with `role="status"` for routine confirmations.
+- The dismiss button is icon only, so it needs an `aria-label`.
+- Focus stays where it was when the alert opens. Keep the message short and make sure
+  nothing in it is required to continue, since keyboard users have to Tab to reach it.
+- Do not rely on the accent color alone. Pair the type with a matching icon and clear
+  wording.
+
+## Variants
+
+### Warning
+
+Use `data-type="warning"` for a problem that does not stop the user, such as losing the
+connection.
+
+<ComponentPreview center code={exampleWarning} />
+
+Related: [Toast](/ui/feedback/toast/), [Callout](/ui/feedback/callout/),
+[Modal](/ui/overlays/modal/).

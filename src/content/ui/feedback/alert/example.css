@@ -1,0 +1,13 @@
+.alert {
+	max-inline-size: 24rem;
+	margin: 0;
+
+	&:not(:popover-open) {
+		display: none;
+	}
+
+	> button {
+		--btn-stroke: transparent;
+		margin-inline-start: auto;
+	}
+}
