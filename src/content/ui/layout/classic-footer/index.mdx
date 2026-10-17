@@ -1,0 +1,88 @@
+---
+title: "Classic Footer"
+pageTitle: "Fylgja Classic Footer"
+description: "A footer with columns of grouped links above a subfooter holding the copyright and social icons."
+category: "layout"
+tags: ["footer", "site footer", "menu", "links", "social", "icons", "copyright", "subfooter"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/utilities"
+    level: required
+    reason: "Provides grid-cols, divide-y, flow, align, and the spacing utilities that lay out the footer."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the headings and links, and resets the lists inside each nav."
+sortOrder: 9
+faq:
+  - question: How does the line above the subfooter get drawn?
+    answer: The divide-y utility puts a top border on every child except the first,
+      and the --flow variable adds the space above it. The border color is set once
+      on the footer and inherited.
+  - question: How many columns does the menu use?
+    answer: Two on small screens and four from the md breakpoint up, set with the
+      --grid-cols and --md_grid-cols variables. Change those numbers to match the
+      number of groups you have.
+  - question: Why one nav for all the groups instead of one per group?
+    answer: Each nav is a landmark, and four landmarks in the footer make the
+      landmark list noisy. One labeled nav with a heading per group keeps it short,
+      and the headings still let screen reader users jump between groups.
+  - question: Which heading level should the group titles use?
+    answer: Whatever fits the page outline, usually h2 since the footer sits outside
+      the main content. The visual size is set with --h-size, so the level never has
+      to be picked for its size.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+
+A classic footer groups the site's secondary links into titled columns, with a
+subfooter below for the copyright and social links. The subfooter is the same row
+as the [Inline Footer](/ui/layout/inline-footer/), with icon links in place of the
+text links.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- Give the `<footer>` the `divide-y` utility with a border color and a `--flow`.
+  That draws the line above the subfooter and spaces it, with no extra rule.
+- The menu is one `<nav>` with `grid-cols`. `--grid-cols` sets the columns on small
+  screens and `--md_grid-cols` from the md breakpoint up.
+- Each group is a heading and a `<ul>` wrapped in a `flow` container, so the title
+  has no top margin and the columns line up. `--list-flow` on the list adds back the
+  space between links that base removes inside a nav.
+- The subfooter uses `flex-wrap gap align`, so the copyright sits at the start and
+  the social links at the end, and the row wraps on narrow screens.
+- Social links are [icon](/ui/actions/icon-button/) links. Each `<svg>` is
+  `aria-hidden` and the link gets its name from `aria-label`.
+
+## Anatomy
+
+| Part           | Responsibility                                                     |
+| -------------- | ------------------------------------------------------------------ |
+| `<footer>`     | The container, and through `divide-y` the subfooter border.        |
+| Footer `<nav>` | The grid of link groups.                                           |
+| Group          | A heading and its list of links.                                   |
+| Subfooter      | The copyright and the social nav, laid out like the inline footer. |
+| Social `<nav>` | The icon links, named with `aria-label`.                           |
+
+## Accessibility
+
+- A `<footer>` that is a direct child of `<body>` is the `contentinfo` landmark.
+- Label each nav ("Footer", "Social") so it is not confused with the main
+  navigation.
+- Every icon link needs an accessible name. Put it in `aria-label` and hide the
+  icon with `aria-hidden="true"`.
+- The icons are 24 pixels square, which meets the WCAG 2.2 minimum target size.
+  Keep the gap between them so they are not tapped by mistake.
+
+## Examples
+
+For the same footer with a wide branding column beside the menus, use the
+[Brand Footer](/ui/layout/brand-footer/). When the page only needs the legal links,
+use the [Inline Footer](/ui/layout/inline-footer/).
+
+Related: [Inline Footer](/ui/layout/inline-footer/),
+[Brand Footer](/ui/layout/brand-footer/), [Navbar](/ui/navigation/navbar/).
