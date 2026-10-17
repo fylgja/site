@@ -1,0 +1,95 @@
+---
+title: "Button Corner Shape"
+pageTitle: "Fylgja Button Corner Shape"
+description: "Buttons with beveled, notched, scooped, or squircle corners, made with the CSS corner-shape property on top of the button radius."
+category: "actions"
+tags: ["button", "corner-shape", "squircle", "bevel", "notch", "scoop", "superellipse", "shape"]
+status: "beta"
+requires:
+  - pkg: "@fylgja/base"
+    level: required
+    reason: "Styles the buttons and exposes the --btn-radius variable the corner shape builds on."
+sortOrder: 5
+faq:
+  - question: Which browsers support corner-shape?
+    answer: Chromium based browsers support it. Other browsers ignore the property and
+      show the normal rounded corners from --btn-radius, so the button still looks fine
+      and works the same. No fallback code is needed.
+  - question: Why does corner-shape do nothing on my button?
+    answer: The shape is drawn inside the border radius. Without a radius there is no
+      corner to shape, so always set --btn-radius as well.
+  - question: Why do some shapes need more padding?
+    answer: Notch, bevel, and concave shapes cut into the button, so the label can touch
+      the edge. Raise --btn-px or --btn-py to give the text room again.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+import examplePrimary from "./example-primary.html?raw";
+import exampleMixed from "./example-mixed.html?raw";
+import exampleSuperellipse from "./example-superellipse.html?raw";
+
+Buttons do not have to be rounded rectangles. The CSS `corner-shape` property changes
+how each corner inside the border radius is drawn: a smooth squircle, a straight
+bevel, a square notch, or an inward scoop. It only changes the shape, so the border,
+background, focus ring, and hover styles of the [Button](/ui/actions/button/) still
+apply, and browsers without support simply show normal rounded corners.
+
+## Preview
+
+<ComponentPreview center code={example} />
+
+## Usage
+
+- Set `--btn-radius` to the size of the corner, then `corner-shape` to its shape. The
+  radius decides how big the corner is, the shape decides how it is drawn.
+- The keywords are `round` (the default), `squircle`, `bevel`, `notch`, `scoop`, and
+  `square`.
+- Like `border-radius`, `corner-shape` takes up to four values, one per corner, in the
+  same order: top left, top right, bottom right, bottom left.
+- Shapes that cut into the button need a bit more padding, set with `--btn-px`.
+
+## Anatomy
+
+| Part            | Responsibility                                                  |
+| --------------- | --------------------------------------------------------------- |
+| `--btn-radius`  | How big each corner is. Without it there is nothing to shape.   |
+| `corner-shape`  | How each corner is drawn, from a smooth curve to a sharp cut.   |
+| `--btn-px`      | Extra padding to keep the label clear of deep cuts.             |
+
+## Accessibility
+
+- The shape is purely visual. The element stays a native button with its role, label,
+  and keyboard behavior.
+- Keep shapes consistent per action type, so users learn what a shape means. A
+  different shape for every button makes a page harder to scan.
+- An arrow shaped button is still read by its text. Write "Next" or "Back" in the
+  label, do not rely on the shape to point the way.
+
+## Variants
+
+### Primary
+
+The shapes work on any button style, including a filled primary button.
+
+<ComponentPreview center code={examplePrimary} />
+
+### Mixed corners
+
+Give each corner its own shape and radius to make arrows, tags, and tabs. The arrows
+use a vertical radius of `50%`, so the bevels meet in a point, and a fixed horizontal
+radius for the depth of that point. Pad the pointed side by a bit more than that depth,
+so the label stays clear of it.
+
+<ComponentPreview center code={exampleMixed} />
+
+### Superellipse
+
+`superellipse()` takes a number for a shape between the keywords. Negative values curve
+inward, `0` is a straight bevel, `1` is round, and higher values get closer to a square
+corner.
+
+<ComponentPreview center code={exampleSuperellipse} />
+
+Related: [Button](/ui/actions/button/), [Icon Button](/ui/actions/icon-button/),
+[Button Group](/ui/actions/button-group/).
