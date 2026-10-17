@@ -1,0 +1,78 @@
+---
+title: "Heading Underline"
+pageTitle: "Fylgja Heading Underline"
+description: "A heading with a short brand colored bar below it, drawn in CSS so the markup stays a plain heading."
+category: "typography"
+tags: ["heading", "underline", "accent", "bar", "section title"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Sizes the heading and provides the --brand color for the bar."
+  - pkg: "@fylgja/utilities"
+    level: recommended
+    reason: "Provides text-center for the centered variant."
+sortOrder: 2
+faq:
+  - question: Why not use text-decoration?
+    answer: A text underline follows every line of the text and looks like a link. The
+      bar is a separate accent below the heading, with its own width and thickness.
+  - question: Can the bar span the full width?
+    answer: Yes. Set --underline-size to 100%, as in the custom example.
+  - question: Is the bar read out by screen readers?
+    answer: No. It is a pseudo element with empty content, so it is purely decorative
+      and the heading is announced as normal.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
+import example from "./example.html?raw";
+import exampleCss from "./example.css?raw";
+import exampleCenter from "./example-center.html?raw";
+import exampleCustom from "./example-custom.html?raw";
+
+<style is:inline set:html={exampleCss} />
+
+A heading underline adds a short brand colored bar below a heading, a common accent
+for section titles. The bar is an `::after` pseudo element, so the markup stays a
+single heading with one class.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+<CodeBlock lang="css" code={exampleCss.trim()} />
+
+## Usage
+
+- Add the `heading-underline` class to any heading.
+- Change the bar with `--underline-size` for the width, `--underline-thickness` for
+  the height, `--underline-gap` for the space above it, and `--underline-color`.
+- Add `text-center` to center both the heading and the bar.
+
+## Anatomy
+
+| Part                  | Responsibility                                          |
+| --------------------- | ------------------------------------------------------- |
+| `.heading-underline`  | The heading. Holds the variables for the bar.           |
+| `::after`             | The bar, a block below the text with rounded ends.      |
+
+## Accessibility
+
+- The bar is decorative and has no content, so it is not announced.
+- Do not rely on the bar to mark a heading. Use a real heading element at the right
+  level, so it appears in the outline.
+
+## Variants
+
+### Centered
+
+<ComponentPreview code={exampleCenter} />
+
+### Custom size
+
+A full width, thin bar turns the accent into a divider below the heading.
+
+<ComponentPreview code={exampleCustom} />
+
+Related: [Heading HR](/ui/typography/heading-hr/), [Heading Group](/ui/typography/hgroup/).
