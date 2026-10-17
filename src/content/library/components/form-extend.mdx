@@ -29,6 +29,16 @@ faq:
   - question: How do I make a range input vertical?
     answer: Add the range-vertical class to the <input type="range"> element, as
       shown in the "Volume" example above.
+  - question: Why does the CSS-only range fill stop working after a production build?
+    answer: 'The source CSS is fine, but Lightning CSS, the CSS minifier in Vite and
+      other tools, folds animation-timeline into the animation shorthand. No browser
+      accepts a timeline inside the shorthand, so the whole declaration is dropped and
+      the fill no longer follows the thumb. Until it is fixed upstream, move
+      animation-timeline into an @supports (animation-timeline: view()) rule right
+      after the original rule, before the CSS is minified, so the minifier cannot
+      merge it back. See the
+      [Lightning CSS issue](https://github.com/parcel-bundler/lightningcss/issues/1283)
+      for the status of the fix.'
 ---
 
 import InstallTabs from "@/components/InstallTabs.astro";

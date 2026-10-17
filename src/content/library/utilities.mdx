@@ -39,6 +39,15 @@ faq:
       and --my: 1rem 0 only spaces the block-start. Set 0 (or your reset value)
       for the side you want to leave flush. These stay RTL-aware, so the start
       side follows the text direction.'
+  - question: Why does the scroll-mask fade stop working after a production build?
+    answer: 'The source CSS is fine, but Lightning CSS, the CSS minifier in Vite and
+      other tools, folds animation-timeline into the animation shorthand. No browser
+      accepts a timeline inside the shorthand, so the whole declaration is dropped and
+      the fade never runs. Until it is fixed upstream, move animation-timeline into an
+      @supports (animation-timeline: view()) rule right after the original rule, before
+      the CSS is minified, so the minifier cannot merge it back. See the
+      [Lightning CSS issue](https://github.com/parcel-bundler/lightningcss/issues/1283)
+      for the status of the fix.'
 ---
 
 import InstallTabs from "@/components/InstallTabs.astro";
