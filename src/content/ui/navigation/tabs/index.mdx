@@ -1,0 +1,114 @@
+---
+title: "Tabs"
+pageTitle: "Fylgja Tabs"
+description: "Switch between related panels of content in one place, with a scrollable strip of tab buttons and a small script."
+category: "navigation"
+tags: ["tabs", "tablist", "tab panel", "segmented", "switcher"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the tab buttons and highlights the selected one through aria-selected."
+  - pkg: "@fylgja/utilities"
+    level: recommended
+    reason: "Provides flex, gap-sm, flex-none, scroll-x, and scroll-mask for the tab strip."
+sortOrder: 3
+faq:
+  - question: Why is there no version without JavaScript?
+    answer: HTML has no tabs element. A group of <details> elements can be styled to
+      look like tabs, but screen readers announce them as disclosures, every tab can be
+      closed, and the panel ends up in a different reading order than it appears on
+      screen. A few lines of script give real tab semantics instead.
+  - question: What happens when the tabs do not fit?
+    answer: The strip scrolls sideways, on mobile and desktop alike. The scroll-mask
+      utility fades the edge that has more tabs behind it, and the arrow keys bring the
+      focused tab into view.
+  - question: What do users see without JavaScript?
+    answer: The first panel, since the markup renders it as selected and hides the
+      others. If every panel must stay reachable without a script, use an
+      [Accordion](/ui/data-display/accordion/) instead.
+  - question: When should I use tabs instead of an accordion?
+    answer: Use tabs for a few parallel views where seeing the labels side by side
+      helps, such as Overview, Specs, and Reviews. Use an
+      [Accordion](/ui/data-display/accordion/) for many sections or content that people
+      read from top to bottom.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
+import example from "./example.html?raw";
+import exampleCss from "./example.css?raw";
+import exampleJs from "./example.js?raw";
+import exampleAlpine from "./example.alpine.html?raw";
+import exampleVertical from "./example-vertical.html?raw";
+
+<style is:inline set:html={exampleCss} />
+<script is:inline set:html={exampleJs} />
+
+Tabs show one of several related panels in the same space, with a strip of buttons
+to switch between them. HTML has no tabs element, so the strip is a row of buttons
+in a `role="tablist"`, and a small `<tab-group>` custom element handles selection
+and keyboard navigation. On narrow screens the strip scrolls instead of wrapping.
+
+## Preview
+
+<ComponentPreview code={example} alpine={exampleAlpine} />
+
+<CodeBlock lang="css" code={exampleCss.trim()} />
+
+> [!note]- The `<tab-group>` script
+>
+> <CodeBlock lang="js" code={exampleJs.trim()} />
+
+## Usage
+
+- Wrap the strip and panels in `<tab-group>`, and load the script once per page.
+- Each tab is a `<button role="tab">` with an `id` and `aria-controls` pointing at its
+  panel. Render the selected state in the markup: `aria-selected="true"` on the first
+  tab, `aria-selected="false"` and `tabindex="-1"` on the rest.
+- Each panel is a `role="tabpanel"` with `aria-labelledby` pointing back at its tab.
+  Add `hidden` to every panel except the selected one.
+- `scroll-x` lets the strip scroll when the tabs do not fit, `scroll-mask` fades the
+  overflowing edge, and `flex-none` keeps each tab from shrinking. When there are
+  more tabs than fit, the strip scrolls sideways instead of wrapping onto a second
+  row, on mobile and desktop alike.
+- The `tabs` class draws a line under the whole strip and gives the selected tab a
+  brand colored bottom border. It only sets base button variables, so the tabs keep
+  their hover and focus styles.
+
+The Alpine tab shows the same component with `x-data` instead of a custom element.
+
+## Anatomy
+
+| Part                    | Responsibility                                                   |
+| ----------------------- | ---------------------------------------------------------------- |
+| `<tab-group>`           | Listens for clicks and keys, and switches the selected tab.      |
+| `role="tablist"`        | The scrollable strip of tabs, named with `aria-label`.           |
+| `<button role="tab">`   | One tab. `aria-selected` marks the active one.                   |
+| `role="tabpanel"`       | The content for one tab, hidden unless its tab is selected.      |
+
+## Accessibility
+
+- No native element carries the tab roles, so this is the one place where `role` is
+  the right tool. Screen readers announce each tab with its position, such as "tab 1
+  of 3", and whether it is selected.
+- Only the selected tab is in the Tab order. The Left and Right arrow keys (Up and
+  Down for vertical tabs) move between tabs, Home and End jump to the first and
+  last, and Tab moves on into the panel.
+- Panels have `tabindex="0"`, so keyboard users can reach a panel that holds no
+  focusable content.
+- Name the tablist with `aria-label` or `aria-labelledby`, and keep the tab labels
+  short and unique.
+
+## Variants
+
+### Vertical tabs
+
+Add `aria-orientation="vertical"` to the tablist and stack it with `flex-col` next
+to the panels. The line moves to the side of the strip, and the script switches to
+the Up and Down arrow keys. Vertical tabs suit settings pages with more tabs than fit
+in a row.
+
+<ComponentPreview code={exampleVertical} />
+
+Related: [Accordion](/ui/data-display/accordion/), [Pagination](/ui/navigation/pagination/).

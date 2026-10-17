@@ -1,0 +1,16 @@
+<tab-group class="flex gap">
+	<div role="tablist" aria-label="Account settings" aria-orientation="vertical" class="tabs flex-col flex-none">
+		<button type="button" role="tab" id="tab-profile" aria-controls="tabpanel-profile" aria-selected="true">Profile</button>
+		<button type="button" role="tab" id="tab-notifications" aria-controls="tabpanel-notifications" aria-selected="false" tabindex="-1">Notifications</button>
+		<button type="button" role="tab" id="tab-security" aria-controls="tabpanel-security" aria-selected="false" tabindex="-1">Security</button>
+	</div>
+	<div role="tabpanel" id="tabpanel-profile" aria-labelledby="tab-profile" tabindex="0">
+		<p>Your name, photo, and bio as other people see them.</p>
+	</div>
+	<div role="tabpanel" id="tabpanel-notifications" aria-labelledby="tab-notifications" tabindex="0" hidden>
+		<p>Choose which updates reach you by email.</p>
+	</div>
+	<div role="tabpanel" id="tabpanel-security" aria-labelledby="tab-security" tabindex="0" hidden>
+		<p>Change your password and manage signed in devices.</p>
+	</div>
+</tab-group>

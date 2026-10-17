@@ -1,0 +1,34 @@
+<div
+	x-data="{
+		tab: 0,
+		select(index) {
+			const count = this.$refs.tablist.children.length;
+			this.tab = (index + count) % count;
+			this.$nextTick(() => this.$refs.tablist.children[this.tab].focus());
+		},
+	}"
+>
+	<div
+		role="tablist"
+		aria-label="Getting started"
+		class="tabs flex gap-sm scroll-x scroll-mask"
+		x-ref="tablist"
+		@keydown.right.prevent="select(tab + 1)"
+		@keydown.left.prevent="select(tab - 1)"
+		@keydown.home.prevent="select(0)"
+		@keydown.end.prevent="select(-1)"
+	>
+		<button type="button" role="tab" id="tab-overview" aria-controls="tabpanel-overview" class="flex-none" :aria-selected="String(tab === 0)" :tabindex="tab === 0 ? 0 : -1" @click="tab = 0">Overview</button>
+		<button type="button" role="tab" id="tab-install" aria-controls="tabpanel-install" class="flex-none" :aria-selected="String(tab === 1)" :tabindex="tab === 1 ? 0 : -1" @click="tab = 1">Install</button>
+		<button type="button" role="tab" id="tab-usage" aria-controls="tabpanel-usage" class="flex-none" :aria-selected="String(tab === 2)" :tabindex="tab === 2 ? 0 : -1" @click="tab = 2">Usage</button>
+	</div>
+	<div role="tabpanel" id="tabpanel-overview" aria-labelledby="tab-overview" tabindex="0" x-show="tab === 0">
+		<p>Fylgja is a lightweight CSS library built on modern web standards.</p>
+	</div>
+	<div role="tabpanel" id="tabpanel-install" aria-labelledby="tab-install" tabindex="0" x-show="tab === 1" x-cloak>
+		<p>Install the packages you need from npm, or load them straight from a CDN.</p>
+	</div>
+	<div role="tabpanel" id="tabpanel-usage" aria-labelledby="tab-usage" tabindex="0" x-show="tab === 2" x-cloak>
+		<p>Write plain HTML. Fylgja styles the native elements for you.</p>
+	</div>
+</div>
