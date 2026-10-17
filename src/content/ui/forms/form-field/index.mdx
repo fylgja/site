@@ -1,0 +1,125 @@
+---
+title: "Form Field"
+pageTitle: "Fylgja Form Field"
+description: "A labeled form control with an error message that appears only when native validation fails."
+category: "forms"
+tags: ["form", "field", "input", "validation", "error", "hint", "label"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/base"
+    level: required
+    reason: "Styles the control and turns its border red once it is invalid."
+  - pkg: "@fylgja/form-extend"
+    level: required
+    reason: "The field-error-message class keeps the error hidden until the field is invalid."
+sortOrder: 6
+faq:
+  - question: Why does the error not show while I am still typing?
+    answer: The error follows the :user-invalid pseudo-class, which only matches after
+      the user has changed the field and moved on, or tried to submit the form. An
+      empty required field is invalid from the start, and :user-invalid keeps that
+      from being shown before the user has done anything.
+  - question: Can I show a different message for each validation rule?
+    answer: Not with CSS alone. The field-error-message class only knows the field is
+      invalid, not why. Write one message that covers every rule, or read
+      input.validity in a script and swap the message text.
+  - question: How do I show an error from the server?
+    answer: Render the field with aria-invalid="true" and the message shows straight
+      away. Remove the attribute with a script once the user edits the value, or the
+      error stays visible.
+  - question: Can I hide the browser's own validation bubble?
+    answer: Adding novalidate to the form removes the bubble, but also stops the
+      browser from blocking an invalid submit, so you then need a script to do that.
+      Keep the native behavior unless you have a reason to replace it.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+import exampleRules from "./example-rules.html?raw";
+import exampleServer from "./example-server.html?raw";
+import exampleCheckbox from "./example-checkbox.html?raw";
+import exampleForm from "./example-form.html?raw";
+
+A form field groups a label, a control, optional hint text, and an error message.
+Validation comes from the browser itself: attributes like `required`, `type="email"`,
+`minlength`, and `pattern` decide when the value is invalid. Fylgja base turns the
+border red, and the `field-error-message` class from form extend reveals the
+message, all without JavaScript.
+
+## Preview
+
+Type something that is not an email address, then move focus away.
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- Wrap the label, control, hint, and error in an element with the `field` class.
+  The error is scoped to that wrapper, so it can sit anywhere inside it.
+- Add the native validation attributes the value needs. The browser does the
+  checking.
+- Give the error message the `field-error-message` class. It stays hidden until the
+  control matches `:user-invalid` or has `aria-invalid="true"`.
+- Point `aria-errormessage` at the error and `aria-describedby` at the hint.
+
+The message uses `visibility`, so its space stays reserved while hidden and the
+layout does not jump when it appears.
+
+## Anatomy
+
+- **`.field`**: the wrapper that ties the error message to its control.
+- **`<label>`**: names the control, linked with `for` and `id`.
+- **Control**: any `<input>`, `<select>`, or `<textarea>` with validation attributes.
+- **Hint** (optional): a `<small>` below the control with guidance that is always
+  visible. Use it sparingly, for passwords and other inputs with rules the label
+  cannot convey.
+- **`.field-error-message`**: the message shown once the control is invalid.
+
+## Accessibility
+
+- Every control needs a visible `<label>`. A placeholder is not a label, since it
+  disappears as soon as the user types.
+- Link the hint with `aria-describedby` so it is read along with the label. Do not
+  add the error to `aria-describedby` as well, since screen readers would then
+  read the hidden message every time.
+- `aria-errormessage` links the error to the control. Screen reader support for it
+  is still uneven, but on submit the browser also announces its own validation
+  message and moves focus to the first invalid field.
+- Write the error as a fix, such as "Enter an email address", not just "Invalid".
+- Do not rely on the red border alone. The message text carries the meaning for
+  users who cannot tell the colors apart.
+
+## Variants
+
+### Several rules
+
+Combine `required`, `minlength`, `maxlength`, and `pattern` on one control. Since the
+message cannot tell which rule failed, describe all of them in it.
+
+<ComponentPreview code={exampleRules} />
+
+### Server error
+
+Some errors only the server knows about. Render the control with
+`aria-invalid="true"` and the message is visible on page load.
+
+<ComponentPreview code={exampleServer} />
+
+### Checkbox
+
+A required checkbox works the same way. Wrap it in its label and keep the error
+inside the `.field` wrapper.
+
+<ComponentPreview code={exampleCheckbox} />
+
+## Examples
+
+### Sign-up form
+
+Submit the empty form and every invalid field shows its error at once. The browser
+focuses the first one. Use `flow` on the form to space the fields.
+
+<ComponentPreview code={exampleForm} />
+
+Related: [Select](/ui/forms/select/), [Search Box](/ui/forms/search-box/),
+[Input Switch](/ui/forms/input-switch/).

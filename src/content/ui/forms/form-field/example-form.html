@@ -1,0 +1,28 @@
+<form action="#" class="flow">
+	<div class="field">
+		<label for="signup-name">Name</label>
+		<input type="text" id="signup-name" name="name" autocomplete="name" required aria-errormessage="signup-name-error" />
+		<small id="signup-name-error" class="field-error-message block">Enter your name.</small>
+	</div>
+	<div class="field">
+		<label for="signup-email">Email</label>
+		<input type="email" id="signup-email" name="email" autocomplete="email" required aria-errormessage="signup-email-error" />
+		<small id="signup-email-error" class="field-error-message block">Enter an email address, like me@example.com.</small>
+	</div>
+	<div class="field">
+		<label for="signup-password">Password</label>
+		<input
+			type="password"
+			id="signup-password"
+			name="password"
+			autocomplete="new-password"
+			required
+			minlength="8"
+			aria-describedby="signup-password-hint"
+			aria-errormessage="signup-password-error"
+		/>
+		<small id="signup-password-hint" class="block">At least 8 characters.</small>
+		<small id="signup-password-error" class="field-error-message block">Use at least 8 characters.</small>
+	</div>
+	<button>Create account</button>
+</form>

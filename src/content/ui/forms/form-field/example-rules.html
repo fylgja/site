@@ -1,0 +1,19 @@
+<div class="field">
+	<label for="field-username">Username</label>
+	<input
+		type="text"
+		id="field-username"
+		name="username"
+		autocomplete="username"
+		required
+		minlength="3"
+		maxlength="16"
+		pattern="[a-z0-9_]+"
+		aria-describedby="field-username-hint"
+		aria-errormessage="field-username-error"
+	/>
+	<small id="field-username-hint" class="block">3 to 16 characters, lowercase letters, numbers or underscores.</small>
+	<small id="field-username-error" class="field-error-message block">
+		Use 3 to 16 lowercase letters, numbers or underscores.
+	</small>
+</div>
