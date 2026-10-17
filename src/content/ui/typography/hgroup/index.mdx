@@ -1,0 +1,90 @@
+---
+title: "Heading Group"
+pageTitle: "Fylgja Heading Group"
+description: "A heading with an eyebrow above it and a subtitle below it, grouped in a native <hgroup>."
+category: "typography"
+tags: ["hgroup", "heading", "subtitle", "eyebrow", "kicker", "tagline"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Sizes the heading and removes the margins between the parts of the hgroup."
+sortOrder: 1
+faq:
+  - question: Why an hgroup and not a div?
+    answer: HTML defines the paragraphs in an hgroup as part of the heading, which a div
+      cannot express. The subtitle and eyebrow are not headings of their own, so they
+      stay out of the page outline. Screen readers announce little extra for it, so the
+      win is mostly in clean, meaningful markup.
+  - question: Should the subtitle be a second heading?
+    answer: No. A subtitle is not a new section, so an h3 below an h2 would add a false
+      level to the outline. Use a paragraph inside the hgroup.
+  - question: How does the CSS tell the eyebrow and the subtitle apart?
+    answer: By position. A paragraph directly before the heading is the eyebrow, and a
+      paragraph after the heading is the subtitle, so the markup needs no classes.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
+import example from "./example.html?raw";
+import exampleCss from "./example.css?raw";
+import exampleSubtitle from "./example-subtitle.html?raw";
+import exampleEyebrow from "./example-eyebrow.html?raw";
+import exampleCenter from "./example-center.html?raw";
+
+<style is:inline set:html={exampleCss} />
+
+A heading group pairs a heading with a short eyebrow above it, a subtitle below it,
+or both. It is built on the native `<hgroup>`, which keeps the extra lines tied to
+the heading without adding them to the page outline.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+<CodeBlock lang="css" code={exampleCss.trim()} />
+
+## Usage
+
+- Wrap one heading and its paragraphs in an `<hgroup>`. Base already removes the
+  margins between them.
+- A `<p>` before the heading becomes the eyebrow, a small uppercase line in the brand
+  color.
+- A `<p>` after the heading becomes the subtitle, in a larger and muted text.
+- The CSS selects the parts by their position, so the markup stays classless.
+
+## Anatomy
+
+| Part                 | Responsibility                                                   |
+| -------------------- | ---------------------------------------------------------------- |
+| `<hgroup>`           | Groups the heading with its eyebrow and subtitle.                |
+| `<p>` before heading | The eyebrow. A short label for the section, such as a category.  |
+| `<h1>` to `<h6>`     | The heading itself, and the only part in the page outline.       |
+| `<p>` after heading  | The subtitle. One sentence that expands on the heading.          |
+
+## Accessibility
+
+- Only the heading appears in the outline and in a screen reader's list of headings.
+  The paragraphs are read as normal text.
+- Screen readers read the hgroup in source order, so the eyebrow is announced before
+  the heading. Keep it short, so it does not delay the heading.
+- Pick the heading level for its place in the page, not for its size.
+
+## Variants
+
+### Subtitle only
+
+<ComponentPreview code={exampleSubtitle} />
+
+### Eyebrow only
+
+<ComponentPreview code={exampleEyebrow} />
+
+### Centered
+
+Add `text-center` to the hgroup to center all its parts.
+
+<ComponentPreview code={exampleCenter} />
+
+Related: [Heading Underline](/ui/typography/heading-underline/),
+[Heading HR](/ui/typography/heading-hr/), [CTA Banner](/ui/layout/cta-banner/).

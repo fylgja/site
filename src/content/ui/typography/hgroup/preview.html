@@ -1,0 +1,24 @@
+<hgroup>
+	<p>Release notes</p>
+	<h2>Fylgja 3.0 is here</h2>
+	<p>Smaller, faster, and built on native CSS features.</p>
+</hgroup>
+
+<style>
+	hgroup {
+		> p:has(+ :is(h1, h2, h3, h4, h5, h6)) {
+			margin-block-end: 0.5em;
+			color: color-mix(in oklab, var(--brand) 60%, var(--root-fg));
+			font-size: 0.875em;
+			font-weight: 600;
+			letter-spacing: 0.05em;
+			text-transform: uppercase;
+		}
+
+		> :is(h1, h2, h3, h4, h5, h6) ~ p {
+			margin-block-start: 0.5em;
+			color: color-mix(in oklab, var(--root-fg) 70%, var(--root-bg));
+			font-size: var(--lead-size, large);
+		}
+	}
+</style>

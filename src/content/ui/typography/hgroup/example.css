@@ -1,0 +1,16 @@
+hgroup {
+	> p:has(+ :is(h1, h2, h3, h4, h5, h6)) {
+		margin-block-end: 0.5em;
+		color: color-mix(in oklab, var(--brand) 60%, var(--root-fg));
+		font-size: 0.875em;
+		font-weight: 600;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+	}
+
+	> :is(h1, h2, h3, h4, h5, h6) ~ p {
+		margin-block-start: 0.5em;
+		color: color-mix(in oklab, var(--root-fg) 70%, var(--root-bg));
+		font-size: var(--lead-size, large);
+	}
+}
