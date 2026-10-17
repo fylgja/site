@@ -1,0 +1,51 @@
+<ol role="list" class="timeline">
+	<li>
+		<hgroup>
+			<p><time datetime="2026-09-14">September 14, 2026</time></p>
+			<h3 class="lead">Version 2.0 released</h3>
+		</hgroup>
+		<p>A new token set, container query utilities, and a smaller base.</p>
+	</li>
+	<li>
+		<hgroup>
+			<p><time datetime="2026-06-02">June 2, 2026</time></p>
+			<h3 class="lead">Public beta</h3>
+		</hgroup>
+		<p>The first builds go out to early adopters for feedback.</p>
+	</li>
+	<li>
+		<hgroup>
+			<p><time datetime="2026-01-20">January 20, 2026</time></p>
+			<h3 class="lead">Project kickoff</h3>
+		</hgroup>
+		<p>The idea takes shape as a set of small, independent CSS packages.</p>
+	</li>
+</ol>
+
+<style>
+	.timeline {
+		--timeline-gap: 1.5rem;
+		--timeline-line: color-mix(in oklab, var(--root-bg) 75%, var(--root-fg));
+		--timeline-marker: var(--brand);
+		--timeline-marker-size: 0.75rem;
+		border-inline-start: 2px solid var(--timeline-line);
+		margin-inline-start: calc(var(--timeline-marker-size) / 2);
+		padding-inline-start: var(--timeline-gap);
+
+		> li {
+			position: relative;
+		}
+
+		> li::before {
+			content: "";
+			position: absolute;
+			inset-block-start: calc(0.5lh - var(--timeline-marker-size) / 2);
+			inset-inline-start: calc(-1 * (var(--timeline-gap) + 1px + var(--timeline-marker-size) / 2));
+			inline-size: var(--timeline-marker-size);
+			aspect-ratio: 1;
+			border-radius: 50%;
+			background: var(--timeline-marker);
+			box-shadow: 0 0 0 3px var(--root-bg);
+		}
+	}
+</style>

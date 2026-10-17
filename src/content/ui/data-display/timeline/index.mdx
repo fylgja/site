@@ -1,0 +1,73 @@
+---
+title: "Timeline"
+pageTitle: "Fylgja Timeline"
+description: "An ordered list of dated events along a vertical line, for changelogs, project history, and order tracking."
+category: "data-display"
+tags: ["timeline", "history", "changelog", "events", "steps", "roadmap"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Resets the list and spaces the heading and text of each event."
+  - pkg: "@fylgja/utilities"
+    level: recommended
+    reason: "Provides the lead class for the event titles."
+sortOrder: 7
+faq:
+  - question: Why an ordered list?
+    answer: The events happen in a set order, and an ol tells assistive tech so. A
+      screen reader announces how many events there are and where the reader is
+      among them.
+  - question: Why wrap the date in a time element?
+    answer: The datetime attribute gives the date in a machine readable format, while
+      the visible text can be written however suits the reader, such as June 2, 2026.
+  - question: Can I color a single marker?
+    answer: Yes. Set the --timeline-marker variable on that list item, for example to
+      a success color for a finished step.
+  - question: Does the line work in right to left languages?
+    answer: Yes. The line and markers use logical properties (inline start), so they
+      move to the right side on their own.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+
+A timeline lists events in order along a vertical line, each with a date, a title,
+and a short description. It is a plain `<ol>`, so the order is real for assistive
+tech, and every date is a `<time>` element with a machine readable `datetime`.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- Put the events in an `<ol role="list" class="timeline">`, one `<li>` per event,
+  newest or oldest first as the content needs.
+- Pair the date and title in an `<hgroup>`, with the date in a `<p>` and a
+  `<time datetime>` inside it. The `<hgroup>` keeps them tight together, while the
+  description below gets the usual paragraph spacing.
+- The small `.timeline` rule draws the line as a border on the list and each
+  marker as a `::before` on the item. Tune it with `--timeline-gap`,
+  `--timeline-line`, `--timeline-marker`, and `--timeline-marker-size`.
+
+## Anatomy
+
+| Part                           | Responsibility                                       |
+| ------------------------------ | ---------------------------------------------------- |
+| `<ol class="timeline">`        | The list of events, and the vertical line.           |
+| `<li>`                         | One event, with its marker drawn in `::before`.      |
+| `<hgroup>`                     | Keeps the date and the event title together.         |
+| `<time datetime>`              | The date, readable by people and machines.           |
+
+## Accessibility
+
+- `role="list"` keeps the list semantics that Safari drops once `list-style` is
+  removed.
+- The line and markers are decoration drawn in CSS, so assistive tech skips them.
+  If a marker carries meaning, such as a finished or upcoming step, say so in the
+  text too.
+- Use a heading level that fits the page outline around the timeline.
+
+Related: [Stepper](/ui/navigation/stepper/),
+[Accordion](/ui/data-display/accordion/).
