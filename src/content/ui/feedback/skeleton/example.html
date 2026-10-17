@@ -1,0 +1,38 @@
+<article class="card max-w-full" aria-busy="true" style="--size-x: 20rem">
+	<p class="sr-only">Loading article</p>
+	<div class="flex-col gap" aria-hidden="true">
+		<div class="skeleton" style="--size-y: 10rem"></div>
+		<div class="skeleton" style="--size-y: 1.5rem; --size-x: 70%"></div>
+		<div class="skeleton" style="--size-y: 1rem"></div>
+		<div class="skeleton" style="--size-y: 1rem; --size-x: 85%"></div>
+	</div>
+</article>
+
+<style>
+	:where(.skeleton) {
+		border-radius: 0.35rem;
+	}
+
+	.skeleton {
+		--skeleton-bg: color-mix(in oklab, var(--root-bg) 82%, var(--root-fg));
+		--skeleton-shine: color-mix(in oklab, var(--root-bg) 60%, transparent);
+		background-color: var(--skeleton-bg);
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		.skeleton {
+			background-image: linear-gradient(90deg, transparent 40%, var(--skeleton-shine) 50%, transparent 60%);
+			background-size: 300% 100%;
+			animation: skeleton-shimmer 1.5s linear infinite;
+		}
+	}
+
+	@keyframes skeleton-shimmer {
+		from {
+			background-position: 100% 0;
+		}
+		to {
+			background-position: 0 0;
+		}
+	}
+</style>

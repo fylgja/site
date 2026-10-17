@@ -1,0 +1,87 @@
+---
+title: "Skeleton"
+pageTitle: "Fylgja Skeleton"
+description: "Gray placeholder shapes that hold the layout while content loads, with a shimmer that stops under reduced motion."
+category: "feedback"
+tags: ["skeleton", "loading", "placeholder", "shimmer", "ghost", "busy"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/utilities"
+    level: required
+    reason: "Provides the size variables, flex layout, round, and sr-only used to build the shapes."
+  - pkg: "@fylgja/card"
+    level: recommended
+    reason: "Provides the .card surface in the preview."
+sortOrder: 3
+faq:
+  - question: Why are the shapes hidden from screen readers?
+    answer: They are empty boxes with nothing to read. aria-hidden keeps them out of the
+      accessibility tree, and a visually hidden line of text says what is loading
+      instead.
+  - question: What does aria-busy do?
+    answer: It tells assistive tech the region is still being filled, so a screen reader
+      can wait for the final content instead of announcing every change along the way.
+      Set it to false, or remove it, once the content is in.
+  - question: What happens with reduced motion?
+    answer: The shimmer is only added inside a prefers-reduced-motion no-preference
+      query, so readers who ask for less motion get the plain gray shapes.
+  - question: Should every load show a skeleton?
+    answer: No. For a load that is over in a moment, a skeleton only adds a flash.
+      Use it where content takes a noticeable time and its layout is known up front,
+      so the page does not jump when the real content arrives.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+import list from "./example-list.html?raw";
+
+A skeleton is a set of gray shapes that stand in for content while it loads. It
+mirrors the layout of what is coming (an image, a title, a few lines of text), so
+the page does not jump once the real content arrives, and a soft shimmer shows
+that something is happening.
+
+## Preview
+
+<ComponentPreview center code={example} />
+
+## Usage
+
+- Mark the region that is loading with `aria-busy="true"`, and put a short
+  `sr-only` line inside it that says what is loading.
+- Wrap the shapes in an element with `aria-hidden="true"`, and size each
+  `.skeleton` with the `--size-y` and `--size-x` variables so it matches the
+  content it replaces.
+- When the content is ready, replace the shapes and set `aria-busy` to `false`.
+- The `.skeleton` rule fills the shape and adds the shimmer only when the reader
+  has not asked for reduced motion. Its border radius is wrapped in `:where()`, so
+  utilities like `round` still win.
+
+## Variants
+
+### List
+
+Combine a `round` shape for the avatar with lines of text, using the same
+`.skeleton` rule as the preview above.
+
+<ComponentPreview code={list} />
+
+## Anatomy
+
+| Part                      | Responsibility                                          |
+| ------------------------- | ------------------------------------------------------- |
+| `[aria-busy="true"]`      | The region that is loading.                             |
+| `.sr-only` text           | Tells screen reader users what is loading.              |
+| `[aria-hidden="true"]`    | Hides the placeholder shapes from assistive tech.       |
+| `.skeleton`               | One placeholder shape, sized with `--size-y` and `--size-x`. |
+
+## Accessibility
+
+- The shapes are hidden with `aria-hidden`, and the `sr-only` text is the only
+  thing a screen reader finds while the region loads.
+- `aria-busy` asks assistive tech to hold off on the region until it is filled.
+- The shimmer respects `prefers-reduced-motion` and does not run for readers who
+  turn motion off.
+- Never put focusable elements inside the skeleton. There is nothing to act on
+  until the content arrives.
+
+Related: [Progress](/ui/data-display/progress/), [Card](/ui/layout/card/).
