@@ -1,0 +1,30 @@
+<header class="flex align gap" style="--py: var(--size-3)">
+	<a href="/" class="lead" style="text-decoration: none">Acme</a>
+	<nav aria-label="Main" class="hidden md:block">
+		<ul class="flex gap-sm" style="--btn-stroke: transparent">
+			<li><a href="#" class="btn" aria-current="page">Home</a></li>
+			<li><a href="#" class="btn">Products</a></li>
+			<li><a href="#" class="btn">Pricing</a></li>
+			<li><a href="#" class="btn">About</a></li>
+		</ul>
+	</nav>
+	<button type="button" class="md:hidden" commandfor="navbar-menu" command="show-modal" aria-label="Open menu">
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+	</button>
+	<dialog id="navbar-menu" class="offcanvas open:flex flex-col clip" closedby="any" aria-labelledby="navbar-menu-title" style="--p: 0">
+		<div class="flex align gap flow-none" style="--py: var(--size-6); --px: var(--size-6)">
+			<h2 id="navbar-menu-title">Menu</h2>
+			<button type="button" commandfor="navbar-menu" command="close" aria-label="Close menu">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6 18 18"/><path d="M18 6 6 18"/></svg>
+			</button>
+		</div>
+		<nav aria-label="Main" class="flex-auto scroll-y scroll-mask" style="--py: var(--size-2) var(--size-6); --px: var(--size-2)">
+			<ul style="--btn-stroke: transparent">
+				<li><a href="#" class="btn w-full align" aria-current="page">Home</a></li>
+				<li><a href="#" class="btn w-full align">Products</a></li>
+				<li><a href="#" class="btn w-full align">Pricing</a></li>
+				<li><a href="#" class="btn w-full align">About</a></li>
+			</ul>
+		</nav>
+	</dialog>
+</header>

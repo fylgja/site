@@ -1,0 +1,101 @@
+---
+title: "Navbar"
+pageTitle: "Fylgja Navbar"
+description: "A site header with a brand, the main navigation links, and a drawer menu on small screens."
+category: "navigation"
+tags: ["navbar", "header", "navigation", "menu", "hamburger", "mobile menu", "site header"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the links as buttons, highlights the current page via [aria-current=page], and provides the dialog styles the drawer builds on."
+  - pkg: "@fylgja/utilities"
+    level: recommended
+    reason: "Provides flex, align, gap-sm, the responsive hidden and md:block display classes, and the drawer layout utilities."
+sortOrder: 5
+faq:
+  - question: Why are the links in the markup twice?
+    answer: The inline links and the drawer links live in different places, one in
+      the header and one in a <dialog> in the top layer, so they are two lists. Only
+      one is ever exposed at a time, since the inline nav is hidden on small screens
+      and the drawer is closed on large ones. In a template or component framework you
+      render both from the same data, so there is still one source of truth.
+  - question: Do I need JavaScript for the mobile menu?
+    answer: No. The menu button opens the drawer with an invoker command, and the
+      native <dialog> handles focus, the backdrop, Escape, and closing on a backdrop
+      click through closedby="any".
+  - question: How do I change the breakpoint?
+    answer: Swap the md prefix on both md:block and md:hidden for another breakpoint
+      prefix, such as lg, so the links appear on larger screens only. Keep the two
+      prefixes the same, or there will be a width where both or neither show.
+  - question: Where does the .offcanvas class come from?
+    answer: It is the small rule from the [Offcanvas](/ui/overlays/offcanvas/)
+      component, which pins the dialog to the screen edge. Ship that rule with the
+      navbar, rather than relying on Fylgja's theme.css being loaded.
+  - question: How do I make the header stick to the top?
+    answer: Add the sticky class to the <header>, and give it a background color so
+      content does not show through while scrolling.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+import exampleCollapsed from "./example-collapsed.html?raw";
+
+A navbar is the header at the top of a site, with the brand on one side and the
+main navigation links on the other. On small screens the links move into a drawer
+behind a menu button. The drawer is the native `<dialog>` from the
+[Offcanvas](/ui/overlays/offcanvas/), opened with an invoker command, so the mobile
+menu traps focus, closes on Escape, and returns focus to the button, all without
+JavaScript.
+
+## Preview
+
+The links show inline from the `md` breakpoint up. Make the window narrow to see the
+menu button and open the drawer.
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- Wrap the bar in a `<header>` with `flex align gap`, which keeps the brand at the
+  start and pushes the navigation to the end.
+- Put the inline links in a `<nav aria-label="Main">` with a `<ul>`, each link an
+  `<a class="btn">`. Hide this nav on small screens with `hidden md:block`.
+- Mark the current page `aria-current="page"`. Fylgja's button active style
+  highlights it, so no extra class is needed.
+- Add a menu `<button>` with `md:hidden`, `commandfor`, and `command="show-modal"`
+  that opens a `<dialog class="offcanvas">` holding the same links.
+- Give the drawer `closedby="any"` and a close button, so Escape, a backdrop click,
+  and the button all dismiss it.
+
+## Anatomy
+
+| Part                              | Responsibility                                                |
+| --------------------------------- | ------------------------------------------------------------- |
+| `<header>`                        | The bar. Lays out the brand, links, and menu button.          |
+| Brand `<a href="/">`              | Links home. Text or a logo with an accessible name.           |
+| `<nav aria-label="Main">`         | The inline links, shown from the `md` breakpoint up.          |
+| Menu `<button command>`           | Opens the drawer on small screens, hidden from `md` up.       |
+| `<dialog class="offcanvas">`      | The drawer with the same links, in the top layer.             |
+
+## Accessibility
+
+- Both navs are labeled "Main", and only one is exposed at a time, so a screen
+  reader always finds one main navigation landmark.
+- `aria-current="page"` marks the current page in both lists.
+- The icon only menu and close buttons need an `aria-label`.
+- Opened as a modal, the drawer traps focus and makes the page inert, and focus
+  returns to the menu button when it closes.
+
+## Variants
+
+### Always collapsed
+
+For a site with many sections, or a header that is short on room, skip the inline
+links and always use the menu button and drawer.
+
+<ComponentPreview code={exampleCollapsed} />
+
+Related: [Offcanvas](/ui/overlays/offcanvas/),
+[Classic Footer](/ui/layout/classic-footer/),
+[Breadcrumbs](/ui/navigation/breadcrumbs/).
