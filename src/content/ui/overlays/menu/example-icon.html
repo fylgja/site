@@ -2,13 +2,11 @@
 	<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
 </button>
 
-<div id="row-menu" popover class="action-menu" style="--menu-position: block-end span-inline-start">
-	<ul role="list">
-		<li><a href="#" class="btn w-full align" style="--align: center start">View details</a></li>
-		<li><a href="#" class="btn w-full align" style="--align: center start">Edit</a></li>
-		<li><button type="button" commandfor="row-menu" command="hide-popover" class="w-full align" style="--align: center start">Duplicate</button></li>
-	</ul>
-</div>
+<menu id="row-menu" popover class="action-menu list-none" role="list" style="--menu-position: block-end span-inline-start">
+	<li><a href="#" class="btn w-full align" style="--align: center start">View details</a></li>
+	<li><a href="#" class="btn w-full align" style="--align: center start">Edit</a></li>
+	<li><button type="button" commandfor="row-menu" command="hide-popover" class="w-full align" style="--align: center start">Duplicate</button></li>
+</menu>
 
 <style>
 	.action-menu {

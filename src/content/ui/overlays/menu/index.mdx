@@ -11,7 +11,7 @@ requires:
     reason: "Styles the trigger and menu items as buttons."
   - pkg: "@fylgja/utilities"
     level: recommended
-    reason: "Provides w-full, align, and the dynamic spacing variables used for the items."
+    reason: "Provides list-none, w-full, align, and the dynamic spacing variables used for the menu."
   - pkg: "@fylgja/tokens"
     level: recommended
     reason: "Only for the danger item, which tints its color with the hue tokens."
@@ -51,7 +51,7 @@ import exampleIcon from "./example-icon.html?raw";
 
 A menu is a short list of actions that drops down from a button, such as the
 options for a file or the actions for a table row. It is an
-[Action List](/ui/navigation/action-list/) inside a native popover. The Popover API
+[Action List](/ui/navigation/action-list/) on a native `<menu>` popover. The Popover API
 puts it in the top layer and closes it on Escape or an outside click, and CSS anchor
 positioning keeps it attached to its button, so opening, closing, and placing the
 menu takes no JavaScript.
@@ -65,11 +65,13 @@ menu takes no JavaScript.
 1. A trigger `<button>` with `commandfor` and `command="toggle-popover"` opens and
    closes the menu. The browser also exposes its expanded state to assistive
    technology.
-2. The menu is a `<div popover>` with the `.action-menu` class. `popover` (the
-   `auto` state) gives light dismiss, so Escape or a click outside closes it, and
-   opening one menu closes any other.
-3. Inside it, an action list of buttons and links. A `command="hide-popover"` on
-   an item closes the menu once the action is picked. Links close it by navigating.
+2. The menu is a `<menu popover>` with the `.action-menu` class. `<menu>` is a list
+   of commands, so the items sit directly in it as `<li>` elements and the popover
+   needs no extra wrapper. `popover` (the `auto` state) gives light dismiss, so
+   Escape or a click outside closes it, and opening one menu closes any other.
+3. Each `<li>` holds a button or link. Group items with an `<li>` that holds an
+   `<hr>`. A `command="hide-popover"` on an item closes the menu once the action is
+   picked. Links close it by navigating.
 4. The small `.action-menu` rule draws the panel and positions it. Set the
    `--menu-position` variable to any `position-area` value to change where it
    opens, such as `block-end span-inline-start` for a trigger at the end of a row.
@@ -79,8 +81,8 @@ menu takes no JavaScript.
 | Part                           | Responsibility                                                     |
 | ------------------------------ | ------------------------------------------------------------------ |
 | Trigger `<button command>`     | Toggles the menu and acts as its anchor.                           |
-| `<div popover class="action-menu">` | The panel. Top layer, light dismiss, anchored under the trigger. |
-| Action list                    | The items, as buttons for actions and links for navigation.        |
+| `<menu popover class="action-menu">` | The panel and the list. Top layer, light dismiss, anchored under the trigger. |
+| `<li>` items                   | The items, as buttons for actions and links for navigation.        |
 | `command="hide-popover"`       | Closes the menu after an action is picked.                         |
 
 ## Accessibility
