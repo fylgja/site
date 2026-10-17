@@ -1,0 +1,89 @@
+---
+title: "Gallery"
+pageTitle: "Fylgja Gallery"
+description: "A responsive grid of images, with an optional lightbox that opens each one larger in a native dialog."
+category: "data-display"
+tags: ["gallery", "images", "photos", "grid", "lightbox", "thumbnails"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/utilities"
+    level: required
+    reason: "Provides auto-grid, gap, and rounded that lay out and shape the images."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Resets the list, keeps images inside their cells, and styles the lightbox dialog."
+sortOrder: 6
+previewZoom: 0.6
+faq:
+  - question: How do I change the number of columns?
+    answer: auto-grid fits as many columns as the width allows. Lower the
+      --max-col-size variable for more, smaller thumbnails, or raise it for fewer,
+      larger ones.
+  - question: My images have different sizes. How do I keep the grid even?
+    answer: Give every image the same aspect-ratio, such as 1 for squares, and the
+      object-cover utility, so each one is cropped to fill its cell instead of
+      stretching.
+  - question: Does the lightbox need JavaScript?
+    answer: No. Each thumbnail is a button with invoker commands that opens its own
+      dialog, and closedby lets Escape or a click on the backdrop close it again.
+  - question: Can the lightbox step to the next image?
+    answer: Not with one dialog per image. Previous and next buttons need a script that
+      swaps the image in a single dialog, or a [Carousel](/ui/sliders/carousel/)
+      inside the dialog.
+  - question: Should the thumbnail load the full size image?
+    answer: Ideally not. Point the thumbnail at a small version and the dialog at the
+      large one. The dialog image only loads once it is shown when you add
+      loading lazy to it.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+import lightbox from "./example-lightbox.html?raw";
+
+A gallery shows a set of images as an even grid of thumbnails. It is a plain list
+of `<img>` elements laid out with the `auto-grid` utility, so it reflows by the
+available width without media queries, and the lightbox variant opens each image
+in a native `<dialog>` with focus handling and a backdrop for free.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+- Wrap the images in a `<ul role="list" class="auto-grid gap">` and set the
+  minimum thumbnail width with `--max-col-size`.
+- Give every `<img>` its `width` and `height`, so the browser reserves the space
+  before it loads, and `loading="lazy"` so images below the fold wait.
+- When the images differ in size, add an `aspect-ratio` and `object-cover` so they
+  crop to the same shape.
+
+## Lightbox
+
+Wrap each thumbnail in a button that opens a [modal](/ui/overlays/modal/) with the
+larger image and a caption. The `--btn-px`, `--btn-py`, and `--btn-border-width`
+variables on the list strip the button padding and border, so only the image
+shows. Every dialog needs its own `id`, matched by the thumbnail's `commandfor`.
+
+<ComponentPreview code={lightbox} />
+
+## Anatomy
+
+| Part                                | Responsibility                                     |
+| ----------------------------------- | -------------------------------------------------- |
+| `<ul class="auto-grid gap">`        | The grid, reflowing by available width.            |
+| `<img>`                             | A thumbnail, with its own `alt`, width, and height. |
+| `<button command="show-modal">`     | Lightbox only. Opens the dialog for its image.     |
+| `<dialog>` with `<figure>`          | Lightbox only. The large image and its caption.    |
+
+## Accessibility
+
+- Write an `alt` that describes each image. In the lightbox, the thumbnail's `alt`
+  also names its button, so it tells the reader what opens.
+- Label each dialog with `aria-labelledby` pointing at its caption.
+- The dialog moves focus in when it opens and returns it to the thumbnail when it
+  closes. Escape closes it, and so does a click on the backdrop.
+- Give the icon only close button an `aria-label`.
+
+Related: [Bento Grid](/ui/layout/bento-grid/), [Modal](/ui/overlays/modal/),
+[Carousel](/ui/sliders/carousel/).

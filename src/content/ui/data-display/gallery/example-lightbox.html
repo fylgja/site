@@ -1,0 +1,106 @@
+<ul role="list" class="auto-grid gap" style="--max-col-size: 10rem; --btn-px: 0; --btn-py: 0; --btn-border-width: 0">
+	<li>
+		<button type="button" commandfor="gallery-fox" command="show-modal" class="w-full">
+			<img
+				src="/images/placeholders/fox.webp"
+				alt="An orange fox sitting in dry grass"
+				width="540"
+				height="360"
+				loading="lazy"
+				class="rounded"
+			/>
+		</button>
+	</li>
+	<li>
+		<button type="button" commandfor="gallery-deer" command="show-modal" class="w-full">
+			<img
+				src="/images/placeholders/deer.webp"
+				alt="A red deer stag with wide antlers in a dark forest"
+				width="540"
+				height="360"
+				loading="lazy"
+				class="rounded"
+			/>
+		</button>
+	</li>
+	<li>
+		<button type="button" commandfor="gallery-hare" command="show-modal" class="w-full">
+			<img
+				src="/images/placeholders/hare.webp"
+				alt="A hare sitting upright at the edge of a wood"
+				width="540"
+				height="360"
+				loading="lazy"
+				class="rounded"
+			/>
+		</button>
+	</li>
+	<li>
+		<button type="button" commandfor="gallery-falcon" command="show-modal" class="w-full">
+			<img
+				src="/images/placeholders/falcon.webp"
+				alt="A falcon in flight over open ground"
+				width="540"
+				height="360"
+				loading="lazy"
+				class="rounded"
+			/>
+		</button>
+	</li>
+</ul>
+
+<dialog id="gallery-fox" closedby="any" aria-labelledby="gallery-fox-caption" class="flow-none">
+	<figure>
+		<img src="/images/placeholders/fox.webp" alt="An orange fox sitting in dry grass" width="540" height="360" loading="lazy" class="rounded" />
+		<figcaption class="flex align gap" style="--py: 1rem 0">
+			<span id="gallery-fox-caption">Red fox, late autumn</span>
+			<button type="button" commandfor="gallery-fox" command="close" aria-label="Close">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+					<path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+				</svg>
+			</button>
+		</figcaption>
+	</figure>
+</dialog>
+
+<dialog id="gallery-deer" closedby="any" aria-labelledby="gallery-deer-caption" class="flow-none">
+	<figure>
+		<img src="/images/placeholders/deer.webp" alt="A red deer stag with wide antlers in a dark forest" width="540" height="360" loading="lazy" class="rounded" />
+		<figcaption class="flex align gap" style="--py: 1rem 0">
+			<span id="gallery-deer-caption">Red deer stag at dusk</span>
+			<button type="button" commandfor="gallery-deer" command="close" aria-label="Close">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+					<path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+				</svg>
+			</button>
+		</figcaption>
+	</figure>
+</dialog>
+
+<dialog id="gallery-hare" closedby="any" aria-labelledby="gallery-hare-caption" class="flow-none">
+	<figure>
+		<img src="/images/placeholders/hare.webp" alt="A hare sitting upright at the edge of a wood" width="540" height="360" loading="lazy" class="rounded" />
+		<figcaption class="flex align gap" style="--py: 1rem 0">
+			<span id="gallery-hare-caption">Brown hare in the morning sun</span>
+			<button type="button" commandfor="gallery-hare" command="close" aria-label="Close">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+					<path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+				</svg>
+			</button>
+		</figcaption>
+	</figure>
+</dialog>
+
+<dialog id="gallery-falcon" closedby="any" aria-labelledby="gallery-falcon-caption" class="flow-none">
+	<figure>
+		<img src="/images/placeholders/falcon.webp" alt="A falcon in flight over open ground" width="540" height="360" loading="lazy" class="rounded" />
+		<figcaption class="flex align gap" style="--py: 1rem 0">
+			<span id="gallery-falcon-caption">Peregrine falcon on the hunt</span>
+			<button type="button" commandfor="gallery-falcon" command="close" aria-label="Close">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+					<path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+				</svg>
+			</button>
+		</figcaption>
+	</figure>
+</dialog>
