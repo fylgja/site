@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import siteConfig from "@/site.config";
 import BlogCard from "@/components/Blog/Card.astro";
 import Layout from "@/layouts/PageLayout.astro";
+import blogSocialImage from "@/assets/social/blog.png";
 import SocialIcons from "@/components/SocialIcons.astro";
 import TagCloud from "@/components/TagCloud.astro";
 
@@ -26,7 +27,7 @@ const blogSocials = {
 };
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} image={blogSocialImage.src}>
 	<h1>{title}</h1>
 	<p>{description}</p>
 

@@ -2,6 +2,7 @@
 import { Picture } from "astro:assets";
 import { getCollection, render } from "astro:content";
 import Layout from "@/layouts/PageLayout.astro";
+import blogSocialImage from "@/assets/social/blog.png";
 import Meta from "@/components/MetaContent.astro";
 import Schema from "@/components/Schema.astro";
 import siteConfig from "@/site.config";
@@ -41,7 +42,7 @@ const blogAuthor = [
 <Layout
 	title={title}
 	description={description}
-	image={coverImage?.src}
+	image={coverImage?.src ?? blogSocialImage.src}
 	pageType="article"
 	class=""
 	style="--my: 0 var(--size-12)"

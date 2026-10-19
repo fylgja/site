@@ -6,6 +6,15 @@ import collection from "./_collection.ts";
 import EditWithGithub from "@/components/EditWithGithub.astro";
 import BreadCrumbs from "@/components/BreadCrumbs.astro";
 import Faq from "@/components/Faq.astro";
+import baseSocialImage from "@/assets/social/base.png";
+import tokensSocialImage from "@/assets/social/tokens.png";
+import utilitiesSocialImage from "@/assets/social/utilities.png";
+
+const socialImages: Record<string, ImageMetadata> = {
+	base: baseSocialImage,
+	tokens: tokensSocialImage,
+	utilities: utilitiesSocialImage,
+};
 
 export async function getStaticPaths() {
 	const entries = await getCollection("library");
@@ -25,6 +34,7 @@ const toc = faq?.length ? [...headings, { depth: 2, slug: "faq", text: "FAQ" }] 
 <Layout
 	title={title}
 	description={description}
+	image={socialImages[entry.id]?.src}
 	toc={toc}
 	collectionName="Library"
 	collection={collection}

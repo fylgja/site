@@ -8,10 +8,20 @@ import Menu from "@/components/Menu.astro";
 import SkipLink from "@/components/SkipLink.astro";
 import Toc from "@/components/Toc";
 import CopyCode from "@/components/CopyCode.astro";
+import uiSocialImage from "@/assets/social/ui.png";
+import librarySocialImage from "@/assets/social/library.png";
+import docsSocialImage from "@/assets/social/docs.png";
+
+const socialImages: Record<string, ImageMetadata> = {
+	UI: uiSocialImage,
+	Library: librarySocialImage,
+	Docs: docsSocialImage,
+};
 
 interface Props {
 	title: string;
 	description?: string;
+	image?: string;
 	collectionName: string;
 	collection: any[];
 	toc?: {
@@ -22,11 +32,20 @@ interface Props {
 	fullWidth?: boolean;
 }
 
-const { title, description, collectionName = "", collection = [], toc = [], fullWidth } = Astro.props;
+const {
+	title,
+	description,
+	image: pageImage,
+	collectionName = "",
+	collection = [],
+	toc = [],
+	fullWidth,
+} = Astro.props;
 const urlPrefix = "/" + collectionName.toLowerCase();
+const image = pageImage ?? socialImages[collectionName]?.src;
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} image={image}>
 	<slot name="head" slot="head" />
 	<SkipLink id="main-content" title="Skip to content" />
 	<PageHeader>
