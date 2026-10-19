@@ -2,19 +2,10 @@
 import { getCollection, render } from "astro:content";
 import Layout from "@/layouts/DocsLayout.astro";
 import MetaVersion from "@/components/MetaVersion.astro";
-import collection from "./_collection.ts";
+import collection, { socialImages } from "./_collection.ts";
 import EditWithGithub from "@/components/EditWithGithub.astro";
 import BreadCrumbs from "@/components/BreadCrumbs.astro";
 import Faq from "@/components/Faq.astro";
-import baseSocialImage from "@/assets/social/base.png";
-import tokensSocialImage from "@/assets/social/tokens.png";
-import utilitiesSocialImage from "@/assets/social/utilities.png";
-
-const socialImages: Record<string, ImageMetadata> = {
-	base: baseSocialImage,
-	tokens: tokensSocialImage,
-	utilities: utilitiesSocialImage,
-};
 
 export async function getStaticPaths() {
 	const entries = await getCollection("library");

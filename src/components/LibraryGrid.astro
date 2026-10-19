@@ -1,29 +1,45 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
 
 interface Props {
 	items: CollectionEntry<"library">[];
+	/** Card image per entry id, shown above the title. */
+	images?: Record<string, ImageMetadata>;
 	/** Set to 3 when the grid sits under its own h2 section heading. */
 	headingLevel?: 2 | 3;
 }
 
-const { items, headingLevel = 2 } = Astro.props;
+const { items, images = {}, headingLevel = 2 } = Astro.props;
 const Heading = `h${headingLevel}` as "h2" | "h3";
+const hasImages = items.some(({ id }) => images[id]);
 ---
 
-<ul role="list" class="auto-grid gap" style="--max-col-size: 16rem">
+<ul role="list" class="auto-grid gap" style={`--max-col-size: ${hasImages ? "20rem" : "16rem"}`}>
 	{
 		items.map(({ id, data }) => {
 			if (data.draft) return;
+			const image = images[id];
 
 			return (
-				<li class="card --hover flow">
-					<Heading>
-						<a href={`/library/${id}/`} class="stretched-link">
-							{data.title}
-						</a>
-					</Heading>
-					<p class="line-clamp">{data.description}</p>
+				<li class="card --hover">
+					{image && (
+						<Image
+							src={image}
+							alt=""
+							widths={[400, 800]}
+							sizes="(width >= 1024px) 22rem, 100vw"
+							class="card-image"
+						/>
+					)}
+					<div class="card-content flow">
+						<Heading>
+							<a href={`/library/${id}/`} class="stretched-link">
+								{data.title}
+							</a>
+						</Heading>
+						<p class="line-clamp">{data.description}</p>
+					</div>
 				</li>
 			);
 		})
@@ -33,5 +49,9 @@ const Heading = `h${headingLevel}` as "h2" | "h3";
 <style>
 	.card :where(h2, h3) {
 		--h-size: 1.5em;
+	}
+
+	.card-image {
+		border-block-end: 1px solid var(--border-color-fade);
 	}
 </style>

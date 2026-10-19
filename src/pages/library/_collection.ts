@@ -1,5 +1,24 @@
 import { getCollection } from "astro:content";
 import { sortByOrder } from "@/utils";
+import baseSocialImage from "@/assets/social/base.png";
+import tokensSocialImage from "@/assets/social/tokens.png";
+import utilitiesSocialImage from "@/assets/social/utilities.png";
+import baseCardImage from "@/assets/social/base-card.png";
+import tokensCardImage from "@/assets/social/tokens-card.png";
+import utilitiesCardImage from "@/assets/social/utilities-card.png";
+
+const socialImages: Record<string, ImageMetadata> = {
+	base: baseSocialImage,
+	tokens: tokensSocialImage,
+	utilities: utilitiesSocialImage,
+};
+
+/** The social banner without its headline, for the library landing page cards. */
+const cardImages: Record<string, ImageMetadata> = {
+	base: baseCardImage,
+	tokens: tokensCardImage,
+	utilities: utilitiesCardImage,
+};
 
 async function filterCollection(path: string) {
 	return sortByOrder(
@@ -40,5 +59,7 @@ export {
 	componentsCollection,
 	extensionsCollection,
 	collection,
+	socialImages,
+	cardImages,
 	collection as default,
 };

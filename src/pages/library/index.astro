@@ -6,6 +6,7 @@ import {
 	componentsCollection,
 	extensionsCollection,
 	collection,
+	cardImages,
 } from "./_collection.ts";
 const title = "Fylgja Library";
 const description =
@@ -17,7 +18,7 @@ const description =
 	<p>{description}</p>
 	<h2>Core</h2>
 	<p>The packages that every Fylgja project builds on.</p>
-	<LibraryGrid items={baseCollection} headingLevel={3} />
+	<LibraryGrid items={baseCollection} images={cardImages} headingLevel={3} />
 	<h2>Components</h2>
 	<p>A collection of versatile and lightweight components designed to accelerate your workflow.</p>
 	<LibraryGrid items={componentsCollection} headingLevel={3} />
