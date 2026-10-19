@@ -1,12 +1,12 @@
 ---
 name: create-og-banner
-description: Use when creating, updating or re-exporting an Open Graph / social share banner (og:image) or a landing page card image for the Fylgja site, including requests for "a new OG image", "social banner", "share image", "banner for /some-section", or "card thumbnail like the library ones". Covers the shared visual system, copy rules, the HTML sources in banners/, the render script, and where each image is wired into the site.
+description: Use when creating, updating or re-exporting an Open Graph / social share banner (og:image) or a landing page card image for the Fylgja site, or a GitHub README banner, including requests for "a new OG image", "social banner", "share image", "README banner", "banner for /some-section", or "card thumbnail like the library ones". Covers the shared visual system, copy rules, the HTML sources in banners/, the render script, and where each image is wired into the site.
 ---
 
 # Create OG Banner
 
 Every social banner on fylgja.dev is a self contained HTML file in `banners/`, rendered to a
-1200×630 PNG in `src/assets/social/`. All banners share one visual system so they read as a
+1200×630 PNG in `src/assets/social/`. README banners use the same system at 1280×320. All banners share one visual system so they read as a
 set. A new banner always starts as a copy of the closest existing one.
 
 ## Existing banners
@@ -20,6 +20,7 @@ set. A new banner always starts as a copy of the closest existing one.
 | `blog.html` | Blog index, tag pages, posts without a `coverImage` | `src/pages/blog/**` |
 | `base.html`, `tokens.html`, `utilities.html` | The package pages | `socialImages` in `src/pages/library/_collection.ts`, keyed by entry id |
 | `*-card.html` | Card images on the `/library/` landing page | `cardImages` in `src/pages/library/_collection.ts` |
+| `readme.html` | GitHub README banner, 1280×320 | Not used by the site, render it elsewhere with `--out` |
 
 ## Workflow
 
@@ -29,7 +30,7 @@ set. A new banner always starts as a copy of the closest existing one.
    ```sh
    node .agents/skills/create-og-banner/render.mjs <name>
    ```
-   This screenshots the banner with headless Chrome (override the path with `CHROME=...`) and writes a palette compressed PNG of about 70KB to `src/assets/social/<name>.png`. Without arguments it renders every banner.
+   This screenshots the banner at the size set on its `.banner` element with headless Chrome (override the path with `CHROME=...`) and writes a palette compressed PNG of about 70KB to `src/assets/social/<name>.png`. Without names it renders every banner. `--out=<dir>` writes somewhere else, and `--scale=2` renders at double size, which suits README banners since GitHub scales them down. Keep OG images at scale 1, since Open Graph expects exactly 1200×630.
 4. Look at the PNG before wiring it. Check that nothing wraps unexpectedly and the card stack stays inside the frame (the last card should end above roughly y=580).
 5. Wire it in. Import the PNG and pass `.src` as the layout's `image` prop, or add it to one of the maps in the table above. `DocsLayout` takes an `image` prop that overrides its section image.
 6. Run `npx astro check`.
@@ -66,6 +67,10 @@ Colors are custom properties on `:root` in each file.
 - No counts (components, packages, posts) and no versions, dates or other time-based claims. They go stale and the banner should outlive them.
 - Cards show real Fylgja output using real class names, tokens and element names. Check names against `node_modules/@fylgja/` or `src/content/` before using them.
 - Use US English, matching the site.
+
+## README variant
+
+A README banner is 1280×320 with a vertically centered text column, 64px from the left and 700px wide: the logo row (wordmark at 200px), the headline at 36px and the tagline at 18px. Two cards sit 64px from the right, 380px wide, rotated −4deg, with the second offset 40px. The glow is centered at 1030, 160 with a radius of 340. Start from `readme.html`.
 
 ## Card variant
 
