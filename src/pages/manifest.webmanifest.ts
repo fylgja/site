@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
 import siteConfig from "@/site.config";
+import screenshots from "@/screenshots";
 
 const { name, description, themeColor } = siteConfig;
 
@@ -9,10 +10,13 @@ const dateHash = `v=${date.getMonth() + 1}-${date.getFullYear()}`;
 const webmanifest = {
 	id: "/",
 	name: name,
-	short_name: name,
+	short_name: "Fylgja",
 	description: description,
+	lang: "en",
+	dir: "ltr",
 	start_url: "/",
-	display: "fullscreen",
+	scope: "/",
+	display: "standalone",
 	orientation: "any",
 	theme_color: themeColor,
 	background_color: themeColor,
@@ -21,26 +25,28 @@ const webmanifest = {
 			src: `/icon-filled.svg?${dateHash}`,
 			type: "image/svg+xml",
 			sizes: "any",
+			purpose: "any",
 		},
 		{
-			src: `/icon.svg?${dateHash}`,
+			src: `/icon-maskable.svg?${dateHash}`,
+			type: "image/svg+xml",
+			sizes: "any",
+			purpose: "maskable",
+		},
+		{
+			src: `/icon-mono.svg?${dateHash}`,
 			type: "image/svg+xml",
 			sizes: "any",
 			purpose: "monochrome",
 		},
 	],
-	screenshots: [
-		{
-			src: `screenshots/desktop-home.webp?${dateHash}`,
-			sizes: "1920x1080",
-			form_factor: "wide",
-		},
-		{
-			src: `screenshots/mobile-home.webp?${dateHash}`,
-			sizes: "721x1440",
-			form_factor: "narrow",
-		},
-	],
+	screenshots: screenshots.map(({ name, label, width, height, formFactor }) => ({
+		src: `/screenshots/${name}.webp?${dateHash}`,
+		type: "image/webp",
+		sizes: `${width}x${height}`,
+		form_factor: formFactor,
+		label,
+	})),
 };
 
 export const GET: APIRoute = () => new Response(JSON.stringify(webmanifest, null, 2));
