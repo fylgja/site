@@ -53,7 +53,7 @@ If you use AI coding assistants or CLIs locally that support skills, you can ins
 
 **Claude Code**
 
-Install the skills as a plugin. This also adds the `create-fylgja-modal` and `create-fylgja-offcanvas` skills:
+Install the skills as a plugin. This also adds the accordion, menu, modal, and offcanvas skills:
 
 ```text
 /plugin marketplace add fylgja/fylgja
@@ -77,6 +77,6 @@ mkdir -p .agents/skills
 curl -L https://codeload.github.com/fylgja/fylgja/tar.gz/main | tar -xz -C .agents/skills --strip-components=3 fylgja-main/.agents/skills/fylgja-css
 ```
 
-The same repository also has the `create-fylgja-modal` and `create-fylgja-offcanvas` skills. Replace `fylgja-css` in the command to install one.
+The same repository also has the `create-fylgja-accordion`, `create-fylgja-menu`, `create-fylgja-modal`, and `create-fylgja-offcanvas` skills. Replace `fylgja-css` in the command to install one.
 
 Some agents ship their own installer instead, so check their docs first if the folder layout differs.
