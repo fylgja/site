@@ -5,8 +5,8 @@ description: Use when creating or scaffolding a new Fylgja UI component doc (an 
 
 Guidance for adding a component to the Fylgja UI Components library on the site
 (`src/content/ui/**`). Follow this whenever you scaffold a new component doc or
-write example markup for one. The related component skills ([create-fylgja-modal],
-[create-fylgja-offcanvas]) build on the rules here.
+write example markup for one. The `create-fylgja-modal`, `create-fylgja-offcanvas`, and
+other public skills live in `fylgja/skills`.
 
 ## Where the file goes
 

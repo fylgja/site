@@ -51,23 +51,25 @@ For example, tools like **[Context7](https://context7.com/fylgja/fylgja)** offer
 
 If you use AI coding assistants or CLIs locally that support skills, you can install the official Fylgja CSS Skill to give your AI native knowledge of Fylgja's design tokens, classless base, and dynamic utility system.
 
-Run the command below to drop our `SKILL.md` file directly into your local skills directory.
-
 **Claude Code**
 
-```bash
-mkdir -p .claude/skills/fylgja
-curl -o .claude/skills/fylgja/SKILL.md https://raw.githubusercontent.com/fylgja/fylgja/main/ai-skill/SKILL.md
+Install the skills as a plugin, with the accordion, menu, modal, and offcanvas skills included:
+
+```text
+/plugin marketplace add fylgja/skills
+/plugin install fylgja@fylgja
 ```
 
 **Other AI Agents**
 
-Agents that read skills from their own dot folder follow the same steps, only the folder name changes:
+Copy the skill into your project. It is a folder with reference files for each package, so download the whole folder, not only the `SKILL.md`:
 
 ```bash
-# Replace .agents with your AI agent folder, e.g. .cursor, .github or .codex
-mkdir -p .agents/skills/fylgja
-curl -o .agents/skills/fylgja/SKILL.md https://raw.githubusercontent.com/fylgja/fylgja/main/ai-skill/SKILL.md
+# Replace .agents with your AI agent folder, e.g. .claude, .cursor, .github or .codex
+mkdir -p .agents/skills
+curl -L https://codeload.github.com/fylgja/skills/tar.gz/main | tar -xz -C .agents/skills --strip-components=2 skills-main/skills/fylgja-css
 ```
+
+The [fylgja/skills](https://github.com/fylgja/skills) repository also has the `create-fylgja-accordion`, `create-fylgja-menu`, `create-fylgja-modal`, and `create-fylgja-offcanvas` skills. Replace `fylgja-css` in the command to install one.
 
 Some agents ship their own installer instead, so check their docs first if the folder layout differs.
