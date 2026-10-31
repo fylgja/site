@@ -67,7 +67,9 @@ Copy the skill into your project. It is a folder with reference files for each p
 ```bash
 # Replace .agents with your AI agent folder, e.g. .claude, .cursor, .github or .codex
 mkdir -p .agents/skills
-curl -L https://codeload.github.com/fylgja/skills/tar.gz/main | tar -xz -C .agents/skills --strip-components=2 skills-main/skills/fylgja-css
+git clone --depth 1 https://github.com/fylgja/skills .fylgja-skills
+cp -R .fylgja-skills/skills/fylgja-css .agents/skills/
+rm -rf .fylgja-skills
 ```
 
 The [fylgja/skills](https://github.com/fylgja/skills) repository also has the `create-fylgja-accordion`, `create-fylgja-menu`, `create-fylgja-modal`, and `create-fylgja-offcanvas` skills. Replace `fylgja-css` in the command to install one.
