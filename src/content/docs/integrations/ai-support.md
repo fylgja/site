@@ -51,9 +51,16 @@ For example, tools like **[Context7](https://context7.com/fylgja/fylgja)** offer
 
 If you use AI coding assistants or CLIs locally that support skills, you can install the official Fylgja CSS Skill to give your AI native knowledge of Fylgja's design tokens, classless base, and dynamic utility system.
 
-The skill is a folder with reference files for each package, so download the whole folder, not only the `SKILL.md`.
-
 **Claude Code**
+
+Install the skills as a plugin. This also adds the `create-fylgja-modal` and `create-fylgja-offcanvas` skills:
+
+```text
+/plugin marketplace add fylgja/fylgja
+/plugin install fylgja-css@fylgja
+```
+
+Or copy the skill into your project. It is a folder with reference files for each package, so download the whole folder, not only the `SKILL.md`:
 
 ```bash
 mkdir -p .claude/skills
