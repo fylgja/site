@@ -9,7 +9,7 @@ faq:
       you set them on.
   - question: Can I still create reusable classes instead of inline styles?
     answer: 'Yes, you can define your own classes in your stylesheet that set these
-      variables (e.g. .grid-size-lg { --max-cols-size: 15ch; }), as shown in the
+      variables (e.g. .grid-size-lg { --max-col-size: 15ch; }), as shown in the
       "Customizing with Predefined Utilities" example, if you prefer that over
       inline styles.'
   - question: Do Dynamic CSS Utilities work with any design token system, or only
@@ -47,10 +47,10 @@ One of the simplest ways to use Dynamic CSS Utilities is by setting values direc
 Here's an example:
 
 ```html
-<div class="auto-grid" style="--max-cols-size: 15ch">...</div>
+<div class="auto-grid" style="--max-col-size: 15ch">...</div>
 ```
 
-In this example, the `--max-cols-size` variable controls the maximum size of each column,
+In this example, the `--max-col-size` variable controls the minimum size of each column,
 and the value can be customized on a per-instance basis.
 
 ## Customizing with Predefined Utilities
@@ -100,7 +100,7 @@ and manipulated by server-side or client-side languages,
 like PHP or JavaScript. For example, setting a CSS variable dynamically via PHP:
 
 ```html
-<div class="auto-grid" style="--max-cols-size: <?= $productMaxGridSize ?>">...</div>
+<div class="auto-grid" style="--max-col-size: <?= $productMaxGridSize ?>">...</div>
 ```
 
 In other frameworks, you'd typically have to manually define such dynamic behavior,
