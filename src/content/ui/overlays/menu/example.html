@@ -3,7 +3,7 @@
 	<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="toggle-rotate transition" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
 </button>
 
-<menu id="file-menu" popover class="action-menu list-none" role="list">
+<menu id="file-menu" popover role="list" style="--btn-stroke: transparent; --popover-padding: 0.25rem; --popover-offset: 0.25rem 0; --size-x: 12rem">
 	<li>
 		<button type="button" commandfor="file-menu" command="hide-popover" class="w-full align" style="--align: center start">
 			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
@@ -30,28 +30,3 @@
 		</button>
 	</li>
 </menu>
-
-<style>
-	.action-menu {
-		--btn-stroke: transparent;
-		min-inline-size: 12rem;
-		padding: 0.25rem;
-		border: 1px solid color-mix(in oklab, var(--root-bg) 75%, var(--root-fg));
-		border-radius: 0.5rem;
-		background-color: color-mix(in oklab, var(--root-bg) 88%, white);
-		color: var(--root-fg);
-		box-shadow: var(--shadow-2);
-
-		@supports (position-area: block-end) {
-			inset: auto;
-			margin: 0.25rem 0;
-			position-area: var(--menu-position, block-end span-inline-end);
-			position-try-fallbacks: flip-block, flip-inline;
-		}
-	}
-
-	/* Until the toggle utilities support popovers, see fylgja/fylgja#419 */
-	[commandfor]:has(+ .action-menu:popover-open) > .toggle-rotate {
-		rotate: 180deg;
-	}
-</style>

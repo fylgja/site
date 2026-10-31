@@ -8,19 +8,19 @@ status: "beta"
 requires:
   - pkg: "@fylgja/base"
     level: recommended
-    reason: "Styles the trigger and menu items as buttons."
+    reason: "Styles the trigger and items as buttons, and from 2.2.0 positions the popover and resets the menu list."
   - pkg: "@fylgja/utilities"
     level: recommended
-    reason: "Provides list-none, w-full, align, and the dynamic spacing variables used for the menu."
+    reason: "Provides w-full, align, and the dynamic spacing variables used for the menu, and from 2.2.0 rotates the chevron while it is open."
   - pkg: "@fylgja/tokens"
     level: recommended
-    reason: "Provides the shadow token for the panel and the hue tokens for the danger item."
+    reason: "Provides the hue tokens for the danger item."
 sortOrder: 5
 faq:
   - question: Does the menu need JavaScript?
     answer: Not to open, close, or position it. The Popover API handles opening,
       closing on Escape or an outside click, and the top layer, and CSS anchor
-      positioning places it under the trigger. You only need JavaScript for what the
+      positioning in Fylgja Base places it under the trigger. You only need JavaScript for what the
       items actually do, and for arrow key navigation if you want it.
   - question: Why not role="menu" and role="menuitem"?
     answer: Those roles promise application style keyboard handling, where arrow keys
@@ -30,10 +30,15 @@ faq:
       only together with the script that implements them.
   - question: How is the menu positioned under its button?
     answer: Opening a popover from an invoker button makes that button its implicit
-      anchor, so position-area can place the menu against it with no anchor names.
-      position-try-fallbacks flips it above or to the other side when there is no
-      room. If you open the popover from script instead, give the button an
+      anchor, so the position-area in Fylgja Base places the menu against it with no
+      anchor names, and flips it above or to the other side when there is no room. If you open the popover from script instead, give the button an
       anchor-name and the menu a matching position-anchor.
+  - question: Does this work with older versions of Fylgja?
+    answer: The menu needs no custom CSS from Fylgja Base 2.2.0 and Fylgja Utilities
+      2.2.0. With an older Base, add list-none to the menu and write your own rule for
+      the panel, with inset auto, a margin, position-area, a background, and a shadow.
+      With older Utilities, the toggle-rotate class does not react to a popover, so
+      add a rule that rotates the icon while the next element matches popover-open.
   - question: What happens in browsers without anchor positioning?
     answer: The positioning rules sit in an @supports block, so those browsers keep
       the default popover placement, centered in the viewport. The menu still opens,
@@ -65,23 +70,27 @@ menu takes no JavaScript.
 1. A trigger `<button>` with `commandfor` and `command="toggle-popover"` opens and
    closes the menu. The browser also exposes its expanded state to assistive
    technology.
-2. The menu is a `<menu popover>` with the `.action-menu` class. `<menu>` is a list
+2. The menu is a `<menu popover role="list">`, which removes the list styles. `<menu>` is a list
    of commands, so the items sit directly in it as `<li>` elements and the popover
    needs no extra wrapper. `popover` (the `auto` state) gives light dismiss, so
    Escape or a click outside closes it, and opening one menu closes any other.
 3. Each `<li>` holds a button or link. Group items with an `<li>` that holds an
    `<hr>`. A `command="hide-popover"` on an item closes the menu once the action is
    picked. Links close it by navigating.
-4. The small `.action-menu` rule draws the panel and positions it. Set the
-   `--menu-position` variable to any `position-area` value to change where it
-   opens, such as `block-end span-inline-start` for a trigger at the end of a row.
+4. Fylgja Base draws the panel and anchors it under the trigger, so the menu needs
+   no custom CSS. Set `--popover-position` to any `position-area` value to change
+   where it opens, such as `block-end span-inline-start` for a trigger at the end
+   of a row. `--popover-padding` and `--popover-offset` tune the panel, and
+   `--btn-stroke` removes the button borders.
+5. A `.toggle-rotate` icon in the trigger flips while the menu is open, as long as
+   the popover comes right after the trigger.
 
 ## Anatomy
 
 | Part                           | Responsibility                                                     |
 | ------------------------------ | ------------------------------------------------------------------ |
 | Trigger `<button command>`     | Toggles the menu and acts as its anchor.                           |
-| `<menu popover class="action-menu">` | The panel and the list. Top layer, light dismiss, anchored under the trigger. |
+| `<menu popover role="list">`  | The panel and the list. Top layer, light dismiss, anchored under the trigger. |
 | `<li>` items                   | The items, as buttons for actions and links for navigation.        |
 | `command="hide-popover"`       | Closes the menu after an action is picked.                         |
 
@@ -101,7 +110,7 @@ menu takes no JavaScript.
 ### Icon trigger
 
 A compact trigger at the end of a row, as on a table row or a card. The menu opens
-toward the inline start, so it stays on screen, by setting `--menu-position` on the
+toward the inline start, so it stays on screen, by setting `--popover-position` on the
 popover.
 
 <ComponentPreview center code={exampleIcon} />
