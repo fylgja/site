@@ -30,7 +30,7 @@
     "@fylgja/utilities": "^2.2.0",
     "@lucide/astro": "^1.52.0",
     "astro": "^7.3.8",
-    "marked": "^18.0.14",
+    "marked": "^18.1.2",
     "prettier": "^3.9.9"
   },
   "allowScripts": {
