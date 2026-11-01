@@ -31,7 +31,7 @@
     "@lucide/astro": "^1.52.0",
     "astro": "^7.3.8",
     "marked": "^18.0.14",
-    "prettier": "^3.9.9"
+    "prettier": "^3.9.10"
   },
   "allowScripts": {
     "esbuild@0.28.1": true,
