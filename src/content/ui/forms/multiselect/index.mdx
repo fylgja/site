@@ -1,0 +1,135 @@
+---
+title: "Multiselect"
+pageTitle: "Fylgja Multiselect"
+description: "Pick several options from a short list, built on a fieldset of checkboxes with arrow key navigation from focusgroup."
+category: "forms"
+tags: ["multiselect", "multiple select", "checkbox", "chips", "tags", "filter", "focusgroup", "form"]
+status: "beta"
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the checkboxes, resets the fieldset and legend, and gives the chips their .btn states."
+  - pkg: "@fylgja/utilities"
+    level: required
+    reason: "Provides divide-y, rounded, clip, flex, gap, align, and the --my spacing that lay out the rows and chips."
+sortOrder: 7
+faq:
+  - question: Why not use select with the multiple attribute?
+    answer: A multiple select needs Ctrl or Cmd click to pick more than one option, which
+      most people do not know, and on desktop it renders as a cramped list box. Checkboxes
+      show every option and its state at a glance and work the same with mouse, touch,
+      and keyboard.
+  - question: Why is a multiple select hard to use with a keyboard?
+    answer: In a multiple select a plain arrow key press moves the selection, so it
+      silently clears every option picked before. Keeping them means holding a modifier,
+      Shift plus an arrow for a range or Ctrl plus the arrows and Space for separate
+      options, and those shortcuts differ per browser and operating system and are not
+      shown anywhere. One wrong key press undoes the work. A checkbox only changes when
+      you press Space on it, so moving through the list never loses a choice.
+  - question: Can an option show more than text, like a price or an icon?
+    answer: Yes, that is another reason to use checkboxes. A
+      [customizable select](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/appearance#base-select)
+      can hold rich option content, but only as a single select.
+      A multiple select still only renders what the option element allows, which is
+      plain text. Each option here is a label, so it can hold any inline HTML, such as an icon, a price,
+      a short description, or a badge, and you style it like any other markup. Keep the
+      label text meaningful on its own, since all of it becomes the checkbox's
+      accessible name.
+  - question: What does focusgroup add?
+    answer: Without it every checkbox is a separate Tab stop, so a long list costs many
+      key presses to get past. With focusgroup the whole group is one Tab stop and the
+      arrow keys move between options, while Space still toggles the focused one.
+  - question: What happens in a browser without focusgroup?
+    answer: The attribute is ignored and every checkbox stays a normal Tab stop. The
+      component keeps working, it only loses the arrow keys. Load the polyfill from the
+      Browser support section to get them everywhere.
+  - question: How many options is too many?
+    answer: Checkboxes suit a short list that fits on screen. When the list grows past a
+      dozen or so, add a search field above it or split the options into groups, each
+      with its own fieldset and legend.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
+import example from "./example.html?raw";
+import exampleChips from "./example-chips.html?raw";
+import examplePolyfill from "./example-polyfill.html?raw";
+
+A multiselect lets the reader pick any number of options from a short list, such
+as notification types or topics to filter by. Instead of a `<select multiple>`, it
+is a `<fieldset>` of checkboxes: every option is visible, each one toggles with a
+click or <kbd>Space</kbd>, and the values submit with the form like any other
+checkbox. The `focusgroup` attribute turns the group into a single Tab stop with
+arrow key navigation, so a keyboard user does not have to tab through every option.
+
+## Preview
+
+<ComponentPreview center code={example} />
+
+## Usage
+
+1. Wrap the options in a `<fieldset>` and name the group with a `<legend>`.
+2. Give every checkbox the same `name` and its own `value`. The form submits one
+   entry per checked option.
+3. Wrap each checkbox in its `<label>`, so the whole row is clickable and no `id`
+   is needed. `flex gap align` puts the text at the start and the checkbox at the
+   end of the row.
+4. Add `focusgroup="toolbar block wrap"` to the fieldset. `block` matches the
+   arrow keys to a vertical list (Up and Down), and `wrap` moves from the last
+   option back to the first.
+
+A fieldset keeps its own group role, so the `toolbar` token only adds the arrow
+key behavior and does not change how the group is announced.
+
+## Anatomy
+
+| Part                    | Responsibility                                                        |
+| ----------------------- | --------------------------------------------------------------------- |
+| `<fieldset>`            | Groups the options and holds the `focusgroup` attribute.              |
+| `<legend>`              | Names the group, announced when focus enters it.                      |
+| `.multiselect-options`  | The frame, with `divide-y` for the row dividers. Kept off the fieldset so the legend sits above it. |
+| `<label>`               | One option row, clickable as a whole and styled from its checkbox.    |
+| `<input type=checkbox>` | The option's state and submitted value.                               |
+| `focusgroup`            | One Tab stop for the group, arrow keys between options.               |
+
+## Accessibility
+
+- The `<legend>` is announced as the group name when focus moves into it, and each
+  checkbox keeps its native checked state and label.
+- With `focusgroup`, <kbd>Tab</kbd> enters and leaves the group in one step, the
+  arrow keys move between options, <kbd>Home</kbd> and <kbd>End</kbd> jump to the
+  first and last, and <kbd>Space</kbd> toggles. Returning to the group focuses the
+  option you left.
+- The focus ring moves from the small checkbox to the whole row
+  (`label:has(:focus-visible)`), so the focused option is easy to spot while
+  arrowing through the list.
+- Checked rows change their background as well as the checkmark, so the state does
+  not rely on one small icon.
+
+## Variants
+
+### Chips
+
+The same checkboxes laid out as a wrapping row of chips, a compact choice for tags
+or filters. Each chip is a `.btn` label, so hover and the checked state come from
+the button styles: `.btn` treats `:has(input:checked)` as active, and the
+`--btn-active-*` variables color it. The checkbox shrinks away until it is checked,
+so a checked chip shows both a checkmark and the brand color. Without `block` the
+arrow keys follow the row, Left and Right.
+
+<ComponentPreview center code={exampleChips} />
+
+## Browser support
+
+`focusgroup` is supported natively from Chrome and Edge 150. Other browsers ignore
+the attribute, and every checkbox stays a normal Tab stop, which is a safe fallback.
+The attribute is still marked experimental, so check
+[Can I use](https://caniuse.com/?search=focusgroup) before relying on it.
+
+To get the arrow keys everywhere, load the
+[focusgroup polyfill](https://www.npmjs.com/package/@microsoft/focusgroup-polyfill)
+once per page. It does nothing in browsers that support `focusgroup` natively.
+
+<CodeBlock lang="html" code={examplePolyfill.trim()} />
+
+Related: [Input Switch](/ui/forms/input-switch/), [Select](/ui/forms/select/), [Form Field](/ui/forms/form-field/).

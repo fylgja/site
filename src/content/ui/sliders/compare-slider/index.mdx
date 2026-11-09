@@ -1,0 +1,104 @@
+---
+title: "Compare Slider"
+pageTitle: "Fylgja Compare Slider"
+description: "A before and after slider that reveals one image over another, driven by a native range input with CSS only."
+category: "sliders"
+tags: ["compare", "before after", "image comparison", "slider", "range", "reveal"]
+status: "beta"
+requires:
+  - pkg: "@fylgja/form-extend"
+    level: required
+    reason: "Provides the range styles and the --range-value that drives the split."
+  - pkg: "@fylgja/utilities"
+    level: required
+    reason: "Provides stack, rounded, sizing, align-self, and sr-only that layer the images and place the label."
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Supplies the --root-bg and --root-fg colors for the handle and the label."
+sortOrder: 3
+faq:
+  - question: Does the compare slider need JavaScript?
+    answer: Not in browsers with scroll-driven animations. form-extend tracks the thumb
+      and exposes its position as --range-value, and the slider reads that to clip the
+      top image. Older browsers need the small fallback script from the Browser support
+      section.
+  - question: Can I compare something other than images?
+    answer: Yes. Any two layers of the same size work, such as two pictures, two videos,
+      or two styled blocks of markup. The second layer is the one that gets clipped.
+  - question: How do I start at a different split?
+    answer: Change the value attribute on the range input. Also update the --range-value
+      on the wrapper, so browsers without scroll-driven animations start at the same
+      split.
+  - question: Why is the percentage hidden from screen readers?
+    answer: The range input already announces its value. Reading the visual label as
+      well would say every number twice.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
+import example from "./example.html?raw";
+import exampleFallback from "./example-fallback.html?raw";
+
+A compare slider stacks two images of the same scene and lets the reader drag a
+divider across them, to show a before and after or two versions side by side. The
+control is a native `<input type="range">` laid over the images, so it is focusable,
+works with the arrow keys and touch, and announces its value without any ARIA. The
+range position is read in CSS, so the split follows the thumb without JavaScript.
+
+## Preview
+
+Drag the handle, or focus it and use the arrow keys.
+
+<ComponentPreview code={example} />
+
+## Usage
+
+1. Wrap two images and a range input in an element with `stack`, so they share one
+   grid cell. The first image is the base, the second is clipped by the slider.
+2. Keep both images the same size and aspect ratio, so the two halves line up.
+3. Give the range `min="0"`, `max="100"`, and a starting `value`, and name it with a
+   visually hidden `<label>`.
+4. Add the `<style>` block. It moves the `--range-value` from form-extend up to the
+   wrapper with `timeline-scope`, so the second image, the divider line, and the
+   percentage label can all read it. The `::-moz-range-thumb` rule names the same
+   timeline in Firefox, which form-extend only sets on the WebKit thumb.
+
+Restyle the handle with `--compare-handle` and the divider with `--compare-line`.
+`--compare-color` sets the color of both. Keep the range thumb thin: form-extend
+measures its position including its width, and a wide thumb makes `--range-value`
+drift from the real value towards the ends.
+
+## Anatomy
+
+| Part                       | Responsibility                                                         |
+| -------------------------- | ---------------------------------------------------------------------- |
+| `.compare-slider.stack`    | Layers every child in one grid cell and shares `--range-value`.         |
+| First `<img>`              | The base image, visible on the start side of the divider.              |
+| Second `<img>`             | The compared image, clipped from the start edge up to the divider.     |
+| `::before`                 | The divider line that follows the thumb.                               |
+| `::after`                  | The round handle, drawn at the split.                                  |
+| `<input type=range>`       | The control, stretched over the images with a transparent track and thumb. |
+| `.compare-slider-value`    | The visual percentage, written with a CSS counter.                      |
+
+## Accessibility
+
+- The range input is the only control, so it gets the keyboard behavior for free:
+  the arrow keys move the divider, and <kbd>Home</kbd> and <kbd>End</kbd> jump to
+  either side.
+- Name the range by what it changes, such as "Amount of the color photo shown", not
+  "Slider".
+- Give both images an `alt` that says what is different, so a screen reader user
+  knows what is being compared without seeing it.
+- The percentage label is `aria-hidden`, since the range already announces its
+  value.
+
+## Browser support
+
+The CSS only version relies on scroll-driven animations and `timeline-scope`. In a
+browser without them the split stays at the starting `--range-value`. Add this
+script once per page to move the split on input there. It only runs where
+`timeline-scope` is missing.
+
+<CodeBlock lang="html" code={exampleFallback.trim()} />
+
+Related: [Range](/ui/forms/range/), [Carousel](/ui/sliders/carousel/), [Gallery](/ui/data-display/gallery/).
