@@ -1,0 +1,48 @@
+<fieldset class="multiselect-chips" focusgroup="toolbar wrap">
+	<legend>Topics</legend>
+	<div class="flex-wrap gap-sm" style="--my: 0.5rem 0">
+		<label class="btn"><input type="checkbox" name="topic" value="css" checked /> CSS</label>
+		<label class="btn"><input type="checkbox" name="topic" value="html" /> HTML</label>
+		<label class="btn"><input type="checkbox" name="topic" value="a11y" checked /> Accessibility</label>
+		<label class="btn"><input type="checkbox" name="topic" value="design" /> Design systems</label>
+		<label class="btn"><input type="checkbox" name="topic" value="perf" /> Performance</label>
+	</div>
+</fieldset>
+
+<style>
+	.multiselect-chips {
+		--btn-py: 0.2rem;
+		--btn-radius: 5rem;
+		--btn-border-width: 1px;
+		--btn-stroke: color-mix(in oklab, var(--root-bg) 70%, var(--root-fg));
+		--btn-active-stroke: var(--brand);
+		--btn-active-bg: var(--brand);
+		--btn-active-color: var(--on-brand);
+
+		input {
+			--control-size: 1em;
+			--control-border-width: 0;
+			--control-checked-bg: transparent;
+			--control-checked-color: currentcolor;
+			--form-bg: transparent;
+			inline-size: 0;
+			padding: 0;
+			margin-inline-end: -0.5em;
+			transition: inline-size 0.15s, margin 0.15s;
+		}
+
+		input:checked {
+			inline-size: var(--control-size);
+			margin-inline-end: 0;
+		}
+
+		input:focus-visible {
+			outline: none;
+		}
+
+		label:has(:focus-visible) {
+			outline: 2px solid var(--root-fg);
+			outline-offset: 2px;
+		}
+	}
+</style>

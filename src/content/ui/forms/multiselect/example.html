@@ -1,0 +1,34 @@
+<fieldset class="multiselect" focusgroup="toolbar block wrap">
+	<legend>Notify me about</legend>
+	<div class="multiselect-options divide-y rounded clip" style="--my: 0.5rem 0">
+		<label class="flex gap align">Comments <input type="checkbox" name="notify" value="comments" checked /></label>
+		<label class="flex gap align">Mentions <input type="checkbox" name="notify" value="mentions" checked /></label>
+		<label class="flex gap align">New releases <input type="checkbox" name="notify" value="releases" /></label>
+		<label class="flex gap align">Newsletter <input type="checkbox" name="notify" value="newsletter" /></label>
+	</div>
+</fieldset>
+
+<style>
+	.multiselect {
+		.multiselect-options {
+			border: 1px solid color-mix(in oklab, var(--root-bg) 75%, var(--root-fg));
+		}
+
+		label {
+			padding: 0.6em 0.9em;
+		}
+
+		label:has(:checked) {
+			background: color-mix(in oklab, var(--root-bg) 92%, var(--root-fg));
+		}
+
+		input:focus-visible {
+			outline: none;
+		}
+
+		label:has(:focus-visible) {
+			outline: 2px solid;
+			outline-offset: -2px;
+		}
+	}
+</style>
