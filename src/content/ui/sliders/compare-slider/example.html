@@ -1,0 +1,128 @@
+<div class="compare-slider stack rounded" data-compare-slider>
+	<img
+		class="w-full h-full object-cover"
+		src="/images/placeholders/deer-wide.webp"
+		alt="Deer in a forest, in color"
+		width="960"
+		height="640"
+	/>
+	<img
+		class="w-full h-full object-cover"
+		src="/images/placeholders/deer-wide.webp"
+		alt="The same photo in black and white"
+		width="960"
+		height="640"
+		style="filter: grayscale(1)"
+	/>
+	<label for="compare-deer" class="sr-only">
+		Amount of the color photo shown
+	</label>
+	<input
+		class="h-full"
+		type="range"
+		id="compare-deer"
+		min="0"
+		max="100"
+		value="50"
+	/>
+	<span
+		class="compare-slider-value align-self rounded"
+		style="--align-self: start; --m: 0.75rem; --p: 0.25em 0.6em"
+		aria-hidden="true"
+	></span>
+</div>
+
+<style>
+	@property --compare-percent {
+		syntax: "<integer>";
+		inherits: false;
+		initial-value: 0;
+	}
+
+	.compare-slider {
+		--range-value: 50;
+		--compare-line: 2px;
+		--compare-handle: 2.5em;
+		--compare-color: var(--root-bg);
+		--_split: calc(var(--range-value) * 1%);
+		/* Firefox measures the thumb against the nearest scroll container, so this must be one */
+		overflow: hidden;
+		timeline-scope: --range-thumb;
+		animation: range-observer linear reverse both;
+		animation-timeline: --range-thumb;
+
+		img:nth-of-type(2) {
+			clip-path: inset(0 0 0 var(--_split));
+		}
+
+		&:dir(rtl) img:nth-of-type(2) {
+			clip-path: inset(0 var(--_split) 0 0);
+		}
+
+		&::before,
+		&::after {
+			grid-area: 1 / 1;
+			z-index: 1;
+			justify-self: start;
+			pointer-events: none;
+		}
+
+		&::before {
+			content: "";
+			inline-size: var(--compare-line);
+			margin-inline-start: calc(var(--_split) - var(--compare-line) / 2);
+			background: var(--compare-color);
+		}
+
+		&::after {
+			content: "\2194" / "";
+			display: grid;
+			place-content: center;
+			align-self: center;
+			inline-size: var(--compare-handle);
+			aspect-ratio: 1;
+			margin-inline-start: calc(var(--_split) - var(--compare-handle) / 2);
+			border-radius: 50%;
+			background: var(--compare-color);
+			color: var(--root-fg);
+			box-shadow: 0 1px 4px rgb(0 0 0 / 0.3);
+		}
+
+		&:has(input:focus-visible)::after {
+			outline: 2px solid var(--root-fg);
+			outline-offset: 2px;
+		}
+
+		input {
+			--track-color: transparent;
+			--track-fill: transparent;
+			--thumb-size-x: var(--compare-line);
+			--thumb-size-y: var(--compare-handle);
+			--thumb-color: transparent;
+			--thumb-stroke-size: 0;
+			z-index: 2;
+			outline: none;
+			cursor: ew-resize;
+			timeline-scope: none;
+		}
+
+		/* form-extend only names the thumb timeline on the WebKit thumb */
+		input::-moz-range-thumb {
+			view-timeline: --range-thumb inline;
+		}
+
+		.compare-slider-value {
+			--compare-percent: calc(var(--range-value));
+			z-index: 1;
+			counter-reset: percent var(--compare-percent);
+			background: var(--compare-color);
+			color: var(--root-fg);
+			font-variant-numeric: tabular-nums;
+			pointer-events: none;
+		}
+
+		.compare-slider-value::after {
+			content: counter(percent) "%";
+		}
+	}
+</style>

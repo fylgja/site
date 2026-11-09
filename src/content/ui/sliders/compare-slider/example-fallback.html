@@ -1,0 +1,10 @@
+<script>
+	if (!CSS.supports("timeline-scope: --a")) {
+		for (const slider of document.querySelectorAll("[data-compare-slider]")) {
+			const range = slider.querySelector("input[type=range]");
+			const update = () => slider.style.setProperty("--range-value", range.value);
+			range.addEventListener("input", update);
+			update();
+		}
+	}
+</script>
