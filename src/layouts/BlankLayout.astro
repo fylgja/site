@@ -15,6 +15,7 @@ interface Props {
 	description?: string;
 	image?: string;
 	pageType?: "website" | "article";
+	author?: string;
 	lang?: string;
 	dir?: "ltr" | "rtl";
 	speculationrules?: {
@@ -31,6 +32,7 @@ const {
 	description = siteDescription,
 	image = defaultSocialImage.src,
 	pageType = "website",
+	author: authorName,
 	lang = "en",
 	dir = "ltr",
 	speculationrules,
@@ -47,6 +49,7 @@ const {
 		themeColorDark={themeColorDark}
 		ogType={pageType}
 		twitterUser={twitterUser}
+		author={authorName}
 	>
 		<meta name="generator" content="Fylgja CSS" />
 		<meta name="fediverse:creator" content="@fylgja@fosstodon.org" />

@@ -12,6 +12,7 @@ interface Props {
 	ogType?: "website" | "article";
 	ogLocal?: string;
 	twitterUser?: string;
+	author?: string;
 }
 
 const {
@@ -25,6 +26,7 @@ const {
 	ogType = "website",
 	ogLocal = "en_US",
 	twitterUser,
+	author,
 } = Astro.props;
 
 const isProd = import.meta.env.PROD;
@@ -42,6 +44,7 @@ const manifestHash = contentHash(JSON.stringify(webmanifest));
 
 	<meta name="title" content={title} />
 	<meta name="description" content={description} />
+	{author && <meta name="author" content={author} />}
 	<meta name="apple-mobile-web-app-title" content={title} />
 
 	<link rel="icon" href="/favicon.ico" sizes="32x32" />

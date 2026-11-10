@@ -44,6 +44,7 @@ const blogAuthor = [
 	description={description}
 	image={coverImage?.src ?? blogSocialImage.src}
 	pageType="article"
+	author={(author ?? siteConfig.author).name}
 	class=""
 	style="--my: 0 var(--size-12)"
 >
