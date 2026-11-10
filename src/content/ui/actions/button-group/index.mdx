@@ -21,6 +21,14 @@ faq:
   - question: How does the selected option get highlighted?
     answer: Fylgja's button active style applies to a label that :has(input:checked),
       so the checked radio's label shows the active background with no JavaScript.
+  - question: Should I add focusgroup="toolbar" to a button group?
+    answer: Not to this radio version, since radios already form one Tab stop and move
+      with the arrow keys. When the group holds action buttons instead, such as Bold,
+      Italic, and Underline, add focusgroup="toolbar" to the wrapper. The group then
+      becomes a single Tab stop with the arrow keys moving between the buttons, and a
+      plain div gets the toolbar role, so role="group" can go. Browsers without
+      focusgroup keep every button as its own Tab stop, and the
+      [Multiselect](/ui/forms/multiselect/) docs link a polyfill.
 ---
 
 import ComponentPreview from "@/components/ComponentPreview.astro";
