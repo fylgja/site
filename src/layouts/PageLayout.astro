@@ -9,6 +9,7 @@ interface Props {
 	description?: string;
 	image?: string;
 	pageType?: "website" | "article";
+	author?: string;
 	class?: string;
 	style?: string;
 	redirect?: URL;
@@ -18,13 +19,14 @@ const {
 	description,
 	image,
 	pageType = "website",
+	author,
 	class: classes = "container",
 	style,
 	redirect,
 } = Astro.props;
 ---
 
-<Layout title={title} description={description} image={image} pageType={pageType}>
+<Layout title={title} description={description} image={image} pageType={pageType} author={author}>
 	{
 		redirect ? (
 			<Fragment slot="head">
