@@ -2,7 +2,7 @@
 title: "Fylgja CSS 2.3: Popover Defaults, Design Tokens 2025.10, and 24 New UI Components"
 description: "Fylgja CSS 2.3 adds styled and anchored popovers, Design Tokens 2025.10 support, and toggle utilities for popover invokers, while Fylgja UI grows to 55 components."
 publishDate: 2026-11-10
-tags: ["FylgjaCSS", "Release"]
+tags: ["FylgjaCSS", "Release", "UI", "Design Tokens"]
 coverImage: "cover.png"
 ---
 
