@@ -52,6 +52,9 @@ export default defineConfig({
 		"/tokens/": "/library/tokens/",
 		// Shorter AI docs url
 		"/docs/integrations/ai-support/": "/docs/integrations/ai/",
+		// Release post slugs, Astro dropped the dot from the version
+		"/blog/release-of-version-12/": "/blog/release-of-version-1-2/",
+		"/blog/release-of-version-21/": "/blog/release-of-version-2-1/",
 		// Moved into the Sliders category
 		"/ui/layout/carousel/": "/ui/sliders/carousel/",
 		// UI category folders → filtered gallery
