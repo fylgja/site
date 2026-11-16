@@ -11,7 +11,7 @@
 set -euo pipefail
 
 REMOTE_HOST="fylgja"
-REMOTE_PATH="domains/fylgja.dev/public_html/"
+REMOTE_PATH="htdocs/fylgja.dev/"
 DIST_DIR="dist"
 
 # Paths that live only on the server and must survive --delete.
@@ -64,13 +64,6 @@ if [ ! -f "$DIST_DIR/index.html" ]; then
 fi
 
 rsync_flags=(-rlptz --delete-after --itemize-changes --human-readable)
-
-# .htaccess ships from public/ but is gitignored, so a fresh clone has none.
-# Without this the delete pass would drop the server copy.
-if [ ! -f "$DIST_DIR/.htaccess" ]; then
-	echo "No $DIST_DIR/.htaccess locally, leaving the server copy untouched."
-	EXCLUDES+=(--exclude ".htaccess")
-fi
 
 sync() {
 	rsync "${rsync_flags[@]}" "$@" \
