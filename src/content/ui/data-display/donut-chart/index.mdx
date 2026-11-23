@@ -30,6 +30,12 @@ faq:
     answer: Yes. Set --donut-hole to 0% and the mask leaves the whole circle. A
       donut is easier to read though, since the eye compares the arc lengths
       instead of the angles.
+  - question: Why does the legend move below the ring at 22rem?
+    answer: A container query on the figure moves the legend once the chart is
+      narrower than 22rem, which fits the default 10rem ring with room for the
+      labels. Container queries cannot read custom properties, so the breakpoint
+      does not follow --donut-size. When you make the ring larger, raise the 22rem
+      in the @container rule by the same amount.
   - question: How many slices can a donut chart hold?
     answer: Keep it to about five. Past that the small slices get too thin to tell
       apart, so group them into an Other slice, or switch to a
