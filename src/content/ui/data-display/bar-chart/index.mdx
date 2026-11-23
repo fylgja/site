@@ -39,8 +39,10 @@ import CodeBlock from "@/components/CodeBlock.astro";
 import example from "./example.html?raw";
 import exampleCss from "./example.css?raw";
 import exampleVertical from "./example-vertical.html?raw";
+import exampleVerticalCss from "./example-vertical.css?raw";
 
 <style is:inline set:html={exampleCss} />
+<style is:inline set:html={exampleVerticalCss} />
 
 A bar chart compares a few values side by side. Here it is a plain `<table>` with a
 row per bar, and CSS paints each data cell as a bar sized from its value. Nothing is
@@ -54,9 +56,7 @@ Hover a row to fade the other bars.
 
 <ComponentPreview code={example} />
 
-> [!note]- The bar chart CSS
->
-> <CodeBlock lang="css" code={exampleCss.trim()} />
+<CodeBlock lang="css" code={exampleCss.trim()} />
 
 ## Usage
 
@@ -66,7 +66,7 @@ Hover a row to fade the other bars.
    `style="--value: 3120"`. The visible text can stay formatted.
 3. Set `--max` on the table. Bars are drawn as a share of it, so a cell with half
    of `--max` fills half of the plot.
-4. Add the `bar-chart` class and the CSS from under the preview. Layout comes from Fylgja
+4. Add the `bar-chart` class and the CSS above. Layout comes from Fylgja
    utilities in the markup: `grid` on each row, `flex gap-sm` on each value cell,
    and `w-full` on the table.
 
@@ -100,11 +100,13 @@ variables, `--table-py`, `--table-px` and `--table-stroke`.
 
 Add `--vertical` to draw columns instead of bars, which suits values over time. The
 `<tbody>` becomes the plot with `flex gap text-center`, and `--size-y` sets its height.
-Rows and value cells switch to `flex-col`. The
-header row has no visible place in a column chart, so it gets `sr-only` and stays
-available to screen readers.
+Rows and value cells switch to `flex-col`. The header row has no visible place in
+a column chart, so it gets `sr-only` and stays available to screen readers. Add the
+CSS below on top of the bar chart CSS.
 
 <ComponentPreview code={exampleVertical} />
+
+<CodeBlock lang="css" code={exampleVerticalCss.trim()} />
 
 Related: [Table](/ui/data-display/table/), [Donut Chart](/ui/data-display/donut-chart/),
 [Gauge](/ui/data-display/gauge/).

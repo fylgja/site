@@ -33,23 +33,3 @@
 		opacity: 0.4;
 	}
 }
-
-.bar-chart.--vertical {
-	--table-px: 0;
-	--bar-size: 2.5rem;
-
-	tbody tr {
-		--flex-dir: column-reverse;
-	}
-
-	tbody td {
-		flex: 1;
-		justify-content: end;
-
-		&::before {
-			order: 1;
-			inline-size: var(--bar-size);
-			block-size: calc(var(--value) / var(--max) * (100% - 1lh));
-		}
-	}
-}
