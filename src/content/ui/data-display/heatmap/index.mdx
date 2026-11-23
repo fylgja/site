@@ -1,0 +1,72 @@
+---
+title: "Heatmap"
+pageTitle: "Fylgja Heatmap"
+description: "A native table where each cell is tinted by its value, for spotting patterns across two dimensions such as day and hour."
+category: "data-display"
+tags: ["chart", "heatmap", "heat map", "graph", "calendar", "activity", "table"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Supplies the --brand, --on-brand, --root-bg and --root-fg colors the scale is mixed from."
+sortOrder: 10
+previewZoom: 0.45
+faq:
+  - question: How is the cell color worked out?
+    answer: Each cell mixes --heat-hot into --heat-cold with color-mix(), by its
+      --value as a share of --max. A cell at half of --max is an even mix of the
+      two colors.
+  - question: Why can I still read the number in a dark cell?
+    answer: Once a cell passes half of --max, round() switches its text from the
+      page text color to --heat-hot-text. Change that variable along with
+      --heat-hot so the pair keeps enough contrast.
+  - question: Can I hide the numbers and only show the colors?
+    answer: You can, for example with a transparent text color, but every sighted
+      reader then has to guess values from the tint. Keep them visible where the
+      exact count matters.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+
+A heatmap shows a grid of values as color, which makes busy and quiet areas stand
+out at a glance, like deploys per weekday and time of day. It is a regular
+`<table>`: the rows and columns are the two dimensions, and each data cell is tinted
+by how close its value is to the maximum. Because it is still a table, every cell
+stays reachable by its row and column header.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+## Usage
+
+1. Build a table with a `<caption>`, a header row of `<th scope="col">` and a
+   `<th scope="row">` at the start of each row. Leave the top left corner as an
+   empty `<td>`.
+2. Repeat each number as `--value` on its cell, for example `style="--value: 28"`.
+3. Set `--max` on the table, the value that gets the full `--heat-hot` color.
+4. Add the `heatmap` class and the CSS from the snippet.
+
+## Anatomy
+
+| Part                  | Responsibility                                              |
+| --------------------- | ----------------------------------------------------------- |
+| `<caption>`           | The chart title, and the table's accessible name.           |
+| `<th scope="col">`    | The labels along the top, here the time of day.             |
+| `<th scope="row">`    | The labels down the side, here the weekday.                 |
+| `<td>` with `--value` | The value as text, and the number that sets the tint.       |
+| `--max` on the table  | The value that maps to the hottest color.                   |
+
+Recolor the scale with `--heat-cold`, `--heat-hot` and `--heat-hot-text`, and set
+the row height with `--heat-cell-size`.
+
+## Accessibility
+
+- Header cells with `scope` let a screen reader announce each value with its day
+  and time, which a grid of colored `<div>`s cannot do.
+- The values are printed in the cells, so the chart does not lean on color alone.
+- The text color flips on dark cells to keep it readable. If you change the
+  colors, check the contrast at both ends of the scale.
+
+Related: [Table](/ui/data-display/table/), [Bar Chart](/ui/data-display/bar-chart/).
