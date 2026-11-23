@@ -8,7 +8,10 @@ status: "stable"
 requires:
   - pkg: "@fylgja/base"
     level: recommended
-    reason: "Supplies the --brand color the bars use and the base table reset."
+    reason: "Supplies the --brand color the bars use, and the table spacing and border variables the chart sets."
+  - pkg: "@fylgja/tokens"
+    level: recommended
+    reason: "Supplies the --radius-2 token that rounds the bars."
   - pkg: "@fylgja/utilities"
     level: required
     reason: "Provides the grid rows, flex value cells, w-full and caption styling, plus flex-col and sr-only for the vertical version."
@@ -79,7 +82,8 @@ Hover a row to fade the other bars.
 
 Tune the look with `--bar-color`, `--bar-size` (the bar thickness),
 `--bar-label-size` (the label column) and `--bar-value-size` (the room kept for the
-value text after the longest bar).
+value text after the longest bar). Cell spacing and borders use the base table
+variables, `--table-py`, `--table-px` and `--table-stroke`.
 
 ## Accessibility
 
@@ -95,7 +99,7 @@ value text after the longest bar).
 ### Vertical
 
 Add `--vertical` to draw columns instead of bars, which suits values over time. The
-`<tbody>` becomes the plot with `flex gap`, and `--size-y` sets its height.
+`<tbody>` becomes the plot with `flex gap text-center`, and `--size-y` sets its height.
 Rows and value cells switch to `flex-col`. The
 header row has no visible place in a column chart, so it gets `sr-only` and stays
 available to screen readers.

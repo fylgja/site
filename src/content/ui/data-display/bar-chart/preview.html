@@ -24,6 +24,9 @@
 
 <style>
 	.bar-chart {
+		--table-py: 0.25rem;
+		--table-px: 0 0.5rem;
+		--table-stroke: transparent;
 		--bar-color: var(--brand);
 		--bar-size: 1.25rem;
 		--bar-label-size: 6rem;
@@ -31,30 +34,21 @@
 
 		tr {
 			grid-template-columns: var(--bar-label-size) 1fr;
-			align-items: center;
 		}
 
 		:is(th, td) {
-			padding: 0.25rem 0.5rem 0.25rem 0;
-			border: 0;
 			background: none;
-		}
-
-		thead {
-			font-size: 0.875em;
-			opacity: 0.7;
 		}
 
 		tbody td {
 			align-items: center;
-			font-variant-numeric: tabular-nums;
 
 			&::before {
 				content: "";
 				flex: none;
 				inline-size: calc(var(--value) / var(--max) * (100% - var(--bar-value-size)));
 				block-size: var(--bar-size);
-				border-radius: 0.25rem;
+				border-radius: var(--radius-2);
 				background: var(--bar-color);
 				transition: opacity 0.2s;
 			}
