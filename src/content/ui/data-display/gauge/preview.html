@@ -36,6 +36,7 @@
 		.gauge {
 			:is(meter, span) {
 				grid-area: 1 / 1;
+				margin-block-end: calc(var(--gauge-size) / -6);
 			}
 
 			meter {
@@ -65,7 +66,6 @@
 				--_start-color: color-mix(in oklab, var(--_color) calc(sign(var(--_fill)) * 100%), var(--_track));
 				inline-size: var(--gauge-size);
 				block-size: var(--gauge-size);
-				margin-block-end: calc(var(--gauge-size) / -6);
 				border-radius: 50%;
 				background:
 					radial-gradient(
