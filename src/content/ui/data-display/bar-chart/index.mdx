@@ -1,0 +1,110 @@
+---
+title: "Bar Chart"
+pageTitle: "Fylgja Bar Chart"
+description: "A native table drawn as a bar or column chart with CSS, so the data stays a readable table underneath."
+category: "data-display"
+tags: ["chart", "bar chart", "column chart", "graph", "data", "table", "statistics"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Supplies the --brand color the bars use, and the table spacing and border variables the chart sets."
+  - pkg: "@fylgja/tokens"
+    level: recommended
+    reason: "Supplies the --radius-2 token that rounds the bars."
+  - pkg: "@fylgja/utilities"
+    level: required
+    reason: "Provides the grid rows, flex value cells, w-full and caption styling, plus flex-col and sr-only for the vertical version."
+sortOrder: 8
+faq:
+  - question: Why a table and not a canvas or SVG chart library?
+    answer: The data is a table, so the markup should be one. Screen readers can
+      move through it row by row, it copies into a spreadsheet, and it still reads
+      fine when the CSS does not load. The chart is only a way of painting it.
+  - question: Why is every value written twice?
+    answer: CSS cannot read the text inside a cell, so the number is repeated as the
+      --value custom property for the bar width. The visible text stays formatted
+      for people, such as 3,120, while --value holds the plain number.
+  - question: Can CSS find the highest value for me?
+    answer: No. CSS cannot compare siblings, so set --max on the table yourself. Use
+      the largest value, or a round number above it, so the longest bar does not
+      touch the edge.
+  - question: How do I color a single bar?
+    answer: Set --bar-color on that cell, next to its --value. Keep the meaning in
+      the text as well, since color alone does not reach every reader.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
+import example from "./example.html?raw";
+import exampleCss from "./example.css?raw";
+import exampleVertical from "./example-vertical.html?raw";
+import exampleVerticalCss from "./example-vertical.css?raw";
+
+<style is:inline set:html={exampleCss} />
+<style is:inline set:html={exampleVerticalCss} />
+
+A bar chart compares a few values side by side. Here it is a plain `<table>` with a
+row per bar, and CSS paints each data cell as a bar sized from its value. Nothing is
+drawn in a `<canvas>` or SVG, so the chart keeps every table feature for free: row
+and column headers for screen readers, selectable text, and a readable fallback
+when the styles do not load.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+<CodeBlock lang="css" code={exampleCss.trim()} />
+
+## Usage
+
+1. Write the data as a normal table, with a `<caption>`, a header row and one
+   `<tr>` per bar. Each row starts with a `<th scope="row">` for its label.
+2. Repeat each number as `--value` on its cell, for example
+   `style="--value: 3120"`. The visible text can stay formatted.
+3. Set `--max` on the table. Bars are drawn as a share of it, so a cell with half
+   of `--max` fills half of the plot.
+4. Add the `bar-chart` class and the CSS above. Layout comes from Fylgja
+   utilities in the markup: `grid` on each row, `flex gap-sm` on each value cell,
+   and `w-full` on the table.
+
+## Anatomy
+
+| Part                 | Responsibility                                                    |
+| -------------------- | ----------------------------------------------------------------- |
+| `<caption>`          | The chart title, and the table's accessible name.                 |
+| `<th scope="row">`   | The label for each bar.                                           |
+| `<td>` with `--value` | The value as text, and the number that sizes the bar.            |
+| `--max` on the table | The value that fills the full plot width.                         |
+| `td::before`         | The bar itself, drawn before the value text.                      |
+
+Tune the look with `--bar-color`, `--bar-size` (the bar thickness),
+`--bar-label-size` (the label column) and `--bar-value-size` (the room kept for the
+value text after the longest bar). Cell spacing and borders use the base table
+variables, `--table-py`, `--table-px` and `--table-stroke`.
+
+## Accessibility
+
+- The table keeps its semantics, so a screen reader announces each value with its
+  row and column header. The bars are pseudo elements and are not read out.
+- The `<caption>` names the table. Keep it, or the chart has no title for assistive
+  technology.
+- Every value is visible as text next to its bar, so nobody depends on the bar
+  length or color to read the data.
+
+## Variants
+
+### Vertical
+
+Add `--vertical` to draw columns instead of bars, which suits values over time. The
+`<tbody>` becomes the plot with `flex gap text-center`, and `--size-y` sets its height.
+Rows and value cells switch to `flex-col`. The header row has no visible place in
+a column chart, so it gets `sr-only` and stays available to screen readers. Add the
+CSS below on top of the bar chart CSS.
+
+<ComponentPreview code={exampleVertical} />
+
+<CodeBlock lang="css" code={exampleVerticalCss.trim()} />
+
+Related: [Table](/ui/data-display/table/), [Donut Chart](/ui/data-display/donut-chart/),
+[Gauge](/ui/data-display/gauge/).

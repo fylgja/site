@@ -1,0 +1,56 @@
+.donut-chart {
+	--donut-size: 10rem;
+	--donut-hole: 58%;
+	--donut-gap: 1deg;
+	container-type: inline-size;
+
+	ul {
+		align-content: center;
+		min-block-size: var(--donut-size);
+		padding-inline-start: calc(var(--donut-size) + 3rem);
+	}
+
+	li {
+		--slice-color: oklch(68% calc(0.19 * var(--chroma, 1)) var(--hue));
+
+		&:nth-child(5n + 1) { --hue: var(--hue-blue); }
+		&:nth-child(5n + 2) { --hue: var(--hue-teal); }
+		&:nth-child(5n + 3) { --hue: var(--hue-orange); }
+		&:nth-child(5n + 4) { --hue: var(--hue-pink); }
+		&:nth-child(5n + 5) { --hue: var(--hue-blue); --chroma: 0.1; }
+
+		&::marker {
+			color: var(--slice-color);
+		}
+
+		&::before {
+			--_from: calc(var(--from) * 3.6deg + var(--donut-gap) / 2);
+			--_to: calc(var(--to) * 3.6deg - var(--donut-gap) / 2);
+			content: "";
+			position: absolute;
+			inset-block: 0;
+			inset-inline-start: 0;
+			inline-size: var(--donut-size);
+			block-size: var(--donut-size);
+			margin-block: auto;
+			border-radius: 50%;
+			background: conic-gradient(
+				transparent var(--_from),
+				var(--slice-color) 0 var(--_to),
+				transparent 0
+			);
+			mask: radial-gradient(closest-side, transparent var(--donut-hole), #000 calc(var(--donut-hole) + 1px));
+		}
+	}
+
+	@container (inline-size < 22rem) {
+		ul {
+			padding-block-start: calc(var(--donut-size) + 1rem);
+			padding-inline-start: 1.5rem;
+		}
+
+		li::before {
+			inset-block-end: auto;
+		}
+	}
+}

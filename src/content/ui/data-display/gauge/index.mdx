@@ -1,0 +1,115 @@
+---
+title: "Gauge"
+pageTitle: "Fylgja Gauge"
+description: "A native meter drawn as a dial, reading its value and thresholds straight from the meter's own attributes."
+category: "data-display"
+tags: ["chart", "gauge", "dial", "meter", "speedometer", "usage", "kpi"]
+status: "beta"
+requires:
+  - pkg: "@fylgja/form-extend"
+    level: recommended
+    reason: "Supplies the --success, --warning and --error colors and the --track-color of the dial, and styles the bar shown where the dial is not supported."
+  - pkg: "@fylgja/utilities"
+    level: recommended
+    reason: "Provides inline-grid, align-center and gap-sm that stack each gauge, lead for the value, and flex-wrap and gap for a row of them."
+  - pkg: "@fylgja/css-attr-polyfill"
+    level: recommended
+    reason: "Compiles the attr() reads into static rules, so the dial also shows in browsers without typed attr()."
+sortOrder: 10
+previewZoom: 0.55
+faq:
+  - question: Why is my gauge a flat bar?
+    answer: The dial needs typed attr(), which reads the meter's numbers straight
+      from its attributes. Browsers without it skip the dial styles and show the
+      regular meter bar with the value below it, so nothing is lost. To get the dial
+      there too, compile the CSS with the
+      [CSS attr() Polyfill](/library/extensions/css-attr-polyfill/).
+  - question: How does the gauge pick its color?
+    answer: It follows the same rules as the native meter. low and high split the
+      range into three regions, optimum says which region is good, and the dial
+      turns amber one region away from it and red two regions away.
+  - question: How do I make a higher value the good one?
+    answer: Move optimum to the high end, as in the battery gauge above. Leave out
+      low, high and optimum altogether and the dial stays green, the same as a
+      meter without them.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
+import example from "./example.html?raw";
+import exampleCss from "./example.css?raw";
+
+<style is:inline set:html={exampleCss} />
+
+A gauge shows a single value against its range as a dial, the way a dashboard
+shows CPU load or battery level. It is the native `<meter>` from the
+[Meter](/ui/data-display/meter/) component with a different look. The dial reads
+`value`, `min`, `max`, `low`, `high` and `optimum` from the element with typed
+`attr()`, so the markup is all the data the chart needs, with no custom properties
+to keep in sync.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+> [!note]- The gauge CSS
+>
+> <CodeBlock lang="css" code={exampleCss.trim()} />
+
+## Usage
+
+1. Write a regular `<meter>` with `min`, `max` and `value`. Add `low`, `high` and
+   `optimum` to color it by state.
+2. Wrap it in a `<label class="gauge inline-grid align-center gap-sm">` with the
+   name as text, so the meter is labelled without a `for`.
+3. Add a `<span class="lead" aria-hidden="true">` after the meter with the value as you want it
+   shown. CSS cannot format a number, so this is the text in the middle of the dial.
+4. Add the CSS from under the preview. Size the dial with `--gauge-size`, and the ring
+   with `--gauge-thickness` as a share of the radius, such as `0.22`.
+
+## Anatomy
+
+| Part                        | Responsibility                                                    |
+| --------------------------- | ----------------------------------------------------------------- |
+| `<label class="gauge">`     | Names the meter and stacks the dial, value and name.              |
+| `<meter>`                   | Holds the data, and is painted as the dial.                       |
+| `<span aria-hidden="true">` | The formatted value in the middle of the dial.                    |
+| `attr()` reads              | Pull the numbers from the meter's attributes into the CSS.        |
+| `conic-gradient()`          | Draws the 270 degree arc, filled up to the value.                 |
+| `radial-gradient()` dots    | Round off both ends of the track and the end of the fill, like the meter's radius. |
+| `--success` / `--warning` / `--error` | Color the arc by state, matching the [Meter](/ui/data-display/meter/). |
+
+## Accessibility
+
+- The meter keeps its role and value, so a screen reader announces the name from
+  the label and the value from the element. The dial is only a background.
+- The value span is hidden from assistive technology, because the meter already
+  reports its value.
+- State is shown by color, so keep the value in text and pick thresholds that a
+  reader can make sense of from the number alone.
+
+## Browser support
+
+The dial needs typed `attr()`, plus `sign()` and `abs()` to work out the state.
+Typed `attr()` is the newest of these and is available in Chromium based browsers
+first. The styles sit in an `@supports` block, so other browsers fall back to the
+plain [Meter](/ui/data-display/meter/) bar with the value under it.
+
+### With the attr() polyfill
+
+The [Fylgja CSS attr() Polyfill](/library/extensions/css-attr-polyfill/) brings the
+dial to every browser. It runs at build time, scans your markup for the attribute
+values you use, and writes a static rule for each one, such as `value="59"`.
+Browsers with typed `attr()` keep using the original rules.
+
+1. Remove the `@supports` wrapper and keep its contents. The polyfill adds its own
+   guarded fallback, and inside the wrapper that fallback would never apply.
+2. Keep the `attr()` reads in the flat `.gauge meter` rule. The polyfill does not
+   read declarations inside nested rules.
+3. Point `content` at your templates. Values that only exist at runtime, like a
+   live CPU reading set from JavaScript, cannot be scanned, so safelist their
+   range, such as `"value": "0..100"`. Every value becomes a rule, so keep the
+   range to whole numbers where you can.
+
+Related: [Meter](/ui/data-display/meter/), [Progress](/ui/data-display/progress/),
+[Donut Chart](/ui/data-display/donut-chart/).

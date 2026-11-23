@@ -1,0 +1,100 @@
+---
+title: "Donut Chart"
+pageTitle: "Fylgja Donut Chart"
+description: "A list of parts of a whole, drawn as a donut chart with a CSS conic gradient and the list as its legend."
+category: "data-display"
+tags: ["chart", "donut chart", "pie chart", "graph", "share", "percentage", "legend"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the figure caption and the list text."
+  - pkg: "@fylgja/utilities"
+    level: required
+    reason: "Provides relative, which anchors the ring to the list, grid, which centers the legend next to it, plus the caption styling."
+  - pkg: "@fylgja/tokens"
+    level: required
+    reason: "Supplies the --hue-* tokens the slice colors are built from."
+sortOrder: 9
+previewZoom: 0.6
+faq:
+  - question: Why does each item need both --from and --to?
+    answer: CSS cannot add up the items before the current one, so each slice is
+      told where it starts and ends, as a percentage of the whole. The --to of one
+      item is the --from of the next, and the last one ends at 100.
+  - question: How do I change the slice colors?
+    answer: The first five items get a color from the --hue-* tokens and the sixth
+      starts over. Set --hue on an item to move it to another token hue, such as
+      --hue-red, or set --slice-color to pick any color. The legend marker follows.
+  - question: Can I make it a full pie instead of a donut?
+    answer: Yes. Set --donut-hole to 0% and the mask leaves the whole circle. A
+      donut is easier to read though, since the eye compares the arc lengths
+      instead of the angles.
+  - question: Why does the legend move below the ring at 22rem?
+    answer: A container query on the figure moves the legend once the chart is
+      narrower than 22rem, which fits the default 10rem ring with room for the
+      labels. Container queries cannot read custom properties, so the breakpoint
+      does not follow --donut-size. When you make the ring larger, raise the 22rem
+      in the @container rule by the same amount.
+  - question: How many slices can a donut chart hold?
+    answer: Keep it to about five. Past that the small slices get too thin to tell
+      apart, so group them into an Other slice, or switch to a
+      [Bar Chart](/ui/data-display/bar-chart/).
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
+import example from "./example.html?raw";
+import exampleCss from "./example.css?raw";
+
+<style is:inline set:html={exampleCss} />
+
+A donut chart shows how a whole splits into a few parts. The data is a plain list
+of labels and percentages inside a `<figure>`, and each list item paints its own
+slice of the ring with a `conic-gradient()`. The list doubles as the legend, so the
+numbers are always on screen as text, not only as arc lengths.
+
+## Preview
+
+<ComponentPreview code={example} />
+
+> [!note]- The donut chart CSS
+>
+> <CodeBlock lang="css" code={exampleCss.trim()} />
+
+## Usage
+
+1. Wrap a `<ul class="relative grid">` in a `<figure class="donut-chart">`, with a
+   `<figcaption>` for the title. The ring is positioned against the list.
+2. Give each item a label and its share in a `<data>` element, for example
+   `<data value="38">38%</data>`.
+3. Set `--from` and `--to` on each item, the running total before and after it, in
+   percent. The first item starts at 0 and the last ends at 100.
+4. Add the CSS from under the preview.
+
+## Anatomy
+
+| Part                       | Responsibility                                                  |
+| -------------------------- | --------------------------------------------------------------- |
+| `<figure>` / `<figcaption>` | Groups the chart and gives it a title.                         |
+| `<li>`                     | One slice, and its row in the legend.                           |
+| `<data>`                   | The share as readable text, with the raw number in `value`.     |
+| `--from` / `--to`          | Where the slice starts and ends on the ring, in percent.        |
+| `li::before`               | The slice, drawn as a conic gradient on top of the others.      |
+| `li::marker`               | The legend swatch, colored with the slice's `--slice-color`.    |
+
+Size the ring with `--donut-size`, the hole with `--donut-hole` and the space
+between slices with `--donut-gap`. The list's start padding makes room for the ring
+and the legend markers. When the figure is narrower than 22rem, a container query
+moves that room to the top, so the legend drops below the ring.
+
+## Accessibility
+
+- The list and its `<data>` values are the content, so a screen reader reads every
+  label and share in order. The slices are pseudo elements and stay silent.
+- The `<figcaption>` names the figure. Without it the list has no context.
+- Every share is written next to its label, so no one relies on telling the slice
+  colors apart. Keep that text even when the chart looks self explanatory.
+
+Related: [Bar Chart](/ui/data-display/bar-chart/), [Gauge](/ui/data-display/gauge/),
+[Meter](/ui/data-display/meter/).

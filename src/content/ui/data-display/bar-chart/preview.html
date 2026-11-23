@@ -1,0 +1,56 @@
+<table class="bar-chart w-full" style="--max: 3500">
+	<caption class="text-start font-bold" style="--py: 0 0.5rem">Visitors by browser</caption>
+	<thead>
+		<tr class="grid">
+			<th scope="col">Browser</th>
+			<th scope="col">Visitors</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="grid">
+			<th scope="row">Chrome</th>
+			<td class="flex gap-sm" style="--value: 3120">3,120</td>
+		</tr>
+		<tr class="grid">
+			<th scope="row">Safari</th>
+			<td class="flex gap-sm" style="--value: 1840">1,840</td>
+		</tr>
+		<tr class="grid">
+			<th scope="row">Firefox</th>
+			<td class="flex gap-sm" style="--value: 960">960</td>
+		</tr>
+	</tbody>
+</table>
+
+<style>
+	.bar-chart {
+		--table-py: 0.25rem;
+		--table-px: 0 0.5rem;
+		--table-stroke: transparent;
+		--bar-color: var(--brand);
+		--bar-size: 1.25rem;
+		--bar-label-size: 6rem;
+		--bar-value-size: 4rem;
+
+		tr {
+			grid-template-columns: var(--bar-label-size) 1fr;
+		}
+
+		:is(th, td) {
+			background: none;
+		}
+
+		tbody td {
+			align-items: center;
+
+			&::before {
+				content: "";
+				flex: none;
+				inline-size: calc(var(--value) / var(--max) * (100% - var(--bar-value-size)));
+				block-size: var(--bar-size);
+				border-radius: var(--radius-2);
+				background: var(--bar-color);
+			}
+		}
+	}
+</style>

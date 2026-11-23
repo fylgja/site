@@ -1,0 +1,69 @@
+<figure class="donut-chart" style="--m: 0">
+	<figcaption class="font-bold" style="--my: 0 1rem">Visitors by region</figcaption>
+	<ul class="relative grid" style="--m: 0">
+		<li style="--from: 0; --to: 38">Europe <data class="font-bold" value="38">38%</data></li>
+		<li style="--from: 38; --to: 69">North America <data class="font-bold" value="31">31%</data></li>
+		<li style="--from: 69; --to: 87">Asia <data class="font-bold" value="18">18%</data></li>
+		<li style="--from: 87; --to: 95">South America <data class="font-bold" value="8">8%</data></li>
+		<li style="--from: 95; --to: 100">Other <data class="font-bold" value="5">5%</data></li>
+	</ul>
+</figure>
+
+<style>
+	.donut-chart {
+		--donut-size: 10rem;
+		--donut-hole: 58%;
+		--donut-gap: 1deg;
+		container-type: inline-size;
+
+		ul {
+			align-content: center;
+			min-block-size: var(--donut-size);
+			padding-inline-start: calc(var(--donut-size) + 3rem);
+		}
+
+		li {
+			--slice-color: oklch(68% calc(0.19 * var(--chroma, 1)) var(--hue));
+
+			&:nth-child(5n + 1) { --hue: var(--hue-blue); }
+			&:nth-child(5n + 2) { --hue: var(--hue-teal); }
+			&:nth-child(5n + 3) { --hue: var(--hue-orange); }
+			&:nth-child(5n + 4) { --hue: var(--hue-pink); }
+			&:nth-child(5n + 5) { --hue: var(--hue-blue); --chroma: 0.1; }
+
+			&::marker {
+				color: var(--slice-color);
+			}
+
+			&::before {
+				--_from: calc(var(--from) * 3.6deg + var(--donut-gap) / 2);
+				--_to: calc(var(--to) * 3.6deg - var(--donut-gap) / 2);
+				content: "";
+				position: absolute;
+				inset-block: 0;
+				inset-inline-start: 0;
+				inline-size: var(--donut-size);
+				block-size: var(--donut-size);
+				margin-block: auto;
+				border-radius: 50%;
+				background: conic-gradient(
+					transparent var(--_from),
+					var(--slice-color) 0 var(--_to),
+					transparent 0
+				);
+				mask: radial-gradient(closest-side, transparent var(--donut-hole), #000 calc(var(--donut-hole) + 1px));
+			}
+		}
+
+		@container (inline-size < 22rem) {
+			ul {
+				padding-block-start: calc(var(--donut-size) + 1rem);
+				padding-inline-start: 1.5rem;
+			}
+
+			li::before {
+				inset-block-end: auto;
+			}
+		}
+	}
+</style>
