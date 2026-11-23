@@ -2,18 +2,16 @@
 	--donut-size: 10rem;
 	--donut-hole: 58%;
 	--donut-gap: 1deg;
+	container-type: inline-size;
 
 	ul {
-		grid-template-columns: var(--donut-size) 1fr;
 		align-content: center;
-		column-gap: 2rem;
 		min-block-size: var(--donut-size);
-		list-style-position: inside;
+		padding-inline-start: calc(var(--donut-size) + 3rem);
 	}
 
 	li {
 		--slice-color: oklch(68% calc(0.19 * var(--chroma, 1)) var(--hue));
-		grid-column: 2;
 
 		&:nth-child(5n + 1) { --hue: var(--hue-blue); }
 		&:nth-child(5n + 2) { --hue: var(--hue-teal); }
@@ -42,6 +40,17 @@
 				transparent 0
 			);
 			mask: radial-gradient(closest-side, transparent var(--donut-hole), #000 calc(var(--donut-hole) + 1px));
+		}
+	}
+
+	@container (inline-size < 22rem) {
+		ul {
+			padding-block-start: calc(var(--donut-size) + 1rem);
+			padding-inline-start: 1.5rem;
+		}
+
+		li::before {
+			inset-block-end: auto;
 		}
 	}
 }

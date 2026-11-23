@@ -11,7 +11,7 @@ requires:
     reason: "Styles the figure caption and the list text."
   - pkg: "@fylgja/utilities"
     level: required
-    reason: "Provides relative and grid, which place the ring beside the legend, plus the caption styling."
+    reason: "Provides relative, which anchors the ring to the list, grid, which centers the legend next to it, plus the caption styling."
   - pkg: "@fylgja/tokens"
     level: required
     reason: "Supplies the --hue-* tokens the slice colors are built from."
@@ -78,7 +78,9 @@ numbers are always on screen as text, not only as arc lengths.
 | `li::marker`               | The legend swatch, colored with the slice's `--slice-color`.    |
 
 Size the ring with `--donut-size`, the hole with `--donut-hole` and the space
-between slices with `--donut-gap`.
+between slices with `--donut-gap`. The list's start padding makes room for the ring
+and the legend markers. When the figure is narrower than 22rem, a container query
+moves that room to the top, so the legend drops below the ring.
 
 ## Accessibility
 
