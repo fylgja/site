@@ -25,11 +25,6 @@
 			block-size: var(--bar-size);
 			border-radius: var(--radius-2);
 			background: var(--bar-color);
-			transition: opacity 0.2s;
 		}
-	}
-
-	tbody:has(tr:hover) tr:not(:hover) td::before {
-		opacity: 0.4;
 	}
 }
