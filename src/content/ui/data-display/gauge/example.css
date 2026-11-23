@@ -1,13 +1,6 @@
 .gauge {
 	--gauge-size: 8rem;
 	--gauge-thickness: 0.22;
-	justify-items: center;
-	gap: 0.25rem;
-
-	span {
-		font-weight: 700;
-		font-variant-numeric: tabular-nums;
-	}
 }
 
 @supports (width: attr(x type(<length>))) {
@@ -24,11 +17,6 @@
 	.gauge {
 		:is(meter, span) {
 			grid-area: 1 / 1;
-		}
-
-		span {
-			align-self: center;
-			font-size: 1.25rem;
 		}
 
 		meter {
@@ -50,7 +38,7 @@
 					var(--success, #107c10)
 				)
 			);
-			--_track: color-mix(in oklab, var(--root-bg) 85%, var(--root-fg));
+			--_track: var(--track-color, color-mix(in oklab, var(--root-bg) 85%, var(--root-fg)));
 			/* Round caps are dots centered on the ring, at each end of the arcs */
 			--_cap: calc(var(--gauge-size) * var(--gauge-thickness) / 4);
 			--_arc: calc(50% * (1 - var(--gauge-thickness) / 2));

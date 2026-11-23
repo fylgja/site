@@ -8,10 +8,10 @@ status: "beta"
 requires:
   - pkg: "@fylgja/form-extend"
     level: recommended
-    reason: "Supplies the --success, --warning and --error colors, and styles the bar shown where the dial is not supported."
+    reason: "Supplies the --success, --warning and --error colors and the --track-color of the dial, and styles the bar shown where the dial is not supported."
   - pkg: "@fylgja/utilities"
     level: recommended
-    reason: "Provides inline-grid for each gauge, and flex-wrap and gap for a row of them."
+    reason: "Provides inline-grid, align-center and gap-sm that stack each gauge, lead for the value, and flex-wrap and gap for a row of them."
   - pkg: "@fylgja/css-attr-polyfill"
     level: recommended
     reason: "Compiles the attr() reads into static rules, so the dial also shows in browsers without typed attr()."
@@ -60,9 +60,9 @@ to keep in sync.
 
 1. Write a regular `<meter>` with `min`, `max` and `value`. Add `low`, `high` and
    `optimum` to color it by state.
-2. Wrap it in a `<label class="gauge inline-grid">` with the name as text, so the
-   meter is labelled without a `for`.
-3. Add a `<span aria-hidden="true">` after the meter with the value as you want it
+2. Wrap it in a `<label class="gauge inline-grid align-center gap-sm">` with the
+   name as text, so the meter is labelled without a `for`.
+3. Add a `<span class="lead" aria-hidden="true">` after the meter with the value as you want it
    shown. CSS cannot format a number, so this is the text in the middle of the dial.
 4. Add the CSS from under the preview. Size the dial with `--gauge-size`, and the ring
    with `--gauge-thickness` as a share of the radius, such as `0.22`.

@@ -1,18 +1,18 @@
 <div class="flex-wrap gap">
-	<label class="gauge inline-grid">
+	<label class="gauge inline-grid align-center gap-sm">
 		CPU
 		<meter min="0" max="100" low="70" high="90" optimum="0" value="59">59%</meter>
-		<span aria-hidden="true">59%</span>
+		<span class="lead" aria-hidden="true">59%</span>
 	</label>
-	<label class="gauge inline-grid">
+	<label class="gauge inline-grid align-center gap-sm">
 		Memory
 		<meter min="0" max="16" low="10" high="14" optimum="0" value="12.4">12.4 GB</meter>
-		<span aria-hidden="true">12.4 GB</span>
+		<span class="lead" aria-hidden="true">12.4 GB</span>
 	</label>
-	<label class="gauge inline-grid">
+	<label class="gauge inline-grid align-center gap-sm">
 		Battery
 		<meter min="0" max="100" low="20" high="50" optimum="100" value="14">14%</meter>
-		<span aria-hidden="true">14%</span>
+		<span class="lead" aria-hidden="true">14%</span>
 	</label>
 </div>
 
@@ -20,13 +20,6 @@
 	.gauge {
 		--gauge-size: 8rem;
 		--gauge-thickness: 0.22;
-		justify-items: center;
-		gap: 0.25rem;
-
-		span {
-			font-weight: 700;
-			font-variant-numeric: tabular-nums;
-		}
 	}
 
 	@supports (width: attr(x type(<length>))) {
@@ -43,11 +36,6 @@
 		.gauge {
 			:is(meter, span) {
 				grid-area: 1 / 1;
-			}
-
-			span {
-				align-self: center;
-				font-size: 1.25rem;
 			}
 
 			meter {
@@ -69,7 +57,7 @@
 						var(--success, #107c10)
 					)
 				);
-				--_track: color-mix(in oklab, var(--root-bg) 85%, var(--root-fg));
+				--_track: var(--track-color, color-mix(in oklab, var(--root-bg) 85%, var(--root-fg)));
 				/* Round caps are dots centered on the ring, at each end of the arcs */
 				--_cap: calc(var(--gauge-size) * var(--gauge-thickness) / 4);
 				--_arc: calc(50% * (1 - var(--gauge-thickness) / 2));
