@@ -9,6 +9,9 @@ requires:
   - pkg: "@fylgja/base"
     level: recommended
     reason: "Styles the figure caption and the list text."
+  - pkg: "@fylgja/utilities"
+    level: required
+    reason: "Provides relative and grid, which place the ring beside the legend, plus the caption styling."
   - pkg: "@fylgja/tokens"
     level: recommended
     reason: "Supplies the --hue-* tokens the slice colors are built from."
@@ -49,8 +52,8 @@ Hover an item in the legend to highlight its slice.
 
 ## Usage
 
-1. Wrap a `<ul>` in a `<figure class="donut-chart">`, with a `<figcaption>` for the
-   title.
+1. Wrap a `<ul class="relative grid">` in a `<figure class="donut-chart">`, with a
+   `<figcaption>` for the title. The ring is positioned against the list.
 2. Give each item a label and its share in a `<data>` element, for example
    `<data value="38">38%</data>`.
 3. Set `--from` and `--to` on each item, the running total before and after it, in

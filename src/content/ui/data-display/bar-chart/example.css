@@ -3,13 +3,6 @@
 	--bar-size: 1.25rem;
 	--bar-label-size: 6rem;
 	--bar-value-size: 4rem;
-	inline-size: 100%;
-
-	caption {
-		padding-block-end: 0.5rem;
-		text-align: start;
-		font-weight: 600;
-	}
 
 	tr {
 		display: grid;
@@ -51,14 +44,7 @@
 }
 
 .bar-chart.--vertical {
-	--bar-chart-height: 12rem;
 	--bar-size: 2.5rem;
-
-	tbody {
-		display: flex;
-		gap: 0.5rem;
-		block-size: var(--bar-chart-height);
-	}
 
 	tbody tr {
 		display: flex;

@@ -1,5 +1,5 @@
-<table class="heatmap" style="--max: 40">
-	<caption>Deploys by weekday and time of day</caption>
+<table class="heatmap w-full" style="--max: 40">
+	<caption class="text-start font-bold" style="--py: 0 0.5rem">Deploys by weekday and time of day</caption>
 	<thead>
 		<tr>
 			<td></td>
@@ -84,16 +84,9 @@
 		--heat-hot: var(--brand);
 		--heat-hot-text: var(--on-brand);
 		--heat-cell-size: 2rem;
-		inline-size: 100%;
 		table-layout: fixed;
 		border-collapse: separate;
 		border-spacing: 3px;
-
-		caption {
-			padding-block-end: 0.5rem;
-			text-align: start;
-			font-weight: 600;
-		}
 
 		:is(th, td) {
 			padding: 0;
