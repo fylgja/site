@@ -9,7 +9,6 @@
 	tbody td {
 		flex: 1;
 		justify-content: end;
-		align-items: center;
 
 		&::before {
 			order: 1;
