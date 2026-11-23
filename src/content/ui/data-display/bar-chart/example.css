@@ -1,0 +1,89 @@
+.bar-chart {
+	--bar-color: var(--brand);
+	--bar-size: 1.25rem;
+	--bar-label-size: 6rem;
+	--bar-value-size: 4rem;
+	inline-size: 100%;
+
+	caption {
+		padding-block-end: 0.5rem;
+		text-align: start;
+		font-weight: 600;
+	}
+
+	tr {
+		display: grid;
+		grid-template-columns: var(--bar-label-size) 1fr;
+		align-items: center;
+	}
+
+	:is(th, td) {
+		padding: 0.25rem 0.5rem 0.25rem 0;
+		border: 0;
+		background: none;
+	}
+
+	thead {
+		font-size: 0.875em;
+		opacity: 0.7;
+	}
+
+	tbody td {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-variant-numeric: tabular-nums;
+
+		&::before {
+			content: "";
+			flex: none;
+			inline-size: calc(var(--value) / var(--max) * (100% - var(--bar-value-size)));
+			block-size: var(--bar-size);
+			border-radius: 0.25rem;
+			background: var(--bar-color);
+			transition: opacity 0.2s;
+		}
+	}
+
+	tbody:has(tr:hover) tr:not(:hover) td::before {
+		opacity: 0.4;
+	}
+}
+
+.bar-chart.--vertical {
+	--bar-chart-height: 12rem;
+	--bar-size: 2.5rem;
+
+	tbody {
+		display: flex;
+		gap: 0.5rem;
+		block-size: var(--bar-chart-height);
+	}
+
+	tbody tr {
+		display: flex;
+		flex: 1;
+		flex-direction: column-reverse;
+		align-items: stretch;
+		min-inline-size: 0;
+	}
+
+	tbody :is(th, td) {
+		padding-inline: 0;
+		text-align: center;
+	}
+
+	tbody td {
+		flex: 1;
+		flex-direction: column;
+		justify-content: end;
+		gap: 0.25rem;
+		font-size: 0.875em;
+
+		&::before {
+			order: 1;
+			inline-size: min(100%, var(--bar-size));
+			block-size: calc(var(--value) / var(--max) * (100% - 1lh));
+		}
+	}
+}

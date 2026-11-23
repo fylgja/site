@@ -1,0 +1,77 @@
+<table class="bar-chart" style="--max: 3500">
+	<caption>Visitors by browser</caption>
+	<thead>
+		<tr>
+			<th scope="col">Browser</th>
+			<th scope="col">Visitors</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th scope="row">Chrome</th>
+			<td style="--value: 3120">3,120</td>
+		</tr>
+		<tr>
+			<th scope="row">Safari</th>
+			<td style="--value: 1840">1,840</td>
+		</tr>
+		<tr>
+			<th scope="row">Firefox</th>
+			<td style="--value: 960">960</td>
+		</tr>
+	</tbody>
+</table>
+
+<style>
+	.bar-chart {
+		--bar-color: var(--brand);
+		--bar-size: 1.25rem;
+		--bar-label-size: 6rem;
+		--bar-value-size: 4rem;
+		inline-size: 100%;
+
+		caption {
+			padding-block-end: 0.5rem;
+			text-align: start;
+			font-weight: 600;
+		}
+
+		tr {
+			display: grid;
+			grid-template-columns: var(--bar-label-size) 1fr;
+			align-items: center;
+		}
+
+		:is(th, td) {
+			padding: 0.25rem 0.5rem 0.25rem 0;
+			border: 0;
+			background: none;
+		}
+
+		thead {
+			font-size: 0.875em;
+			opacity: 0.7;
+		}
+
+		tbody td {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			font-variant-numeric: tabular-nums;
+
+			&::before {
+				content: "";
+				flex: none;
+				inline-size: calc(var(--value) / var(--max) * (100% - var(--bar-value-size)));
+				block-size: var(--bar-size);
+				border-radius: 0.25rem;
+				background: var(--bar-color);
+				transition: opacity 0.2s;
+			}
+		}
+
+		tbody:has(tr:hover) tr:not(:hover) td::before {
+			opacity: 0.4;
+		}
+	}
+</style>
