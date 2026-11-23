@@ -13,7 +13,7 @@ requires:
     level: required
     reason: "Provides relative and grid, which place the ring beside the legend, plus the caption styling."
   - pkg: "@fylgja/tokens"
-    level: recommended
+    level: required
     reason: "Supplies the --hue-* tokens the slice colors are built from."
 sortOrder: 9
 previewZoom: 0.6
@@ -24,8 +24,8 @@ faq:
       item is the --from of the next, and the last one ends at 100.
   - question: How do I change the slice colors?
     answer: The first five items get a color from the --hue-* tokens and the sixth
-      starts over. Set --slice-color on an item to pick your own, and the legend
-      marker follows it.
+      starts over. Set --hue on an item to move it to another token hue, such as
+      --hue-red, or set --slice-color to pick any color. The legend marker follows.
   - question: Can I make it a full pie instead of a donut?
     answer: Yes. Set --donut-hole to 0% and the mask leaves the whole circle. A
       donut is easier to read though, since the eye compares the arc lengths
@@ -49,8 +49,6 @@ slice of the ring with a `conic-gradient()`. The list doubles as the legend, so 
 numbers are always on screen as text, not only as arc lengths.
 
 ## Preview
-
-Hover an item in the legend to highlight its slice.
 
 <ComponentPreview code={example} />
 

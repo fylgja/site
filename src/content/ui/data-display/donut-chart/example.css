@@ -12,13 +12,14 @@
 	}
 
 	li {
+		--slice-color: oklch(68% calc(0.19 * var(--chroma, 1)) var(--hue));
 		grid-column: 2;
 
-		&:nth-child(5n + 1) { --slice-color: oklch(58% 0.2 var(--hue-blue, 260)); }
-		&:nth-child(5n + 2) { --slice-color: oklch(70% 0.15 var(--hue-teal, 170)); }
-		&:nth-child(5n + 3) { --slice-color: oklch(75% 0.16 var(--hue-orange, 70)); }
-		&:nth-child(5n + 4) { --slice-color: oklch(62% 0.2 var(--hue-pink, 350)); }
-		&:nth-child(5n + 5) { --slice-color: oklch(60% 0.03 var(--hue-blue, 260)); }
+		&:nth-child(5n + 1) { --hue: var(--hue-blue); }
+		&:nth-child(5n + 2) { --hue: var(--hue-teal); }
+		&:nth-child(5n + 3) { --hue: var(--hue-orange); }
+		&:nth-child(5n + 4) { --hue: var(--hue-pink); }
+		&:nth-child(5n + 5) { --hue: var(--hue-blue); --chroma: 0.1; }
 
 		&::marker {
 			color: var(--slice-color);
@@ -41,17 +42,6 @@
 				transparent 0
 			);
 			mask: radial-gradient(closest-side, transparent var(--donut-hole), #000 calc(var(--donut-hole) + 1px));
-			pointer-events: none;
-			transition: opacity 0.2s;
 		}
-	}
-
-	data {
-		font-weight: 600;
-		font-variant-numeric: tabular-nums;
-	}
-
-	ul:has(li:hover) li:not(:hover)::before {
-		opacity: 0.3;
 	}
 }
