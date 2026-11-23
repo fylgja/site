@@ -28,7 +28,7 @@
 		--table-px: 0 0.5rem;
 		--table-stroke: transparent;
 		--bar-color: var(--brand);
-		--bar-size: 1.25rem;
+		--bar-size: 1lh;
 		--bar-label-size: 6rem;
 		--bar-value-size: 4rem;
 
@@ -40,17 +40,13 @@
 			background: none;
 		}
 
-		tbody td {
-			align-items: center;
-
-			&::before {
-				content: "";
-				flex: none;
-				inline-size: calc(var(--value) / var(--max) * (100% - var(--bar-value-size)));
-				block-size: var(--bar-size);
-				border-radius: var(--radius-2);
-				background: var(--bar-color);
-			}
+		tbody td::before {
+			content: "";
+			flex: none;
+			inline-size: calc(var(--value) / var(--max) * (100% - var(--bar-value-size)));
+			block-size: var(--bar-size);
+			border-radius: var(--radius-2);
+			background: var(--bar-color);
 		}
 	}
 </style>
