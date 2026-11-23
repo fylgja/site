@@ -35,7 +35,11 @@ faq:
 ---
 
 import ComponentPreview from "@/components/ComponentPreview.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
 import example from "./example.html?raw";
+import exampleCss from "./example.css?raw";
+
+<style is:inline set:html={exampleCss} />
 
 A gauge shows a single value against its range as a dial, the way a dashboard
 shows CPU load or battery level. It is the native `<meter>` from the
@@ -48,6 +52,10 @@ to keep in sync.
 
 <ComponentPreview code={example} />
 
+> [!note]- The gauge CSS
+>
+> <CodeBlock lang="css" code={exampleCss.trim()} />
+
 ## Usage
 
 1. Write a regular `<meter>` with `min`, `max` and `value`. Add `low`, `high` and
@@ -56,7 +64,7 @@ to keep in sync.
    meter is labelled without a `for`.
 3. Add a `<span aria-hidden="true">` after the meter with the value as you want it
    shown. CSS cannot format a number, so this is the text in the middle of the dial.
-4. Add the CSS from the snippet. Size the dial with `--gauge-size`, and the ring
+4. Add the CSS from under the preview. Size the dial with `--gauge-size`, and the ring
    with `--gauge-thickness` as a share of the radius, such as `0.22`.
 
 ## Anatomy

@@ -51,7 +51,9 @@ Hover a row to fade the other bars.
 
 <ComponentPreview code={example} />
 
-<CodeBlock lang="css" code={exampleCss.trim()} />
+> [!note]- The bar chart CSS
+>
+> <CodeBlock lang="css" code={exampleCss.trim()} />
 
 ## Usage
 
@@ -61,7 +63,7 @@ Hover a row to fade the other bars.
    `style="--value: 3120"`. The visible text can stay formatted.
 3. Set `--max` on the table. Bars are drawn as a share of it, so a cell with half
    of `--max` fills half of the plot.
-4. Add the `bar-chart` class and the CSS above. Layout comes from Fylgja
+4. Add the `bar-chart` class and the CSS from under the preview. Layout comes from Fylgja
    utilities in the markup: `grid` on each row, `flex gap-sm` on each value cell,
    and `w-full` on the table.
 
