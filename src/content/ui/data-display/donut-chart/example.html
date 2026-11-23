@@ -1,0 +1,80 @@
+<figure class="donut-chart">
+	<figcaption>Visitors by region</figcaption>
+	<ul>
+		<li style="--from: 0; --to: 38">Europe <data value="38">38%</data></li>
+		<li style="--from: 38; --to: 69">North America <data value="31">31%</data></li>
+		<li style="--from: 69; --to: 87">Asia <data value="18">18%</data></li>
+		<li style="--from: 87; --to: 95">South America <data value="8">8%</data></li>
+		<li style="--from: 95; --to: 100">Other <data value="5">5%</data></li>
+	</ul>
+</figure>
+
+<style>
+	.donut-chart {
+		--donut-size: 10rem;
+		--donut-hole: 58%;
+		--donut-gap: 1deg;
+		margin: 0;
+
+		figcaption {
+			margin-block-end: 1rem;
+			font-weight: 600;
+		}
+
+		ul {
+			position: relative;
+			display: grid;
+			grid-template-columns: var(--donut-size) 1fr;
+			align-content: center;
+			column-gap: 2rem;
+			min-block-size: var(--donut-size);
+			margin: 0;
+			padding: 0;
+			list-style-position: inside;
+		}
+
+		li {
+			grid-column: 2;
+
+			&:nth-child(5n + 1) { --slice-color: oklch(58% 0.2 var(--hue-blue, 260)); }
+			&:nth-child(5n + 2) { --slice-color: oklch(70% 0.15 var(--hue-teal, 170)); }
+			&:nth-child(5n + 3) { --slice-color: oklch(75% 0.16 var(--hue-orange, 70)); }
+			&:nth-child(5n + 4) { --slice-color: oklch(62% 0.2 var(--hue-pink, 350)); }
+			&:nth-child(5n + 5) { --slice-color: oklch(60% 0.03 var(--hue-blue, 260)); }
+
+			&::marker {
+				color: var(--slice-color);
+			}
+
+			&::before {
+				--_from: calc(var(--from) * 3.6deg + var(--donut-gap) / 2);
+				--_to: calc(var(--to) * 3.6deg - var(--donut-gap) / 2);
+				content: "";
+				position: absolute;
+				inset-block: 0;
+				inset-inline-start: 0;
+				inline-size: var(--donut-size);
+				block-size: var(--donut-size);
+				margin-block: auto;
+				border-radius: 50%;
+				background: conic-gradient(
+					transparent var(--_from),
+					var(--slice-color) 0 var(--_to),
+					transparent 0
+				);
+				mask: radial-gradient(closest-side, transparent var(--donut-hole), #000 calc(var(--donut-hole) + 1px));
+				pointer-events: none;
+				transition: opacity 0.2s;
+			}
+		}
+
+		data {
+			font-weight: 600;
+			font-variant-numeric: tabular-nums;
+		}
+
+		ul:has(li:hover) li:not(:hover)::before {
+			opacity: 0.3;
+		}
+	}
+</style>

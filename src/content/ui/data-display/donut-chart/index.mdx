@@ -1,0 +1,83 @@
+---
+title: "Donut Chart"
+pageTitle: "Fylgja Donut Chart"
+description: "A list of parts of a whole, drawn as a donut chart with a CSS conic gradient and the list as its legend."
+category: "data-display"
+tags: ["chart", "donut chart", "pie chart", "graph", "share", "percentage", "legend"]
+status: "stable"
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the figure caption and the list text."
+  - pkg: "@fylgja/tokens"
+    level: recommended
+    reason: "Supplies the --hue-* tokens the slice colors are built from."
+sortOrder: 9
+previewZoom: 0.6
+faq:
+  - question: Why does each item need both --from and --to?
+    answer: CSS cannot add up the items before the current one, so each slice is
+      told where it starts and ends, as a percentage of the whole. The --to of one
+      item is the --from of the next, and the last one ends at 100.
+  - question: How do I change the slice colors?
+    answer: The first five items get a color from the --hue-* tokens and the sixth
+      starts over. Set --slice-color on an item to pick your own, and the legend
+      marker follows it.
+  - question: Can I make it a full pie instead of a donut?
+    answer: Yes. Set --donut-hole to 0% and the mask leaves the whole circle. A
+      donut is easier to read though, since the eye compares the arc lengths
+      instead of the angles.
+  - question: How many slices can a donut chart hold?
+    answer: Keep it to about five. Past that the small slices get too thin to tell
+      apart, so group them into an Other slice, or switch to a
+      [Bar Chart](/ui/data-display/bar-chart/).
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import example from "./example.html?raw";
+
+A donut chart shows how a whole splits into a few parts. The data is a plain list
+of labels and percentages inside a `<figure>`, and each list item paints its own
+slice of the ring with a `conic-gradient()`. The list doubles as the legend, so the
+numbers are always on screen as text, not only as arc lengths.
+
+## Preview
+
+Hover an item in the legend to highlight its slice.
+
+<ComponentPreview code={example} />
+
+## Usage
+
+1. Wrap a `<ul>` in a `<figure class="donut-chart">`, with a `<figcaption>` for the
+   title.
+2. Give each item a label and its share in a `<data>` element, for example
+   `<data value="38">38%</data>`.
+3. Set `--from` and `--to` on each item, the running total before and after it, in
+   percent. The first item starts at 0 and the last ends at 100.
+4. Add the CSS from the snippet.
+
+## Anatomy
+
+| Part                       | Responsibility                                                  |
+| -------------------------- | --------------------------------------------------------------- |
+| `<figure>` / `<figcaption>` | Groups the chart and gives it a title.                         |
+| `<li>`                     | One slice, and its row in the legend.                           |
+| `<data>`                   | The share as readable text, with the raw number in `value`.     |
+| `--from` / `--to`          | Where the slice starts and ends on the ring, in percent.        |
+| `li::before`               | The slice, drawn as a conic gradient on top of the others.      |
+| `li::marker`               | The legend swatch, colored with the slice's `--slice-color`.    |
+
+Size the ring with `--donut-size`, the hole with `--donut-hole` and the space
+between slices with `--donut-gap`.
+
+## Accessibility
+
+- The list and its `<data>` values are the content, so a screen reader reads every
+  label and share in order. The slices are pseudo elements and stay silent.
+- The `<figcaption>` names the figure. Without it the list has no context.
+- Every share is written next to its label, so no one relies on telling the slice
+  colors apart. Keep that text even when the chart looks self explanatory.
+
+Related: [Bar Chart](/ui/data-display/bar-chart/), [Gauge](/ui/data-display/gauge/),
+[Meter](/ui/data-display/meter/).
