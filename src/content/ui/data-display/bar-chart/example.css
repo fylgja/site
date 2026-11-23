@@ -5,7 +5,6 @@
 	--bar-value-size: 4rem;
 
 	tr {
-		display: grid;
 		grid-template-columns: var(--bar-label-size) 1fr;
 		align-items: center;
 	}
@@ -22,9 +21,7 @@
 	}
 
 	tbody td {
-		display: flex;
 		align-items: center;
-		gap: 0.5rem;
 		font-variant-numeric: tabular-nums;
 
 		&::before {
@@ -47,9 +44,8 @@
 	--bar-size: 2.5rem;
 
 	tbody tr {
-		display: flex;
+		--flex-dir: column-reverse;
 		flex: 1;
-		flex-direction: column-reverse;
 		align-items: stretch;
 		min-inline-size: 0;
 	}
@@ -61,9 +57,7 @@
 
 	tbody td {
 		flex: 1;
-		flex-direction: column;
 		justify-content: end;
-		gap: 0.25rem;
 		font-size: 0.875em;
 
 		&::before {

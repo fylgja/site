@@ -10,8 +10,8 @@ requires:
     level: recommended
     reason: "Supplies the --brand color the bars use and the base table reset."
   - pkg: "@fylgja/utilities"
-    level: recommended
-    reason: "Provides w-full and the caption styling, plus flex, gap-sm and sr-only that lay out the vertical version."
+    level: required
+    reason: "Provides the grid rows, flex value cells, w-full and caption styling, plus flex-col and sr-only for the vertical version."
 sortOrder: 8
 faq:
   - question: Why a table and not a canvas or SVG chart library?
@@ -61,8 +61,9 @@ Hover a row to fade the other bars.
    `style="--value: 3120"`. The visible text can stay formatted.
 3. Set `--max` on the table. Bars are drawn as a share of it, so a cell with half
    of `--max` fills half of the plot.
-4. Add the `bar-chart` class and the CSS above. The table width and caption
-   styling come from Fylgja utilities in the markup.
+4. Add the `bar-chart` class and the CSS above. Layout comes from Fylgja
+   utilities in the markup: `grid` on each row, `flex gap-sm` on each value cell,
+   and `w-full` on the table.
 
 ## Anatomy
 
@@ -92,11 +93,12 @@ value text after the longest bar).
 ### Vertical
 
 Add `--vertical` to draw columns instead of bars, which suits values over time. The
-`<tbody>` becomes the plot with `flex gap-sm`, and `--size-y` sets its height. The
+`<tbody>` becomes the plot with `flex gap-sm`, and `--size-y` sets its height.
+Rows and value cells switch to `flex-col`. The
 header row has no visible place in a column chart, so it gets `sr-only` and stays
 available to screen readers.
 
 <ComponentPreview code={exampleVertical} />
 
 Related: [Table](/ui/data-display/table/), [Donut Chart](/ui/data-display/donut-chart/),
-[Heatmap](/ui/data-display/heatmap/).
+[Gauge](/ui/data-display/gauge/).
