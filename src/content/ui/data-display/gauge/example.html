@@ -1,15 +1,15 @@
 <div class="flex-wrap gap">
-	<label class="gauge">
+	<label class="gauge inline-grid">
 		CPU
 		<meter min="0" max="100" low="70" high="90" optimum="0" value="59">59%</meter>
 		<span aria-hidden="true">59%</span>
 	</label>
-	<label class="gauge">
+	<label class="gauge inline-grid">
 		Memory
 		<meter min="0" max="16" low="10" high="14" optimum="0" value="12.4">12.4 GB</meter>
 		<span aria-hidden="true">12.4 GB</span>
 	</label>
-	<label class="gauge">
+	<label class="gauge inline-grid">
 		Battery
 		<meter min="0" max="100" low="20" high="50" optimum="100" value="14">14%</meter>
 		<span aria-hidden="true">14%</span>
@@ -19,8 +19,7 @@
 <style>
 	.gauge {
 		--gauge-size: 8rem;
-		--gauge-thickness: 22%;
-		display: inline-grid;
+		--gauge-thickness: 0.22;
 		justify-items: center;
 		gap: 0.25rem;
 
@@ -67,20 +66,41 @@
 					)
 				);
 				--_track: color-mix(in oklab, var(--root-bg) 85%, var(--root-fg));
+				/* Round caps are dots centered on the ring, at each end of the arcs */
+				--_cap: calc(var(--gauge-size) * var(--gauge-thickness) / 4);
+				--_arc: calc(50% * (1 - var(--gauge-thickness) / 2));
+				--_end: calc(-135deg + var(--_fill) * 270deg);
+				--_start-color: color-mix(in oklab, var(--_color) calc(sign(var(--_fill)) * 100%), var(--_track));
 				inline-size: var(--gauge-size);
 				block-size: var(--gauge-size);
 				margin-block-end: calc(var(--gauge-size) / -6);
 				border-radius: 50%;
-				background: conic-gradient(
-					from -135deg,
-					var(--_color) calc(var(--_fill) * 270deg),
-					var(--_track) 0 270deg,
-					transparent 0
-				);
+				background:
+					radial-gradient(
+						circle at calc(50% + sin(var(--_end)) * var(--_arc)) calc(50% - cos(var(--_end)) * var(--_arc)),
+						var(--_color) calc(var(--_cap) - 0.5px),
+						transparent calc(var(--_cap) + 0.5px)
+					),
+					radial-gradient(
+						circle at calc(50% - sin(135deg) * var(--_arc)) calc(50% - cos(135deg) * var(--_arc)),
+						var(--_start-color) calc(var(--_cap) - 0.5px),
+						transparent calc(var(--_cap) + 0.5px)
+					),
+					radial-gradient(
+						circle at calc(50% + sin(135deg) * var(--_arc)) calc(50% - cos(135deg) * var(--_arc)),
+						var(--_track) calc(var(--_cap) - 0.5px),
+						transparent calc(var(--_cap) + 0.5px)
+					),
+					conic-gradient(
+						from -135deg,
+						var(--_color) calc(var(--_fill) * 270deg),
+						var(--_track) 0 270deg,
+						transparent 0
+					);
 				mask: radial-gradient(
 					closest-side,
-					transparent calc(100% - var(--gauge-thickness)),
-					#000 calc(100% - var(--gauge-thickness) + 1px)
+					transparent calc((1 - var(--gauge-thickness)) * 100%),
+					#000 calc((1 - var(--gauge-thickness)) * 100% + 1px)
 				);
 
 				&::-webkit-meter-bar {

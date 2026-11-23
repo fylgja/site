@@ -11,8 +11,8 @@ requires:
     reason: "Supplies the --success, --warning and --error colors, and styles the bar shown where the dial is not supported."
   - pkg: "@fylgja/utilities"
     level: recommended
-    reason: "Provides flex-wrap and gap, used to lay out a row of gauges."
-sortOrder: 11
+    reason: "Provides inline-grid for each gauge, and flex-wrap and gap for a row of them."
+sortOrder: 10
 previewZoom: 0.55
 faq:
   - question: Why is my gauge a flat bar?
@@ -47,12 +47,12 @@ to keep in sync.
 
 1. Write a regular `<meter>` with `min`, `max` and `value`. Add `low`, `high` and
    `optimum` to color it by state.
-2. Wrap it in a `<label class="gauge">` with the name as text, so the meter is
-   labelled without a `for`.
+2. Wrap it in a `<label class="gauge inline-grid">` with the name as text, so the
+   meter is labelled without a `for`.
 3. Add a `<span aria-hidden="true">` after the meter with the value as you want it
    shown. CSS cannot format a number, so this is the text in the middle of the dial.
-4. Add the CSS from the snippet. Size the dial with `--gauge-size` and the ring
-   with `--gauge-thickness`.
+4. Add the CSS from the snippet. Size the dial with `--gauge-size`, and the ring
+   with `--gauge-thickness` as a share of the radius, such as `0.22`.
 
 ## Anatomy
 
@@ -63,6 +63,7 @@ to keep in sync.
 | `<span aria-hidden="true">` | The formatted value in the middle of the dial.                    |
 | `attr()` reads              | Pull the numbers from the meter's attributes into the CSS.        |
 | `conic-gradient()`          | Draws the 270 degree arc, filled up to the value.                 |
+| `radial-gradient()` dots    | Round off both ends of the track and the end of the fill, like the meter's radius. |
 | `--success` / `--warning` / `--error` | Color the arc by state, matching the [Meter](/ui/data-display/meter/). |
 
 ## Accessibility
