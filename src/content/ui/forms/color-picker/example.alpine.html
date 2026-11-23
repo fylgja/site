@@ -1,0 +1,8 @@
+<div class="field">
+	<label for="brand-color">Brand color</label>
+	<div class="input-group" x-data="{ value: '#6f31ed' }" :data-empty="!value">
+		<input type="text" id="brand-color" name="brand" x-model="value" autocomplete="off" spellcheck="false" aria-describedby="brand-color-hint" />
+		<input type="color" class="flex-none" aria-label="Pick the brand color" style="--block-size: auto" :value="value" @input="value = $event.target.value" />
+	</div>
+	<small id="brand-color-hint" class="block">Any CSS color, like #6d28d9 or oklch(50% 0.2 290).</small>
+</div>

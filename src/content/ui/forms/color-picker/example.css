@@ -1,0 +1,11 @@
+[data-empty] > input[type="color"] {
+	background: repeating-linear-gradient(-45deg, #0000 0 6px, #8884 0 12px) content-box;
+}
+
+[data-empty] > input[type="color"]::-webkit-color-swatch {
+	opacity: 0;
+}
+
+[data-empty] > input[type="color"]::-moz-color-swatch {
+	opacity: 0;
+}

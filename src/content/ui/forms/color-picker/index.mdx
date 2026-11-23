@@ -1,0 +1,129 @@
+---
+title: "Color Picker"
+pageTitle: "Fylgja Color Picker"
+description: "A text field for any CSS color, with a native color input beside it that previews the value and picks a new one."
+category: "forms"
+tags: ["color", "color picker", "swatch", "hex", "oklch", "theme", "input", "form"]
+status: "beta"
+requires:
+  - pkg: "@fylgja/base"
+    level: recommended
+    reason: "Styles the text field and turns the native color input into a rounded swatch."
+  - pkg: "@fylgja/input-group"
+    level: recommended
+    reason: "Joins the text field and the swatch into one control with a shared focus ring."
+  - pkg: "@fylgja/utilities"
+    level: recommended
+    reason: "Provides flex-none, so the swatch keeps its size next to the text field."
+sortOrder: 8
+faq:
+  - question: Why not use input type color on its own?
+    answer: 'A color input can never be empty, it always holds a value and falls back to
+      black. That rules it out for optional settings where empty means use the default.
+      It also only accepts lowercase #rrggbb, so people cannot type a value like
+      oklch(50% 0.2 290) or var(--brand), and the value is hidden behind the swatch.'
+  - question: How does the swatch show an oklch or var() value?
+    answer: Modern browsers accept any CSS color as the value of a color input and
+      convert it to the closest hex. The script resolves the text value through the
+      color property first, so var() and other references reach the color input as a
+      real color. Browsers that only accept hex show black for other formats.
+  - question: What happens to an oklch or rgb value when I use the picker?
+    answer: The native picker only speaks hex, so picking a color writes a hex value into
+      the text field. A typed value stays exactly as typed until the picker is used.
+  - question: Is the typed value validated?
+    answer: No, the text field takes any value, since a CSS variable or a theme token is
+      as valid a color as a hex code. If the value is not a color, the swatch shows the
+      empty stripes.
+      Add a pattern attribute to the text field when your form only accepts one format.
+  - question: Does it work without JavaScript?
+    answer: The text field still submits its value and the picker still opens, but the
+      swatch does not update and a picked color is not written to the field. The Alpine
+      version needs no separate script, though it does not resolve var() values.
+---
+
+import ComponentPreview from "@/components/ComponentPreview.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
+import example from "./example.html?raw";
+import exampleAlpine from "./example.alpine.html?raw";
+import exampleCss from "./example.css?raw";
+import exampleJs from "./example.js?raw";
+import exampleNative from "./example-native.html?raw";
+import exampleTheme from "./example-theme.html?raw";
+
+<style is:inline set:html={exampleCss} />
+<script is:inline set:html={exampleJs} />
+
+A color picker lets people type a color or pick one visually. The text field holds
+the value and accepts any CSS color, including an empty one. Beside it, a native
+`<input type="color">` shows that color as a swatch and opens the system picker,
+which writes a hex value back into the field. A small `<color-field>` element keeps the two in sync,
+so you get the platform's own picker without building one.
+
+## Preview
+
+Type a color such as `tomato`, `oklch(70% 0.15 150)`, or `var(--brand)`, or click
+the swatch.
+
+<ComponentPreview code={example} alpine={exampleAlpine} />
+
+<CodeBlock lang="css" code={exampleCss.trim()} />
+
+> [!note]- The `<color-field>` script
+>
+> <CodeBlock lang="js" code={exampleJs.trim()} />
+
+## Usage
+
+- Wrap the text field and the swatch in `<color-field>` with the `input-group` class,
+  and load the script once per page.
+- Put the `name` on the text field only. It holds the real value, while the picker is
+  just a way to fill it in.
+- Add `flex-none` to the color input so it keeps its square size, and set
+  `--block-size: auto` so it stretches to the height of the text field.
+- Give the color input a hex `value` close to the text value, so the swatch is right
+  before the script runs. The preview uses `#6f31ed`, the default Fylgja brand color.
+- A color input can never be empty. While the text field has no color, the script
+  sets `data-empty`, and the CSS hides the native swatch behind stripes.
+
+## Anatomy
+
+- **`<color-field>`**: the custom element that shows the text value in the color
+  input and writes picked colors back.
+- **Text field**: the submitted value, any CSS color or none.
+- **Color input**: the swatch, opening the native picker. It has no `name`, so only
+  the text field is submitted.
+- **`data-empty`**: set while the text field holds no color, to show the stripes.
+- **Hint** (optional): a `<small>` below the control with the accepted formats or what
+  an empty value falls back to.
+
+## Accessibility
+
+- The `<label for>` names the text field. The color input has no visible text, so
+  give it an `aria-label` such as "Pick the brand color".
+- Both controls are in the tab order. Keyboard users can type a value directly, or
+  press Enter or Space on the color input to open the picker. The input group draws
+  the focus ring around both.
+- Picking a color fires an `input` event on the text field, so other scripts that
+  listen to it see the change.
+- Do not show a color only as a swatch. The text value is what a screen reader reads.
+
+## Variants
+
+### Native swatch only
+
+When a value is always required and hex is enough, the plain color input does the
+job with no script. Fylgja base styles it as a rounded swatch.
+
+<ComponentPreview code={exampleNative} />
+
+## Examples
+
+### Theme settings
+
+A group of optional theme colors. Empty fields show the stripes and fall back to the
+theme default from the hint, and each field can hold its own color format.
+
+<ComponentPreview code={exampleTheme} />
+
+Related: [Form Field](/ui/forms/form-field/), [Range](/ui/forms/range/),
+[Search Box](/ui/forms/search-box/).

@@ -1,0 +1,26 @@
+<fieldset>
+	<legend>Surfaces and text</legend>
+	<div class="field">
+		<label for="theme-bg">Background</label>
+		<color-field class="input-group">
+			<input type="text" id="theme-bg" name="bg" autocomplete="off" spellcheck="false" aria-describedby="theme-bg-hint" />
+			<input type="color" class="flex-none" aria-label="Pick the background color" style="--block-size: auto" />
+		</color-field>
+		<small id="theme-bg-hint" class="block">When empty, follows Gray 50.</small>
+	</div>
+	<div class="field">
+		<label for="theme-surface">Surface</label>
+		<color-field class="input-group">
+			<input type="text" id="theme-surface" name="surface" value="oklch(98% 0.01 290)" autocomplete="off" spellcheck="false" aria-describedby="theme-surface-hint" />
+			<input type="color" class="flex-none" aria-label="Pick the surface color" style="--block-size: auto" />
+		</color-field>
+		<small id="theme-surface-hint" class="block">Cards, panels, and form fields. When empty, #fff.</small>
+	</div>
+	<div class="field">
+		<label for="theme-text">Text</label>
+		<color-field class="input-group">
+			<input type="text" id="theme-text" name="text" value="#1f2937" autocomplete="off" spellcheck="false" />
+			<input type="color" class="flex-none" aria-label="Pick the text color" style="--block-size: auto" />
+		</color-field>
+	</div>
+</fieldset>
