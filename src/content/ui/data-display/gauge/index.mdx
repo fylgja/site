@@ -12,13 +12,18 @@ requires:
   - pkg: "@fylgja/utilities"
     level: recommended
     reason: "Provides inline-grid for each gauge, and flex-wrap and gap for a row of them."
+  - pkg: "@fylgja/css-attr-polyfill"
+    level: recommended
+    reason: "Compiles the attr() reads into static rules, so the dial also shows in browsers without typed attr()."
 sortOrder: 10
 previewZoom: 0.55
 faq:
   - question: Why is my gauge a flat bar?
     answer: The dial needs typed attr(), which reads the meter's numbers straight
       from its attributes. Browsers without it skip the dial styles and show the
-      regular meter bar with the value below it, so nothing is lost.
+      regular meter bar with the value below it, so nothing is lost. To get the dial
+      there too, compile the CSS with the
+      [CSS attr() Polyfill](/library/extensions/css-attr-polyfill/).
   - question: How does the gauge pick its color?
     answer: It follows the same rules as the native meter. low and high split the
       range into three regions, optimum says which region is good, and the dial
@@ -81,6 +86,22 @@ The dial needs typed `attr()`, plus `sign()` and `abs()` to work out the state.
 Typed `attr()` is the newest of these and is available in Chromium based browsers
 first. The styles sit in an `@supports` block, so other browsers fall back to the
 plain [Meter](/ui/data-display/meter/) bar with the value under it.
+
+### With the attr() polyfill
+
+The [Fylgja CSS attr() Polyfill](/library/extensions/css-attr-polyfill/) brings the
+dial to every browser. It runs at build time, scans your markup for the attribute
+values you use, and writes a static rule for each one, such as `value="59"`.
+Browsers with typed `attr()` keep using the original rules.
+
+1. Remove the `@supports` wrapper and keep its contents. The polyfill adds its own
+   guarded fallback, and inside the wrapper that fallback would never apply.
+2. Keep the `attr()` reads in the flat `.gauge meter` rule. The polyfill does not
+   read declarations inside nested rules.
+3. Point `content` at your templates. Values that only exist at runtime, like a
+   live CPU reading set from JavaScript, cannot be scanned, so safelist their
+   range, such as `"value": "0..100"`. Every value becomes a rule, so keep the
+   range to whole numbers where you can.
 
 Related: [Meter](/ui/data-display/meter/), [Progress](/ui/data-display/progress/),
 [Donut Chart](/ui/data-display/donut-chart/).

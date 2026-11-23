@@ -30,6 +30,16 @@
 	}
 
 	@supports (width: attr(x type(<length>))) {
+		/* A flat rule, as the attr() polyfill does not read nested ones */
+		.gauge meter {
+			--_min: attr(min type(<number>), 0);
+			--_max: attr(max type(<number>), 1);
+			--_value: clamp(var(--_min), attr(value type(<number>), 0), var(--_max));
+			--_low: attr(low type(<number>), var(--_min));
+			--_high: attr(high type(<number>), var(--_max));
+			--_optimum: attr(optimum type(<number>), calc((var(--_min) + var(--_max)) / 2));
+		}
+
 		.gauge {
 			:is(meter, span) {
 				grid-area: 1 / 1;
@@ -41,12 +51,6 @@
 			}
 
 			meter {
-				--_min: attr(min type(<number>), 0);
-				--_max: attr(max type(<number>), 1);
-				--_value: clamp(var(--_min), attr(value type(<number>), 0), var(--_max));
-				--_low: attr(low type(<number>), var(--_min));
-				--_high: attr(high type(<number>), var(--_max));
-				--_optimum: attr(optimum type(<number>), calc((var(--_min) + var(--_max)) / 2));
 				--_fill: calc((var(--_value) - var(--_min)) / (var(--_max) - var(--_min)));
 				/* Regions as the browser counts them: 0 below low, 1 between, 2 above high */
 				--_region: calc(
@@ -104,6 +108,10 @@
 				);
 
 				&::-webkit-meter-bar {
+					visibility: hidden;
+				}
+
+				&::-moz-meter-bar {
 					visibility: hidden;
 				}
 			}
