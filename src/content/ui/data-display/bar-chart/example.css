@@ -47,7 +47,7 @@
 		--flex-dir: column-reverse;
 		flex: 1;
 		align-items: stretch;
-		min-inline-size: 0;
+		min-inline-size: var(--bar-size);
 	}
 
 	tbody :is(th, td) {
